@@ -1,0 +1,70 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using System;
+using Terraria.Audio;
+using CombinationsMod.Projectiles.YoyoEffects;
+using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
+using CombinationsMod.Projectiles.YoyoEffects.Solid;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
+
+namespace CombinationsMod.Projectiles.YoyoProjectiles
+{
+    public class CultistYoyoProjectile : ModProjectile
+    {
+        private bool isOriginalYoyo = false;
+
+        public int counter = 0;
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 380f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16.5f;
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.extraUpdates = 0;
+            Projectile.width = 16;  
+            Projectile.height = 16;
+            Projectile.aiStyle = 99;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.scale = 1f;
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            if (source is not YoyoClipClassEarth && source is not YoyoClipClassFire && source is not YoyoClipClassWater
+                        && source is not YoyoClipClassElectricity && source is not YoyoClipClass && source is not YoyoClipClassNormal)
+            {
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
+                        0, 0, ModContent.ProjectileType<CultistRing1>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+
+                isOriginalYoyo = true;
+            }
+
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            if (isOriginalYoyo)
+            {
+                counter++;
+
+                if (counter == 20)
+                {
+                    int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
+                        0, 0, ModContent.ProjectileType<CultistRing2>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+
+                    int proj3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
+                        0, 0, ModContent.ProjectileType<CultistRingDamage>(), 100, 8f, Main.myPlayer, 0, Projectile.whoAmI);
+                    Main.projectile[proj3].Resize(263, 263);
+                }
+            }
+        }
+    }
+}

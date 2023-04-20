@@ -1,0 +1,46 @@
+This mod adds a large amount of accessories, Yoyos, new mechanics, and changes to Vanilla Yoyos.
+
+Adds over 30 more Yoyos, each with special crafting recipes and effects
+
+Purchase the Ability Ring from the Merchant for 20 gold to allow yoyos to use special effects.
+
+- Changes To Vanilla Yoyos
+    Each Yoyo's stats have been buffed, including lifetime,
+    speed, and range
+    Yoyos have special particles
+
+- Unique Accessories
+   Rings
+     Some rings make Yoyos emit particles and light
+     Some rings add certain functions to Yoyos
+   Bearings
+     Yoyos can inflict debuffs, or create other projectiles
+   Drill Casings
+     Yoyos can drill through blocks
+   New Yoyo Gloves
+     Support Gloves : Increases yoyos made by the Yoyo Glove
+     Yoyo Gloves : Function similarly to the regular Yoyo Glove,
+     but have small differences
+
+- 10 new accessory slots
+    2 String Slots
+    2 Bearing Slots
+    2 Ring Slots
+    2 Glove Slots
+    Drill Slot
+    Counterweight Slot
+
+-= Many changes to Vanilla =-
+  ( check out 'vanillaChanges.txt' in the mod's files)
+
+This mod's focus is not entirely to be balanced, but to give a more enjoyable experience with using yoyos.
+Some things may be tweaked later to help balance it out a little.
+
+Huge thanks to the following!
+
+David F. Dev - Wrote the script for the Yoyo Drills
+Turbanik - Created and supplied pretty much all of the special effect sprites
+stormytuna - Writing various code such as npc loot modifications & reflections
+Dagger - Helping with custom yoyo string colors, drawing, and textures
+Photonic0 - Helping with enhancing yoyo special effects during daytime
+otterly - Created the amazing achievement sprites

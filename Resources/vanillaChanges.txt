@@ -1,0 +1,23 @@
+-= | Vanilla Changes | =-
+| Travelling merchant no longer sells the Code 2
+| Instead, the Code 2 is craftable with Adamantite/Titanium
+|
+| Skeleton Merchant sells 4 new support gloves
+| These gloves increase your number of yoyos
+|
+| Twins drop the Eye Of Cthulu Yoyo now
+| Subsequently, Mothron no longer drops it
+|
+| Code 2 and EOC yoyo have different stats to fit progression
+|
+| Each vanilla yoyo has it's own special effect
+|
+| The Merchant now sells the Rally in Prehardmode
+|
+| The Cascade is now craftable from Hellstone bars
+|
+| Updated the vanilla sprite for the Yoyo Glove to be larger
+|
+| Magma Stone will no longer work for Yoyos
+|
+V

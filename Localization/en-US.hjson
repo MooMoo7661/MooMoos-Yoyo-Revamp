@@ -1,0 +1,996 @@
+
+Mods: {
+	CombinationsMod: {
+
+	
+	TownNPCMood : 
+	{
+		ExamplePerson:
+		{
+			LoveBiome: "I love the forest. Plenty of nice scenery and critters."
+			LikeBiome: "I don't mind the desert. Probably because I can't feel the heat."
+			DislikeBiome: "I don't really like it here. It sends shivers down my spine."
+
+			LoveSpace: "It's great having all this room to myself. I wouldn't mind a few people to talk to though. It's quite lonely."
+			NoHome: "In my travels, I always set up a temporary spot for a few days. I'd really like to finally just set my bags down and stay somewhere for a while."
+			DislikeCrowded: "There's a little more people than I'd like here."
+			HateCrowded: "It's really crowded here."
+
+			LoveNPC : "The Merchant and I get along really well, he knows how to talk business."
+			DislikeNPC : "I wish the Demolitionist wasn't here, I don't like his rude attitude."
+			LikeNPC_Princess : "It feels...calmer here. I can't quite place my hand on it though."
+		}
+	}
+		Dialogue:
+		{
+			ExamplePerson:
+			{
+				StandardDialogue1 : "Check out my collection of Yoyos!"
+				StandardDialogue2 : "People often assume just because I'm a skeleton that I love the underground. Fun fact: I do not."
+				StandardDialogue3 : "My yoyo days are long over, but that doesn't stop me from collecting and selling them."
+				StandardDialogue4 : "Some people tell me I look very similar to my brother. I disagree."
+				StandardDialogue5 : "Being a skeleton isn't all that bad. Sometimes, I like to play my ribcage like a xylophone!"
+				StandardDialoge6 : "Spooky scary skeletons... Hm? Oh, hello."
+
+				CommonDialoge1 : "You know, I'm quite suprised that everyone here is so receptive of me. Usually, people just scream and throw things at me."
+
+			}
+		}
+
+		Achievements:
+		{
+			AbbhorAchievement:
+			{
+				Name: Easy Come, Easy Throw
+				Description: Forge the Abbhor, a powerful weapon that contains dark energy.
+			}
+
+			Code1Achievement:
+			{
+				Name: I Wanna be a Yoyo Man!
+				Description: Obtain the Code 1.
+			}
+
+			Code2Achievement:
+			{
+				Name: Just Keep On Yo-ing
+				Description:  Craft the Code 2.
+			}
+
+			ConverganceAchievement:
+			{
+				Name: No Strings Attatched
+				Description: Merge every yoyo into one final yoyo, the Convergance.
+			}
+		}
+
+		Buffs: {
+			Clotted: {
+				DisplayName: Clotted
+				Description: Losing life
+			}
+
+			Combustion: {
+				DisplayName: Combustion
+				Description: Exploding in fire
+			}
+
+			Corrupt: {
+				DisplayName: Corrupt
+				Description: Losing life
+			}
+
+			Frostbite: {
+				DisplayName: Frostbite
+				Description: Frozen in place
+			}
+
+			Hallowed: {
+				DisplayName: Hallowed
+				Description: Soul is evaporating
+			}
+
+			Omnipotence: {
+				DisplayName: Omnipotence
+				Description: Glowing
+			}
+
+			Osteopenia: {
+				DisplayName: Osteopenia
+				Description: Reduced defense and strength
+			}
+
+			Pestilence: {
+				DisplayName: Pestilence
+				Description: Losing life rapidly
+			}
+		}
+
+		Projectiles: {
+			AdamantiteDrill.DisplayName: Yoyo Drill
+			CelestialDrill.DisplayName: Yoyo Drill
+			CelestialDrill2.DisplayName: Yoyo Drill
+			CobaltDrill.DisplayName: Yoyo Drill
+			Hakapik.DisplayName: Yoyo Drill
+			HorsemansDrill.DisplayName: Yoyo Drill
+			IronDrill.DisplayName: Yoyo Drill
+			Mattock.DisplayName: Yoyo Drill
+			MooMooDrill.DisplayName: Yoyo Drill
+			MythrilDrill.DisplayName: Yoyo Drill
+			NebulaDrill.DisplayName: Yoyo Drill
+			NinjaStar.DisplayName: Yoyo Drill
+			OrichalcumDrill.DisplayName: Yoyo Drill
+			PalladiumDrill.DisplayName: Yoyo Drill
+			ShadowflameDrill.DisplayName: Yoyo Drill
+			ShroomiteShredder.DisplayName: Yoyo Drill
+			SolarDrill.DisplayName: Yoyo Drill
+			SpectralShredder.DisplayName: Yoyo Drill
+			StardustDrill.DisplayName: Yoyo Drill
+			TheScooper.DisplayName: Yoyo Drill
+			TitaniumDrill.DisplayName: Yoyo Drill
+			TreeClippers.DisplayName: Yoyo Drill
+			Tsurugi.DisplayName: Yoyo Drill
+			VortexDrill.DisplayName: Yoyo Drill
+			BlueExplosion.DisplayName: Blue Explosion
+			DeprecatedExplosion.DisplayName: Deprecated Explosion
+			EclipseExplosion.DisplayName: Eclipse Explosion
+			FireExplosion.DisplayName: Fire Explosion
+			RedExplosion.DisplayName: Red Explosion
+			SolarExplosion.DisplayName: Solar Explosion
+			BlueShieldSwirl.DisplayName: Shield Swirl Blue
+			BlueShieldSwirlDuo.DisplayName: Shield Swirl Blue Duo
+			BlueShieldSwirlReverse.DisplayName: Shield Swirl Red Reverse
+			BlueSwirl2.DisplayName: Blue Swirl 2
+			Code1Swirl.DisplayName: Code 1 Swirl
+			CurveCat.DisplayName: Curve Cat
+			CurveDuo.DisplayName: Curve Duo
+			CurveEffect.DisplayName: Orange Swirl
+			CurveNebula.DisplayName: Curve Nebula
+			CurveOrange.DisplayName: Curve Orange
+			CurveStardust.DisplayName: Curve Stardust
+			CurveTuna.DisplayName: Curve Tuna
+			CurveVortex.DisplayName: Curve Vortex
+			FormatClaySwirl.DisplayName: Format Clay Swirl
+			GloveBlue.DisplayName: Glove Blue
+			GloveGreen.DisplayName: Glove Green
+			GloveRed.DisplayName: Glove Red
+			GloveWhite.DisplayName: Glove White
+			GloveYellow.DisplayName: Glove Yellow
+			GradientClaySwirl.DisplayName: Gradient Clay Swirl
+			GreenShieldSwirlDuo.DisplayName: Shield Swirl Green Duo
+			IcePartSwirl.DisplayName: Ice Part Swirl
+			IceSwirl.DisplayName: Ice Swirl
+			IceSwirlInner.DisplayName: Ice Swirl Inner
+			InnerSwirl2Red.DisplayName: Inner Swirl Red 2
+			InnerSwirl2Yellow.DisplayName: Inner Swirl Yellow 2
+			JaggedShieldSwirlDarkBlue.DisplayName: Jagged Shield Swirl Dark Blue
+			JaggedShieldSwirlGreen.DisplayName: Jagged Shield Swirl Green
+			JaggedShieldSwirlPurple.DisplayName: Jagged Shield Swirl Purple
+			JaggedShieldSwirlRed.DisplayName: Jagged Shield Swirl Purple
+			JaggedShieldSwirlSkyBlue.DisplayName: Jagged Shield Swirl Sky Blue
+			JaggedShieldSwirlTempest.DisplayName: Jagged Shield Swirl Tempest
+			JaggedShieldSwirlYellow.DisplayName: Jagged Shield Swirl Yellow
+			JaggedSwirlPurple.DisplayName: Jagged Swirl Purple
+			JaggedSwirlRed.DisplayName: Jagged Swirl Red
+			JaggedSwirlSmudge.DisplayName: Jagged Swirl Smudge
+			JaggedSwirlTempest.DisplayName: Jagged Swirl Tempest
+			JaggedSwirlWhite.DisplayName: Jagged Swirl White
+			JaggedSwirlYellow.DisplayName: Jagged Swirl Yellow
+			MotaiCurveDuo.DisplayName: Motai Curve Duo
+			MotaiSwirl.DisplayName: Motai Swirl
+			MotaiSwirl2.DisplayName: Ice Swirl Inner
+			MythrilPartSwirl.DisplayName: Mythril Part Swirl
+			MythrilSwirl.DisplayName: Mythril Swirl
+			OuterSwirlRed.DisplayName: Outer Swirl Red
+			PinkPartSwirl.DisplayName: Pink Part Swirl
+			PinkSwirl.DisplayName: Pink Swirl
+			PurpleShieldSwirl.DisplayName: Shield Swirl Purple
+			PurpleShieldSwirl2.DisplayName: Shield Swirl Purple 2
+			PurpleShieldSwirlReverse.DisplayName: Shield Swirl Purple Reverse
+			RedShieldSwirl.DisplayName: Shield Swirl Red
+			RedShieldSwirl2.DisplayName: Shield Swirl Red 2
+			RedShieldSwirlDuo.DisplayName: Shield Swirl Red Duo
+			RedSwirl2.DisplayName: Red Swirl 2
+			Background.DisplayName: Red Background
+			CultistRing1.DisplayName: Cultist Ring 1
+			CultistRing2.DisplayName: Cultist Ring 2
+			CultistRingDamage.DisplayName: Cultist Ring 3
+			EclipseSwirl.DisplayName: Eclipse Swirl More-Orange-Than-The-Other-One
+			EclipseSwirlOrange.DisplayName: Eclipse Swirl Orange
+			SmudgeHitbox.DisplayName: Smudge Hitbox
+			SolidHitbox.DisplayName: Solid Hitbox
+			Sparkle1.DisplayName: Sparkle 1
+			Sparkle2.DisplayName: Sparkle 2
+			Sparkle3.DisplayName: Sparkle 1
+			Swirl.DisplayName: Yellow Inner Swirl
+			SwirlBlue.DisplayName: Swirl Sovereign
+			SwirlGreen.DisplayName: Swirl Green
+			SwirlPurple.DisplayName: Swirl Purple
+			SwirlRed.DisplayName: Swirl Red
+			SwirlStar.DisplayName: Star Yoyo Swirl
+			SwirlTeal.DisplayName: Swirl Teal
+			TempestSpike.DisplayName: Tempest Spike
+			TunaOuterSwirl.DisplayName: Tuna Outer Swirl
+			TunaSwirlInner.DisplayName: Tuna Swirl Inner
+			CatacombProjectile.DisplayName: Catacomb Projectile
+			CatProjectile.DisplayName: Cat Projectile
+			ChristmasBulbProjectile.DisplayName: Christmas Bulb Projectile
+			CobaltYoyoProjectile.DisplayName: Cobalt Yoyo Projectile
+			Code3Projectile.DisplayName: Code3 Projectile
+			CragProjectile.DisplayName: Crag Projectile
+			CultistYoyoProjectile.DisplayName: Cultist Yoyo Projectile
+			IronYoyoProjectile.DisplayName: Iron Yoyo Projectile
+			LeadYoyoProjectile.DisplayName: Lead Yoyo Projectile
+			MambeleProjectile.DisplayName: Mambele Projectile
+			MotaiProjectile.DisplayName: Motai Projectile
+			MythrilYoyoProjectile.DisplayName: Mythril Yoyo Projectile
+			OrichalcumYoyoProjectile.DisplayName: Orichalcum Yoyo Projectile
+			PalladiumYoyoProjectile.DisplayName: Palladium Yoyo Projectile
+			SmudgeProjectile.DisplayName: Smudge Projectile
+			SovereignProjectile.DisplayName: Sovereign Projectile
+			SpheruliteProjectile.DisplayName: Spherulite Projectile
+			TempestProjectile.DisplayName: Tempest Projectile
+			TestingYoyoProjectile.DisplayName: Testing Yoyo Projectile
+			TheAbbhorProjectile.DisplayName: The Abbhor Projectile
+			TheEnervationProjectile.DisplayName: The Enervation Projectile
+			TheMuscleYoyoProjectile.DisplayName: The Muscle Yoyo Projectile
+			TheQueensGambitProjectile.DisplayName: The Queens Gambit Projectile
+			ThinMintProjectile.DisplayName: Thin Mint Projectile
+			TocantinProjectile.DisplayName: Tocantin Projectile
+			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile
+			TrueCode3Projectile.DisplayName: True Code3 Projectile
+			TrueSmudgeProjectile.DisplayName: True Smudge Projectile
+			TunaProjectile.DisplayName: Tuna Projectile
+		}
+
+		Items: {
+			AdamantiteDrillCasing: {
+				DisplayName: Adamantite Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:180% pickaxe power]
+					'''
+			}
+
+			CelestialDrillCasing: {
+				DisplayName: Celestial Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:250% pickaxe power]
+					+1 range
+					'''
+			}
+
+			CelestialDrillCasingExtended: {
+				DisplayName: Celestial Drill Casing +
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:250% pickaxe power]
+					+2 range
+					'''
+			}
+
+			CobaltDrillCasing: {
+				DisplayName: Cobalt Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:110% pickaxe power]
+					'''
+			}
+
+			HakapikDrillCasing: {
+				DisplayName: The Hakapik
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:200% pickaxe power]
+					A Norwegian tool in origin
+					'''
+			}
+
+			HorsemansDrillCasing: {
+				DisplayName: Horseman's Pick
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:200% pickaxe power]
+					'''
+			}
+
+			MattockDrillCasing: {
+				DisplayName: Mattock
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:200% pickaxe power]
+					'''
+			}
+
+			MooMooDrillCasing: {
+				DisplayName: MooMoo's Drill
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:250% pickaxe power]
+					+2 range
+					'''
+			}
+
+			MythrilDrillCasing: {
+				DisplayName: Mythril Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:150% pickaxe power]
+					'''
+			}
+
+			NebulaDrillCasing: {
+				DisplayName: Nebula Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:250% pickaxe power]
+					+1 range
+					'''
+			}
+
+			NinjaStarCasing: {
+				DisplayName: Ninja Star
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:210% pickaxe power]
+					'''
+			}
+
+			OrichalcumDrillCasing: {
+				DisplayName: Orichalcum Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/F3BDFF:165% pickaxe power]
+					'''
+			}
+
+			PalladiumCasing: {
+				DisplayName: Palladium Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:130% pickaxe power]
+					'''
+			}
+
+			ShadowflameDrillCasing: {
+				DisplayName: Shadowflame Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:210% pickaxe power]
+					'''
+			}
+
+			ShroomiteShredderCasing: {
+				DisplayName: Shroomite Shredder
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:200% pickaxe power]
+					'''
+			}
+
+			SolarDrillCasing: {
+				DisplayName: Solar Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:250% pickaxe power]
+					+1 range
+					'''
+			}
+
+			SpectralShredderCasing: {
+				DisplayName: Spectral Shredder
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					Sweet smelling fog eminates from it
+					Mines blocks in a diamond shape
+					[c/BCFFF0:200% pickaxe power]
+					'''
+			}
+
+			StardustDrillCasing: {
+				DisplayName: Stardust Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:250% pickaxe power]
+					+1 range
+					'''
+			}
+
+			TheScooperDrillCasing: {
+				DisplayName: The Scooper
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:200% pickaxe power]
+					'''
+			}
+
+			TitaniumDrillCasing: {
+				DisplayName: Titanium Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:190% pickaxe power]
+					'''
+			}
+
+			TreeClippersDrillCasing: {
+				DisplayName: Tree Clippers
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:200% pickaxe power]
+					'''
+			}
+
+			TsurugiDrillCasing: {
+				DisplayName: Tsurugi
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:210% pickaxe power]
+					+1 range
+					Capable of mining Lihzahrd Bricks
+					'''
+			}
+
+			VortexDrillCasing: {
+				DisplayName: Vortex Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:250% pickaxe power]
+					+1 range
+					'''
+			}
+
+			YoyoDrillCasing: {
+				DisplayName: Drill Casing
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					[c/BCFFF0:100% pickaxe power]
+					'''
+			}
+
+			HitDisplay: {
+				DisplayName: Mechanical Clicker
+				Tooltip: Displays the current consecutive hits by a Yoyo
+			}
+
+			SpeedDisplay: {
+				DisplayName: Yoyo Radar
+				Tooltip: Displays how fast a Yoyo can move
+			}
+
+			AbilityRing: {
+				DisplayName: Ability Ring
+				Tooltip:
+					'''
+					[c/FF00AB:Enables Yoyos to use their special abilities.]
+					Yoyos will show the requirements for triggering the ability.
+					'''
+			}
+
+			AmberRing: {
+				DisplayName: Amber Ring
+				Tooltip: Yoyos will emit bright amber light
+			}
+
+			AmethystRing: {
+				DisplayName: Amethyst Ring
+				Tooltip: Yoyos will emit bright purple light
+			}
+
+			DiamondRing: {
+				DisplayName: Diamond Ring
+				Tooltip: Yoyos will emit bright white light
+			}
+
+			EmeraldRing: {
+				DisplayName: Emerald Ring
+				Tooltip: Yoyos will emit bright green light
+			}
+
+			FortitudeRing: {
+				DisplayName: Ring of Fortitude
+				Tooltip: Yoyos can phase through walls
+			}
+
+			GemstoneRing: {
+				DisplayName: Gemstone Ring
+				Tooltip: Yoyos will emit a variety of colors
+			}
+
+			HoneyRing: {
+				DisplayName: Honey Ring
+				Tooltip:
+					'''
+					Increases the strength of friendly bees
+					Can be equipped in regular slots
+					'''
+			}
+
+			OmnipotenceRing: {
+				DisplayName: Ring of Perception
+				Tooltip: Yoyos shoot cursed flames
+			}
+
+			RingOfCoalescence: {
+				DisplayName: Ring of Coalescence
+				Tooltip:
+					'''
+					Yoyos can phase through walls
+					Yoyos shoot cursed flames
+					[c/6EAE6E:+10% base yoyo damage]
+					'''
+			}
+
+			RubyRing: {
+				DisplayName: Ruby Ring
+				Tooltip: Yoyos will emit bright red light
+			}
+
+			SapphireRing: {
+				DisplayName: Sapphire Ring
+				Tooltip: Yoyos will emit bright blue light
+			}
+
+			TerreneRing: {
+				DisplayName: Terrene Ring
+				Tooltip:
+					'''
+					[c/FF00AB:Enables Yoyos to use their special abilities.]
+					Yoyos will show the requirements for triggering the ability.
+					Yoyos can phase through walls
+					Yoyos shoot cursed flames
+					[c/6EAE6E:+10% base yoyo damage]
+					'''
+			}
+
+			TopazRing: {
+				DisplayName: Topaz Ring
+				Tooltip: Yoyos will emit bright yellow light
+			}
+
+			TrepidationRing: {
+				DisplayName: Ring of Trepidation
+				Tooltip: "[c/6EAE6E:+10% base yoyo damage]"
+			}
+
+			DarkBlueString: {
+				DisplayName: Dark Blue String
+				Tooltip: Increases yoyo range
+			}
+
+			DarkGreenString: {
+				DisplayName: Dark Green String
+				Tooltip: Increases yoyo range
+			}
+
+			EclipseString: {
+				DisplayName: Eclipse String
+				Tooltip:
+					'''
+					Feels very heavy
+					Yoyos create damaging swipes on hit
+					'''
+			}
+
+			FrostbiteString: {
+				DisplayName: Frostbite String
+				Tooltip: Counterweights inflict Frostbite
+			}
+
+			GolemsteelString: {
+				DisplayName: Golemsteel String
+				Tooltip: Counterweights deal massive knockback and have increased damage.
+			}
+
+			LightPinkString: {
+				DisplayName: Light Pink String
+				Tooltip: Increases yoyo range
+			}
+
+			NaniteString: {
+				DisplayName: Nanite String
+				Tooltip: Increases yoyo range
+			}
+
+			NebulaString.DisplayName: Nebula String
+
+			SlimyString: {
+				DisplayName: Slimy String
+				Tooltip: Yoyos create slime covered spikes
+			}
+
+			SolarString: {
+				DisplayName: Solar String
+				Tooltip: "[c/6EAE6E:+5% base yoyo damage]"
+			}
+
+			CrimtaneBearing: {
+				DisplayName: Crimtane Yoyo Bearing
+				Tooltip: Yoyo hits will drain life
+			}
+
+			DemoniteBearing: {
+				DisplayName: Demonite Yoyo Bearing
+				Tooltip: Yoyo hits will drain life
+			}
+
+			HallowedBearing: {
+				DisplayName: Hallowed Yoyo Bearing
+				Tooltip: Yoyo hits will inflict targets with Hallowed
+			}
+
+			JungleBearing: {
+				DisplayName: Jungle Yoyo Bearing
+				Tooltip: Yoyos have a chance to inflict the pestilence on impact
+			}
+
+			ObsidianBearing: {
+				DisplayName: Obsidian Yoyo Bearing
+				Tooltip: All Yoyos inflict fire damage
+			}
+
+			WaspBearing: {
+				DisplayName: Wasp Bearing
+				Tooltip:
+					'''
+					Yoyos will create bees
+					"According to all known laws of aviation, there is no way a bee should be able to fly."
+					'''
+			}
+
+			YoyoBearing: {
+				DisplayName: Yoyo Bearing
+				Tooltip: Allows for the creation of Yoyo Bearings that add special effects
+			}
+
+			ShimmerSupportGloveEarth: {
+				DisplayName: Shimmering Green Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a green glow
+					Yoyo does 1/2 damage
+					Releases an additional counterweight
+					'''
+			}
+
+			ShimmerSupportGloveElectricity: {
+				DisplayName: Shimmering Yellow Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a yellow glow
+					Yoyo does 1/2 damage
+					Releases an additional counterweight
+					'''
+			}
+
+			ShimmerSupportGloveFire: {
+				DisplayName: Shimmering Red Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a red glow
+					Yoyo does 1/2 damage
+					Releases an additional counterweight
+					'''
+			}
+
+			ShimmerSupportGloveWater: {
+				DisplayName: Shimmering Blue Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a blue glow
+					Yoyo does 1/2 damage
+					Releases an additional counterweight
+					'''
+			}
+
+			SolarGlove: {
+				DisplayName: Solar Glove
+				Tooltip:
+					'''
+					Automatically releases a second yoyo
+					Yoyo is marked with a white glow
+					Yoyo attacks are infused with powerful explosions
+					'''
+			}
+
+			SupportGloveEarth: {
+				DisplayName: Green Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a green glow
+					Yoyo does 1/2 damage
+					'''
+			}
+
+			SupportGloveElectricity: {
+				DisplayName: Yellow Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a yellow glow
+					Yoyo does 1/2 damage
+					'''
+			}
+
+			SupportGloveFire: {
+				DisplayName: Red Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a red glow
+					Yoyo does 1/2 damage
+					'''
+			}
+
+			SupportGloveWater: {
+				DisplayName: Blue Support Glove
+				Tooltip:
+					'''
+					[c/FFC3C3:Requires yoyo glove to work]
+					Releases an additional yoyo
+					Yoyo is marked with a blue glow
+					Yoyo does 1/2 damage
+					'''
+			}
+
+			UpgradedYoyoGlove: {
+				DisplayName: Upgraded Yoyo Glove
+				Tooltip:
+					'''
+					Automatically releases a second yoyo
+					Yoyo is marked with a white glow
+					'''
+			}
+
+			EclipseBar: {
+				DisplayName: Eclipse Bar
+				Tooltip: Radiates otherworldly energy
+			}
+
+			FrightBar: {
+				DisplayName: Fright Bar
+				Tooltip: "'Forged from the essence of terrifying creatures'"
+			}
+
+			MightBar: {
+				DisplayName: Might Bar
+				Tooltip: "'Forged from the essence of powerful creatures'"
+			}
+
+			NeutralineScrap: {
+				DisplayName: Neutraline Scrap
+				Tooltip: Melted down slag of dangerous weapons
+			}
+
+			SightBar: {
+				DisplayName: Sight Bar
+				Tooltip: "'Forged from the essence of all-seeing creatures'"
+			}
+
+			DevAccessoryBag: {
+				DisplayName: Yoyo Accessory Bag
+				Tooltip:
+					'''
+					{$CommonItemTooltip.RightClickToOpen}
+					Has a chance to contain rare loot
+					'''
+			}
+
+			BrokenHeroRing.DisplayName: Broken Hero Ring
+			BrokenHeroYoyo.DisplayName: Broken Hero Yoyo
+
+			SoulOfEclipse: {
+				DisplayName: Soul of Eclipse
+				Tooltip: "'The essence of otherworldly creatures'"
+			}
+
+			Cat: {
+				DisplayName: The Catamity
+				Tooltip: '''"please give me nerd mod now"'''
+			}
+
+			Catacomb.DisplayName: Catacomb
+
+			ChristmasBulb: {
+				DisplayName: Christmas Bulb
+				Tooltip:
+					'''
+					Wrapped tightly with Christmas Tree lights
+					Smells like fresh pine
+					'''
+			}
+
+			CobaltYoyo.DisplayName: Cobalt Yoyo
+
+			Code3: {
+				DisplayName: Code 3
+				Tooltip: '''"The long awaited sequel"'''
+			}
+
+			Convergance: {
+				DisplayName: The Convergance
+				Tooltip:
+					'''
+					The pinnacle of destruction
+					Light shines through the center
+					'''
+			}
+
+			Crag: {
+				DisplayName: Crag
+				Tooltip: "'It's made out of fire!'"
+			}
+
+			CultistYoyo.DisplayName: Shakiryo
+			IronYoyo.DisplayName: Iron Yoyo
+			LeadYoyo.DisplayName: Lead Yoyo
+
+			Mambele: {
+				DisplayName: Mambele
+				Tooltip:
+					'''
+					Coated in a rough grit
+					Smells like burnt wood
+					'''
+			}
+
+			Melanoid: {
+				DisplayName: Melanoid
+				Tooltip: Inflicts minor burns
+			}
+
+			Motai: {
+				DisplayName: The Motai
+				Tooltip: Special thanks to Motai for being the most brain dead developer
+			}
+
+			MythrilYoyo.DisplayName: Mythril Yoyo
+			OrichalcumYoyo.DisplayName: Orichalcum Yoyo
+			PalladiumYoyo.DisplayName: Palladium Yoyo
+
+			Smudge: {
+				DisplayName: Smudge
+				Tooltip:
+					'''
+					Does increased damage to spectral targets.
+					When in a graveyard biome, it receives a 2x damage boost marked by the emission of blue flames.
+					"Has a 6 second grace period."
+					'''
+			}
+
+			Sovereign.DisplayName: Sovereign
+
+			TheAbbhor: {
+				DisplayName: The Abbhor
+				Tooltip: An amalgamation of pure power
+			}
+
+			TheEnervation: {
+				DisplayName: The Enervation
+				Tooltip:
+					'''
+					A stronger, more powerful upgrade to the Malaise.
+					Absorbs HP per hit.
+					'''
+			}
+
+			TheMuscle: {
+				DisplayName: The Muscle
+				Tooltip:
+					'''
+					A stronger, more powerful upgrade to the Artery.
+					Absorbs HP per hit
+					'''
+			}
+
+			TheQueensGambit: {
+				DisplayName: The Queen's Gambit
+				Tooltip:
+					'''
+					Releases bees on hit and has a chance to poison the target
+					Bees make up for lack of initial damage
+					Has a chance to leave bees in it's wake
+					"Now includes added Hive Pack support!"
+					'''
+			}
+
+			TheTempest.DisplayName: The Tempest
+
+			ThinMint: {
+				DisplayName: The Thin Mint
+				Tooltip: '''"Please do not eat the mints"'''
+			}
+
+			Tocantin: {
+				DisplayName: Tocantin
+				Tooltip: Has a chance to poison enemies
+			}
+
+			TrueAbbhor.DisplayName: True Abbhor
+
+			TrueCode3: {
+				DisplayName: True Code 3
+				Tooltip: Shines with immense power
+			}
+
+			TrueSmudge: {
+				DisplayName: True Smudge
+				Tooltip:
+					'''
+					Does increased damage to spectral targets.
+					When in a graveyard biome, the swirls recieve a 2x damage boost.
+					"Has a 12 second grace period."
+					'''
+			}
+
+			Tuna.DisplayName: The Tuna
+		}
+
+		InfoDisplays: {
+			HitInfo.DisplayName: Yoyo Hit Counter
+			IDInfo.DisplayName: Internal Projectile ID
+			SpeedInfo.DisplayName: Yoyo Speed Display
+			StringInfo.DisplayName: Internal String Color
+		}
+	}
+}

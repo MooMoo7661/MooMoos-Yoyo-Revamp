@@ -93,9 +93,11 @@ namespace CombinationsMod.Projectiles.Explosions
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
-                Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<FireExplosion>(), 11, 0, Projectile.owner);
-
+            if (Main.myPlayer == Projectile.owner)
+            {
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
+                    Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<FireExplosion>(), 11, 0, Projectile.owner);
+            }
         }
 
         public override void PostAI()

@@ -33,8 +33,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         }
         public override void PostAI()
         {
-           
-
             if (Main.rand.NextBool())
             {
                 Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, DustID.Bone);
@@ -44,16 +42,13 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             }
 
             int rand = Main.rand.Next(20);
-            if (rand == 0)
+            if (rand == 0 && Main.myPlayer == Projectile.owner)
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.Next(-3, 3) * 1f,
                 Main.rand.Next(-3, 3) * 1f, ProjectileID.Bone, (int)(Projectile.damage * 1f), 0, Projectile.owner);
                 Main.projectile[proj].scale = 0.8f;
                 Main.projectile[proj].friendly = true;
                 Main.projectile[proj].usesLocalNPCImmunity = true;
-
-               
-
             }
         }
     }

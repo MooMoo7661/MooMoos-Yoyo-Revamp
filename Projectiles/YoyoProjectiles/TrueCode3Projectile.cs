@@ -35,7 +35,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         }
         public override void OnSpawn(IEntitySource source)
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                         ModContent.ProjectileType<JaggedShieldSwirlSkyBlue>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);

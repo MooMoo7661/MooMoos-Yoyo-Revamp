@@ -28,15 +28,17 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         }
         public override void OnSpawn(IEntitySource source)
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
-                Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MythrilSwirl>(),
-                (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+            if (Main.myPlayer == Projectile.owner)
+            {
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
+                    Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MythrilSwirl>(),
+                    (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
-
-            int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
-                Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MythrilPartSwirl>(),
-                (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
-            Main.projectile[proj].scale = 1.8f;
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
+                    Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MythrilPartSwirl>(),
+                    (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+                Main.projectile[proj].scale = 1.8f;
+            }
         }
     }   
 }

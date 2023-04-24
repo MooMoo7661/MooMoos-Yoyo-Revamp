@@ -46,9 +46,12 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
             if (explosionCounter == 2)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
-                        Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<FireExplosion>(), (int)(Projectile.damage * 1f), 0, Projectile.owner);
-                Main.projectile[proj].usesLocalNPCImmunity = true;
+                if (Main.myPlayer == Projectile.owner)
+                {
+                    int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
+                            Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<FireExplosion>(), (int)(Projectile.damage * 1f), 0, Projectile.owner);
+                    Main.projectile[proj].usesLocalNPCImmunity = true;
+                }
                 explosionCounter = 0;
             }
         }
@@ -68,8 +71,11 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 if (cragTimer == 20)
                 {
                     cragTimer = 0;
-                    int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
-                    Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<CragHomingExplosive>(), (int)(Projectile.damage * 1f), 0, Projectile.owner);
+                    if (Main.myPlayer == Projectile.owner)
+                    {
+                        int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
+                        Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<CragHomingExplosive>(), (int)(Projectile.damage * 1f), 0, Projectile.owner);
+                    }
                 }
             }
 

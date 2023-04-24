@@ -35,7 +35,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (!target.CountsAsACritter && !(target.type == NPCID.TargetDummy) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (!target.CountsAsACritter && !(target.type == NPCID.TargetDummy) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 int rand = Main.rand.Next(2) + 1;
 

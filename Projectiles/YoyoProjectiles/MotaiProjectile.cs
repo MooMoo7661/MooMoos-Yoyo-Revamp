@@ -75,33 +75,37 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
             for (int i = 0; i < 8; i++)
             {
-                Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
-                    ProjectileID.MolotovFire, 12, 1, Projectile.owner);
-                Main.projectile[proj].scale = 0.6f;
-                Main.projectile[proj].tileCollide = true;
-                Main.projectile[proj].timeLeft = 120;
-                Main.projectile[proj].friendly = true;
-                Main.projectile[proj].hostile = false;
-                Main.projectile[proj].usesLocalNPCImmunity = true;
+                if (Main.myPlayer == Projectile.owner)
+                {
+                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
+                    int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
+                        ProjectileID.MolotovFire, 12, 1, Projectile.owner);
+                    Main.projectile[proj].scale = 0.6f;
+                    Main.projectile[proj].tileCollide = true;
+                    Main.projectile[proj].timeLeft = 120;
+                    Main.projectile[proj].friendly = true;
+                    Main.projectile[proj].hostile = false;
+                    Main.projectile[proj].usesLocalNPCImmunity = true;
+                }
             }
-
         }
-
 
         public override void OnSpawn(IEntitySource source)
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
-                Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MotaiSwirl>(),
-                (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+            if (Main.myPlayer == Projectile.owner)
+            {
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
+                    Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MotaiSwirl>(),
+                    (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
-                Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MotaiCurveDuo>(),
-                (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
+                    Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MotaiCurveDuo>(),
+                    (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
-                Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MotaiSwirl2>(),
-                (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
+                    Projectile.Center.Y, 0, 0, ModContent.ProjectileType<MotaiSwirl2>(),
+                    (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+            }
         }
         public override void PostAI()
         {

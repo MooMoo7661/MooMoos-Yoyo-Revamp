@@ -64,7 +64,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         {
             for (int i = 0; i < 8; i++)
             {
-                
+                if (Main.myPlayer == Projectile.owner)
+                {
                     Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
 
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
@@ -75,8 +76,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                     Main.projectile[proj].friendly = true;
                     Main.projectile[proj].hostile = false;
                     Main.projectile[proj].usesLocalNPCImmunity = true;
+                }
             }
-
         }
 
         public override void PostAI()

@@ -39,7 +39,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<CultistRing1>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
@@ -55,7 +55,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             {
                 counter++;
 
-                if (counter == 20)
+                if (counter == 20 && Main.myPlayer == Projectile.owner)
                 {
                     int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<CultistRing2>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);

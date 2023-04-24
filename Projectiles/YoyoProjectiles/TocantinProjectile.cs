@@ -48,11 +48,14 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         {
             for (int i = 0; i < 8; i++)
             {
-                Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
-                    ProjectileID.QueenBeeStinger, 12, 1, Projectile.owner);
-                Main.projectile[proj].friendly = true;
-                Main.projectile[proj].hostile = false;
+                if (Main.myPlayer == Projectile.owner)
+                {
+                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
+                    int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
+                        ProjectileID.QueenBeeStinger, 12, 1, Projectile.owner);
+                    Main.projectile[proj].friendly = true;
+                    Main.projectile[proj].hostile = false;
+                }
 
                 target.AddBuff(BuffID.Poisoned, 300);
             }

@@ -43,7 +43,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         {
             Color color = new Color(238, 185, 42);
 
-            if (storeData == -1 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (storeData == -1 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 storeData = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                     0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.4f) + 1, 9f, Main.myPlayer, 0, Projectile.whoAmI);
@@ -64,7 +64,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
             if (player.GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
-                if (counter == 20 && isOriginalYoyo)
+                if (counter == 20 && isOriginalYoyo && Main.myPlayer == Projectile.owner)
                 {
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<PurpleShieldSwirl2>(), (int)(Projectile.damage * 0.75f), 0, Main.myPlayer, 0, Projectile.whoAmI);
@@ -79,7 +79,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 isOriginalYoyo = true;
 

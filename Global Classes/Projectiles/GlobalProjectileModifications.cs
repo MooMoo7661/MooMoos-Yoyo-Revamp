@@ -77,7 +77,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                 if (modPlayer.crimtaneBearing || modPlayer.demoniteBearing)
                 {
-                    if (!target.CountsAsACritter && !(target.type == NPCID.TargetDummy))
+                    if (!target.CountsAsACritter && !(target.type == NPCID.TargetDummy) && Main.myPlayer == projectile.owner)
                     {
                         int rand = Main.rand.Next(2) + 1;
 
@@ -87,7 +87,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     }
                 }
 
-                if (modPlayer.eclipseString)
+                if (modPlayer.eclipseString && Main.myPlayer == projectile.owner)
                 {
                     if (Main.rand.NextBool(4))
                     {
@@ -110,7 +110,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     }
                 }
 
-                if (modPlayer.omnipotenceRing && isOriginalYoyo && cursedFlamesCounter % 3 == 0)
+                if (modPlayer.omnipotenceRing && isOriginalYoyo && cursedFlamesCounter % 3 == 0 && Main.myPlayer == projectile.owner)
                 {
                     Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 3f;
 
@@ -140,10 +140,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 if (modPlayer.golemString)
                 {
-                    int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
-                    Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<EclipseExplosion>(), 11, 0, projectile.owner);
+                    if (Main.myPlayer == projectile.owner)
+                    {
+                        int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
+                        Main.rand.NextBool() ? 1 : -1, ModContent.ProjectileType<EclipseExplosion>(), 11, 0, projectile.owner);
 
-                    Main.projectile[proj].damage = 84;
+                        Main.projectile[proj].damage = 84;
+                    }
                 }
 
                 if (modPlayer.frostbiteString)
@@ -176,7 +179,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                 if (modPlayer.slimeString)
                 {
-                    if (slimeThornCounter == 60)
+                    if (slimeThornCounter == 60 && Main.myPlayer == projectile.owner)
                     {
                         Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 3f;
                         int projSlimeSpike = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, velocity,
@@ -190,7 +193,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                 if (beeCounter == 60)
                 {
-                    if (modPlayer.waspBearing)
+                    if (modPlayer.waspBearing && Main.myPlayer == projectile.owner)
                     {
                         Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
 

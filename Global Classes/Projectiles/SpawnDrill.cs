@@ -14,7 +14,7 @@ namespace CombinationsMod.GlobalClasses
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>(); // Getting modplayer and player
 
             if (projectile.type == ContentSamples.ProjectilesByType[player.HeldItem.shoot].type && projectile.aiStyle == 99 &&
-                projectile.ai[0] != 1f) // If projectile is a Yoyo & it is the same one as the .shoot of the held yoyo.
+                projectile.ai[0] != 1f && Main.myPlayer == projectile.owner) // If projectile is a Yoyo & it is the same one as the .shoot of the held yoyo.
             {
                 if (modPlayer.ironDrill)
                 {

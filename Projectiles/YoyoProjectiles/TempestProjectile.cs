@@ -38,7 +38,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 isOriginalYoyo = true;
 
@@ -73,9 +73,12 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 float rotation = Main.rand.Next(30) + 1;
                 rotation /= 10;
 
+            if (Main.myPlayer == Projectile.owner)
+            {
                 int baseProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                         ModContent.ProjectileType<Sparkle2>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
                 Main.projectile[baseProj].rotation = rotation;
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)

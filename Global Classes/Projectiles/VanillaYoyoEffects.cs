@@ -53,7 +53,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 float knockback = projectile.knockBack;
 
 
-                if (isOriginalYoyo)
+                if (isOriginalYoyo && Main.myPlayer == projectile.owner)
                     switch (projectile.type) // Adding swirl effects to vanilla yoyos
                     {
                         case ProjectileID.Code1:
@@ -355,7 +355,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
 
                     case ProjectileID.Code2:
-                        if (modPlayer.yoyoRing)
+                        if (modPlayer.yoyoRing && Main.myPlayer == projectile.owner)
                         {
                             int proj2 = Projectile.NewProjectile(projectile.GetSource_FromThis(),
                               projectile.Center.X, projectile.Center.Y - 1f, 0,
@@ -377,7 +377,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void AI(Projectile projectile)
         {
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && isOriginalYoyo)
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && isOriginalYoyo && Main.myPlayer == projectile.owner)
             {
                 switch (projectile.type)
                 {
@@ -462,14 +462,16 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 for (int i = 0; i < 8; i++)
                                 {
                                     Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-
-                                    int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                        ProjectileID.EyeLaser, projectile.damage* 2, 3f, projectile.owner, 1, 1);
-                                    Main.projectile[projLeaf].tileCollide = true;
-                                    Main.projectile[projLeaf].timeLeft = 180;
-                                    Main.projectile[projLeaf].friendly = true;
-                                    Main.projectile[projLeaf].hostile = false;
-                                    Main.projectile[projLeaf].usesLocalNPCImmunity = true;
+                                    if (Main.myPlayer == projectile.owner)
+                                    {
+                                        int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
+                                            ProjectileID.EyeLaser, projectile.damage * 2, 3f, projectile.owner, 1, 1);
+                                        Main.projectile[projLeaf].tileCollide = true;
+                                        Main.projectile[projLeaf].timeLeft = 180;
+                                        Main.projectile[projLeaf].friendly = true;
+                                        Main.projectile[projLeaf].hostile = false;
+                                        Main.projectile[projLeaf].usesLocalNPCImmunity = true;
+                                    }
                                 }
 
                                 eocLazerTimer = 0;
@@ -492,10 +494,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 {
                                     Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
 
-                                    int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                        ProjectileID.CursedFlameFriendly, projectile.damage, 0f, Main.myPlayer, 0, projectile.owner);
-                                    Main.projectile[projLeaf].tileCollide = true;
-                                    Main.projectile[projLeaf].timeLeft = 60;
+                                    if (Main.myPlayer == projectile.owner)
+                                    {
+                                        int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
+                                            ProjectileID.CursedFlameFriendly, projectile.damage, 0f, Main.myPlayer, 0, projectile.owner);
+                                        Main.projectile[projLeaf].tileCollide = true;
+                                        Main.projectile[projLeaf].timeLeft = 60;
+                                    }
                                 }
                                 eocBreathTimer = 0;
                             }
@@ -513,7 +518,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 {
                     case ProjectileID.JungleYoyo:
                         thornCounter++;
-                        if (thornCounter >= 35)
+                        if (thornCounter >= 35 && Main.myPlayer == projectile.owner)
                         {
                             Vector2 circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 6f;
                             int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(),
@@ -527,12 +532,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         break;
 
                     case ProjectileID.Cascade:
-                        if (Main.rand.NextBool(5))
+                        if (Main.rand.NextBool(5) && Main.myPlayer == projectile.owner)
                         {
                             Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustID.CopperCoin, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 0, default, 1f);
                         }
                         break;
                 }
+
                 switch (projectile.type) // Making vanilla yoyos emit dust
                 {
                     case ProjectileID.CorruptYoyo:

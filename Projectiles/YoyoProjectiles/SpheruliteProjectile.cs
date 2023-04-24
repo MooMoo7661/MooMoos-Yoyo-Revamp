@@ -40,7 +40,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
             if (modPlayer.yoyoRing)
             {
-                if (counter >= 15 && counter % 2 == 0)
+                if (counter >= 15 && counter % 2 == 0 && Main.myPlayer == Projectile.owner)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                         ModContent.ProjectileType<FireExplosion>(), 8, 1, Projectile.owner);

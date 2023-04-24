@@ -45,46 +45,49 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             {
                 int damage = (int)(Projectile.damage * 1.75f);
 
-                for (int i = 0; i < 3; i++)
+                if (Main.myPlayer == Projectile.owner)
                 {
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.WoodYoyo, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<IronYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<LeadYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Rally, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.CorruptYoyo, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.CrimsonYoyo, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.JungleYoyo, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Valor, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Cascade, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Code2, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<SmudgeProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<Code3Projectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TheAbbhorProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<ThinMintProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CatacombProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TheQueensGambitProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<SpheruliteProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Code1, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CobaltYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<PalladiumYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<MythrilYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<OrichalcumYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Chik, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.FormatC, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.HelFire, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Amarok, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Gradient, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Yelets, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.RedsYoyo, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.ValkyrieYoyo, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<ChristmasBulbProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<MambeleProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Kraken, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.TheEyeOfCthulhu, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TempestProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CultistYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Terrarian, damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Terrarian, damage, Projectile.knockBack, Projectile.owner);
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.WoodYoyo, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<IronYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<LeadYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Rally, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.CorruptYoyo, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.CrimsonYoyo, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.JungleYoyo, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Valor, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Cascade, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Code2, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<SmudgeProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<Code3Projectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TheAbbhorProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<ThinMintProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CatacombProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TheQueensGambitProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<SpheruliteProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Code1, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CobaltYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<PalladiumYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<MythrilYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<OrichalcumYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Chik, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.FormatC, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.HelFire, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Amarok, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Gradient, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Yelets, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.RedsYoyo, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.ValkyrieYoyo, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<ChristmasBulbProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<MambeleProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Kraken, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.TheEyeOfCthulhu, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TempestProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CultistYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Terrarian, damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Terrarian, damage, Projectile.knockBack, Projectile.owner);
+                    }
                 }
             }
         }

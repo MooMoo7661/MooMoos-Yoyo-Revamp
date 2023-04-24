@@ -32,8 +32,11 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Player player = Main.player[Projectile.owner];
             Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
 
-            Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, player.beeType(), player.beeDamage(damage), player.beeKB(knockback), Projectile.owner);
-            proj.friendly = true;
+            if (Main.myPlayer == Projectile.owner)
+            {
+                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, player.beeType(), player.beeDamage(damage), player.beeKB(knockback), Projectile.owner);
+                proj.friendly = true;
+            }
         }
         public override void PostAI()
         {
@@ -41,7 +44,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             
             Player player = Main.player[Projectile.owner];
             
-            if (timer == 60)
+            if (timer == 60 && Main.myPlayer == Projectile.owner)
             {
                 Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
 

@@ -53,7 +53,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 float knockback = projectile.knockBack;
 
 
-                if (isOriginalYoyo && Main.myPlayer == projectile.owner)
+                if (isOriginalYoyo)
                     switch (projectile.type) // Adding swirl effects to vanilla yoyos
                     {
                         case ProjectileID.Code1:
@@ -377,12 +377,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void AI(Projectile projectile)
         {
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && isOriginalYoyo && Main.myPlayer == projectile.owner)
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && isOriginalYoyo)
             {
                 switch (projectile.type)
                 {
                     case ProjectileID.Kraken:
-                        if (Main.rand.NextBool(20))
+                        if (Main.rand.NextBool(20) && Main.myPlayer == projectile.owner)
                         {
                             Vector2 circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi);
                             int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(),
@@ -397,8 +397,11 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         if (homingCounter == 40)
                         {
                             homingCounter = 0;
-                            int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
-                            Main.rand.NextBool() ? 1 : -1, ProjectileType<CombinationsMod.Projectiles.Misc.HomingWaterBolt>(), projectile.damage / 3, 0, projectile.owner);
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
+                                Main.rand.NextBool() ? 1 : -1, ProjectileType<CombinationsMod.Projectiles.Misc.HomingWaterBolt>(), projectile.damage / 3, 0, projectile.owner);
+                            }
                         }
                         break;
 
@@ -410,18 +413,21 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                             for (int i = 0; i < 8; i++)
                             {
-                                Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
+                                if (Main.myPlayer == projectile.owner)
+                                {
+                                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
 
-                                int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                    ProjectileID.IceSpike, (int)(projectile.damage * 0.6f), 1, projectile.owner, 1, 1);
-                                Main.projectile[proj].scale = 0.9f;
-                                Main.projectile[proj].penetrate = 5;
-                                Main.projectile[proj].tileCollide = true;
-                                Main.projectile[proj].timeLeft = 180;
-                                Main.projectile[proj].friendly = true;
-                                Main.projectile[proj].hostile = false;
-                                Main.projectile[proj].penetrate = 1;
-                                Main.projectile[proj].usesLocalNPCImmunity = true;
+                                    int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
+                                        ProjectileID.IceSpike, (int)(projectile.damage * 0.6f), 1, projectile.owner, 1, 1);
+                                    Main.projectile[proj].scale = 0.9f;
+                                    Main.projectile[proj].penetrate = 5;
+                                    Main.projectile[proj].tileCollide = true;
+                                    Main.projectile[proj].timeLeft = 180;
+                                    Main.projectile[proj].friendly = true;
+                                    Main.projectile[proj].hostile = false;
+                                    Main.projectile[proj].penetrate = 1;
+                                    Main.projectile[proj].usesLocalNPCImmunity = true;
+                                }
                             }
 
                             iceSpikeCounter = 0;
@@ -434,16 +440,19 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         {
                             for (int i = 0; i < 8; i++)
                             {
-                                Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
+                                if (Main.myPlayer == projectile.owner)
+                                {
+                                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
 
-                                int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                    ProjectileID.Leaf, projectile.damage / 2, 1, projectile.owner, 1, 1);
-                                Main.projectile[projLeaf].scale = 0.9f;
-                                Main.projectile[projLeaf].tileCollide = true;
-                                Main.projectile[projLeaf].timeLeft = 60;
-                                Main.projectile[projLeaf].friendly = true;
-                                Main.projectile[projLeaf].hostile = false;
-                                Main.projectile[projLeaf].usesLocalNPCImmunity = true;
+                                    int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
+                                        ProjectileID.Leaf, projectile.damage / 2, 1, projectile.owner, 1, 1);
+                                    Main.projectile[projLeaf].scale = 0.9f;
+                                    Main.projectile[projLeaf].tileCollide = true;
+                                    Main.projectile[projLeaf].timeLeft = 60;
+                                    Main.projectile[projLeaf].friendly = true;
+                                    Main.projectile[projLeaf].hostile = false;
+                                    Main.projectile[projLeaf].usesLocalNPCImmunity = true;
+                                }
                             }
 
                             leafCounter = 0;
@@ -518,21 +527,25 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 {
                     case ProjectileID.JungleYoyo:
                         thornCounter++;
-                        if (thornCounter >= 35 && Main.myPlayer == projectile.owner)
+                        if (thornCounter >= 35)
                         {
-                            Vector2 circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 6f;
-                            int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(),
-                            projectile.Center.X, projectile.Center.Y - 1f, circular.X,
-                            circular.Y, ProjectileID.Stinger, (int)(projectile.damage * 0.65f), 0,
-                            projectile.owner);
-                            Main.projectile[proj].friendly = true;
-                            Main.projectile[proj].hostile = false;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                Vector2 circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 6f;
+                                int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(),
+                                projectile.Center.X, projectile.Center.Y - 1f, circular.X,
+                                circular.Y, ProjectileID.Stinger, (int)(projectile.damage * 0.65f), 0,
+                                projectile.owner);
+                                Main.projectile[proj].friendly = true;
+                                Main.projectile[proj].hostile = false;
+                            }
+
                             thornCounter = 0;
                         }
                         break;
 
                     case ProjectileID.Cascade:
-                        if (Main.rand.NextBool(5) && Main.myPlayer == projectile.owner)
+                        if (Main.rand.NextBool(5))
                         {
                             Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustID.CopperCoin, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 0, default, 1f);
                         }

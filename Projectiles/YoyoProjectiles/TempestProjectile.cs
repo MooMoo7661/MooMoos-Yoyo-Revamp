@@ -38,33 +38,35 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 isOriginalYoyo = true;
 
-                int baseProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                        ModContent.ProjectileType<JaggedShieldSwirlTempest>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-                
-                int baseProj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                        ModContent.ProjectileType<TempestSpike>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-                Main.projectile[baseProj2].rotation = 1.4f;
-                
-                int baseProj3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                        ModContent.ProjectileType<JaggedSwirlTempest>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-                
-                int baseProj4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                        ModContent.ProjectileType<TempestSpike>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI); 
-                
-                int hitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                            ModContent.ProjectileType<SmudgeHitbox>(), (int)(Projectile.damage * 0.45f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
-                Main.projectile[hitbox].Resize(150, 150);
-                Main.projectile[hitbox].usesLocalNPCImmunity = true;
+                if (Main.myPlayer == Projectile.owner)
+                {
+                    int baseProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                            ModContent.ProjectileType<JaggedShieldSwirlTempest>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
-                int dustProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                       ModContent.ProjectileType<Sparkle1>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-                Main.projectile[dustProj].Resize(140, 140);
-                Main.projectile[dustProj].localAI[0] = 1;
+                    int baseProj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                            ModContent.ProjectileType<TempestSpike>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
+
+                    int baseProj3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                            ModContent.ProjectileType<JaggedSwirlTempest>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
+
+                    int baseProj4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                            ModContent.ProjectileType<TempestSpike>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
+
+                    int hitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                                ModContent.ProjectileType<SmudgeHitbox>(), (int)(Projectile.damage * 0.45f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
+                    Main.projectile[hitbox].Resize(150, 150);
+                    Main.projectile[hitbox].usesLocalNPCImmunity = true;
+
+                    int dustProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                           ModContent.ProjectileType<Sparkle1>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
+                    Main.projectile[dustProj].Resize(140, 140);
+                    Main.projectile[dustProj].localAI[0] = 1;
+                }
             }
         }
 

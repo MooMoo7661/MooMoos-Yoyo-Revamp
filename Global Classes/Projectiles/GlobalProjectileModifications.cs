@@ -179,13 +179,17 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                 if (modPlayer.slimeString)
                 {
-                    if (slimeThornCounter == 60 && Main.myPlayer == projectile.owner)
+                    if (slimeThornCounter == 60)
                     {
                         Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 3f;
-                        int projSlimeSpike = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, velocity,
-                                    ProjectileID.SpikedSlimeSpike, projectile.damage / 2, 3f, projectile.owner, 0, 1f);
-                        Main.projectile[projSlimeSpike].friendly = true;
-                        Main.projectile[projSlimeSpike].hostile = false;
+                        if (Main.myPlayer == projectile.owner)
+                        {
+                            int projSlimeSpike = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, velocity,
+                                        ProjectileID.SpikedSlimeSpike, projectile.damage / 2, 3f, projectile.owner, 0, 1f);
+                            Main.projectile[projSlimeSpike].friendly = true;
+                            Main.projectile[projSlimeSpike].hostile = false;
+                        }
+
                         slimeThornCounter = 0;
                     }
 

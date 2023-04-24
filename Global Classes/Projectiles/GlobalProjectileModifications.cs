@@ -67,7 +67,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             YoyoClipClassNormal yoyoClipClassNormal = new(projectile);
 
-            if (projectile.aiStyle == 99 && modPlayer.hitTracker && !projectile.counterweight)
+            if (projectile.aiStyle == 99 && modPlayer.hitTracker && !projectile.counterweight && ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(projectile))
                 modPlayer.HitCounter++;
 
             if (projectile.aiStyle == 99 && !projectile.counterweight)
@@ -339,7 +339,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             Player player = Main.player[projectile.owner];
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            if (projectile.aiStyle == 99 && !projectile.counterweight)
+            if (projectile.aiStyle == 99 && !projectile.counterweight && ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(projectile))
             {
                 modPlayer.HitCounter = 0;
             }

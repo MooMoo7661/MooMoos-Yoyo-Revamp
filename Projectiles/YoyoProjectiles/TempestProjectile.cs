@@ -38,7 +38,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (Projectile.whoAmI == Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().currentYoyo)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 isOriginalYoyo = true;
 
@@ -90,11 +90,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 Main.EntitySpriteDraw(texture, drawPos, null, color, base.Projectile.rotation, drawOrigin, base.Projectile.scale, 0, 0);
             }
             return false;
-        }
-
-        public override void AI()
-        {
-            Main.NewText("Tempest whoami: " + Projectile.whoAmI);
         }
 
         public override void PostAI()

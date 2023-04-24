@@ -20,18 +20,11 @@ namespace CombinationsMod.GlobalClasses
     {
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
         {
-            bool RemoveYoyoGlove = ModContent.GetInstance<YoyoModConfig>().RemoveYoyoGlove;
-
             if (type == NPCID.SkeletonMerchant)
             {
                 for (int i = 0; i < 40; i++)
                 {
-                    if (shop.item[i].type == YoYoGlove && RemoveYoyoGlove)
-                    {
-                        shop.item[i].SetDefaults(Bone);
-                        shop.item[i].shopCustomPrice = Item.buyPrice(silver: 18);
-                    }
-                    else if (shop.item[i].type == Gradient || shop.item[i].type == Code2 || shop.item[i].type == FormatC)
+                    if (shop.item[i].type == Gradient || shop.item[i].type == Code2 || shop.item[i].type == FormatC)
                     {
                         shop.item[i].SetDefaults(StickyGlowstick);
                         shop.item[i].shopCustomPrice = Item.buyPrice(silver: 23);

@@ -142,7 +142,7 @@ namespace CombinationsMod.Drills
                     int x = (int)((proj.Center.X + (cX * proj.width * 0.5f + 8 * cX)) / 16);
                     int y = (int)((proj.Center.Y + (cY * proj.height * 0.5f + 8 * cY)) / 16);
 
-                    if (!Main.tile[x, y].HasTile || !Main.tileSolid[Main.tile[x, y].TileType] || Main.tileSolidTop[Main.tile[x, y].TileType]) // TODO check tile exists + check solid
+                    if (!Main.tile[x, y].HasTile || !Main.tileSolid[Main.tile[x, y].TileType] || Main.tileSolidTop[Main.tile[x, y].TileType])
                     {
                         return;
                     }

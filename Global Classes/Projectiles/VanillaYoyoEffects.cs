@@ -25,7 +25,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         }
 
         public override bool InstancePerEntity => true;
-        private bool isOriginalYoyo;
+        private bool isOriginalYoyo = false;
         private int thornCounter = 0;
         private int explosionCounter = 0;
         private int homingCounter = 0;
@@ -39,11 +39,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private int eocHits = 0;
         private bool roar = false;
 
-        public bool flag = false; // false = main yoyo, true = drunk yoyo
+        public bool flag = false; // false = main yoyo, true = second yoyo
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             if (projectile.aiStyle == 99 && !projectile.counterweight) { isYoyo = true; }
+
+           isOriginalYoyo = ReturnProjectileFlag(projectile);
 
             if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
@@ -55,178 +57,240 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     switch (projectile.type) // Adding swirl effects to vanilla yoyos
                     {
                         case ProjectileID.Code1:
-                            int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                            projectile.Center.Y, 0, 0, ProjectileType<Code1Swirl>(),
-                            (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<Code1Swirl>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                            }
 
                             for (int i = 0; i < 6; i++)
                             {
-                                int projCode1 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                                projectile.Center.Y, 0, 0, ProjectileType<Code1Effect>(),
-                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                                Main.projectile[projCode1].damage = (int)(projectile.damage * 0.8f);
-                                Main.projectile[projCode1].localAI[1] = i * 45;
+                                if (Main.myPlayer == projectile.owner)
+                                {
+                                    int projCode1 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                    projectile.Center.Y, 0, 0, ProjectileType<Code1Effect>(),
+                                    (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                    Main.projectile[projCode1].damage = (int)(projectile.damage * 0.8f);
+                                    Main.projectile[projCode1].localAI[1] = i * 45;
+                                }
                             }
 
                             break;
 
                         case ProjectileID.Cascade:
-                            int proj2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                            projectile.Center.Y, 0, 0, ProjectileType<Swirl>(),
-                            (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj2].damage = projectile.damage / 3;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                 projectile.Center.Y, 0, 0, ProjectileType<Swirl>(),
+                                 (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                Main.projectile[proj2].damage = projectile.damage / 3;
+                            }
                             break;
 
                         case ProjectileID.Rally:
                             for (int i = 0; i < 3; i++)
                             {
-                                int projRally = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                                projectile.Center.Y, 0, 0, ProjectileType<RallyEffect>(),
-                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                                Main.projectile[projRally].damage = projectile.damage / 2;
-                                Main.projectile[projRally].localAI[1] = i * 90;
+                                if (Main.myPlayer == projectile.owner)
+                                {
+                                    int projRally = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                    projectile.Center.Y, 0, 0, ProjectileType<RallyEffect>(),
+                                    (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                    Main.projectile[projRally].damage = projectile.damage / 2;
+                                    Main.projectile[projRally].localAI[1] = i * 90;
+                                }
                             }
                             break;
 
                         case ProjectileID.HelFire:
-                            int proj3 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                            projectile.Center.Y, 0, 0, ProjectileType<Swirl>(),
-                            (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj3].scale = 0.9f;
-                            int proj4 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                            projectile.Center.Y, 0, 0, ProjectileType<MotaiSwirl>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj4].scale = 1.4f;
-                            Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<Background>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj3 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<Swirl>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj3].scale = 0.9f;
+
+                                int proj4 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<MotaiSwirl>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj4].scale = 1.4f;
+
+                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<Background>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                            }
                             break;
 
                         case ProjectileID.Amarok:
-                            int proj5 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<IceSwirl>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj5].scale = 0.8f;
-                            int proj6 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<IcePartSwirl>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj6].scale = 1.7f;
-                            int proj7 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<IceSwirlInner>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj7].scale = 1.2f;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj5 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<IceSwirl>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj5].scale = 0.8f;
+
+                                int proj6 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<IcePartSwirl>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj6].scale = 1.7f;
+
+                                int proj7 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<IceSwirlInner>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj7].scale = 1.2f;
+                            }
                             break;
 
                         case ProjectileID.Gradient:
-                            int proj8 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<GradientClaySwirl>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj8].scale = 0.8f;
-
-                            for (int i = 0; i < 6; i++)
+                            if (Main.myPlayer == projectile.owner)
                             {
-                                int projFormatSwirl = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                                 projectile.Center.Y, 0, 0, ProjectileType<GradientEffect>(),
-                                 (int)(projectile.damage * 0.8f), 3f, Main.myPlayer, 0, projectile.whoAmI);
-                                Main.projectile[projFormatSwirl].localAI[1] = i * 45f;
+                                int proj8 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<GradientClaySwirl>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj8].scale = 0.8f;
+
+                                for (int i = 0; i < 6; i++)
+                                {
+                                    int projFormatSwirl = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                     projectile.Center.Y, 0, 0, ProjectileType<GradientEffect>(),
+                                     (int)(projectile.damage * 0.8f), 3f, Main.myPlayer, 0, projectile.whoAmI);
+                                    Main.projectile[projFormatSwirl].localAI[1] = i * 45f;
+                                }
                             }
                             break;
 
                         case ProjectileID.FormatC:
-                            int proj9 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<FormatClaySwirl>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj9].scale = 0.8f;
-
-                            for (int i = 0; i < 4; i++)
+                            if (Main.myPlayer == projectile.owner)
                             {
-                                int projFormatSwirl = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                                 projectile.Center.Y, 0, 0, ProjectileType<FormatCEffect>(),
-                                 (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                                Main.projectile[projFormatSwirl].localAI[1] = i * 67.5f;
+                                int proj9 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<FormatClaySwirl>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj9].scale = 0.8f;
+
+                                for (int i = 0; i < 4; i++)
+                                {
+                                    int projFormatSwirl = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                     projectile.Center.Y, 0, 0, ProjectileType<FormatCEffect>(),
+                                     (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                    Main.projectile[projFormatSwirl].localAI[1] = i * 67.5f;
+                                }
                             }
                             break;
 
                         case ProjectileID.Yelets:
-                            int proj10 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<JaggedSwirlYellow>(),
-                         (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj10].scale = 0.8f;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj10 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<JaggedSwirlYellow>(),
+                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[proj10].scale = 0.8f;
+                            }
                             break;
 
                         case ProjectileID.ValkyrieYoyo:
-                            int proj12 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<PurpleShieldSwirl>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj12].scale = 0.9f;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj12 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<PurpleShieldSwirl>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
 
-                            int projballin = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<PurpleShieldSwirlReverse>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[projballin].scale = 0.9f;
+                                Main.projectile[proj12].scale = 0.9f;
 
-                            int hitboxValkyrie = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<CultistRingDamage>(),
-                         (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[hitboxValkyrie].Resize(100, 100);
+                                int projballin = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<PurpleShieldSwirlReverse>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[projballin].scale = 0.9f;
+
+                                int hitboxValkyrie = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<CultistRingDamage>(),
+                                (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[hitboxValkyrie].Resize(100, 100);
+                            }
                             break;
 
                         case ProjectileID.RedsYoyo:
-                            int projRed = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<BlueShieldSwirl>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[projRed].scale = 0.9f;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int projRed = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<BlueShieldSwirl>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
 
-                            int projRed2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<BlueShieldSwirlReverse>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[projRed2].scale = 0.9f;
+                                Main.projectile[projRed].scale = 0.9f;
 
-                            int hitboxRed = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<CultistRingDamage>(),
-                         (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[hitboxRed].Resize(100, 100);
+                                int projRed2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<BlueShieldSwirlReverse>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[projRed2].scale = 0.9f;
+
+                                int hitboxRed = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<CultistRingDamage>(),
+                                (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[hitboxRed].Resize(100, 100);
+                            }
                             break;
 
                         case ProjectileID.Kraken:
-                            int proj13 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<BlueSwirl2>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj13].scale = 0.9f;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj13 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<BlueSwirl2>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
+                            }
                             break;
 
                         case ProjectileID.Terrarian:
-                            int proj14 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<GreenShieldSwirlDuo>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj14].scale = 1.4f;
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int proj14 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<GreenShieldSwirlDuo>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
 
-                            int proj15 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<CurveOrange>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj15].scale = 1.9f;
+                                Main.projectile[proj14].scale = 1.4f;
 
-                            int proj16 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<CurveNebula>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj16].rotation = 2;
-                            Main.projectile[proj16].scale = 1.9f;
+                                int proj15 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<CurveOrange>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
 
-                            int proj17 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<CurveStardust>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj17].rotation = 3;
-                            Main.projectile[proj17].scale = 1.9f;
+                                Main.projectile[proj15].scale = 1.9f;
 
-                            int proj18 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
-                         projectile.Center.Y, 0, 0, ProjectileType<CurveVortex>(),
-                         0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[proj18].rotation = 5;
-                            Main.projectile[proj18].scale = 1.9f;
+                                int proj16 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<CurveNebula>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                Main.projectile[proj16].rotation = 2;
 
-                            int dustProj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0, 0,
-                       ProjectileType<Sparkle3>(), 0, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            Main.projectile[dustProj].Resize(120, 120);
+                                Main.projectile[proj16].scale = 1.9f;
+
+                                int proj17 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<CurveStardust>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                Main.projectile[proj17].rotation = 3;
+
+                                Main.projectile[proj17].scale = 1.9f;
+
+                                int proj18 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                projectile.Center.Y, 0, 0, ProjectileType<CurveVortex>(),
+                                0, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                Main.projectile[proj18].rotation = 5;
+
+                                Main.projectile[proj18].scale = 1.9f;
+
+                                int dustProj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0, 0,
+                                ProjectileType<Sparkle3>(), 0, 0, Main.myPlayer, 0, projectile.whoAmI);
+
+                                Main.projectile[dustProj].Resize(120, 120);
+                            }
                             break;
                     }
             }
@@ -245,11 +309,14 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         if (modPlayer.yoyoRing)
                         {
                             explosionCounter++;
-                            if (explosionCounter.Equals(5))
+                            if (explosionCounter == 5)
                             {
-                                int explosion = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, new Vector2(0, 0),
-                                ProjectileType<FireExplosion>(), (int)(projectile.damage * 1.5f), 8f, projectile.owner, projectile.owner);
-                                Main.projectile[explosion].Resize(70, 70);
+                                if (Main.myPlayer == projectile.owner)
+                                {
+                                    int explosion = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, new Vector2(0, 0),
+                                    ProjectileType<FireExplosion>(), (int)(projectile.damage * 1.5f), 8f, projectile.owner, projectile.owner);
+                                    Main.projectile[explosion].Resize(70, 70);
+                                }
                                 explosionCounter = 0;
                             }
                         }
@@ -257,16 +324,22 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                     case ProjectileID.HelFire:
                         target.AddBuff(BuffType<Combustion>(), 600);
-                        int explosion2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, new Vector2(0, 0),
+                        if (Main.myPlayer == projectile.owner)
+                        {
+                            int explosion2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, new Vector2(0, 0),
                                 ProjectileType<HelFireExplosion>(), (int)(projectile.damage * 1.5f), 8f, projectile.owner, projectile.owner);
+                        }
                         break;
 
                     case ProjectileID.CrimsonYoyo or ProjectileID.CorruptYoyo:
                         if (!target.CountsAsACritter && !(target.type == NPCID.TargetDummy) && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
                         {
                             Vector2 vector = new(0, 0);
-                            Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vector,
-                            ProjectileID.VampireHeal, 0, 0, projectile.owner, projectile.owner, 1);
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vector,
+                                ProjectileID.VampireHeal, 0, 0, projectile.owner, projectile.owner, 1);
+                            }
                         }
                         break;
 
@@ -304,14 +377,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void AI(Projectile projectile)
         {
-            Player player = Main.player[projectile.owner];
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (Main.projectile[player.heldProj].aiStyle == 99 && !projectile.counterweight && !flag)
-            {
-                modPlayer.currentYoyo = player.heldProj;
-            }
-
             if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && isOriginalYoyo)
             {
                 switch (projectile.type)
@@ -642,13 +707,18 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 Main.player[projectile.owner].heldProj = projectile.whoAmI;
                 Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().currentYoyo = projectile.whoAmI;
-
-                Main.NewText("Whoami : " + projectile.whoAmI);
-                Main.NewText("Current Yoyo : " + Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().currentYoyo);
                 projectile.localAI[0] = -1;
 
-                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height,
-                DustID.TerraBlade, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 200, default, 0.7f);
+                if (ModContent.GetInstance<YoyoModConfig>().MainYoyoDust)
+                {
+                    if (Main.rand.NextBool(5))
+                    {
+                        int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height,
+                        DustID.CrimsonTorch, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 200, default, 0.7f);
+                        Main.dust[dust].noLight = true;
+                        Main.dust[dust].scale = 1.3f;
+                    }
+                }
 
                 Main.player[projectile.owner].SetDummyItemTime(2);
 
@@ -852,6 +922,18 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 }
             }
             projectile.rotation += 0.45f;
+        }
+
+        public bool ReturnProjectileFlag(Projectile projectile)
+        {
+            for (int i = 0; i < projectile.whoAmI; i++)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].type == projectile.type && !Main.projectile[i].counterweight)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

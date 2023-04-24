@@ -30,7 +30,6 @@ namespace CombinationsMod.Items.Accessories.YoyoGloves
             if (!hideVisual)
             {
                 modPlayer.supportGlove = true;
-                modPlayer.yoyoNumber = 3;
             }
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded)

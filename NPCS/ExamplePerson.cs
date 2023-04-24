@@ -368,7 +368,7 @@ namespace CombinationsMod.NPCS
                     }
                 }
             }
-            else
+            else // Second Shop
             {
                 shop.item[nextSlot].SetDefaults(ItemType<HitDisplay>());
                 shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 9);
@@ -425,6 +425,10 @@ namespace CombinationsMod.NPCS
 
                 if (NPC.downedBoss3)
                 {
+                    shop.item[nextSlot].SetDefaults(ItemID.BlueCounterweight);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
+                    nextSlot++;
+
                     shop.item[nextSlot].SetDefaults(ItemType<RubyRing>());
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 14);
                     nextSlot++;
@@ -436,6 +440,10 @@ namespace CombinationsMod.NPCS
 
                 if (NPC.downedBoss2)
                 {
+                    shop.item[nextSlot].SetDefaults(ItemID.YellowCounterweight);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
+                    nextSlot++;
+
                     shop.item[nextSlot].SetDefaults(ItemType<EmeraldRing>());
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 16);
                     nextSlot++;
@@ -451,6 +459,10 @@ namespace CombinationsMod.NPCS
 
                 if (NPC.downedQueenBee)
                 {
+                    shop.item[nextSlot].SetDefaults(ItemID.GreenCounterweight);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
+                    nextSlot++;
+
                     shop.item[nextSlot].SetDefaults(ItemType<GrapeString>());
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
                     nextSlot++;
@@ -459,10 +471,16 @@ namespace CombinationsMod.NPCS
                 if (Main.hardMode)
                 {
                     shop.item[nextSlot].SetDefaults(ItemType<YoyoDrillCasing>());
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 20);
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.YoYoGlove);
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
                     nextSlot++;
 
-                    
+                    shop.item[nextSlot].SetDefaults(ItemID.BlackCounterweight);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
+                    nextSlot++;
 
                     if (NPC.downedChristmasIceQueen)
                     {
@@ -478,7 +496,7 @@ namespace CombinationsMod.NPCS
                         nextSlot++;
                     }
 
-                    if (NPC.downedPlantBoss)
+                    if (NPC.downedPlantBoss && (Main.expertMode || Main.masterMode))
                     {
                         shop.item[nextSlot].SetDefaults(ItemType<HoneyRing>());
                         shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
@@ -487,7 +505,18 @@ namespace CombinationsMod.NPCS
 
                     if (NPC.downedGolemBoss)
                     {
+                        shop.item[nextSlot].SetDefaults(ItemID.RedCounterweight);
+                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
+                        nextSlot++;
+
                         shop.item[nextSlot].SetDefaults(ItemType<TsurugiDrillCasing>());
+                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3);
+                        nextSlot++;
+                    }
+
+                    if (NPC.downedAncientCultist)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemType<ShadowflameDrillCasing>());
                         shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3);
                         nextSlot++;
                     }

@@ -1,19 +1,14 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using System.Xml;
-using CombinationsMod.Drills;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
-using System.Reflection;
-using static Terraria.Projectile;
 
 namespace CombinationsMod
 {
     public class YoyoModPlayer : ModPlayer
     {
         public int currentYoyo = 0;
-        public int counterweightNumber = 1;
         public int yoyoNumber = 1;
 
         public int chainTextureID = 0;
@@ -215,6 +210,18 @@ namespace CombinationsMod
             HitCounter = 0;
         }
 
+        public bool TestForSupportGlove(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.supportGlove)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public override void Load()
         {
             On.Terraria.Player.Counterweight += DualYoyoDetour;
@@ -225,15 +232,13 @@ namespace CombinationsMod
             On.Terraria.Player.Counterweight -= DualYoyoDetour;
         }
 
-        private void DualYoyoDetour(On.Terraria.Player.orig_Counterweight orig, Player self, Vector2 hitPos, int dmg, float kb)
+        private void DualYoyoDetour(On.Terraria.Player.orig_Counterweight orig, Player player, Vector2 hitPos, int dmg, float kb)
         {
-
-            DualYoyo(self, hitPos, dmg, kb);
+            DualYoyo(player, hitPos, dmg, kb);
         }
 
         private void DualYoyo(Player player, Vector2 hitPos, int dmg, float kb)
         {
-
 
             if (!player.yoyoGlove && player.counterWeight <= 0)
             {
@@ -264,32 +269,42 @@ namespace CombinationsMod
             {
                 if (num >= 0)
                 {
-                    for (int j = 0; j < 2; j++)
+                    if (TestForSupportGlove(player))
                     {
-                        Vector2 vector = hitPos - player.Center;
-                        vector.Normalize();
-                        vector *= 16f;
-                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type * yoyoNumber, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                        Vector2 vector = Main.rand.NextVector2Unit() * 16f;
+                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+
+                        Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
+                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector2.X, vector2.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                        return; 
+                    }
+                    else
+                    {
+                        Vector2 vector = Main.rand.NextVector2Unit() * 16f;
+                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
                         return;
                     }
                 }
             }
             else if (num3 < num2)
             {
-                Vector2 vector2 = hitPos - player.Center;
-                vector2.Normalize();
-                vector2 *= 16f;
-                float knockBack = (kb + 6f) / 2f;
+                for (int i = 0; i < yoyoNumber; i++)
+                {
+                    Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
+                    vector2.Normalize();
+                    vector2 *= 16f;
+                    float knockBack = (kb + 6f) / 2f;
 
-                IEntitySource spawnSource = Projectile.InheritSource(Main.projectile[num]);
-                if (num3 > 0)
-                {
-                    Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight * counterweightNumber, (int)((double)dmg * 0.8), knockBack, player.whoAmI, 1f, 0f);
-                    return;
-                }
-                else
-                {
-                    Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight * counterweightNumber, (int)((double)dmg * 0.8), knockBack, player.whoAmI, 0f, 0f);
+                    IEntitySource spawnSource = Projectile.InheritSource(Main.projectile[num]);
+                    if (num3 > 0)
+                    {
+                        Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)((double)dmg * 0.8), knockBack, player.whoAmI, 1f, 0f);
+                        return;
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)((double)dmg * 0.8), knockBack, player.whoAmI, 0f, 0f);
+                    }
                 }
             }
         }

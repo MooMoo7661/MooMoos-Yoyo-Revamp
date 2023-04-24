@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using CombinationsMod.Projectiles.YoyoEffects.Solid;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using CombinationsMod.GlobalClasses.Projectiles;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -38,8 +39,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (source is not YoyoClipClassEarth && source is not YoyoClipClassFire && source is not YoyoClipClassWater
-                        && source is not YoyoClipClassElectricity && source is not YoyoClipClass && source is not YoyoClipClassNormal)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<CultistRing1>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);

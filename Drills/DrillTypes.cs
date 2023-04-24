@@ -88,34 +88,34 @@ namespace CombinationsMod.Drills
     {
         protected override int DrillTier => 200; // Shroomite Claws
         protected override int DrillCooldown => 17;
-        protected override int BlockRangeStyle => 1; // Diamond Shape
+        protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
     public class Tsurugi : BaseDrill
     {
         protected override int DrillTier => 210; // Picksaw
         protected override int DrillCooldown => 18;
-        protected override int BlockRangeStyle => 2; // Diamond Shape
+        protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
     public class HorsemansDrill : BaseDrill
     {
         protected override int DrillTier => 200; // Same as Shroomite Shredder and Spectral Shredder
-        protected override int DrillCooldown => 16;
-        protected override int BlockRangeStyle => 1;
+        protected override int DrillCooldown => 15;
+        protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
     public class TreeClippers : BaseDrill
     {
         protected override int DrillTier => 200; // Same as Shroomite Shredder and Spectral Shredder
-        protected override int DrillCooldown => 16;
-        protected override int BlockRangeStyle => 1;
+        protected override int DrillCooldown => 15;
+        protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
     public class SolarDrill : BaseDrill
     {
         protected override int DrillTier => 225; // Solar Pickaxe
-        protected override int DrillCooldown => 14;
+        protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
@@ -123,7 +123,7 @@ namespace CombinationsMod.Drills
     public class VortexDrill : BaseDrill
     {
         protected override int DrillTier => 225; // Vortex Pickaxe
-        protected override int DrillCooldown => 14;
+        protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
@@ -131,7 +131,7 @@ namespace CombinationsMod.Drills
     public class NebulaDrill : BaseDrill
     {
         protected override int DrillTier => 225; // Nebula Pickaxe
-        protected override int DrillCooldown => 14;
+        protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
@@ -139,7 +139,7 @@ namespace CombinationsMod.Drills
     public class StardustDrill : BaseDrill
     {
         protected override int DrillTier => 225; // Stardust Pickaxe
-        protected override int DrillCooldown => 14;
+        protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
@@ -173,7 +173,7 @@ namespace CombinationsMod.Drills
     public class ShadowflameDrill : BaseDrill
     {
         protected override int DrillTier => 210;
-        protected override int DrillCooldown => 16;
+        protected override int DrillCooldown => 15;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
     }

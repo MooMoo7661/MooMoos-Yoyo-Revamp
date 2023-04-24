@@ -7,6 +7,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CombinationsMod.GlobalClasses.Projectiles;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -34,9 +35,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         }
         public override void OnSpawn(IEntitySource source)
         {
-            if (source is not YoyoClipClassEarth && source is not YoyoClipClassFire && source is not YoyoClipClassWater
-                        && source is not YoyoClipClassElectricity && source is not YoyoClipClass && source is not YoyoClipClassNormal && 
-                        Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                         ModContent.ProjectileType<JaggedShieldSwirlSkyBlue>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);

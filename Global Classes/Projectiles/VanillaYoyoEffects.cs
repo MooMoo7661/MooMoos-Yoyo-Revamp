@@ -498,7 +498,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             if (eocBreathTimer == 60)
                             {
                                 SoundEngine.PlaySound(SoundID.Item20, projectile.position);
-
+                                projectile.localAI[1] = 2;
                                 for (int i = 0; i < 8; i++)
                                 {
                                     Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
@@ -726,7 +726,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 Main.player[projectile.owner].heldProj = projectile.whoAmI;
                 Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().currentYoyo = projectile.whoAmI;
-                projectile.localAI[0] = -1;
+                //projectile.localAI[0] = -1;
 
                 if (ModContent.GetInstance<YoyoModConfig>().MainYoyoDust)
                 {

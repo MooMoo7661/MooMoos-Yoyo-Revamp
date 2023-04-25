@@ -34,6 +34,10 @@ namespace CombinationsMod.GlobalClasses
             {
                 item.damage = 57;
             }
+            else if (item.type == ItemID.Code1)
+            {
+                item.damage = 24;
+            }
         }
 
 

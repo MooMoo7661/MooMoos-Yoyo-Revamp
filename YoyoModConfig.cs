@@ -20,7 +20,6 @@ internal class YoyoModConfig : ModConfig
         [Label("Vanilla Yoyo Effects")]
         [Tooltip("Enables/Disables Vanilla Yoyos from inheriting added effects by this mod.(Enabled by default)")]
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool VanillaYoyoEffects { get; set; }
 
         [Label("Main Yoyo Emits Dusts")]

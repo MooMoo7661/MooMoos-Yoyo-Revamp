@@ -190,17 +190,21 @@ namespace CombinationsMod
                                 break;
                         }
 
-                        textureColor.A = (byte)(textureColor.A * 0.4f);
+                        
                         Asset<Texture2D> textureBlood = (Asset<Texture2D>)ModContent.Request<Texture2D>("CombinationsMod/YoyoStringTextures/BloodString");
 
                         float alphaDilation = 0.6f; // Dilates the texture's alpha. Otherwise, it wouldn't look right
 
-                        textureColor = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16f), textureColor); // Makes the string use Terraria's lighting system to turn darker / lighter in the appropriate enviornment.
-
                         if (projectile.type == ProjectileID.TheEyeOfCthulhu && projectile.localAI[1] == 2)
                         {
-                            texture = textureBlood;   
+                            textureColor = Color.White;
+                            texture = textureBlood;
                         }
+
+                        textureColor.A = (byte)(textureColor.A * 0.4f);
+                        textureColor = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16f), textureColor); // Makes the string use Terraria's lighting system to turn darker / lighter in the appropriate enviornment.
+
+                        
 
                         // Drawing the string itself
                         Color textureDrawColor = new Color((byte)(textureColor.R * alphaDilation), (byte)(textureColor.G * alphaDilation), (byte)(textureColor.B * alphaDilation), (byte)(textureColor.A * alphaDilation));

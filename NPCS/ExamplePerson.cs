@@ -517,7 +517,7 @@ namespace CombinationsMod.NPCS
                     if (NPC.downedAncientCultist)
                     {
                         shop.item[nextSlot].SetDefaults(ItemType<ShadowflameDrillCasing>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3);
+                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3, gold: 50);
                         nextSlot++;
                     }
                 }

@@ -29,7 +29,7 @@ public class Mambele : ModItem
         Item.useTime = 25;
         Item.shootSpeed = 23f;
         Item.knockBack = 2.5f;
-        Item.damage = 68;
+        Item.damage = 74;
         Item.rare = ItemRarityID.Yellow;
         Item.DamageType = DamageClass.Melee;
         Item.channel = true;

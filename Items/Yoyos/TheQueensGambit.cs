@@ -26,7 +26,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.useTime = 25;
             Item.shootSpeed = 16f;
             Item.knockBack = 1f;
-            Item.damage = 26;
+            Item.damage = 23;
             Item.rare = ItemRarityID.Green;
             Item.DamageType = DamageClass.Melee;
             Item.channel = true;

@@ -53,7 +53,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 {
                     for (int j = 0; j < 1; j++)
                     {
-                        Vector2 velocity = VectorHelper.Circular * 4;
+                        Vector2 velocity = VectorHelper.CircularRandom() * 3f;
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X + base.Projectile.velocity.X, base.Projectile.Center.Y + base.Projectile.velocity.Y, velocity.X, velocity.Y, ModContent.ProjectileType<BlackHoleSparkle>(), 0, 1f, Projectile.owner, 0f, Main.rand.Next(-0, 0));
                     }
                 }

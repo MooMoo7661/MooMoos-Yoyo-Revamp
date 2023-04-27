@@ -1,5 +1,5 @@
-displayName = MooMoo's Ultimate Yoyo Revamp
-author = Moo Moo
+displayName = Ultimate Yoyo Revamp
+author = Moo Moo, Turbanik
 version = 0.1
 hideCode = false
 hideResources = false

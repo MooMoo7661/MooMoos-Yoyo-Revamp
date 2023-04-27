@@ -68,6 +68,7 @@ namespace CombinationsMod.Projectiles.Misc
                 Projectile.netUpdate = true;
                 Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f;
             }
+
             Time++;
             Projectile.velocity *= 0.96f;
             Projectile.rotation = Projectile.rotation.AngleLerp((float)Math.PI / 2f, 0.085f);
@@ -86,6 +87,7 @@ namespace CombinationsMod.Projectiles.Misc
             Vector2 origin = texture.Size() / 2f;
             Vector2 vector = new Vector2(0.3f, 1f) * Projectile.Opacity * Projectile.scale;
             Vector2 vector2 = new Vector2(0.3f, 1f) * Projectile.Opacity * Projectile.scale;
+
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + Vector2.UnitY * Projectile.gfxOffY, null, color, (float)Math.PI / 2f + Projectile.rotation, origin, vector2, SpriteEffects.None, 0f);
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + Vector2.UnitY * Projectile.gfxOffY, null, color, Projectile.rotation, origin, vector, SpriteEffects.None, 0f);
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + Vector2.UnitY * Projectile.gfxOffY, null, color2, (float)Math.PI / 2f + Projectile.rotation, origin, vector2 * 0.6f, SpriteEffects.None, 0f);

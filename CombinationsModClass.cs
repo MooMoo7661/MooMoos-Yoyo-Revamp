@@ -12,15 +12,15 @@ using Terraria.ID;
 using CombinationsMod.Projectiles.TrickYoyos;
 using static Terraria.ModLoader.ModContent;
 using CombinationsMod.Projectiles.YoyoProjectiles;
+using Terraria.Graphics.Shaders;
 
 namespace CombinationsMod
 {
     public class CombinationsModClass : Mod
     {
-
         public override void Load()
         {
-            On.Terraria.Main.DrawProj_DrawYoyoString += Test;   
+            On.Terraria.Main.DrawProj_DrawYoyoString += Test;
         }
 
         public override void Unload()
@@ -29,7 +29,7 @@ namespace CombinationsMod
         }
 
         private void DrawCustomYoyoString(Projectile projectile, Vector2 mountedCenter, Color textureColor, Asset<Texture2D> texture)
-        {
+        {   
             // Adapted Vanilla Code for drawing custom yoyo strings.
             // Yes, I know it's a horrible sight.
 

@@ -1,6 +1,10 @@
 using CombinationsMod.Projectiles.Explosions;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
+using Terraria.GameContent;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,6 +16,9 @@ namespace CombinationsMod.Projectiles.Misc
         private int dustTimer = 0;
         public override void SetStaticDefaults()
         {
+            ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 55;
+            ProjectileID.Sets.TrailingMode[base.Projectile.type] = 2;
+
             DisplayName.SetDefault("");
 
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
@@ -32,7 +39,6 @@ namespace CombinationsMod.Projectiles.Misc
             Projectile.timeLeft = 300;
             Projectile.velocity *= 0.2f;
         }
-
 
         public override void AI()
         {

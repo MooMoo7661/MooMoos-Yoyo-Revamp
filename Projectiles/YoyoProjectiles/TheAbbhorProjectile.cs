@@ -39,23 +39,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         }
 
-        public override void AI()
-        {
-            Color color = new Color(238, 185, 42);
-
-            if (storeData == -1 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
-            {
-                storeData = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.4f) + 1, 9f, Main.myPlayer, 0, Projectile.whoAmI);
-                    Main.projectile[storeData].Resize(90, 90);
-
-                if (counter == 20)
-                {
-                    Main.projectile[storeData].Kill();
-                }
-            }
-        }
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             Player player = Main.player[Projectile.owner];

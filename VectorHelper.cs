@@ -5,8 +5,6 @@ using Terraria;
 
 public static class VectorHelper
 {
-
-
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 Normalized(this Vector2 vec)
     {
@@ -31,7 +29,11 @@ public static class VectorHelper
 
     public static Vector2 Right => new Vector2(1f, 0f);
 
-    public static Vector2 Circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi);
+    public static Vector2 CircularRandom()
+    {
+        Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi);
+        return velocity;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector2 VelocityToPoint(Vector2 A, Vector2 B, float speed)

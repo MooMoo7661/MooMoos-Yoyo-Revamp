@@ -7,6 +7,7 @@ using CombinationsMod.Buffs;
 using Microsoft.Xna.Framework;
 using System.Diagnostics.Metrics;
 using CombinationsMod.Projectiles.YoyoEffects;
+using Terraria.DataStructures;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -32,11 +33,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.penetrate = 90;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.scale = 1f;
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            
         }
 
         public override void PostAI()

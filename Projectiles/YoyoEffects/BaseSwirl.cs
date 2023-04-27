@@ -94,12 +94,8 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
         private void DrawDisc()
         {
-            
-
             var pos = Projectile.Center - Main.screenPosition;
             Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(TexturePath);
-            Texture2D texture2 = (Texture2D)ModContent.Request<Texture2D>(TexturePathTransparent);
-
             Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
             var rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
 
@@ -108,16 +104,21 @@ namespace CombinationsMod.Projectiles.YoyoEffects
              2.
 
             */
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
-            Main.EntitySpriteDraw(texture2,
-                pos,
-                rectangle,
-                new Color(0, 0, 0, 192),
-                Projectile.rotation,
-                drawOrigin,
-                Scale,
-                SpriteEffects.None, 0);
+            if (TexturePathTransparent != null)
+            {
+                Texture2D texture2 = (Texture2D)ModContent.Request<Texture2D>(TexturePathTransparent);
+
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
+                Main.EntitySpriteDraw(texture2,
+                    pos,
+                    rectangle,
+                    new Color(0, 0, 0, 192),
+                    Projectile.rotation,
+                    drawOrigin,
+                    Scale,
+                    SpriteEffects.None, 0);
+            }
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);

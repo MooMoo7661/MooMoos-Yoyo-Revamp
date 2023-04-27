@@ -5,6 +5,7 @@ using Terraria;
 using System.Configuration;
 using Terraria.ID;
 using Terraria.DataStructures;
+using System.Runtime.Intrinsics.X86;
 
 namespace CombinationsMod.Projectiles.YoyoEffects
 {
@@ -797,7 +798,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
         protected override string TexturePath => "CombinationsMod/Projectiles/YoyoEffects/JaggedShieldSwirlTemplate";
         protected override string TexturePathTransparent => "CombinationsMod/Projectiles/YoyoEffects/Transparent/JaggedShieldSwirlTemplateTransparent";
 
-        protected override Color Color => new Color(28, 208, 2, 0);
+        protected override Color Color => new Color(196, 245, 0, 0);
     }
 
     public class JaggedShieldSwirlPurple : BaseSwirl // True Abbhor
@@ -1198,4 +1199,101 @@ namespace CombinationsMod.Projectiles.YoyoEffects
     }
 
 
+    // The following swirls all are for the Black Hole yoyo. In a future commit I'll organize all this crap but for now it's going to be in one cs file.
+
+    public class BlackHoleCenter1 : BaseSwirl // Center 1
+    {
+        protected override float Scale => 1f;
+
+        protected override float Rotation => 0.09f;
+        protected override int Width => 300;
+        protected override int Height => 300;
+        protected override bool Friendly => false;
+        protected override bool Hostile => false;
+        protected override int Penetrate => 1;
+        protected override string ProjectileName => "Black Hole Center 1";
+
+        protected override string TexturePath => "CombinationsMod/Projectiles/YoyoEffects/Solid/BlackHoleCenter1";
+        protected override string TexturePathTransparent => null;
+
+        protected override Color Color => Color.White;
+    }
+
+    public class BlackHoleCenter2 : BaseSwirl // Center 2
+    {
+        protected override float Scale => 1f;
+
+        protected override float Rotation => -0.09f;
+        protected override int Width => 250;
+        protected override int Height => 250;
+        protected override bool Friendly => false;
+        protected override bool Hostile => false;
+        protected override int Penetrate => 1;
+        protected override string ProjectileName => "Black Hole Center 2";
+
+        protected override string TexturePath => "CombinationsMod/Projectiles/YoyoEffects/Solid/BlackHoleCenter2";
+        protected override string TexturePathTransparent => null;
+
+        protected override Color Color => Color.White;
+    }
+
+    public class BlackHole2 : BaseSwirl // Black hole 2
+    {
+        protected override float Scale => 1f;
+
+        protected override float Rotation => 0.09f;
+        protected override int Width => 300;
+        protected override int Height => 300;
+        protected override bool Friendly => false;
+        protected override bool Hostile => false;
+        protected override int Penetrate => 1;
+        protected override string ProjectileName => "Black Hole 2";
+
+        protected override string TexturePath => "CombinationsMod/Projectiles/YoyoEffects/BlackHole2";
+        protected override string TexturePathTransparent => "CombinationsMod/Projectiles/YoyoEffects/Transparent/BlackHole2Transparent";
+
+        protected override Color Color => new Color(150, 0, 255, 0);
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 18;
+            DisplayName.SetDefault("Black Hole 2");
+        }
+    }
+
+    public class BlackHole4 : BaseSwirl // Black hole 1
+    {
+        protected override float Scale => 1f;
+
+        protected override float Rotation => -0.09f;
+        protected override int Width => 250;
+        protected override int Height => 250;
+        protected override bool Friendly => false;
+        protected override bool Hostile => false;
+        protected override int Penetrate => 1;
+        protected override string ProjectileName => "Black Hole 4";
+
+        protected override string TexturePath => "CombinationsMod/Projectiles/YoyoEffects/BlackHole4";
+        protected override string TexturePathTransparent => null;
+
+        protected override Color Color => new Color(239, 104, 255, 0);
+    }
+
+    public class BlackHole : BaseSwirl // Black hole 1
+    {
+        protected override float Scale => 1f;
+
+        protected override float Rotation => -0.07f;
+        protected override int Width => 200;
+        protected override int Height => 200;
+        protected override bool Friendly => false;
+        protected override bool Hostile => false;
+        protected override int Penetrate => 1;
+        protected override string ProjectileName => "Black Hole";
+
+        protected override string TexturePath => "CombinationsMod/Projectiles/YoyoEffects/BlackHole";
+        protected override string TexturePathTransparent => null;
+
+        protected override Color Color => new Color(150, 0, 255, 0);
+    }
 }

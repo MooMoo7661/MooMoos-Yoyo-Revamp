@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using CombinationsMod.Projectiles.Explosions;
 using CombinationsMod.Projectiles.YoyoEffects;
 using CombinationsMod.Projectiles.YoyoEffects.Solid;
+using Terraria.DataStructures;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {

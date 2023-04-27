@@ -14,6 +14,9 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using static Terraria.ModLoader.ModContent;
 using System.Security.Cryptography.X509Certificates;
+using Terraria.WorldBuilding;
+using Terraria.GameContent.Generation;
+using static Terraria.GameContent.Generation.WorldGenLegacyMethod;
 
 namespace CombinationsMod
 {

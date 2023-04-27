@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
+using System.Runtime.CompilerServices;
 
 namespace CombinationsMod
 {
@@ -195,7 +196,6 @@ namespace CombinationsMod
 
         public override void PlayerDisconnect(Player player) // Subtracts the added Yoyo stats when the player disconnects.
         {
-            
             if (yoyoSpacers)
             {
                 for (int i = 0; i < ProjectileLoader.ProjectileCount; i++)
@@ -239,7 +239,6 @@ namespace CombinationsMod
 
         private void DualYoyo(Player player, Vector2 hitPos, int dmg, float kb)
         {
-
             if (!player.yoyoGlove && player.counterWeight <= 0)
             {
                 return;

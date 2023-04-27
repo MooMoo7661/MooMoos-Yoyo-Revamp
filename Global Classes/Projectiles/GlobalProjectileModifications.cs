@@ -192,7 +192,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                         slimeThornCounter = 0;
                     }
-
                 }
 
                 if (beeCounter == 60)

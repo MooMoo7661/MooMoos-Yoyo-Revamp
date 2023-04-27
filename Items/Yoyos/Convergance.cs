@@ -76,6 +76,7 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ModContent.ItemType<TheTempest>())
                 .AddIngredient(ModContent.ItemType<CultistYoyo>())
                 .AddIngredient(ItemID.Terrarian)
+                .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }
 

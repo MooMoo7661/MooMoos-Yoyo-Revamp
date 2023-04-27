@@ -1,3 +1,4 @@
+using CombinationsMod.Dusts;
 using CombinationsMod.GlobalClasses.Projectiles;
 using CombinationsMod.Projectiles.YoyoEffects;
 using CombinationsMod.Projectiles.YoyoEffects.Solid;
@@ -11,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
-    public class TrueAbbhorProjectile: ModProjectile
+    public class TrueAbbhorProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -20,6 +21,22 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15.2f;
             ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
+        }
+        public override void PostAI()
+        {
+            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            {
+                Dust dust2 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 75, 0f, 0f, 0, default(Color), Main.rand.NextFloat(0.5f, 2.4f));
+                dust2.velocity = VectorHelper.VelocityToPoint(dust2.position, Projectile.Center, Vector2.Distance(dust2.position, Projectile.Center) * 0.05f);
+                dust2.color = Color.Black;
+                dust2.noGravity = true;
+
+                Dust dust3 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 98, 0f, 0f, 0, default(Color), Main.rand.NextFloat(0.5f, 2.4f));
+                dust3.velocity = VectorHelper.VelocityToPoint(dust3.position, Projectile.Center, Vector2.Distance(dust3.position, Projectile.Center) * 0.05f);
+                dust3.color = Color.Black;
+                dust3.noGravity = true;
+
+            }
         }
 
         public override void SetDefaults()
@@ -46,13 +63,35 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
                 int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                         ModContent.ProjectileType<JaggedShieldSwirlGreen>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-                
+
 
                 int hitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                             ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.40f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
                 Main.projectile[hitbox].Resize(150, 150);
                 Main.projectile[hitbox].usesLocalNPCImmunity = true;
             }
+
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            for (int j = 0; j < 5; j++)
+
+                if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+                {
+                    Dust dust4 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 75, 0f, 0f, 0, default(Color), Main.rand.NextFloat(0.5f, 2.4f));
+                    dust4.velocity = VectorHelper.VelocityToPoint(dust4.position, Projectile.Center, Vector2.Distance(dust4.position, Projectile.Center) * -0.09f);
+                    dust4.color = Color.Black;
+                    dust4.scale = 2f;
+                    dust4.noGravity = true;
+
+                    Dust dust5 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 98, 0f, 0f, 0, default(Color), Main.rand.NextFloat(0.5f, 2.4f));
+                    dust5.velocity = VectorHelper.VelocityToPoint(dust5.position, Projectile.Center, Vector2.Distance(dust5.position, Projectile.Center) * -0.09f);
+                    dust5.color = Color.Black;
+                    dust5.scale = 2f;
+                    dust5.noGravity = true;
+
+                }
         }
 
         public override bool PreDraw(ref Color lightColor)

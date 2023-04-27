@@ -11,6 +11,7 @@ using CombinationsMod.Items.Yoyos;
 using Terraria.ID;
 using CombinationsMod.Projectiles.TrickYoyos;
 using static Terraria.ModLoader.ModContent;
+using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod
 {
@@ -19,7 +20,7 @@ namespace CombinationsMod
 
         public override void Load()
         {
-            On.Terraria.Main.DrawProj_DrawYoyoString += Test;
+            On.Terraria.Main.DrawProj_DrawYoyoString += Test;   
         }
 
         public override void Unload()
@@ -60,7 +61,7 @@ namespace CombinationsMod
                         num5 = 1;
                     }
                     num5 *= -1;
-                    player.itemRotation = (float)Math.Atan2((double)(num3 * num5), (double)(num2 * num5));
+                    player.itemRotation = MathF.Atan2(num3 * num5, num2 * num5);
                 }
 
                 bool drawString = true;
@@ -204,28 +205,14 @@ namespace CombinationsMod
                         textureColor.A = (byte)(textureColor.A * 0.4f);
                         textureColor = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16f), textureColor); // Makes the string use Terraria's lighting system to turn darker / lighter in the appropriate enviornment.
 
-                        
-
                         // Drawing the string itself
                         Color textureDrawColor = new Color((byte)(textureColor.R * alphaDilation), (byte)(textureColor.G * alphaDilation), (byte)(textureColor.B * alphaDilation), (byte)(textureColor.A * alphaDilation));
 
+                        //if (projectile.type != ProjectileType<BlackHoleProjectile>())
                         Main.EntitySpriteDraw(texture.Value, new Vector2(vector.X - Main.screenPosition.X + texture.Width() * 0.5f,
                             vector.Y - Main.screenPosition.Y + texture.Height() * 0.5f) - new Vector2(6f, 0f),
                             new Rectangle?(new Rectangle(0, 0, texture.Width(), (int)num7)),
                             textureDrawColor * 1.3f, num4, new Vector2(texture.Width() * 0.5f, 0f), 1f, 0, 0);
-
-                        // Applying a vanilla glowmask
-                        /*Main.spriteBatch.Draw(
-                             ModContent.Request<Texture2D>("Terraria/Images/Glow_126", AssetRequestMode.ImmediateLoad).Value,
-                             new Vector2(vector.X - Main.screenPosition.X + (float)texture.Width() * 0.5f, vector.Y - Main.screenPosition.Y + (float)texture.Height() * 0.5f) - new Vector2(6f, 0f),
-                             new Rectangle?(
-                                 new Rectangle(0, 0, texture.Width(), (int-)num7)
-                             ),
-                             textureDrawColor * 1.3f,
-                             num4,
-                             new Vector2((float)texture.Width() * 0.5f, 0f),
-                             1f, 0, 0
-                         );*/
                     }
                 }
             }

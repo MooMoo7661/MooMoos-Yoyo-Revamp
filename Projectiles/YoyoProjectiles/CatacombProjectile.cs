@@ -25,7 +25,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.height = 16;
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
-            Projectile.penetrate = 65;
+            Projectile.penetrate = 20;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.scale = 1f;
 

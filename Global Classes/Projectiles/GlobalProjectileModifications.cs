@@ -75,18 +75,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 solarExplosionCounter++;
                 cursedFlamesCounter++;
 
-                if (modPlayer.crimtaneBearing || modPlayer.demoniteBearing)
-                {
-                    if (!target.CountsAsACritter && !(target.type == NPCID.TargetDummy) && Main.myPlayer == projectile.owner)
-                    {
-                        int rand = Main.rand.Next(2) + 1;
-
-                        Vector2 vector = new(0, 0);
-                        Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vector,
-                        ProjectileID.VampireHeal, 0, 0, projectile.owner, projectile.owner, rand);
-                    }
-                }
-
                 if (modPlayer.eclipseString && Main.myPlayer == projectile.owner)
                 {
                     if (Main.rand.NextBool(4))
@@ -123,18 +111,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     Main.projectile[proj].hostile = false;
                     Main.projectile[proj].netUpdate = true;
                 }
-
-                if (modPlayer.jungleBearing)
-                {
-                    if (Main.rand.NextBool(2))
-                    {
-                        target.AddBuff(ModContent.BuffType<Pestilence>(), 300);
-                    }
-                }
-                if (modPlayer.ironBearing)
-                {
-                    target.AddBuff(BuffID.Weak, 300);
-                }
             }
             else if (projectile.counterweight && projectile.aiStyle == 99)
             {
@@ -161,11 +137,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 if (rand == 0)
                     target.AddBuff(BuffID.Poisoned, 240);
             }
-
-
-
-            if (projectile.aiStyle == 99 && modPlayer.obsidianBearing && !projectile.counterweight) { target.AddBuff(BuffID.OnFire, 120); }
-            if (projectile.aiStyle == 99 && modPlayer.hallowedBearing && !projectile.counterweight) { target.AddBuff(ModContent.BuffType<Hallowed>(), 300); }
         }
         public override void AI(Projectile projectile)
         {
@@ -194,7 +165,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     }
                 }
 
-                if (beeCounter == 60)
+                /*if (beeCounter == 60)
                 {
                     if (modPlayer.waspBearing && Main.myPlayer == projectile.owner)
                     {
@@ -205,7 +176,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     }
 
                     beeCounter = 0;
-                }
+                }*/
             }
 
 

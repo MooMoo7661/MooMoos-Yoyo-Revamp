@@ -1,7 +1,7 @@
 ﻿using CombinationsMod.Drills;
 using CombinationsMod.Items.Accessories.Drills;
 using CombinationsMod.Items.Accessories.Rings;
-using CombinationsMod.Items.Accessories.YoyoBearings;
+
 using CombinationsMod.Items.Accessories.YoyoGloves;
 using Microsoft.Xna.Framework;
 using System;
@@ -76,75 +76,7 @@ namespace CombinationsMod.UI
             }
         }
     }
-    public class BearingSlot1 : ModAccessorySlot
-    {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
-        {
-            if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
-            {
-                if (checkItem.type == tysYoyoRedux.Find<ModItem>("YoyoBearingAccessory").Type)
-                {
-                    return true;
-                }
-            }
-            if (checkItem.type == ModContent.ItemType<WaspBearing>() ||
-                checkItem.type == ModContent.ItemType<JungleBearing>() ||
-                checkItem.type == ModContent.ItemType<HallowedBearing>() ||
-                checkItem.type == ModContent.ItemType<CrimtaneBearing>() ||
-                checkItem.type == ModContent.ItemType<DemoniteBearing>())
-                return true;
-                
-            return false;
-        }
-        public override bool IsVisibleWhenNotEnabled()
-        {
-            return false;
-        }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 50);
-        public override string FunctionalTexture => "CombinationsMod/UI/bearingSlot";
-        public override bool DrawDyeSlot => false;
-        public override bool DrawVanitySlot => false;
-        public override void OnMouseHover(AccessorySlotType context)
-        {
-            switch (context)
-            {
-                case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = "Yoyo Bearings";
-                    break;
-            }
-        }
-    }
-    public class BearingSlot2 : ModAccessorySlot
-    {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
-        {
-            if (checkItem.type == ModContent.ItemType<WaspBearing>() ||
-                checkItem.type == ModContent.ItemType<JungleBearing>() ||
-                checkItem.type == ModContent.ItemType<HallowedBearing>() ||
-                checkItem.type == ModContent.ItemType<CrimtaneBearing>() ||
-                checkItem.type == ModContent.ItemType<DemoniteBearing>())
-                return true;
-            
-            return false;
-        }
-        public override bool IsVisibleWhenNotEnabled()
-        {   
-            return false;
-        }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 50);
-        public override string FunctionalTexture => "CombinationsMod/UI/bearingSlot";       
-        public override bool DrawDyeSlot => false;
-        public override bool DrawVanitySlot => false;//= -> =>
-        public override void OnMouseHover(AccessorySlotType context)
-        {
-            switch (context)
-            {
-                case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = "Yoyo Bearings";
-                    break;
-            }
-        }
-    }
+
     public class RingSlot : ModAccessorySlot
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
@@ -164,7 +96,7 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 100);
+        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 50);
         public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
@@ -197,7 +129,7 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 100);
+        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 50);
         public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
@@ -226,7 +158,7 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 150);
+        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 100);
         public override string FunctionalTexture => "CombinationsMod/UI/yoyoGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
@@ -255,7 +187,7 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 150);
+        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 100);
         public override string FunctionalTexture => "CombinationsMod/UI/supportGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
@@ -293,7 +225,7 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 200);
+        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 150);
 
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
         public override string FunctionalTexture => "CombinationsMod/UI/drillSlot";
@@ -326,7 +258,7 @@ namespace CombinationsMod.UI
             return false;
         }
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 200);
+        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 150);
         public override string FunctionalTexture => "CombinationsMod/UI/counterweightSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;

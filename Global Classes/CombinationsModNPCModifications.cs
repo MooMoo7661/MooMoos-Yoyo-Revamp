@@ -10,7 +10,7 @@ using CombinationsMod.Items.Accessories.Rings;
 using Terraria.GameContent.ItemDropRules;
 using CombinationsMod.Items.Accessories.YoyoGloves;
 using Terraria.ModLoader.UI.ModBrowser;
-using CombinationsMod.Items.Accessories.YoyoBearings;
+
 using CombinationsMod.NPCS;
 using static Terraria.ID.ItemID;
 

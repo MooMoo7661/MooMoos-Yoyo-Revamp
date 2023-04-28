@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using CombinationsMod.Items.Bars;
 using CombinationsMod.Items.Accessories.Strings;
-using CombinationsMod.Items.Accessories.YoyoBearings;
 using CombinationsMod.Items.Yoyos;
 using System.Collections.Generic;
 using Terraria.GameContent;

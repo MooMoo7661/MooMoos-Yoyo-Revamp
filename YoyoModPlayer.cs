@@ -21,13 +21,6 @@ namespace CombinationsMod
 
         public bool yoyoClip = false; // Used by the Upgraded Yoyo Glove / Solar Glove. Determines if the player can create a second yoyo
         public bool yoyoSpacers = false; // Extends speed of yoyos (unused?)
-        public bool obsidianBearing = false; // Obsidian Yoyo Bearing
-        public bool jungleBearing = false; // Jungle Yoyo Bearing
-        public bool hallowedBearing = false; // Hallowed bearing
-        public bool ironBearing = false; // Base yoyo bearing
-        public bool waspBearing = false; // Wasp yoyo bearing
-        public bool demoniteBearing = false;
-        public bool crimtaneBearing = false;
 
         public bool eclipseString = false;
         public bool golemString = false; // Golemsteel String
@@ -96,13 +89,6 @@ namespace CombinationsMod
 
             yoyoClip = false;
             yoyoSpacers = false;
-            obsidianBearing = false;
-            jungleBearing = false;
-            hallowedBearing = false;
-            ironBearing = false;
-            waspBearing = false;
-            demoniteBearing = false;
-            crimtaneBearing = false;
 
             supportGlove = false;
 

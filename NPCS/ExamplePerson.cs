@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using ReLogic.Content;
 using Terraria.ModLoader.IO;
 using CombinationsMod.Items.Accessories.Rings;
-using CombinationsMod.Items.Accessories.YoyoBearings;
+
 using static Terraria.ModLoader.ModContent;
 using CombinationsMod.Items.Accessories.InfoAccessories;
 using CombinationsMod.Items.Accessories.Strings;

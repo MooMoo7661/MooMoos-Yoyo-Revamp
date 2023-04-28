@@ -157,115 +157,125 @@ namespace CombinationsMod.Drills
                 }
                 if (BlockRangeStyle == 2) // 2 x 2 grid. For more visual understanding, put the coords on a grid to see the blocks it mines
                 {
-                    TryPick(0, 0);
-                    TryPick(-1, 0);
-                    TryPick(0, 1);
-                    TryPick(1, 0);
-                    TryPick(0, -1);
-                    TryPick(-1, -1);
-                    TryPick(1, -1);
-                    TryPick(-1, 1);
-                    TryPick(1, 1);
-                    TryPick(-2, 0);
-                    TryPick(0, 2);
-                    TryPick(2, 0);
-                    TryPick(0, -2);
-                    TryPick(-2, -2);
-                    TryPick(2, -2);
-                    TryPick(-2, 2);
-                    TryPick(2, 2);
-                    TryPick(2, 1);
-                    TryPick(-2, 1);
-                    TryPick(-1, 2);
-                    TryPick(1, 2);
-                    TryPick(2, -1);
-                    TryPick(-2, -1);
-                    TryPick(-1, -2);
-                    TryPick(1, -2);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        TryPick(0, 0);
+                        TryPick(-1, 0);
+                        TryPick(0, 1);
+                        TryPick(1, 0);
+                        TryPick(0, -1);
+                        TryPick(-1, -1);
+                        TryPick(1, -1);
+                        TryPick(-1, 1);
+                        TryPick(1, 1);
+                        TryPick(-2, 0);
+                        TryPick(0, 2);
+                        TryPick(2, 0);
+                        TryPick(0, -2);
+                        TryPick(-2, -2);
+                        TryPick(2, -2);
+                        TryPick(-2, 2);
+                        TryPick(2, 2);
+                        TryPick(2, 1);
+                        TryPick(-2, 1);
+                        TryPick(-1, 2);
+                        TryPick(1, 2);
+                        TryPick(2, -1);
+                        TryPick(-2, -1);
+                        TryPick(-1, -2);
+                        TryPick(1, -2);
+                    }
                 }
                 else if (BlockRangeStyle == 3)
                 {
-                    TryPick(0, 0);
-                    TryPick(-1, 0);
-                    TryPick(0, 1);
-                    TryPick(1, 0);
-                    TryPick(0, -1);
-                    TryPick(-1, -1);
-                    TryPick(1, -1);
-                    TryPick(-1, 1);
-                    TryPick(1, 1);
-                    TryPick(-2, 0);
-                    TryPick(2, 0);
-                    TryPick(0, 2);
-                    TryPick(0, -2);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        TryPick(0, 0);
+                        TryPick(-1, 0);
+                        TryPick(0, 1);
+                        TryPick(1, 0);
+                        TryPick(0, -1);
+                        TryPick(-1, -1);
+                        TryPick(1, -1);
+                        TryPick(-1, 1);
+                        TryPick(1, 1);
+                        TryPick(-2, 0);
+                        TryPick(2, 0);
+                        TryPick(0, 2);
+                        TryPick(0, -2);
+                    }
                 }
                 else if (BlockRangeStyle == 4) // 3 x 3 grid. For more visual understanding, put the coords on a grid to see the blocks it mines
                 {
-                    TryPick(0, 0); // 1 x 1 (technically 3 x 3)
-                    TryPick(-1, 0);
-                    TryPick(0, 1);
-                    TryPick(1, 0);
-                    TryPick(0, -1);
-                    TryPick(-1, -1);
-                    TryPick(1, -1);
-                    TryPick(-1, 1);
-                    TryPick(1, 1);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        TryPick(0, 0); // 1 x 1 (technically 3 x 3)
+                        TryPick(-1, 0);
+                        TryPick(0, 1);
+                        TryPick(1, 0);
+                        TryPick(0, -1);
+                        TryPick(-1, -1);
+                        TryPick(1, -1);
+                        TryPick(-1, 1);
+                        TryPick(1, 1);
 
-                    TryPick(-2, 0); // 2 x 2 (technically 5 x 5)
-                    TryPick(0, 2);
-                    TryPick(2, 0);
-                    TryPick(0, -2);
-                    TryPick(-2, -2);
-                    TryPick(2, -2);
-                    TryPick(-2, 2);
-                    TryPick(2, 2);
-                    TryPick(2, 1);
-                    TryPick(-2, 1);
-                    TryPick(-1, 2);
-                    TryPick(1, 2);
-                    TryPick(2, -1);
-                    TryPick(-2, -1);
-                    TryPick(-1, -2);
-                    TryPick(1, -2);
+                        TryPick(-2, 0); // 2 x 2 (technically 5 x 5)
+                        TryPick(0, 2);
+                        TryPick(2, 0);
+                        TryPick(0, -2);
+                        TryPick(-2, -2);
+                        TryPick(2, -2);
+                        TryPick(-2, 2);
+                        TryPick(2, 2);
+                        TryPick(2, 1);
+                        TryPick(-2, 1);
+                        TryPick(-1, 2);
+                        TryPick(1, 2);
+                        TryPick(2, -1);
+                        TryPick(-2, -1);
+                        TryPick(-1, -2);
+                        TryPick(1, -2);
 
-                    TryPick(-3, 0); // 3 x 3 (technically 7 x 7)
-                    TryPick(-3, 1);
-                    TryPick(-3, 2);
-                    TryPick(-3, 3);
-                    TryPick(-3, -1);
-                    TryPick(-3, -2);
-                    TryPick(-3, -3);
-                    TryPick(-2, -3);
-                    TryPick(-2, 3);
-                    TryPick(-1, -3);
-                    TryPick(-1, 3);
-                    TryPick(0, -3);
-                    TryPick(0, 3);
-                    TryPick(1, -3);
-                    TryPick(1, 3);
-                    TryPick(2, -3);
-                    TryPick(2, 3);
-                    TryPick(3, 0);
-                    TryPick(3, -1);
-                    TryPick(3, -2);
-                    TryPick(3, -3);
-                    TryPick(3, 1);
-                    TryPick(3, 2);
-                    TryPick(3, 3);
+                        TryPick(-3, 0); // 3 x 3 (technically 7 x 7)
+                        TryPick(-3, 1);
+                        TryPick(-3, 2);
+                        TryPick(-3, 3);
+                        TryPick(-3, -1);
+                        TryPick(-3, -2);
+                        TryPick(-3, -3);
+                        TryPick(-2, -3);
+                        TryPick(-2, 3);
+                        TryPick(-1, -3);
+                        TryPick(-1, 3);
+                        TryPick(0, -3);
+                        TryPick(0, 3);
+                        TryPick(1, -3);
+                        TryPick(1, 3);
+                        TryPick(2, -3);
+                        TryPick(2, 3);
+                        TryPick(3, 0);
+                        TryPick(3, -1);
+                        TryPick(3, -2);
+                        TryPick(3, -3);
+                        TryPick(3, 1);
+                        TryPick(3, 2);
+                        TryPick(3, 3);
+                    }
                 }
                 else
                 {
-                    TryPick(0, 0);
-                    TryPick(-1, 0);
-                    TryPick(0, 1);
-                    TryPick(1, 0);
-                    TryPick(0, -1);
-                    TryPick(-1, -1);
-                    TryPick(1, -1);
-                    TryPick(-1, 1);
-                    TryPick(1, 1);
-                    
-
+                    for (int i = 0; i < 2; i++)
+                    {
+                        TryPick(0, 0);
+                        TryPick(-1, 0);
+                        TryPick(0, 1);
+                        TryPick(1, 0);
+                        TryPick(0, -1);
+                        TryPick(-1, -1);
+                        TryPick(1, -1);
+                        TryPick(-1, 1);
+                        TryPick(1, 1);
+                    }
                 }
 
                 // Reset the cooldown if successful

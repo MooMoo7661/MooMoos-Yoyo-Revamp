@@ -65,7 +65,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<ThinMintProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CatacombProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TheQueensGambitProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<SpheruliteProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Code1, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CobaltYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<PalladiumYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);

@@ -57,7 +57,6 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ModContent.ItemType<ThinMint>())
                 .AddIngredient(ModContent.ItemType<Catacomb>())
                 .AddIngredient(ModContent.ItemType<TheQueensGambit>())
-                .AddIngredient(ModContent.ItemType<Melanoid>())
                 .AddIngredient(ItemID.Code1)
                 .AddRecipeGroup(CombinationsModSystem.cobaltYoyoGroup)
                 .AddRecipeGroup(CombinationsModSystem.mythrilYoyoGroup)

@@ -104,6 +104,11 @@ namespace CombinationsMod
             recipe2.AddIngredient(ItemID.Feather, 50);
             recipe2.AddIngredient(ItemID.SoulofFlight, 20);
             recipe2.Register();
+
+            Recipe.Create(ItemID.Cascade)
+                .AddIngredient(ItemID.HellstoneBar, 15)
+                .AddTile(TileID.Hellforge)
+                .Register();
         }
 
         public override void AddRecipeGroups()

@@ -1283,7 +1283,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
     {
         protected override float Scale => 1f;
 
-        protected override float Rotation => -0.07f;
+        protected override float Rotation => 0.07f;
         protected override int Width => 200;
         protected override int Height => 200;
         protected override bool Friendly => false;

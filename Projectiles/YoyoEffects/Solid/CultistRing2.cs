@@ -99,7 +99,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
         }
 
         public override bool PreDraw(ref Color lightColor)
-        {
+        {   
             DrawDisc();
             return false;
         }

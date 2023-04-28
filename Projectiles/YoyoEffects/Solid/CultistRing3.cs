@@ -54,5 +54,11 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
                 }
             }
         }
+
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            float radius = Projectile.width / 2f;
+            return Projectile.Center.DistanceSQ(targetHitbox.ClosestPointInRect(Projectile.Center)) < radius * Projectile.scale * radius * Projectile.scale;
+        }
     }
 }

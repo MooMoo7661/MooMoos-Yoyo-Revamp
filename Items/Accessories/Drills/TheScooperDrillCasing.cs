@@ -54,12 +54,5 @@ namespace CombinationsMod.Items.Accessories.Drills
 
             //return true;
         }
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.AdamantiteBar, 20);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
-        }
     }
 }

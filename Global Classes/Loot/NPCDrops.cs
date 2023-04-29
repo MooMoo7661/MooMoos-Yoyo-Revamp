@@ -59,7 +59,15 @@ namespace CombinationsMod.GlobalClasses.Loot
 					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TreeClippersDrillCasing>(), 20));
 					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChristmasBulb>(), 20));
 					break;
-			}
+
+				case NPCID.IceGolem:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>(), 20));
+					break;
+
+				case NPCID.IceMimic:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>()));
+                    break;
+            }
 		}
     }
 }

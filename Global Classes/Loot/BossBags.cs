@@ -37,6 +37,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case ItemID.CultistBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CultistYoyo>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ShadowflameDrillCasing>()));
                     break;
 
                 case ItemID.KingSlimeBossBag:

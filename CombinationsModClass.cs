@@ -191,16 +191,10 @@ namespace CombinationsMod
                                 break;
                         }
 
-                        
-                        Asset<Texture2D> textureBlood = (Asset<Texture2D>)ModContent.Request<Texture2D>("CombinationsMod/YoyoStringTextures/BloodString");
-
                         float alphaDilation = 0.6f; // Dilates the texture's alpha. Otherwise, it wouldn't look right
 
-                        if (projectile.type == ProjectileID.TheEyeOfCthulhu && projectile.localAI[1] == 2)
-                        {
-                            textureColor = Color.White;
-                            texture = textureBlood;
-                        }
+                        texture = WhichTextureShouldBeUsed(texture, projectile);
+                        textureColor = WhichColorShouldBeUsed(textureColor, projectile);
 
                         textureColor.A = (byte)(textureColor.A * 0.4f);
                         textureColor = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16f), textureColor); // Makes the string use Terraria's lighting system to turn darker / lighter in the appropriate enviornment.
@@ -243,6 +237,32 @@ namespace CombinationsMod
                 mod.Call("AddAchievement", this, "Code2Achievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementCode2", "CombinationsMod/Crossmod/Achievements/RareBorder", false, true, 3f, new string[] { "Collect_" + ItemID.Code2 });
                 mod.Call("AddAchievement", this, "ConverganceAchievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementConvergance", "CombinationsMod/Crossmod/Achievements/SpecialBorder", false, true, 4f, new string[] { "Collect_" + ItemType<Convergance>() });
             }
+        }
+
+        private Asset<Texture2D> WhichTextureShouldBeUsed(Asset<Texture2D> texture, Projectile projectile)
+        {
+            int type = projectile.type;
+
+            if (type == ProjectileType<World2>())
+            {
+                texture = TextureAssets.Chain33;
+            }
+            else if (type == ProjectileID.TheEyeOfCthulhu && projectile.localAI[1] == 2)
+            {
+                texture = Request<Texture2D>("CombinationsMod/YoyoStringTextures/BloodString");
+            }
+
+            return texture;
+        }
+
+        private Color WhichColorShouldBeUsed(Color textureColor, Projectile projectile)
+        {
+            if (projectile.type == ProjectileID.TheEyeOfCthulhu && projectile.localAI[1] == 2)
+            {
+                textureColor = Color.White;
+            }
+
+            return textureColor;
         }
     }
 }

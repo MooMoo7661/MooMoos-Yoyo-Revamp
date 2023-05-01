@@ -38,7 +38,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
         public override void AI()
         {
-            Projectile.rotation += 0.05f;
+            Projectile.rotation -= 0.05f;
             
             if (Projectile.ai[1] != -1)
             {

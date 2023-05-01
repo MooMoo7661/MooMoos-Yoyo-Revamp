@@ -63,6 +63,7 @@ namespace CombinationsMod
         {
             upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
             yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry); yoyoStringDictionary.TryAdd(ItemType<TrueSmudge>(), upgradedStringEntry);
+            yoyoStringDictionary.TryAdd(ItemType<BlackHole>(), upgradedStringEntry);
 
             boneStringEntry.setStringTexture(TextureAssets.Chain24); yoyoStringDictionary.TryAdd(ItemType<Catacomb>(), boneStringEntry);
             jungleStringEntry.setStringTexture(TextureAssets.Chain27); yoyoStringDictionary.TryAdd(ItemID.JungleYoyo, jungleStringEntry);

@@ -58,12 +58,13 @@ namespace CombinationsMod
         public StringTexture christmasStringEntry = new StringTexture();
         public StringTexture pumpkinStringEntry = new StringTexture();
         public StringTexture terrarianStringEntry = new StringTexture();
+        public StringTexture cultistStringEntry = new StringTexture();
+        public StringTexture blackHoleStringEntry = new StringTexture();
 
         public void AddDictionaryEntries()
         {
             upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
             yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry); yoyoStringDictionary.TryAdd(ItemType<TrueSmudge>(), upgradedStringEntry);
-            yoyoStringDictionary.TryAdd(ItemType<BlackHole>(), upgradedStringEntry);
 
             boneStringEntry.setStringTexture(TextureAssets.Chain24); yoyoStringDictionary.TryAdd(ItemType<Catacomb>(), boneStringEntry);
             jungleStringEntry.setStringTexture(TextureAssets.Chain27); yoyoStringDictionary.TryAdd(ItemID.JungleYoyo, jungleStringEntry);
@@ -72,6 +73,8 @@ namespace CombinationsMod
             christmasStringEntry.setStringTexture(christmasStringPath); yoyoStringDictionary.TryAdd(ItemType<ChristmasBulb>(), christmasStringEntry);
             pumpkinStringEntry.setStringTexture(pumpkinStringPath); yoyoStringDictionary.TryAdd(ItemType<Mambele>(), pumpkinStringEntry);
             terrarianStringEntry.setStringTexture(TextureAssets.Chains[13]); yoyoStringDictionary.TryAdd(ItemID.Terrarian, terrarianStringEntry);
+            cultistStringEntry.setStringTexture(TextureAssets.Chain9); yoyoStringDictionary.TryAdd(ItemType<CultistYoyo>(), cultistStringEntry);
+            blackHoleStringEntry.setStringTexture(TextureAssets.Chains[16]); yoyoStringDictionary.TryAdd(ItemType<BlackHole>(), blackHoleStringEntry);
         }
 
         public Asset<Texture2D> GetStringFromDictionary(int itemID)

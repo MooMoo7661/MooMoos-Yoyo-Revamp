@@ -48,9 +48,9 @@ namespace CombinationsMod.UI
             }
            
             if ((checkItem.type >= 3293 && checkItem.type <= 3308) || checkItem.type == ModContent.ItemType<EclipseString>() || checkItem.type == ModContent.ItemType<GolemsteelString>() ||
-                checkItem.type == ModContent.ItemType<SolarString>() || checkItem.type == ModContent.ItemType<FrostbiteString>() || checkItem.type == ModContent.ItemType<NebulaString>() ||
+                checkItem.type == ModContent.ItemType<SolarString>() || checkItem.type == ModContent.ItemType<FrostbiteString>()||
                 checkItem.type == ModContent.ItemType<SlimyString>() || checkItem.type == ModContent.ItemType<DarkGreenString>() || checkItem.type == ModContent.ItemType<DarkBlueString>() ||
-                checkItem.type == ModContent.ItemType<LightPinkString>() || checkItem.type == ModContent.ItemType<NaniteString>() || checkItem.type == ItemType<DarkTealString>() ||
+                checkItem.type == ModContent.ItemType<LightPinkString>() || checkItem.type == ItemType<DarkTealString>() ||
                 checkItem.type == ItemType<GrapeString>())
                 return true;
 

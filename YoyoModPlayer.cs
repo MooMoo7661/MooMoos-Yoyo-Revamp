@@ -24,13 +24,10 @@ namespace CombinationsMod
 
         public bool eclipseString = false;
         public bool golemString = false; // Golemsteel String
-        public bool frostbiteString = false;
-        public bool slimeString = false;
-
         public bool solarString = false;
-        public bool stardustString = false;
-        public bool vortexString = false;
+        public bool frostbiteString = false;
         public bool nebulaString = false;
+        public bool slimeString = false;
 
         public bool darkGreenString = false;
         public bool darkBlueString = false;
@@ -97,14 +94,10 @@ namespace CombinationsMod
 
             eclipseString = false;
             golemString = false;
+            solarString = false;
             frostbiteString = false;
             nebulaString = false;
             slimeString = false;
-
-            solarString = false;
-            stardustDrill = false;
-            vortexString = false;
-            nebulaString = false;
 
             darkGreenString = false;
             darkBlueString = false;
@@ -160,7 +153,7 @@ namespace CombinationsMod
 
         public float GetModifiedPlayerYoyoStringLength(float length)
         {
-            if (solarString || nebulaString || vortexString || stardustString)
+            if (solarString)
             {
                 length += 100f;
             }

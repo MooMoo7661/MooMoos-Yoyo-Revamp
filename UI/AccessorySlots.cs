@@ -25,34 +25,33 @@ namespace CombinationsMod.UI
             //3293 - 3308 : vanilla yoyo strings
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
             {
-                if (checkItem.type == veridianMod.Find<ModItem>("CrimsonString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("CrossString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("CursedString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("FrogString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("FrostString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("HoneyString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("HorseshoeString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("IchorString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("JungleString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("LavaString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("MythString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("PumpkinString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("RegenString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("ShadowString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("SharktoothString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("VeilString").Type ||
-                    checkItem.type == veridianMod.Find<ModItem>("HellString").Type)
-                {
+               if (checkItem.type == veridianMod.Find<ModItem>("CrimsonString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("CrossString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("CursedString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("FrogString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("FrostString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("HoneyString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("HorseshoeString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("IchorString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("JungleString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("LavaString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("MythString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("PumpkinString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("RegenString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("ShadowString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("SharktoothString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("VeilString").Type ||
+                   checkItem.type == veridianMod.Find<ModItem>("HellString").Type)
+               {
                     return true;
-                }
+               }
             }
-
+           
             if ((checkItem.type >= 3293 && checkItem.type <= 3308) || checkItem.type == ModContent.ItemType<EclipseString>() || checkItem.type == ModContent.ItemType<GolemsteelString>() ||
-                checkItem.type == ModContent.ItemType<SolarString>() || checkItem.type == ModContent.ItemType<FrostbiteString>() ||
+                checkItem.type == ModContent.ItemType<SolarString>() || checkItem.type == ModContent.ItemType<FrostbiteString>()||
                 checkItem.type == ModContent.ItemType<SlimyString>() || checkItem.type == ModContent.ItemType<DarkGreenString>() || checkItem.type == ModContent.ItemType<DarkBlueString>() ||
                 checkItem.type == ModContent.ItemType<LightPinkString>() || checkItem.type == ItemType<DarkTealString>() ||
-                checkItem.type == ItemType<GrapeString>() || checkItem.type == ItemType<StardustString>() || checkItem.type == ItemType<VortexString>() ||
-                checkItem.type == ItemType<NebulaString>())
+                checkItem.type == ItemType<GrapeString>())
                 return true;
 
             return false;

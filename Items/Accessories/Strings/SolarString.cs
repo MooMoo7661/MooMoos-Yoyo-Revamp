@@ -14,7 +14,7 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Solar String");
-            Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+5% base yoyo damage]\n[c/6EAE6E:+250 yoyo range]");
+            Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+250 yoyo range]\n[c/6EAE6E:+5% base yoyo damage]");
         }
 
         public override void SetDefaults()
@@ -25,7 +25,7 @@ namespace CombinationsMod.Items.Accessories.Strings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 5);
-            Item.stringColor = 2;
+            Item.stringColor = 36;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

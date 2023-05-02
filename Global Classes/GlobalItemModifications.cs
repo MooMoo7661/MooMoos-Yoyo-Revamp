@@ -15,6 +15,10 @@ using Terraria.Utilities;
 using Terraria.DataStructures;
 using CombinationsMod.Projectiles.TrickYoyos;
 
+using static Terraria.ModLoader.ModContent;
+using static CombinationsMod.CombinationsModUtils.YoyoStrings;
+using CombinationsMod.Items.Accessories.Strings;
+
 namespace CombinationsMod.GlobalClasses
 {
     public class GlobalString : GlobalItem
@@ -140,6 +144,28 @@ namespace CombinationsMod.GlobalClasses
                         tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Has 2 stages]\n[c/B3FDFF:The first stage: The yoyo shoots lasers that deal 2x the yoyo's damage]\n[c/B3FDFF:The second stage: Triggers after 50 hits, the yoyo will shoot cursed flames]\n[c/B3FDFF:These flames deal half damage, but inflict cursed inferno]"));
                         break;
                 }
+            }
+
+            switch (item.type)
+            {
+                case (int)blackString:
+                case (int)whiteString:
+                case (int)redString:
+                case (int)orangeString:
+                case (int)yellowString:
+                case (int)limeString:
+                case (int)greenString:
+                case (int)tealString:
+                case (int)cyanString:
+                case (int)skyBlueString:
+                case (int)blueString:
+                case (int)purpleString:
+                case (int)violetString:
+                case (int)pinkString:
+                case (int)brownString:
+                case (int)rainbowString:
+                    tooltips.Insert(4, new TooltipLine(Mod, "YoyoStringInfo", "+150 yoyo range"));
+                    break;
             }
         }
     }

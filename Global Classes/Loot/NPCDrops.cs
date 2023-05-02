@@ -20,12 +20,10 @@ namespace CombinationsMod.GlobalClasses.Loot
 		{
 			if (!(Main.masterMode || Main.expertMode) && (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism))
 			{
-				if (Main.rand.NextBool(5))
-				{
-					var missingTwinRule = new LeadingConditionRule(new Conditions.MissingTwin());
-					missingTwinRule.OnSuccess(ItemDropRule.Common(ItemID.TheEyeOfCthulhu));
-					npcLoot.Add(missingTwinRule);
-				}
+				var missingTwinRule = new LeadingConditionRule(new Conditions.MissingTwin());
+				missingTwinRule.OnSuccess(ItemDropRule.Common(ItemID.TheEyeOfCthulhu, 2));
+				npcLoot.Add(missingTwinRule);
+
 			}
 
 			switch (npc.type)

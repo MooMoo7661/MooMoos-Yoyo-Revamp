@@ -91,7 +91,7 @@ namespace CombinationsMod
                     {
                         drawString = false;
                     }
-
+                    
                     else
                     {
                         if (num8 < 20f)
@@ -189,6 +189,22 @@ namespace CombinationsMod
                             case 34:
                                 textureColor = new(168, 59, 153);
                                 break;
+
+                            case 35: // Stardust String
+                                textureColor = new(90, 195, 248);
+                                break;
+
+                            case 36: // Solar String
+                                textureColor = new(255, 180, 56);
+                                break;
+
+                            case 37: // Vortex String
+                                textureColor = new(131, 238, 220);
+                                break;
+
+                            case 38: // Nebula String
+                                textureColor = new(254, 14, 177);
+                                break;
                         }
 
                         float alphaDilation = 0.6f; // Dilates the texture's alpha. Otherwise, it wouldn't look right
@@ -202,11 +218,12 @@ namespace CombinationsMod
                         // Drawing the string itself
                         Color textureDrawColor = new Color((byte)(textureColor.R * alphaDilation), (byte)(textureColor.G * alphaDilation), (byte)(textureColor.B * alphaDilation), (byte)(textureColor.A * alphaDilation));
 
-                        //if (projectile.type != ProjectileType<BlackHoleProjectile>())
                         Main.EntitySpriteDraw(texture.Value, new Vector2(vector.X - Main.screenPosition.X + texture.Width() * 0.5f,
                             vector.Y - Main.screenPosition.Y + texture.Height() * 0.5f) - new Vector2(6f, 0f),
                             new Rectangle?(new Rectangle(0, 0, texture.Width(), (int)num7)),
                             textureDrawColor * 1.3f, num4, new Vector2(texture.Width() * 0.5f, 0f), 1f, 0, 0);
+
+                        
                     }
                 }
             }
@@ -232,10 +249,10 @@ namespace CombinationsMod
         {
             if (ModLoader.TryGetMod("TMLAchievements", out Mod mod))
             {
-                mod.Call("AddAchievement", this, "Code1Achievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementCode1", null, false, true, 1f, new string[] { "Collect_" + ItemID.Code1 });
+                mod.Call("AddAchievement", this, "Code1Achievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementCode1", null, false, false, 1f, new string[] { "Collect_" + ItemID.Code1 });
                 mod.Call("AddAchievement", this, "AbbhorAchievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementAbbhor", null, false, false, 2f, new string[] { "Collect_" + ItemType<TheAbbhor>() });
-                mod.Call("AddAchievement", this, "Code2Achievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementCode2", "CombinationsMod/Crossmod/Achievements/RareBorder", false, true, 3f, new string[] { "Collect_" + ItemID.Code2 });
-                mod.Call("AddAchievement", this, "ConverganceAchievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementConvergance", "CombinationsMod/Crossmod/Achievements/SpecialBorder", false, true, 4f, new string[] { "Collect_" + ItemType<Convergance>() });
+                mod.Call("AddAchievement", this, "Code2Achievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementCode2", "CombinationsMod/Crossmod/Achievements/RareBorder", false, false, 3f, new string[] { "Collect_" + ItemID.Code2 });
+                mod.Call("AddAchievement", this, "ConverganceAchievement", AchievementCategory.Collector, "CombinationsMod/Crossmod/Achievements/AchievementConvergance", "CombinationsMod/Crossmod/Achievements/SpecialBorder", false, false, 4f, new string[] { "Collect_" + ItemType<Convergance>() });
             }
         }
 

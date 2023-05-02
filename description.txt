@@ -4,6 +4,8 @@ Adds over 30 more Yoyos, each with special crafting recipes and effects
 
 Purchase the Ability Ring from the Merchant for 20 gold to allow yoyos to use special effects.
 
+It is highly encouraged that you install Achievement Mod, as this mod adds 4 new achievements all unique to yoyos.
+
 - Changes To Vanilla Yoyos
     Each Yoyo's stats have been buffed, including lifetime,
     speed, and range

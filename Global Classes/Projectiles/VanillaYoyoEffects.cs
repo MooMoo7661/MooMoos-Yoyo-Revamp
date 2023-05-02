@@ -761,11 +761,16 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             projectile.timeLeft = 6;
             float num7 = 10f;
-            float num8 = 10f;
+            float yoyoSpeed = 10f;
             float num9 = 3f;
-            float num10 = 200f;
-            num10 = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
-            num8 = ProjectileID.Sets.YoyosTopSpeed[projectile.type];
+
+            float stringLength = 200f;
+            stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
+            yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[projectile.type];
+
+            float modifiedStringLength = stringLength;
+            modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength);
+
             if (projectile.type == 545) // 545 is cascade
             {
                 if (Main.rand.Next(6) == 0)
@@ -782,35 +787,34 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             }
             if (Main.player[projectile.owner].yoyoString) // Extends range
             {
-                // num10 is ProjectileID.Sets.YoyosMaximumRange
-
-                num10 = num10 * 1.25f + 30f;
+                // modifiedStringLength is ProjectileID.Sets.YoyosMaximumRange + modifictions from modplayer to increase range
+                modifiedStringLength += 150f;
             }
-            num10 /= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
-            num8 /= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
-            num7 = 14f - num8 / 2f;
+            modifiedStringLength /= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            yoyoSpeed /= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            num7 = 14f - yoyoSpeed / 2f;
             if (num7 < 1f)
             {
                 num7 = 1f;
             }
-            num9 = 5f + num8 / 2f;
+            num9 = 5f + yoyoSpeed / 2f;
             if (flag)
             {
                 num9 += 20f;
             }
             if (projectile.ai[0] >= 0f)
             {
-                if (projectile.velocity.Length() > num8)
+                if (projectile.velocity.Length() > yoyoSpeed)
                 {
                     projectile.velocity *= 0.98f;
                 }
                 bool flag3 = false;
                 bool flag4 = false;
                 Vector2 vector3 = Main.player[projectile.owner].Center - projectile.Center;
-                if (vector3.Length() > num10)
+                if (vector3.Length() > modifiedStringLength)
                 {
                     flag3 = true;
-                    if ((double)vector3.Length() > (double)num10 * 1.3)
+                    if ((double)vector3.Length() > (double)modifiedStringLength * 1.3)
                     {
                         flag4 = true;
                     }
@@ -829,10 +833,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         float x = vector4.X;
                         float y = vector4.Y;
                         Vector2 vector5 = new Vector2(x, y) - Main.player[projectile.owner].Center;
-                        if (vector5.Length() > num10)
+                        if (vector5.Length() > modifiedStringLength)
                         {
                             vector5.Normalize();
-                            vector5 *= num10;
+                            vector5 *= modifiedStringLength;
                             vector5 = Main.player[projectile.owner].Center + vector5;
                             x = vector5.X;
                             y = vector5.Y;
@@ -840,10 +844,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         if (projectile.ai[0] != x || projectile.ai[1] != y) // If the yoyo's ai
                         {
                             Vector2 vector6 = new Vector2(x, y) - Main.player[projectile.owner].Center;
-                            if (vector6.Length() > num10 - 1f)
+                            if (vector6.Length() > modifiedStringLength - 1f)
                             {
                                 vector6.Normalize();
-                                vector6 *= num10 - 1f;
+                                vector6 *= modifiedStringLength - 1f;
                                 Vector2 vector7 = Main.player[projectile.owner].Center + vector6;
                                 x = vector7.X;
                                 y = vector7.Y;
@@ -864,7 +868,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     if (flag3)
                     {
                         num7 /= 2f;
-                        num8 *= 2f;
+                        yoyoSpeed *= 2f;
                         if (projectile.Center.X > Main.player[projectile.owner].Center.X && projectile.velocity.X > 0f)
                         {
                             projectile.velocity.X *= 0.5f;
@@ -892,21 +896,21 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     if (num13 > num9)
                     {
                         vector8.Normalize();
-                        float num14 = Math.Min(num13 / 2f, num8);
+                        float num14 = Math.Min(num13 / 2f, yoyoSpeed);
                         if (flag3)
                         {
-                            num14 = Math.Min(num14, num8 / 2f);
+                            num14 = Math.Min(num14, yoyoSpeed / 2f);
                         }
                         vector8 *= num14;
                         projectile.velocity = (projectile.velocity * (num7 - 1f) + vector8) / num7;
                     }
                     else if (flag)
                     {
-                        if ((double)projectile.velocity.Length() < (double)num8 * 0.6)
+                        if ((double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
                         {
                             vector8 = projectile.velocity;
                             vector8.Normalize();
-                            vector8 *= num8 * 0.6f;
+                            vector8 *= yoyoSpeed * 0.6f;
                             projectile.velocity = (projectile.velocity * (num7 - 1f) + vector8) / num7;
                         }
                     }
@@ -914,29 +918,29 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     {
                         projectile.velocity *= 0.8f;
                     }
-                    if (flag && !flag3 && (double)projectile.velocity.Length() < (double)num8 * 0.6)
+                    if (flag && !flag3 && (double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
                     {
                         projectile.velocity.Normalize();
-                        projectile.velocity *= num8 * 0.6f;
+                        projectile.velocity *= yoyoSpeed * 0.6f;
                     }
                 }
             }
             else
             {
                 num7 = (int)((double)num7 * 0.8);
-                num8 *= 1.5f;
+                yoyoSpeed *= 1.5f;
                 projectile.tileCollide = false;
                 Vector2 vector9 = Main.player[projectile.owner].Center - projectile.Center;
                 float num15 = vector9.Length();
 
-                if (num15 < num8 + 10f || num15 == 0f || num15 > 2000f)
+                if (num15 < yoyoSpeed + 10f || num15 == 0f || num15 > 2000f)
                 {
                     projectile.Kill();
                 }
                 else
                 {
                     vector9.Normalize();
-                    vector9 *= num8;
+                    vector9 *= yoyoSpeed;
                     projectile.velocity = (projectile.velocity * (num7 - 1f) + vector9) / num7;
                 }
             }

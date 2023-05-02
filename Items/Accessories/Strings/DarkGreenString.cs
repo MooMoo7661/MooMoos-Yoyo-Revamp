@@ -14,7 +14,7 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dark Green String");
-            Tooltip.SetDefault("Increases yoyo range");
+            Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+150 yoyo range]");
         }
 
         public override void SetDefaults()

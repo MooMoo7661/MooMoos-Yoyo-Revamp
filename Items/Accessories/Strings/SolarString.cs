@@ -14,7 +14,7 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Solar String");
-            Tooltip.SetDefault("[c/6EAE6E:+5% base yoyo damage]");
+            Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+5% base yoyo damage]\n[c/6EAE6E:+250 yoyo range]");
         }
 
         public override void SetDefaults()
@@ -41,6 +41,14 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override bool CanEquipAccessory(Player player, int slot, bool modded)
         {
             return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<StringSlot>().Type);
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.FragmentSolar, 20)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eclipse String");
-            Tooltip.SetDefault("Feels very heavy\nYoyos create damaging swipes on hit");
+            Tooltip.SetDefault("Increases yoyo range\nFeels very heavy\nYoyos create damaging swipes on hit\n[c/6EAE6E:+150 yoyo range]");
         }
 
         public override void SetDefaults()

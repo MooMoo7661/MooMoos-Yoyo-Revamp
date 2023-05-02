@@ -16,7 +16,7 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Grape String");
-            Tooltip.SetDefault("Increases yoyo range\nSmells like grapes");
+            Tooltip.SetDefault("Increases yoyo range\nSmells like grapes\n[c/6EAE6E:+150 yoyo range]");
         }
         
         public override void SetDefaults()

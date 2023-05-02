@@ -61,7 +61,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 					break;
 
 				case NPCID.IceGolem:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>(), 20));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>(), 2));
 					break;
 
 				case NPCID.IceMimic:

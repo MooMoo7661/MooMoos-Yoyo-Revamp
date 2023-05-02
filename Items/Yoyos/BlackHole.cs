@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using CombinationsMod.Projectiles.YoyoProjectiles;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent;
+using CombinationsMod.Items.Bars;
 
 namespace CombinationsMod.Items.Yoyos
 {
@@ -42,6 +43,17 @@ namespace CombinationsMod.Items.Yoyos
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             tooltips.Insert(1, new TooltipLine(Mod, "YoyoType", "[c/6FD4FF:Boss Drop]"));
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<TheTempest>())
+                .AddIngredient(ItemID.BeetleHusk, 5)
+                .AddIngredient(ModContent.ItemType<EclipseBar>(), 5)
+                .AddIngredient(ItemID.SoulofNight, 15)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

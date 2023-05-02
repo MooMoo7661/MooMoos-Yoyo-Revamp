@@ -151,6 +151,16 @@ namespace CombinationsMod
             trick2 = false;
         }
 
+        public float GetModifiedPlayerYoyoStringLength(float length)
+        {
+            if (solarString)
+            {
+                length += 100f;
+            }
+
+            return length;
+        }
+
         public override void PostUpdateEquips() // Each of these 3 functions keeps track of whether to add or subtract 1.8f to the yoyo's top speed.
         {                                       // Requires a hook in `CombinationsModSystem` to subtract the stats when the player saves and quits. PlayerDisconnect ONLY runs when you disconnect from a multiplayer world.
 

@@ -160,7 +160,7 @@ namespace CombinationsMod
 
         public float GetModifiedPlayerYoyoStringLength(float length)
         {
-            if (solarString)
+            if (solarString || nebulaString || vortexString || stardustString)
             {
                 length += 100f;
             }

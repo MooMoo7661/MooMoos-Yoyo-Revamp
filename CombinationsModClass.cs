@@ -189,6 +189,22 @@ namespace CombinationsMod
                             case 34:
                                 textureColor = new(168, 59, 153);
                                 break;
+
+                            case 35: // Stardust String
+                                textureColor = new(90, 195, 248);
+                                break;
+
+                            case 36: // Solar String
+                                textureColor = new(255, 180, 56);
+                                break;
+
+                            case 37: // Vortex String
+                                textureColor = new(131, 238, 220);
+                                break;
+
+                            case 38: // Nebula String
+                                textureColor = new(254, 14, 177);
+                                break;
                         }
 
                         float alphaDilation = 0.6f; // Dilates the texture's alpha. Otherwise, it wouldn't look right

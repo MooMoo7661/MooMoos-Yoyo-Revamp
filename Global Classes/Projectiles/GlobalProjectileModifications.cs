@@ -50,18 +50,19 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             }
         }
 
-        public override void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[projectile.owner];
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
             if (modPlayer.golemString && projectile.aiStyle == 99 && projectile.counterweight)
             {
-                damage *= 2;
-                knockback *= 2;
+                modifiers.FinalDamage *= 2f;
+                modifiers.Knockback *= 2f;
             }
         }
-        public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[projectile.owner];
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();

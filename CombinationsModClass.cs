@@ -20,12 +20,12 @@ namespace CombinationsMod
 
         public override void Load()
         {
-            On.Terraria.Main.DrawProj_DrawYoyoString += Test;   
+            Terraria.On_Main.DrawProj_DrawYoyoString += Test;   
         }
 
         public override void Unload()
         {
-            On.Terraria.Main.DrawProj_DrawYoyoString -= Test;
+            Terraria.On_Main.DrawProj_DrawYoyoString -= Test;
         }
 
         private void DrawCustomYoyoString(Projectile projectile, Vector2 mountedCenter, Color textureColor, Asset<Texture2D> texture)
@@ -188,7 +188,7 @@ namespace CombinationsMod
 
                             case 34:
                                 textureColor = new(168, 59, 153);
-                                break;
+                                break;  
 
                             case 35: // Stardust String
                                 textureColor = new(90, 195, 248);
@@ -228,7 +228,7 @@ namespace CombinationsMod
             }
         }
 
-        private void Test(On.Terraria.Main.orig_DrawProj_DrawYoyoString orig, Main self, Projectile projectile, Vector2 mountedCenter)
+        private void Test(Terraria.On_Main.orig_DrawProj_DrawYoyoString orig, Main self, Projectile projectile, Vector2 mountedCenter)
         {
             Player player = Main.player[projectile.owner];
 

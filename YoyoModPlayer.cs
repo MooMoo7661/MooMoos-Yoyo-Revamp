@@ -197,7 +197,7 @@ namespace CombinationsMod
 
         }
 
-        public override void PlayerDisconnect(Player player) // Subtracts the added Yoyo stats when the player disconnects.
+        public override void PlayerDisconnect() // Subtracts the added Yoyo stats when the player disconnects.
         {
             if (yoyoSpacers)
             {
@@ -227,15 +227,15 @@ namespace CombinationsMod
 
         public override void Load()
         {
-            On.Terraria.Player.Counterweight += DualYoyoDetour;
+            Terraria.On_Player.Counterweight += DualYoyoDetour;
         }
 
         public override void Unload()
         {
-            On.Terraria.Player.Counterweight -= DualYoyoDetour;
+            Terraria.On_Player.Counterweight -= DualYoyoDetour;
         }
 
-        private void DualYoyoDetour(On.Terraria.Player.orig_Counterweight orig, Player player, Vector2 hitPos, int dmg, float kb)
+        private void DualYoyoDetour(Terraria.On_Player.orig_Counterweight orig, Player player, Vector2 hitPos, int dmg, float kb)
         {
             DualYoyo(player, hitPos, dmg, kb);
         }

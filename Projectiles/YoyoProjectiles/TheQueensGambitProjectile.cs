@@ -27,14 +27,14 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.scale = 1f;
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[Projectile.owner];
             Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
 
             if (Main.myPlayer == Projectile.owner)
             {
-                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, player.beeType(), player.beeDamage(damage), player.beeKB(knockback), Projectile.owner);
+                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, player.beeType(), player.beeDamage(damageDone), player.beeKB(Projectile.knockBack), Projectile.owner);
                 proj.friendly = true;
             }
         }

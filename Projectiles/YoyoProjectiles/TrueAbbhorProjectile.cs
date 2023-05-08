@@ -73,7 +73,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             for (int j = 0; j < 5; j++)
 

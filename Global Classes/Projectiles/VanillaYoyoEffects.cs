@@ -296,7 +296,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             }
         }
 
-        public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[projectile.owner];
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
@@ -629,15 +629,15 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void Load()
         {
-            On.Terraria.Projectile.AI_099_2 += YoyoAIDetour;
+            Terraria.On_Projectile.AI_099_2 += YoyoAIDetour;
         }
 
         public override void Unload()
         {
-            On.Terraria.Projectile.AI_099_2 -= YoyoAIDetour;
+            Terraria.On_Projectile.AI_099_2 -= YoyoAIDetour;
         }
 
-        private void YoyoAIDetour(On.Terraria.Projectile.orig_AI_099_2 orig, Projectile projectile)
+        private void YoyoAIDetour(Terraria.On_Projectile.orig_AI_099_2 orig, Projectile projectile)
         {
             flag = false;
 

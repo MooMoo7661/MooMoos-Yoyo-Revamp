@@ -29,23 +29,20 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.scale = 1f;
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (Main.player[Projectile.owner].ZoneGraveyard)
             {
-                damage *= 2;
+                modifiers.FinalDamage *= 2;
             }
 
             if (target.type == NPCID.Ghost || target.type == NPCID.Wraith || target.type == NPCID.PirateGhost)
             {
-                damage = 672;
+                modifiers.FinalDamage *= 8f;
             }
-
-
-
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (target.type == NPCID.Ghost || target.type == NPCID.Wraith || target.type == NPCID.PirateGhost || target.type == NPCID.DungeonSpirit || target.type == NPCID.Poltergeist)
             {

@@ -47,7 +47,12 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    for (int i = 0; i < 3; i++)
+                    if (!(NPC.downedGolemBoss == false))
+                    {
+
+                    }
+
+                        for (int i = 0; i < 2; i++)
                     {
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.WoodYoyo, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<IronYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
@@ -82,9 +87,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<MambeleProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Kraken, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.TheEyeOfCthulhu, damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TempestProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<BlackHole>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CultistYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Terrarian, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Terrarian, damage, Projectile.knockBack, Projectile.owner);
                     }
                 }

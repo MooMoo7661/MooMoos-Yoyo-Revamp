@@ -30,11 +30,13 @@ namespace CombinationsMod.NPCS
     public class ExamplePerson : ModNPC
     {
         public int NumberOfTimesTalkedTo = 0;
-        public static bool useFirstShop;
+
+        public const string AccessoriesShop = "Accessories";
+        public const string YoyoShop = "Yoyos";
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Skeleton Peddler");
+            // DisplayName.SetDefault("Skeleton Peddler");
             Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.SkeletonMerchant];
 
             NPCID.Sets.ExtraFramesCount[Type] = NPCID.Sets.ExtraFramesCount[NPCID.SkeletonMerchant];
@@ -79,7 +81,7 @@ namespace CombinationsMod.NPCS
             NPC.knockBackResist = 0.5f;
 
             NPC.lavaImmune = true;
-            
+
 
             AnimationType = NPCID.Guide;
         }
@@ -102,11 +104,11 @@ namespace CombinationsMod.NPCS
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
-				new FlavorTextBestiaryInfoElement("This skeleton yearns to explore. He hates the underground and will do anything to stay away from it. He collects yoyos as a hobby, and will gladly sell them to you, for a price."),
+                new FlavorTextBestiaryInfoElement("This skeleton yearns to explore. He hates the underground and will do anything to stay away from it. He collects yoyos as a hobby, and will gladly sell them to you, for a price."),
             });
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             int num = NPC.life > 0 ? 1 : 5;
 
@@ -116,7 +118,7 @@ namespace CombinationsMod.NPCS
             }
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             // Requirements for the town NPC to spawn.
 
@@ -168,11 +170,11 @@ namespace CombinationsMod.NPCS
             chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.ExamplePerson.StandardDialogue5"));
 
             NumberOfTimesTalkedTo++;
-           /* if (NumberOfTimesTalkedTo >= 10)
-            {
-                //This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
-                chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.TalkALot"));
-            }*/
+            /* if (NumberOfTimesTalkedTo >= 10)
+             {
+                 //This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
+                 chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.TalkALot"));
+             }*/
 
             return chat;
         }
@@ -183,347 +185,102 @@ namespace CombinationsMod.NPCS
             button2 = "Accessory " + Language.GetTextValue("LegacyInterface.28");
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shop)
         {
             if (firstButton)
             {
-                useFirstShop = true;
-                shop = true;
+                shop = YoyoShop;
             }
             else
             {
-                useFirstShop = false;
-                shop = true;
+                shop = AccessoriesShop;
             }
         }
 
-          public override void SetupShop(Chest shop, ref int nextSlot)
-          {
-            if (useFirstShop)
+        public override void AddShops()
+        {
+            var yoyosShop = new NPCShop(Type, YoyoShop)
+                .Add(ItemID.Rally)
+                .Add(ItemType<ThinMint>(), Condition.BloodMoon)
+                .Add(ItemID.CrimsonYoyo, Condition.DownedBrainOfCthulhu)
+                .Add(ItemID.CorruptYoyo, Condition.DownedEaterOfWorlds)
+                .Add(ModContent.ItemType<Catacomb>(), YoyoModConditions.MasterOrExpertMode, Condition.DownedSkeletron)
+                .Add(ItemType<TheQueensGambit>(), YoyoModConditions.MasterOrExpertMode, Condition.DownedQueenBee);
+
+
+            if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
             {
-                shop.item[nextSlot].SetDefaults(ItemID.Rally);
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 7);
-                nextSlot++;
-
-                if (NPC.downedBoss2)
-                {
-                    if (WorldGen.crimson)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.CrimsonYoyo);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 15);
-                        nextSlot++;
-                    }
-                    else
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.CorruptYoyo);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 15);
-                        nextSlot++;
-                    }
-                }
-
-                if (NPC.downedSlimeKing)
-                {
-                    if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
-                    {
-                        shop.item[nextSlot].SetDefaults(veridianMod.Find<ModItem>("Stickler").Type);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 13, silver: 89);
-                        nextSlot++;
-                    }
-                }
-
-                if ((Main.expertMode || Main.masterMode))
-                {
-                    if (NPC.downedBoss3)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<Catacomb>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 20);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedQueenBee)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<TheQueensGambit>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 25);
-                        nextSlot++;
-                    }
-                }
-
-                if (NPC.downedBoss1 && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedSlimeKing)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.Code1);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 15);
-                    nextSlot++;
-                }
-                
-                if (NPC.downedGoblins)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemType<Smudge>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 14);
-                    nextSlot++;
-                }
-
-                if (Main.bloodMoon)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemType<ThinMint>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 14);
-                    nextSlot++;
-
-                    if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
-                    {
-                        shop.item[nextSlot].SetDefaults(tysYoyoRedux.Find<ModItem>("Ravager").Type);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 20);
-                        nextSlot++;
-                    }
-                }
-
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.FormatC);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 23);
-                    nextSlot++;
-
-                    if (NPC.downedMechBoss1)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.HelFire);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 27);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedMechBoss2)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.Amarok);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.TheEyeOfCthulhu);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 45);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedMechBoss3)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.Gradient);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 50);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedPlantBoss)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.Yelets);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 60);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedGolemBoss)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.RedsYoyo);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 75);
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.ValkyrieYoyo);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 75);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedChristmasIceQueen)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<ChristmasBulb>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 90);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedHalloweenKing)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<Mambele>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 90);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedAncientCultist)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<CultistYoyo>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 1, gold: 50);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedEmpressOfLight)
-                    {
-                        if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
-                        {
-                            shop.item[nextSlot].SetDefaults(tysYoyoRedux.Find<ModItem>("Spectrum").Type);
-                            shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 2);
-                            nextSlot++;
-                        }
-                    }
-
-                    if (NPC.downedMoonlord)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.Kraken);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 1);
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.Terrarian);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3);
-                        nextSlot++;
-                    }
-                }
+                yoyosShop.Add(veridianMod.Find<ModItem>("Stickler").Type, Condition.DownedKingSlime);
             }
-            else // Second Shop
+
+            yoyosShop.Add(ItemID.Code1, Condition.DownedEyeOfCthulhu, YoyoModConditions.EaterOfWorldsOrBrain, Condition.DownedSkeletron, Condition.DownedQueenBee, Condition.DownedKingSlime);
+
+            yoyosShop.Add(ItemID.FormatC, Condition.Hardmode);
+
+            yoyosShop.Add(ItemID.HelFire, Condition.DownedDestroyer, Condition.Hardmode);
+
+            yoyosShop.Add(ItemID.Amarok, Condition.DownedTwins, Condition.Hardmode);
+            yoyosShop.Add(ItemID.TheEyeOfCthulhu, Condition.DownedTwins, Condition.Hardmode);
+
+            yoyosShop.Add(ItemID.Gradient, Condition.DownedSkeletronPrime, Condition.Hardmode);
+
+            yoyosShop.Add(ItemID.Yelets, Condition.DownedPlantera, Condition.Hardmode);
+
+            yoyosShop.Add(ItemID.RedsYoyo, Condition.DownedGolem, Condition.Hardmode);
+
+            yoyosShop.Add(ItemID.ValkyrieYoyo, Condition.DownedGolem, Condition.Hardmode);
+
+            yoyosShop.Add(ItemType<ChristmasBulb>(), Condition.DownedIceQueen, Condition.Hardmode);
+
+            yoyosShop.Add(ItemType<Mambele>(), Condition.DownedPumpking, Condition.Hardmode);
+
+            yoyosShop.Add(ItemType<CultistYoyo>(), Condition.DownedCultist, Condition.Hardmode);
+
+            yoyosShop.Add(ItemID.Kraken, Condition.DownedDukeFishron, Condition.Hardmode);
+
+            if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
             {
-                shop.item[nextSlot].SetDefaults(ItemType<HitDisplay>());
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 9);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemType<SpeedDisplay>());
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 9);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemType<DarkBlueString>());
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemType<DarkGreenString>());
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
-                nextSlot++;
-
-                if (NPC.downedBoss1)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemType<LightPinkString>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<AbilityRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 20);
-                    nextSlot++;
-                }
-
-                if (Main.masterMode || Main.expertMode)
-                {
-                    if (NPC.downedSlimeKing)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<SlimyString>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 15);
-                        nextSlot++;
-                    }
-                }
-                
-
-                if (NPC.downedBoss1 || NPC.downedSlimeKing)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemType<AmberRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 12);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<TopazRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 12);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<AmethystRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 12);
-                    nextSlot++;
-                }
-
-                if (NPC.downedBoss3)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.BlueCounterweight);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<RubyRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 14);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<SapphireRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 14);
-                    nextSlot++;
-                }
-
-                if (NPC.downedBoss2)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.YellowCounterweight);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<EmeraldRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 16);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<DiamondRing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<DarkTealString>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
-                    nextSlot++;
-                }
-
-                if (NPC.downedQueenBee)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.GreenCounterweight);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemType<GrapeString>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
-                    nextSlot++;
-                }
-
-                if (Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemType<YoyoDrillCasing>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 20);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.YoYoGlove);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.BlackCounterweight);
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
-                    nextSlot++;
-
-                    if (NPC.downedChristmasIceQueen)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<TreeClippersDrillCasing>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 1);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedHalloweenKing)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<HorsemansDrillCasing>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 1);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedPlantBoss && (Main.expertMode || Main.masterMode))
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<HoneyRing>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedGolemBoss)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.RedCounterweight);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 18);
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemType<TsurugiDrillCasing>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3);
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedAncientCultist)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<ShadowflameDrillCasing>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(platinum: 3, gold: 50);
-                        nextSlot++;
-                    }
-                }
+                yoyosShop.Add(tysYoyoRedux.Find<ModItem>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
             }
-          }
-            
+
+            yoyosShop.Add(ItemID.Terrarian, Condition.DownedMoonLord, Condition.Hardmode);
+
+
+            yoyosShop.Register();
+
+            var accessoriesShop = new NPCShop(Type, AccessoriesShop)
+            .Add(ItemType<HitDisplay>())
+            .Add(ItemType<SpeedDisplay>())
+            .Add(ItemType<DarkBlueString>())
+            .Add(ItemType<DarkGreenString>())
+            .Add(ItemType<LightPinkString>(), Condition.DownedEyeOfCthulhu)
+            .Add(ItemType<AbilityRing>(), Condition.DownedEyeOfCthulhu)
+            .Add(ItemID.BlueCounterweight, Condition.DownedSkeletron)
+            .Add(ItemType<RubyRing>(), Condition.DownedSkeletron)
+            .Add(ItemType<SapphireRing>(), Condition.DownedSkeletron)
+            .Add(ItemID.GreenCounterweight, Condition.DownedQueenBee)
+            .Add(ItemType<GrapeString>(), Condition.DownedQueenBee)
+            .Add(ItemType<YoyoDrillCasing>(), Condition.Hardmode)
+            .Add(ItemID.YoYoGlove, Condition.Hardmode)
+            .Add(ItemID.BlackCounterweight, Condition.Hardmode)
+            .Add(ItemType<SlimyString>(), Condition.DownedKingSlime, YoyoModConditions.MasterOrExpertMode)
+            .Add(ItemType<AmberRing>(), Condition.DownedEyeOfCthulhu)
+            .Add(ItemType<TopazRing>(), Condition.DownedEyeOfCthulhu)
+            .Add(ItemType<AmethystRing>(), Condition.DownedEyeOfCthulhu)
+            .Add(ItemID.YellowCounterweight, YoyoModConditions.EaterOfWorldsOrBrain)
+            .Add(ItemType<EmeraldRing>(), YoyoModConditions.EaterOfWorldsOrBrain)
+            .Add(ItemType<DiamondRing>(), YoyoModConditions.EaterOfWorldsOrBrain)
+            .Add(ItemType<DarkTealString>(), YoyoModConditions.EaterOfWorldsOrBrain)
+
+            .Add(ItemType<TreeClippersDrillCasing>(), Condition.DownedIceQueen, Condition.Hardmode)
+            .Add(ItemType<HorsemansDrillCasing>(), Condition.DownedPumpking, Condition.Hardmode)
+            .Add(ItemType<TsurugiDrillCasing>(), Condition.DownedGolem, Condition.Hardmode)
+            .Add(ItemID.RedCounterweight, Condition.DownedGolem, Condition.Hardmode)
+            .Add(ItemType<HoneyRing>(), Condition.DownedPlantera, YoyoModConditions.MasterOrExpertMode);
+
+            accessoriesShop.Register();
+        }
+        
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.Rally));
@@ -574,16 +331,6 @@ namespace CombinationsMod.NPCS
         {
             multiplier = 18f;
             randomOffset = 0.2f;
-        }
-
-        public override void LoadData(TagCompound tag)
-        {
-            NumberOfTimesTalkedTo = tag.GetInt("numberOfTimesTalkedTo");
-        }
-
-        public override void SaveData(TagCompound tag)
-        {
-            tag["numberOfTimesTalkedTo"] = NumberOfTimesTalkedTo;
         }
     }
 

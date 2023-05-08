@@ -97,6 +97,13 @@ namespace CombinationsMod
             AddDictionaryEntries();
         }
 
+        public override void Unload()
+        {
+            TextureAssets.Item[ItemID.YoYoGlove] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/YoYoGlove");
+            TextureAssets.Item[ItemID.Code2] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code2");
+            TextureAssets.Item[ItemID.Code1] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code1");
+        }
+
         public override void AddRecipes()
         {
             Recipe recipe = Recipe.Create(ItemID.Code2);

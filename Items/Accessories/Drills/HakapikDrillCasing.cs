@@ -10,8 +10,8 @@ namespace CombinationsMod.Items.Accessories.Drills
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Hakapik");
-            Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:200% pickaxe power]\nA Norwegian tool in origin");
+            // DisplayName.SetDefault("The Hakapik");
+            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:200% pickaxe power]\nA Norwegian tool in origin");
         }
 
         public override void SetDefaults()

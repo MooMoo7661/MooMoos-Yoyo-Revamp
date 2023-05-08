@@ -10,7 +10,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Red Background");
+            // DisplayName.SetDefault("Red Background");
         }
 
         public override void SetDefaults()

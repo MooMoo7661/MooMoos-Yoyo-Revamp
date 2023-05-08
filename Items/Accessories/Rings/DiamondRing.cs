@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Diamond Ring");
-            Tooltip.SetDefault("Yoyos will emit bright white light");
+            // DisplayName.SetDefault("Diamond Ring");
+            // Tooltip.SetDefault("Yoyos will emit bright white light");
         }
 
         public override void SetDefaults()

@@ -8,8 +8,8 @@ namespace CombinationsMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hallowed");
-			Description.SetDefault("Soul is evaporating");
+			// DisplayName.SetDefault("Hallowed");
+			// Description.SetDefault("Soul is evaporating");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

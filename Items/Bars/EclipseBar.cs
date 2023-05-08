@@ -13,8 +13,8 @@ namespace CombinationsMod.Items.Bars
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Eclipse Bar");
-            Tooltip.SetDefault("Radiates otherworldly energy");
+            // DisplayName.SetDefault("Eclipse Bar");
+            // Tooltip.SetDefault("Radiates otherworldly energy");
         }
 
         public override void SetDefaults()

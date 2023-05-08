@@ -1,9 +1,9 @@
 using CombinationsMod.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using On.Terraria.DataStructures;
 using System.IO;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +17,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cultist Ring 2");
+            // DisplayName.SetDefault("Cultist Ring 2");
         }
 
         public override void SetDefaults()

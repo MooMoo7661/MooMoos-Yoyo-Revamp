@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gemstone Ring");
-            Tooltip.SetDefault("Yoyos will emit a variety of colors");
+            // DisplayName.SetDefault("Gemstone Ring");
+            // Tooltip.SetDefault("Yoyos will emit a variety of colors");
         }
 
         public override void SetDefaults()

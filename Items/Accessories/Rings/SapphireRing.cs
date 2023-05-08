@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sapphire Ring");
-            Tooltip.SetDefault("Yoyos will emit bright blue light");
+            // DisplayName.SetDefault("Sapphire Ring");
+            // Tooltip.SetDefault("Yoyos will emit bright blue light");
         }
 
         public override void SetDefaults()

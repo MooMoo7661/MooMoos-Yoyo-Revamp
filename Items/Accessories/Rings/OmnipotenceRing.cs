@@ -14,8 +14,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ring of Perception");
-            Tooltip.SetDefault("Yoyos shoot cursed flames");
+            // DisplayName.SetDefault("Ring of Perception");
+            // Tooltip.SetDefault("Yoyos shoot cursed flames");
         }
 
         public override void SetDefaults()

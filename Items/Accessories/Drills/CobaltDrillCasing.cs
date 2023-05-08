@@ -1,5 +1,4 @@
 using CombinationsMod.UI;
-using IL.Terraria.Utilities;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -13,8 +12,8 @@ namespace CombinationsMod.Items.Accessories.Drills
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cobalt Drill Casing");
-            Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:110% pickaxe power]");
+            // DisplayName.SetDefault("Cobalt Drill Casing");
+            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:110% pickaxe power]");
         }
 
         public override void SetDefaults()

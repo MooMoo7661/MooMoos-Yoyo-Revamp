@@ -14,8 +14,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("Iron Yoyo");
-            Tooltip.SetDefault("");
+            // DisplayName.SetDefault("Iron Yoyo");
+            // Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()

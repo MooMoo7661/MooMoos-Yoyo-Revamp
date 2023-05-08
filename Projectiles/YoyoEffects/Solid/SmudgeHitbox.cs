@@ -1,7 +1,7 @@
 ﻿using CombinationsMod.Dusts;
 using Microsoft.Xna.Framework;
-using On.Terraria.DataStructures;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,7 +13,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Smudge Hitbox");
+            // DisplayName.SetDefault("Smudge Hitbox");
         }
 
         public override void SetDefaults()
@@ -32,13 +32,13 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
         }
         public override string Texture => "CombinationsMod/Projectiles/YoyoEffects/ScalableHitbox1";
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[Projectile.owner];
 
             if (player.ZoneGraveyard)
             {
-                damage = (int)(damage * 1.5f);
+                modifiers.FinalDamage *= 1.5f;
             }
         }
         public override void AI()

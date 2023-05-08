@@ -12,8 +12,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Terrene Ring");
-            Tooltip.SetDefault("[c/FF00AB:Enables Yoyos to use their special abilities.]\nYoyos will show the requirements for triggering the ability.\nYoyos can phase through walls\nYoyos shoot cursed flames\n[c/6EAE6E:+10% base yoyo damage]");
+            // DisplayName.SetDefault("Terrene Ring");
+            // Tooltip.SetDefault("[c/FF00AB:Enables Yoyos to use their special abilities.]\nYoyos will show the requirements for triggering the ability.\nYoyos can phase through walls\nYoyos shoot cursed flames\n[c/6EAE6E:+10% base yoyo damage]");
         }
 
         public override void SetDefaults()

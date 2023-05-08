@@ -11,7 +11,7 @@ namespace CombinationsMod.Projectiles.Explosions
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Red Explosion");
+            // DisplayName.SetDefault("Red Explosion");
 
             
         }

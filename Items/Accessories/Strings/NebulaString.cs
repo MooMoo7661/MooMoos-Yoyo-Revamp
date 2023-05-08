@@ -13,8 +13,8 @@ namespace CombinationsMod.Items.Accessories.Strings
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nebula String");
-            Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+250 yoyo range]\n[c/6EAE6E:+5% base yoyo damage]");
+            // DisplayName.SetDefault("Nebula String");
+            // Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+250 yoyo range]\n[c/6EAE6E:+5% base yoyo damage]");
         }
 
         public override void SetDefaults()

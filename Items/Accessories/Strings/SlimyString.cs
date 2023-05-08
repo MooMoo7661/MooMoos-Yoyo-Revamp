@@ -13,8 +13,8 @@ namespace CombinationsMod.Items.Accessories.Strings
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Slimy String");
-            Tooltip.SetDefault("Increases yoyo range\nYoyos create slime covered spikes\n[c/6EAE6E:+150 yoyo range]");
+            // DisplayName.SetDefault("Slimy String");
+            // Tooltip.SetDefault("Increases yoyo range\nYoyos create slime covered spikes\n[c/6EAE6E:+150 yoyo range]");
         }
 
         public override void SetDefaults()

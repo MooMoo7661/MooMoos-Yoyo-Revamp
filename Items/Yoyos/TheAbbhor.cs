@@ -16,8 +16,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("The Abbhor");
-            Tooltip.SetDefault("An amalgamation of pure power");
+            // DisplayName.SetDefault("The Abbhor");
+            // Tooltip.SetDefault("An amalgamation of pure power");
         }
 
         public override void SetDefaults()

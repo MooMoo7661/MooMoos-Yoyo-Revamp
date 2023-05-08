@@ -43,7 +43,7 @@ namespace CombinationsMod.Projectiles.Misc
 
         public override void SetStaticDefaults()
         {
-            base.DisplayName.SetDefault("Sparkle");
+            // base.DisplayName.SetDefault("Sparkle");
         }
 
         public override void SetDefaults()

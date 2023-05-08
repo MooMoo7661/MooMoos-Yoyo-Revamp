@@ -10,8 +10,8 @@ namespace CombinationsMod.Items.Accessories.Drills
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Orichalcum Drill Casing");
-            Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/F3BDFF:165% pickaxe power]");
+            // DisplayName.SetDefault("Orichalcum Drill Casing");
+            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/F3BDFF:165% pickaxe power]");
         }
 
         public override void SetDefaults()

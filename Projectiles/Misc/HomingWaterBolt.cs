@@ -12,7 +12,7 @@ namespace CombinationsMod.Projectiles.Misc
         private int dustTimer = 0;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("");
+            // DisplayName.SetDefault("");
 
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
         }
@@ -79,7 +79,7 @@ namespace CombinationsMod.Projectiles.Misc
             return closestNPC;
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Main.myPlayer == Projectile.owner)
             {

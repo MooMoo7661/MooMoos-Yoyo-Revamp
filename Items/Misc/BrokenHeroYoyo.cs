@@ -14,8 +14,8 @@ public class BrokenHeroYoyo : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Broken Hero Yoyo");
-        Tooltip.SetDefault("");
+        // DisplayName.SetDefault("Broken Hero Yoyo");
+        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()

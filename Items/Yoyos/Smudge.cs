@@ -15,8 +15,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("Smudge");
-            Tooltip.SetDefault("Does increased damage to spectral targets.\nWhen in a graveyard biome, it receives a 2x damage boost marked by the emission of blue flames.\n\"Has a 6 second grace period.\"");
+            // DisplayName.SetDefault("Smudge");
+            // Tooltip.SetDefault("Does increased damage to spectral targets.\nWhen in a graveyard biome, it receives a 2x damage boost marked by the emission of blue flames.\n\"Has a 6 second grace period.\"");
         }
 
         public override void SetDefaults()

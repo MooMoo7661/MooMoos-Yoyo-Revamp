@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Bars
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Neutraline Scrap");
-            Tooltip.SetDefault("Melted down slag of dangerous weapons");
+            // DisplayName.SetDefault("Neutraline Scrap");
+            // Tooltip.SetDefault("Melted down slag of dangerous weapons");
         }
             
         public override void SetDefaults()

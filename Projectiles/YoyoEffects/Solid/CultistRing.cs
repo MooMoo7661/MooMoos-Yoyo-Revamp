@@ -18,7 +18,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cultist Ring 1");
+            // DisplayName.SetDefault("Cultist Ring 1");
         }
 
         public override void SetDefaults()

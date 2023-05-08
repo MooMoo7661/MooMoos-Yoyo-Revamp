@@ -17,8 +17,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("The Tempest");
-            Tooltip.SetDefault("");
+            // DisplayName.SetDefault("The Tempest");
+            // Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()

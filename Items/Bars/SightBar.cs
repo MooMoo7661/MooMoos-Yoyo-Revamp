@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Bars
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sight Bar");
-            Tooltip.SetDefault("'Forged from the essence of all-seeing creatures'");
+            // DisplayName.SetDefault("Sight Bar");
+            // Tooltip.SetDefault("'Forged from the essence of all-seeing creatures'");
         }
 
         public override void SetDefaults()

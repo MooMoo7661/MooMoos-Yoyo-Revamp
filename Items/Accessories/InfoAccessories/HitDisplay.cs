@@ -10,8 +10,8 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mechanical Clicker");
-            Tooltip.SetDefault("Displays the current consecutive hits by a Yoyo");
+            // DisplayName.SetDefault("Mechanical Clicker");
+            // Tooltip.SetDefault("Displays the current consecutive hits by a Yoyo");
         }
 
         public override void SetDefaults()

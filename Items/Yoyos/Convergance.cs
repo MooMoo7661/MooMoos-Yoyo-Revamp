@@ -21,8 +21,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("The Convergance");
-            Tooltip.SetDefault("The pinnacle of destruction\nLight shines through the center");
+            // DisplayName.SetDefault("The Convergance");
+            // Tooltip.SetDefault("The pinnacle of destruction\nLight shines through the center");
         }
 
         public override void SetDefaults()
@@ -72,7 +72,7 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ModContent.ItemType<Mambele>())
                 .AddIngredient(ItemID.Kraken)
                 .AddIngredient(ItemID.TheEyeOfCthulhu)
-                .AddIngredient(ModContent.ItemType<TheTempest>())
+                .AddIngredient(ModContent.ItemType<BlackHole>())
                 .AddIngredient(ModContent.ItemType<CultistYoyo>())
                 .AddIngredient(ItemID.Terrarian)
                 .AddTile(TileID.LunarCraftingStation)
@@ -88,7 +88,7 @@ namespace CombinationsMod.Items.Yoyos
             if (modPlayer.yoyoRing)
             {
                 tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
-                tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a large damaging aura]")); // TODO: Implement Ability
+                tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Shoots every yoyo used in it's creation]")); // TODO: Implement Ability
             }
         }
     }

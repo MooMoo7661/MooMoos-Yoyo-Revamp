@@ -14,8 +14,8 @@ public class PalladiumYoyo : ModItem
     {
         ItemID.Sets.Yoyo[Item.type] = true;
 
-        DisplayName.SetDefault("Palladium Yoyo");
-        Tooltip.SetDefault("");
+        // DisplayName.SetDefault("Palladium Yoyo");
+        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()

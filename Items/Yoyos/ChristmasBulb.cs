@@ -16,8 +16,8 @@ public class ChristmasBulb : ModItem
     {
         ItemID.Sets.Yoyo[Item.type] = true;
 
-        DisplayName.SetDefault("Christmas Bulb");
-        Tooltip.SetDefault("Wrapped tightly with Christmas Tree lights\nSmells like fresh pine");
+        // DisplayName.SetDefault("Christmas Bulb");
+        // Tooltip.SetDefault("Wrapped tightly with Christmas Tree lights\nSmells like fresh pine");
     }
 
     public override void SetDefaults()

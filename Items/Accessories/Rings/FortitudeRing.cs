@@ -13,8 +13,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ring of Fortitude");
-            Tooltip.SetDefault("Yoyos can phase through walls");
+            // DisplayName.SetDefault("Ring of Fortitude");
+            // Tooltip.SetDefault("Yoyos can phase through walls");
         }
 
         public override void SetDefaults()

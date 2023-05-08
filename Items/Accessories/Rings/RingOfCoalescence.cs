@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ring of Coalescence");
-            Tooltip.SetDefault("Yoyos can phase through walls\nYoyos shoot cursed flames\n[c/6EAE6E:+10% base yoyo damage]");
+            // DisplayName.SetDefault("Ring of Coalescence");
+            // Tooltip.SetDefault("Yoyos can phase through walls\nYoyos shoot cursed flames\n[c/6EAE6E:+10% base yoyo damage]");
         }
 
         public override void SetDefaults()

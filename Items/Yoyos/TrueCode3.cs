@@ -16,8 +16,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("True Code 3");
-            Tooltip.SetDefault("Shines with immense power");
+            // DisplayName.SetDefault("True Code 3");
+            // Tooltip.SetDefault("Shines with immense power");
         }
 
         public override void SetDefaults()

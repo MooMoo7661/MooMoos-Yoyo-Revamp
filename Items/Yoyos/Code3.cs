@@ -13,8 +13,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("Code 3");
-            Tooltip.SetDefault("\"The long awaited sequel\"");
+            // DisplayName.SetDefault("Code 3");
+            // Tooltip.SetDefault("\"The long awaited sequel\"");
         }
 
         public override void SetDefaults()

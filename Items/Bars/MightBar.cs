@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Bars
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Might Bar");
-            Tooltip.SetDefault("'Forged from the essence of powerful creatures'");
+            // DisplayName.SetDefault("Might Bar");
+            // Tooltip.SetDefault("'Forged from the essence of powerful creatures'");
         }
 
         public override void SetDefaults()

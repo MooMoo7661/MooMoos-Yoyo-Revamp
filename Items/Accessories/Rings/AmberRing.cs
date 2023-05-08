@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Amber Ring");
-            Tooltip.SetDefault("Yoyos will emit bright amber light");
+            // DisplayName.SetDefault("Amber Ring");
+            // Tooltip.SetDefault("Yoyos will emit bright amber light");
         }
 
         public override void SetDefaults()

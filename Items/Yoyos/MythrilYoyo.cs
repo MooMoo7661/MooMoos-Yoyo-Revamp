@@ -14,8 +14,8 @@ public class MythrilYoyo : ModItem
     {
         ItemID.Sets.Yoyo[Item.type] = true;
 
-        DisplayName.SetDefault("Mythril Yoyo");
-        Tooltip.SetDefault("");
+        // DisplayName.SetDefault("Mythril Yoyo");
+        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()

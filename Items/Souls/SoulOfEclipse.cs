@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using IL.Terraria.GameContent.Bestiary;
 using CombinationsMod.Rarities;
 
 namespace CombinationsMod.Items.Souls
@@ -13,8 +13,8 @@ namespace CombinationsMod.Items.Souls
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul of Eclipse");
-            Tooltip.SetDefault("'The essence of otherworldly creatures'");
+            // DisplayName.SetDefault("Soul of Eclipse");
+            // Tooltip.SetDefault("'The essence of otherworldly creatures'");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 

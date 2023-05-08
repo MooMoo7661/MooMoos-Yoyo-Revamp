@@ -8,8 +8,8 @@ namespace CombinationsMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pestilence");
-			Description.SetDefault("Losing life rapidly");
+			// DisplayName.SetDefault("Pestilence");
+			// Description.SetDefault("Losing life rapidly");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

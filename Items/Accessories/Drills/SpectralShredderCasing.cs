@@ -10,8 +10,8 @@ namespace CombinationsMod.Items.Accessories.Drills
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Spectral Shredder");
-            Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\nSweet smelling fog eminates from it\nMines blocks in a diamond shape\n[c/BCFFF0:200% pickaxe power]");
+            // DisplayName.SetDefault("Spectral Shredder");
+            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\nSweet smelling fog eminates from it\nMines blocks in a diamond shape\n[c/BCFFF0:200% pickaxe power]");
         }
 
         public override void SetDefaults()

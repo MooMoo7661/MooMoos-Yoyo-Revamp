@@ -19,8 +19,8 @@ namespace CombinationsMod.Items.Yoyos
         {
             ItemID.Sets.Yoyo[Item.type] = true;
 
-            DisplayName.SetDefault("True Smudge");
-            Tooltip.SetDefault("Does increased damage to spectral targets.\nWhen in a graveyard biome, the swirls recieve a 2x damage boost.\n\"Has a 12 second grace period.\"");
+            // DisplayName.SetDefault("True Smudge");
+            // Tooltip.SetDefault("Does increased damage to spectral targets.\nWhen in a graveyard biome, the swirls recieve a 2x damage boost.\n\"Has a 12 second grace period.\"");
         }
 
         public override void SetDefaults()
@@ -51,7 +51,7 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ItemID.ChlorophyteBar, 10)
                 .AddIngredient(ItemID.Ectoplasm, 15)
                 .AddTile(TileID.MythrilAnvil)
-                .AddCondition(Recipe.Condition.InGraveyardBiome)
+                .AddCondition(Condition.InGraveyard)
                 .Register();
         }
 

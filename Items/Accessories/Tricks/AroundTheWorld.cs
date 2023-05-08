@@ -9,8 +9,8 @@ namespace CombinationsMod.Items.Accessories.Tricks
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Around The World");
-            Tooltip.SetDefault("Low-value trick\nCreates a seperate yoyo that swirls around the player in a circle that does 2x damage.\nRange stacks with your current yoyo's range\nCreates one per yoyo that you have active\nMust be equipped in regular slots");
+            // DisplayName.SetDefault("Around The World");
+            // Tooltip.SetDefault("Low-value trick\nCreates a seperate yoyo that swirls around the player in a circle that does 2x damage.\nRange stacks with your current yoyo's range\nCreates one per yoyo that you have active\nMust be equipped in regular slots");
         }
 
         public override void SetDefaults()

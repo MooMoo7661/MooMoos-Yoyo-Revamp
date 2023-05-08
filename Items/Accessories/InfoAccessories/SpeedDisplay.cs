@@ -9,8 +9,8 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yoyo Radar");
-            Tooltip.SetDefault("Displays how fast a Yoyo can move");
+            // DisplayName.SetDefault("Yoyo Radar");
+            // Tooltip.SetDefault("Displays how fast a Yoyo can move");
         }
 
         public override void SetDefaults()

@@ -1,9 +1,9 @@
 ﻿using CombinationsMod.Dusts;
 using CombinationsMod.Projectiles.Explosions;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using On.Terraria.DataStructures;
 using System.IO;
 using Terraria;
 using Terraria.ID;
@@ -16,7 +16,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Eclipse Swirl Orange");
+            // DisplayName.SetDefault("Eclipse Swirl Orange");
         }
 
         public override void SetDefaults()

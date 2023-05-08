@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Amethyst Ring");
-            Tooltip.SetDefault("Yoyos will emit bright purple light");
+            // DisplayName.SetDefault("Amethyst Ring");
+            // Tooltip.SetDefault("Yoyos will emit bright purple light");
         }
 
         public override void SetDefaults()

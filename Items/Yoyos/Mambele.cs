@@ -16,8 +16,8 @@ public class Mambele : ModItem
     {
         ItemID.Sets.Yoyo[Item.type] = true;
 
-        DisplayName.SetDefault("Mambele");
-        Tooltip.SetDefault("Coated in a rough grit\nSmells like burnt wood");
+        // DisplayName.SetDefault("Mambele");
+        // Tooltip.SetDefault("Coated in a rough grit\nSmells like burnt wood");
     }
 
     public override void SetDefaults()

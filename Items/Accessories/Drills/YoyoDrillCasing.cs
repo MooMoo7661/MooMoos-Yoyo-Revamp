@@ -10,8 +10,8 @@ namespace CombinationsMod.Items.Accessories.Drills
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Drill Casing");
-            Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:100% pickaxe power]");
+            // DisplayName.SetDefault("Drill Casing");
+            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:100% pickaxe power]");
         }
 
         public override void SetDefaults()

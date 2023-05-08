@@ -13,8 +13,8 @@ namespace CombinationsMod.Items.Accessories.Strings
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Light Pink String");
-            Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+150 yoyo range]");
+            // DisplayName.SetDefault("Light Pink String");
+            // Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+150 yoyo range]");
         }
 
         public override void SetDefaults()
@@ -25,7 +25,7 @@ namespace CombinationsMod.Items.Accessories.Strings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 1);
-            Item.canBePlacedInVanityRegardlessOfConditions = true;
+            Item.hasVanityEffects = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

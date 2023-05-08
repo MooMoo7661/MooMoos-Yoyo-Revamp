@@ -14,8 +14,8 @@ public class CobaltYoyo : ModItem
     {
         ItemID.Sets.Yoyo[Item.type] = true;
 
-        DisplayName.SetDefault("Cobalt Yoyo");
-        Tooltip.SetDefault("");
+        // DisplayName.SetDefault("Cobalt Yoyo");
+        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()

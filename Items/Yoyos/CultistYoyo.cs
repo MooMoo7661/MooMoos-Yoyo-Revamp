@@ -16,8 +16,8 @@ public class CultistYoyo : ModItem
     {
         ItemID.Sets.Yoyo[Item.type] = true;
 
-        DisplayName.SetDefault("Shakiryo");
-        Tooltip.SetDefault("");
+        // DisplayName.SetDefault("Shakiryo");
+        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()

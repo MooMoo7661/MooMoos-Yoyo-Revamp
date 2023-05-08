@@ -16,8 +16,8 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Type] = true;
-            DisplayName.SetDefault("Black Hole");
-            Tooltip.SetDefault("Spins fast enough to generate a vortex of energy, forming a devastating black hole\nCreated by Turbanik");
+            // DisplayName.SetDefault("Black Hole");
+            // Tooltip.SetDefault("Spins fast enough to generate a vortex of energy, forming a devastating black hole\nCreated by Turbanik");
 
         }
 

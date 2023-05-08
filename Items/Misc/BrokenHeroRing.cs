@@ -9,7 +9,7 @@ namespace CombinationsMod.Items.Misc
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Broken Hero Ring");
+            // DisplayName.SetDefault("Broken Hero Ring");
         }
 
         public override void SetDefaults()

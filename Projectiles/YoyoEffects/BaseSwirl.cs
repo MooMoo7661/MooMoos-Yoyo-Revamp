@@ -32,7 +32,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(ProjectileName);
+            // DisplayName.SetDefault(ProjectileName);
         }
 
         public override void SetDefaults()
@@ -62,7 +62,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
         public override string Texture => TexturePath;
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (DoesFrostburnDamage) // For use with swirls like ones used in the Amarok. Deals Frostburn damage.
             target.AddBuff(BuffID.Frostburn, 180);

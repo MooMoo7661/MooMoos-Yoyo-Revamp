@@ -1,9 +1,9 @@
 ﻿using CombinationsMod.Dusts;
 using CombinationsMod.Projectiles.Explosions;
 using Microsoft.Xna.Framework;
-using On.Terraria.DataStructures;
 using System.IO;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,7 +15,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
         protected float Scale = 0.5f;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Eclipse Swirl More-Orange-Than-The-Other-One");
+            // DisplayName.SetDefault("Eclipse Swirl More-Orange-Than-The-Other-One");
         }
 
         public override void SetDefaults()

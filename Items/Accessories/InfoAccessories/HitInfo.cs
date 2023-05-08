@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -8,13 +9,13 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
     {
         public override void SetStaticDefaults()
         {
-            InfoName.SetDefault("Yoyo Hit Counter");
+            // DisplayName.SetDefault("Yoyo Hit Counter");
         }
         public override bool Active()
         {
             return Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().hitTracker;
         }
-        public override string DisplayValue()
+        public override string DisplayValue(ref Color displayColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
         {
             Player player = Main.LocalPlayer;
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();

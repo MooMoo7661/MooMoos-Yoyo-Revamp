@@ -1,23 +1,66 @@
 
 Mods: {
 	CombinationsMod: {
-		TownNPCMood: {
-			ExamplePerson: {
-				LoveBiome: Man, the forest is great. Plenty of colors and other people to talk to.
-				LoveSpace: ""
-				LikeBiome: This place is nice. I love the pretty scenery.
+
+	
+	TownNPCMood : 
+	{
+		ExamplePerson:
+		{
+			LoveBiome: "I love the forest. Plenty of nice scenery and critters."
+			LikeBiome: "I don't mind the desert. Probably because I can't feel the heat."
+			DislikeBiome: "I don't really like it here. It sends shivers down my spine."
+
+			LoveSpace: "It's great having all this room to myself. I wouldn't mind a few people to talk to though. It's quite lonely."
+			NoHome: "In my travels, I always set up a temporary spot for a few days. I'd really like to finally just set my bags down and stay somewhere for a while."
+			DislikeCrowded: "There's a little more people than I'd like here."
+			HateCrowded: "It's really crowded here."
+
+			LoveNPC : "The Merchant and I get along really well, he knows how to talk business."
+			DislikeNPC : "I wish the Demolitionist wasn't here, I don't like his rude attitude."
+			LikeNPC_Princess : "It feels...calmer here. I can't quite place my hand on it though."
+		}
+	}
+		Dialogue:
+		{
+			ExamplePerson:
+			{
+				StandardDialogue1 : "Check out my collection of Yoyos!"
+				StandardDialogue2 : "People often assume just because I'm a skeleton that I love the underground. Fun fact: I do not."
+				StandardDialogue3 : "My yoyo days are long over, but that doesn't stop me from collecting and selling them."
+				StandardDialogue4 : "Some people tell me I look very similar to my brother. I disagree."
+				StandardDialogue5 : "Being a skeleton isn't all that bad. Sometimes, I like to play my ribcage like a xylophone!"
+				StandardDialoge6 : "Spooky scary skeletons... Hm? Oh, hello."
+
+				CommonDialoge1 : "You know, I'm quite suprised that everyone here is so receptive of me. Usually, people just scream and throw things at me."
+
 			}
 		}
 
-		Dialogue: {
-			ExamplePerson: {
-				StandardDialogue1: Check out my collection of Yoyos!
-				StandardDialogue2: People often assume just because I'm a skeleton that I love the underground. Fun fact: I do not.
-				StandardDialogue3: My yoyo days are long over, but that doesn't stop me from collecting and selling them!
-				StandardDialogue4: Some people tell me I look very similar to my brother. I disagree.
-				StandardDialogue5: Being a skeleton isn't all that bad. Sometimes, I like to play my ribcage like a xylophone!
-				StandardDialoge6: Spooky scary skeletons... Hm? Oh, hello.
-				CommonDialoge1: You know, I'm quite suprised that everyone here is so receptive of me. Usually, people just scream and throw things at me!
+		Achievements:
+		{
+			AbbhorAchievement:
+			{
+				Name: Easy Come, Easy Throw
+				Description: Forge the Abbhor, a powerful weapon that contains dark energy.
+			}
+
+			Code1Achievement:
+			{
+				Name: I Wanna be a Yoyo Man!
+				Description: Obtain the Code 1.
+			}
+
+			Code2Achievement:
+			{
+				Name: Just Keep On Yo-ing
+				Description:  Craft the Code 2.
+			}
+
+			ConverganceAchievement:
+			{
+				Name: No Strings Attatched
+				Description: Merge every yoyo into one final yoyo, the Convergance.
 			}
 		}
 
@@ -64,544 +107,140 @@ Mods: {
 		}
 
 		Projectiles: {
-			AdamantiteDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			CelestialDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			CelestialDrill2: {
-				DisplayName: Yoyo Drill
-			}
-
-			CobaltDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			Hakapik: {
-				DisplayName: Yoyo Drill
-			}
-
-			HorsemansDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			IronDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			Mattock: {
-				DisplayName: Yoyo Drill
-			}
-
-			MooMooDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			MythrilDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			NebulaDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			NinjaStar: {
-				DisplayName: Yoyo Drill
-			}
-
-			OrichalcumDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			PalladiumDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			ShadowflameDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			ShroomiteShredder: {
-				DisplayName: Yoyo Drill
-			}
-
-			SolarDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			SpectralShredder: {
-				DisplayName: Yoyo Drill
-			}
-
-			StardustDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			TheScooper: {
-				DisplayName: Yoyo Drill
-			}
-
-			TitaniumDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			TreeClippers: {
-				DisplayName: Yoyo Drill
-			}
-
-			Tsurugi: {
-				DisplayName: Yoyo Drill
-			}
-
-			VortexDrill: {
-				DisplayName: Yoyo Drill
-			}
-
-			BlueExplosion: {
-				DisplayName: Blue Explosion
-			}
-
-			DeprecatedExplosion: {
-				DisplayName: Deprecated Explosion
-			}
-
-			EclipseExplosion: {
-				DisplayName: Eclipse Explosion
-			}
-
-			FireExplosion: {
-				DisplayName: Fire Explosion
-			}
-
-			RedExplosion: {
-				DisplayName: Red Explosion
-			}
-
-			SolarExplosion: {
-				DisplayName: Solar Explosion
-			}
-
-			BlueShieldSwirl: {
-				DisplayName: Shield Swirl Blue
-			}
-
-			BlueShieldSwirlDuo: {
-				DisplayName: Shield Swirl Blue Duo
-			}
-
-			BlueShieldSwirlReverse: {
-				DisplayName: Shield Swirl Red Reverse
-			}
-
-			BlueSwirl2: {
-				DisplayName: Blue Swirl 2
-			}
-
-			Code1Swirl: {
-				DisplayName: Code 1 Swirl
-			}
-
-			CurveCat: {
-				DisplayName: Curve Cat
-			}
-
-			CurveDuo: {
-				DisplayName: Curve Duo
-			}
-
-			CurveEffect: {
-				DisplayName: Orange Swirl
-			}
-
-			CurveNebula: {
-				DisplayName: Curve Nebula
-			}
-
-			CurveOrange: {
-				DisplayName: Curve Orange
-			}
-
-			CurveStardust: {
-				DisplayName: Curve Stardust
-			}
-
-			CurveTuna: {
-				DisplayName: Curve Tuna
-			}
-
-			CurveVortex: {
-				DisplayName: Curve Vortex
-			}
-
-			FormatClaySwirl: {
-				DisplayName: Format Clay Swirl
-			}
-
-			GloveBlue: {
-				DisplayName: Glove Blue
-			}
-
-			GloveGreen: {
-				DisplayName: Glove Green
-			}
-
-			GloveRed: {
-				DisplayName: Glove Red
-			}
-
-			GloveWhite: {
-				DisplayName: Glove White
-			}
-
-			GloveYellow: {
-				DisplayName: Glove Yellow
-			}
-
-			GradientClaySwirl: {
-				DisplayName: Gradient Clay Swirl
-			}
-
-			GreenShieldSwirlDuo: {
-				DisplayName: Shield Swirl Green Duo
-			}
-
-			IcePartSwirl: {
-				DisplayName: Ice Part Swirl
-			}
-
-			IceSwirl: {
-				DisplayName: Ice Swirl
-			}
-
-			IceSwirlInner: {
-				DisplayName: Ice Swirl Inner
-			}
-
-			InnerSwirl2Red: {
-				DisplayName: Inner Swirl Red 2
-			}
-
-			InnerSwirl2Yellow: {
-				DisplayName: Inner Swirl Yellow 2
-			}
-
-			JaggedShieldSwirlDarkBlue: {
-				DisplayName: Jagged Shield Swirl Dark Blue
-			}
-
-			JaggedShieldSwirlGreen: {
-				DisplayName: Jagged Shield Swirl Green
-			}
-
-			JaggedShieldSwirlPurple: {
-				DisplayName: Jagged Shield Swirl Purple
-			}
-
-			JaggedShieldSwirlRed: {
-				DisplayName: Jagged Shield Swirl Purple
-			}
-
-			JaggedShieldSwirlSkyBlue: {
-				DisplayName: Jagged Shield Swirl Sky Blue
-			}
-
-			JaggedShieldSwirlTempest: {
-				DisplayName: Jagged Shield Swirl Tempest
-			}
-
-			JaggedShieldSwirlYellow: {
-				DisplayName: Jagged Shield Swirl Yellow
-			}
-
-			JaggedSwirlPurple: {
-				DisplayName: Jagged Swirl Purple
-			}
-
-			JaggedSwirlRed: {
-				DisplayName: Jagged Swirl Red
-			}
-
-			JaggedSwirlSmudge: {
-				DisplayName: Jagged Swirl Smudge
-			}
-
-			JaggedSwirlTempest: {
-				DisplayName: Jagged Swirl Tempest
-			}
-
-			JaggedSwirlWhite: {
-				DisplayName: Jagged Swirl White
-			}
-
-			JaggedSwirlYellow: {
-				DisplayName: Jagged Swirl Yellow
-			}
-
-			MotaiCurveDuo: {
-				DisplayName: Motai Curve Duo
-			}
-
-			MotaiSwirl: {
-				DisplayName: Motai Swirl
-			}
-
-			MotaiSwirl2: {
-				DisplayName: Ice Swirl Inner
-			}
-
-			MythrilPartSwirl: {
-				DisplayName: Mythril Part Swirl
-			}
-
-			MythrilSwirl: {
-				DisplayName: Mythril Swirl
-			}
-
-			OuterSwirlRed: {
-				DisplayName: Outer Swirl Red
-			}
-
-			PinkPartSwirl: {
-				DisplayName: Pink Part Swirl
-			}
-
-			PinkSwirl: {
-				DisplayName: Pink Swirl
-			}
-
-			PurpleShieldSwirl: {
-				DisplayName: Shield Swirl Purple
-			}
-
-			PurpleShieldSwirl2: {
-				DisplayName: Shield Swirl Purple 2
-			}
-
-			PurpleShieldSwirlReverse: {
-				DisplayName: Shield Swirl Purple Reverse
-			}
-
-			RedShieldSwirl: {
-				DisplayName: Shield Swirl Red
-			}
-
-			RedShieldSwirl2: {
-				DisplayName: Shield Swirl Red 2
-			}
-
-			RedShieldSwirlDuo: {
-				DisplayName: Shield Swirl Red Duo
-			}
-
-			RedSwirl2: {
-				DisplayName: Red Swirl 2
-			}
-
-			Background: {
-				DisplayName: Red Background
-			}
-
-			CultistRing1: {
-				DisplayName: Cultist Ring 1
-			}
-
-			CultistRing2: {
-				DisplayName: Cultist Ring 2
-			}
-
-			CultistRingDamage: {
-				DisplayName: Cultist Ring 3
-			}
-
-			EclipseSwirl: {
-				DisplayName: Eclipse Swirl More-Orange-Than-The-Other-One
-			}
-
-			EclipseSwirlOrange: {
-				DisplayName: Eclipse Swirl Orange
-			}
-
-			SmudgeHitbox: {
-				DisplayName: Smudge Hitbox
-			}
-
-			SolidHitbox: {
-				DisplayName: Solid Hitbox
-			}
-
-			Sparkle1: {
-				DisplayName: Sparkle 1
-			}
-
-			Sparkle2: {
-				DisplayName: Sparkle 2
-			}
-
-			Sparkle3: {
-				DisplayName: Sparkle 1
-			}
-
-			Swirl: {
-				DisplayName: Cascade Inner Swirl
-			}
-
-			SwirlBlue: {
-				DisplayName: Swirl Sovereign
-			}
-
-			SwirlGreen: {
-				DisplayName: Swirl Green
-			}
-
-			SwirlPurple: {
-				DisplayName: Swirl Purple
-			}
-
-			SwirlRed: {
-				DisplayName: Swirl Red
-			}
-
-			SwirlStar: {
-				DisplayName: Star Yoyo Swirl
-			}
-
-			SwirlTeal: {
-				DisplayName: Swirl Teal
-			}
-
-			TempestSpike: {
-				DisplayName: Tempest Spike
-			}
-
-			TunaOuterSwirl: {
-				DisplayName: Tuna Outer Swirl
-			}
-
-			TunaSwirlInner: {
-				DisplayName: Tuna Swirl Inner
-			}
-
-			CatacombProjectile: {
-				DisplayName: Catacomb Projectile
-			}
-
-			CatProjectile: {
-				DisplayName: Cat Projectile
-			}
-
-			ChristmasBulbProjectile: {
-				DisplayName: Christmas Bulb Projectile
-			}
-
-			CobaltYoyoProjectile: {
-				DisplayName: Cobalt Yoyo Projectile
-			}
-
-			Code3Projectile: {
-				DisplayName: Code3 Projectile
-			}
-
-			CragProjectile: {
-				DisplayName: Crag Projectile
-			}
-
-			CultistYoyoProjectile: {
-				DisplayName: Cultist Yoyo Projectile
-			}
-
-			IronYoyoProjectile: {
-				DisplayName: Iron Yoyo Projectile
-			}
-
-			LeadYoyoProjectile: {
-				DisplayName: Lead Yoyo Projectile
-			}
-
-			MambeleProjectile: {
-				DisplayName: Mambele Projectile
-			}
-
-			MotaiProjectile: {
-				DisplayName: Motai Projectile
-			}
-
-			MythrilYoyoProjectile: {
-				DisplayName: Mythril Yoyo Projectile
-			}
-
-			OrichalcumYoyoProjectile: {
-				DisplayName: Orichalcum Yoyo Projectile
-			}
-
-			PalladiumYoyoProjectile: {
-				DisplayName: Palladium Yoyo Projectile
-			}
-
-			SmudgeProjectile: {
-				DisplayName: Smudge Projectile
-			}
-
-			SovereignProjectile: {
-				DisplayName: Sovereign Projectile
-			}
-
-			SpheruliteProjectile: {
-				DisplayName: Spherulite Projectile
-			}
-
-			TempestProjectile: {
-				DisplayName: Tempest Projectile
-			}
-
-			TestingYoyoProjectile: {
-				DisplayName: Testing Yoyo Projectile
-			}
-
-			TheAbbhorProjectile: {
-				DisplayName: The Abbhor Projectile
-			}
-
-			TheEnervationProjectile: {
-				DisplayName: The Enervation Projectile
-			}
-
-			TheMuscleYoyoProjectile: {
-				DisplayName: The Muscle Yoyo Projectile
-			}
-
-			TheQueensGambitProjectile: {
-				DisplayName: The Queens Gambit Projectile
-			}
-
-			ThinMintProjectile: {
-				DisplayName: Thin Mint Projectile
-			}
-
-			TocantinProjectile: {
-				DisplayName: Tocantin Projectile
-			}
-
-			TrueAbbhorProjectile: {
-				DisplayName: True Abbhor Projectile
-			}
-
-			TrueCode3Projectile: {
-				DisplayName: True Code3 Projectile
-			}
-
-			TrueSmudgeProjectile: {
-				DisplayName: True Smudge Projectile
-			}
-
-			TunaProjectile: {
-				DisplayName: Tuna Projectile
-			}
-
-			WaterExplosion.DisplayName: Water Explosion
-			ConverganceProjectile.DisplayName: Convergance Projectile
+			AdamantiteDrill.DisplayName: Yoyo Drill
+			CelestialDrill.DisplayName: Yoyo Drill
+			CelestialDrill2.DisplayName: Yoyo Drill
+			CobaltDrill.DisplayName: Yoyo Drill
+			Hakapik.DisplayName: Yoyo Drill
+			HorsemansDrill.DisplayName: Yoyo Drill
+			IronDrill.DisplayName: Yoyo Drill
+			Mattock.DisplayName: Yoyo Drill
+			MooMooDrill.DisplayName: Yoyo Drill
+			MythrilDrill.DisplayName: Yoyo Drill
+			NebulaDrill.DisplayName: Yoyo Drill
+			NinjaStar.DisplayName: Yoyo Drill
+			OrichalcumDrill.DisplayName: Yoyo Drill
+			PalladiumDrill.DisplayName: Yoyo Drill
+			ShadowflameDrill.DisplayName: Yoyo Drill
+			ShroomiteShredder.DisplayName: Yoyo Drill
+			SolarDrill.DisplayName: Yoyo Drill
+			SpectralShredder.DisplayName: Yoyo Drill
+			StardustDrill.DisplayName: Yoyo Drill
+			TheScooper.DisplayName: Yoyo Drill
+			TitaniumDrill.DisplayName: Yoyo Drill
+			TreeClippers.DisplayName: Yoyo Drill
+			Tsurugi.DisplayName: Yoyo Drill
+			VortexDrill.DisplayName: Yoyo Drill
+			BlueExplosion.DisplayName: Blue Explosion
+			DeprecatedExplosion.DisplayName: Deprecated Explosion
+			EclipseExplosion.DisplayName: Eclipse Explosion
+			FireExplosion.DisplayName: Fire Explosion
+			RedExplosion.DisplayName: Red Explosion
+			SolarExplosion.DisplayName: Solar Explosion
+			BlueShieldSwirl.DisplayName: Shield Swirl Blue
+			BlueShieldSwirlDuo.DisplayName: Shield Swirl Blue Duo
+			BlueShieldSwirlReverse.DisplayName: Shield Swirl Red Reverse
+			BlueSwirl2.DisplayName: Blue Swirl 2
+			Code1Swirl.DisplayName: Code 1 Swirl
+			CurveCat.DisplayName: Curve Cat
+			CurveDuo.DisplayName: Curve Duo
+			CurveEffect.DisplayName: Orange Swirl
+			CurveNebula.DisplayName: Curve Nebula
+			CurveOrange.DisplayName: Curve Orange
+			CurveStardust.DisplayName: Curve Stardust
+			CurveTuna.DisplayName: Curve Tuna
+			CurveVortex.DisplayName: Curve Vortex
+			FormatClaySwirl.DisplayName: Format Clay Swirl
+			GloveBlue.DisplayName: Glove Blue
+			GloveGreen.DisplayName: Glove Green
+			GloveRed.DisplayName: Glove Red
+			GloveWhite.DisplayName: Glove White
+			GloveYellow.DisplayName: Glove Yellow
+			GradientClaySwirl.DisplayName: Gradient Clay Swirl
+			GreenShieldSwirlDuo.DisplayName: Shield Swirl Green Duo
+			IcePartSwirl.DisplayName: Ice Part Swirl
+			IceSwirl.DisplayName: Ice Swirl
+			IceSwirlInner.DisplayName: Ice Swirl Inner
+			InnerSwirl2Red.DisplayName: Inner Swirl Red 2
+			InnerSwirl2Yellow.DisplayName: Inner Swirl Yellow 2
+			JaggedShieldSwirlDarkBlue.DisplayName: Jagged Shield Swirl Dark Blue
+			JaggedShieldSwirlGreen.DisplayName: Jagged Shield Swirl Green
+			JaggedShieldSwirlPurple.DisplayName: Jagged Shield Swirl Purple
+			JaggedShieldSwirlRed.DisplayName: Jagged Shield Swirl Purple
+			JaggedShieldSwirlSkyBlue.DisplayName: Jagged Shield Swirl Sky Blue
+			JaggedShieldSwirlTempest.DisplayName: Jagged Shield Swirl Tempest
+			JaggedShieldSwirlYellow.DisplayName: Jagged Shield Swirl Yellow
+			JaggedSwirlPurple.DisplayName: Jagged Swirl Purple
+			JaggedSwirlRed.DisplayName: Jagged Swirl Red
+			JaggedSwirlSmudge.DisplayName: Jagged Swirl Smudge
+			JaggedSwirlTempest.DisplayName: Jagged Swirl Tempest
+			JaggedSwirlWhite.DisplayName: Jagged Swirl White
+			JaggedSwirlYellow.DisplayName: Jagged Swirl Yellow
+			MotaiCurveDuo.DisplayName: Motai Curve Duo
+			MotaiSwirl.DisplayName: Motai Swirl
+			MotaiSwirl2.DisplayName: Ice Swirl Inner
+			MythrilPartSwirl.DisplayName: Mythril Part Swirl
+			MythrilSwirl.DisplayName: Mythril Swirl
+			OuterSwirlRed.DisplayName: Outer Swirl Red
+			PinkPartSwirl.DisplayName: Pink Part Swirl
+			PinkSwirl.DisplayName: Pink Swirl
+			PurpleShieldSwirl.DisplayName: Shield Swirl Purple
+			PurpleShieldSwirl2.DisplayName: Shield Swirl Purple 2
+			PurpleShieldSwirlReverse.DisplayName: Shield Swirl Purple Reverse
+			RedShieldSwirl.DisplayName: Shield Swirl Red
+			RedShieldSwirl2.DisplayName: Shield Swirl Red 2
+			RedShieldSwirlDuo.DisplayName: Shield Swirl Red Duo
+			RedSwirl2.DisplayName: Red Swirl 2
+			Background.DisplayName: Red Background
+			CultistRing1.DisplayName: Cultist Ring 1
+			CultistRing2.DisplayName: Cultist Ring 2
+			CultistRingDamage.DisplayName: Cultist Ring 3
+			EclipseSwirl.DisplayName: Eclipse Swirl More-Orange-Than-The-Other-One
+			EclipseSwirlOrange.DisplayName: Eclipse Swirl Orange
+			SmudgeHitbox.DisplayName: Smudge Hitbox
+			SolidHitbox.DisplayName: Solid Hitbox
+			Sparkle1.DisplayName: Sparkle 1
+			Sparkle2.DisplayName: Sparkle 2
+			Sparkle3.DisplayName: Sparkle 1
+			Swirl.DisplayName: Yellow Inner Swirl
+			SwirlBlue.DisplayName: Swirl Sovereign
+			SwirlGreen.DisplayName: Swirl Green
+			SwirlPurple.DisplayName: Swirl Purple
+			SwirlRed.DisplayName: Swirl Red
+			SwirlStar.DisplayName: Star Yoyo Swirl
+			SwirlTeal.DisplayName: Swirl Teal
+			TempestSpike.DisplayName: Tempest Spike
+			TunaOuterSwirl.DisplayName: Tuna Outer Swirl
+			TunaSwirlInner.DisplayName: Tuna Swirl Inner
+			CatacombProjectile.DisplayName: Catacomb Projectile
+			CatProjectile.DisplayName: Cat Projectile
+			ChristmasBulbProjectile.DisplayName: Christmas Bulb Projectile
+			CobaltYoyoProjectile.DisplayName: Cobalt Yoyo Projectile
+			Code3Projectile.DisplayName: Code3 Projectile
+			CragProjectile.DisplayName: Crag Projectile
+			CultistYoyoProjectile.DisplayName: Cultist Yoyo Projectile
+			IronYoyoProjectile.DisplayName: Iron Yoyo Projectile
+			LeadYoyoProjectile.DisplayName: Lead Yoyo Projectile
+			MambeleProjectile.DisplayName: Mambele Projectile
+			MotaiProjectile.DisplayName: Motai Projectile
+			MythrilYoyoProjectile.DisplayName: Mythril Yoyo Projectile
+			OrichalcumYoyoProjectile.DisplayName: Orichalcum Yoyo Projectile
+			PalladiumYoyoProjectile.DisplayName: Palladium Yoyo Projectile
+			SmudgeProjectile.DisplayName: Smudge Projectile
+			SovereignProjectile.DisplayName: Sovereign Projectile
+			SpheruliteProjectile.DisplayName: Spherulite Projectile
+			TempestProjectile.DisplayName: Tempest Projectile
+			TestingYoyoProjectile.DisplayName: Testing Yoyo Projectile
+			TheAbbhorProjectile.DisplayName: The Abbhor Projectile
+			TheEnervationProjectile.DisplayName: The Enervation Projectile
+			TheMuscleYoyoProjectile.DisplayName: The Muscle Yoyo Projectile
+			TheQueensGambitProjectile.DisplayName: The Queens Gambit Projectile
+			ThinMintProjectile.DisplayName: Thin Mint Projectile
+			TocantinProjectile.DisplayName: Tocantin Projectile
+			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile
+			TrueCode3Projectile.DisplayName: True Code3 Projectile
+			TrueSmudgeProjectile.DisplayName: True Smudge Projectile
+			TunaProjectile.DisplayName: Tuna Projectile
 		}
 
 		Items: {
@@ -1001,9 +640,7 @@ Mods: {
 				Tooltip: Increases yoyo range
 			}
 
-			NebulaString: {
-				DisplayName: Nebula String
-			}
+			NebulaString.DisplayName: Nebula String
 
 			SlimyString: {
 				DisplayName: Slimy String
@@ -1199,13 +836,8 @@ Mods: {
 					'''
 			}
 
-			BrokenHeroRing: {
-				DisplayName: Broken Hero Ring
-			}
-
-			BrokenHeroYoyo: {
-				DisplayName: Broken Hero Yoyo
-			}
+			BrokenHeroRing.DisplayName: Broken Hero Ring
+			BrokenHeroYoyo.DisplayName: Broken Hero Yoyo
 
 			SoulOfEclipse: {
 				DisplayName: Soul of Eclipse
@@ -1217,9 +849,7 @@ Mods: {
 				Tooltip: '''"please give me nerd mod now"'''
 			}
 
-			Catacomb: {
-				DisplayName: Catacomb
-			}
+			Catacomb.DisplayName: Catacomb
 
 			ChristmasBulb: {
 				DisplayName: Christmas Bulb
@@ -1230,9 +860,7 @@ Mods: {
 					'''
 			}
 
-			CobaltYoyo: {
-				DisplayName: Cobalt Yoyo
-			}
+			CobaltYoyo.DisplayName: Cobalt Yoyo
 
 			Code3: {
 				DisplayName: Code 3
@@ -1253,17 +881,9 @@ Mods: {
 				Tooltip: "'It's made out of fire!'"
 			}
 
-			CultistYoyo: {
-				DisplayName: Shakiryo
-			}
-
-			IronYoyo: {
-				DisplayName: Iron Yoyo
-			}
-
-			LeadYoyo: {
-				DisplayName: Lead Yoyo
-			}
+			CultistYoyo.DisplayName: Shakiryo
+			IronYoyo.DisplayName: Iron Yoyo
+			LeadYoyo.DisplayName: Lead Yoyo
 
 			Mambele: {
 				DisplayName: Mambele
@@ -1284,17 +904,9 @@ Mods: {
 				Tooltip: Special thanks to Motai for being the most brain dead developer
 			}
 
-			MythrilYoyo: {
-				DisplayName: Mythril Yoyo
-			}
-
-			OrichalcumYoyo: {
-				DisplayName: Orichalcum Yoyo
-			}
-
-			PalladiumYoyo: {
-				DisplayName: Palladium Yoyo
-			}
+			MythrilYoyo.DisplayName: Mythril Yoyo
+			OrichalcumYoyo.DisplayName: Orichalcum Yoyo
+			PalladiumYoyo.DisplayName: Palladium Yoyo
 
 			Smudge: {
 				DisplayName: Smudge
@@ -1342,9 +954,7 @@ Mods: {
 					'''
 			}
 
-			TheTempest: {
-				DisplayName: The Tempest
-			}
+			TheTempest.DisplayName: The Tempest
 
 			ThinMint: {
 				DisplayName: The Thin Mint
@@ -1356,9 +966,7 @@ Mods: {
 				Tooltip: Has a chance to poison enemies
 			}
 
-			TrueAbbhor: {
-				DisplayName: True Abbhor
-			}
+			TrueAbbhor.DisplayName: True Abbhor
 
 			TrueCode3: {
 				DisplayName: True Code 3
@@ -1379,35 +987,10 @@ Mods: {
 		}
 
 		InfoDisplays: {
-			HitInfo: {
-				DisplayName: Yoyo Hit Counter
-			}
-
-			IDInfo: {
-				DisplayName: Internal Projectile ID
-			}
-
-			SpeedInfo: {
-				DisplayName: Yoyo Speed Display
-			}
-
-			StringInfo: {
-				DisplayName: Internal String Color
-			}
+			HitInfo.DisplayName: Yoyo Hit Counter
+			IDInfo.DisplayName: Internal Projectile ID
+			SpeedInfo.DisplayName: Yoyo Speed Display
+			StringInfo.DisplayName: Internal String Color
 		}
-
-		Achievements: {
-			AbbhorAchievement: {
-				Name: Easy Come, Easy Throw
-				Description: Forge the Abbhor, a powerful weapon that contains dark energy.
-			}
-
-			TrueAbbhorAchievement: {
-				Name: Think Less, Yoyo More
-				Description: Infuse the Abbhor with godly power
-			}
-		}
-
-		NPCs.ExamplePerson.DisplayName: Skeleton Peddler
 	}
 }

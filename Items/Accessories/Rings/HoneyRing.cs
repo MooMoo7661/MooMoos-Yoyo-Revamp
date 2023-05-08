@@ -10,8 +10,8 @@ namespace CombinationsMod.Items.Accessories.Rings
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Honey Ring");
-            Tooltip.SetDefault("Increases the strength of friendly bees\nCan be equipped in regular slots");
+            // DisplayName.SetDefault("Honey Ring");
+            // Tooltip.SetDefault("Increases the strength of friendly bees\nCan be equipped in regular slots");
         }
 
         public override void SetDefaults()

@@ -14,8 +14,8 @@ namespace CombinationsMod.Items.Accessories.Drills
        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ninja Star");
-            Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:210% pickaxe power]");
+            // DisplayName.SetDefault("Ninja Star");
+            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:210% pickaxe power]");
         }
 
         public override void SetDefaults()

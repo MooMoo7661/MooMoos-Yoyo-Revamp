@@ -14,8 +14,8 @@ public class OrichalcumYoyo : ModItem
     {
         ItemID.Sets.Yoyo[Item.type] = true;
 
-        DisplayName.SetDefault("Orichalcum Yoyo");
-        Tooltip.SetDefault("");
+        // DisplayName.SetDefault("Orichalcum Yoyo");
+        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()

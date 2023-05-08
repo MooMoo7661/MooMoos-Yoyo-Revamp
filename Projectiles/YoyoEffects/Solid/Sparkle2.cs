@@ -1,7 +1,7 @@
 ﻿using CombinationsMod.Dusts;
 using Microsoft.Xna.Framework;
-using On.Terraria.DataStructures;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,7 +12,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sparkle 2");
+            // DisplayName.SetDefault("Sparkle 2");
         }
 
         public override void SetDefaults()

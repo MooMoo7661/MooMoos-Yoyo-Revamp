@@ -40,7 +40,7 @@ namespace CombinationsMod.Drills
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yoyo Drill");
+            // DisplayName.SetDefault("Yoyo Drill");
         }
 
         public override void SetDefaults()

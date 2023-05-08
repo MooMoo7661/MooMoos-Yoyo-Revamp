@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -11,7 +12,7 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
         public override void SetStaticDefaults()
         {
             // This is the name that will show up when hovering over icon of this info display
-            InfoName.SetDefault("Internal Projectile ID");
+            // DisplayName.SetDefault("Internal Projectile ID");
         }
 
         // This dictates whether or not this info display should be active
@@ -21,7 +22,7 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
         }
         
         // Here we can change the value that will be displayed in the game
-        public override string DisplayValue()
+        public override string DisplayValue(ref Color displayColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
         {
             Player player = Main.LocalPlayer;
 

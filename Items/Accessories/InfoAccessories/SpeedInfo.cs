@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CombinationsMod.Items.Yoyos;
@@ -9,7 +10,7 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
     {
         public override void SetStaticDefaults()
         {
-            InfoName.SetDefault("Yoyo Speed Display");
+            // DisplayName.SetDefault("Yoyo Speed Display");
         }
 
         public override bool Active()
@@ -17,7 +18,7 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
             return Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().speedTracker;
         }
         
-        public override string DisplayValue()
+        public override string DisplayValue(ref Color displayColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
         {
             Player player = Main.LocalPlayer;
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();

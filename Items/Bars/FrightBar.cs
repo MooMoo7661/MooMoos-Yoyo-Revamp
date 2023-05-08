@@ -11,8 +11,8 @@ namespace CombinationsMod.Items.Bars
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fright Bar");
-            Tooltip.SetDefault("'Forged from the essence of terrifying creatures'");
+            // DisplayName.SetDefault("Fright Bar");
+            // Tooltip.SetDefault("'Forged from the essence of terrifying creatures'");
         }
 
         public override void SetDefaults()

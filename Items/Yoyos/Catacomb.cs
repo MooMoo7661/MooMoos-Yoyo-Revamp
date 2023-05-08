@@ -15,8 +15,8 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Type] = true;
-            DisplayName.SetDefault("Catacomb");
-            Tooltip.SetDefault("");
+            // DisplayName.SetDefault("Catacomb");
+            // Tooltip.SetDefault("");
 
         }
 

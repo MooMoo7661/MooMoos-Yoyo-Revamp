@@ -20,6 +20,6 @@ public class NeutralineScrapTile  : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
 
-        ItemDrop = ModContent.ItemType<NeutralineScrap>();
+        RegisterItemDrop(ModContent.ItemType<NeutralineScrap>());
     }
 }

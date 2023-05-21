@@ -20,6 +20,6 @@ public class SightBarTile  : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
 
-        ItemDrop = ModContent.ItemType<SightBar>();
+        RegisterItemDrop(ModContent.ItemType<SightBar>());
     }
 }

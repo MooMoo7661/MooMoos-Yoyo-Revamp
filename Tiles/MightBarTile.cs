@@ -20,6 +20,6 @@ public class MightBarTile  : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
 
-        ItemDrop = ModContent.ItemType<MightBar>();
+        RegisterItemDrop(ModContent.ItemType<MightBar>());
     }
 }

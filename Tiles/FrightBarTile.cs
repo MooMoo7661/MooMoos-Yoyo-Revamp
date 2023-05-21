@@ -20,6 +20,6 @@ public class FrightBarTile  : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
 
-        ItemDrop = ModContent.ItemType<FrightBar>();
+        RegisterItemDrop(ModContent.ItemType<FrightBar>());
     }
 }

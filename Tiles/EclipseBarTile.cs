@@ -20,6 +20,6 @@ public class EclipseBarTile  : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
 
-        ItemDrop = ModContent.ItemType<EclipseBar>();
+        RegisterItemDrop(ModContent.ItemType<EclipseBar>());
     }
 }

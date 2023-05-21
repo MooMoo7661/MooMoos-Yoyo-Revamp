@@ -18,33 +18,28 @@ namespace CombinationsMod.GlobalClasses
 {
     public class CombinationsModNPCModifications : GlobalNPC
     {
-        public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        public override void ModifyShop(NPCShop shop)
         {
-            if (type == NPCID.SkeletonMerchant)
+            if (shop.NpcType == NPCID.SkeletonMerchant)
             {
-                for (int i = 0; i < 40; i++)
+                int[] arr = new int[3];
+                arr[0] = ItemID.Gradient;
+                arr[1] = ItemID.FormatC;
+                arr[2] = ItemID.YoYoGlove;
+
+                for (int i = 0; i < arr.Length; i++)
                 {
-                    if (shop.item[i].type == Gradient || shop.item[i].type == Code2 || shop.item[i].type == FormatC)
+                    if (shop.TryGetEntry(arr[i], out var entry))
                     {
-                        shop.item[i].SetDefaults(StickyGlowstick);
-                        shop.item[i].shopCustomPrice = Item.buyPrice(silver: 23);
-                    }
-                    else if (shop.item[i].type >= 3309 && shop.item[i].type <= 3314)
-                    {
-                        shop.item[i].SetDefaults(MagicMirror);
-                        shop.item[i].shopCustomPrice = Item.buyPrice(gold: 7);
+                        entry.Disable();
                     }
                 }
-            }
 
-            if (type == NPCID.TravellingMerchant)
-            {
-                for (int i = 0; i < 40; i++)
+                for (int i = ItemID.BlackCounterweight; i <= ItemID.YellowCounterweight; i++)
                 {
-                    if (shop.item[i].type == Code2 || shop.item[i].type == Code1)
+                    if (shop.TryGetEntry(i, out var entry))
                     {
-                        shop.item[i].SetDefaults(Wood);
-                        shop.item[i].shopCustomPrice = Item.buyPrice(copper: 40);
+                        entry.Disable();
                     }
                 }
             }

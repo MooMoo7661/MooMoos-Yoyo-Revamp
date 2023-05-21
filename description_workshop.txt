@@ -1,0 +1,55 @@
+[h1] MooMoo's Yoyo Revamp [/h1]
+
+*IMPORTANT! If you are viewing this on the TmodLoader mod browser, it is reccomended you go to the steam page instead, for better readability.
+I'm not sure why, but the mod browser isn't using the mod description. Instead, it's using the steam description.
+
+This mod adds a large amount of accessories, Yoyos, new mechanics, and changes to Vanilla Yoyos.
+
+[b] Adds over 30 more Yoyos, each with special crafting recipes and effects [/b]
+
+Purchase the Ability Ring from the Skeleton Peddler for 20 gold to allow yoyos to use special effects.
+
+[u]- Changes To Vanilla Yoyos [/u]
+    Each Yoyo's stats have been buffed, including lifetime,
+    speed, and range
+    Yoyos have special particles
+
+[u]- Unique Accessories[/u]
+
+   [b] Rings [/b]
+     [list][*]Some rings make Yoyos emit particles and light
+     [*]Some rings add certain functions to Yoyos[/list]
+   [b]Tricks[/b]
+     [list][*]Do special things, usually creating extra yoyos that only swirl around the player[/list]
+   [b]Drill Casings[/b]
+     [list][*]Yoyos can drill through blocks[/list]
+   [b]New Yoyo Gloves[/b]
+   [list]
+     [*]Support Gloves : Increases yoyos made by the Yoyo Glove
+     [*]Yoyo Gloves : Function similarly to the regular Yoyo Glove, but have small differences[/list]
+
+[b]- 8 new accessory slots[/b]
+[list]
+    [*]2 String Slots
+    [*]2 Ring Slots
+    [*]2 Glove Slots
+    [*]Drill Slot
+    [*]Counterweight Slot [/list]
+
+[b] -= Many changes to Vanilla =- [/b]
+
+[u] Reccomended that you use Achievement Mod when it ports to 1.4.4, as this mod adds several new and unique achievements. [/u]
+
+This mod's focus is not entirely to be balanced, but to give a more enjoyable experience with using yoyos.
+Some things may be tweaked later to help balance it out a little.
+
+[b] I will likely be adding small updates to the mod, and maybe even a few larger ones, but being that this was the first mod I ever made, I'd like to move on to other stuff.[/b]
+
+Huge thanks to the following!
+
+David F. Dev - Wrote the script for the Yoyo Drills
+Turbanik - Created and supplied pretty much all of the special effect sprites
+stormytuna - Writing various code such as npc loot modifications & reflections
+Dagger - Helping with custom yoyo string colors, drawing, and textures
+Photonic0 - Helping with enhancing yoyo special effects during daytime
+otterly - Created the amazing achievement sprites

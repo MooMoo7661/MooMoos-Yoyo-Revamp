@@ -87,7 +87,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<MambeleProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Kraken, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.TheEyeOfCthulhu, damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<BlackHole>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CultistYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Terrarian, damage, Projectile.knockBack, Projectile.owner);
                     }

@@ -2,7 +2,7 @@ This mod adds a large amount of accessories, Yoyos, new mechanics, and changes t
 
 Adds over 30 more Yoyos, each with special crafting recipes and effects
 
-Purchase the Ability Ring from the Merchant for 20 gold to allow yoyos to use special effects.
+Purchase the Ability Ring from the Skeleton Peddler for 20 gold to allow yoyos to use special effects.
 
 - Changes To Vanilla Yoyos
     Each Yoyo's stats have been buffed, including lifetime,
@@ -13,8 +13,8 @@ Purchase the Ability Ring from the Merchant for 20 gold to allow yoyos to use sp
    Rings
      Some rings make Yoyos emit particles and light
      Some rings add certain functions to Yoyos
-   Bearings
-     Yoyos can inflict debuffs, or create other projectiles
+   Tricks
+     Do special things, usually creating extra yoyos that only swirl around the player
    Drill Casings
      Yoyos can drill through blocks
    New Yoyo Gloves
@@ -22,19 +22,21 @@ Purchase the Ability Ring from the Merchant for 20 gold to allow yoyos to use sp
      Yoyo Gloves : Function similarly to the regular Yoyo Glove,
      but have small differences
 
-- 10 new accessory slots
+- 8 new accessory slots
     2 String Slots
-    2 Bearing Slots
     2 Ring Slots
     2 Glove Slots
     Drill Slot
     Counterweight Slot
 
 -= Many changes to Vanilla =-
-  ( check out 'vanillaChanges.txt' in the mod's files)
+
+Reccomended that you use Achievement Mod when it ports to 1.4.4, as this mod adds several new and unique achievements.
 
 This mod's focus is not entirely to be balanced, but to give a more enjoyable experience with using yoyos.
 Some things may be tweaked later to help balance it out a little.
+
+I will likely be adding small updates to the mod, and maybe even a few larger ones, but being that this was the first mod I ever made, I'd like to move on to other stuff.
 
 Huge thanks to the following!
 

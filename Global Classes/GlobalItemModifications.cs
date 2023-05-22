@@ -55,6 +55,14 @@ namespace CombinationsMod.GlobalClasses
             return true;
         }
 
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            if (!hideVisual && item.type == ItemID.YoyoBag)
+            {
+                player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
+            }
+        }
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
@@ -68,6 +76,15 @@ namespace CombinationsMod.GlobalClasses
                 && (ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99 || ItemID.Sets.Yoyo[item.type]))
             {
                 damage *= 1.05f;
+            }
+        }
+
+        public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            if (modPlayer.fortitudeRing)
+            {
+                knockback.Flat += 2f;
             }
         }
         public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
@@ -89,7 +106,7 @@ namespace CombinationsMod.GlobalClasses
         {
             if (item.type >= 3309 && item.type <= 3314) // Is a counterweight
             {
-                tooltips.Insert(4, new TooltipLine(Mod, "CounterweightStackInfo", "[c/FFD7D7:Each Yoyo that hits a target will produce a counterweight]"));
+                tooltips.Add(new TooltipLine(Mod, "CounterweightStackInfo", "[c/FFD7D7:Each Yoyo that hits a target will produce a counterweight]"));
             }
 
             if (Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing)
@@ -166,7 +183,11 @@ namespace CombinationsMod.GlobalClasses
                 case (int)pinkString:
                 case (int)brownString:
                 case (int)rainbowString:
-                    tooltips.Insert(4, new TooltipLine(Mod, "YoyoStringInfo", "+150 yoyo range"));
+                    tooltips.Add(new TooltipLine(Mod, "YoyoStringInfo", "[c/6EAE6E:+150 yoyo range]"));
+                    break;
+                        
+                case ItemID.YoyoBag:
+                    tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", "Yoyos are recalled faster\n[c/6EAE6E:+70 yoyo range]"));
                     break;
             }
         }

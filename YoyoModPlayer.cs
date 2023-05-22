@@ -21,6 +21,8 @@ namespace CombinationsMod
 
         public bool yoyoClip = false; // Used by the Upgraded Yoyo Glove / Solar Glove. Determines if the player can create a second yoyo
         public bool yoyoSpacers = false; // Extends speed of yoyos (unused?)
+        public bool yoyoBag = false;
+        public bool shimmerBag = false;
 
         public bool eclipseString = false;
         public bool golemString = false; // Golemsteel String
@@ -92,6 +94,8 @@ namespace CombinationsMod
 
             yoyoClip = false;
             yoyoSpacers = false;
+            yoyoBag = false;
+            shimmerBag = false;
 
             supportGlove = false;
 
@@ -158,14 +162,45 @@ namespace CombinationsMod
             trick2 = false;
         }
 
-        public float GetModifiedPlayerYoyoStringLength(float length)
+        public float GetModifiedPlayerYoyoStringLength(float length, Player player)
         {
-            if (solarString || nebulaString || vortexString || stardustString)
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.solarString || modPlayer.nebulaString || modPlayer.vortexString || modPlayer.stardustString)
             {
                 length += 100f;
             }
 
+            if (modPlayer.yoyoBag)
+            {
+                length += 70f;
+            }
+
             return length;
+        }
+
+        public float GetModifiedPlayerYoyoSpeed(float speed, Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.omnipotenceRing)
+            {
+                speed += 2f;
+            }
+
+            return speed;
+        }
+
+        public bool TestForYoyoBag(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.yoyoBag)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public override void PostUpdateEquips() // Each of these 3 functions keeps track of whether to add or subtract 1.8f to the yoyo's top speed.
@@ -213,7 +248,7 @@ namespace CombinationsMod
             HitCounter = 0;
         }
 
-        public bool TestForSupportGlove(Player player)
+        public static bool TestForSupportGlove(Player player)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
@@ -267,10 +302,16 @@ namespace CombinationsMod
                 }
             }
 
-            if (player.yoyoGlove && num2 < 2)
+            if (player.yoyoGlove && num2 < 3)
             {
                 if (num >= 0)
                 {
+                    //if (TestForYoyoBag(player))
+                    //{
+                    //    Vector2 vector = Main.rand.NextVector2Unit() * 16f;
+                    //    Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                    //}
+
                     if (TestForSupportGlove(player))
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
@@ -286,6 +327,8 @@ namespace CombinationsMod
                         Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
                         return;
                     }
+
+                    
                 }
             }
             else if (num3 < num2)

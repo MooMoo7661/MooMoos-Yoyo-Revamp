@@ -29,10 +29,14 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
             {
                 if (ContentSamples.ProjectilesByType[player.HeldItem.shoot].MaxUpdates != 0)
                 {
-                    return (ProjectileID.Sets.YoyosTopSpeed[player.HeldItem.shoot] * projectile.MaxUpdates).ToString();
-                }
+                    float speed2 = ProjectileID.Sets.YoyosTopSpeed[player.HeldItem.shoot] * projectile.MaxUpdates;
+                    
+                    return modPlayer.GetModifiedPlayerYoyoSpeed(speed2, player).ToString();
+                }   
 
-                return ProjectileID.Sets.YoyosTopSpeed[player.HeldItem.shoot].ToString();
+                float speed = ProjectileID.Sets.YoyosTopSpeed[player.HeldItem.shoot];
+
+                return modPlayer.GetModifiedPlayerYoyoSpeed(speed, player).ToString();
             }
             else
             {

@@ -639,6 +639,8 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         private void YoyoAIDetour(Terraria.On_Projectile.orig_AI_099_2 orig, Projectile projectile)
         {
+            Player player = Main.player[projectile.owner];
+
             flag = false;
 
             for (int i = 0; i < projectile.whoAmI; i++)
@@ -716,6 +718,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 flag2 = true;
             }
+
             if (Main.player[projectile.owner].dead) // kill projectile when owner is dead
             {
                 projectile.Kill();
@@ -766,10 +769,11 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             float stringLength = 200f;
             stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
-            yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[projectile.type];
+
+            yoyoSpeed = player.GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoSpeed(ProjectileID.Sets.YoyosTopSpeed[projectile.type], player);
 
             float modifiedStringLength = stringLength;
-            modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength);
+            modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength, player);
 
             if (projectile.type == 545) // 545 is cascade
             {
@@ -828,7 +832,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         projectile.netUpdate = true;
                     }
                     else
-                    {
+                    {   
                         Vector2 vector4 = Main.ReverseGravitySupport(Main.MouseScreen) + Main.screenPosition;
                         float x = vector4.X;
                         float y = vector4.Y;
@@ -841,7 +845,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             x = vector5.X;
                             y = vector5.Y;
                         }
-                        if (projectile.ai[0] != x || projectile.ai[1] != y) // If the yoyo's ai
+                        if (projectile.ai[0] != x || projectile.ai[1] != y) // If the yoyo's ai is not equal to the position
                         {
                             Vector2 vector6 = new Vector2(x, y) - Main.player[projectile.owner].Center;
                             if (vector6.Length() > modifiedStringLength - 1f)
@@ -928,7 +932,16 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             else
             {
                 num7 = (int)((double)num7 * 0.8);
-                yoyoSpeed *= 1.5f;
+
+                if (player.GetModPlayer<YoyoModPlayer>().yoyoBag)
+                {
+                    yoyoSpeed *= 3f;
+                }
+                else
+                {
+                    yoyoSpeed *= 1.8f;
+                }
+
                 projectile.tileCollide = false;
                 Vector2 vector9 = Main.player[projectile.owner].Center - projectile.Center;
                 float num15 = vector9.Length();

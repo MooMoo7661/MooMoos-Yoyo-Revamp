@@ -540,7 +540,7 @@ Mods: {
 
 			FortitudeRing: {
 				DisplayName: Ring of Fortitude
-				Tooltip: Yoyos can phase through walls
+				Tooltip: Increases the knockback of all yoyos
 			}
 
 			GemstoneRing: {
@@ -559,16 +559,16 @@ Mods: {
 
 			OmnipotenceRing: {
 				DisplayName: Ring of Perception
-				Tooltip: Yoyos shoot cursed flames
+				Tooltip: Slighly increases yoyo speed
 			}
 
 			RingOfCoalescence: {
 				DisplayName: Ring of Coalescence
 				Tooltip:
 					'''
-					Yoyos can phase through walls
-					Yoyos shoot cursed flames
-					[c/6EAE6E:+10% base yoyo damage]
+					Increases yoyo knockback
+					Slightly increases yoyo speed
+					Increases all yoyo damage by 10%
 					'''
 			}
 
@@ -588,9 +588,9 @@ Mods: {
 					'''
 					[c/FF00AB:Enables Yoyos to use their special abilities.]
 					Yoyos will show the requirements for triggering the ability.
-					Yoyos can phase through walls
-					Yoyos shoot cursed flames
-					[c/6EAE6E:+10% base yoyo damage]
+					Increases yoyo knockback
+					Slightly increases yoyo speed
+					Increases all yoyo damage by 10%
 					'''
 			}
 
@@ -601,7 +601,7 @@ Mods: {
 
 			TrepidationRing: {
 				DisplayName: Ring of Trepidation
-				Tooltip: "[c/6EAE6E:+10% base yoyo damage]"
+				Tooltip: Increases all yoyo damage by 10%
 			}
 
 			DarkBlueString: {
@@ -1150,6 +1150,11 @@ Mods: {
 					Spins fast enough to generate a vortex of energy, forming a devastating black hole
 					Created by Turbanik
 					'''
+			}
+
+			ShimmerBag: {
+				DisplayName: Shimmer Bag
+				Tooltip: ""
 			}
 		}
 

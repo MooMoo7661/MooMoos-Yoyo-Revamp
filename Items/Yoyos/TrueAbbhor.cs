@@ -14,8 +14,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TrueAbbhor : ModItem
+    public class TrueAbbhor : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -33,7 +35,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.useTime = 25;
             Item.shootSpeed = 16f;
             Item.knockBack = 4.5f;
-            Item.damage = 89;
+            Item.damage = 82;
             Item.crit = 16; 
             Item.rare = ItemRarityID.Red;
             Item.DamageType = DamageClass.Melee;
@@ -68,6 +70,11 @@ namespace CombinationsMod.Items.Yoyos
                 tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
                 tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a large damaging aura]")); // TODO: Implement Ability
             }
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

@@ -8,8 +8,10 @@ using System.Collections.Generic;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class CobaltYoyo : ModItem
+public class CobaltYoyo : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
@@ -46,5 +48,10 @@ public class CobaltYoyo : ModItem
         recipe.AddIngredient(ItemID.CobaltBar, 8);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
+    }
+
+    public override bool IsLoadingEnabled(Mod mod)
+    {
+        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 }

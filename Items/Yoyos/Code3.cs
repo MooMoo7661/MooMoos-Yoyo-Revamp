@@ -7,8 +7,10 @@ using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class Code3 : ModItem
+    public class Code3 : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -26,10 +28,10 @@ namespace CombinationsMod.Items.Yoyos
             Item.useTime = 25;
             Item.shootSpeed = 16f;
             Item.knockBack = 4.5f;
-            Item.damage = 70;
+            Item.damage = 56;
             Item.rare = ItemRarityID.Lime;
             Item.DamageType = DamageClass.Melee;
-            Item.channel = true;
+            Item.channel = true;    
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.UseSound = new SoundStyle?(SoundID.Item1);
@@ -58,6 +60,11 @@ namespace CombinationsMod.Items.Yoyos
             recipe.AddIngredient(ItemID.HallowedBar, 15);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

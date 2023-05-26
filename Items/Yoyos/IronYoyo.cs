@@ -8,8 +8,10 @@ using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class IronYoyo : ModItem
+    public class IronYoyo : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -27,7 +29,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.useTime = 25;
             Item.shootSpeed = 16f;
             Item.knockBack = 2.3f;
-            Item.damage = 11;
+            Item.damage = 12;
             Item.rare = ItemRarityID.Green;
             Item.DamageType = DamageClass.Melee;
             Item.channel = true;
@@ -46,6 +48,11 @@ namespace CombinationsMod.Items.Yoyos
             recipe.AddIngredient(ItemID.IronBar, 10);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

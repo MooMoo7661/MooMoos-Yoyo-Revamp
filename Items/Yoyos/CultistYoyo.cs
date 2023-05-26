@@ -10,8 +10,10 @@ using Terraria.GameContent;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class CultistYoyo : ModItem
+public class CultistYoyo : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
@@ -29,7 +31,7 @@ public class CultistYoyo : ModItem
         Item.useTime = 25;
         Item.shootSpeed = 16f;
         Item.knockBack = 2.5f;
-        Item.damage = 150;
+        Item.damage = 132;
         Item.rare = ItemRarityID.Cyan;
         Item.DamageType = DamageClass.Melee;
         Item.channel = true;
@@ -52,6 +54,11 @@ public class CultistYoyo : ModItem
             tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:20 hit trigger]"));
             tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates damaging runes]"));
         }
+    }
+
+    public override bool IsLoadingEnabled(Mod mod)
+    {
+        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 
 }

@@ -11,14 +11,13 @@ using CombinationsMod.Items.Bars;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class BlackHole : ModItem
+    public class BlackHole : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Type] = true;
-            // DisplayName.SetDefault("Black Hole");
-            // Tooltip.SetDefault("Spins fast enough to generate a vortex of energy, forming a devastating black hole\nCreated by Turbanik");
-
         }
 
         public override void SetDefaults()
@@ -30,7 +29,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.useTime = 25;
             Item.shootSpeed = 3f;
             Item.knockBack = 15f;
-            Item.damage = 127;
+            Item.damage = 120;
             Item.rare = ItemRarityID.Lime;
             Item.DamageType = DamageClass.Melee;
             Item.channel = true;
@@ -54,6 +53,11 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ItemID.SoulofNight, 15)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

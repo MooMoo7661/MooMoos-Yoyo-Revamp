@@ -11,8 +11,10 @@ using CombinationsMod.Items.Misc;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TheTempest : ModItem
+    public class TheTempest : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -30,7 +32,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.useTime = 25;
             Item.shootSpeed = 20f;
             Item.knockBack = 7f;    
-            Item.damage = 110;
+            Item.damage = 107;
             Item.rare = ItemRarityID.Yellow;
             Item.DamageType = DamageClass.Melee;
             Item.channel = true;
@@ -64,6 +66,11 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ModContent.ItemType<BrokenHeroYoyo>())
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

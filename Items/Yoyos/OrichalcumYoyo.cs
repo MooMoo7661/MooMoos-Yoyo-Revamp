@@ -8,8 +8,10 @@ using System.Collections.Generic;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class OrichalcumYoyo : ModItem
+public class OrichalcumYoyo : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
@@ -57,5 +59,10 @@ public class OrichalcumYoyo : ModItem
             tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
             tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a damaging aura]"));
         }
+    }
+
+    public override bool IsLoadingEnabled(Mod mod)
+    {
+        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 }

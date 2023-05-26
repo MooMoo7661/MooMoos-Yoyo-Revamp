@@ -14,8 +14,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class Convergance : ModItem
+    public class Convergance : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -90,6 +91,11 @@ namespace CombinationsMod.Items.Yoyos
                 tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
                 tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Shoots every yoyo used in it's creation]")); // TODO: Implement Ability
             }
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

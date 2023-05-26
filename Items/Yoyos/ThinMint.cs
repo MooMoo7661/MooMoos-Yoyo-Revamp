@@ -7,8 +7,10 @@ using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class ThinMint : ModItem
+    public class ThinMint : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -35,6 +37,11 @@ namespace CombinationsMod.Items.Yoyos
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.value = Item.sellPrice(0, 1, 0, 89);
             Item.shoot = ModContent.ProjectileType<ThinMintProjectile>();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

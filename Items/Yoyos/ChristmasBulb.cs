@@ -10,8 +10,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class ChristmasBulb : ModItem
+public class ChristmasBulb : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
@@ -29,7 +31,7 @@ public class ChristmasBulb : ModItem
         Item.useTime = 25;
         Item.shootSpeed = 23f;
         Item.knockBack = 2.5f;
-        Item.damage = 74;
+        Item.damage = 70;
         Item.rare = ItemRarityID.Yellow;
         Item.DamageType = DamageClass.Melee;
         Item.channel = true;
@@ -52,6 +54,11 @@ public class ChristmasBulb : ModItem
             tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:30 hit trigger]"));
             tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Shoots damaging ornaments]"));
         }
+    }
+
+    public override bool IsLoadingEnabled(Mod mod)
+    {
+        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 
 }

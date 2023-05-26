@@ -10,8 +10,10 @@ using CombinationsMod.Tiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TheAbbhor : ModItem
+    public class TheAbbhor : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -28,8 +30,8 @@ namespace CombinationsMod.Items.Yoyos
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 16f;
-            Item.knockBack = 2.5f;
-            Item.damage = 32;
+            Item.knockBack = 2.1f;
+            Item.damage = 31;
             Item.crit = 16;
             Item.rare = ModContent.RarityType<PHPink>();
             Item.DamageType = DamageClass.Melee;
@@ -73,6 +75,11 @@ namespace CombinationsMod.Items.Yoyos
             recipe2.AddIngredient(ItemID.JungleYoyo);
             recipe2.AddTile(TileID.Anvils);
             recipe2.Register();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

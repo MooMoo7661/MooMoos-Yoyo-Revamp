@@ -10,8 +10,10 @@ using Terraria.GameContent;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class Catacomb : ModItem
+    public class Catacomb : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Type] = true;
@@ -42,6 +44,11 @@ namespace CombinationsMod.Items.Yoyos
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             tooltips.Insert(1, new TooltipLine(Mod, "YoyoType", "[c/6FD4FF:Boss Drop]"));
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

@@ -8,8 +8,10 @@ using System.Collections.Generic;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class PalladiumYoyo : ModItem
+public class PalladiumYoyo : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
@@ -46,5 +48,10 @@ public class PalladiumYoyo : ModItem
         recipe.AddIngredient(ItemID.PalladiumBar, 8);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
+    }
+
+    public override bool IsLoadingEnabled(Mod mod)
+    {
+        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 }

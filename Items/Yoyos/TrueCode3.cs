@@ -10,8 +10,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TrueCode3 : ModItem
+    public class TrueCode3 : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -61,6 +63,11 @@ namespace CombinationsMod.Items.Yoyos
             recipe.AddIngredient(ItemID.ChlorophyteBar, 15);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

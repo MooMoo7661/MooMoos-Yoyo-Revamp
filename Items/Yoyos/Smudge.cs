@@ -9,8 +9,10 @@ using Microsoft.Xna.Framework;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class Smudge : ModItem
+    public class Smudge : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -37,6 +39,11 @@ namespace CombinationsMod.Items.Yoyos
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.value = Item.sellPrice(0, 1, 50, 2);
             Item.shoot = ModContent.ProjectileType<SmudgeProjectile>();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

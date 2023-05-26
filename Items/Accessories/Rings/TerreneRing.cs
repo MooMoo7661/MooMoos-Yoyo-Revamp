@@ -7,8 +7,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class TerreneRing : ModItem
+    public class TerreneRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -39,11 +40,6 @@ namespace CombinationsMod.Items.Accessories.Rings
                 modPlayer.fortitudeRing = true;
                 modPlayer.yoyoRing = true;
             }
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot>().Type || 
-                LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot2>().Type) ;
         }
 
         public override void AddRecipes()

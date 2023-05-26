@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class AbilityRing : ModItem
+    public class AbilityRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -32,11 +33,6 @@ namespace CombinationsMod.Items.Accessories.Rings
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             if (!hideVisual)
                 modPlayer.yoyoRing = true;
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot>().Type || 
-                LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot2>().Type) ;
         }
     }
 }

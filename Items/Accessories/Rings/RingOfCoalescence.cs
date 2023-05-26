@@ -6,8 +6,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class RingOfCoalescence : ModItem
+    public class RingOfCoalescence : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -37,11 +38,6 @@ namespace CombinationsMod.Items.Accessories.Rings
                 modPlayer.omnipotenceRing = true;
                 modPlayer.fortitudeRing = true;
             }
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot>().Type || 
-                LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot2>().Type) ;
         }
 
         public override void AddRecipes()

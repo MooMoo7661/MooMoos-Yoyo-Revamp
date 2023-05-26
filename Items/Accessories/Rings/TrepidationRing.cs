@@ -7,8 +7,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class TrepidationRing : ModItem
+    public class TrepidationRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -38,11 +39,7 @@ namespace CombinationsMod.Items.Accessories.Rings
                 modPlayer.trepidationRing = true;
             }
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot>().Type ||
-                LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot2>().Type);
-        }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(); 

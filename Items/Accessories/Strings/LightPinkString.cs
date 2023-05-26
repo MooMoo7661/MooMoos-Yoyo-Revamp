@@ -9,8 +9,10 @@ using CombinationsMod.UI;
 
 namespace CombinationsMod.Items.Accessories.Strings
 {
-    public class LightPinkString : ModItem
+    public class LightPinkString : ModString
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Light Pink String");
@@ -39,14 +41,9 @@ namespace CombinationsMod.Items.Accessories.Strings
             }
 
         }
-
         public override void UpdateVanity(Player player)
         {
                 player.stringColor = 31; // Custom string color ID. Vanilla stops at 28, and to keep our String Info accessory working right, we create our own.
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<StringSlot>().Type);
         }
     }
 }

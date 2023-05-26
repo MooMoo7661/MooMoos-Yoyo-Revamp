@@ -10,8 +10,9 @@ using Microsoft.Xna.Framework;
 
 namespace CombinationsMod.Items.Accessories.Strings
 {
-    public class DarkBlueString : ModItem
+    public class DarkBlueString : ModString
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -48,10 +49,6 @@ namespace CombinationsMod.Items.Accessories.Strings
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             
                 player.stringColor = 30; // Custom string color ID. Vanilla stops at 28, and to keep our String Info accessory working right, we create our own.
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<StringSlot>().Type);
         }
     }
 }

@@ -6,7 +6,7 @@ using CombinationsMod.Items.Souls;
 
 namespace CombinationsMod.Items.Bars
 {
-    public class FrightBar : ModItem
+    public class FrightBar : ItemLoader
     {
 
         public override void SetStaticDefaults()

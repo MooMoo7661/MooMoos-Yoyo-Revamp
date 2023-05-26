@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace CombinationsMod.Items.Bars
 {
-    public class EclipseBar : ModItem
+    public class EclipseBar : ItemLoader
     {
 
         public override void SetStaticDefaults()

@@ -9,7 +9,7 @@ using CombinationsMod.Rarities;
 
 namespace CombinationsMod.Items.Souls
 {
-    public class SoulOfEclipse : ModItem
+    public class SoulOfEclipse : ItemLoader
     {
         public override void SetStaticDefaults()
         {

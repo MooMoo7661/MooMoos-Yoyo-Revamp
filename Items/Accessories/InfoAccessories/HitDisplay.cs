@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.InfoAccessories
 {
-    public class HitDisplay : ModItem
+    public class HitDisplay : ItemLoader
     {
 
         public override void SetStaticDefaults()
@@ -30,9 +30,6 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
             modPlayer.hitTracker = true;
         }
 
-        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-        {
-            
-        }
+       
     }
 }

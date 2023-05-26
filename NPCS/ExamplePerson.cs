@@ -23,6 +23,7 @@ using CombinationsMod.Items.Accessories.InfoAccessories;
 using CombinationsMod.Items.Accessories.Strings;
 using CombinationsMod.Items.Yoyos;
 using CombinationsMod.Items.Accessories.Drills;
+using CombinationsMod.Items.Accessories.Tricks;
 
 namespace CombinationsMod.NPCS
 {
@@ -210,7 +211,7 @@ namespace CombinationsMod.NPCS
 
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
             {
-                yoyosShop.Add(veridianMod.Find<ModItem>("Stickler").Type, Condition.DownedKingSlime);
+                yoyosShop.Add(veridianMod.Find<ItemLoader>("Stickler").Type, Condition.DownedKingSlime);
             }
 
             yoyosShop.Add(ItemID.Code1, Condition.DownedEyeOfCthulhu, YoyoModConditions.EaterOfWorldsOrBrain, Condition.DownedSkeletron, Condition.DownedQueenBee, Condition.DownedKingSlime);
@@ -230,7 +231,7 @@ namespace CombinationsMod.NPCS
 
             yoyosShop.Add(ItemID.ValkyrieYoyo, Condition.DownedGolem, Condition.Hardmode);
 
-            yoyosShop.Add(ItemType<ChristmasBulb>(), Condition.DownedIceQueen, Condition.Hardmode);
+            yoyosShop.Add(ItemType<ChristmasBulb>(), Condition.DownedIceQueen, Condition.Hardmode); 
 
             yoyosShop.Add(ItemType<Mambele>(), Condition.DownedPumpking, Condition.Hardmode);
 
@@ -240,7 +241,7 @@ namespace CombinationsMod.NPCS
 
             if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
             {
-                yoyosShop.Add(tysYoyoRedux.Find<ModItem>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
+                yoyosShop.Add(tysYoyoRedux.Find<ItemLoader>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
             }
 
             yoyosShop.Add(ItemID.Terrarian, Condition.DownedMoonLord, Condition.Hardmode);
@@ -260,7 +261,6 @@ namespace CombinationsMod.NPCS
             .Add(ItemType<SapphireRing>(), Condition.DownedSkeletron)
             .Add(ItemID.GreenCounterweight, Condition.DownedQueenBee)
             .Add(ItemType<GrapeString>(), Condition.DownedQueenBee)
-            .Add(ItemType<YoyoDrillCasing>(), Condition.Hardmode)
             .Add(ItemID.YoYoGlove, Condition.Hardmode)
             .Add(ItemID.BlackCounterweight, Condition.Hardmode)
             .Add(ItemType<SlimyString>(), Condition.DownedKingSlime, YoyoModConditions.MasterOrExpertMode)
@@ -271,12 +271,12 @@ namespace CombinationsMod.NPCS
             .Add(ItemType<EmeraldRing>(), YoyoModConditions.EaterOfWorldsOrBrain)
             .Add(ItemType<DiamondRing>(), YoyoModConditions.EaterOfWorldsOrBrain)
             .Add(ItemType<DarkTealString>(), YoyoModConditions.EaterOfWorldsOrBrain)
+            .Add(ItemID.YoyoBag, Condition.Hardmode)
 
             .Add(ItemType<TreeClippersDrillCasing>(), Condition.DownedIceQueen, Condition.Hardmode)
             .Add(ItemType<HorsemansDrillCasing>(), Condition.DownedPumpking, Condition.Hardmode)
             .Add(ItemType<TsurugiDrillCasing>(), Condition.DownedGolem, Condition.Hardmode)
-            .Add(ItemID.RedCounterweight, Condition.DownedGolem, Condition.Hardmode)
-            .Add(ItemType<HoneyRing>(), Condition.DownedPlantera, YoyoModConditions.MasterOrExpertMode);
+            .Add(ItemID.RedCounterweight, Condition.DownedGolem, Condition.Hardmode);
 
             accessoriesShop.Register();
         }

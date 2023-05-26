@@ -568,7 +568,7 @@ Mods: {
 					'''
 					Increases yoyo knockback
 					Slightly increases yoyo speed
-					Increases all yoyo damage by 10%
+					Increases all yoyo damage by 5%
 					'''
 			}
 
@@ -590,7 +590,7 @@ Mods: {
 					Yoyos will show the requirements for triggering the ability.
 					Increases yoyo knockback
 					Slightly increases yoyo speed
-					Increases all yoyo damage by 10%
+					Increases all yoyo damage by 5%
 					'''
 			}
 
@@ -601,7 +601,7 @@ Mods: {
 
 			TrepidationRing: {
 				DisplayName: Ring of Trepidation
-				Tooltip: Increases all yoyo damage by 10%
+				Tooltip: Increases all yoyo damage by 5%
 			}
 
 			DarkBlueString: {
@@ -1153,7 +1153,12 @@ Mods: {
 			}
 
 			ShimmerBag: {
-				DisplayName: Shimmer Bag
+				DisplayName: Shimmering Yoyo Bag
+				Tooltip: ""
+			}
+
+			Tier2Bag: {
+				DisplayName: Yoyo Suitcase
 				Tooltip: ""
 			}
 		}
@@ -1165,11 +1170,117 @@ Mods: {
 			StringInfo.DisplayName: Internal String Color
 		}
 
-		NPCs.ExamplePerson.DisplayName: Skeleton Peddler
+		NPCs: {
+			ExamplePerson: {
+				DisplayName: Skeleton Peddler
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LoveBiome: I love {BiomeName}.
+					LikeBiome: I like {BiomeName}.
+					DislikeBiome: I dislike {BiomeName}.
+					HateBiome: I hate {BiomeName}.
+					LoveNPC: I love {NPCName}.
+					LikeNPC: I like {NPCName}.
+					DislikeNPC: I dislike {NPCName}.
+					HateNPC: I hate {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
+		}
 
 		Conditions: {
 			MasterOrExpertMode: Mods.CombinationsMod.Conditions.MasterOrExpertMode
 			EaterOfWorldsOrBrain: Mods.CombinationsMod.Conditions.EaterOfWorldsOrBrain
+		}
+
+		Common: {
+			SmallChanges: Small Changes
+			LargeChanges:
+				'''
+				Green: Small Impact
+				Yellow: Medium Impact
+				Red: Huge Impact
+				Please note that disabling most of these will make the materials dropped by enemies or crafted redundant
+				'''
+		}
+
+		Configs: {
+			YoyoModConfig: {
+				UpscaleYoyoGlove: {
+					Tooltip: ""
+					Label: Increase the size of YoYo Glove sprite
+				}
+
+				MainYoyoDust: {
+					Tooltip: For testing purposes. Creates dust around your main yoyo.(Disabled by default)
+					Label: Main Yoyo Emits Dusts
+				}
+
+				YoyoProjectileID: {
+					Tooltip: Shows the internal ID of the projectile created by the held Yoyo.
+					Label: Show Yoyo Projectile ID
+				}
+
+				YoyoStringStats: {
+					Tooltip:
+						'''
+						Shows the internal color ID of the player's Yoyo string.
+						(May not display the correct value with mods that use shaders on Yoyo Strings, or use detouring.)
+						'''
+					Label: Show Player String Color
+				}
+
+				DisplayName: Mod Config
+
+				VanillaYoyoEffects: {
+					Label: Vanilla Yoyo Effects
+					Tooltip: Enables/Disables Vanilla Yoyos from inheriting added effects by this mod. (Enabled by default)
+				}
+
+				LoadModdedYoyos: {
+					Label: Modded Yoyos
+					Tooltip: Enables/Disables modded yoyos.(Enabled by default)
+				}
+
+				LoadModdedAccessories: {
+					Label: Modded Accessories
+					Tooltip: Enables/Disables modded accessories. (Enabled by default)
+				}
+
+				EnableModifiedYoyoBag: {
+					Label: Changes to Yoyo Bag System
+					Tooltip: Enables/Disables new yoyo bag system. (Enabled by default)
+				}
+
+				LoadModdedItems: {
+					Label: Modded Items
+					Tooltip: Enables/Disables modded items. Includes yoyos and accessories. (Enabled by default)
+				}
+
+				Headers: {
+					SmallChanges: Small Changes Header
+					LargeChanges:
+						'''
+						Large Changes
+						Green: Small Impact
+						Yellow: Medium Impact
+						Red: Huge Impact
+						Please note that disabling most of these will make the materials dropped by enemies or crafted redundant
+						'''
+				}
+
+				AccessorySlotPosition: {
+					Tooltip: ""
+					Label: Position of Accessory Slots
+				}
+			}
 		}
 	}
 }

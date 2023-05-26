@@ -15,13 +15,17 @@ using Terraria.GameContent.UI.Elements;
 using System.Drawing;
 using static Terraria.ModLoader.ModContent;
 using CombinationsMod.Items.Accessories.Strings;
+using ReLogic;
+using CombinationsMod.Items.Accessories.YoyoBags;
+using static CombinationsMod.CombinationsModUtils;
+using Terraria.GameContent;
 
 namespace CombinationsMod.UI
 {
     public class StringSlot : ModAccessorySlot
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
-        {
+        {        
             //3293 - 3308 : vanilla yoyo strings
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
             {
@@ -60,8 +64,19 @@ namespace CombinationsMod.UI
         public override bool IsVisibleWhenNotEnabled()
         {
             return false;
+        }   
+
+        public override bool IsEnabled()
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, Main.screenHeight / 11);
+
+        public override Vector2? CustomLocation => StringPos();
         public override string FunctionalTexture => "CombinationsMod/UI/accessorySlot";
         public override bool DrawDyeSlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -78,74 +93,6 @@ namespace CombinationsMod.UI
         }
     }
 
-    public class RingSlot : ModAccessorySlot
-    {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
-        {
-            if (checkItem.type == ModContent.ItemType<AbilityRing>() || checkItem.type == ModContent.ItemType<AmberRing>() ||
-                checkItem.type == ModContent.ItemType<AmethystRing>() || checkItem.type == ModContent.ItemType<TopazRing>() ||
-                checkItem.type == ModContent.ItemType<RubyRing>() || checkItem.type == ModContent.ItemType<SapphireRing>() ||
-                checkItem.type == ModContent.ItemType<EmeraldRing>() || checkItem.type == ModContent.ItemType<DiamondRing>() ||
-                checkItem.type == ModContent.ItemType<GemstoneRing>() || checkItem.type == ModContent.ItemType<FortitudeRing>() ||
-                checkItem.type == ModContent.ItemType<TrepidationRing>() || checkItem.type == ModContent.ItemType<OmnipotenceRing>() ||
-                checkItem.type == ModContent.ItemType<RingOfCoalescence>() || checkItem.type == ModContent.ItemType<TerreneRing>())
-                return true;
-
-            return false;
-        }
-        public override bool IsVisibleWhenNotEnabled()
-        {
-            return false;
-        }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 50);
-        public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
-        public override bool DrawDyeSlot => false;
-        public override bool DrawVanitySlot => false;
-        public override void OnMouseHover(AccessorySlotType context)
-        {
-            switch (context)
-            {
-                case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = "Yoyo Rings";
-                    break;
-            }
-        }
-    }
-    public class RingSlot2 : ModAccessorySlot
-    {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
-        {
-            if (checkItem.type == ModContent.ItemType<AbilityRing>() || checkItem.type == ModContent.ItemType<AmberRing>() ||
-                checkItem.type == ModContent.ItemType<AmethystRing>() || checkItem.type == ModContent.ItemType<TopazRing>() ||
-                checkItem.type == ModContent.ItemType<RubyRing>() || checkItem.type == ModContent.ItemType<SapphireRing>() ||
-                checkItem.type == ModContent.ItemType<EmeraldRing>() || checkItem.type == ModContent.ItemType<DiamondRing>() ||
-                checkItem.type == ModContent.ItemType<GemstoneRing>() || checkItem.type == ModContent.ItemType<FortitudeRing>() ||
-                checkItem.type == ModContent.ItemType<TrepidationRing>() || checkItem.type == ModContent.ItemType<OmnipotenceRing>() ||
-                checkItem.type == ModContent.ItemType<RingOfCoalescence>() || checkItem.type == ModContent.ItemType<TerreneRing>() || checkItem.type == ModContent.ItemType<HoneyRing>())
-                return true;
-
-            return false;
-        }
-        public override bool IsVisibleWhenNotEnabled()
-        {
-            return false;
-        }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 50);
-        public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
-        public override bool DrawDyeSlot => false;
-        public override bool DrawVanitySlot => false;
-        public override void OnMouseHover(AccessorySlotType context)
-        {
-            switch (context)
-            {
-                case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = "Yoyo Rings";
-                    break;
-            }
-        }
-
-
-    }
     public class YoyoGloveSlot : ModAccessorySlot
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
@@ -159,8 +106,19 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 100);
-        public override string FunctionalTexture => "CombinationsMod/UI/yoyoGloveSlot";
+
+        public override bool IsEnabled()
+        {
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
+        }
+
+        public override Vector2? CustomLocation => RightGlovePos();
+        public override string FunctionalTexture => ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/YoyoGloveSlotLarge" : "CombinationsMod/UI/YoyoGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -172,8 +130,6 @@ namespace CombinationsMod.UI
                     break;
             }
         }
-
-
     }
     public class YoyoSupportGloveSlot : ModAccessorySlot
     {
@@ -188,8 +144,20 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 100);
-        public override string FunctionalTexture => "CombinationsMod/UI/supportGloveSlot";
+
+        public override bool IsEnabled()
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag;
+        }
+
+        public override Vector2? CustomLocation => LeftGlovePos();
+
+        public override string FunctionalTexture => ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/SupportGloveSlotLarge" : "CombinationsMod/UI/SupportGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -206,12 +174,9 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            if (checkItem.type == ModContent.ItemType<YoyoDrillCasing>() || checkItem.type == ModContent.ItemType<AdamantiteDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<CobaltDrillCasing>() || checkItem.type == ModContent.ItemType<HakapikDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<HorsemansDrillCasing>() || checkItem.type == ModContent.ItemType<MattockDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<MythrilDrillCasing>() || checkItem.type == ModContent.ItemType<OrichalcumDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<PalladiumCasing>() || checkItem.type == ModContent.ItemType<ShroomiteShredderCasing>() ||
-                checkItem.type == ModContent.ItemType<SpectralShredderCasing>() || checkItem.type == ModContent.ItemType<TitaniumDrillCasing>() ||
+            if (checkItem.type == ModContent.ItemType<HakapikDrillCasing>() ||
+                checkItem.type == ModContent.ItemType<HorsemansDrillCasing>() || checkItem.type == ModContent.ItemType<MattockDrillCasing>() || checkItem.type == ModContent.ItemType<ShroomiteShredderCasing>() ||
+                checkItem.type == ModContent.ItemType<SpectralShredderCasing>() ||
                 checkItem.type == ModContent.ItemType<TreeClippersDrillCasing>() || checkItem.type == ModContent.ItemType<TsurugiDrillCasing>() ||
                 checkItem.type == ModContent.ItemType<SolarDrillCasing>() || checkItem.type == ModContent.ItemType<VortexDrillCasing>() ||
                 checkItem.type == ModContent.ItemType<NebulaDrillCasing>() || checkItem.type == ModContent.ItemType<StardustDrillCasing>() ||
@@ -226,7 +191,18 @@ namespace CombinationsMod.UI
         {
             return false;
         }
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 150);
+
+        public override bool IsEnabled()
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag;
+        }
+
+        public override Vector2? CustomLocation => DrillPos();
 
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
         public override string FunctionalTexture => "CombinationsMod/UI/drillSlot";
@@ -258,8 +234,19 @@ namespace CombinationsMod.UI
         {
             return false;
         }
+
+        public override bool IsEnabled()
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
+        }
+
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
-        public override Vector2? CustomLocation => new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 150);
+        public override Vector2? CustomLocation => CounterweightPos();
         public override string FunctionalTexture => "CombinationsMod/UI/counterweightSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;

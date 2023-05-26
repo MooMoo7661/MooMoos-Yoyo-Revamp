@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.ModLoader;
+using Terraria;
 
 namespace CombinationsMod
 {
@@ -37,6 +39,141 @@ namespace CombinationsMod
             pinkString = ItemID.PinkString,
             brownString = ItemID.BrownString,
             rainbowString = ItemID.RainbowString
+        }
+
+        public static Vector2 StringPos()
+        {
+            Vector2 stringSlotPos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+
+            switch (pos)
+            {
+                case 1:
+                    stringSlotPos = new Vector2(Main.screenWidth - 350, Main.screenHeight / 11);
+                    break;
+
+                case 2:
+                    stringSlotPos = new Vector2(Main.screenWidth - 980, Main.screenHeight / 11);
+                    break;
+
+                case 3:
+                    stringSlotPos = new Vector2(Main.screenWidth - 1212, Main.screenHeight / 3 - 45);
+                    break;
+
+                case 4:
+                    stringSlotPos = new Vector2(Main.screenWidth / 2 + 110, (Main.screenHeight / 2 - 68));
+                    break;
+            }
+
+            return stringSlotPos;
+        }
+
+        public static Vector2 RightGlovePos()
+        {
+            Vector2 rightGlovePos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+
+            switch (pos)
+            {
+                case 1:
+                    rightGlovePos = new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 50);
+                    break;
+
+                case 2:
+                    rightGlovePos = new Vector2(Main.screenWidth - 980, (Main.screenHeight / 11) + 50);
+                    break;
+
+                case 3:
+                    rightGlovePos = new Vector2(Main.screenWidth - 1212, Main.screenHeight / 3 + 2);
+                    break;
+
+                case 4:
+                    rightGlovePos = new Vector2(Main.screenWidth / 2 + 110, (Main.screenHeight / 2 - 19));
+                    break;
+            }
+
+            return rightGlovePos;
+        }
+
+        public static Vector2 LeftGlovePos()
+        {
+            Vector2 leftGlovePos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+
+            switch (pos)
+            {
+                case 1:
+                    leftGlovePos = new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 50);
+                    break;
+
+                case 2:
+                    leftGlovePos = new Vector2(Main.screenWidth - 1027, (Main.screenHeight / 11) + 50);
+                    break;
+
+                case 3:
+                    leftGlovePos = new Vector2(Main.screenWidth - 1259, (Main.screenHeight / 3 + 2));
+                    break;
+
+                case 4:
+                    leftGlovePos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2  - 19));
+                    break;
+            }
+
+            return leftGlovePos;
+        }
+
+        public static Vector2 CounterweightPos()
+        {
+            Vector2 counterweightPos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+
+            switch (pos)
+            {
+                case 1:
+                    counterweightPos = new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11) + 100);
+                    break;
+
+                case 2:
+                    counterweightPos = new Vector2(Main.screenWidth - 980, (Main.screenHeight / 11) + 100);
+                    break;
+
+                case 3:
+                    counterweightPos = new Vector2(Main.screenWidth - 1212, (Main.screenHeight / 3 + 49));
+                    break;
+
+                case 4:
+                    counterweightPos = new Vector2(Main.screenWidth / 2 + 110, (Main.screenHeight / 2 + 30));
+                    break;
+            }
+
+            return counterweightPos;
+        }
+
+        public static Vector2 DrillPos()
+        {
+            Vector2 drillPos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+
+            switch (pos)
+            {
+                case 1:
+                    drillPos = new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11) + 100);
+                    break;
+
+                case 2:
+                    drillPos = new Vector2(Main.screenWidth - 1027, (Main.screenHeight / 11) + 100);
+                    break;
+
+                case 3:
+                    drillPos = new Vector2(Main.screenWidth - 1259, (Main.screenHeight / 3 + 49));
+                    break;
+
+                case 4:
+                    drillPos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2 + 30));
+                    break;
+            }
+
+            return drillPos;
         }
     }
 }

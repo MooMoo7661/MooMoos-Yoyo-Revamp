@@ -17,22 +17,38 @@ namespace CombinationsMod
 {
     public class CombinationsModClass : Mod
     {
-
         public override void Load()
         {
-            Terraria.On_Main.DrawProj_DrawYoyoString += Test;   
+            On_Main.DrawProj_DrawYoyoString += Test;
+            On_Player.ApplyEquipFunctional += On_Player_ApplyEquipFunctional;
         }
 
         public override void Unload()
         {
-            Terraria.On_Main.DrawProj_DrawYoyoString -= Test;
+            On_Main.DrawProj_DrawYoyoString -= Test;
+            On_Player.ApplyEquipFunctional -= On_Player_ApplyEquipFunctional;
+        }
+
+        private void On_Player_ApplyEquipFunctional(On_Player.orig_ApplyEquipFunctional orig, Player self, Item item, bool hideVisual)
+        {
+            if (item.type != ItemID.YoyoBag)
+                orig.Invoke(self, item, hideVisual);
+
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag && item.type == ItemID.YoyoBag)
+            {
+                orig.Invoke(self, item, hideVisual);
+            }
+
+            if (item.type == ItemID.YoyoBag)
+            {
+                self.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
+            }
         }
 
         private void DrawCustomYoyoString(Projectile projectile, Vector2 mountedCenter, Color textureColor, Asset<Texture2D> texture)
         {
             // Adapted Vanilla Code for drawing custom yoyo strings.
             // Yes, I know it's a horrible sight.
-
 
             if (projectile.aiStyle == 99 || projectile.type == ProjectileType<World1>() || projectile.type == ProjectileType<World2>())
             {
@@ -255,7 +271,10 @@ namespace CombinationsMod
             }
         }
 
-        private Asset<Texture2D> WhichTextureShouldBeUsed(Asset<Texture2D> texture, Projectile projectile)
+        /// <summary>
+        /// Lets specific projectiles have strings, without requiring them to be added to a dictionary and all that shit.
+        /// </summary>
+        private static Asset<Texture2D> WhichTextureShouldBeUsed(Asset<Texture2D> texture, Projectile projectile)
         {
             int type = projectile.type;
 
@@ -270,8 +289,10 @@ namespace CombinationsMod
 
             return texture;
         }
-
-        private Color WhichColorShouldBeUsed(Color textureColor, Projectile projectile)
+        /// <summary>
+        /// Lets specific projectiles modify the color of the yoyo string, without doing it in the actual detour.
+        /// </summary>
+        private static Color WhichColorShouldBeUsed(Color textureColor, Projectile projectile)
         {
             if (projectile.type == ProjectileID.TheEyeOfCthulhu && projectile.localAI[1] == 2)
             {

@@ -16,6 +16,8 @@ using System.Security.Cryptography.X509Certificates;
 using Terraria.WorldBuilding;
 using Terraria.GameContent.Generation;
 using static Terraria.GameContent.Generation.WorldGenLegacyMethod;
+using CombinationsMod.UI;
+using CombinationsMod.Items.Accessories.YoyoGloves;
 
 namespace CombinationsMod
 {
@@ -61,6 +63,9 @@ namespace CombinationsMod
         public StringTexture cultistStringEntry = new StringTexture();
         public StringTexture blackHoleStringEntry = new StringTexture();
 
+        /// <summary>
+        /// Adds dictionary entries, enabling the ability to retrieve specific yoyo string textures for certain yoyos.
+        /// </summary>
         public void AddDictionaryEntries()
         {
             upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
@@ -87,14 +92,46 @@ namespace CombinationsMod
             return TextureAssets.FishingLine; // Defaults to this if the entry is not found
         }
 
-        
+        public Asset<Texture2D> code2;
+        public Asset<Texture2D> code1;
+        public Asset<Texture2D> glove;
+
         public override void PostSetupContent()
         {
-            TextureAssets.Item[ItemID.YoYoGlove] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/YoYoGlove");
+            code2 = TextureAssets.Item[ItemID.Code2];
+            code1 = TextureAssets.Item[ItemID.Code1];
+            glove = TextureAssets.Item[ItemID.YoYoGlove];
+
+            if (ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove)
+            {
+                TextureAssets.Item[ItemID.YoYoGlove] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/YoYoGlove");
+            }
+
             TextureAssets.Item[ItemID.Code2] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code2");
             TextureAssets.Item[ItemID.Code1] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code1");
 
             AddDictionaryEntries();
+        }
+
+        public override void Unload()
+        {
+            TextureAssets.Item[ItemID.YoYoGlove] = glove;
+            TextureAssets.Item[ItemID.Code2] = code2;
+            TextureAssets.Item[ItemID.Code1] = code1;
+        }
+
+        public override void PostAddRecipes()
+        {
+            for (int i = 0; i < Main.recipe.Length; i++)
+            {
+                var recipe = Main.recipe[i];
+
+                if (recipe.createItem.type == ItemID.YoyoBag)
+                {
+                    recipe.DisableRecipe();
+                }
+            }
+
         }
 
         public override void AddRecipes()
@@ -129,7 +166,7 @@ namespace CombinationsMod
             cobaltBarRecipeGroup = new RecipeGroup(() => "Cobalt or Palladium", ItemID.CobaltBar, ItemID.PalladiumBar);
             RecipeGroup.RegisterGroup("CombinationsMod:CobaltOrPalladium", cobaltBarRecipeGroup);
 
-            adamantiteBarRecipeGroup = new RecipeGroup(() => "Adamantite or Titanium", ItemID.AdamantiteBar, ItemID.TitaniumBar);   
+            adamantiteBarRecipeGroup = new RecipeGroup(() => "Adamantite or Titanium", ItemID.AdamantiteBar, ItemID.TitaniumBar);
             RecipeGroup.RegisterGroup("CombinationsMod:AdamantiteOrTitanium", adamantiteBarRecipeGroup);
 
             mythrilBarRecipeGroup = new RecipeGroup(() => "Mythril or Orichalcum", ItemID.MythrilBar, ItemID.OrichalcumBar);

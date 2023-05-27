@@ -9,9 +9,10 @@ using Terraria.Utilities;
 namespace CombinationsMod.Items.Accessories.Drills
 {
        
-    public class ShadowflameDrillCasing : ModItem
+    public class ShadowflameDrillCasing : ModDrill
     {
-       
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Shadowflame Drill Casing");
@@ -39,20 +40,6 @@ namespace CombinationsMod.Items.Accessories.Drills
           
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.shadowflameDrill = true;
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-         
-            if (!modded)
-                return false;
-
-            ModAccessorySlot curSlot = LoaderManager.Get<AccessorySlotLoader>().Get(slot, player);
-
-            return !ModLoader.TryGetMod("CombinationsMod", out Mod mod) ||
-                   !mod.TryFind("DrillSlot", out ModAccessorySlot otherSlot) ||
-                   otherSlot.Type == curSlot.Type;
-
-            //return true;
         }
     }
 }

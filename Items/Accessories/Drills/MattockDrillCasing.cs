@@ -6,8 +6,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Drills
 {
-    public class MattockDrillCasing : ModItem
+    public class MattockDrillCasing : ModDrill
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -32,10 +33,6 @@ namespace CombinationsMod.Items.Accessories.Drills
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.chlorophyteDrill = true;
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<DrillSlot>().Type;
         }
 
         public override void AddRecipes()

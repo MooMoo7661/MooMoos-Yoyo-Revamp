@@ -9,9 +9,10 @@ using Terraria.Utilities;
 namespace CombinationsMod.Items.Accessories.Drills
 {
        
-    public class NinjaStarCasing : ModItem
+    public class NinjaStarCasing : ModDrill
     {
-       
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Ninja Star");
@@ -39,20 +40,6 @@ namespace CombinationsMod.Items.Accessories.Drills
           
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.ninjaDrill = true;
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-
-            if (!modded)
-                return false;
-
-            ModAccessorySlot curSlot = LoaderManager.Get<AccessorySlotLoader>().Get(slot, player);
-
-            return !ModLoader.TryGetMod("CombinationsMod", out Mod mod) ||
-                   !mod.TryFind("DrillSlot", out ModAccessorySlot otherSlot) ||
-                   otherSlot.Type == curSlot.Type;
-
-            //return true;
         }
     }
 }

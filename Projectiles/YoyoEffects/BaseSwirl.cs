@@ -48,6 +48,9 @@ namespace CombinationsMod.Projectiles.YoyoEffects
             Projectile.penetrate = Penetrate;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 150;
+            Projectile.usesIDStaticNPCImmunity = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10 * Projectile.MaxUpdates;
         }
 
         public override Color? GetAlpha(Color lightColor)

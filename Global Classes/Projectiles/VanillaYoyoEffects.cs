@@ -933,7 +933,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 num7 = (int)((double)num7 * 0.8);
 
-                if (player.GetModPlayer<YoyoModPlayer>().yoyoBag)
+                if ((player.GetModPlayer<YoyoModPlayer>().yoyoBag || player.GetModPlayer<YoyoModPlayer>().shimmerBag || player.GetModPlayer<YoyoModPlayer>().tier2Bag) && ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
                 {
                     yoyoSpeed *= 3f;
                 }

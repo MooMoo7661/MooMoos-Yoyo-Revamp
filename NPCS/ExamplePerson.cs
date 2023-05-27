@@ -496,13 +496,6 @@ namespace CombinationsMod.NPCS
                         nextSlot++;
                     }
 
-                    if (NPC.downedPlantBoss && (Main.expertMode || Main.masterMode))
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemType<HoneyRing>());
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
-                        nextSlot++;
-                    }
-
                     if (NPC.downedGolemBoss)
                     {
                         shop.item[nextSlot].SetDefaults(ItemID.RedCounterweight);

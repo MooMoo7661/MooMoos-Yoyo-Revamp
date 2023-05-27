@@ -13,17 +13,28 @@ namespace CombinationsMod
         public int yoyoNumber = 1;
 
         public int chainTextureID = 0;
-        public bool wasEquipped = false; // For use with the `yoyoSpacers` bool, allows the mod to subtract the added stats to prevent exponential growth.
+
+        /// <summary>
+        /// For use with the `yoyoSpacers` bool, allows the mod to subtract the added stats to prevent exponential growth.
+        /// </summary>
+        public bool wasEquipped = false;
+
         public bool wasEquippedDarkGreen = false;
         public bool wasEquippedDarkBlue = false;
         public bool wasEquippedLightPink = false;
         public bool wasEquippedNaniteString = false;
 
-        public bool yoyoClip = false; // Used by the Upgraded Yoyo Glove / Solar Glove. Determines if the player can create a second yoyo
-        public bool yoyoSpacers = false; // Extends speed of yoyos (unused?)
+        /// <summary>
+        ///  Used by the Upgraded Yoyo Glove / Solar Glove. Determines if the player can create a second yoyo
+        /// </summary>
+        public bool yoyoClip = false;
+        public bool yoyoSpacers = false;
+        public bool yoyoBag = false;
+        public bool shimmerBag = false;
+        public bool tier2Bag = false;
 
         public bool eclipseString = false;
-        public bool golemString = false; // Golemsteel String
+        public bool golemString = false;
         public bool frostbiteString = false;
         public bool slimeString = false;
 
@@ -92,6 +103,9 @@ namespace CombinationsMod
 
             yoyoClip = false;
             yoyoSpacers = false;
+            yoyoBag = false;
+            shimmerBag = false;
+            tier2Bag = false;
 
             supportGlove = false;
 
@@ -158,14 +172,67 @@ namespace CombinationsMod
             trick2 = false;
         }
 
-        public float GetModifiedPlayerYoyoStringLength(float length)
+        /// <summary>
+        /// Inputs regular yoyo string length, then returns the modified length depending on player bools.
+        /// </summary>
+        /// <returns>(float) New modified length of yoyo string</returns>
+        public float GetModifiedPlayerYoyoStringLength(float length, Player player)
         {
-            if (solarString || nebulaString || vortexString || stardustString)
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.solarString || modPlayer.nebulaString || modPlayer.vortexString || modPlayer.stardustString)
             {
                 length += 100f;
             }
 
             return length;
+        }
+
+        /// <summary>
+        /// Inputs regular yoyo speed, then returns the modified speed depending on player bools.
+        /// </summary>
+        /// <returns>(float) New modified speed of yoyo</returns>
+        public float GetModifiedPlayerYoyoSpeed(float speed, Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.omnipotenceRing)
+            {
+                speed += 2f;
+            }
+
+            return speed;
+        }
+
+        /// <summary>
+        /// Checks for yoyo bag
+        /// </summary>
+        public static bool TestForYoyoBag(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.yoyoBag || modPlayer.shimmerBag || modPlayer.tier2Bag)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the number of yoyos the player should have
+        /// </summary>
+        public static int GetNumPlayerYoyos(Player player)
+        {
+            int numYoyos = 1;
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.tier2Bag || modPlayer.shimmerBag)
+            {
+                numYoyos = 2;
+            }
+
+            return numYoyos;
         }
 
         public override void PostUpdateEquips() // Each of these 3 functions keeps track of whether to add or subtract 1.8f to the yoyo's top speed.
@@ -213,7 +280,10 @@ namespace CombinationsMod
             HitCounter = 0;
         }
 
-        public bool TestForSupportGlove(Player player)
+        /// <summary>
+        /// Checks for support glove
+        /// </summary>
+        public static bool TestForSupportGlove(Player player)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
@@ -233,12 +303,18 @@ namespace CombinationsMod
         public override void Unload()
         {
             On.Terraria.Player.Counterweight -= DualYoyoDetour;
+            
         }
 
         private void DualYoyoDetour(On.Terraria.Player.orig_Counterweight orig, Player player, Vector2 hitPos, int dmg, float kb)
         {
             DualYoyo(player, hitPos, dmg, kb);
         }
+
+        /// <summary>
+        /// Detoured hook of Player.Counterweight. <br>
+        /// Handles all behavior related to the yoyo glove.</br>
+        /// </summary>
 
         private void DualYoyo(Player player, Vector2 hitPos, int dmg, float kb)
         {
@@ -267,10 +343,22 @@ namespace CombinationsMod
                 }
             }
 
-            if (player.yoyoGlove && num2 < 2)
+            if (player.yoyoGlove && num2 < GetNumPlayerYoyos(player) + 1)
             {
                 if (num >= 0)
                 {
+                    if (TestForYoyoBag(player) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                    {
+                        int numYoyos = GetNumPlayerYoyos(player);
+
+                        for (int i = 0; i < numYoyos - 1; i++)
+                        {
+                            Vector2 vector = Main.rand.NextVector2Unit() * 16f;
+                            Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                        }
+                    }
+
+
                     if (TestForSupportGlove(player))
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
@@ -278,7 +366,7 @@ namespace CombinationsMod
 
                         Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
                         Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector2.X, vector2.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
-                        return; 
+                        return;
                     }
                     else
                     {
@@ -286,6 +374,8 @@ namespace CombinationsMod
                         Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
                         return;
                     }
+
+
                 }
             }
             else if (num3 < num2)
@@ -311,4 +401,4 @@ namespace CombinationsMod
             }
         }
     }
-} 
+}

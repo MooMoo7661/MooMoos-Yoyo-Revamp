@@ -29,6 +29,11 @@ public static class VectorHelper
 
     public static Vector2 Right => new Vector2(1f, 0f);
 
+
+    /// <summary>
+    ///  Used for creating projectiles in a random circle.
+    /// </summary>
+    /// <returns>Vector2</returns>
     public static Vector2 CircularRandom()
     {
         Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi);

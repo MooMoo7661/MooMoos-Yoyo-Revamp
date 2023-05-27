@@ -38,11 +38,7 @@ namespace CombinationsMod.Items.Accessories.Rings
                 modPlayer.trepidationRing = true;
             }
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot>().Type ||
-                LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot2>().Type);
-        }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(); 

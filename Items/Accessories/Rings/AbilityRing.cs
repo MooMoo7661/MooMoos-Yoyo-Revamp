@@ -33,10 +33,5 @@ namespace CombinationsMod.Items.Accessories.Rings
             if (!hideVisual)
                 modPlayer.yoyoRing = true;
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot>().Type || 
-                LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<RingSlot2>().Type) ;
-        }
     }
 }

@@ -18,6 +18,7 @@ using CombinationsMod.Projectiles.TrickYoyos;
 using static Terraria.ModLoader.ModContent;
 using static CombinationsMod.CombinationsModUtils.YoyoStrings;
 using CombinationsMod.Items.Accessories.Strings;
+using CombinationsMod.Items.Accessories.YoyoBags;
 
 namespace CombinationsMod.GlobalClasses
 {
@@ -42,12 +43,15 @@ namespace CombinationsMod.GlobalClasses
             {
                 item.damage = 24;
             }
+            else if (item.type == ItemID.ValkyrieYoyo || item.type == ItemID.RedsYoyo)
+            {
+                item.damage = 64;
+            }
         }
-
 
         public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
         {
-            if (item.type >= 3309 && item.type <= 3314)
+            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight)
             {
                 return false;
             }
@@ -63,13 +67,15 @@ namespace CombinationsMod.GlobalClasses
             }
         }
 
+        
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
             if (modPlayer.trepidationRing && ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99)
             {
-                damage *= 1.10f;
+                damage *= 1.05f;
             }
 
             if (modPlayer.solarString || modPlayer.stardustString || modPlayer.vortexString || modPlayer.nebulaString
@@ -89,13 +95,17 @@ namespace CombinationsMod.GlobalClasses
         }
         public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
         {
-            if (item.type >= 3309 && item.type <= 3314)
+            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight)
             {
+                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag) { return true; }
+
                 return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<CounterweightSlot>().Type);
             }
 
             if (item.type == ItemID.YoYoGlove)
             {
+                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag) { return true; }
+
                 return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<YoyoGloveSlot>().Type);
             }
 
@@ -187,7 +197,12 @@ namespace CombinationsMod.GlobalClasses
                     break;
                         
                 case ItemID.YoyoBag:
-                    tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", "Yoyos are recalled faster\n[c/6EAE6E:+70 yoyo range]"));
+                    if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                    {
+                        int index = tooltips.FindIndex(tip => tip.Name.StartsWith("Tooltip"));
+                        tooltips.RemoveAll(tip => tip.Name.StartsWith("Tooltip"));
+                        tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", "Yoyos are recalled faster\nGives the user more accessory slots for yoyos"));
+                    }
                     break;
             }
         }

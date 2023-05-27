@@ -640,6 +640,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private void YoyoAIDetour(On.Terraria.Projectile.orig_AI_099_2 orig, Projectile projectile)
         {
             flag = false;
+            Player player = Main.player[projectile.owner];
 
             for (int i = 0; i < projectile.whoAmI; i++)
             {
@@ -769,7 +770,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[projectile.type];
 
             float modifiedStringLength = stringLength;
-            modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength);
+            modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength, player);
 
             if (projectile.type == 545) // 545 is cascade
             {

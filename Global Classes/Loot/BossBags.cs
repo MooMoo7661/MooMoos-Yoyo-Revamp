@@ -23,10 +23,6 @@ namespace CombinationsMod.GlobalClasses.Loot
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Catacomb>()));
                     break;
 
-                case ItemID.WallOfFleshBossBag:
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<YoyoDrillCasing>()));
-                    break;
-
                 case ItemID.GolemBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TsurugiDrillCasing>()));
                     break;

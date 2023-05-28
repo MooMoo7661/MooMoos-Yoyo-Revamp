@@ -32,6 +32,9 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 150;
+            Projectile.usesIDStaticNPCImmunity = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10 * Projectile.MaxUpdates;
         }
         public override string Texture => "CombinationsMod/Projectiles/YoyoEffects/Solid/EclipseSwirl";
         public override Color? GetAlpha(Color lightColor) => new(255, 92, 0, 0); // More Orange

@@ -929,7 +929,16 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             else
             {
                 num7 = (int)((double)num7 * 0.8);
-                yoyoSpeed *= 1.5f;
+
+                if ((player.GetModPlayer<YoyoModPlayer>().yoyoBag || player.GetModPlayer<YoyoModPlayer>().shimmerBag || player.GetModPlayer<YoyoModPlayer>().tier2Bag) && ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                {
+                    yoyoSpeed *= 3f;
+                }
+                else
+                {
+                    yoyoSpeed *= 1.8f;
+                }
+
                 projectile.tileCollide = false;
                 Vector2 vector9 = Main.player[projectile.owner].Center - projectile.Center;
                 float num15 = vector9.Length();

@@ -370,6 +370,13 @@ namespace CombinationsMod.NPCS
 
                 if (NPC.downedBoss1)
                 {
+                    if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.YoyoBag);
+                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
+                        nextSlot++;
+                    }
+
                     shop.item[nextSlot].SetDefaults(ItemType<LightPinkString>());
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 9);
                     nextSlot++;
@@ -455,13 +462,6 @@ namespace CombinationsMod.NPCS
                     shop.item[nextSlot].SetDefaults(ItemID.BlackCounterweight);
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 12);
                     nextSlot++;
-
-                    if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.YoyoBag);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
-                        nextSlot++;
-                    }
 
                     if (NPC.downedPlantBoss)
                     {

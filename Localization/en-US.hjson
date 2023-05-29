@@ -1,64 +1,49 @@
-
 Mods: {
 	CombinationsMod: {
-
-	
-	TownNPCMood : 
-	{
-		ExamplePerson:
-		{
-			LoveBiome: "I love the forest. Plenty of nice scenery and critters."
-			LikeBiome: "I don't mind the desert. Probably because I can't feel the heat."
-			DislikeBiome: "I don't really like it here. It sends shivers down my spine."
-
-			LoveSpace: "It's great having all this room to myself. I wouldn't mind a few people to talk to though. It's quite lonely."
-			NoHome: "In my travels, I always set up a temporary spot for a few days. I'd really like to finally just set my bags down and stay somewhere for a while."
-			DislikeCrowded: "There's a little more people than I'd like here."
-			HateCrowded: "It's really crowded here."
-
-			LoveNPC : "The Merchant and I get along really well, he knows how to talk business."
-			DislikeNPC : "I wish the Demolitionist wasn't here, I don't like his rude attitude."
-			LikeNPC_Princess : "It feels...calmer here. I can't quite place my hand on it though."
-		}
-	}
-		Dialogue:
-		{
-			ExamplePerson:
-			{
-				StandardDialogue1 : "Check out my collection of Yoyos!"
-				StandardDialogue2 : "People often assume just because I'm a skeleton that I love the underground. Fun fact: I do not."
-				StandardDialogue3 : "My yoyo days are long over, but that doesn't stop me from collecting and selling them."
-				StandardDialogue4 : "Some people tell me I look very similar to my brother. I disagree."
-				StandardDialogue5 : "Being a skeleton isn't all that bad. Sometimes, I like to play my ribcage like a xylophone!"
-				StandardDialoge6 : "Spooky scary skeletons... Hm? Oh, hello."
-
-				CommonDialoge1 : "You know, I'm quite suprised that everyone here is so receptive of me. Usually, people just scream and throw things at me."
-
+		TownNPCMood: {
+			ExamplePerson: {
+				LoveBiome: I love the forest. Plenty of nice scenery and critters.
+				LikeBiome: I don't mind the desert. Probably because I can't feel the heat.
+				DislikeBiome: I don't really like it here. It sends shivers down my spine.
+				LoveSpace: It's great having all this room to myself. I wouldn't mind a few people to talk to though. It's quite lonely.
+				NoHome: In my travels, I always set up a temporary spot for a few days. I'd really like to finally just set my bags down and stay somewhere for a while.
+				DislikeCrowded: There's a little more people than I'd like here.
+				HateCrowded: It's really crowded here.
+				LoveNPC: The Merchant and I get along really well, he knows how to talk business.
+				DislikeNPC: I wish the Demolitionist wasn't here, I don't like his rude attitude.
+				LikeNPC_Princess: It feels...calmer here. I can't quite place my hand on it though.
 			}
 		}
 
-		Achievements:
-		{
-			AbbhorAchievement:
-			{
+		Dialogue: {
+			ExamplePerson: {
+				StandardDialogue1: Check out my collection of Yoyos!
+				StandardDialogue2: People often assume just because I'm a skeleton that I love the underground. Fun fact: I do not.
+				StandardDialogue3: My yoyo days are long over, but that doesn't stop me from collecting and selling them.
+				StandardDialogue4: Some people tell me I look very similar to my brother. I disagree.
+				StandardDialogue5: Being a skeleton isn't all that bad. Sometimes, I like to play my ribcage like a xylophone!
+				StandardDialoge6: Spooky scary skeletons... Hm? Oh, hello.
+				CommonDialoge1: You know, I'm quite suprised that everyone here is so receptive of me. Usually, people just scream and throw things at me.
+			}
+		}
+
+		Achievements: {
+			AbbhorAchievement: {
 				Name: Easy Come, Easy Throw
 				Description: Forge the Abbhor, a powerful weapon that contains dark energy.
 			}
 
-			Code1Achievement:
-			{
+			Code1Achievement: {
 				Name: I Wanna be a Yoyo Man!
 				Description: Obtain the Code 1.
 			}
 
-			Code2Achievement:
-			{
+			Code2Achievement: {
 				Name: Just Keep On Yo-ing
-				Description:  Craft the Code 2.
+				Description: Craft the Code 2.
 			}
 
-			ConverganceAchievement:
-			{
+			ConverganceAchievement: {
 				Name: No Strings Attatched
 				Description: Merge every yoyo into one final yoyo, the Convergance.
 			}
@@ -202,7 +187,7 @@ Mods: {
 			Sparkle1.DisplayName: Sparkle 1
 			Sparkle2.DisplayName: Sparkle 2
 			Sparkle3.DisplayName: Sparkle 1
-			Swirl.DisplayName: Yellow Inner Swirl
+			Swirl.DisplayName: Cascade Inner Swirl
 			SwirlBlue.DisplayName: Swirl Sovereign
 			SwirlGreen.DisplayName: Swirl Green
 			SwirlPurple.DisplayName: Swirl Purple
@@ -241,6 +226,24 @@ Mods: {
 			TrueCode3Projectile.DisplayName: True Code3 Projectile
 			TrueSmudgeProjectile.DisplayName: True Smudge Projectile
 			TunaProjectile.DisplayName: Tuna Projectile
+			HelFireExplosion.DisplayName: Hel-Fire Explosion
+			WaterExplosion.DisplayName: Water Explosion
+			BlackHoleSparkle.DisplayName: Sparkle
+			Code1Effect.DisplayName: Code1 Effect
+			FormatCEffect.DisplayName: Format C Effect
+			GradientEffect.DisplayName: Gradient Effect
+			RallyEffect.DisplayName: Rally Effect
+			World1.DisplayName: World1
+			World2.DisplayName: World2
+			BlackHole.DisplayName: Black Hole
+			BlackHole2.DisplayName: Black Hole 2
+			BlackHole4.DisplayName: Black Hole 4
+			BlackHoleCenter1.DisplayName: Black Hole Center 1
+			BlackHoleCenter2.DisplayName: Black Hole Center 2
+			BlackHoleProjectile.DisplayName: Black Hole Projectile
+			ConverganceProjectile.DisplayName: Convergance Projectile
+			CragHomingExplosive.DisplayName: Crag Homing Explosive
+			HomingWaterBolt.DisplayName: Homing Water Bolt
 		}
 
 		Items: {
@@ -537,7 +540,7 @@ Mods: {
 
 			FortitudeRing: {
 				DisplayName: Ring of Fortitude
-				Tooltip: Yoyos can phase through walls
+				Tooltip: Increases the knockback of all yoyos
 			}
 
 			GemstoneRing: {
@@ -556,16 +559,16 @@ Mods: {
 
 			OmnipotenceRing: {
 				DisplayName: Ring of Perception
-				Tooltip: Yoyos shoot cursed flames
+				Tooltip: Slighly increases yoyo speed
 			}
 
 			RingOfCoalescence: {
 				DisplayName: Ring of Coalescence
 				Tooltip:
 					'''
-					Yoyos can phase through walls
-					Yoyos shoot cursed flames
-					[c/6EAE6E:+10% base yoyo damage]
+					Increases yoyo knockback
+					Slightly increases yoyo speed
+					Increases all yoyo damage by 5%
 					'''
 			}
 
@@ -585,9 +588,9 @@ Mods: {
 					'''
 					[c/FF00AB:Enables Yoyos to use their special abilities.]
 					Yoyos will show the requirements for triggering the ability.
-					Yoyos can phase through walls
-					Yoyos shoot cursed flames
-					[c/6EAE6E:+10% base yoyo damage]
+					Increases yoyo knockback
+					Slightly increases yoyo speed
+					Increases all yoyo damage by 5%
 					'''
 			}
 
@@ -598,41 +601,65 @@ Mods: {
 
 			TrepidationRing: {
 				DisplayName: Ring of Trepidation
-				Tooltip: "[c/6EAE6E:+10% base yoyo damage]"
+				Tooltip: Increases all yoyo damage by 5%
 			}
 
 			DarkBlueString: {
 				DisplayName: Dark Blue String
-				Tooltip: Increases yoyo range
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+150 yoyo range]
+					'''
 			}
 
 			DarkGreenString: {
 				DisplayName: Dark Green String
-				Tooltip: Increases yoyo range
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+150 yoyo range]
+					'''
 			}
 
 			EclipseString: {
 				DisplayName: Eclipse String
 				Tooltip:
 					'''
+					Increases yoyo range
 					Feels very heavy
 					Yoyos create damaging swipes on hit
+					[c/6EAE6E:+150 yoyo range]
 					'''
 			}
 
 			FrostbiteString: {
 				DisplayName: Frostbite String
-				Tooltip: Counterweights inflict Frostbite
+				Tooltip:
+					'''
+					Increases yoyo range
+					Counterweights inflict Frostbite
+					[c/6EAE6E:+150 yoyo range]
+					'''
 			}
 
 			GolemsteelString: {
 				DisplayName: Golemsteel String
-				Tooltip: Counterweights deal massive knockback and have increased damage.
+				Tooltip:
+					'''
+					Increases yoyo range
+					Counterweights deal massive knockback and have increased damage.
+					[c/6EAE6E:+150 yoyo range]
+					'''
 			}
 
 			LightPinkString: {
 				DisplayName: Light Pink String
-				Tooltip: Increases yoyo range
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+150 yoyo range]
+					'''
 			}
 
 			NaniteString: {
@@ -640,16 +667,34 @@ Mods: {
 				Tooltip: Increases yoyo range
 			}
 
-			NebulaString.DisplayName: Nebula String
+			NebulaString: {
+				DisplayName: Nebula String
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+5% base yoyo damage]
+					'''
+			}
 
 			SlimyString: {
 				DisplayName: Slimy String
-				Tooltip: Yoyos create slime covered spikes
+				Tooltip:
+					'''
+					Increases yoyo range
+					Yoyos create slime covered spikes
+					[c/6EAE6E:+150 yoyo range]
+					'''
 			}
 
 			SolarString: {
 				DisplayName: Solar String
-				Tooltip: "[c/6EAE6E:+5% base yoyo damage]"
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+5% base yoyo damage]
+					'''
 			}
 
 			CrimtaneBearing: {
@@ -836,8 +881,15 @@ Mods: {
 					'''
 			}
 
-			BrokenHeroRing.DisplayName: Broken Hero Ring
-			BrokenHeroYoyo.DisplayName: Broken Hero Yoyo
+			BrokenHeroRing: {
+				DisplayName: Broken Hero Ring
+				Tooltip: ""
+			}
+
+			BrokenHeroYoyo: {
+				DisplayName: Broken Hero Yoyo
+				Tooltip: ""
+			}
 
 			SoulOfEclipse: {
 				DisplayName: Soul of Eclipse
@@ -849,7 +901,10 @@ Mods: {
 				Tooltip: '''"please give me nerd mod now"'''
 			}
 
-			Catacomb.DisplayName: Catacomb
+			Catacomb: {
+				DisplayName: Catacomb
+				Tooltip: ""
+			}
 
 			ChristmasBulb: {
 				DisplayName: Christmas Bulb
@@ -860,7 +915,10 @@ Mods: {
 					'''
 			}
 
-			CobaltYoyo.DisplayName: Cobalt Yoyo
+			CobaltYoyo: {
+				DisplayName: Cobalt Yoyo
+				Tooltip: ""
+			}
 
 			Code3: {
 				DisplayName: Code 3
@@ -881,9 +939,20 @@ Mods: {
 				Tooltip: "'It's made out of fire!'"
 			}
 
-			CultistYoyo.DisplayName: Shakiryo
-			IronYoyo.DisplayName: Iron Yoyo
-			LeadYoyo.DisplayName: Lead Yoyo
+			CultistYoyo: {
+				DisplayName: Shakiryo
+				Tooltip: ""
+			}
+
+			IronYoyo: {
+				DisplayName: Iron Yoyo
+				Tooltip: ""
+			}
+
+			LeadYoyo: {
+				DisplayName: Lead Yoyo
+				Tooltip: ""
+			}
 
 			Mambele: {
 				DisplayName: Mambele
@@ -904,9 +973,20 @@ Mods: {
 				Tooltip: Special thanks to Motai for being the most brain dead developer
 			}
 
-			MythrilYoyo.DisplayName: Mythril Yoyo
-			OrichalcumYoyo.DisplayName: Orichalcum Yoyo
-			PalladiumYoyo.DisplayName: Palladium Yoyo
+			MythrilYoyo: {
+				DisplayName: Mythril Yoyo
+				Tooltip: ""
+			}
+
+			OrichalcumYoyo: {
+				DisplayName: Orichalcum Yoyo
+				Tooltip: ""
+			}
+
+			PalladiumYoyo: {
+				DisplayName: Palladium Yoyo
+				Tooltip: ""
+			}
 
 			Smudge: {
 				DisplayName: Smudge
@@ -954,7 +1034,10 @@ Mods: {
 					'''
 			}
 
-			TheTempest.DisplayName: The Tempest
+			TheTempest: {
+				DisplayName: The Tempest
+				Tooltip: ""
+			}
 
 			ThinMint: {
 				DisplayName: The Thin Mint
@@ -966,7 +1049,10 @@ Mods: {
 				Tooltip: Has a chance to poison enemies
 			}
 
-			TrueAbbhor.DisplayName: True Abbhor
+			TrueAbbhor: {
+				DisplayName: True Abbhor
+				Tooltip: ""
+			}
 
 			TrueCode3: {
 				DisplayName: True Code 3
@@ -984,6 +1070,97 @@ Mods: {
 			}
 
 			Tuna.DisplayName: The Tuna
+
+			DarkTealString: {
+				DisplayName: Dark Teal String
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+150 yoyo range]
+					'''
+			}
+
+			GrapeString: {
+				DisplayName: Grape String
+				Tooltip:
+					'''
+					Increases yoyo range
+					Smells like grapes
+					[c/6EAE6E:+150 yoyo range]
+					'''
+			}
+
+			StardustString: {
+				DisplayName: Stardust String
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+5% base yoyo damage]
+					'''
+			}
+
+			VortexString: {
+				DisplayName: Vortex String
+				Tooltip:
+					'''
+					Increases yoyo range
+					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+5% base yoyo damage]
+					'''
+			}
+
+			AroundTheWorld: {
+				DisplayName: Around The World
+				Tooltip:
+					'''
+					Low-value trick
+					Creates a seperate yoyo that swirls around the player in a circle that does 2x damage.
+					Range stacks with your current yoyo's range
+					Creates one per yoyo that you have active
+					Must be equipped in regular slots
+					'''
+			}
+
+			AroundTheWorldTier2: {
+				DisplayName: Around The World Tier 2
+				Tooltip:
+					'''
+					Medium-value trick
+					Creates 2 seperate yoyos that swirl around the player in a circle that do 2.5x damage.
+					Range stacks with a percentage of your current yoyo's range
+					Creates two per yoyo that you have active
+					Must be equipped in regular slots
+					'''
+			}
+
+			SupportGlove: {
+				DisplayName: Support Glove
+				Tooltip:
+					'''
+					Allows the use of a third yoyo
+					Requires a yoyo glove or yoyo bag to work
+					'''
+			}
+
+			BlackHole: {
+				DisplayName: Black Hole
+				Tooltip:
+					'''
+					Spins fast enough to generate a vortex of energy, forming a devastating black hole
+					Created by Turbanik
+					'''
+			}
+
+			ShimmerBag: {
+				DisplayName: Shimmering Yoyo Bag
+				Tooltip: ""
+			}
+
+			Tier2Bag: {
+				DisplayName: Yoyo Suitcase
+				Tooltip: ""
+			}
 		}
 
 		InfoDisplays: {
@@ -991,6 +1168,119 @@ Mods: {
 			IDInfo.DisplayName: Internal Projectile ID
 			SpeedInfo.DisplayName: Yoyo Speed Display
 			StringInfo.DisplayName: Internal String Color
+		}
+
+		NPCs: {
+			ExamplePerson: {
+				DisplayName: Skeleton Peddler
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LoveBiome: I love {BiomeName}.
+					LikeBiome: I like {BiomeName}.
+					DislikeBiome: I dislike {BiomeName}.
+					HateBiome: I hate {BiomeName}.
+					LoveNPC: I love {NPCName}.
+					LikeNPC: I like {NPCName}.
+					DislikeNPC: I dislike {NPCName}.
+					HateNPC: I hate {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
+		}
+
+		Conditions: {
+			MasterOrExpertMode: Mods.CombinationsMod.Conditions.MasterOrExpertMode
+			EaterOfWorldsOrBrain: Mods.CombinationsMod.Conditions.EaterOfWorldsOrBrain
+		}
+
+		Common: {
+			SmallChanges: Small Changes
+			LargeChanges:
+				'''
+				Green: Small Impact
+				Yellow: Medium Impact
+				Red: Huge Impact
+				Please note that disabling most of these will make the materials dropped by enemies or crafted redundant
+				'''
+		}
+
+		Configs: {
+			YoyoModConfig: {
+				UpscaleYoyoGlove: {
+					Tooltip: ""
+					Label: Increase the size of YoYo Glove sprite
+				}
+
+				MainYoyoDust: {
+					Tooltip: For testing purposes. Creates dust around your main yoyo.(Disabled by default)
+					Label: Main Yoyo Emits Dusts
+				}
+
+				YoyoProjectileID: {
+					Tooltip: Shows the internal ID of the projectile created by the held Yoyo.
+					Label: Show Yoyo Projectile ID
+				}
+
+				YoyoStringStats: {
+					Tooltip:
+						'''
+						Shows the internal color ID of the player's Yoyo string.
+						(May not display the correct value with mods that use shaders on Yoyo Strings, or use detouring.)
+						'''
+					Label: Show Player String Color
+				}
+
+				DisplayName: Mod Config
+
+				VanillaYoyoEffects: {
+					Label: Vanilla Yoyo Effects
+					Tooltip: Enables/Disables Vanilla Yoyos from inheriting added effects by this mod. (Enabled by default)
+				}
+
+				LoadModdedYoyos: {
+					Label: Modded Yoyos
+					Tooltip: Enables/Disables modded yoyos.(Enabled by default)
+				}
+
+				LoadModdedAccessories: {
+					Label: Modded Accessories
+					Tooltip: Enables/Disables modded accessories. (Enabled by default)
+				}
+
+				EnableModifiedYoyoBag: {
+					Label: Changes to Yoyo Bag System
+					Tooltip: Enables/Disables new yoyo bag system. (Enabled by default)
+				}
+
+				LoadModdedItems: {
+					Label: Modded Items
+					Tooltip: Enables/Disables modded items. Includes yoyos and accessories. (Enabled by default)
+				}
+
+				Headers: {
+					SmallChanges: Small Changes Header
+					LargeChanges:
+						'''
+						Large Changes
+						Green: Small Impact
+						Yellow: Medium Impact
+						Red: Huge Impact
+						Please note that disabling most of these will make the materials dropped by enemies or crafted redundant
+						'''
+				}
+
+				AccessorySlotPosition: {
+					Tooltip: ""
+					Label: Position of Accessory Slots
+				}
+			}
 		}
 	}
 }

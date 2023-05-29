@@ -56,7 +56,7 @@ namespace CombinationsMod.UI
                 checkItem.type == ModContent.ItemType<SlimyString>() || checkItem.type == ModContent.ItemType<DarkGreenString>() || checkItem.type == ModContent.ItemType<DarkBlueString>() ||
                 checkItem.type == ModContent.ItemType<LightPinkString>() || checkItem.type == ItemType<DarkTealString>() ||
                 checkItem.type == ItemType<GrapeString>() || checkItem.type == ItemType<NebulaString>() || checkItem.type == ItemType<VortexString>() ||
-                checkItem.type == ItemType<StardustString>())
+                checkItem.type == ItemType<StardustString>() || checkItem.type == ItemType<NaniteString>())
                 return true;
 
             return false;
@@ -74,6 +74,16 @@ namespace CombinationsMod.UI
             }
 
             return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public override Vector2? CustomLocation => StringPos();
@@ -117,6 +127,16 @@ namespace CombinationsMod.UI
             return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
         }
 
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public override Vector2? CustomLocation => RightGlovePos();
         public override string FunctionalTexture => ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/YoyoGloveSlotLarge" : "CombinationsMod/UI/YoyoGloveSlot";
         public override bool DrawDyeSlot => false;
@@ -153,6 +173,16 @@ namespace CombinationsMod.UI
             }
 
             return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag;
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public override Vector2? CustomLocation => LeftGlovePos();
@@ -202,6 +232,16 @@ namespace CombinationsMod.UI
             return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag;
         }
 
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public override Vector2? CustomLocation => DrillPos();
 
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
@@ -243,6 +283,16 @@ namespace CombinationsMod.UI
             }
 
             return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";

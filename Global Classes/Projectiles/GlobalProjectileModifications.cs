@@ -304,13 +304,14 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void SetDefaults(Projectile projectile) // Making vanilla yoyos have different max hit counts.
         {
-            if (projectile.type == ProjectileID.SporeGas || projectile.type == ProjectileID.SporeGas2 || projectile.type == ProjectileID.SporeGas3)
+            if (projectile.aiStyle == 99)
             {
-                // Attempting to deal with I-Frames that were not being applied correctly.
-                projectile.localNPCHitCooldown = 60;
+                projectile.usesIDStaticNPCImmunity = false;
                 projectile.usesLocalNPCImmunity = true;
+                projectile.localNPCHitCooldown = 10 * projectile.MaxUpdates;
             }
         }
+
         public override void Kill(Projectile projectile, int timeLeft) // Resetting counters when the yoyo is killed.
         {
             Player player = Main.player[projectile.owner];

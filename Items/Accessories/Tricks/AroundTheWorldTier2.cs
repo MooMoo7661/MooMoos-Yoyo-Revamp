@@ -46,8 +46,17 @@ namespace CombinationsMod.Items.Accessories.Tricks
                 .AddIngredient(ItemType<MightBar>(), 5)
                 .AddIngredient(ItemType<SightBar>(), 5)
                 .AddIngredient(ItemType<FrightBar>(), 5)
+                .AddIngredient(ItemID.SoulofNight, 5)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().LoadModdedAccessories)
+                return false;
+
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedItems;
         }
     }
 }

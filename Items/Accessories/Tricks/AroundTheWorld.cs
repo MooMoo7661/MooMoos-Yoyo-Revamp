@@ -28,9 +28,22 @@ namespace CombinationsMod.Items.Accessories.Tricks
             player.GetModPlayer<YoyoModPlayer>().trick1 = true;
         }
 
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().LoadModdedAccessories)
+                return false;
+
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedItems;
+        }
+
         public override void AddRecipes()
         {
-            
+            CreateRecipe()
+                .AddIngredient(ItemID.Book)
+                .AddIngredient(ItemID.WhiteString)
+                .AddIngredient(ItemID.Bone, 15)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }

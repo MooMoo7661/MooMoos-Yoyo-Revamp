@@ -8,16 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Terraria;
-using Terraria.Graphics.Shaders; 
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using Terraria.DataStructures;
 using CombinationsMod.Projectiles.TrickYoyos;
-
 using static Terraria.ModLoader.ModContent;
 using static CombinationsMod.CombinationsModUtils.YoyoStrings;
 using CombinationsMod.Items.Accessories.Strings;
+using CombinationsMod.Items.Accessories.YoyoBags;
 
 namespace CombinationsMod.GlobalClasses
 {
@@ -42,12 +42,15 @@ namespace CombinationsMod.GlobalClasses
             {
                 item.damage = 24;
             }
+            else if (item.type == ItemID.ValkyrieYoyo || item.type == ItemID.RedsYoyo)
+            {
+                item.damage = 64;
+            }
         }
-
 
         public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
         {
-            if (item.type >= 3309 && item.type <= 3314)
+            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight)
             {
                 return false;
             }
@@ -55,13 +58,23 @@ namespace CombinationsMod.GlobalClasses
             return true;
         }
 
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            if (!hideVisual && item.type == ItemID.YoyoBag)
+            {
+                player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
+            }
+        }
+
+
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
             if (modPlayer.trepidationRing && ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99)
             {
-                damage *= 1.10f;
+                damage *= 1.05f;
             }
 
             if (modPlayer.solarString || modPlayer.stardustString || modPlayer.vortexString || modPlayer.nebulaString
@@ -70,15 +83,28 @@ namespace CombinationsMod.GlobalClasses
                 damage *= 1.05f;
             }
         }
+
+        public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            if (modPlayer.fortitudeRing)
+            {
+                knockback.Flat += 2f;
+            }
+        }
         public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
         {
-            if (item.type >= 3309 && item.type <= 3314)
+            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight)
             {
+                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag) { return true; }
+
                 return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<CounterweightSlot>().Type);
             }
 
             if (item.type == ItemID.YoYoGlove)
             {
+                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag) { return true; }
+
                 return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<YoyoGloveSlot>().Type);
             }
 
@@ -89,7 +115,7 @@ namespace CombinationsMod.GlobalClasses
         {
             if (item.type >= 3309 && item.type <= 3314) // Is a counterweight
             {
-                tooltips.Insert(4, new TooltipLine(Mod, "CounterweightStackInfo", "[c/FFD7D7:Each Yoyo that hits a target will produce a counterweight]"));
+                tooltips.Add(new TooltipLine(Mod, "CounterweightStackInfo", "[c/FFD7D7:Each Yoyo that hits a target will produce a counterweight]"));
             }
 
             if (Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing)
@@ -166,7 +192,16 @@ namespace CombinationsMod.GlobalClasses
                 case (int)pinkString:
                 case (int)brownString:
                 case (int)rainbowString:
-                    tooltips.Insert(4, new TooltipLine(Mod, "YoyoStringInfo", "+150 yoyo range"));
+                    tooltips.Add(new TooltipLine(Mod, "YoyoStringInfo", "[c/6EAE6E:+150 yoyo range]"));
+                    break;
+
+                case ItemID.YoyoBag:
+                    if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                    {
+                        int index = tooltips.FindIndex(tip => tip.Name.StartsWith("Tooltip"));
+                        tooltips.RemoveAll(tip => tip.Name.StartsWith("Tooltip"));
+                        tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", "Yoyos are recalled faster\nGives the user more accessory slots for yoyos"));
+                    }
                     break;
             }
         }

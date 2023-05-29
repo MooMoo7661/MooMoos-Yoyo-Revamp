@@ -298,7 +298,7 @@ namespace CombinationsMod
         public override void Load()
         {
             
-            On_Terraria.Player.Counterweight += DualYoyoDetour;
+            On_Player.Counterweight += DualYoyoDetour;
         }
 
         public override void Unload()

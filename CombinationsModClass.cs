@@ -60,6 +60,11 @@ namespace CombinationsMod
 
                 Player player = Main.player[projectile.owner];
 
+                if (player.stringColor == 32)
+                {
+                    return;
+                }
+
                 Vector2 vector = mountedCenter;
                 vector.Y += player.gfxOffY;
 
@@ -176,6 +181,7 @@ namespace CombinationsMod
 
                         textureColor = (Color)method.Invoke(null, new object[] { player.stringColor, textureColor });
 
+                        
                         // Keep in mind that this will only work with vanilla yoyo strings. If you want to make custom ones work, you'll have to manually set the color in here.
 
                         switch (player.stringColor) // For custom string colors. There's several ways to go about it, 

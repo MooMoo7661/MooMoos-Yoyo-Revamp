@@ -31,7 +31,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.useTime = 25;
             Item.shootSpeed = 16f;
             Item.knockBack = 2.5f;
-            Item.damage = 32;
+            Item.damage = 31;
             Item.crit = 16;
             Item.rare = ModContent.RarityType<PHPink>();
             Item.DamageType = DamageClass.Melee;

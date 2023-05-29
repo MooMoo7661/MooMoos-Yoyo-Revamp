@@ -31,7 +31,7 @@ public class ChristmasBulb : ModYoyo
         Item.useTime = 25;
         Item.shootSpeed = 23f;
         Item.knockBack = 2.5f;
-        Item.damage = 74;
+        Item.damage = 70;
         Item.rare = ItemRarityID.Yellow;
         Item.DamageType = DamageClass.Melee;
         Item.channel = true;

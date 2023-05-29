@@ -31,7 +31,7 @@ public class CultistYoyo : ModYoyo
         Item.useTime = 25;
         Item.shootSpeed = 16f;
         Item.knockBack = 2.5f;
-        Item.damage = 150;
+        Item.damage = 132;
         Item.rare = ItemRarityID.Cyan;
         Item.DamageType = DamageClass.Melee;
         Item.channel = true;

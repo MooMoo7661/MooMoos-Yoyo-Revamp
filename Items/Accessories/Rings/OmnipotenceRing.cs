@@ -9,8 +9,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class OmnipotenceRing : ModItem
+    public class OmnipotenceRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {

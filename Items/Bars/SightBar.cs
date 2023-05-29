@@ -6,7 +6,7 @@ using CombinationsMod.Items.Souls;
 
 namespace CombinationsMod.Items.Bars
 {
-    public class SightBar : ModItem
+    public class SightBar : ItemLoader
     {
 
         public override void SetStaticDefaults()

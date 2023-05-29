@@ -10,7 +10,7 @@ using CombinationsMod.Rarities;
 
 namespace CombinationsMod.Items.Misc;
 
-public class BrokenHeroYoyo : ModItem
+public class BrokenHeroYoyo : ItemLoader
 {
     public override void SetStaticDefaults()
     {

@@ -5,7 +5,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.Items.Accessories.Tricks
 {
-    public class AroundTheWorld : ModItem
+    public class AroundTheWorld : ItemLoader
     {
         public override void SetStaticDefaults()
         {
@@ -26,6 +26,11 @@ namespace CombinationsMod.Items.Accessories.Tricks
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<YoyoModPlayer>().trick1 = true;
+        }
+
+        public override void AddRecipes()
+        {
+            
         }
     }
 }

@@ -6,8 +6,9 @@ using CombinationsMod.UI;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class RubyRing : ModItem
+    public class RubyRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {

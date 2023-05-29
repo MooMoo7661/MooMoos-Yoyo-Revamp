@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Misc
 {
-    public class BrokenHeroRing : ModItem
+    public class BrokenHeroRing : ItemLoader
     {
 
         public override void SetStaticDefaults()

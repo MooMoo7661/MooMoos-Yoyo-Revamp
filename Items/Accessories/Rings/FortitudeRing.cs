@@ -8,8 +8,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class FortitudeRing : ModItem
+    public class FortitudeRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {

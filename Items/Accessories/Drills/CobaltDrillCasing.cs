@@ -8,8 +8,9 @@ using Terraria.Utilities;
 
 namespace CombinationsMod.Items.Accessories.Drills
 {
-    public class CobaltDrillCasing : ModItem
+    public class CobaltDrillCasing : ModDrill
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -35,10 +36,6 @@ namespace CombinationsMod.Items.Accessories.Drills
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.cobaltDrill = true;
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<DrillSlot>().Type;
         }
 
         public override void AddRecipes()

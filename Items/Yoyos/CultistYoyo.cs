@@ -10,8 +10,10 @@ using Terraria.GameContent;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class CultistYoyo : ModItem
+public class CultistYoyo : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;

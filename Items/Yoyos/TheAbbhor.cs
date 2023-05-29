@@ -10,8 +10,10 @@ using CombinationsMod.Tiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TheAbbhor : ModItem
+    public class TheAbbhor : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

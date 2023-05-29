@@ -9,8 +9,10 @@ using CombinationsMod.UI;
 
 namespace CombinationsMod.Items.Accessories.Strings
 {
-    public class SlimyString : ModItem
+    public class SlimyString : ModString
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Slimy String");
@@ -38,10 +40,6 @@ namespace CombinationsMod.Items.Accessories.Strings
                 player.yoyoString = true;
             }
 
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<StringSlot>().Type);
         }
     }
 }

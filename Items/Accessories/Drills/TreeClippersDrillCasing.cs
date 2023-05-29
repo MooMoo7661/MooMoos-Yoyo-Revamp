@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Drills
 {
-    public class TreeClippersDrillCasing : ModItem
+    public class TreeClippersDrillCasing : ModDrill
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
@@ -31,10 +32,6 @@ namespace CombinationsMod.Items.Accessories.Drills
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.christmasDrill = true;
-        }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            return modded && LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<DrillSlot>().Type;
         }
     }
 }

@@ -9,8 +9,10 @@ using Microsoft.Xna.Framework;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class Smudge : ModItem
+    public class Smudge : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

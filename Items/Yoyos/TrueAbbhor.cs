@@ -14,8 +14,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TrueAbbhor : ModItem
+    public class TrueAbbhor : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

@@ -6,8 +6,9 @@ using CombinationsMod.UI;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class TopazRing : ModItem
+    public class TopazRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {

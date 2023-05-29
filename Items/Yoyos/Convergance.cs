@@ -14,8 +14,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class Convergance : ModItem
+    public class Convergance : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {

@@ -6,7 +6,7 @@ using CombinationsMod.Items.Souls;
 
 namespace CombinationsMod.Items.Bars
 {
-    public class NeutralineScrap : ModItem
+    public class NeutralineScrap : ItemLoader
     {
 
         public override void SetStaticDefaults()

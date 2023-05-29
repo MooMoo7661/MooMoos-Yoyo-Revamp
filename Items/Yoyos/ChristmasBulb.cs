@@ -10,8 +10,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class ChristmasBulb : ModItem
+public class ChristmasBulb : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;

@@ -6,8 +6,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class RingOfCoalescence : ModItem
+    public class RingOfCoalescence : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.InfoAccessories
 {
-    public class SpeedDisplay : ModItem
+    public class SpeedDisplay : ItemLoader
     {
 
         public override void SetStaticDefaults()

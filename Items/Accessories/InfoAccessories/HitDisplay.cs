@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.InfoAccessories
 {
-    public class HitDisplay : ModItem
+    public class HitDisplay : ItemLoader
     {
 
         public override void SetStaticDefaults()

@@ -8,8 +8,10 @@ using System.Collections.Generic;
 
 namespace CombinationsMod.Items.Yoyos;
 
-public class MythrilYoyo : ModItem
+public class MythrilYoyo : ModYoyo
 {
+    public override bool CanBeUnloaded => true;
+
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;

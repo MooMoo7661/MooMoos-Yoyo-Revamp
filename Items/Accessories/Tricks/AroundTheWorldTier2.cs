@@ -6,7 +6,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.Items.Accessories.Tricks
 {
-    public class AroundTheWorldTier2 : ModItem
+    public class AroundTheWorldTier2 : ItemLoader
     {
         public override void SetStaticDefaults()
         {

@@ -11,8 +11,10 @@ using CombinationsMod.Items.Bars;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class BlackHole : ModItem
+    public class BlackHole : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Type] = true;

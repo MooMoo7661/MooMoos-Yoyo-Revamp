@@ -7,8 +7,10 @@ using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TheQueensGambit : ModItem
+    public class TheQueensGambit : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

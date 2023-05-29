@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.YoyoGloves
 {
-    public class SupportGlove : ModItem
+    public class SupportGlove : ItemLoader
     {
 
         public override void SetStaticDefaults()
@@ -32,9 +32,15 @@ namespace CombinationsMod.Items.Accessories.YoyoGloves
                 modPlayer.supportGlove = true;
             }
         }
+
         public override bool CanEquipAccessory(Player player, int slot, bool modded)
         {
-            return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<YoyoSupportGloveSlot>().Type);
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return true;
+            }
+
+            return modded && LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<YoyoSupportGloveSlot>().Type;
         }
     }
 }   

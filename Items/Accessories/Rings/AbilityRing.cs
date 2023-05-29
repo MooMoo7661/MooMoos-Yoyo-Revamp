@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.Rings
 {
-    public class AbilityRing : ModItem
+    public class AbilityRing : ModRing
     {
+        public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {

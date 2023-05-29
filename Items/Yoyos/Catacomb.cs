@@ -10,8 +10,10 @@ using Terraria.GameContent;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class Catacomb : ModItem
+    public class Catacomb : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Type] = true;

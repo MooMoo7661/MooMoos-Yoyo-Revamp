@@ -13,8 +13,10 @@ using System.Collections.Generic;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TrueSmudge : ModItem
+    public class TrueSmudge : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

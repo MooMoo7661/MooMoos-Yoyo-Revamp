@@ -8,8 +8,10 @@ using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class IronYoyo : ModItem
+    public class IronYoyo : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

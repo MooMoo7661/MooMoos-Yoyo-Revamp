@@ -11,8 +11,10 @@ using CombinationsMod.Items.Misc;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class TheTempest : ModItem
+    public class TheTempest : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

@@ -38,6 +38,8 @@ Some things may be tweaked later to help balance it out a little.
 
 I will likely be adding small updates to the mod, and maybe even a few larger ones, but being that this was the first mod I ever made, I'd like to move on to other stuff.
 
+If you'd like to view the change notes for the most recent larger update, (0.1.2.0 / May 29th), please visit the workshop page for this mod, as all the info is posted there.
+
 Huge thanks to the following!
 
 David F. Dev - Wrote the script for the Yoyo Drills

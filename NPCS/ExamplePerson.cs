@@ -215,21 +215,19 @@ namespace CombinationsMod.NPCS
                     nextSlot++;
                 }
 
-                if (WorldGen.crimson)
+                if (NPC.downedBoss2)
                 {
-                    if (NPC.downedBoss2)
+                    if (WorldGen.crimson)
                     {
                         shop.item[nextSlot].SetDefaults(ItemID.CrimsonYoyo);
                         shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 12);
                         nextSlot++;
                     }
-                }
-                else
-                {
-                    if (!NPC.downedBoss2)
+                    else
                     {
                         shop.item[nextSlot].SetDefaults(ItemID.CorruptYoyo);
                         shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 12);
+                        nextSlot++;
                     }
                 }
 
@@ -266,7 +264,7 @@ namespace CombinationsMod.NPCS
 
                 if (Main.hardMode)
                 {
-                    shop.item[nextSlot].SetDefaults(ItemID.Code2);
+                    shop.item[nextSlot].SetDefaults(ItemID.FormatC);
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 20);
                     nextSlot++;
 
@@ -370,13 +368,6 @@ namespace CombinationsMod.NPCS
 
                 if (NPC.downedBoss1)
                 {
-                    if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.YoyoBag);
-                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 30);
-                        nextSlot++;
-                    }
-
                     shop.item[nextSlot].SetDefaults(ItemType<LightPinkString>());
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 9);
                     nextSlot++;

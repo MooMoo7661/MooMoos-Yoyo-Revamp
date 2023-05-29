@@ -7,6 +7,7 @@ namespace CombinationsMod.Items.Accessories.YoyoGloves
 {
     public class SupportGlove : ItemLoader
     {
+        public override string Texture => ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/Items/Accessories/YoyoGloves/SupportGlove" : "CombinationsMod/Items/Accessories/YoyoGloves/SupportGloveSmall";
 
         public override void SetStaticDefaults()
         {
@@ -41,6 +42,14 @@ namespace CombinationsMod.Items.Accessories.YoyoGloves
             }
 
             return modded && LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<YoyoSupportGloveSlot>().Type;
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().LoadModdedAccessories)
+                return false;
+
+            return ModContent.GetInstance<YoyoModConfig>().LoadModdedItems;
         }
     }
 }   

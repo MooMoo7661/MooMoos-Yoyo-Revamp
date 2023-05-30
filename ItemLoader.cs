@@ -71,15 +71,6 @@ namespace CombinationsMod
 
             return ModContent.GetInstance<YoyoModConfig>().LoadModdedItems;
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded)
-        {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-            {
-                return true;
-            }
-
-            return modded && LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<StringSlot>().Type;
-        }
     }
 
     public abstract class ModYoyo : ItemLoader

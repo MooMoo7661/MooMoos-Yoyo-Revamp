@@ -13,6 +13,7 @@ using Terraria.ModLoader.UI.ModBrowser;
 
 using CombinationsMod.NPCS;
 using static Terraria.ID.ItemID;
+using CombinationsMod.Items.Accessories.Strings;
 
 namespace CombinationsMod.GlobalClasses
 {
@@ -42,6 +43,11 @@ namespace CombinationsMod.GlobalClasses
                         entry.Disable();
                     }
                 }
+            }
+
+            if (shop.NpcType == NPCID.Cyborg)
+            {
+                shop.Add(ModContent.ItemType<NaniteString>(), Condition.DownedGolem);
             }
         }
 

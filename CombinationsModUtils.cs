@@ -188,15 +188,15 @@ namespace CombinationsMod
                     break;
 
                 case 2:
-                    ringPos = new Vector2(Main.screenWidth - 1027, (Main.screenHeight / 11) + 100);
+                    ringPos = new Vector2(Main.screenWidth - 1027, (Main.screenHeight / 11) + 150);
                     break;
 
                 case 3:
-                    ringPos = new Vector2(Main.screenWidth - 1259, (Main.screenHeight / 3 + 49));
+                    ringPos = new Vector2(Main.screenWidth - 1259, (Main.screenHeight / 3 + 96));
                     break;
 
                 case 4:
-                    ringPos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2 + 30));
+                    ringPos = new Vector2(Main.screenWidth / 2 + 110, (Main.screenHeight / 2 + 79));
                     break;
             }
 
@@ -215,15 +215,15 @@ namespace CombinationsMod
                     break;
 
                 case 2:
-                    ringPos = new Vector2(Main.screenWidth - 1027, (Main.screenHeight / 11) + 100);
+                    ringPos = new Vector2(Main.screenWidth - 980, (Main.screenHeight / 11) + 150);
                     break;
 
                 case 3:
-                    ringPos = new Vector2(Main.screenWidth - 1259, (Main.screenHeight / 3 + 49));
+                    ringPos = new Vector2(Main.screenWidth - 1212, (Main.screenHeight / 3 + 96));
                     break;
 
                 case 4:
-                    ringPos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2 + 30));
+                    ringPos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2 + 79));
                     break;
             }
 

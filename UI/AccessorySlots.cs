@@ -73,7 +73,7 @@ namespace CombinationsMod.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -124,7 +124,7 @@ namespace CombinationsMod.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -172,7 +172,7 @@ namespace CombinationsMod.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag;
+            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -229,7 +229,7 @@ namespace CombinationsMod.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag;
+            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -282,7 +282,7 @@ namespace CombinationsMod.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -297,7 +297,7 @@ namespace CombinationsMod.UI
 
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
         public override Vector2? CustomLocation => CounterweightPos();
-        public override string FunctionalTexture => "CombinationsMod/UI/counterweightSlot";
+        public override string FunctionalTexture => "CombinationsMod/UI/counterweighSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -306,6 +306,122 @@ namespace CombinationsMod.UI
             {
                 case AccessorySlotType.FunctionalSlot:
                     Main.hoverItemName = "Yoyo Counterweights";
+                    break;
+            }
+        }
+
+
+    }
+
+    public class RingSlot : ModAccessorySlot
+    {
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
+        {
+            if (checkItem.type == ItemType<RingOfCoalescence>() || checkItem.type == ItemType<AbilityRing>() || checkItem.type == ItemType<AmberRing>() ||
+                checkItem.type == ItemType<AmethystRing>() || checkItem.type == ItemType<DiamondRing>() || checkItem.type == ItemType<EmeraldRing>() ||
+                checkItem.type == ItemType<FortitudeRing>() || checkItem.type == ItemType<GemstoneRing>() || checkItem.type == ItemType<OmnipotenceRing>() ||
+                checkItem.type == ItemType<RubyRing>() || checkItem.type == ItemType<SapphireRing>() || checkItem.type == ItemType<TerreneRing>() ||
+                checkItem.type == ItemType<TopazRing>() || checkItem.type == ItemType<TrepidationRing>())
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public override bool IsVisibleWhenNotEnabled()
+        {
+            return false;
+        }
+
+        public override bool IsEnabled()
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
+        public override Vector2? CustomLocation => RingPos1();
+        public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
+        public override bool DrawDyeSlot => false;
+        public override bool DrawVanitySlot => false;
+        public override void OnMouseHover(AccessorySlotType context)
+        {
+            switch (context)
+            {
+                case AccessorySlotType.FunctionalSlot:
+                    Main.hoverItemName = "Rings";
+                    break;
+            }
+        }
+
+
+    }
+
+    public class RingSlot2 : ModAccessorySlot
+    {
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
+        {
+            if (checkItem.type == ItemType<RingOfCoalescence>() || checkItem.type == ItemType<AbilityRing>() || checkItem.type == ItemType<AmberRing>() ||
+                checkItem.type == ItemType<AmethystRing>() || checkItem.type == ItemType<DiamondRing>() || checkItem.type == ItemType<EmeraldRing>() ||
+                checkItem.type == ItemType<FortitudeRing>() || checkItem.type == ItemType<GemstoneRing>() || checkItem.type == ItemType<OmnipotenceRing>() ||
+                checkItem.type == ItemType<RubyRing>() || checkItem.type == ItemType<SapphireRing>() || checkItem.type == ItemType<TerreneRing>() ||
+                checkItem.type == ItemType<TopazRing>() || checkItem.type == ItemType<TrepidationRing>())
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public override bool IsVisibleWhenNotEnabled()
+        {
+            return false;
+        }
+
+        public override bool IsEnabled()
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
+        public override Vector2? CustomLocation => RingPos2();
+        public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
+        public override bool DrawDyeSlot => false;
+        public override bool DrawVanitySlot => false;
+        public override void OnMouseHover(AccessorySlotType context)
+        {
+            switch (context)
+            {
+                case AccessorySlotType.FunctionalSlot:
+                    Main.hoverItemName = "Rings";
                     break;
             }
         }

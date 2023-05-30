@@ -94,13 +94,6 @@ namespace CombinationsMod.GlobalClasses
         }
         public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
         {
-            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight)
-            {
-                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag) { return true; }
-
-                return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<CounterweightSlot>().Type);
-            }
-
             if (item.type == ItemID.YoYoGlove)
             {
                 if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag) { return true; }

@@ -255,7 +255,7 @@ namespace CombinationsMod.NPCS
             .Add(ItemType<DarkBlueString>())
             .Add(ItemType<DarkGreenString>())
             .Add(ItemType<LightPinkString>(), Condition.DownedEyeOfCthulhu)
-            .Add(ItemType<AbilityRing>(), Condition.DownedEyeOfCthulhu)
+            .Add(ItemType<AbilityRing>(), Condition.DownedSkeletron)
             .Add(ItemID.BlueCounterweight, Condition.DownedSkeletron)
             .Add(ItemType<RubyRing>(), Condition.DownedSkeletron)
             .Add(ItemType<SapphireRing>(), Condition.DownedSkeletron)

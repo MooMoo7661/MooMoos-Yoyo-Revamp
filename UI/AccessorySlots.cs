@@ -56,7 +56,7 @@ namespace CombinationsMod.UI
                 checkItem.type == ModContent.ItemType<SlimyString>() || checkItem.type == ModContent.ItemType<DarkGreenString>() || checkItem.type == ModContent.ItemType<DarkBlueString>() ||
                 checkItem.type == ModContent.ItemType<LightPinkString>() || checkItem.type == ItemType<DarkTealString>() ||
                 checkItem.type == ItemType<GrapeString>() || checkItem.type == ItemType<NebulaString>() || checkItem.type == ItemType<VortexString>() ||
-                checkItem.type == ItemType<StardustString>())
+                checkItem.type == ItemType<StardustString>() || checkItem.type == ItemType<NaniteString>())
                 return true;
 
             return false;

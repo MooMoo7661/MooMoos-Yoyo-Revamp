@@ -32,6 +32,7 @@ namespace CombinationsMod
         public bool yoyoBag = false;
         public bool shimmerBag = false;
         public bool tier2Bag = false;
+        public bool beetleBag = false;
 
         public bool eclipseString = false;
         public bool golemString = false;
@@ -106,6 +107,7 @@ namespace CombinationsMod
             yoyoBag = false;
             shimmerBag = false;
             tier2Bag = false;
+            beetleBag = false;
 
             supportGlove = false;
 
@@ -211,7 +213,7 @@ namespace CombinationsMod
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            if (modPlayer.yoyoBag || modPlayer.shimmerBag || modPlayer.tier2Bag)
+            if (modPlayer.yoyoBag || modPlayer.shimmerBag || modPlayer.tier2Bag || modPlayer.beetleBag)
             {
                 return true;
             }
@@ -227,7 +229,7 @@ namespace CombinationsMod
             int numYoyos = 1;
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            if (modPlayer.tier2Bag || modPlayer.shimmerBag)
+            if (modPlayer.tier2Bag || modPlayer.shimmerBag || modPlayer.beetleBag)
             {
                 numYoyos = 2;
             }

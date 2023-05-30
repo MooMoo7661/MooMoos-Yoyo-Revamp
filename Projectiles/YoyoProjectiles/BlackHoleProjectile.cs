@@ -86,7 +86,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
 
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.75f) + 1, 0,
+                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.5f) + 1, 0,
                     Main.myPlayer, 0, Projectile.whoAmI);
 
                 Main.projectile[proj].Resize(270, 270);

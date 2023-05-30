@@ -60,6 +60,11 @@ namespace CombinationsMod
 
                 Player player = Main.player[projectile.owner];
 
+                if (player.stringColor == 32)
+                {
+                    return;
+                }
+
                 Vector2 vector = mountedCenter;
                 vector.Y += player.gfxOffY;
 

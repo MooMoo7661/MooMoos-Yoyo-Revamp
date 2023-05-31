@@ -25,10 +25,7 @@ namespace CombinationsMod.Items.Accessories.Drills
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 6);
         }
-        public override bool? PrefixChance(int pre, Terraria.Utilities.UnifiedRandom rand)
-        {
-            return false;
-        }
+
         public override string Texture => "CombinationsMod/Items/Accessories/Drills/CelestialDrillCasing";
 
         public override void UpdateAccessory(Player player, bool hideVisual)

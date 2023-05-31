@@ -48,16 +48,6 @@ namespace CombinationsMod.GlobalClasses
             }
         }
 
-        public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
-        {
-            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             if (!hideVisual && item.type == ItemID.YoyoBag)

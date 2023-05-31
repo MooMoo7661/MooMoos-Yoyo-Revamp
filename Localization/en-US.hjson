@@ -1161,6 +1161,11 @@ Mods: {
 				DisplayName: Yoyo Suitcase
 				Tooltip: ""
 			}
+
+			BeetleBag: {
+				DisplayName: Beetle Bag
+				Tooltip: ""
+			}
 		}
 
 		InfoDisplays: {

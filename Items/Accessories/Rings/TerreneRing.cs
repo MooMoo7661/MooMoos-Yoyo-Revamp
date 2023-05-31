@@ -26,10 +26,7 @@ namespace CombinationsMod.Items.Accessories.Rings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 30, 5, 0);
         }
-        public override bool? PrefixChance(int pre, Terraria.Utilities.UnifiedRandom rand)
-        {
-            return false;
-        }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();

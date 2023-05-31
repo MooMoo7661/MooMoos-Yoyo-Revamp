@@ -25,10 +25,7 @@ namespace CombinationsMod.Items.Accessories.Drills
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 4, silver: 32);
         }
-        public override bool? PrefixChance(int pre, Terraria.Utilities.UnifiedRandom rand)
-        {
-            return false;
-        }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();

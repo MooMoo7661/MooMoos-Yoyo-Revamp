@@ -30,11 +30,6 @@ namespace CombinationsMod.Items.Accessories.Drills
 
         }
 
-        public override bool? PrefixChance(int pre, UnifiedRandom rand)
-        {
-            return false;
-        }
-        
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
           

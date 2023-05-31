@@ -28,10 +28,6 @@ namespace CombinationsMod.Items.Accessories.Drills
             Item.value = Item.sellPrice(gold: 3);
         }
 
-        public override bool? PrefixChance(int pre, Terraria.Utilities.UnifiedRandom rand)
-        {
-            return false;
-        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();

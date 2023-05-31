@@ -32,7 +32,13 @@ namespace CombinationsMod.Items.Accessories.Rings
             if (!hideVisual)
                 modPlayer.gemRing = true;
         }
- 
+
+        public override void UpdateVanity(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            modPlayer.gemRing = true;
+        }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

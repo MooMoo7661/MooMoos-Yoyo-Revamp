@@ -33,6 +33,12 @@ namespace CombinationsMod.Items.Accessories.Rings
                 modPlayer.rubyRing = true;
         }
 
+        public override void UpdateVanity(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            modPlayer.rubyRing = true;
+        }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

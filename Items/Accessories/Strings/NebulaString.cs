@@ -44,7 +44,7 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.FragmentStardust, 20)
+                .AddIngredient(ItemID.FragmentNebula, 20)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }

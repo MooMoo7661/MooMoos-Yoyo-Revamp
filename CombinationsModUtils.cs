@@ -115,7 +115,7 @@ namespace CombinationsMod
                     break;
 
                 case 4:
-                    leftGlovePos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2  - 19));
+                    leftGlovePos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2 - 19));
                     break;
             }
 
@@ -174,6 +174,60 @@ namespace CombinationsMod
             }
 
             return drillPos;
+        }
+
+        public static Vector2 RingPos1()
+        {
+            Vector2 ringPos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+
+            switch (pos)
+            {
+                case 1:
+                    ringPos = new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11 + 150));
+                    break;
+
+                case 2:
+                    ringPos = new Vector2(Main.screenWidth - 1027, (Main.screenHeight / 11) + 150);
+                    break;
+
+                case 3:
+                    ringPos = new Vector2(Main.screenWidth - 1259, (Main.screenHeight / 3 + 96));
+                    break;
+
+                case 4:
+                    ringPos = new Vector2(Main.screenWidth / 2 + 110, (Main.screenHeight / 2 + 79));
+                    break;
+            }
+
+            return ringPos;
+        }
+
+        public static Vector2 RingPos2()
+        {
+            Vector2 ringPos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+
+            switch (pos)
+            {
+                case 1:
+                    ringPos = new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11 + 150));
+                    break;
+
+                case 2:
+                    ringPos = new Vector2(Main.screenWidth - 980, (Main.screenHeight / 11) + 150);
+                    break;
+
+                case 3:
+                    ringPos = new Vector2(Main.screenWidth - 1212, (Main.screenHeight / 3 + 96));
+                    break;
+
+                case 4:
+                    ringPos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2 + 79));
+                    break;
+            }
+
+            return ringPos;
         }
     }
 }

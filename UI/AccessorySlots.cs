@@ -297,7 +297,7 @@ namespace CombinationsMod.UI
 
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
         public override Vector2? CustomLocation => CounterweightPos();
-        public override string FunctionalTexture => "CombinationsMod/UI/counterweighSlot";
+        public override string FunctionalTexture => "CombinationsMod/UI/counterweightSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)

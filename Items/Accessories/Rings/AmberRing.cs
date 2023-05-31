@@ -24,12 +24,19 @@ namespace CombinationsMod.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 1, 12, 0);
+            Item.canBePlacedInVanityRegardlessOfConditions = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             if (!hideVisual)
+                modPlayer.amberRing = true;
+        }
+
+        public override void UpdateVanity(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
                 modPlayer.amberRing = true;
         }
 

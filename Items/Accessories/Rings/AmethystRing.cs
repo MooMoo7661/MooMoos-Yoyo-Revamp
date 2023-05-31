@@ -24,6 +24,7 @@ namespace CombinationsMod.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 1, 12, 0);
+            Item.canBePlacedInVanityRegardlessOfConditions = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -31,6 +32,12 @@ namespace CombinationsMod.Items.Accessories.Rings
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             if (!hideVisual)
                 modPlayer.amethystRing = true;
+        }
+
+        public override void UpdateVanity(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            modPlayer.amethystRing = true;
         }
 
         public override void AddRecipes()

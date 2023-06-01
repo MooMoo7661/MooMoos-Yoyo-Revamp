@@ -10,6 +10,7 @@ using CombinationsMod.Projectiles.YoyoEffects.Solid;
 using CombinationsMod.Projectiles.TrickYoyos;
 using Terraria.ModLoader.UI.ModBrowser;
 using System;
+using CombinationsMod.Projectiles.Misc;
 
 namespace CombinationsMod.GlobalClasses.Projectiles
 {
@@ -299,6 +300,24 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             break;
                     }
                 }
+
+                //if (modPlayer.blackHoleRing)
+                //{
+                //    Dust dust2 = Dust.NewDustDirect(projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.Firework_Blue, 0f, 0f, 0, default(Color), Main.rand.NextFloat(0.5f, 2.4f));
+                //    dust2.velocity = VectorHelper.VelocityToPoint(dust2.position, projectile.Center, Vector2.Distance(dust2.position, projectile.Center) * 0.05f) * 9;
+                //    dust2.color = Color.Orange;
+                //    dust2.noGravity = true;
+
+                //    Dust dust3 = Dust.NewDustDirect(projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.Firework_Yellow, 0f, 0f, 0, default(Color), Main.rand.NextFloat(0.5f, 2.4f));
+                //    dust3.velocity = VectorHelper.VelocityToPoint(dust3.position, projectile.Center, Vector2.Distance(dust3.position, projectile.Center) * 0.05f) * 5;
+                //    dust3.color = Color.Yellow;
+                //    dust3.noGravity = true;
+
+                //    Dust dust4 = Dust.NewDustDirect(projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.Firework_Red, 0f, 0f, 0, default(Color), Main.rand.NextFloat(0.5f, 2.4f));
+                //    dust4.velocity = VectorHelper.VelocityToPoint(dust4.position, projectile.Center, Vector2.Distance(dust4.position, projectile.Center) * 0.05f) * 9;
+                //    dust4.color = Color.Orange;
+                //    dust4.noGravity = true;
+                //} 
             }
         }
 

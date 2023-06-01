@@ -90,6 +90,7 @@ namespace CombinationsMod
         public bool fortitudeRing = false; // Destroyer ring
         public bool omnipotenceRing = false; // Twins ring
         public bool trepidationRing = false; // Skeletron Prime ring
+        public bool blackHoleRing = false;
 
         public bool speedTracker = false; // Yoyo Radar
         public bool hitTracker = false;  // Mechanical Clicker
@@ -166,6 +167,7 @@ namespace CombinationsMod
             fortitudeRing = false;
             omnipotenceRing = false;
             trepidationRing = false;
+            blackHoleRing = false;
 
             speedTracker = false;
             hitTracker = false;

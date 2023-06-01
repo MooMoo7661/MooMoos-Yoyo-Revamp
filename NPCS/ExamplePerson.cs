@@ -236,6 +236,10 @@ namespace CombinationsMod.NPCS
                     shop.item[nextSlot].SetDefaults(ItemType<Catacomb>());
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 16);
                     nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.Valor);
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 20);
+                    nextSlot++;
                 }
 
                 if (NPC.downedQueenBee)

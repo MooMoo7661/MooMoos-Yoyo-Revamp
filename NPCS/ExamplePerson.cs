@@ -206,8 +206,8 @@ namespace CombinationsMod.NPCS
                 .Add(ItemID.CrimsonYoyo, Condition.DownedBrainOfCthulhu)
                 .Add(ItemID.CorruptYoyo, Condition.DownedEaterOfWorlds)
                 .Add(ModContent.ItemType<Catacomb>(), YoyoModConditions.MasterOrExpertMode, Condition.DownedSkeletron)
-                .Add(ItemType<TheQueensGambit>(), YoyoModConditions.MasterOrExpertMode, Condition.DownedQueenBee);
-
+                .Add(ItemType<TheQueensGambit>(), YoyoModConditions.MasterOrExpertMode, Condition.DownedQueenBee)
+                .Add(ItemID.Valor, Condition.DownedSkeletron);
 
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
             {

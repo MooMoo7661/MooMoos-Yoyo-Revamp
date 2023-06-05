@@ -29,15 +29,15 @@ namespace CombinationsMod.GlobalClasses.Loot
 			switch (npc.type)
 			{
 				case NPCID.Drippler:
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThinMint>(), 20));
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThinMint>(), 5));
 					break;
 
 				case NPCID.Ghost:
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 40));
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 6));
 					break;
 
 				case NPCID.Poltergeist or NPCID.Wraith:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 69));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 6));
 					break;
 
                 case NPCID.HeadlessHorseman or NPCID.MourningWood or NPCID.Pumpking:

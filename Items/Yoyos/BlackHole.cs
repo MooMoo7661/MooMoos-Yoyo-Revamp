@@ -39,10 +39,6 @@ namespace CombinationsMod.Items.Yoyos
             Item.value = Item.sellPrice(0, 17, 0, 0);
             Item.shoot = ModContent.ProjectileType<BlackHoleProjectile>();
         }
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            tooltips.Insert(1, new TooltipLine(Mod, "YoyoType", "[c/6FD4FF:Boss Drop]"));
-        }
 
         public override void AddRecipes()
         {

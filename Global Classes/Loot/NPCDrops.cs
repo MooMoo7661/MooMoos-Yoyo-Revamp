@@ -41,8 +41,8 @@ namespace CombinationsMod.GlobalClasses.Loot
 					break;
 
                 case NPCID.HeadlessHorseman or NPCID.MourningWood or NPCID.Pumpking:
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Mambele>(), 20));
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HorsemansDrillCasing>(), 20));
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Mambele>(), 13));
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HorsemansDrillCasing>(), 13));
 					break;
 
 				case NPCID.Reaper or NPCID.Eyezor or NPCID.Frankenstein or NPCID.SwampThing or NPCID.Vampire or

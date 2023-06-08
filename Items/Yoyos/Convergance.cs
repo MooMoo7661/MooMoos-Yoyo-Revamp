@@ -73,7 +73,7 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ModContent.ItemType<Mambele>())
                 .AddIngredient(ItemID.Kraken)
                 .AddIngredient(ItemID.TheEyeOfCthulhu)
-                .AddIngredient(ModContent.ItemType<TheTempest>())
+                .AddIngredient(ModContent.ItemType<BlackHole>())
                 .AddIngredient(ModContent.ItemType<CultistYoyo>())
                 .AddIngredient(ItemID.Terrarian)
                 .AddTile(TileID.LunarCraftingStation)

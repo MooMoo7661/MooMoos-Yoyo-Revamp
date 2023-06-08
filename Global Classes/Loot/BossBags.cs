@@ -29,6 +29,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case ItemID.GolemBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TsurugiDrillCasing>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>()));
                     break;
 
                 case ItemID.TwinsBossBag:   

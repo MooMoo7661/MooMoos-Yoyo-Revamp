@@ -14,7 +14,7 @@ namespace CombinationsMod.Items.Accessories.Rings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Terrene Ring");
-            Tooltip.SetDefault("[c/FF00AB:Enables Yoyos to use their special abilities.]\nYoyos will show the requirements for triggering the ability.\nYoyos can phase through walls\nYoyos shoot cursed flames\n[c/6EAE6E:+10% base yoyo damage]");
+            Tooltip.SetDefault("[c/FF00AB:Enables Yoyos to use their special abilities.]\nYoyos will show the requirements for triggering the ability.\nIncreases yoyo knockback\nSlightly increases yoyo speed\nIncreases all yoyo damage by 5%");
         }
 
         public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace CombinationsMod.Items.Accessories.Rings
             Item.rare = ItemRarityID.Red;
             Item.accessory = true;
             Item.maxStack = 1;
-            Item.value = Item.sellPrice(0, 30, 5, 0);
+            Item.value = Item.sellPrice(0, 12, 5, 0);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

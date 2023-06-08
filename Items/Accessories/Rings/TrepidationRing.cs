@@ -14,7 +14,7 @@ namespace CombinationsMod.Items.Accessories.Rings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ring of Trepidation");
-            Tooltip.SetDefault("[c/6EAE6E:+10% base yoyo damage]");
+            Tooltip.SetDefault("Increases all yoyo damage by 5%");
         }
 
         public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace CombinationsMod.Items.Accessories.Rings
             Item.rare = ItemRarityID.Lime;
             Item.accessory = true;
             Item.maxStack = 1;
-            Item.value = Item.sellPrice(0, 12, 55, 0);
+            Item.value = Item.sellPrice(0, 5, 55, 0);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

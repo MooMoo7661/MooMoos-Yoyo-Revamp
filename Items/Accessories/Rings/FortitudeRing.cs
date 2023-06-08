@@ -15,7 +15,7 @@ namespace CombinationsMod.Items.Accessories.Rings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ring of Fortitude");
-            Tooltip.SetDefault("Yoyos can phase through walls");
+            Tooltip.SetDefault("Increases the knockback of all yoyos");
         }
 
         public override void SetDefaults()
@@ -25,7 +25,7 @@ namespace CombinationsMod.Items.Accessories.Rings
             Item.rare = ItemRarityID.Lime;
             Item.accessory = true;
             Item.maxStack = 1;
-            Item.value = Item.sellPrice(0, 12, 55, 0);
+            Item.value = Item.sellPrice(0, 5, 55, 0);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

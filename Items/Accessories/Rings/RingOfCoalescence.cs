@@ -13,7 +13,7 @@ namespace CombinationsMod.Items.Accessories.Rings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ring of Coalescence");
-            Tooltip.SetDefault("Yoyos can phase through walls\nYoyos shoot cursed flames\n[c/6EAE6E:+10% base yoyo damage]");
+            Tooltip.SetDefault("Increases yoyo knockback\nSlightly increases yoyo speed\nIncreases all yoyo damage by 5%");
         }
 
         public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace CombinationsMod.Items.Accessories.Rings
             Item.rare = ItemRarityID.Purple;
             Item.accessory = true;
             Item.maxStack = 1;
-            Item.value = Item.sellPrice(0, 25, 69, 0);
+            Item.value = Item.sellPrice(0, 9, 69, 0);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -57,7 +57,7 @@ namespace CombinationsMod.Items.Accessories.YoyoBags
         {
             if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", "Gives the user more accessory slots for yoyos\nGives slots for Yoyo Drills and Counterweights\nGives slots for Yoyo Rings"));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", "Gives the user more accessory slots for yoyos\nGives slots for Yoyo Drills and Counterweights\nGives slots for Yoyo Rings\nAdds one additional yoyo"));
             }
             else
             {

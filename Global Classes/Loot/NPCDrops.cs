@@ -20,10 +20,12 @@ namespace CombinationsMod.GlobalClasses.Loot
 		{
 			if (!(Main.masterMode || Main.expertMode) && (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism))
 			{
-				var missingTwinRule = new LeadingConditionRule(new Conditions.MissingTwin());
-				missingTwinRule.OnSuccess(ItemDropRule.Common(ItemID.TheEyeOfCthulhu, 2));
-				npcLoot.Add(missingTwinRule);
-
+				if (ModContent.GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
+				{
+					var missingTwinRule = new LeadingConditionRule(new Conditions.MissingTwin());
+					missingTwinRule.OnSuccess(ItemDropRule.Common(ItemID.TheEyeOfCthulhu, 2));
+					npcLoot.Add(missingTwinRule);
+				}
 			}
 
 			switch (npc.type)
@@ -65,6 +67,37 @@ namespace CombinationsMod.GlobalClasses.Loot
 				case NPCID.IceMimic:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>()));
                     break;
+
+				case NPCID.QueenBee:
+					LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+					notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TheQueensGambit>()));
+					npcLoot.Add(notExpertRule);
+					break;
+
+				case NPCID.Skeleton:
+                    LeadingConditionRule notExpertRule2 = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRule2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Catacomb>()));
+                    npcLoot.Add(notExpertRule2);
+                    break;
+
+				case NPCID.Golem:
+                    LeadingConditionRule notExpertRule3 = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>()));
+                    notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TsurugiDrillCasing>()));
+                    npcLoot.Add(notExpertRule3);
+                    break;
+
+				case NPCID.CultistBoss:
+                    LeadingConditionRule notExpertRule4 = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRule4.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CultistYoyo>()));
+                    npcLoot.Add(notExpertRule4);
+					break;
+
+				case NPCID.KingSlime:
+                    LeadingConditionRule notExpertRule5 = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRule5.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SlimyString>()));
+                    npcLoot.Add(notExpertRule5);
+					break;
             }
 		}
     }

@@ -305,12 +305,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void SetDefaults(Projectile projectile) // Making vanilla yoyos have different max hit counts.
         {
-            if (projectile.aiStyle == 99)
-            {
-                projectile.usesIDStaticNPCImmunity = false;
-                projectile.usesLocalNPCImmunity = true;
-                projectile.localNPCHitCooldown = 10 * projectile.MaxUpdates;
-            }
+            //if (projectile.aiStyle == 99)
+            //{
+            //    projectile.usesIDStaticNPCImmunity = false;
+            //    projectile.usesLocalNPCImmunity = true;
+            //    projectile.localNPCHitCooldown = 10 * projectile.MaxUpdates;
+            //}
         }
 
         public override void Kill(Projectile projectile, int timeLeft) // Resetting counters when the yoyo is killed.

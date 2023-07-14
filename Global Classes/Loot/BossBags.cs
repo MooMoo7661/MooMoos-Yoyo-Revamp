@@ -43,6 +43,10 @@ namespace CombinationsMod.GlobalClasses.Loot
                 case ItemID.KingSlimeBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SlimyString>()));
                     break;
+
+                case ItemID.FairyQueenBossBag:
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>()));
+                    break;
             }
         }
     }

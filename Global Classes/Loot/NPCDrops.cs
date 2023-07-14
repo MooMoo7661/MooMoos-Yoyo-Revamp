@@ -98,6 +98,12 @@ namespace CombinationsMod.GlobalClasses.Loot
                     notExpertRule5.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SlimyString>()));
                     npcLoot.Add(notExpertRule5);
 					break;
+
+				case NPCID.HallowBoss:
+                    LeadingConditionRule notExpertRule6 = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRule6.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>()));
+                    npcLoot.Add(notExpertRule6);
+					break;
             }
 		}
     }

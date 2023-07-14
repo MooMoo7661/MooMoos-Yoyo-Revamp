@@ -1,6 +1,7 @@
 ﻿using CombinationsMod.Items.Bars;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -15,6 +16,7 @@ public class FrightBarTile  : ModTile
         Main.tileSolidTop[Type] = true;
         Main.tileFrameImportant[Type] = true;
 
+        DustType = DustID.LavaMoss;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.LavaDeath = false;

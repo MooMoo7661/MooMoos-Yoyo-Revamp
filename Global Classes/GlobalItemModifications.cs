@@ -28,22 +28,25 @@ namespace CombinationsMod.GlobalClasses
 
         public override void SetDefaults(Item item)
         {
-            if (item.type == ItemID.TheEyeOfCthulhu)
+            bool damageChanges = ModContent.GetInstance<YoyoModConfig>().VanillaYoyoDamageChanges;
+            
+
+            if (item.type == ItemID.TheEyeOfCthulhu && ModContent.GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
             {
                 item.damage = 49;
                 item.knockBack = 3.9f;
                 item.rare = ItemRarityID.Pink;
                 item.value = Item.sellPrice(0, 4, 2, 0);
             }
-            else if (item.type == ItemID.Gradient)
+            else if (item.type == ItemID.Gradient && damageChanges)
             {
                 item.damage = 57;
             }
-            else if (item.type == ItemID.Code1)
+            else if (item.type == ItemID.Code1 && damageChanges)
             {
                 item.damage = 24;
             }
-            else if (item.type == ItemID.ValkyrieYoyo || item.type == ItemID.RedsYoyo)
+            else if ((item.type == ItemID.ValkyrieYoyo || item.type == ItemID.RedsYoyo) && damageChanges)
             {
                 item.damage = 64;
             }
@@ -51,10 +54,8 @@ namespace CombinationsMod.GlobalClasses
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            if (!hideVisual && item.type == ItemID.YoyoBag)
-            {
-                player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
-            }
+
+            player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
         }
 
         

@@ -34,12 +34,8 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-            {
-                modPlayer.slimeString = true;
-                player.yoyoString = true;
-            }
-
+            modPlayer.slimeString = true;
+            player.yoyoString = true;
         }
     }
 }

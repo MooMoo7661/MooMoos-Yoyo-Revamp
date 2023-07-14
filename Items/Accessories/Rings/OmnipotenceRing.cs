@@ -33,10 +33,7 @@ namespace CombinationsMod.Items.Accessories.Rings
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            if (!hideVisual)
-            {
-                modPlayer.omnipotenceRing = true;
-            }
+            modPlayer.omnipotenceRing = true;
         }
 
         public override void AddRecipes()

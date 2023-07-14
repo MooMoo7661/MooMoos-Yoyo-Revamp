@@ -30,13 +30,10 @@ namespace CombinationsMod.Items.Accessories.Rings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-            {
-                modPlayer.trepidationRing = true;
-                modPlayer.omnipotenceRing = true;
-                modPlayer.fortitudeRing = true;
-                modPlayer.yoyoRing = true;
-            }
+            modPlayer.trepidationRing = true;
+            modPlayer.omnipotenceRing = true;
+            modPlayer.fortitudeRing = true;
+            modPlayer.yoyoRing = true;
         }
 
         public override void AddRecipes()

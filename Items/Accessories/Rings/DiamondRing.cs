@@ -29,8 +29,7 @@ namespace CombinationsMod.Items.Accessories.Rings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-                modPlayer.diamondRing = true;
+            modPlayer.diamondRing = true;
         }
 
         public override void UpdateVanity(Player player)

@@ -33,13 +33,9 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-            {
-                modPlayer.lightPinkString = true;
-                player.stringColor = 31;
-                player.yoyoString = true;
-            }
-
+            modPlayer.lightPinkString = true;
+            player.stringColor = 31;
+            player.yoyoString = true;
         }
         public override void UpdateVanity(Player player)
         {

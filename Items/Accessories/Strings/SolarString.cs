@@ -33,12 +33,8 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-            {
-                modPlayer.solarString = true;
-                player.yoyoString = true;
-            }
-
+            modPlayer.solarString = true;
+            player.yoyoString = true;
         }
 
         public override void AddRecipes()

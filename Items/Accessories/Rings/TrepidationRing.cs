@@ -31,10 +31,8 @@ namespace CombinationsMod.Items.Accessories.Rings
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            if (!hideVisual)
-            {
-                modPlayer.trepidationRing = true;
-            }
+            modPlayer.trepidationRing = true;
+
         }
 
         public override void AddRecipes()

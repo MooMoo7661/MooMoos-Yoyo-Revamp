@@ -33,12 +33,8 @@ namespace CombinationsMod.Items.Accessories.Strings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-            {
-                modPlayer.frostbiteString = true;
-                player.yoyoString = true;
-            }
-
+            modPlayer.frostbiteString = true;
+            player.yoyoString = true;
         }
     }
 }

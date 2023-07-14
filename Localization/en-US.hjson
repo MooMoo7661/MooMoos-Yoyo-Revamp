@@ -1285,6 +1285,21 @@ Mods: {
 					Tooltip: ""
 					Label: Position of Accessory Slots
 				}
+
+				VanillaYoyoDamageChanges: {
+					Label: Changes to damage of vanilla yoyos
+					Tooltip: Enables/Disables the changes this mod makes to the stats of vanilla yoyos.(Enabled by default)
+				}
+
+				AccessorySlotIndicators: {
+					Label: Accessory slot indicators
+					Tooltip: Enables/Disables telling what type of item goes in which slot.(Enabled by default)
+				}
+
+				EOCYoyoProgressionMovement: {
+					Label: Move EOC Yoyo to post-twins
+					Tooltip: Enables/Disables moving the EOC Yoyo to drop from the twins instead of Mothrons.(Enabled by default)
+				}
 			}
 		}
 	}

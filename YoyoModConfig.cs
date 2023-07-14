@@ -23,6 +23,21 @@ internal class YoyoModConfig : ModConfig
     [DefaultValue(false)]
     public bool MainYoyoDust { get; set; }
 
+    [Label("Changes to damage of vanilla yoyos")]
+    [Tooltip("Enables/Disables the changes this mod makes to the stats of vanilla yoyos.(Enabled by default)")]
+    [DefaultValue(true)]
+    public bool VanillaYoyoDamageChanges { get; set; }
+
+    [Label("Accessory slot indicators")]
+    [Tooltip("Enables/Disables telling what type of item goes in which slot.(Enabled by default)")]
+    [DefaultValue(true)]
+    public bool AccessorySlotIndicators { get; set; }
+
+    [Label("Move EOC Yoyo to post-twins")]
+    [Tooltip("Enables/Disables moving the EOC Yoyo to drop from the twins instead of Mothrons.(Enabled by default)")]
+    [DefaultValue(true)]
+    public bool EOCYoyoProgressionMovement { get; set; }
+
     [Label("Increase the size of YoYo Glove sprite.(Enabled by default)")]
     [DefaultValue(true)]
     [ReloadRequired]

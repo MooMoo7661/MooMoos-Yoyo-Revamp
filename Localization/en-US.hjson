@@ -244,6 +244,7 @@ Mods: {
 			ConverganceProjectile.DisplayName: Convergance Projectile
 			CragHomingExplosive.DisplayName: Crag Homing Explosive
 			HomingWaterBolt.DisplayName: Homing Water Bolt
+			EmpressProjectile.DisplayName: Empress Projectile
 		}
 
 		Items: {
@@ -1164,6 +1165,16 @@ Mods: {
 
 			BeetleBag: {
 				DisplayName: Beetle Bag
+				Tooltip: ""
+			}
+
+			EmpressYoyo: {
+				DisplayName: The Shimmerspark
+				Tooltip: Harnesses the power of the Fairy Queen
+			}
+
+			EmpressYoyoGrayscale: {
+				DisplayName: Empress Yoyo Grayscale
 				Tooltip: ""
 			}
 		}

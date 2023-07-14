@@ -32,10 +32,7 @@ namespace CombinationsMod.Items.Accessories.YoyoGloves
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-            {
-                modPlayer.supportGlove = true;
-            }
+            modPlayer.supportGlove = true;
         }
 
         public override bool IsLoadingEnabled(Mod mod)

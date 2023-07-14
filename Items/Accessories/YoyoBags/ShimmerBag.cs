@@ -27,14 +27,11 @@ namespace CombinationsMod.Items.Accessories.YoyoBags
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
+            modPlayer.shimmerBag = true;
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
-                modPlayer.shimmerBag = true;
-                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-                {
-                    player.yoyoGlove = true;
-                    player.yoyoString = true;
-                }
+                player.yoyoGlove = true;
+                player.yoyoString = true;
             }
         }
 

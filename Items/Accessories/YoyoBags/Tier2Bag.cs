@@ -25,16 +25,15 @@ namespace CombinationsMod.Items.Accessories.YoyoBags
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            if (!hideVisual)
-            {
-                modPlayer.tier2Bag = true;
 
-                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-                {
-                    player.yoyoGlove = true;
-                    player.yoyoString = true;
-                }
+            modPlayer.tier2Bag = true;
+
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                player.yoyoGlove = true;
+                player.yoyoString = true;
             }
+
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -57,7 +56,7 @@ namespace CombinationsMod.Items.Accessories.YoyoBags
         {
             if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", "Yoyos are recalled faster\nGives the user more accessory slots for yoyos\nAllows the use of Support Gloves and Yoyo Drills\n\"May or may not be shimmerable\""));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", "Yoyos are recalled faster\nGives the user more accessory slots for yoyos\nAllows the use of Support Gloves and Yoyo Drills\nAdds one additional yoyo\n\"May or may not be shimmerable\""));
             }
             else
             {

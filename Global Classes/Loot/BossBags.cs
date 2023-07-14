@@ -25,10 +25,14 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case ItemID.GolemBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TsurugiDrillCasing>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>()));
                     break;
 
-                case ItemID.TwinsBossBag:   
-                    itemLoot.Add(ItemDropRule.Common(ItemID.TheEyeOfCthulhu));
+                case ItemID.TwinsBossBag:
+                    if (ModContent.GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
+                    {
+                        itemLoot.Add(ItemDropRule.Common(ItemID.TheEyeOfCthulhu));
+                    }
                     break;
 
                 case ItemID.CultistBossBag:

@@ -1,55 +1,49 @@
-[h1] MooMoo's Yoyo Revamp [/h1]
+NOTE: If you are viewing this on the TML mod browser, please click the button that says "Steam Page".
 
-*IMPORTANT! If you are viewing this on the TmodLoader mod browser, it is reccomended you go to the steam page instead, for better readability.
-I'm not sure why, but the mod browser isn't using the mod description. Instead, it's using the steam description.
+[h1][b][u]MooMoo's Ultimate Yoyo Revamp[/u][/b][/h1]
+This mod changes most of the yoyo subclass, bringing new and exciting features to help spice up your gameplay!
+From an overhauled yoyo bag system, to unique effects for previously mundane and boring vanilla yoyos, there is a lot more content to explore.
 
-This mod adds a large amount of accessories, Yoyos, new mechanics, and changes to Vanilla Yoyos.
+[h1][u][b]A quick summary of what the mod adds:[/b][/u][/h1]
 
-[b] Adds over 30 more Yoyos, each with special crafting recipes and effects [/b]
+[b]- New Yoyo Bag System -[/b]
+  Yoyo bags are no longer just a combination of a yoyo glove, string, and a counterweight.
+  Instead, they allow the user to have access to new slots, allowing for greater
+  customization while maintaining the idea of a yoyo bag
 
-Purchase the Ability Ring from the Skeleton Peddler for 20 gold to allow yoyos to use special effects.
+[b]- New Skeleton Peddler NPC -[/b]
+  There is a new Skeleton Merchant in town, and this one is a yoyo expert. He sells a very
+  wide variety of yoyo products, from actual yoyos to accessories that have some sort of
+  special function. He moves in once you obtain a yoyo, and will slowly increase the size
+  of his shop depending on your overall progress. However, since he is the yoyo expert,
+  the Skeleton Merchant and Travelling Merchant will no longer sell yoyo-related wares.
 
-[u]- Changes To Vanilla Yoyos [/u]
-    Each Yoyo's stats have been buffed, including lifetime,
-    speed, and range
-    Yoyos have special particles
+[b]- Unique Effects for Every Yoyo -[/b]
+  Each yoyo (except for wooden and chik, RIP), have some sort of ability that can be
+  activated by equipping the Ability Ring, which is sold from the Skeleton Peddler.
 
-[u]- Unique Accessories[/u]
+[b]- Lots of New Yoyos! -[/b]
+  This mod adds quite the catalog of new yoyos, aiming to allow you to have a good range
+  of choices for the yoyos you want to use. From boss-themed yoyos, to "true" yoyos,
+  you will never run out of choices for your playthrough.
 
-   [b] Rings [/b]
-     [list][*]Some rings make Yoyos emit particles and light
-     [*]Some rings add certain functions to Yoyos[/list]
-   [b]Tricks[/b]
-     [list][*]Do special things, usually creating extra yoyos that only swirl around the player[/list]
-   [b]Drill Casings[/b]
-     [list][*]Yoyos can drill through blocks[/list]
-   [b]New Yoyo Gloves[/b]
-   [list]
-     [*]Support Gloves : Increases yoyos made by the Yoyo Glove
-     [*]Yoyo Gloves : Function similarly to the regular Yoyo Glove, but have small differences[/list]
+[u][b]NOTES:[/b][/u]
+[u]This mod is not entirely aimed to be 100% balanced.[/u] There are some things that either
+are too powerful, or not powerful enough. [b]This doesn't mean the game will become super
+easy, just that some parts could do with a little re-balancing.[/b]
+It is still fairly early in development, meaning that there are more features to add,
+and bugs to fix. 
+A wiki is currently in development, however, due to me being the only wiki editor,
+it will not be a quick process.
 
-[b]- 8 new accessory slots[/b]
-[list]
-    [*]2 String Slots
-    [*]2 Ring Slots
-    [*]2 Glove Slots
-    [*]Drill Slot
-    [*]Counterweight Slot [/list]
-
-[b] -= Many changes to Vanilla =- [/b]
-
-[u] Reccomended that you use Achievement Mod when it ports to 1.4.4, as this mod adds several new and unique achievements. [/u]
-
-This mod's focus is not entirely to be balanced, but to give a more enjoyable experience with using yoyos.
-Some things may be tweaked later to help balance it out a little.
-
-[b] I will likely be adding small updates to the mod, and maybe even a few larger ones, but being that this was the first mod I ever made, I'd like to move on to other stuff.[/b]
-
-Huge thanks to the following!
+If you wish to join the Discord, click this link! > https://discord.gg/G5cbT7tj9K
+  
+[h1][b]Huge thanks to the following![/b][/h1]
 
 David F. Dev - Wrote the script for the Yoyo Drills
-Turbanik - Created and supplied pretty much all of the special effect sprites
+Turbanik - Supplied pretty much all of the special effect sprites
 stormytuna - Writing various code such as npc loot modifications & reflections
 Dagger - Helping with custom yoyo string colors, drawing, and textures
-Photonic0 - Helping with enhancing yoyo special effects during daytime
-otterly - Created the amazing achievement sprites
+Photonic0 - Helping with enhancing yoyo special effects during daytime,
+as well as creating the Empress of Light Yoyo
+otterly - Created several sprites, such as the yoyo bags and achievement sprites.

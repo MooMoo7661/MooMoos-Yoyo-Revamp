@@ -15,7 +15,7 @@ namespace CombinationsMod
         public int chainTextureID = 0;
 
         /// <summary>
-        /// For use with the `yoyoSpacers` bool, allows the mod to subtract the added stats to prevent exponential growth.
+        /// For use with the `yoyoSpacers` bool, allows the mod to subtract the added stats to prevent exponential growth.<br>Unused</br>
         /// </summary>
         public bool wasEquipped = false; 
 

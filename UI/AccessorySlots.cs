@@ -147,6 +147,8 @@ namespace CombinationsMod.UI
             {
                 case AccessorySlotType.FunctionalSlot:
                     Main.hoverItemName = "Right Hand";
+                    if (ModContent.GetInstance<YoyoModConfig>().AccessorySlotIndicators)
+                    Main.hoverItemName += "(Yoyo Gloves)";
                     break;
             }
         }
@@ -196,6 +198,8 @@ namespace CombinationsMod.UI
             {
                 case AccessorySlotType.FunctionalSlot:
                     Main.hoverItemName = "Left Hand";
+                    if (ModContent.GetInstance<YoyoModConfig>().AccessorySlotIndicators)
+                        Main.hoverItemName += "(Support Gloves)";
                     break;
             }
         }

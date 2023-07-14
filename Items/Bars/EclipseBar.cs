@@ -5,6 +5,7 @@ using CombinationsMod.Rarities;
 using CombinationsMod.Items.Souls;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Items.Bars
 {
@@ -19,8 +20,8 @@ namespace CombinationsMod.Items.Bars
 
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
+            Item.width = 30;
+            Item.height = 24;
             Item.maxStack = 99;
             Item.value = Item.sellPrice(gold: 1, silver: 22);
             Item.useStyle = ItemUseStyleID.Swing;
@@ -47,6 +48,12 @@ namespace CombinationsMod.Items.Bars
             recipe.Register();
         }
 
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D tex = ModContent.Request<Texture2D>("CombinationsMod/Items/Bars/EclipseBar").Value;
 
+            Main.spriteBatch.Draw(tex, position, null, drawColor, 0, origin, scale * 1.08f, SpriteEffects.None, 0f);
+            return false;
+        }
     }
 }

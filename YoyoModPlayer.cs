@@ -33,6 +33,7 @@ namespace CombinationsMod
         public bool shimmerBag = false;
         public bool tier2Bag = false;
         public bool beetleBag = false;
+        public bool alienBag = false;
 
         public bool eclipseString = false;
         public bool golemString = false;
@@ -108,6 +109,7 @@ namespace CombinationsMod
             shimmerBag = false;
             tier2Bag = false;
             beetleBag = false;
+            alienBag = false;
 
             supportGlove = false;
 
@@ -185,6 +187,11 @@ namespace CombinationsMod
             if (modPlayer.solarString || modPlayer.nebulaString || modPlayer.vortexString || modPlayer.stardustString)
             {
                 length += 100f;
+            }
+
+            if (modPlayer.alienBag)
+            {
+                length += 9999;
             }
 
             return length;

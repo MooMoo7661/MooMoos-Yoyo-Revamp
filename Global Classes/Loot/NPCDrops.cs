@@ -10,6 +10,7 @@ using CombinationsMod.Items.Accessories.Drills;
 using Steamworks;
 using CombinationsMod.Items.Misc;
 using CombinationsMod.Items.Accessories.Strings;
+using CombinationsMod.Items.Accessories.YoyoBags;
 
 namespace CombinationsMod.GlobalClasses.Loot
 {
@@ -103,6 +104,10 @@ namespace CombinationsMod.GlobalClasses.Loot
                     LeadingConditionRule notExpertRule6 = new LeadingConditionRule(new Conditions.NotExpert());
                     notExpertRule6.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>()));
                     npcLoot.Add(notExpertRule6);
+					break;
+
+				case NPCID.MartianSaucer:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AdvancedYoyoBag>(), 10));
 					break;
             }
 		}

@@ -1170,12 +1170,16 @@ Mods: {
 
 			EmpressYoyo: {
 				DisplayName: The Shimmerspark
-				Tooltip: Harnesses the power of the Fairy Queen
+				Tooltip: Harnesses the immense power of the Fairy Queen
 			}
 
-			EmpressYoyoGrayscale: {
-				DisplayName: Empress Yoyo Grayscale
-				Tooltip: ""
+			AdvancedYoyoBag: {
+				DisplayName: Extraterrestrial Command Pack
+				Tooltip:
+					'''
+					Allows the player to ignore maximum string length
+					[c/FF3CEC:+Infinite yoyo range]
+					'''
 			}
 		}
 

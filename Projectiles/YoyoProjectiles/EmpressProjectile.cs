@@ -18,8 +18,8 @@ public class EmpressProjectile : ModProjectile
     public override void SetStaticDefaults()
     {
         ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-        ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 370f;
-        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 17.3f;
+        ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 400f;
+        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 20f;
 
         ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 45;
         ProjectileID.Sets.TrailingMode[base.Projectile.type] = 2;
@@ -53,13 +53,9 @@ public class EmpressProjectile : ModProjectile
         if (Projectile.velocity.X >= 8 || Projectile.velocity.X <= -8) { return; }
         if (Projectile.velocity.Y >= 8 || Projectile.velocity.Y <= -8) { return; }
 
-        Rectangle hitbox = Projectile.Hitbox;
-        hitbox.Width *= 3;
-        hitbox.Height *= 3;
-
-        Vector2 positionInWorld = Main.rand.NextVector2FromRectangle(hitbox);
+        Vector2 positionInWorld = Main.rand.NextVector2FromRectangle(Projectile.Hitbox);
         ParticleOrchestraSettings particleOrchestraSettings = default(ParticleOrchestraSettings);
-        particleOrchestraSettings.PositionInWorld = positionInWorld;
+        particleOrchestraSettings.PositionInWorld = positionInWorld + new Vector2(Projectile.width / 3, Projectile.height / 3);
         ParticleOrchestraSettings settings = particleOrchestraSettings;
 
         if (Main.rand.NextBool(100))

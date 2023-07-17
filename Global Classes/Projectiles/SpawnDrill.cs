@@ -136,6 +136,11 @@ namespace CombinationsMod.GlobalClasses
                     Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
                          0, ModContent.ProjectileType<NinjaStar>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
                 }
+                else if (modPlayer.excavatorDrill)
+                {
+                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
+                        0, ModContent.ProjectileType<Excavator>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
+                }
 
             }
         }

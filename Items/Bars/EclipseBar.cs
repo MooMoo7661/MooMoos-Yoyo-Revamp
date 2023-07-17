@@ -6,6 +6,8 @@ using CombinationsMod.Items.Souls;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria.GameContent;
 
 namespace CombinationsMod.Items.Bars
 {
@@ -50,9 +52,42 @@ namespace CombinationsMod.Items.Bars
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D tex = ModContent.Request<Texture2D>("CombinationsMod/Items/Bars/EclipseBar").Value;
+            float sizeLimit = 34;
+            int numberOfCloneImages = 6;
+            Main.DrawItemIcon(spriteBatch, Item, position, Color.White * 0.7f, sizeLimit);
+            for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
+            {
+                float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly * MathF.Tau / 1.5f) + 0.9f;
+                cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
+                Color color = Color.OrangeRed * 0.3f;
+                color *= 1f - cloneImageDistance * 0.2f;
+                color.A = 0;
+                cloneImageDistance *= 2.5f;
+                Vector2 drawPos = position + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f);
+                Main.DrawItemIcon(spriteBatch, Item, drawPos, color, sizeLimit);
+            }
+            return false;
+        }
 
-            Main.spriteBatch.Draw(tex, position, null, drawColor, 0, origin, scale * 1.08f, SpriteEffects.None, 0f);
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            Lighting.AddLight(Item.Center, Color.OrangeRed.ToVector3() * 1.7f);
+
+            Texture2D tex = TextureAssets.Item[Type].Value;
+
+            Main.EntitySpriteDraw(tex, Item.Center - Main.screenPosition, null, Color.White, rotation, tex.Size() / 2, scale, SpriteEffects.None);
+            int numberOfCloneImages = 3;
+            for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
+            {
+                float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly * MathF.Tau / 1.5f) + 0.9f;
+                cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.2f);
+                Color color = Color.OrangeRed * 0.3f;
+                color *= 1f - cloneImageDistance * 0.2f;
+                color.A = 0;
+                cloneImageDistance *= 4;
+                Vector2 drawPos = Item.Center + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f) - Main.screenPosition;
+                Main.EntitySpriteDraw(tex, drawPos, null, color, rotation, tex.Size() / 2, scale, SpriteEffects.None);
+            }
             return false;
         }
     }

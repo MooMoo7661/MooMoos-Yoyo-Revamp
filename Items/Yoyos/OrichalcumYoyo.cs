@@ -5,6 +5,9 @@ using Terraria.ModLoader;
 using System;
 using CombinationsMod.Projectiles.YoyoProjectiles;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent;
 
 namespace CombinationsMod.Items.Yoyos;
 

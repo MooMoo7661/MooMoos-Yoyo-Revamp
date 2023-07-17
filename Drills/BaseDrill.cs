@@ -262,6 +262,40 @@ namespace CombinationsMod.Drills
                         TryPick(3, 3);
                     }
                 }
+                else if (BlockRangeStyle == 5)
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 10; j++)
+                        {
+                            TryPick(i, j);
+                        }
+                    }
+
+                    for (int k = -10; k <= 0; k++)
+                    {
+                        for (int l = -10; l <= 0; l++)
+                        {
+                            TryPick(k, l);
+                        }
+                    }
+
+                    for (int k = -10; k <= 0; k++)
+                    {
+                        for (int l = 0; l < 10; l++)
+                        {
+                            TryPick(k, l);
+                        }
+                    }
+
+                    for (int k = 0; k < 10; k++)
+                    {
+                        for (int l = -10; l <= 0; l++)
+                        {
+                            TryPick(k, l);
+                        }
+                    }
+                }
                 else
                 {
                     for (int i = 0; i < 2; i++)

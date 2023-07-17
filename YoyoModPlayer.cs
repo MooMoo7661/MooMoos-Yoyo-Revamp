@@ -17,7 +17,7 @@ namespace CombinationsMod
         /// <summary>
         /// For use with the `yoyoSpacers` bool, allows the mod to subtract the added stats to prevent exponential growth.<br>Unused</br>
         /// </summary>
-        public bool wasEquipped = false; 
+        public bool wasEquipped = false;
 
         public bool wasEquippedDarkGreen = false;
         public bool wasEquippedDarkBlue = false;
@@ -78,6 +78,7 @@ namespace CombinationsMod
         public bool shadowflameDrill = false;
         public bool scooperDrill = false;
         public bool ninjaDrill = false;
+        public bool excavatorDrill = false;
 
         public bool yoyoRing = false; // Power Ring
         public bool amberRing = false;                                  // 
@@ -129,7 +130,7 @@ namespace CombinationsMod
             lightPinkString = false;
             naniteString = false;
             darkTealString = false;
-            grapeString = true;
+            grapeString = false;
 
             ironDrill = false;
             cobaltDrill = false;
@@ -155,6 +156,7 @@ namespace CombinationsMod
             shadowflameDrill = false;
             scooperDrill = false;
             ninjaDrill = false;
+            excavatorDrill = false;
 
             yoyoRing = false;
             amberRing = false;
@@ -208,6 +210,19 @@ namespace CombinationsMod
             if (modPlayer.omnipotenceRing)
             {
                 speed += 2f;
+            }
+
+            if (modPlayer.solarString || modPlayer.nebulaString || modPlayer.vortexString || modPlayer.stardustString)
+            {
+                speed += 3f;
+            }
+            else if(modPlayer.eclipseString || modPlayer.frostbiteString || modPlayer.golemString || modPlayer.naniteString)
+            {
+                speed += 2f;
+            }
+            else if (modPlayer.darkTealString || modPlayer.darkGreenString || modPlayer.darkBlueString || modPlayer.lightPinkString || modPlayer.grapeString || modPlayer.slimeString)
+            {
+                speed += 1f;
             }
 
             return speed;

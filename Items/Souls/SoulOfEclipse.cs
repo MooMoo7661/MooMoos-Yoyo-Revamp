@@ -6,6 +6,9 @@ using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using CombinationsMod.Rarities;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria.GameContent;
 
 namespace CombinationsMod.Items.Souls
 {

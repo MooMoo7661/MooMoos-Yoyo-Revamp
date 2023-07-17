@@ -97,5 +97,46 @@ namespace CombinationsMod.Items.Yoyos
         {
             return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            Lighting.AddLight(Item.Center, Color.MediumPurple.ToVector3() * 2.3f);
+
+            Texture2D tex = TextureAssets.Item[Type].Value;
+
+            Main.EntitySpriteDraw(tex, Item.Center - Main.screenPosition, null, Color.White, rotation, tex.Size() / 2, scale, SpriteEffects.None);
+            int numberOfCloneImages = 6;
+            for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
+            {
+                float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly / 2.4f * MathF.Tau / 2f) + 0.5f;
+                cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
+                Color color = Color.White * 0.2f;
+                color *= 1f - cloneImageDistance * 0.2f;
+                color.A = 0;
+                cloneImageDistance *= 4;
+                Vector2 drawPos = Item.Center + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f) - Main.screenPosition;
+                Main.EntitySpriteDraw(tex, drawPos, null, color, rotation, tex.Size() / 2, scale, SpriteEffects.None);
+            }
+            return false;// base.PreDrawInWorld(spriteBatch, lightColor, alphaColor, ref rotation, ref scale, whoAmI);
+        }
+
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            float sizeLimit = 34;
+            int numberOfCloneImages = 6;
+            Main.DrawItemIcon(spriteBatch, Item, position, Color.White * 0.7f, sizeLimit);
+            for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
+            {
+                float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly / 2.4f * MathF.Tau / 2f) + 0.5f;
+                cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
+                Color color = Color.MediumPurple * 0.4f;
+                color *= 1f - cloneImageDistance * 0.2f;
+                color.A = 0;
+                cloneImageDistance *= 3;
+                Vector2 drawPos = position + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f);
+                Main.DrawItemIcon(spriteBatch, Item, drawPos, color, sizeLimit);
+            }
+            return false;
+        }
     }
 }

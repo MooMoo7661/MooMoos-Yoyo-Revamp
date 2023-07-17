@@ -10,6 +10,7 @@ using CombinationsMod.Projectiles.YoyoEffects.Solid;
 using Terraria.DataStructures;
 using CombinationsMod.GlobalClasses.Projectiles;
 using Microsoft.CodeAnalysis;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -20,7 +21,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 364f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16.5f;
         }
 
         public override void SetDefaults()
@@ -92,6 +93,23 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
                 Main.projectile[proj].Resize(270, 270);
             }
+        }
+
+        public static void DrawGlowBallAdditive(Vector2 pos, float scaleMultiplier, Color outerColor, Color innerColor, bool shiny = true)
+        {
+            Texture2D GlowBall = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Projectiles/YoyoProjectiles/GlowBallPremultiplied");
+
+            Vector2 origin = GlowBall.Size() / 2;
+            Main.EntitySpriteDraw(GlowBall, pos - Main.screenPosition, null, outerColor with { A = 0 }, Main.rand.NextFloat() * MathF.Tau, origin, scaleMultiplier, SpriteEffects.None);
+            Main.EntitySpriteDraw(GlowBall, pos - Main.screenPosition, null, innerColor with { A = 0 }, Main.rand.NextFloat() * MathF.Tau, origin, scaleMultiplier * 0.5f, SpriteEffects.None);
+            if (shiny)
+                Main.EntitySpriteDraw(GlowBall, pos - Main.screenPosition, null, Color.White with { A = 0 }, Main.rand.NextFloat() * MathF.Tau, origin, scaleMultiplier * 0.25f, SpriteEffects.None);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            DrawGlowBallAdditive(Projectile.Center, 0.8f, Color.White, Color.White, true);
+            return true;
         }
     }
 }

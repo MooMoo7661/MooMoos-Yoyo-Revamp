@@ -19,11 +19,12 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
     public class CobaltYoyoProjectile : ModProjectile
     {
         public int timer = 10;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 260f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12.5f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13.3f;
         }
 
         public override void SetDefaults()

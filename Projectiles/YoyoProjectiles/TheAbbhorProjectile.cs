@@ -22,7 +22,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 315f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13.5f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13.86f;
+
             ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 3;
             ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
         }
@@ -54,7 +55,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                     //Main.projectile[proj].scale = 1.8f;
 
                     int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                        0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.75f), 1.4f, Main.myPlayer, 0, Projectile.whoAmI);
+                        0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.6f), 1.4f, Main.myPlayer, 0, Projectile.whoAmI);
                     Main.projectile[proj2].Resize(180, 180);
                 }
             }
@@ -71,7 +72,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 //Main.projectile[proj].scale = 1.3f;
 
                 int projHitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.75f) + 1, 1.4f, Main.myPlayer, 0, Projectile.whoAmI);
+                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.5f), 1.4f, Main.myPlayer, 0, Projectile.whoAmI);
                 Main.projectile[projHitbox].Resize(120, 120);
 
                 int dustProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,

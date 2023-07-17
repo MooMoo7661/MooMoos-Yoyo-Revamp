@@ -792,10 +792,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             if (Main.player[projectile.owner].yoyoString) // Extends range
             {
                 // modifiedStringLength is ProjectileID.Sets.YoyosMaximumRange + modifictions from modplayer to increase range
-                modifiedStringLength += 150f;
+                modifiedStringLength = modifiedStringLength + 150f;
             }
-            modifiedStringLength /= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
-            yoyoSpeed /= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            modifiedStringLength *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            yoyoSpeed *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
             num7 = 14f - yoyoSpeed / 2f;
             if (num7 < 1f)
             {

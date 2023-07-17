@@ -89,10 +89,9 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
 				case NPCID.CultistBoss:
-                    LeadingConditionRule notExpertRule4 = new LeadingConditionRule(new Conditions.NotExpert());
-                    notExpertRule4.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CultistYoyo>()));
-                    npcLoot.Add(notExpertRule4);
-					break;
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CultistYoyo>()));
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ShadowflameDrillCasing>()));
+                    break;
 
 				case NPCID.KingSlime:
                     LeadingConditionRule notExpertRule5 = new LeadingConditionRule(new Conditions.NotExpert());

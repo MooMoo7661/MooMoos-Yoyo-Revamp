@@ -218,7 +218,8 @@ namespace CombinationsMod.UI
                 checkItem.type == ModContent.ItemType<MooMooDrillCasing>() || checkItem.type == ModContent.ItemType<ShadowflameDrillCasing>() ||
                 checkItem.type == ModContent.ItemType<TheScooperDrillCasing>() || checkItem.type == ModContent.ItemType<NinjaStarCasing>() || checkItem.type == ModContent.ItemType<YoyoDrillCasing>() ||
                 checkItem.type == ModContent.ItemType<CobaltDrillCasing>() || checkItem.type == ModContent.ItemType<PalladiumCasing>() || checkItem.type == ModContent.ItemType<OrichalcumDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<MythrilDrillCasing>() || checkItem.type == ModContent.ItemType<AdamantiteDrillCasing>() || checkItem.type == ModContent.ItemType<TitaniumDrillCasing>())
+                checkItem.type == ModContent.ItemType<MythrilDrillCasing>() || checkItem.type == ModContent.ItemType<AdamantiteDrillCasing>() || checkItem.type == ModContent.ItemType<TitaniumDrillCasing>() ||
+                checkItem.type == ModContent.ItemType<ExcavatorCasing>())
                 return true;
 
             return false;

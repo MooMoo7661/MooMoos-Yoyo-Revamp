@@ -245,6 +245,7 @@ Mods: {
 			CragHomingExplosive.DisplayName: Crag Homing Explosive
 			HomingWaterBolt.DisplayName: Homing Water Bolt
 			EmpressProjectile.DisplayName: Empress Projectile
+			Excavator.DisplayName: Excavator
 		}
 
 		Items: {
@@ -611,6 +612,7 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+1 yoyo speed]
 					'''
 			}
 
@@ -620,6 +622,7 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+1 yoyo speed]
 					'''
 			}
 
@@ -631,6 +634,7 @@ Mods: {
 					Feels very heavy
 					Yoyos create damaging swipes on hit
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+2 yoyo speed]
 					'''
 			}
 
@@ -641,6 +645,7 @@ Mods: {
 					Increases yoyo range
 					Counterweights inflict Frostbite
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+2 yoyo speed]
 					'''
 			}
 
@@ -651,6 +656,7 @@ Mods: {
 					Increases yoyo range
 					Counterweights deal massive knockback and have increased damage.
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+2 yoyo speed]
 					'''
 			}
 
@@ -660,12 +666,19 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+1 yoyo speed]
 					'''
 			}
 
 			NaniteString: {
 				DisplayName: Nanite String
-				Tooltip: Increases yoyo range
+				Tooltip:
+					'''
+					Increases yoyo range
+					Yoyo strings become invisible
+					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+2 yoyo speed]
+					'''
 			}
 
 			NebulaString: {
@@ -674,6 +687,7 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+3 yoyo speed]
 					[c/6EAE6E:+5% base yoyo damage]
 					'''
 			}
@@ -685,6 +699,7 @@ Mods: {
 					Increases yoyo range
 					Yoyos create slime covered spikes
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+1 yoyo speed]
 					'''
 			}
 
@@ -694,6 +709,7 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+3 yoyo speed]
 					[c/6EAE6E:+5% base yoyo damage]
 					'''
 			}
@@ -1065,7 +1081,7 @@ Mods: {
 				Tooltip:
 					'''
 					Does increased damage to spectral targets.
-					When in a graveyard biome, the swirls recieve a 2x damage boost.
+					When in a graveyard biome, the swirls receive a slight damage boost.
 					"Has a 12 second grace period."
 					'''
 			}
@@ -1078,6 +1094,7 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+1 yoyo speed]
 					'''
 			}
 
@@ -1088,6 +1105,7 @@ Mods: {
 					Increases yoyo range
 					Smells like grapes
 					[c/6EAE6E:+150 yoyo range]
+					[c/6EAE6E:+1 yoyo speed]
 					'''
 			}
 
@@ -1097,6 +1115,7 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+3 yoyo speed]
 					[c/6EAE6E:+5% base yoyo damage]
 					'''
 			}
@@ -1107,6 +1126,7 @@ Mods: {
 					'''
 					Increases yoyo range
 					[c/6EAE6E:+250 yoyo range]
+					[c/6EAE6E:+3 yoyo speed]
 					[c/6EAE6E:+5% base yoyo damage]
 					'''
 			}
@@ -1169,8 +1189,8 @@ Mods: {
 			}
 
 			EmpressYoyo: {
-				DisplayName: The Shimmerspark
-				Tooltip: Harnesses the immense power of the Fairy Queen
+				DisplayName: The Spectrum
+				Tooltip: Harnesses the immense power of the Empress of Light
 			}
 
 			AdvancedYoyoBag: {
@@ -1179,6 +1199,18 @@ Mods: {
 					'''
 					Allows the player to ignore maximum string length
 					[c/FF3CEC:+Infinite yoyo range]
+					'''
+			}
+
+			ExcavatorCasing: {
+				DisplayName: The Excavator
+				Tooltip:
+					'''
+					Allows Yoyos to drill through blocks
+					Hold right click to drill
+					Be careful not to destroy your house!
+					[c/FF255F:250% pickaxe power]
+					+10 range
 					'''
 			}
 		}

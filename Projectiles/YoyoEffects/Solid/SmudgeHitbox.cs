@@ -38,7 +38,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
             if (player.ZoneGraveyard)
             {
-                modifiers.FinalDamage *= 1.5f;
+                modifiers.FinalDamage *= 1.2f;
             }
         }
         public override void AI()

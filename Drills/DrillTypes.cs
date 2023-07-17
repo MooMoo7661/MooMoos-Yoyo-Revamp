@@ -194,4 +194,12 @@ namespace CombinationsMod.Drills
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
 
+    public class Excavator : BaseDrill
+    {
+        protected override int DrillTier => 250;
+        protected override int DrillCooldown => 1;
+        protected override int BlockRangeStyle => 5;
+        protected override SoundStyle DrillSound => SoundID.Item22;
+    }
+
 }

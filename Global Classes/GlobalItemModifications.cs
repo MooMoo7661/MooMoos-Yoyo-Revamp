@@ -55,6 +55,7 @@ namespace CombinationsMod.GlobalClasses
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
 
+            if (item.type == ItemID.YoyoBag)
             player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
         }
 

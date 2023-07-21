@@ -84,17 +84,6 @@ namespace CombinationsMod.GlobalClasses
                 knockback.Flat += 2f;
             }
         }
-        public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
-        {
-            if (item.type == ItemID.YoYoGlove)
-            {
-                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag) { return true; }
-
-                return modded && (LoaderManager.Get<AccessorySlotLoader>().Get(slot, player).Type == ModContent.GetInstance<YoyoGloveSlot>().Type);
-            }
-
-            return true;
-        }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

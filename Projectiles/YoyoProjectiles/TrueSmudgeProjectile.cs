@@ -17,7 +17,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 385f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15.5f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15.9f;
             ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
         }

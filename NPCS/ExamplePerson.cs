@@ -24,6 +24,7 @@ using CombinationsMod.Items.Accessories.Strings;
 using CombinationsMod.Items.Yoyos;
 using CombinationsMod.Items.Accessories.Drills;
 using CombinationsMod.Items.Accessories.Tricks;
+using CombinationsMod.Items.Accessories.YoyoGloves;
 
 namespace CombinationsMod.NPCS
 {
@@ -272,6 +273,8 @@ namespace CombinationsMod.NPCS
             .Add(ItemType<DiamondRing>(), YoyoModConditions.EaterOfWorldsOrBrain)
             .Add(ItemType<DarkTealString>(), YoyoModConditions.EaterOfWorldsOrBrain)
             .Add(ItemID.YoyoBag, Condition.Hardmode)
+            .Add(ItemType<SupportGlove>(), Condition.DownedPlantera)
+            
 
             .Add(ItemType<TreeClippersDrillCasing>(), Condition.DownedIceQueen, Condition.Hardmode)
             .Add(ItemType<HorsemansDrillCasing>(), Condition.DownedPumpking, Condition.Hardmode)

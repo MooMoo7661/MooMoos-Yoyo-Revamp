@@ -1157,11 +1157,7 @@ Mods: {
 
 			SupportGlove: {
 				DisplayName: Support Glove
-				Tooltip:
-					'''
-					Allows the use of a third yoyo
-					Requires a yoyo glove or yoyo bag to work
-					'''
+				Tooltip: Allows the use of a third yoyo
 			}
 
 			BlackHole: {

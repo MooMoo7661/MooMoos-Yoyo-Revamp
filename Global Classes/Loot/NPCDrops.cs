@@ -108,6 +108,13 @@ namespace CombinationsMod.GlobalClasses.Loot
 				case NPCID.MartianSaucer:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AdvancedYoyoBag>(), 10));
 					break;
+
+				case NPCID.WallofFlesh:
+                    LeadingConditionRule notExpertRule7 = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRule7.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YoyoDrillCasing>()));
+                    npcLoot.Add(notExpertRule7);
+                    break;
+
             }
 		}
     }

@@ -42,6 +42,10 @@ namespace CombinationsMod.GlobalClasses.Loot
                 case ItemID.FairyQueenBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>()));
                     break;
+
+                case ItemID.WallOfFleshBossBag:
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<YoyoDrillCasing>()));
+                    break;
             }
         }
     }

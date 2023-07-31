@@ -458,6 +458,20 @@ namespace CombinationsMod.NPCS
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 12);
                     nextSlot++;
 
+                    if (NPC.downedChristmasIceQueen)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemType<ChristmasBulb>());
+                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 24);
+                        nextSlot++;
+                    }
+
+                    if (NPC.downedHalloweenKing)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemType<Mambele>());
+                        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 24);
+                        nextSlot++;
+                    }
+
                     if (NPC.downedPlantBoss)
                     {
                         shop.item[nextSlot].SetDefaults(ItemType<SupportGlove>());

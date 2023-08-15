@@ -272,7 +272,7 @@ namespace CombinationsMod.NPCS
             .Add(ItemType<EmeraldRing>(), YoyoModConditions.EaterOfWorldsOrBrain)
             .Add(ItemType<DiamondRing>(), YoyoModConditions.EaterOfWorldsOrBrain)
             .Add(ItemType<DarkTealString>(), YoyoModConditions.EaterOfWorldsOrBrain)
-            .Add(ItemID.YoyoBag, Condition.Hardmode)
+            .Add(ItemID.YoyoBag, Condition.DownedSkeletron)
             .Add(ItemType<SupportGlove>(), Condition.DownedPlantera)
             
 

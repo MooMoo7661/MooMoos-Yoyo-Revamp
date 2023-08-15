@@ -106,7 +106,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 					break;
 
 				case NPCID.MartianSaucer:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AdvancedYoyoBag>(), 10));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AdvancedYoyoBag>(), 3));
 					break;
 
 				case NPCID.WallofFlesh:

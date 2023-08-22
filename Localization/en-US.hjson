@@ -1209,6 +1209,11 @@ Mods: {
 					+10 range
 					'''
 			}
+
+			ShimmeringBeetleBag: {
+				DisplayName: Shimmering Beetle Bag
+				Tooltip: ""
+			}
 		}
 
 		InfoDisplays: {

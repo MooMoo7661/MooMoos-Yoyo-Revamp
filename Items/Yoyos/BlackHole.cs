@@ -40,14 +40,14 @@ namespace CombinationsMod.Items.Yoyos
             Item.value = Item.sellPrice(0, 17, 0, 0);
             Item.shoot = ModContent.ProjectileType<BlackHoleProjectile>();
         }
-
+        
         public override void AddRecipes()
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<TheTempest>())
                 .AddIngredient(ItemID.BeetleHusk, 5)
                 .AddIngredient(ModContent.ItemType<EclipseBar>(), 5)
-                .AddIngredient(ItemID.SoulofNight, 15)
+                .AddIngredient(ItemID.SoulofNight, 20)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

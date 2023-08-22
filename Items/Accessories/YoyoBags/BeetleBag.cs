@@ -16,7 +16,7 @@ namespace CombinationsMod.Items.Accessories.YoyoBags
         {
             Item.width = 36;
             Item.height = 46;
-            Item.rare = ItemRarityID.Purple;
+            Item.rare = ItemRarityID.Cyan;
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);

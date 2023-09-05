@@ -17,13 +17,14 @@ using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod.Items.Yoyos
 {
-    public class EmpressYoyo : ModItem
+    public class EmpressYoyo : ModYoyo
     {
+        public override bool CanBeUnloaded => true;
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Type] = true;
         }
-
 
         public override void SetDefaults()
         {

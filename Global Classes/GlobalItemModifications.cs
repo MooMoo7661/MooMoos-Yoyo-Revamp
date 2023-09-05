@@ -88,7 +88,7 @@ namespace CombinationsMod.GlobalClasses
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type >= 3309 && item.type <= 3314) // Is a counterweight
+            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight) // Is a counterweight
             {
                 tooltips.Add(new TooltipLine(Mod, "CounterweightStackInfo", "[c/FFD7D7:Each Yoyo that hits a target will produce a counterweight]"));
             }

@@ -616,7 +616,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             if (projectile.type == ProjectileID.TheEyeOfCthulhu && projectile.localAI[1] == 2)
             {
                 Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Projectiles/Misc/EOCYoyoSpazmatism");
-                Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, projectile.height * 0.5f);
+                Vector2 drawOrigin = new(texture.Width * 0.5f, projectile.height * 0.5f);
                 Vector2 drawPos = projectile.Center - Main.screenPosition;
                 var rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
 
@@ -682,7 +682,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     Vector2 vector2 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                     vector2.Normalize();
                     vector2 *= (float)Main.rand.Next(10, 41) * 0.1f;
-                    if (Main.rand.Next(3) == 0)
+                    if (Main.rand.NextBool(3))
                     {
                         vector2 *= 2f;
                     }
@@ -777,13 +777,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.type == 545) // 545 is cascade
             {
-                if (Main.rand.Next(6) == 0)
+                if (Main.rand.NextBool(6))
                 {
                     int num11 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
                     Main.dust[num11].noGravity = true;
                 }
             }
-            else if (projectile.type == 553 && Main.rand.Next(2) == 0) // 553 is hel-fire
+            else if (projectile.type == 553 && Main.rand.NextBool(2)) // 553 is hel-fire
             {
                 int num12 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
                 Main.dust[num12].noGravity = true;
@@ -933,7 +933,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 num7 = (int)((double)num7 * 0.8);
 
-                if ((player.GetModPlayer<YoyoModPlayer>().yoyoBag || player.GetModPlayer<YoyoModPlayer>().shimmerBag || player.GetModPlayer<YoyoModPlayer>().tier2Bag) && ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                if ((player.GetModPlayer<YoyoModPlayer>().yoyoBag || player.GetModPlayer<YoyoModPlayer>().shimmerBag || player.GetModPlayer<YoyoModPlayer>().tier2Bag) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
                 {
                     yoyoSpeed *= 3f;
                 }

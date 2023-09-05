@@ -13,11 +13,10 @@ using Terraria.ModLoader;
 namespace CombinationsMod
 {
     /// <summary>
-    /// This is to make it so the user can choose whether or not to include every item. Returns `LoadModdedItems` bool from YoyoModConfig.
+    /// This is to make it so the user can choose whether or not to include every item, using the Mod Config. Returns `LoadModdedItems` bool from YoyoModConfig.
     /// </summary>
     public abstract class ItemLoader : ModItem
     {
-
         public override bool IsLoadingEnabled(Mod mod)
         {
             return ModContent.GetInstance<YoyoModConfig>().LoadModdedItems;

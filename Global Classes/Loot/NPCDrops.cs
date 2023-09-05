@@ -32,7 +32,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 			switch (npc.type)
 			{
 				case NPCID.Drippler:
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThinMint>(), 5));
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThinMint>(), 8));
 					break;
 
 				case NPCID.Ghost:

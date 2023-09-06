@@ -30,38 +30,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.friendly = true;
             Projectile.penetrate = 30;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.scale = 1.15f;
-        }
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (Main.rand.NextBool())
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, DustID.Blood);
-                dust.noGravity = true;
-                dust.noLight = true;
-                dust.scale = 2.2f;
-                    
-                Dust dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, DustID.RedMoss);
-                dust2.noGravity = true;
-                dust2.noLight = true;
-                dust2.scale = 2f;
-
-                Dust dust3 = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, DustID.DynastyShingle_Red);
-                dust3.noGravity = true;
-                dust3.noLight = true;
-                dust3.scale = 2.5f;
-            }
-        }
-        public override void PostAI()
-        {
-            if (Main.rand.NextBool())
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, DustID.Blood);
-                dust.noGravity = true;
-                dust.noLight = true;
-                dust.scale = 1.6f;
-            }
+            Projectile.scale = 1f;
         }
     }
 }

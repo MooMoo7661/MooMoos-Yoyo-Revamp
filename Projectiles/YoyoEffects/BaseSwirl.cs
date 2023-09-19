@@ -100,6 +100,12 @@ namespace CombinationsMod.Projectiles.YoyoEffects
             Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
             var rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
 
+            float hueScrollRate = 0.005f;
+            float gradientSize = 2f;
+            float time = (float)Main.timeForVisualEffects;
+
+            Color color = Main.hslToRgb((4 * gradientSize + hueScrollRate * time) % 1, 1, 0.5f);
+
             /* What is happening here is this:
              1. Getting the crap to draw the textures in the right spot. I'm manually drawing because Projectile.scale is not synced between players.
              2.
@@ -114,7 +120,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
                 Main.EntitySpriteDraw(texture2,
                     pos,
                     rectangle,
-                    new Color(0, 0, 0, 192),
+                    new Color(0, 0, 0, 192), // 192 alpha
                     Projectile.rotation,
                     drawOrigin,
                     Scale,

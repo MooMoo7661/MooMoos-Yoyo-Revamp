@@ -67,7 +67,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
 
                 int hitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                            ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.40f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
+                            ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.60f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
                 Main.projectile[hitbox].Resize(150, 150);
                 Main.projectile[hitbox].usesLocalNPCImmunity = true;
             }

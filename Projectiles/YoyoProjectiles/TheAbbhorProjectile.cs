@@ -72,7 +72,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 //Main.projectile[proj].scale = 1.3f;
 
                 int projHitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.5f), 1.4f, Main.myPlayer, 0, Projectile.whoAmI);
+                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.4f), 1.4f, Main.myPlayer, 0, Projectile.whoAmI);
                 Main.projectile[projHitbox].Resize(120, 120);
 
                 int dustProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,

@@ -29,6 +29,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private int thornCounter = 0;
         private int explosionCounter = 0;
         private int homingCounter = 0;
+        private int code2ExplosionCounter = 0;
         private bool isYoyo;
         private int iceSpikeCounter = 0;
         private int leafCounter = 0;
@@ -61,7 +62,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             {
                                 int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
                                 projectile.Center.Y, 0, 0, ProjectileType<Code1Swirl>(),
-                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                (int)(projectile.damage * 0.50f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
                             }
 
                             for (int i = 0; i < 6; i++)
@@ -70,8 +71,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 {
                                     int projCode1 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
                                     projectile.Center.Y, 0, 0, ProjectileType<Code1Effect>(),
-                                    (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                                    Main.projectile[projCode1].damage = (int)(projectile.damage * 0.8f);
+                                    (int)(projectile.damage * 0.50f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
                                     Main.projectile[projCode1].localAI[1] = i * 45;
                                 }
                             }
@@ -95,8 +95,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 {
                                     int projRally = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
                                     projectile.Center.Y, 0, 0, ProjectileType<RallyEffect>(),
-                                    (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                                    Main.projectile[projRally].damage = projectile.damage / 2;
+                                    (int)(projectile.damage / 2f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
                                     Main.projectile[projRally].localAI[1] = i * 90;
                                 }
                             }
@@ -178,7 +177,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 {
                                     int projFormatSwirl = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
                                      projectile.Center.Y, 0, 0, ProjectileType<FormatCEffect>(),
-                                     (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                     (int)(projectile.damage * 0.80f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
                                     Main.projectile[projFormatSwirl].localAI[1] = i * 67.5f;
                                 }
                             }
@@ -357,10 +356,15 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     case ProjectileID.Code2:
                         if (modPlayer.yoyoRing && Main.myPlayer == projectile.owner)
                         {
-                            int proj2 = Projectile.NewProjectile(projectile.GetSource_FromThis(),
-                              projectile.Center.X, projectile.Center.Y - 1f, 0,
-                              0, ProjectileType<FireExplosion>(), (int)(projectile.damage * 0.65f), 8f,
-                              projectile.owner);
+                            code2ExplosionCounter++;
+                            if (code2ExplosionCounter == 5)
+                            {
+                                int proj2 = Projectile.NewProjectile(projectile.GetSource_FromThis(),
+                                  projectile.Center.X, projectile.Center.Y - 1f, 0,
+                                  0, ProjectileType<FireExplosion>(), (int)(projectile.damage * 0.50f), 8f,
+                                  projectile.owner);
+                                code2ExplosionCounter = 0;
+                            }
                         }
                         break;
 
@@ -474,7 +478,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                     if (Main.myPlayer == projectile.owner)
                                     {
                                         int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                            ProjectileID.EyeLaser, projectile.damage * 2, 3f, projectile.owner, 1, 1);
+                                            ProjectileID.EyeLaser, (int)(projectile.damage * 0.45f), 3f, projectile.owner, 1, 1);
                                         Main.projectile[projLeaf].tileCollide = true;
                                         Main.projectile[projLeaf].timeLeft = 180;
                                         Main.projectile[projLeaf].friendly = true;
@@ -767,8 +771,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             float yoyoSpeed = 10f;
             float num9 = 3f;
 
-            float stringLength = 200f;
-            stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
+            float stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
 
             yoyoSpeed = player.GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoSpeed(ProjectileID.Sets.YoyosTopSpeed[projectile.type], player);
 
@@ -795,6 +798,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 modifiedStringLength = modifiedStringLength + 150f;
             }
             modifiedStringLength *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            //modifiedStringLength = 120f + modifiedStringLength / 5;
             yoyoSpeed *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
             num7 = 14f - yoyoSpeed / 2f;
             if (num7 < 1f)
@@ -804,6 +808,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             num9 = 5f + yoyoSpeed / 2f;
             if (flag)
             {
+                //ABILITY - EXTENDED REACH : Yoyo range is greatly increased with second ai. Change 20f to 100f+
                 num9 += 20f;
             }
             if (projectile.ai[0] >= 0f)
@@ -931,16 +936,17 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             }
             else
             {
-                num7 = (int)((double)num7 * 0.8);
+                // ABILITY - LOOSE YOYO : Change 0.8f to a higher float
+                num7 = (int)((double)num7 * 0.8f);
 
-                if ((player.GetModPlayer<YoyoModPlayer>().yoyoBag || player.GetModPlayer<YoyoModPlayer>().shimmerBag || player.GetModPlayer<YoyoModPlayer>().tier2Bag) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-                {
-                    yoyoSpeed *= 3f;
-                }
-                else
-                {
-                    yoyoSpeed *= 1.8f;
-                }
+                //if ((player.GetModPlayer<YoyoModPlayer>().yoyoBag || player.GetModPlayer<YoyoModPlayer>().shimmerBag || player.GetModPlayer<YoyoModPlayer>().tier2Bag) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                //{
+                //    yoyoSpeed *= 3f;
+                //}
+                //else
+                //{
+                //    yoyoSpeed *= 1.8f;
+                //}
 
                 projectile.tileCollide = false;
                 Vector2 vector9 = Main.player[projectile.owner].Center - projectile.Center;

@@ -19,6 +19,7 @@ using static Terraria.ModLoader.ModContent;
 using static CombinationsMod.CombinationsModUtils.YoyoStrings;
 using CombinationsMod.Items.Accessories.Strings;
 using CombinationsMod.Items.Accessories.YoyoBags;
+using Terraria.Localization;
 
 namespace CombinationsMod.GlobalClasses
 {
@@ -148,30 +149,45 @@ namespace CombinationsMod.GlobalClasses
                         break;
                 }
             }
-
-            switch (item.type)
+            
+            if ((ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99))
             {
-                case (int)blackString:
-                case (int)whiteString:
-                case (int)redString:
-                case (int)orangeString:
-                case (int)yellowString:
-                case (int)limeString:
-                case (int)greenString:
-                case (int)tealString:
-                case (int)cyanString:
-                case (int)skyBlueString:
-                case (int)blueString:
-                case (int)purpleString:
-                case (int)violetString:
-                case (int)pinkString:
-                case (int)brownString:
-                case (int)rainbowString:
-                    tooltips.Add(new TooltipLine(Mod, "YoyoStringInfo", "[c/6EAE6E:+150 yoyo range]"));
-                    break;
-                        
+                if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing)
+                {
+                    tooltips.Add(new TooltipLine(Mod, "NoRing", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.NoRing")));
+                }
+                else
+                {
+                    if (!Main.LocalPlayer.controlDown)
+                    {
+                        tooltips.Add(new TooltipLine(Mod, "HoldDown", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.HoldDown")));
+                    }
+                    else
+                    {
+                        CombinationsModSystem combinationsModSystem = new CombinationsModSystem();
+                        string localizedText = combinationsModSystem.GetLocalizedStringFromDictionary(Main.HoverItem.type);
+                        if (localizedText == null)
+                        {
+                            tooltips.Add(new TooltipLine(Mod, "NoAbility", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.NoAbility")));
+                        }
+                        else
+                        {
+                            tooltips.Add(new TooltipLine(Mod, "YoyoAbilitySnippet", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoAbilitySnippet")));
+                            tooltips.Add(new TooltipLine(Mod, "AbilityInfo", localizedText));
+                        }
+                    }
+                }
+            }
+
+            if (item.type >= ItemID.RedString && item.type <= ItemID.BlackString)
+            {
+
+                tooltips.Add(new TooltipLine(Mod, "YoyoStringInfo", "[c/6EAE6E:+150 yoyo range]"));
+            }
+            switch (item.type)
+            {                        
                 case ItemID.YoyoBag:
-                    if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                    if (GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
                     {
                         int index = tooltips.FindIndex(tip => tip.Name.StartsWith("Tooltip"));
                         tooltips.RemoveAll(tip => tip.Name.StartsWith("Tooltip"));

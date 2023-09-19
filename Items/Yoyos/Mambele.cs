@@ -17,9 +17,6 @@ public class Mambele : ModYoyo
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
-
-        // DisplayName.SetDefault("Mambele");
-        // Tooltip.SetDefault("Coated in a rough grit\nSmells like burnt wood");
     }
 
     public override void SetDefaults()
@@ -40,18 +37,6 @@ public class Mambele : ModYoyo
         Item.UseSound = new SoundStyle?(SoundID.Item1);
         Item.value = Item.sellPrice(0, 7, 8, 3);
         Item.shoot = ModContent.ProjectileType<MambeleProjectile>();
-    }
-
-    public override void ModifyTooltips(List<TooltipLine> tooltips)
-    {
-        Player player = Main.LocalPlayer;
-        YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-        if (modPlayer.yoyoRing)
-        {
-            tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:30 hit trigger]"));
-            tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Emits dangerous fire]"));
-        }
     }
 
     public override bool IsLoadingEnabled(Mod mod)

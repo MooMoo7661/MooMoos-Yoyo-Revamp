@@ -18,9 +18,6 @@ public class MythrilYoyo : ModYoyo
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
-
-        // DisplayName.SetDefault("Mythril Yoyo");
-        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()
@@ -51,17 +48,6 @@ public class MythrilYoyo : ModYoyo
         recipe.AddIngredient(ItemID.MythrilBar, 10);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
-    }
-    public override void ModifyTooltips(List<TooltipLine> tooltips)
-    {
-        Player player = Main.LocalPlayer;
-        YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-        if (modPlayer.yoyoRing)
-        {
-            tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
-            tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a damaging aura]"));
-        }
     }
 
     public override bool IsLoadingEnabled(Mod mod)

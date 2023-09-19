@@ -20,9 +20,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("True Smudge");
-            // Tooltip.SetDefault("Does increased damage to spectral targets.\nWhen in a graveyard biome, the swirls recieve a 2x damage boost.\n\"Has a 12 second grace period.\"");
         }
 
         public override void SetDefaults()
@@ -55,19 +52,6 @@ namespace CombinationsMod.Items.Yoyos
                 .AddTile(TileID.MythrilAnvil)
                 .AddCondition(Condition.InGraveyard)
                 .Register();
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-
-            Player player = Main.LocalPlayer;
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.yoyoRing)
-            {
-                tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
-                tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a large damaging aura]")); // TODO: Implement Ability
-            }
         }
 
         public override bool IsLoadingEnabled(Mod mod)

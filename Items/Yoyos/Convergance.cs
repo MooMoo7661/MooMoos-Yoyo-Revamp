@@ -21,9 +21,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("The Convergance");
-            // Tooltip.SetDefault("The pinnacle of destruction\nLight shines through the center");
         }
 
         public override void SetDefaults()
@@ -78,19 +75,6 @@ namespace CombinationsMod.Items.Yoyos
                 .AddIngredient(ItemID.Terrarian)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-
-            Player player = Main.LocalPlayer;
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.yoyoRing)
-            {
-                tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
-                tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Shoots every yoyo used in it's creation]")); // TODO: Implement Ability
-            }
         }
 
         public override bool IsLoadingEnabled(Mod mod)

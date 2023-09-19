@@ -18,9 +18,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("True Code 3");
-            // Tooltip.SetDefault("Shines with immense power");
         }
 
         public override void SetDefaults()
@@ -43,18 +40,6 @@ namespace CombinationsMod.Items.Yoyos
             Item.shoot = ModContent.ProjectileType<TrueCode3Projectile>();
 
 
-        }
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-
-            Player player = Main.LocalPlayer;
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.yoyoRing)
-            {
-                tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
-                tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a large damaging aura]")); // TODO: Implement Ability
-            }
         }
 
         public override void AddRecipes()

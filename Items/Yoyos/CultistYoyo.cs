@@ -17,9 +17,6 @@ public class CultistYoyo : ModYoyo
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
-
-        // DisplayName.SetDefault("Shakiryo");
-        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()
@@ -42,18 +39,6 @@ public class CultistYoyo : ModYoyo
         Item.shoot = ModContent.ProjectileType<CultistYoyoProjectile>();
 
 
-    }
-
-    public override void ModifyTooltips(List<TooltipLine> tooltips)
-    {
-        Player player = Main.LocalPlayer;
-        YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-        if (modPlayer.yoyoRing)
-        {
-            tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:20 hit trigger]"));
-            tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates damaging runes]"));
-        }
     }
 
     public override bool IsLoadingEnabled(Mod mod)

@@ -17,9 +17,6 @@ public class ChristmasBulb : ModYoyo
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
-
-        // DisplayName.SetDefault("Christmas Bulb");
-        // Tooltip.SetDefault("Wrapped tightly with Christmas Tree lights\nSmells like fresh pine");
     }
 
     public override void SetDefaults()
@@ -44,21 +41,8 @@ public class ChristmasBulb : ModYoyo
 
     }
 
-    public override void ModifyTooltips(List<TooltipLine> tooltips)
-    {
-        Player player = Main.LocalPlayer;
-        YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-        if (modPlayer.yoyoRing)
-        {
-            tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:30 hit trigger]"));
-            tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Shoots damaging ornaments]"));
-        }
-    }
-
     public override bool IsLoadingEnabled(Mod mod)
     {
         return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
-
 }

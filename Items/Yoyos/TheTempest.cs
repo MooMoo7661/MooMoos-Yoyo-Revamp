@@ -19,9 +19,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("The Tempest");
-            // Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()
@@ -44,18 +41,6 @@ namespace CombinationsMod.Items.Yoyos
             Item.shoot = ModContent.ProjectileType<TempestProjectile>();
 
 
-        }
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-
-            Player player = Main.LocalPlayer;
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.yoyoRing)
-            {
-                tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
-                tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a very large damaging aura]"));
-            }
         }
 
         public override void AddRecipes()

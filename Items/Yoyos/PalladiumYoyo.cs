@@ -15,9 +15,6 @@ public class PalladiumYoyo : ModYoyo
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
-
-        // DisplayName.SetDefault("Palladium Yoyo");
-        // Tooltip.SetDefault("");
     }
 
     public override void SetDefaults()
@@ -38,8 +35,6 @@ public class PalladiumYoyo : ModYoyo
         Item.UseSound = new SoundStyle?(SoundID.Item1);
         Item.value = Item.sellPrice(0, 2, 8, 59);
         Item.shoot = ModContent.ProjectileType<PalladiumYoyoProjectile>();
-
-
     }
 
     public override void AddRecipes()

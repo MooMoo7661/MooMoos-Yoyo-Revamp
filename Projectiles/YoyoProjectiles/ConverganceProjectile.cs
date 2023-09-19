@@ -47,12 +47,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    if (!(NPC.downedGolemBoss == false))
-                    {
-
-                    }
-
-                        for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.WoodYoyo, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<IronYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);

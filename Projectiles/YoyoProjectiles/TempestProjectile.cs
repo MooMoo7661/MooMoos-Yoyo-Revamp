@@ -21,8 +21,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 400f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18.4f;
 
-            ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 12;
-            ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
         public override void SetDefaults()
@@ -45,23 +45,18 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    int baseProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, 
                             ModContent.ProjectileType<JaggedShieldSwirlTempest>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-
-                    int baseProj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                             ModContent.ProjectileType<TempestSpike>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-
-
-                    int baseProj3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                             ModContent.ProjectileType<JaggedSwirlTempest>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
-
-                    int baseProj4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                             ModContent.ProjectileType<TempestSpike>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
                     int hitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                                ModContent.ProjectileType<SmudgeHitbox>(), (int)(Projectile.damage * 0.45f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
+                                ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.75f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
                     Main.projectile[hitbox].Resize(150, 150);
-                    Main.projectile[hitbox].usesLocalNPCImmunity = true;
 
                     int dustProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                            ModContent.ProjectileType<Sparkle1>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);

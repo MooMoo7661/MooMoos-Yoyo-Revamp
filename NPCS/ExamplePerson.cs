@@ -199,6 +199,14 @@ namespace CombinationsMod.NPCS
             }
         }
 
+        //public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        //{
+        //    Texture2D texture = ModContent.Request<Texture2D>("CombinationsMod/NPCS/Gus").Value;
+        //    Main.EntitySpriteDraw(texture, NPC.Center - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+        //    Main.NewText((float)texture.Height / NPC.frame.Height);
+        //    return false;
+        //}
+
         public override void AddShops()
         {
             var yoyosShop = new NPCShop(Type, YoyoShop)
@@ -232,7 +240,7 @@ namespace CombinationsMod.NPCS
 
             yoyosShop.Add(ItemID.ValkyrieYoyo, Condition.DownedGolem, Condition.Hardmode);
 
-            yoyosShop.Add(ItemType<ChristmasBulb>(), Condition.DownedIceQueen, Condition.Hardmode); 
+            yoyosShop.Add(ItemType<ChristmasBulb>(), Condition.DownedIceQueen, Condition.Hardmode);
 
             yoyosShop.Add(ItemType<Mambele>(), Condition.DownedPumpking, Condition.Hardmode);
 
@@ -274,7 +282,7 @@ namespace CombinationsMod.NPCS
             .Add(ItemType<DarkTealString>(), YoyoModConditions.EaterOfWorldsOrBrain)
             .Add(ItemID.YoyoBag, Condition.DownedSkeletron)
             .Add(ItemType<SupportGlove>(), Condition.DownedPlantera)
-            
+
 
             .Add(ItemType<TreeClippersDrillCasing>(), Condition.DownedIceQueen, Condition.Hardmode)
             .Add(ItemType<HorsemansDrillCasing>(), Condition.DownedPumpking, Condition.Hardmode)
@@ -283,7 +291,7 @@ namespace CombinationsMod.NPCS
 
             accessoriesShop.Register();
         }
-        
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.Rally));
@@ -292,7 +300,7 @@ namespace CombinationsMod.NPCS
         // Make this Town NPC teleport to the King and/or Queen statue when triggered.
         public override bool CanGoToStatue(bool toKingStatue) => true;
 
-        // Create a square of pixels around the NPC on teleport.
+        // Create a square of pixels around the NPC on teleport. 
         public void StatueTeleport()
         {
             for (int i = 0; i < 30; i++)
@@ -322,13 +330,11 @@ namespace CombinationsMod.NPCS
             cooldown = 30;
             randExtraCooldown = 30;
         }
-
-        // todo: implement
-         public override void TownNPCAttackProj(ref int projType, ref int attackDelay) 
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
             projType = ProjectileID.Bone;
-        	attackDelay = 1;
-         }
+           attackDelay = 1;
+        }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {

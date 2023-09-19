@@ -32,12 +32,11 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
                     Projectile.Center.Y, 0, 0, ModContent.ProjectileType<PinkSwirl>(),
-                    (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+                    (int)(Projectile.damage * 0.5f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X,
                     Projectile.Center.Y, 0, 0, ModContent.ProjectileType<PinkPartSwirl>(),
-                    (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
-                Main.projectile[proj].scale = 1.8f;
+                    (int)(Projectile.damage * 0.5f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
             }
         }
     }

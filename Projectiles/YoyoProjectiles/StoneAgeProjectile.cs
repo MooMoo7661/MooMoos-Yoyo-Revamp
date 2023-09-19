@@ -21,11 +21,12 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 11f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 143f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.1f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.8f;
         }
 
         public override void SetDefaults()
         {
+            Projectile.scale = 1f;
             Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
@@ -33,8 +34,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.friendly = true;
             Projectile.penetrate = 20;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.scale = 1f;
-
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

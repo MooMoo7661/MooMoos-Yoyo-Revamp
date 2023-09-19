@@ -61,31 +61,12 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                     Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 2f;
 
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
-                        ProjectileID.GreekFire3, Projectile.damage * 2, 1, Projectile.owner, 0, 1f);
+                        ProjectileID.GreekFire3, Projectile.damage / 2, 1, Projectile.owner, 0, 1f);
                     Main.projectile[proj].scale = 0.45f;
                     Main.projectile[proj].tileCollide = true;
                     Main.projectile[proj].timeLeft = 120;
                     Main.projectile[proj].friendly = true;
                     Main.projectile[proj].hostile = false;
-                }
-            }
-
-            for (int i = 0; i < 8; i++)
-            {
-                if ((i * 45) % 90 != 0)
-                {
-                    if (Main.myPlayer == Projectile.owner)
-                    {
-                        Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-
-                        int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
-                            ProjectileID.GreekFire1, Projectile.damage, 1, Projectile.owner, 1, 1);
-                        Main.projectile[proj].scale = 1.2f;
-                        Main.projectile[proj].tileCollide = true;
-                        Main.projectile[proj].timeLeft = 120;
-                        Main.projectile[proj].friendly = true;
-                        Main.projectile[proj].hostile = false;
-                    }
                 }
             }
         }

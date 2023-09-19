@@ -48,7 +48,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                         ModContent.ProjectileType<JaggedSwirlSmudge>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
                 int hitbox = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
-                            ModContent.ProjectileType<SmudgeHitbox>(), (int)(Projectile.damage * 0.40f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
+                            ModContent.ProjectileType<SmudgeHitbox>(), (int)(Projectile.damage * 0.60f), 5f, Main.myPlayer, 0, Projectile.whoAmI);
                 Main.projectile[hitbox].Resize(150, 150);
                 Main.projectile[hitbox].usesLocalNPCImmunity = true;
             }

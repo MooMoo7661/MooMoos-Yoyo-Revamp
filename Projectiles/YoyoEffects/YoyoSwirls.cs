@@ -345,7 +345,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
     public class MythrilSwirl : BaseSwirl // Mythril Yoyo
     {
-        protected override float Scale => 1f;
+        protected override float Scale => 2f;
 
         protected override float Rotation => -0.17f;
         protected override int Width => 50;
@@ -363,7 +363,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
     public class PinkSwirl : BaseSwirl // Oricalchum Yoyo
     {
-        protected override float Scale => 1f;
+        protected override float Scale => 2f;
 
         protected override float Rotation => -0.17f;
         protected override int Width => 50;
@@ -1093,7 +1093,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
     public class MythrilPartSwirl : BaseSwirl // Mythril Yoyo
     {
-        protected override float Scale => 1f;
+        protected override float Scale => 2f;
 
         protected override float Rotation => 0.20f;
         protected override int Width => 50;
@@ -1111,7 +1111,7 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
     public class PinkPartSwirl : BaseSwirl // Orichalcum Yoyo
     {
-        protected override float Scale => 1f;
+        protected override float Scale => 2f;
 
         protected override float Rotation => 0.20f;
         protected override int Width => 50;

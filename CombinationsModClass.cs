@@ -45,10 +45,10 @@ namespace CombinationsMod
             }
         }
 
-        private void DrawCustomYoyoString(Projectile projectile, Vector2 mountedCenter, Color textureColor, Asset<Texture2D> texture)
+        private static void DrawCustomYoyoString(Projectile projectile, Vector2 mountedCenter, Color textureColor, Asset<Texture2D> texture)
         {
             // Adapted Vanilla Code for drawing custom yoyo strings.
-            // Yes, I know it's a horrible sight.
+            // Yes, I know it's a horrible sight. No, I will not fix it.
 
             if (projectile.aiStyle == 99 || projectile.type == ProjectileType<World1>() || projectile.type == ProjectileType<World2>())
             {
@@ -72,7 +72,6 @@ namespace CombinationsMod
                 float num3 = projectile.Center.Y - vector.Y;
 
                 Math.Sqrt((double)(num2 * num2 + num3 * num3));
-                float num4 = (float)Math.Atan2((double)num3, (double)num2) - 1.57f;
 
                 if (!projectile.counterweight)
                 {
@@ -172,7 +171,7 @@ namespace CombinationsMod
                             }
                         }
 
-                        num4 = (float)Math.Atan2((double)num3, (double)num2) - 1.57f;
+                        float num4 = (float)Math.Atan2((double)num3, (double)num2) - 1.57f;
 
                         textureColor = Color.White; // Starts textureColor at white. If you don't want to change the color at all, delete the 2 lines below.
 
@@ -180,8 +179,6 @@ namespace CombinationsMod
                         var method = typeof(Main).GetMethod("TryApplyingPlayerStringColor", BindingFlags.Static | BindingFlags.NonPublic);
 
                         textureColor = (Color)method.Invoke(null, new object[] { player.stringColor, textureColor });
-
-                        // Keep in mind that this will only work with vanilla yoyo strings. If you want to make custom ones work, you'll have to manually set the color in here.
 
                         switch (player.stringColor) // For custom string colors. There's several ways to go about it, 
                         {
@@ -237,7 +234,7 @@ namespace CombinationsMod
                         textureColor = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16f), textureColor); // Makes the string use Terraria's lighting system to turn darker / lighter in the appropriate enviornment.
 
                         // Drawing the string itself
-                        Color textureDrawColor = new Color((byte)(textureColor.R * alphaDilation), (byte)(textureColor.G * alphaDilation), (byte)(textureColor.B * alphaDilation), (byte)(textureColor.A * alphaDilation));
+                        Color textureDrawColor = new((byte)(textureColor.R * alphaDilation), (byte)(textureColor.G * alphaDilation), (byte)(textureColor.B * alphaDilation), (byte)(textureColor.A * alphaDilation));
 
                         //if (projectile.type != ProjectileType<BlackHoleProjectile>())
                         Main.EntitySpriteDraw(texture.Value, new Vector2(vector.X - Main.screenPosition.X + texture.Width() * 0.5f,

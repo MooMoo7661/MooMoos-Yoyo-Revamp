@@ -4,6 +4,10 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using System.Runtime.CompilerServices;
+using CombinationsMod.Projectiles.YoyoEffects;
+using Microsoft.CodeAnalysis;
+using CombinationsMod.Projectiles.TrickYoyos;
+using System;
 
 namespace CombinationsMod
 {
@@ -264,48 +268,8 @@ namespace CombinationsMod
             return numYoyos;
         }
 
-        public override void PostUpdateEquips() // Each of these 3 functions keeps track of whether to add or subtract 1.8f to the yoyo's top speed.
-        {                                       // Requires a hook in `CombinationsModSystem` to subtract the stats when the player saves and quits. PlayerDisconnect ONLY runs when you disconnect from a multiplayer world.
-            
-            if (yoyoSpacers && !wasEquipped)    // PreSaveAndQuit runs ONLY when the player saves and quits in SINGLEPLAYER (maybe multiplayer if host?) Not sure what happens when the player Alt + F4s. Potential bug?
-            {
-                for (int i = 0; i < ProjectileLoader.ProjectileCount; i++)
-                {
-                    if (ContentSamples.ProjectilesByType[i].aiStyle == 99 && !ContentSamples.ProjectilesByType[i].counterweight)
-                    {
-                        ProjectileID.Sets.YoyosTopSpeed[i] += 1.8f;
-                    }
-                    wasEquipped = true;
-                }
-            }
-
-            else if (!yoyoSpacers && wasEquipped)
-            {
-                for (int i = 0; i < ProjectileLoader.ProjectileCount; i++)
-                {
-                    if (ContentSamples.ProjectilesByType[i].aiStyle == 99 && !ContentSamples.ProjectilesByType[i].counterweight)
-                    {
-                        ProjectileID.Sets.YoyosTopSpeed[i] -= 1.8f;
-                    }
-                    wasEquipped = false;
-                }
-            }
-
-        }
-
         public override void PlayerDisconnect() // Subtracts the added Yoyo stats when the player disconnects.
         {
-            if (yoyoSpacers)
-            {
-                for (int i = 0; i < ProjectileLoader.ProjectileCount; i++)
-                {
-                    if (ContentSamples.ProjectilesByType[i].aiStyle == 99 && !ContentSamples.ProjectilesByType[i].counterweight)
-                    {
-                        ProjectileID.Sets.YoyosTopSpeed[i] -= 1.8f;
-                    }
-                }
-                yoyoSpacers = false;
-            }
             HitCounter = 0;
         }
 

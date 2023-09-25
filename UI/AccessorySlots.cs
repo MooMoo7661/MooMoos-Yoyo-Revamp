@@ -19,6 +19,7 @@ using ReLogic;
 using CombinationsMod.Items.Accessories.YoyoBags;
 using static CombinationsMod.CombinationsModUtils;
 using Terraria.GameContent;
+using CombinationsMod.Items.Accessories.Tricks;
 
 namespace CombinationsMod.UI
 {
@@ -429,6 +430,60 @@ namespace CombinationsMod.UI
             {
                 case AccessorySlotType.FunctionalSlot:
                     Main.hoverItemName = "Rings";
+                    break;
+            }
+        }
+
+
+    }
+
+    public class TrickSlot : ModAccessorySlot
+    {
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
+        {
+            if (checkItem.type == ItemType<AroundTheWorld>() || checkItem.type == ItemType<AroundTheWorldTier2>())
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public override bool IsVisibleWhenNotEnabled()
+        {
+            return false;
+        }
+
+        public override bool IsEnabled()
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+        }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/pinkPanel";
+        public override Vector2? CustomLocation =>  TrickPos();
+        public override string FunctionalTexture => "CombinationsMod/UI/TrickSlot";
+        public override bool DrawDyeSlot => false;
+        public override bool DrawVanitySlot => false;
+        public override void OnMouseHover(AccessorySlotType context)
+        {
+            switch (context)
+            {
+                case AccessorySlotType.FunctionalSlot:
+                    Main.hoverItemName = "Tricks";
                     break;
             }
         }

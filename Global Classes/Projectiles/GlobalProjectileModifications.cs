@@ -3,13 +3,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using CombinationsMod.Buffs;
-using CombinationsMod.Projectiles.YoyoEffects;
 using CombinationsMod.Projectiles.Explosions;
 using CombinationsMod.Projectiles.YoyoEffects.Solid;
 using CombinationsMod.Projectiles.TrickYoyos;
-using Terraria.ModLoader.UI.ModBrowser;
-using System;
 
 namespace CombinationsMod.GlobalClasses.Projectiles
 {
@@ -164,7 +160,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                         slimeThornCounter = 0;
                     }
-                }
+                } 
 
                 /*if (beeCounter == 60)
                 {

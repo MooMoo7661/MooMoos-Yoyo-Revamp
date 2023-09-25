@@ -12,19 +12,14 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using static Terraria.ModLoader.ModContent;
-using System.Security.Cryptography.X509Certificates;
-using Terraria.WorldBuilding;
-using Terraria.GameContent.Generation;
-using static Terraria.GameContent.Generation.WorldGenLegacyMethod;
-using CombinationsMod.UI;
-using CombinationsMod.Items.Accessories.YoyoGloves;
+using CombinationsMod.Projectiles.TrickYoyos;
+using static Terraria.ID.SetFactory;
 
 namespace CombinationsMod
 {
-
-    public class CombinationsModSystem : ModSystem
+   public partial class CombinationsModSystem : ModSystem
     {
-        public static RecipeGroup silverBarRecipeGroup; // Initializing new RecipeGroups
+        public static RecipeGroup silverBarRecipeGroup;
         public static RecipeGroup goldBarRecipeGroup;
         public static RecipeGroup copperBarRecipeGroup;
         public static RecipeGroup cobaltBarRecipeGroup;
@@ -38,60 +33,6 @@ namespace CombinationsMod
         public static RecipeGroup mythrilYoyoGroup;
         public static RecipeGroup corruptOrCrimsonYoyo;
 
-        private readonly string stringFilePath = "CombinationsMod/YoyoStringTextures/";
-        private Asset<Texture2D> upgradedStringFilePath => Request<Texture2D>(stringFilePath + "UpgradedString");
-        private Asset<Texture2D> phantomStringPath => Request<Texture2D>(stringFilePath + "PhantomString");
-        private Asset<Texture2D> christmasStringPath => Request<Texture2D>(stringFilePath + "ChristmasString");
-        private Asset<Texture2D> pumpkinStringPath => Request<Texture2D>(stringFilePath + "SpookyString");
-
-        /*
-           Creating a dictionary to store specific string textures. This dictionary uses ItemIDs to assign textures to a specific item.
-           Custom strings are entered into the dictionary in AddDictionaryEntries(), which is called in PostSetupContent() to allow the use of ModContent.ItemType IDs, since they aren't loaded yet in Load().
-           Then, in CombinationsModClass, Main.DrawProj_DrawYoyoString() is detoured to Test(), which sends in the ItemID of the player's held item to the dictionary and retrieves the texture, if there is one.
-        */
-
-        public static Dictionary<int, StringTexture> yoyoStringDictionary = new Dictionary<int, StringTexture>();
-
-        public StringTexture boneStringEntry = new StringTexture();
-        public StringTexture upgradedStringEntry = new StringTexture();
-        public StringTexture jungleStringEntry = new StringTexture();
-        public StringTexture tempestStringEntry = new StringTexture();
-        public StringTexture phantomStringEntry = new StringTexture();
-        public StringTexture christmasStringEntry = new StringTexture();
-        public StringTexture pumpkinStringEntry = new StringTexture();
-        public StringTexture terrarianStringEntry = new StringTexture();
-        public StringTexture cultistStringEntry = new StringTexture();
-        public StringTexture blackHoleStringEntry = new StringTexture();
-
-        /// <summary>
-        /// Adds dictionary entries, enabling the ability to retrieve specific yoyo string textures for certain yoyos.
-        /// </summary>
-        public void AddDictionaryEntries()
-        {
-            upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
-            yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry); yoyoStringDictionary.TryAdd(ItemType<TrueSmudge>(), upgradedStringEntry);
-
-            boneStringEntry.setStringTexture(TextureAssets.Chain24); yoyoStringDictionary.TryAdd(ItemType<Catacomb>(), boneStringEntry);
-            jungleStringEntry.setStringTexture(TextureAssets.Chain27); yoyoStringDictionary.TryAdd(ItemID.JungleYoyo, jungleStringEntry);
-            tempestStringEntry.setStringTexture(TextureAssets.Chain23); yoyoStringDictionary.TryAdd(ItemType<TheTempest>(), tempestStringEntry);
-            phantomStringEntry.setStringTexture(phantomStringPath); yoyoStringDictionary.TryAdd(ItemType<Smudge>(), phantomStringEntry);
-            christmasStringEntry.setStringTexture(christmasStringPath); yoyoStringDictionary.TryAdd(ItemType<ChristmasBulb>(), christmasStringEntry);
-            pumpkinStringEntry.setStringTexture(pumpkinStringPath); yoyoStringDictionary.TryAdd(ItemType<Mambele>(), pumpkinStringEntry);
-            terrarianStringEntry.setStringTexture(TextureAssets.Chains[13]); yoyoStringDictionary.TryAdd(ItemID.Terrarian, terrarianStringEntry);
-            cultistStringEntry.setStringTexture(TextureAssets.Chain9); yoyoStringDictionary.TryAdd(ItemType<CultistYoyo>(), cultistStringEntry);
-            blackHoleStringEntry.setStringTexture(TextureAssets.Chains[16]); yoyoStringDictionary.TryAdd(ItemType<BlackHole>(), blackHoleStringEntry);
-        }
-
-        public Asset<Texture2D> GetStringFromDictionary(int itemID)
-        {
-            if (yoyoStringDictionary.TryGetValue(itemID, out StringTexture instance))
-            {
-                return instance.getStringTexture();
-            }
-
-            return TextureAssets.FishingLine; // Defaults to this if the entry is not found
-        }
-
         public Asset<Texture2D> code2;
         public Asset<Texture2D> code1;
         public Asset<Texture2D> glove;
@@ -104,13 +45,14 @@ namespace CombinationsMod
 
             if (ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove)
             {
-                TextureAssets.Item[ItemID.YoYoGlove] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/YoYoGlove");
+                TextureAssets.Item[ItemID.YoYoGlove] = Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/YoYoGlove");
             }
 
-            TextureAssets.Item[ItemID.Code2] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code2");
-            TextureAssets.Item[ItemID.Code1] = ModContent.Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code1");
-
+            TextureAssets.Item[ItemID.Code2] = Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code2");
+            TextureAssets.Item[ItemID.Code1] = Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code1");
+            
             AddDictionaryEntries();
+            
         }
 
         public override void Unload()
@@ -131,20 +73,14 @@ namespace CombinationsMod
                     recipe.DisableRecipe();
                 }
             }
-
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = Recipe.Create(ItemID.Code2);
-            recipe.AddIngredient(ItemID.Obsidian, 70);
-            recipe.AddRecipeGroup(adamantiteBarRecipeGroup, 20);
-            recipe.Register();
-
-            Recipe recipe2 = Recipe.Create(ItemID.GiantHarpyFeather);
-            recipe2.AddIngredient(ItemID.Feather, 50);
-            recipe2.AddIngredient(ItemID.SoulofFlight, 20);
-            recipe2.Register();
+            Recipe.Create(ItemID.Code2)
+                .AddIngredient(ItemID.Obsidian, 70)
+                .AddRecipeGroup(adamantiteBarRecipeGroup, 10)
+                .Register();
 
             Recipe.Create(ItemID.Cascade)
                 .AddIngredient(ItemID.HellstoneBar, 15)
@@ -179,7 +115,7 @@ namespace CombinationsMod
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
             {
                 yoyoStringGroup = new RecipeGroup(() => "Any Yoyo String", ItemID.WhiteString, ItemID.BlueString, ItemID.BrownString,
-                ItemID.CyanString, ItemID.GreenString, ItemID.LimeString, ItemID.OrangeString, ItemID.PinkString, ItemID.PurpleString, ModContent.ItemType<GolemsteelString>(),
+                ItemID.CyanString, ItemID.GreenString, ItemID.LimeString, ItemID.OrangeString, ItemID.PinkString, ItemID.PurpleString, ItemType<GolemsteelString>(),
                 ItemID.RainbowString, ItemID.RedString, ItemID.SkyBlueString, ItemID.TealString, ItemID.VioletString, ItemID.BlackString, ItemID.YellowString,
 
                 veridianMod.Find<ModItem>("CrimsonString").Type, veridianMod.Find<ModItem>("CrossString").Type,
@@ -192,19 +128,19 @@ namespace CombinationsMod
             else
             {
                 yoyoStringGroup = new RecipeGroup(() => "Any Yoyo String", ItemID.WhiteString, ItemID.BlueString, ItemID.BrownString,
-                ItemID.CyanString, ItemID.GreenString, ItemID.LimeString, ItemID.OrangeString, ItemID.PinkString, ItemID.PurpleString, ModContent.ItemType<GolemsteelString>(),
+                ItemID.CyanString, ItemID.GreenString, ItemID.LimeString, ItemID.OrangeString, ItemID.PinkString, ItemID.PurpleString,
                 ItemID.RainbowString, ItemID.RedString, ItemID.SkyBlueString, ItemID.TealString, ItemID.VioletString, ItemID.BlackString, ItemID.YellowString);
             }
 
             RecipeGroup.RegisterGroup("CombinationsMod:YoyoStrings", yoyoStringGroup);
 
-            ironYoyoGroup = new RecipeGroup(() => "Iron or Lead Yoyo", ModContent.ItemType<IronYoyo>(), ModContent.ItemType<LeadYoyo>());
+            ironYoyoGroup = new RecipeGroup(() => "Iron or Lead Yoyo", ItemType<IronYoyo>(), ItemType<LeadYoyo>());
             RecipeGroup.RegisterGroup("CombinationsMod:IronOrLeadYoyo", ironYoyoGroup);
 
-            cobaltYoyoGroup = new RecipeGroup(() => "Cobalt or Palladium Yoyo", ModContent.ItemType<CobaltYoyo>(), ModContent.ItemType<PalladiumYoyo>());
+            cobaltYoyoGroup = new RecipeGroup(() => "Cobalt or Palladium Yoyo", ItemType<CobaltYoyo>(), ItemType<PalladiumYoyo>());
             RecipeGroup.RegisterGroup("CombinationsMod:CobaltOrPalladiumYoyo", cobaltYoyoGroup);
 
-            mythrilYoyoGroup = new RecipeGroup(() => "Mythril or Orichalcum Yoyo", ModContent.ItemType<MythrilYoyo>(), ModContent.ItemType<OrichalcumYoyo>());
+            mythrilYoyoGroup = new RecipeGroup(() => "Mythril or Orichalcum Yoyo", ItemType<MythrilYoyo>(), ItemType<OrichalcumYoyo>());
             RecipeGroup.RegisterGroup("CombinationsMod:MythrilOrOrichalcumYoyo", mythrilYoyoGroup);
         }
 
@@ -213,36 +149,7 @@ namespace CombinationsMod
             Player player = Main.LocalPlayer;
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            if (modPlayer.yoyoSpacers)
-            {
-                for (int i = 0; i < ProjectileLoader.ProjectileCount; i++) // Cycling through every projectile
-                {
-                    if (ContentSamples.ProjectilesByType[i].aiStyle == 99 && !ContentSamples.ProjectilesByType[i].counterweight) // If it is a yoyo
-                    {
-                        ProjectileID.Sets.YoyosTopSpeed[i] -= 1.8f;
-
-                        // Subtracting the values added by the Yoyo Bearing on save and exit. This is to prevent building up of stats
-                    }
-                }
-                modPlayer.yoyoSpacers = false;
-            }
-
             modPlayer.HitCounter = 0;
-        }
-    }
-
-    public class StringTexture
-    {
-        public Asset<Texture2D> texture;
-
-        public void setStringTexture(Asset<Texture2D> asttex)
-        {
-            this.texture = asttex;
-        }
-
-        public Asset<Texture2D> getStringTexture()
-        {
-            return this.texture;
         }
     }
 }

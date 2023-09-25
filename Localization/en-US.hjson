@@ -1,5 +1,83 @@
 Mods: {
 	CombinationsMod: {
+		LocalizedText: {
+			CounterweightPerYoyo: Each Yoyo that hits a target will produce a counterweight
+			YoyoShimmer: Yoyos can phase through blocks
+			MoreAccessorySlots: Gives the user more accessory slots for yoyos
+			DrillsAndCounterweights: Gives slots for Yoyo Drills and Counterweights
+			SupportGlove: Gives slots for Support Gloves
+			YoyoRings: Gives slots for Yoyo Rings
+			AdditionalYoyo: Adds one additional yoyo
+			FastRecall: Yoyos are recalled faster
+			MasterYoyoSkills: Gives the user master yoyo skills
+			IncreasedYoyoKnockback: Increased yoyo knockback
+			HoldDown: "[c/6FD4FF:Hold DOWN to view yoyo ability info]"
+			NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
+			NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
+			YoyoAbilitySnippet: "[c/6FD4FF:-=Yoyo Ability=-]"
+
+			Abilities: {
+				BlackHole: Creates a large vortex that does 40% of the yoyo's damage
+				HardmodeYoyos: Creates a medium damaging aura that does 50% of the yoyo's damage
+				Tempest: Creates a very large damaging aura that does 75% of the yoyo's damage
+				Code2: Creates an explosion every 5 hits that deals 50% of the yoyo's damage
+				Yelets: Shoots 8 leaves that deal 50% of the yoyo's damage
+				TrueYoyos: Creates a large damaging aura that does 60% of the yoyo's damage
+				Cascade: Creates an explosion every 5 hits, which does 150% of the yoyo's damage
+				Valor: Creates homing water bolts that explode on contact, dealing area damage
+				EvilYoyos: Heals the user on hit
+				Rally: Creates 3 swirling copies that deal 50% of the yoyo's damage
+				Code1: Creates 6 swirling copies that deal 50% of the yoyo's damage
+				ChristmasBulb:
+					'''
+					Shoots out 8 explosive ornaments after 30 hits
+					Only triggers every other hit
+					Ornaments deal half damage
+					'''
+				Code3:
+					'''
+					Creates a medium sized damaging aura that does 65% of the yoyo's damage
+					After 20 hits, a larger aura that does 75% of the yoyo's damage will appear
+					'''
+				Convergence: Shoots out every yoyo used in its creation
+				CultistYoyo:
+					'''
+					Creates a runic aura that deals 75% of the yoyo's damage
+					After 20 hits, a second aura that does 85% of the yoyo's damage will grow twice the size of the original aura
+					'''
+				Mambele:
+					'''
+					Shoots out 8 lingering fire balls after 30 hits
+					Only triggers every other hit
+					Fire balls deal half damage
+					'''
+				Abbhor:
+					'''
+					Creates a medium damaging aura that does 40% of the yoyo's damage
+					After 20 hits, a larger aura will be created that does 60% of the yoyo's damage
+					'''
+				FormatC:
+					'''
+					Creates 4 swirling copies that deal 80% of the yoyo's damage
+					These copies will split apart and fly away after the yoyo has been recalled
+					'''
+				HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
+				Amarok: Shoots out 8 ice spikes every second that deal 60% of the yoyo's damage
+				Gradient:
+					'''
+					Creates 8 swirling copies that deal 100% of the yoyo damage
+					These copies will split apart and fly away after the yoyo has been recalled
+					When near an enemy, they will home in on them
+					'''
+				EOCYoyo:
+					'''
+					Has 2 stages
+					First stage: Shoots lasers that deal 45% of the yoyo's damage
+					Second stage: Shoots cursed flames that deal 50% and inflict cursed inferno
+					'''
+			}
+		}
+
 		TownNPCMood: {
 			ExamplePerson: {
 				LoveBiome: I love the forest. Plenty of nice scenery and critters.
@@ -246,6 +324,7 @@ Mods: {
 			HomingWaterBolt.DisplayName: Homing Water Bolt
 			EmpressProjectile.DisplayName: Empress Projectile
 			Excavator.DisplayName: Excavator
+			StoneAgeProjectile.DisplayName: Stone Age Projectile
 		}
 
 		Items: {
@@ -1213,6 +1292,15 @@ Mods: {
 			ShimmeringBeetleBag: {
 				DisplayName: Shimmering Beetle Bag
 				Tooltip: ""
+			}
+
+			StoneAge: {
+				DisplayName: Stone Age
+				Tooltip:
+					'''
+					Has a chance to confuse targets
+					"Grug hit sick trick"
+					'''
 			}
 		}
 

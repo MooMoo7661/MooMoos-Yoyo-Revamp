@@ -1,10 +1,5 @@
 ﻿using Terraria.ID;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 
@@ -200,7 +195,7 @@ namespace CombinationsMod
                     break;
             }
 
-            return ringPos;
+            return new Vector2(Main.screenWidth - 397, (Main.screenHeight / 11 + 150)); 
         }
 
         public static Vector2 RingPos2()
@@ -227,7 +222,34 @@ namespace CombinationsMod
                     break;
             }
 
-            return ringPos;
+            return new Vector2(Main.screenWidth - 350, (Main.screenHeight / 11 + 150));
+        }
+
+        public static Vector2 TrickPos()
+        {
+            Vector2 ringPos = new Vector2();
+            int pos = ModContent.GetInstance<YoyoModConfig>().AccessorySlotPosition;
+            //350
+            switch (pos)
+            {
+                case 1:
+                    ringPos = new Vector2(Main.screenWidth - 450, (Main.screenHeight / 11 + 77));
+                    break;
+
+                case 2:
+                    ringPos = new Vector2(Main.screenWidth - 960, (Main.screenHeight / 11) + 150);
+                    break;
+
+                case 3:
+                    ringPos = new Vector2(Main.screenWidth - 1212, (Main.screenHeight / 3 + 96));
+                    break;
+
+                case 4:
+                    ringPos = new Vector2(Main.screenWidth / 2 + 63, (Main.screenHeight / 2 + 79));
+                    break;
+            }
+
+            return new Vector2(Main.screenWidth - 450, (Main.screenHeight / 11 + 77));
         }
     }
 }

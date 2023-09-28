@@ -121,21 +121,21 @@ namespace CombinationsMod.GlobalClasses
                     Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
                          0, ModContent.ProjectileType<MooMooDrill>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
                 }
-                else if (modPlayer.shadowflameDrill)
-                {
-                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
-                         0, ModContent.ProjectileType<ShadowflameDrill>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
-                }
-                else if (modPlayer.scooperDrill)
-                {
-                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
-                         0, ModContent.ProjectileType<TheScooper>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
-                }
-                else if (modPlayer.ninjaDrill)
-                {
-                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
-                         0, ModContent.ProjectileType<NinjaStar>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
-                }
+                //else if (modPlayer.shadowflameDrill)
+                //{
+                //    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
+                //         0, ModContent.ProjectileType<ShadowflameDrill>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
+                //}
+                //else if (modPlayer.scooperDrill)
+                //{
+                //    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
+                //         0, ModContent.ProjectileType<TheScooper>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
+                //}
+                //else if (modPlayer.ninjaDrill)
+                //{
+                //    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
+                //         0, ModContent.ProjectileType<NinjaStar>(), (int)(projectile.damage * 1f), 0, projectile.owner, 0, projectile.whoAmI);
+                //}
                 else if (modPlayer.excavatorDrill)
                 {
                     Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,

@@ -46,7 +46,6 @@ namespace CombinationsMod.Items.Accessories.Drills
                 .AddIngredient(ItemType<MythrilDrillCasing>())
                 .AddIngredient(ItemType<OrichalcumDrillCasing>())
                 .AddIngredient(ItemType<PalladiumCasing>())
-                .AddIngredient(ItemType<ShadowflameDrillCasing>())
                 .AddIngredient(ItemType<ShroomiteShredderCasing>())
                 .AddIngredient(ItemType<TitaniumDrillCasing>())
                 .AddIngredient(ItemType<TreeClippersDrillCasing>())

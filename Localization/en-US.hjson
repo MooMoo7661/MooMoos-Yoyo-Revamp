@@ -15,6 +15,8 @@ Mods: {
 			NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
 			NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
 			YoyoAbilitySnippet: "[c/6FD4FF:-=Yoyo Ability=-]"
+			150YoyoRange: "[c/6EAE6E:+150 yoyo range]"
+			TrickSlot: Gives a slot for tricks
 
 			Abilities: {
 				BlackHole: Creates a large vortex that does 40% of the yoyo's damage
@@ -1215,10 +1217,9 @@ Mods: {
 				Tooltip:
 					'''
 					Low-value trick
-					Creates a seperate yoyo that swirls around the player in a circle that does 2x damage.
-					Range stacks with your current yoyo's range
+					Creates a seperate yoyo that swirls around the player in a circle that does 0.3x damage.
+					[c/FFFF4A:Range stacks with a percentage of your current yoyo's range]
 					Creates one per yoyo that you have active
-					Must be equipped in regular slots
 					'''
 			}
 
@@ -1227,10 +1228,9 @@ Mods: {
 				Tooltip:
 					'''
 					Medium-value trick
-					Creates 2 seperate yoyos that swirl around the player in a circle that do 2.5x damage.
-					Range stacks with a percentage of your current yoyo's range
+					Creates 2 seperate yoyos that swirl around the player in a circle that do 0.5x damage.
+					[c/FFFF4A:Range stacks with a percentage of your current yoyo's range]
 					Creates two per yoyo that you have active
-					Must be equipped in regular slots
 					'''
 			}
 
@@ -1301,6 +1301,22 @@ Mods: {
 					Has a chance to confuse targets
 					"Grug hit sick trick"
 					'''
+			}
+
+			DualYoyo: {
+				DisplayName: Dual Yoyo
+				Tooltip:
+					'''
+					High-value trick
+					Allows the user to [c/E232D6:wield 2 different yoyos]
+					Any yoyos created with the Yoyo Glove will be the type of the second yoyo
+					[c/FFFF4A:The second yoyo must be placed to the right of your held yoyo in the inventory]
+					'''
+			}
+
+			MoonlordBag: {
+				DisplayName: Moonlord Bag
+				Tooltip: ""
 			}
 		}
 

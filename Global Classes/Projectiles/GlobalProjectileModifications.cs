@@ -32,15 +32,15 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 if (modPlayer.trick1 && projectile.owner == Main.myPlayer)
                 {
-                    int projYoyoCircle = Projectile.NewProjectile(projectile.GetSource_FromThis(), player.Center,
-                    new(0, 0), ModContent.ProjectileType<World1>(), projectile.damage * 2, 0, Main.myPlayer, 0, projectile.whoAmI);
+                    Projectile.NewProjectile(projectile.GetSource_FromThis(), player.Center,
+                    new(0, 0), ModContent.ProjectileType<World1>(), (int)(projectile.damage * 0.3f), 0, Main.myPlayer, 0, projectile.whoAmI);
                 }
                 else if (modPlayer.trick2 && projectile.owner == Main.myPlayer)
                 {
                     for (int i = 0; i < 2; i++)
                     {
-                        int projYoyoCircle = Projectile.NewProjectile(projectile.GetSource_FromThis(), player.Center,
-                        new(0, 0), ModContent.ProjectileType<World2>(), projectile.damage * 2, 0, Main.myPlayer, 0, projectile.whoAmI);
+                        Projectile.NewProjectile(projectile.GetSource_FromThis(), player.Center,
+                        new(0, 0), ModContent.ProjectileType<World2>(), (int)(projectile.damage * 0.5f), 0, Main.myPlayer, 0, projectile.whoAmI);
                     }
                 }
             }

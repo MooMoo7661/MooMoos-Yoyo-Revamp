@@ -19,6 +19,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 {
     public class VanillaYoyoEffects : GlobalProjectile
     {
+        // This class is a result of really bad code organization on my part.
+        // However I'm too lazy to go back and organize and clean it up at the moment.
+        // There is also a random detour of yoyo ai at the bottom lol
+
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
             return entity.aiStyle == 99;
@@ -30,7 +34,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private int explosionCounter = 0;
         private int homingCounter = 0;
         private int code2ExplosionCounter = 0;
-        private bool isYoyo;
         private int iceSpikeCounter = 0;
         private int leafCounter = 0;
         private int eocBreathTimer = 0;
@@ -44,8 +47,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (projectile.aiStyle == 99 && !projectile.counterweight) { isYoyo = true; }
-
            isOriginalYoyo = ReturnProjectileFlag(projectile);
 
             if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
@@ -60,7 +61,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         case ProjectileID.Code1:
                             if (Main.myPlayer == projectile.owner)
                             {
-                                int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
+                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X,
                                 projectile.Center.Y, 0, 0, ProjectileType<Code1Swirl>(),
                                 (int)(projectile.damage * 0.50f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
                             }
@@ -649,7 +650,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             for (int i = 0; i < projectile.whoAmI; i++)
             {
-                if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].type == projectile.type && !Main.projectile[i].counterweight)
+                if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].aiStyle == 99 && !Main.projectile[i].counterweight)
                 {
                     flag = true;
                 }
@@ -970,7 +971,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         {
             for (int i = 0; i < projectile.whoAmI; i++)
             {
-                if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].type == projectile.type && !Main.projectile[i].counterweight)
+                if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].aiStyle == 99 && !Main.projectile[i].counterweight)
                 {
                     return false;
                 }

@@ -6,6 +6,7 @@ using CombinationsMod.Items.Yoyos;
 using CombinationsMod.Items.Accessories.Drills;
 using CombinationsMod.Items.Accessories.Rings;
 using CombinationsMod.Items.Accessories.Strings;
+using CombinationsMod.Items.Accessories.YoyoBags;
 
 namespace CombinationsMod.GlobalClasses.Loot
 {
@@ -45,6 +46,10 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case ItemID.WallOfFleshBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<YoyoDrillCasing>()));
+                    break;
+
+                case ItemID.MoonLordBossBag:
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MoonlordBag>()));
                     break;
             }
         }

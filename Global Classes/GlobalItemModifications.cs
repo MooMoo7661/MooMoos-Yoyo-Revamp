@@ -126,7 +126,7 @@ namespace CombinationsMod.GlobalClasses
             if (item.type >= ItemID.RedString && item.type <= ItemID.BlackString)
             {
 
-                tooltips.Add(new TooltipLine(Mod, "YoyoStringInfo", "[c/6EAE6E:+150 yoyo range]"));
+                tooltips.Add(new TooltipLine(Mod, "YoyoStringInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.150YoyoRange")));
             }
             switch (item.type)
             {                        
@@ -135,7 +135,7 @@ namespace CombinationsMod.GlobalClasses
                     {
                         int index = tooltips.FindIndex(tip => tip.Name.StartsWith("Tooltip"));
                         tooltips.RemoveAll(tip => tip.Name.StartsWith("Tooltip"));
-                        tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", "Yoyos are recalled faster\nGives the user more accessory slots for yoyos"));
+                        tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MoreAccessorySlots")));
                     }
                     break;
             }

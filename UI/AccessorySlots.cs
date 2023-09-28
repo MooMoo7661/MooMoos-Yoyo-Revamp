@@ -52,15 +52,7 @@ namespace CombinationsMod.UI
                 }
             }
 
-            if ((checkItem.type >= 3293 && checkItem.type <= 3308) || checkItem.type == ModContent.ItemType<EclipseString>() || checkItem.type == ModContent.ItemType<GolemsteelString>() ||
-                checkItem.type == ModContent.ItemType<SolarString>() || checkItem.type == ModContent.ItemType<FrostbiteString>() ||
-                checkItem.type == ModContent.ItemType<SlimyString>() || checkItem.type == ModContent.ItemType<DarkGreenString>() || checkItem.type == ModContent.ItemType<DarkBlueString>() ||
-                checkItem.type == ModContent.ItemType<LightPinkString>() || checkItem.type == ItemType<DarkTealString>() ||
-                checkItem.type == ItemType<GrapeString>() || checkItem.type == ItemType<NebulaString>() || checkItem.type == ItemType<VortexString>() ||
-                checkItem.type == ItemType<StardustString>() || checkItem.type == ItemType<NaniteString>())
-                return true;
-
-            return false;
+            return checkItem.ModItem is ModString;
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -69,17 +61,17 @@ namespace CombinationsMod.UI
 
         public override bool IsEnabled()
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
@@ -125,12 +117,12 @@ namespace CombinationsMod.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
@@ -139,7 +131,7 @@ namespace CombinationsMod.UI
         }
 
         public override Vector2? CustomLocation => RightGlovePos();
-        public override string FunctionalTexture => ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/YoyoGloveSlotLarge" : "CombinationsMod/UI/YoyoGloveSlot";
+        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/YoyoGloveSlotLarge" : "CombinationsMod/UI/YoyoGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -148,8 +140,8 @@ namespace CombinationsMod.UI
             {
                 case AccessorySlotType.FunctionalSlot:
                     Main.hoverItemName = "Right Hand";
-                    if (ModContent.GetInstance<YoyoModConfig>().AccessorySlotIndicators)
-                    Main.hoverItemName += "(Yoyo Gloves)";
+                    if (GetInstance<YoyoModConfig>().AccessorySlotIndicators)
+                    Main.hoverItemName += " (Yoyo Gloves)";
                     break;
             }
         }
@@ -170,17 +162,17 @@ namespace CombinationsMod.UI
 
         public override bool IsEnabled()
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
@@ -190,7 +182,7 @@ namespace CombinationsMod.UI
 
         public override Vector2? CustomLocation => LeftGlovePos();
 
-        public override string FunctionalTexture => ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/SupportGloveSlotLarge" : "CombinationsMod/UI/SupportGloveSlot";
+        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/SupportGloveSlotLarge" : "CombinationsMod/UI/SupportGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -199,7 +191,7 @@ namespace CombinationsMod.UI
             {
                 case AccessorySlotType.FunctionalSlot:
                     Main.hoverItemName = "Left Hand";
-                    if (ModContent.GetInstance<YoyoModConfig>().AccessorySlotIndicators)
+                    if (GetInstance<YoyoModConfig>().AccessorySlotIndicators)
                         Main.hoverItemName += "(Support Gloves)";
                     break;
             }
@@ -209,21 +201,7 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            if (checkItem.type == ModContent.ItemType<HakapikDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<HorsemansDrillCasing>() || checkItem.type == ModContent.ItemType<MattockDrillCasing>() || checkItem.type == ModContent.ItemType<ShroomiteShredderCasing>() ||
-                checkItem.type == ModContent.ItemType<SpectralShredderCasing>() ||
-                checkItem.type == ModContent.ItemType<TreeClippersDrillCasing>() || checkItem.type == ModContent.ItemType<TsurugiDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<SolarDrillCasing>() || checkItem.type == ModContent.ItemType<VortexDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<NebulaDrillCasing>() || checkItem.type == ModContent.ItemType<StardustDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<CelestialDrillCasing>() || checkItem.type == ModContent.ItemType<CelestialDrillCasingExtended>() ||
-                checkItem.type == ModContent.ItemType<MooMooDrillCasing>() || checkItem.type == ModContent.ItemType<ShadowflameDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<TheScooperDrillCasing>() || checkItem.type == ModContent.ItemType<NinjaStarCasing>() || checkItem.type == ModContent.ItemType<YoyoDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<CobaltDrillCasing>() || checkItem.type == ModContent.ItemType<PalladiumCasing>() || checkItem.type == ModContent.ItemType<OrichalcumDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<MythrilDrillCasing>() || checkItem.type == ModContent.ItemType<AdamantiteDrillCasing>() || checkItem.type == ModContent.ItemType<TitaniumDrillCasing>() ||
-                checkItem.type == ModContent.ItemType<ExcavatorCasing>())
-                return true;
-
-            return false;
+            return checkItem.ModItem is ModDrill;
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -232,17 +210,17 @@ namespace CombinationsMod.UI
 
         public override bool IsEnabled()
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
@@ -272,11 +250,8 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            if (checkItem.type == ItemID.BlackCounterweight || checkItem.type == ItemID.BlueCounterweight || checkItem.type == ItemID.GreenCounterweight ||
-                checkItem.type == ItemID.PurpleCounterweight || checkItem.type == ItemID.RedCounterweight || checkItem.type == ItemID.YellowCounterweight)
-                return true;
-
-            return false;
+            return checkItem.type == ItemID.BlackCounterweight || checkItem.type == ItemID.BlueCounterweight || checkItem.type == ItemID.GreenCounterweight ||
+                checkItem.type == ItemID.PurpleCounterweight || checkItem.type == ItemID.RedCounterweight || checkItem.type == ItemID.YellowCounterweight;
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -285,22 +260,21 @@ namespace CombinationsMod.UI
 
         public override bool IsEnabled()
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag ||
+                Player.GetModPlayer<YoyoModPlayer>().shimmerBag ||
+                Player.GetModPlayer<YoyoModPlayer>().tier2Bag ||
+                Player.GetModPlayer<YoyoModPlayer>().beetleBag ||
+                Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-            {
-                return false;
-            }
-
-            return true;
+            return GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
         }
 
         public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
@@ -317,24 +291,13 @@ namespace CombinationsMod.UI
                     break;
             }
         }
-
-
     }
 
     public class RingSlot : ModAccessorySlot
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            if (checkItem.type == ItemType<RingOfCoalescence>() || checkItem.type == ItemType<AbilityRing>() || checkItem.type == ItemType<AmberRing>() ||
-                checkItem.type == ItemType<AmethystRing>() || checkItem.type == ItemType<DiamondRing>() || checkItem.type == ItemType<EmeraldRing>() ||
-                checkItem.type == ItemType<FortitudeRing>() || checkItem.type == ItemType<GemstoneRing>() || checkItem.type == ItemType<OmnipotenceRing>() ||
-                checkItem.type == ItemType<RubyRing>() || checkItem.type == ItemType<SapphireRing>() || checkItem.type == ItemType<TerreneRing>() ||
-                checkItem.type == ItemType<TopazRing>() || checkItem.type == ItemType<TrepidationRing>())
-            {
-                return true;
-            }
-
-            return false;
+            return checkItem.ModItem is ModRing;
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -343,17 +306,17 @@ namespace CombinationsMod.UI
 
         public override bool IsEnabled()
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
@@ -401,17 +364,17 @@ namespace CombinationsMod.UI
 
         public override bool IsEnabled()
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
@@ -441,12 +404,7 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            if (checkItem.type == ItemType<AroundTheWorld>() || checkItem.type == ItemType<AroundTheWorldTier2>())
-            {
-                return true;
-            }
-
-            return false;
+            return checkItem.type == ItemType<AroundTheWorld>() || checkItem.type == ItemType<AroundTheWorldTier2>() || checkItem.type == ItemType<DualYoyo>();
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -455,17 +413,17 @@ namespace CombinationsMod.UI
 
         public override bool IsEnabled()
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().beetleBag;
+            return Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 return false;
             }

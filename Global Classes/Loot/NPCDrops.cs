@@ -90,7 +90,6 @@ namespace CombinationsMod.GlobalClasses.Loot
 
 				case NPCID.CultistBoss:
 					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CultistYoyo>()));
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ShadowflameDrillCasing>()));
                     break;
 
 				case NPCID.KingSlime:
@@ -115,6 +114,11 @@ namespace CombinationsMod.GlobalClasses.Loot
                     npcLoot.Add(notExpertRule7);
                     break;
 
+				case NPCID.MoonLordCore:
+                    LeadingConditionRule notExpertRule8 = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRule8.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MoonlordBag>(), 3));
+                    npcLoot.Add(notExpertRule8);
+					break;
             }
 		}
     }

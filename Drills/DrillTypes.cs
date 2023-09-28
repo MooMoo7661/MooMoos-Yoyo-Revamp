@@ -170,29 +170,29 @@ namespace CombinationsMod.Drills
         protected override SoundStyle DrillSound => SoundID.Item22;
     }
 
-    public class ShadowflameDrill : BaseDrill
-    {
-        protected override int DrillTier => 210;
-        protected override int DrillCooldown => 15;
-        protected override int BlockRangeStyle => 2;
-        protected override SoundStyle DrillSound => SoundID.Item22;
-    }
+    //public class ShadowflameDrill : BaseDrill
+    //{
+    //    protected override int DrillTier => 210;
+    //    protected override int DrillCooldown => 15;
+    //    protected override int BlockRangeStyle => 2;
+    //    protected override SoundStyle DrillSound => SoundID.Item22;
+    //}
 
-    public class TheScooper : BaseDrill
-    {
-        protected override int DrillTier => 200;
-        protected override int DrillCooldown => 18;
-        protected override int BlockRangeStyle => 2;
-        protected override SoundStyle DrillSound => SoundID.Item22;
-    }
+    //public class TheScooper : BaseDrill
+    //{
+    //    protected override int DrillTier => 200;
+    //    protected override int DrillCooldown => 18;
+    //    protected override int BlockRangeStyle => 2;
+    //    protected override SoundStyle DrillSound => SoundID.Item22;
+    //}
 
-    public class NinjaStar : BaseDrill
-    {
-        protected override int DrillTier => 210;
-        protected override int DrillCooldown => 17;
-        protected override int BlockRangeStyle => 2;
-        protected override SoundStyle DrillSound => SoundID.Item22;
-    }
+    //public class NinjaStar : BaseDrill
+    //{
+    //    protected override int DrillTier => 210;
+    //    protected override int DrillCooldown => 17;
+    //    protected override int BlockRangeStyle => 2;
+    //    protected override SoundStyle DrillSound => SoundID.Item22;
+    //}
 
     public class Excavator : BaseDrill
     {

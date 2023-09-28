@@ -38,6 +38,7 @@ namespace CombinationsMod
         public bool tier2Bag = false;
         public bool beetleBag = false;
         public bool alienBag = false;
+        public bool moonlordBag = false;
 
         public bool eclipseString = false;
         public bool golemString = false;
@@ -103,6 +104,7 @@ namespace CombinationsMod
 
         public bool trick1 = false; // Around the World
         public bool trick2 = false; // Around the World Tier 2
+        public bool dualYoyo = false; // Dual Yoyo trick
 
         public override void ResetEffects() // Lets accessories be temporary.
         {
@@ -115,6 +117,7 @@ namespace CombinationsMod
             tier2Bag = false;
             beetleBag = false;
             alienBag = false;
+            moonlordBag = false;
 
             supportGlove = false;
 
@@ -127,7 +130,6 @@ namespace CombinationsMod
             stardustDrill = false;
             vortexString = false;
             nebulaString = false;
-
 
             darkGreenString = false;
             darkBlueString = false;
@@ -180,6 +182,7 @@ namespace CombinationsMod
 
             trick1 = false;
             trick2 = false;
+            dualYoyo = false;
         }
 
         /// <summary>
@@ -260,7 +263,7 @@ namespace CombinationsMod
                 numYoyos = 2;
             }
             
-            if (modPlayer.beetleBag)
+            if (modPlayer.beetleBag || modPlayer.moonlordBag)
             {
                 numYoyos = 3;
             }
@@ -288,9 +291,24 @@ namespace CombinationsMod
             return false;
         }
 
+        public static int GetYoyoToCast(Player player)
+        {
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            int yoyoToCast = ContentSamples.ProjectilesByType[player.HeldItem.shoot].type;
+
+            if (modPlayer.dualYoyo)
+            {
+                if (ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
+                {
+                    return ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].type;
+                }
+            }
+
+            return yoyoToCast;
+        }
+
         public override void Load()
         {
-            
             On_Player.Counterweight += DualYoyoDetour;
         }
 
@@ -340,6 +358,15 @@ namespace CombinationsMod
             {
                 if (num >= 0)
                 {
+                    int damage = player.HeldItem.damage;
+                    float knockback = player.HeldItem.knockBack;
+
+                    if (ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
+                    {
+                        damage = player.inventory[player.selectedItem + 1].damage;
+                        knockback = player.inventory[player.selectedItem + 1].knockBack;
+                    }
+
                     if (TestForYoyoBag(player) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
                     {
                         int numYoyos = GetNumPlayerYoyos(player);
@@ -347,7 +374,7 @@ namespace CombinationsMod
                         for (int i = 0; i < numYoyos - 1; i++)
                         {
                             Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                            Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                            Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
                         }
                     }
 
@@ -355,16 +382,16 @@ namespace CombinationsMod
                     if (TestForSupportGlove(player))
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
 
                         Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
-                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector2.X, vector2.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector2.X, vector2.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);  
                         return; 
                     }
                     else
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, Main.projectile[num].type, Main.projectile[num].damage, Main.projectile[num].knockBack, player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(Projectile.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
                         return;
                     }
 

@@ -1318,6 +1318,15 @@ Mods: {
 				DisplayName: Moonlord Bag
 				Tooltip: ""
 			}
+
+			ShootToTheMoon: {
+				DisplayName: Shoot To The Moon
+				Tooltip:
+					'''
+					Medium-value trick
+					[c/E475FF:Increases the range of extra yoyos created with the yoyo glove]
+					'''
+			}
 		}
 
 		InfoDisplays: {

@@ -404,7 +404,7 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            return checkItem.type == ItemType<AroundTheWorld>() || checkItem.type == ItemType<AroundTheWorldTier2>() || checkItem.type == ItemType<DualYoyo>();
+            return checkItem.type == ItemType<AroundTheWorld>() || checkItem.type == ItemType<AroundTheWorldTier2>() || checkItem.type == ItemType<DualYoyo>() || checkItem.type == ItemType<ShootToTheMoon>();
         }
         public override bool IsVisibleWhenNotEnabled()
         {

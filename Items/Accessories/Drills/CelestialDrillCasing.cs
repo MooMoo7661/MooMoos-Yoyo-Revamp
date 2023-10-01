@@ -31,22 +31,5 @@ namespace CombinationsMod.Items.Accessories.Drills
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.celestialDrill = true;
         }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<NebulaDrillCasing>());
-            recipe.AddIngredient(ModContent.ItemType<SolarDrillCasing>());
-            recipe.AddIngredient(ModContent.ItemType<VortexDrillCasing>());
-            recipe.AddIngredient(ModContent.ItemType<StardustDrillCasing>());
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.Register();
-
-            Recipe recipe2 = CreateRecipe();
-            recipe2.AddIngredient(ModContent.ItemType<CelestialDrillCasingExtended>());
-            recipe2.AddIngredient(ItemID.LunarBar, 3);
-            recipe2.AddTile(TileID.LunarCraftingStation);
-            recipe2.Register();
-        }
     }
 }

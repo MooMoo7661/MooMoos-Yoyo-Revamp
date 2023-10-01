@@ -38,7 +38,7 @@ namespace CombinationsMod.Items.Accessories.Drills
         {
             CreateRecipe()
                 .AddIngredient(ItemType<AdamantiteDrillCasing>())
-                .AddIngredient(ItemType<CelestialDrillCasingExtended>())
+                .AddIngredient(ItemType<CelestialDrillCasing>())
                 .AddIngredient(ItemType<CobaltDrillCasing>())
                 .AddIngredient(ItemType<HakapikDrillCasing>())
                 .AddIngredient(ItemType<HorsemansDrillCasing>())
@@ -58,9 +58,11 @@ namespace CombinationsMod.Items.Accessories.Drills
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Lighting.AddLight(Item.Center, Color.MediumPurple.ToVector3() * 1.3f);
-            Texture2D tex = TextureAssets.Item[Type].Value;
+            Texture2D tex = ModContent.Request<Texture2D>("CombinationsMod/Items/Accessories/Drills/ExcavatorGlowmask").Value;
+            Texture2D tex2 = TextureAssets.Item[Type].Value;
 
             Main.EntitySpriteDraw(tex, Item.Center - Main.screenPosition, null, Color.White, rotation, tex.Size() / 2, scale, SpriteEffects.None);
+            Main.EntitySpriteDraw(tex2, Item.Center - Main.screenPosition, null, Color.White, rotation, tex.Size() / 2, scale, SpriteEffects.None);
             int numberOfCloneImages = 6;
             for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
             {
@@ -75,25 +77,6 @@ namespace CombinationsMod.Items.Accessories.Drills
             }
             Item.Size = new(60, 46);
             return false;// base.PreDrawInWorld(spriteBatch, lightColor, alphaColor, ref rotation, ref scale, whoAmI);
-        }
-
-        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            float sizeLimit = 34;
-            int numberOfCloneImages = 6;
-            Main.DrawItemIcon(spriteBatch, Item, position, Color.White * 0.7f, sizeLimit);
-            for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
-            {
-                float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly / 2.4f * MathF.Tau / 2f) + 0.5f;
-                cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
-                Color color = Color.DarkBlue * 0.3f;
-                color *= 1f - cloneImageDistance * 0.3f;
-                color.A = 0;
-                cloneImageDistance *= 3;
-                Vector2 drawPos = position + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f);
-                Main.DrawItemIcon(spriteBatch, Item, drawPos, color, sizeLimit);
-            }
-            return false;
         }
     }
 }

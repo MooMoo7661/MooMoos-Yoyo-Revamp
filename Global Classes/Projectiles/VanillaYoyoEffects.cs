@@ -810,7 +810,8 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             if (flag)
             {
                 //ABILITY - EXTENDED REACH : Yoyo range is greatly increased with second ai. Change 20f to 100f+
-                num9 += 20f;
+                if (player.GetModPlayer<YoyoModPlayer>().moonTrick) { num9 += 150f; }
+                else { num9 += 20f; }
             }
             if (projectile.ai[0] >= 0f)
             {

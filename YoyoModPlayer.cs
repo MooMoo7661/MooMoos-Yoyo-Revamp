@@ -78,11 +78,7 @@ namespace CombinationsMod
         public bool nebulaDrill = false;
         public bool stardustDrill = false;
         public bool celestialDrill = false;
-        public bool celestialDrillExtended = false;
         public bool moomooDrill = false;
-        public bool shadowflameDrill = false;
-        public bool scooperDrill = false;
-        public bool ninjaDrill = false;
         public bool excavatorDrill = false;
 
         public bool yoyoRing = false; // Power Ring
@@ -105,6 +101,7 @@ namespace CombinationsMod
         public bool trick1 = false; // Around the World
         public bool trick2 = false; // Around the World Tier 2
         public bool dualYoyo = false; // Dual Yoyo trick
+        public bool moonTrick = false; // Shoot to the Moon
 
         public override void ResetEffects() // Lets accessories be temporary.
         {
@@ -157,11 +154,7 @@ namespace CombinationsMod
             nebulaDrill = false;
             stardustDrill = false;
             celestialDrill = false;
-            celestialDrillExtended = false;
             moomooDrill = false;
-            shadowflameDrill = false;
-            scooperDrill = false;
-            ninjaDrill = false;
             excavatorDrill = false;
 
             yoyoRing = false;
@@ -183,8 +176,19 @@ namespace CombinationsMod
             trick1 = false;
             trick2 = false;
             dualYoyo = false;
+            moonTrick = false;
         }
 
+
+        public override void PostUpdate()
+        {
+            Main.NewText(Player.selectedItem);
+
+           if(Player.selectedItem == Player.inventory[58].type)
+           {
+                Main.NewText("true");
+           }
+        }
         /// <summary>
         /// Inputs regular yoyo string length, then returns the modified length depending on player bools.
         /// </summary>
@@ -294,8 +298,14 @@ namespace CombinationsMod
         public static int GetYoyoToCast(Player player)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            int yoyoToCast = ContentSamples.ProjectilesByType[player.HeldItem.shoot].type;
 
+            if (player.selectedItem == 58)
+            {
+                return ContentSamples.ProjectilesByType[player.inventory[58].shoot].type;
+            }
+
+            int yoyoToCast = ContentSamples.ProjectilesByType[player.inventory[player.selectedItem].shoot].type;
+            
             if (modPlayer.dualYoyo)
             {
                 if (ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
@@ -358,10 +368,21 @@ namespace CombinationsMod
             {
                 if (num >= 0)
                 {
-                    int damage = player.HeldItem.damage;
-                    float knockback = player.HeldItem.knockBack;
+                    int damage;
+                    float knockback;
 
-                    if (ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
+                    if (player.selectedItem == 58)
+                    {
+                        damage = player.inventory[58].damage;
+                        knockback = player.inventory[58].knockBack;
+                    }
+                    else
+                    {
+                        damage = player.inventory[player.selectedItem].damage;
+                        knockback = player.inventory[player.selectedItem].knockBack;
+                    }
+
+                    if (player.selectedItem != 58 && ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
                     {
                         damage = player.inventory[player.selectedItem + 1].damage;
                         knockback = player.inventory[player.selectedItem + 1].knockBack;

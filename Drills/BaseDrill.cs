@@ -30,6 +30,9 @@ namespace CombinationsMod.Drills
         // Cooldown between drill 'picks' in ticks
         protected abstract int DrillCooldown { get; }
 
+        protected abstract int Width { get; }
+        protected abstract int Height { get; }
+
         // Drill is enabled and should be visible
         protected bool IsDrillEnabled
         {
@@ -45,8 +48,8 @@ namespace CombinationsMod.Drills
 
         public override void SetDefaults()
         {
-            Projectile.width = 38;
-            Projectile.height = 38;
+            Projectile.width = Width;
+            Projectile.height = Height;
             Projectile.friendly = false;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
@@ -101,9 +104,6 @@ namespace CombinationsMod.Drills
                 return;
             }
 
-            
-            
-
             if (!IsDrillEnabled)
             {
                 // Do not update if the drill is disabled
@@ -112,7 +112,7 @@ namespace CombinationsMod.Drills
 
             // Follow the parent yoyo around
             Projectile.Center = proj.Center;
-            Projectile.rotation -= 0.60f;
+            Projectile.rotation -= 0.35f;
 
             // Play the drill sound periodically
             if (Main.netMode != NetmodeID.Server && !string.IsNullOrEmpty(DrillSound.SoundPath) && _drillSoundTimer > 0)

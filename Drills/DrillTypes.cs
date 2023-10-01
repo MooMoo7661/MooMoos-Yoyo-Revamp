@@ -18,6 +18,9 @@ namespace CombinationsMod.Drills
 
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22; // Sound ID 22 is drill, sound 23 is drill end
+
+        protected override int Width => 32;
+        protected override int Height => 32;
     }
 
     public class PalladiumDrill : BaseDrill
@@ -26,6 +29,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 29;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 36;
+        protected override int Height => 36;
     }
     public class CobaltDrill : BaseDrill
     {
@@ -33,6 +39,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 29;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 36;
+        protected override int Height => 36;
     }
 
     public class OrichalcumDrill : BaseDrill
@@ -41,6 +50,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 27;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 40;
+        protected override int Height => 40;
     }
     public class MythrilDrill : BaseDrill
     {
@@ -48,6 +60,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 27;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 40;
+        protected override int Height => 40;
     }
     public class AdamantiteDrill : BaseDrill
     {
@@ -55,6 +70,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 23;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 44;
+        protected override int Height => 44;
     }
     public class TitaniumDrill : BaseDrill
     {
@@ -62,6 +80,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 22;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 44;
+        protected override int Height => 44;
     }
     public class Hakapik : BaseDrill
     {
@@ -69,6 +90,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 19;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 48;
+        protected override int Height => 48;
     }
     public class Mattock : BaseDrill
     {
@@ -76,6 +100,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 19;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 48;
+        protected override int Height => 48;
     }
     public class SpectralShredder : BaseDrill
     {
@@ -83,6 +110,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 19;
         protected override int BlockRangeStyle => 3; // Diamond Shape
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 48;
+        protected override int Height => 48;
     }
     public class ShroomiteShredder : BaseDrill
     {
@@ -90,6 +120,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 17;
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 48;
+        protected override int Height => 48;
     }
     public class Tsurugi : BaseDrill
     {
@@ -97,6 +130,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 18;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 52;
+        protected override int Height => 52;
     }
     public class HorsemansDrill : BaseDrill
     {
@@ -104,6 +140,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 15;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 48;
+        protected override int Height => 48;
     }
     public class TreeClippers : BaseDrill
     {
@@ -111,6 +150,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 15;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 48;
+        protected override int Height => 48;
     }
     public class SolarDrill : BaseDrill
     {
@@ -118,6 +160,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 52;
+        protected override int Height => 52;
     }
 
     public class VortexDrill : BaseDrill
@@ -126,6 +171,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 52;
+        protected override int Height => 52;
     }
 
     public class NebulaDrill : BaseDrill
@@ -134,6 +182,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 52;
+        protected override int Height => 52;
     }
 
     public class StardustDrill : BaseDrill
@@ -142,6 +193,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 13;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 52;
+        protected override int Height => 52;
     }
 
     public class CelestialDrill : BaseDrill
@@ -150,16 +204,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 10;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
-    }
 
-    public class CelestialDrill2 : BaseDrill
-    {
-        protected override int DrillTier => 250;
-        protected override int DrillCooldown => 10;
-        protected override int BlockRangeStyle => 4; // Larger Square
-        protected override SoundStyle DrillSound => SoundID.Item22;
-
-        public override string Texture => "CombinationsMod/Drills/CelestialDrill";
+        protected override int Width => 60;
+        protected override int Height => 60;
     }
 
     public class MooMooDrill : BaseDrill
@@ -168,6 +215,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 1;
         protected override int BlockRangeStyle => 4; // Larger Square
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 64;
+        protected override int Height => 64;
     }
 
     //public class ShadowflameDrill : BaseDrill
@@ -200,6 +250,9 @@ namespace CombinationsMod.Drills
         protected override int DrillCooldown => 1;
         protected override int BlockRangeStyle => 5;
         protected override SoundStyle DrillSound => SoundID.Item22;
+
+        protected override int Width => 68;
+        protected override int Height => 68;
     }
 
 }

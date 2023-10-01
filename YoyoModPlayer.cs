@@ -179,16 +179,6 @@ namespace CombinationsMod
             moonTrick = false;
         }
 
-
-        public override void PostUpdate()
-        {
-            Main.NewText(Player.selectedItem);
-
-           if(Player.selectedItem == Player.inventory[58].type)
-           {
-                Main.NewText("true");
-           }
-        }
         /// <summary>
         /// Inputs regular yoyo string length, then returns the modified length depending on player bools.
         /// </summary>

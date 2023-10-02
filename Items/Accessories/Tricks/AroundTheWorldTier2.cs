@@ -43,9 +43,9 @@ namespace CombinationsMod.Items.Accessories.Tricks
         {
             CreateRecipe()
                 .AddIngredient(ItemType<AroundTheWorld>())
-                .AddIngredient(ItemType<MightBar>(), 5)
-                .AddIngredient(ItemType<SightBar>(), 5)
-                .AddIngredient(ItemType<FrightBar>(), 5)
+                .AddIngredient(ItemType<MightBar>(), 2)
+                .AddIngredient(ItemType<SightBar>(), 2)
+                .AddIngredient(ItemType<FrightBar>(), 2)
                 .AddIngredient(ItemID.SoulofNight, 5)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();

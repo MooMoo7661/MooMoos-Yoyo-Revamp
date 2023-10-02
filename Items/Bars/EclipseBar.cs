@@ -50,24 +50,24 @@ namespace CombinationsMod.Items.Bars
             recipe.Register();
         }
 
-        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            float sizeLimit = 34;
-            int numberOfCloneImages = 6;
-            Main.DrawItemIcon(spriteBatch, Item, position, Color.White * 0.7f, sizeLimit);
-            for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
-            {
-                float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly * MathF.Tau / 1.5f) + 0.9f;
-                cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
-                Color color = Color.OrangeRed * 0.3f;
-                color *= 1f - cloneImageDistance * 0.2f;
-                color.A = 0;
-                cloneImageDistance *= 2.5f;
-                Vector2 drawPos = position + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f);
-                Main.DrawItemIcon(spriteBatch, Item, drawPos, color, sizeLimit);
-            }
-            return false;
-        }
+        //public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        //{
+        //    float sizeLimit = 34;
+        //    int numberOfCloneImages = 6;
+        //    Main.DrawItemIcon(spriteBatch, Item, position, Color.White * 0.7f, sizeLimit);
+        //    for (float i = 0; i < 1; i += 1f / numberOfCloneImages)
+        //    {
+        //        float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly * MathF.Tau / 1.5f) + 0.9f;
+        //        cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
+        //        Color color = Color.OrangeRed * 0.3f;
+        //        color *= 1f - cloneImageDistance * 0.2f;
+        //        color.A = 0;
+        //        cloneImageDistance *= 2.5f;
+        //        Vector2 drawPos = position + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f);
+        //        Main.DrawItemIcon(spriteBatch, Item, drawPos, color, sizeLimit);
+        //    }
+        //    return false;
+        //}
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {

@@ -36,11 +36,11 @@ namespace CombinationsMod.GlobalClasses.Loot
 					break;
 
 				case NPCID.Ghost:
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 6));
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 9));
 					break;
 
 				case NPCID.Poltergeist or NPCID.Wraith:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 6));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 11));
 					break;
 
                 case NPCID.HeadlessHorseman or NPCID.MourningWood or NPCID.Pumpking:

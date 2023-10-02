@@ -30,6 +30,7 @@ Mods: {
 				EvilYoyos: Heals the user on hit
 				Rally: Creates 3 swirling copies that deal 50% of the yoyo's damage
 				Code1: Creates 6 swirling copies that deal 50% of the yoyo's damage
+				Crowyo: Shoots black homing feathers that deal 40% of the yoyo's damage
 				ChristmasBulb:
 					'''
 					Shoots out 8 explosive ornaments after 30 hits
@@ -327,6 +328,8 @@ Mods: {
 			EmpressProjectile.DisplayName: Empress Projectile
 			Excavator.DisplayName: Excavator
 			StoneAgeProjectile.DisplayName: Stone Age Projectile
+			TheCrowyoProjectile.DisplayName: The Crowyo Projectile
+			CrowyoFeather.DisplayName: Crowyo Feather
 		}
 
 		Items: {
@@ -1325,6 +1328,15 @@ Mods: {
 					'''
 					Medium-value trick
 					[c/E475FF:Increases the range of extra yoyos created with the yoyo glove]
+					'''
+			}
+
+			TheCrowyo: {
+				DisplayName: The Crowyo
+				Tooltip:
+					'''
+					"I'm so hungry I could eat a horse!"
+					Created after months of incessant pestering from the Discord members
 					'''
 			}
 		}

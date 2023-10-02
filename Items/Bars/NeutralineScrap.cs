@@ -33,7 +33,7 @@ namespace CombinationsMod.Items.Bars
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(2);
+            Recipe recipe = CreateRecipe(3);
             recipe.AddRecipeGroup(CombinationsModSystem.eclipseWeaponGroup);
             recipe.AddTile(TileID.AdamantiteForge);
             recipe.DisableDecraft();

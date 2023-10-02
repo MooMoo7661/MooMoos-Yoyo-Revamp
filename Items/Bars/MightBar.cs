@@ -33,7 +33,7 @@ namespace CombinationsMod.Items.Bars
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
+            Recipe recipe = CreateRecipe(2);
             recipe.AddIngredient(ItemID.SoulofMight, 1);
             recipe.AddRecipeGroup(CombinationsModSystem.adamantiteBarRecipeGroup, 1);
             recipe.AddTile(TileID.AdamantiteForge);

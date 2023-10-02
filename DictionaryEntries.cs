@@ -70,6 +70,7 @@ namespace CombinationsMod
         public LocalizedAbilityString LocalizedEOCYoyo = new LocalizedAbilityString();
         public LocalizedAbilityString LocalizedCode2 = new LocalizedAbilityString();
         public LocalizedAbilityString LocalizedYelets = new LocalizedAbilityString();
+        public LocalizedAbilityString LocalizedCrowyo = new LocalizedAbilityString();
         #endregion
 
 
@@ -117,6 +118,7 @@ namespace CombinationsMod
             LocalizedEOCYoyo.SetStringValue(Language.GetTextValue(abilityFilePath + "EOCYoyo")); yoyoAbilityDictionary.TryAdd(ItemID.TheEyeOfCthulhu, LocalizedEOCYoyo);
             LocalizedCode2.SetStringValue(Language.GetTextValue(abilityFilePath + "Code2")); yoyoAbilityDictionary.TryAdd(ItemID.Code2, LocalizedCode2);
             LocalizedYelets.SetStringValue(Language.GetTextValue(abilityFilePath + "Yelets")); yoyoAbilityDictionary.TryAdd(ItemID.Yelets, LocalizedYelets);
+            LocalizedCrowyo.SetStringValue(Language.GetTextValue(abilityFilePath + "Crowyo")); yoyoAbilityDictionary.TryAdd(ItemType<TheCrowyo>(), LocalizedCrowyo);
             #endregion
         }
 

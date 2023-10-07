@@ -24,7 +24,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            
+
             Player player = Main.player[projectile.owner];
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
@@ -159,7 +159,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                         slimeThornCounter = 0;
                     }
-                } 
+                }
 
                 /*if (beeCounter == 60)
                 {
@@ -324,7 +324,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             Player player = Main.player[projectile.owner];
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            if (modPlayer.shimmerBag && projectile.aiStyle == 99 && !projectile.counterweight && Main.myPlayer == projectile.owner) { return false; }
+            if ((modPlayer.shimmerBag || modPlayer.moonlordBag) && projectile.aiStyle == 99 && !projectile.counterweight && Main.myPlayer == projectile.owner) { return false; }
 
             return true;
         }

@@ -117,6 +117,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 				case NPCID.MoonLordCore:
                     LeadingConditionRule notExpertRule8 = new LeadingConditionRule(new Conditions.NotExpert());
                     notExpertRule8.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MoonlordBag>(), 3));
+                    notExpertRule8.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CelestialDrillCasing>(), 3));
                     npcLoot.Add(notExpertRule8);
 					break;
             }

@@ -49,7 +49,8 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
                 case ItemID.MoonLordBossBag:
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MoonlordBag>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MoonlordBag>(), 3));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CelestialDrillCasing>(), 3));
                     break;
             }
         }

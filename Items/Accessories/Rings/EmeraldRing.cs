@@ -10,12 +10,6 @@ namespace CombinationsMod.Items.Accessories.Rings
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Emerald Ring");
-            // Tooltip.SetDefault("Yoyos will emit bright green light");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 24;

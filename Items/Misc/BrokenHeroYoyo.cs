@@ -12,12 +12,6 @@ namespace CombinationsMod.Items.Misc;
 
 public class BrokenHeroYoyo : ItemLoader
 {
-    public override void SetStaticDefaults()
-    {
-        // DisplayName.SetDefault("Broken Hero Yoyo");
-        // Tooltip.SetDefault("");
-    }
-
     public override void SetDefaults()
     {
         Item.width = 30;

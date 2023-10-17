@@ -12,8 +12,6 @@ namespace CombinationsMod.Projectiles.Misc
         private int dustTimer = 0;
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("");
-
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
         }
         public override void SetDefaults()

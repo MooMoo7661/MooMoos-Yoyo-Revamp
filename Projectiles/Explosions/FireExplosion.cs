@@ -9,12 +9,6 @@ namespace CombinationsMod.Projectiles.Explosions
     
     public class FireExplosion : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Fire Explosion");
-
-            
-        }
         public override void SetDefaults()
         {
             Projectile.width = 100;

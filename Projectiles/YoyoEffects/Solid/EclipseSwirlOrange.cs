@@ -14,11 +14,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
     public class EclipseSwirlOrange : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Eclipse Swirl Orange");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 100;

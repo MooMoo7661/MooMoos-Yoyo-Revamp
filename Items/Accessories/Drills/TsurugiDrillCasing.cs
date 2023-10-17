@@ -9,12 +9,6 @@ namespace CombinationsMod.Items.Accessories.Drills
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Tsurugi");
-            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:210% pickaxe power]\n+1 range\nCapable of mining Lihzahrd Bricks");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 38;

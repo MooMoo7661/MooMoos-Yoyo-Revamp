@@ -9,12 +9,6 @@ namespace CombinationsMod.Projectiles.Explosions
     
     public class BlueExplosion : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Blue Explosion");
-
-            
-        }
         public override void SetDefaults()
         {
             Projectile.width = 100;

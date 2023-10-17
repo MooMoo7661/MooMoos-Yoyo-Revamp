@@ -13,12 +13,6 @@ namespace CombinationsMod.Items.Accessories.Strings
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Eclipse String");
-            // Tooltip.SetDefault("Increases yoyo range\nFeels very heavy\nYoyos create damaging swipes on hit\n[c/6EAE6E:+150 yoyo range]");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 28;

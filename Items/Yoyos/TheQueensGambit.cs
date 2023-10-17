@@ -14,9 +14,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("The Queen's Gambit");
-            // Tooltip.SetDefault("Releases bees on hit and has a chance to poison the target\nBees make up for lack of initial damage\nHas a chance to leave bees in it's wake\n\"Now includes added Hive Pack support!\"");
         }
 
         public override void SetDefaults()

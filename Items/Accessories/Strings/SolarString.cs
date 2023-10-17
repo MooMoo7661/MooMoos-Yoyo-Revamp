@@ -16,12 +16,6 @@ namespace CombinationsMod.Items.Accessories.Strings
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Solar String");
-            // Tooltip.SetDefault("Increases yoyo range\n[c/6EAE6E:+250 yoyo range]\n[c/6EAE6E:+5% base yoyo damage]");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 28;

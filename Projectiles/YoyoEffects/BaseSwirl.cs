@@ -31,11 +31,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects
 
         public string transparent = "/Transparent";
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault(ProjectileName);
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = Width;

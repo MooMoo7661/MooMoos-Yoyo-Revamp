@@ -9,8 +9,6 @@ namespace CombinationsMod.Buffs
 		public int timer = 0;
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Osteopenia");
-			// Description.SetDefault("Reduced defense and strength");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

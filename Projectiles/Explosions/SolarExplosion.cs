@@ -9,12 +9,6 @@ namespace CombinationsMod.Projectiles.Explosions
     
     public class SolarExplosion : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Solar Explosion");
-
-            
-        }
         public override void SetDefaults()
         {
             Projectile.width = 100;

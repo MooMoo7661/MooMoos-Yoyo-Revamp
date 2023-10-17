@@ -8,11 +8,6 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
 {
     class SpeedInfo : InfoDisplay
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Yoyo Speed Display");
-        }
-
         public override bool Active()
         {
             return Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().speedTracker;

@@ -16,8 +16,6 @@ namespace CombinationsMod.Items.Souls
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Soul of Eclipse");
-            // Tooltip.SetDefault("'The essence of otherworldly creatures'");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 

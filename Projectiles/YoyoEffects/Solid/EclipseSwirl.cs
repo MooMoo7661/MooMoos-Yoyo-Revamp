@@ -13,10 +13,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
     public class EclipseSwirl : ModProjectile
     {
         protected float Scale = 0.5f;
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Eclipse Swirl More-Orange-Than-The-Other-One");
-        }
 
         public override void SetDefaults()
         {

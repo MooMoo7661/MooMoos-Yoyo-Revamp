@@ -8,13 +8,6 @@ namespace CombinationsMod.Items.Bars
 {
     public class MightBar : ItemLoader
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Might Bar");
-            // Tooltip.SetDefault("'Forged from the essence of powerful creatures'");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 32;

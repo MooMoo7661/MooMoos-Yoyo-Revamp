@@ -14,9 +14,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("The Thin Mint");
-            // Tooltip.SetDefault("\"Please do not eat the mints\"");
         }
 
         public override void SetDefaults()

@@ -6,12 +6,6 @@ namespace CombinationsMod.Items.Misc
 {
     public class BrokenHeroRing : ItemLoader
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Broken Hero Ring");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 24;

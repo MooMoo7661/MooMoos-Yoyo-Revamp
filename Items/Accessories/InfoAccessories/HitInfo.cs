@@ -7,10 +7,6 @@ namespace CombinationsMod.Items.Accessories.InfoAccessories
 {
     class HitInfo : InfoDisplay
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Yoyo Hit Counter");
-        }
         public override bool Active()
         {
             return Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().hitTracker;

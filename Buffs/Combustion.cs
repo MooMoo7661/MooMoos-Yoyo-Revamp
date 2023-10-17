@@ -10,8 +10,6 @@ namespace CombinationsMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Combustion");
-			// Description.SetDefault("Exploding in fire");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

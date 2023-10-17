@@ -10,11 +10,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
     public class Sparkle1 : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Sparkle 1");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 200;

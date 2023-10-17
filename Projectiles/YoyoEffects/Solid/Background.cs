@@ -7,12 +7,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
     public class Background : ModProjectile
     {
-        
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Red Background");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 50;

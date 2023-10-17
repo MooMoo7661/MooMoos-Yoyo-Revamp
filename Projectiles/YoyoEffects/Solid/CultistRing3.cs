@@ -11,11 +11,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
     public class CultistRingDamage : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Cultist Ring 3");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 150;

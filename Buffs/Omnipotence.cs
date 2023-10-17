@@ -8,8 +8,6 @@ namespace CombinationsMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Omnipotence");
-			// Description.SetDefault("Glowing");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;
 			Main.buffNoSave[Type] = true;

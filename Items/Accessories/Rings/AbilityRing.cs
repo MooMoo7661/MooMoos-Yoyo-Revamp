@@ -9,12 +9,6 @@ namespace CombinationsMod.Items.Accessories.Rings
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ability Ring");
-            // Tooltip.SetDefault("[c/FF00AB:Enables Yoyos to use their special abilities.]\nYoyos will show the requirements for triggering the ability.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 24;

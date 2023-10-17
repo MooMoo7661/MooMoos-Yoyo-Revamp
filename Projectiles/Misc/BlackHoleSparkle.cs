@@ -41,11 +41,6 @@ namespace CombinationsMod.Projectiles.Misc
             }
         }
 
-        public override void SetStaticDefaults()
-        {
-            // base.DisplayName.SetDefault("Sparkle");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 72;

@@ -10,12 +10,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
     public class SmudgeHitbox : ModProjectile
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Smudge Hitbox");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 150;

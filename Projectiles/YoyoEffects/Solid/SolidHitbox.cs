@@ -10,11 +10,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
 
     public class SolidHitbox : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Solid Hitbox");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 150;

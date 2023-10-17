@@ -8,13 +8,6 @@ namespace CombinationsMod.Items.Bars
 {
     public class NeutralineScrap : ItemLoader
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Neutraline Scrap");
-            // Tooltip.SetDefault("Melted down slag of dangerous weapons");
-        }
-            
         public override void SetDefaults()
         {
             Item.width = 20;

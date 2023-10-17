@@ -9,12 +9,6 @@ namespace CombinationsMod.Projectiles.Explosions
     
     public class HelFireExplosion : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Hel-Fire Explosion");
-
-            
-        }
         public override void SetDefaults()
         {
             Projectile.width = 100;

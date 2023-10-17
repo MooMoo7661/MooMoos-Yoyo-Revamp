@@ -10,12 +10,6 @@ namespace CombinationsMod.Items.Accessories.Rings
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Gemstone Ring");
-            // Tooltip.SetDefault("Yoyos will emit a variety of colors");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 24;

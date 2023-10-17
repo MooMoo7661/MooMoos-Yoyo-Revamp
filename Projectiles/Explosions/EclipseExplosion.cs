@@ -9,12 +9,6 @@ namespace CombinationsMod.Projectiles.Explosions
     
     public class EclipseExplosion : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Eclipse Explosion");
-
-            
-        }
         public override void SetDefaults()
         {
             Projectile.width = 100;

@@ -1257,7 +1257,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 18;
-            // DisplayName.SetDefault("Black Hole 2");
         }
     }
 

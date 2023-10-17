@@ -40,12 +40,6 @@ namespace CombinationsMod.Drills
             set => Projectile.ai[0] = value ? 1f : 0f;
         }
 
-        
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Yoyo Drill");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = Width;

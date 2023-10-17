@@ -11,12 +11,6 @@ namespace CombinationsMod.Items.Accessories.Drills
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("MooMoo's Drill");
-            // Tooltip.SetDefault("Allows Yoyos to drill through blocks\nHold right click to drill\n[c/BCFFF0:250% pickaxe power]\n+2 range");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 38;

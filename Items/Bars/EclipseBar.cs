@@ -13,13 +13,6 @@ namespace CombinationsMod.Items.Bars
 {
     public class EclipseBar : ItemLoader
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Eclipse Bar");
-            // Tooltip.SetDefault("Radiates otherworldly energy");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 30;

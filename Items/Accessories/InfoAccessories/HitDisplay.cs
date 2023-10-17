@@ -1,19 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CombinationsMod.Items.Accessories.InfoAccessories
 {
     public class HitDisplay : ItemLoader
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Mechanical Clicker");
-            // Tooltip.SetDefault("Displays the current consecutive hits by a Yoyo");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 28;

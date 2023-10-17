@@ -11,12 +11,6 @@ namespace CombinationsMod.Items.Accessories.Rings
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ring of Trepidation");
-            // Tooltip.SetDefault("[c/6EAE6E:+10% base yoyo damage]");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 24;

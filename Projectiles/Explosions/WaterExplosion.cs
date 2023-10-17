@@ -9,12 +9,6 @@ namespace CombinationsMod.Projectiles.Explosions
     
     public class WaterExplosion : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Water Explosion");
-
-            
-        }
         public override void SetDefaults()
         {
             Projectile.width = 100;

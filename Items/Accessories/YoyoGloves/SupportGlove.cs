@@ -10,13 +10,6 @@ namespace CombinationsMod.Items.Accessories.YoyoGloves
 {
     public class SupportGlove : ItemLoader
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Support Glove");
-            // Tooltip.SetDefault("Allows the use of a third yoyo\nRequires a yoyo glove or yoyo bag to work");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 32;

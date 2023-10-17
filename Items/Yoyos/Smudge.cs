@@ -2,10 +2,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using CombinationsMod.Projectiles.YoyoProjectiles;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace CombinationsMod.Items.Yoyos
 {
@@ -16,9 +13,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("Smudge");
-            // Tooltip.SetDefault("Does increased damage to spectral targets.\nWhen in a graveyard biome, it receives a 2x damage boost marked by the emission of blue flames.\n\"Has a 6 second grace period.\"");
         }
 
         public override void SetDefaults()

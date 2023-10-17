@@ -8,12 +8,6 @@ namespace CombinationsMod.Items.Accessories.Tricks
 {
     public class AroundTheWorldTier2 : ItemLoader
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Around The World Tier 2");
-            // Tooltip.SetDefault("Medium-value trick\nCreates 2 seperate yoyos that swirl around the player in a circle that do 2.5x damage.\nRange stacks with a percentage of your current yoyo's range\nCreates two per yoyo that you have active\nMust be equipped in regular slots");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 28;

@@ -38,7 +38,6 @@ namespace CombinationsMod.NPCS
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Skeleton Peddler");
             Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.SkeletonMerchant];
 
             NPCID.Sets.ExtraFramesCount[Type] = NPCID.Sets.ExtraFramesCount[NPCID.SkeletonMerchant];

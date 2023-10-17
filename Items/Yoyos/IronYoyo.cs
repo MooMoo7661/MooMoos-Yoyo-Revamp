@@ -2,8 +2,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
-using System.Collections.Generic;
 using CombinationsMod.Projectiles.YoyoProjectiles;
 
 namespace CombinationsMod.Items.Yoyos
@@ -15,9 +13,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("Iron Yoyo");
-            // Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()

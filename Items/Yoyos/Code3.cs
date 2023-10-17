@@ -14,9 +14,6 @@ namespace CombinationsMod.Items.Yoyos
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
-
-            // DisplayName.SetDefault("Code 3");
-            // Tooltip.SetDefault("\"The long awaited sequel\"");
         }
 
         public override void SetDefaults()

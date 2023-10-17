@@ -8,13 +8,6 @@ namespace CombinationsMod.Items.Bars
 {
     public class FrightBar : ItemLoader
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Fright Bar");
-            // Tooltip.SetDefault("'Forged from the essence of terrifying creatures'");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 32;

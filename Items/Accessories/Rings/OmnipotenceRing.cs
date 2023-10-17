@@ -13,12 +13,6 @@ namespace CombinationsMod.Items.Accessories.Rings
     {
         public override bool CanBeUnloaded => true;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ring of Perception");
-            // Tooltip.SetDefault("Yoyos shoot cursed flames");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 24;

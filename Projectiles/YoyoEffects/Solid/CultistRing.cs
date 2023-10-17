@@ -16,11 +16,6 @@ namespace CombinationsMod.Projectiles.YoyoEffects.Solid
     {
         protected float scaleSync = 0.15f;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Cultist Ring 1");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 408;

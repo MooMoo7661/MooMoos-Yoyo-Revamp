@@ -8,8 +8,6 @@ namespace CombinationsMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Frostbite");
-			// Description.SetDefault("Frozen in place");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

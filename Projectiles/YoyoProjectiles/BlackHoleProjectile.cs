@@ -2,15 +2,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
-using Terraria.Audio;
 using CombinationsMod.Projectiles.YoyoEffects;
 using Microsoft.Xna.Framework;
 using CombinationsMod.Projectiles.Misc;
 using CombinationsMod.Projectiles.YoyoEffects.Solid;
 using Terraria.DataStructures;
 using CombinationsMod.GlobalClasses.Projectiles;
-using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework.Graphics;
+using static CombinationsMod.ModDetector;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -18,7 +17,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
     {
         public override void SetStaticDefaults()
         {
-
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 364f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18.5f;
@@ -26,7 +24,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void SetDefaults()
         {
-            Projectile.extraUpdates = 0;
+            //if (CalamityLoaded) { Projectile.MaxUpdates = 3; }
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;

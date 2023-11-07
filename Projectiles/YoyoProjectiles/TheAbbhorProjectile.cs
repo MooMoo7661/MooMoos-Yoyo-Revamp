@@ -31,8 +31,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         public override void SetDefaults()
         {
             Projectile.extraUpdates = 0;
-            Projectile.width = 20;
-            Projectile.height = 20;
+            Projectile.width = 16;
+            Projectile.height = 16;
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
             Projectile.penetrate = -1;

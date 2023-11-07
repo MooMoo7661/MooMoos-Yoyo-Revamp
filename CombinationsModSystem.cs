@@ -3,17 +3,12 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using CombinationsMod.Items.Bars;
 using CombinationsMod.Items.Accessories.Strings;
 using CombinationsMod.Items.Yoyos;
-using System.Collections.Generic;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using static Terraria.ModLoader.ModContent;
-using CombinationsMod.Projectiles.TrickYoyos;
-using static Terraria.ID.SetFactory;
 
 namespace CombinationsMod
 {
@@ -52,7 +47,6 @@ namespace CombinationsMod
             TextureAssets.Item[ItemID.Code1] = Request<Texture2D>("CombinationsMod/VanillaTexturesOverride/Code1");
             
             AddDictionaryEntries();
-            
         }
 
         public override void Unload()
@@ -146,10 +140,8 @@ namespace CombinationsMod
 
         public override void PreSaveAndQuit()
         {
-            Player player = Main.LocalPlayer;
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
+            YoyoModPlayer modPlayer = Main.LocalPlayer.GetModPlayer<YoyoModPlayer>();
             modPlayer.HitCounter = 0;
         }
-    }
+   }
 }

@@ -52,11 +52,16 @@ namespace CombinationsMod.UI
                 }
             }
 
-            return checkItem.ModItem is ModString;
+            return ItemSets.YoyoString[checkItem.type];
         }
         public override bool IsVisibleWhenNotEnabled()
         {
             return false;
+        }
+
+        public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo)
+        {
+            return ItemSets.YoyoString[item.type];
         }
 
         public override bool IsEnabled()
@@ -130,6 +135,10 @@ namespace CombinationsMod.UI
             return true;
         }
 
+        public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo)
+        {
+            return ItemSets.YoyoGlove[item.type];
+        }
         public override Vector2? CustomLocation => RightGlovePos();
         public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/YoyoGloveSlotLarge" : "CombinationsMod/UI/YoyoGloveSlot";
         public override bool DrawDyeSlot => false;
@@ -180,6 +189,11 @@ namespace CombinationsMod.UI
             return true;
         }
 
+        public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo)
+        {
+            return ItemSets.SupportGlove[item.type];
+        }
+
         public override Vector2? CustomLocation => LeftGlovePos();
 
         public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/SupportGloveSlotLarge" : "CombinationsMod/UI/SupportGloveSlot";
@@ -201,7 +215,7 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            return checkItem.ModItem is ModDrill;
+            return checkItem.ModItem is ModDrill || ItemSets.DrillCasing[checkItem.type];
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -250,8 +264,7 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            return checkItem.type == ItemID.BlackCounterweight || checkItem.type == ItemID.BlueCounterweight || checkItem.type == ItemID.GreenCounterweight ||
-                checkItem.type == ItemID.PurpleCounterweight || checkItem.type == ItemID.RedCounterweight || checkItem.type == ItemID.YellowCounterweight;
+            return ItemSets.Counterweight[checkItem.type];
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -297,7 +310,7 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            return checkItem.ModItem is ModRing;
+            return checkItem.ModItem is ModRing || ItemSets.YoyoRing[checkItem.type];
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -346,16 +359,7 @@ namespace CombinationsMod.UI
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            if (checkItem.type == ItemType<RingOfCoalescence>() || checkItem.type == ItemType<AbilityRing>() || checkItem.type == ItemType<AmberRing>() ||
-                checkItem.type == ItemType<AmethystRing>() || checkItem.type == ItemType<DiamondRing>() || checkItem.type == ItemType<EmeraldRing>() ||
-                checkItem.type == ItemType<FortitudeRing>() || checkItem.type == ItemType<GemstoneRing>() || checkItem.type == ItemType<OmnipotenceRing>() ||
-                checkItem.type == ItemType<RubyRing>() || checkItem.type == ItemType<SapphireRing>() || checkItem.type == ItemType<TerreneRing>() ||
-                checkItem.type == ItemType<TopazRing>() || checkItem.type == ItemType<TrepidationRing>())
-            {
-                return true;
-            }
-
-            return false;
+            return checkItem.ModItem is ModRing || ItemSets.YoyoRing[checkItem.type];
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -396,15 +400,13 @@ namespace CombinationsMod.UI
                     break;
             }
         }
-
-
     }
 
     public class TrickSlot : ModAccessorySlot
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
         {
-            return checkItem.type == ItemType<AroundTheWorld>() || checkItem.type == ItemType<AroundTheWorldTier2>() || checkItem.type == ItemType<DualYoyo>() || checkItem.type == ItemType<ShootToTheMoon>();
+            return ItemSets.Trick[checkItem.type];
         }
         public override bool IsVisibleWhenNotEnabled()
         {
@@ -445,7 +447,5 @@ namespace CombinationsMod.UI
                     break;
             }
         }
-
-
     }
 }

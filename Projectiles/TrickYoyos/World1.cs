@@ -25,6 +25,7 @@ namespace CombinationsMod.Projectiles.TrickYoyos
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Melee;
+            MooMooLib.DrawSets.CanHaveYoyoStringDrawnFromProjectile[Type] = true;
         }
 
         private bool _initialized;

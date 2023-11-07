@@ -12,18 +12,14 @@ using Terraria.GameContent.ItemDropRules;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.GameContent.Personalities;
-using Terraria.DataStructures;
 using System.Collections.Generic;
 using ReLogic.Content;
-using Terraria.ModLoader.IO;
 using CombinationsMod.Items.Accessories.Rings;
-
 using static Terraria.ModLoader.ModContent;
 using CombinationsMod.Items.Accessories.InfoAccessories;
 using CombinationsMod.Items.Accessories.Strings;
 using CombinationsMod.Items.Yoyos;
 using CombinationsMod.Items.Accessories.Drills;
-using CombinationsMod.Items.Accessories.Tricks;
 using CombinationsMod.Items.Accessories.YoyoGloves;
 
 namespace CombinationsMod.NPCS
@@ -146,24 +142,10 @@ namespace CombinationsMod.NPCS
             return new ExamplePersonProfile();
         }
 
-        public override void FindFrame(int frameHeight)
-        {
-            /*npc.frame.Width = 40;
-			if (((int)Main.time / 10) % 2 == 0)
-			{
-				npc.frame.X = 40;
-			}
-			else
-			{
-				npc.frame.X = 0;
-			}*/
-        }
-
         public override string GetChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-            // These are things that the NPC has a chance of telling you when you talk to it.
             chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.ExamplePerson.StandardDialogue1"));
             chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.ExamplePerson.StandardDialogue2"));
             chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.ExamplePerson.StandardDialogue3"));
@@ -171,12 +153,6 @@ namespace CombinationsMod.NPCS
             chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.ExamplePerson.StandardDialogue5"));
 
             NumberOfTimesTalkedTo++;
-            /* if (NumberOfTimesTalkedTo >= 10)
-             {
-                 //This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
-                 chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.TalkALot"));
-             }*/
-
             return chat;
         }
 
@@ -198,14 +174,6 @@ namespace CombinationsMod.NPCS
             }
         }
 
-        //public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        //{
-        //    Texture2D texture = ModContent.Request<Texture2D>("CombinationsMod/NPCS/Gus").Value;
-        //    Main.EntitySpriteDraw(texture, NPC.Center - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
-        //    Main.NewText((float)texture.Height / NPC.frame.Height);
-        //    return false;
-        //}
-
         public override void AddShops()
         {
             var yoyosShop = new NPCShop(Type, YoyoShop)
@@ -215,46 +183,26 @@ namespace CombinationsMod.NPCS
                 .Add(ItemID.CorruptYoyo, Condition.DownedEaterOfWorlds)
                 .Add(ModContent.ItemType<Catacomb>(), YoyoModConditions.MasterOrExpertMode, Condition.DownedSkeletron)
                 .Add(ItemType<TheQueensGambit>(), YoyoModConditions.MasterOrExpertMode, Condition.DownedQueenBee)
-                .Add(ItemID.Valor, Condition.DownedSkeletron);
+                .Add(ItemID.Valor, Condition.DownedSkeletron)
+                .Add(ItemID.Code1, Condition.DownedEyeOfCthulhu, YoyoModConditions.EaterOfWorldsOrBrain, Condition.DownedSkeletron, Condition.DownedQueenBee, Condition.DownedKingSlime)
+                .Add(ItemID.FormatC, Condition.Hardmode)
+                .Add(ItemID.HelFire, Condition.DownedDestroyer, Condition.Hardmode)
+                .Add(ItemID.Amarok, Condition.DownedTwins, Condition.Hardmode)
+                .Add(ItemID.TheEyeOfCthulhu, Condition.DownedTwins, Condition.Hardmode)
+                .Add(ItemID.Gradient, Condition.DownedSkeletronPrime, Condition.Hardmode)
+                .Add(ItemID.Yelets, Condition.DownedPlantera, Condition.Hardmode)
+                .Add(ItemID.RedsYoyo, Condition.DownedGolem, Condition.Hardmode)
+                .Add(ItemID.ValkyrieYoyo, Condition.DownedGolem, Condition.Hardmode)
+                .Add(ItemType<ChristmasBulb>(), Condition.DownedIceQueen, Condition.Hardmode)
+                .Add(ItemType<Mambele>(), Condition.DownedPumpking, Condition.Hardmode)
+                .Add(ItemType<CultistYoyo>(), Condition.DownedCultist, Condition.Hardmode)
+                .Add(ItemID.Kraken, Condition.DownedDukeFishron, Condition.Hardmode)
+                .Add(ItemID.Terrarian, Condition.DownedMoonLord, Condition.Hardmode);
 
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
-            {
-                yoyosShop.Add(veridianMod.Find<ItemLoader>("Stickler").Type, Condition.DownedKingSlime);
-            }
-
-            yoyosShop.Add(ItemID.Code1, Condition.DownedEyeOfCthulhu, YoyoModConditions.EaterOfWorldsOrBrain, Condition.DownedSkeletron, Condition.DownedQueenBee, Condition.DownedKingSlime);
-
-            yoyosShop.Add(ItemID.FormatC, Condition.Hardmode);
-
-            yoyosShop.Add(ItemID.HelFire, Condition.DownedDestroyer, Condition.Hardmode);
-
-            yoyosShop.Add(ItemID.Amarok, Condition.DownedTwins, Condition.Hardmode);
-            yoyosShop.Add(ItemID.TheEyeOfCthulhu, Condition.DownedTwins, Condition.Hardmode);
-
-            yoyosShop.Add(ItemID.Gradient, Condition.DownedSkeletronPrime, Condition.Hardmode);
-
-            yoyosShop.Add(ItemID.Yelets, Condition.DownedPlantera, Condition.Hardmode);
-
-            yoyosShop.Add(ItemID.RedsYoyo, Condition.DownedGolem, Condition.Hardmode);
-
-            yoyosShop.Add(ItemID.ValkyrieYoyo, Condition.DownedGolem, Condition.Hardmode);
-
-            yoyosShop.Add(ItemType<ChristmasBulb>(), Condition.DownedIceQueen, Condition.Hardmode);
-
-            yoyosShop.Add(ItemType<Mambele>(), Condition.DownedPumpking, Condition.Hardmode);
-
-            yoyosShop.Add(ItemType<CultistYoyo>(), Condition.DownedCultist, Condition.Hardmode);
-
-            yoyosShop.Add(ItemID.Kraken, Condition.DownedDukeFishron, Condition.Hardmode);
-
+            yoyosShop.Add(veridianMod.Find<ModItem>("Stickler").Type, Condition.DownedKingSlime);
             if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
-            {
-                yoyosShop.Add(tysYoyoRedux.Find<ItemLoader>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
-            }
-
-            yoyosShop.Add(ItemID.Terrarian, Condition.DownedMoonLord, Condition.Hardmode);
-
-
+            yoyosShop.Add(tysYoyoRedux.Find<ItemLoader>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
             yoyosShop.Register();
 
             var accessoriesShop = new NPCShop(Type, AccessoriesShop)
@@ -332,7 +280,7 @@ namespace CombinationsMod.NPCS
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
             projType = ProjectileID.Bone;
-           attackDelay = 1;
+            attackDelay = 1;
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)

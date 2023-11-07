@@ -7,17 +7,13 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using static MooMooLib.MooMooLibModsystem;
 
 namespace CombinationsMod
 {
     public partial class CombinationsModSystem : ModSystem
     {
         /*
-          String Dictionary -
-          Creating a dictionary to store specific string textures. This dictionary uses ItemIDs to assign textures to a specific item.
-          Custom strings are entered into the dictionary in AddDictionaryEntries(), which is called in PostSetupContent() to allow the use of ModContent.ItemType IDs, since they aren't loaded yet in Load().
-          Then, in CombinationsModClass, Main.DrawProj_DrawYoyoString() is detoured to Test(), which sends in the ItemID of the player's held item to the dictionary and retrieves the texture, if there is one.
-
           Ability Dictionary -
           Creating a dictionary to store specific localized tooltips for specific yoyos. This dictionary also uses ItemIDs to assign localized text.
           Same method for assigning and retrieving text, however the actual getting of the text is done in the mod's GlobalItemModifications class.
@@ -30,7 +26,6 @@ namespace CombinationsMod
         private Asset<Texture2D> christmasStringPath => Request<Texture2D>(stringFilePath + "ChristmasString");
         private Asset<Texture2D> pumpkinStringPath => Request<Texture2D>(stringFilePath + "SpookyString");
 
-        public static Dictionary<int, StringTexture> yoyoStringDictionary = new Dictionary<int, StringTexture>();
         public static Dictionary<int, LocalizedAbilityString> yoyoAbilityDictionary = new Dictionary<int, LocalizedAbilityString>();
 
         #region StringTextures
@@ -73,6 +68,18 @@ namespace CombinationsMod
         public LocalizedAbilityString LocalizedCrowyo = new LocalizedAbilityString();
         #endregion
 
+        #region Colors
+        public StringColor GolemString = new StringColor();
+        public StringColor GreenString = new StringColor();
+        public StringColor DarkBlueString = new StringColor();
+        public StringColor LightPinkString = new StringColor();
+        public StringColor DarkTealString = new StringColor();
+        public StringColor GrapeString = new StringColor();
+        public StringColor StardustString = new StringColor();
+        public StringColor SolarString = new StringColor();
+        public StringColor VortexString = new StringColor();
+        public StringColor NebulaString = new StringColor();
+        #endregion
 
         public void AddDictionaryEntries()
         {
@@ -120,16 +127,19 @@ namespace CombinationsMod
             LocalizedYelets.SetStringValue(Language.GetTextValue(abilityFilePath + "Yelets")); yoyoAbilityDictionary.TryAdd(ItemID.Yelets, LocalizedYelets);
             LocalizedCrowyo.SetStringValue(Language.GetTextValue(abilityFilePath + "Crowyo")); yoyoAbilityDictionary.TryAdd(ItemType<TheCrowyo>(), LocalizedCrowyo);
             #endregion
-        }
 
-        public Asset<Texture2D> GetStringFromDictionary(int itemID)
-        {
-            if (yoyoStringDictionary.TryGetValue(itemID, out StringTexture instance))
-            {
-                return instance.getStringTexture();
-            }
-
-            return TextureAssets.FishingLine; // Defaults to regular yoyo string if the entry is not found
+            #region Color Entries
+            GolemString.setStringColor(new(162, 108, 60));  yoyoStringColorDictionary.TryAdd(28, GolemString);
+            GreenString.setStringColor(new(41, 96, 0)); yoyoStringColorDictionary.TryAdd(29, GreenString);
+            DarkBlueString.setStringColor(new(0, 37, 106)); yoyoStringColorDictionary.TryAdd(30, DarkBlueString);
+            LightPinkString.setStringColor(new(255, 164, 228)); yoyoStringColorDictionary.TryAdd(31, LightPinkString);
+            DarkTealString.setStringColor(new(60, 151, 146)); yoyoStringColorDictionary.TryAdd(33, DarkTealString);
+            GrapeString.setStringColor(new(168, 59, 153)); yoyoStringColorDictionary.TryAdd(34, GrapeString);
+            StardustString.setStringColor(new(90, 195, 248)); yoyoStringColorDictionary.TryAdd(35, StardustString);
+            SolarString.setStringColor(new(255, 180, 56)); yoyoStringColorDictionary.TryAdd(36, SolarString);
+            VortexString.setStringColor(new(131, 238, 220)); yoyoStringColorDictionary.TryAdd(37, VortexString);
+            NebulaString.setStringColor(new(254, 14, 177)); yoyoStringColorDictionary.TryAdd(38, NebulaString);
+            #endregion
         }
 
         public string GetLocalizedStringFromDictionary(int itemId)
@@ -140,21 +150,6 @@ namespace CombinationsMod
             }
 
             return null;
-        }
-
-        public class StringTexture
-        {
-            public Asset<Texture2D> texture;
-
-            public void setStringTexture(Asset<Texture2D> asttex)
-            {
-                texture = asttex;
-            }
-
-            public Asset<Texture2D> getStringTexture()
-            {
-                return texture;
-            }
         }
 
         public class LocalizedAbilityString

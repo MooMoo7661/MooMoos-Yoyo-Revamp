@@ -11,4 +11,9 @@
     <PackageReference Include="OpenTelemetry" Version="1.3.2" />
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MooMooLib">
+      <HintPath>..\..\ModReader\MooMooLib\MooMooLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>  

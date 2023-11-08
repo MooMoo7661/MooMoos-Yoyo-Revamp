@@ -31,6 +31,7 @@ namespace CombinationsMod.Global_Classes
                 ItemSets.YoyoString[VeridianMod.Find<ModItem>("ShadowString").Type] = true;
                 ItemSets.YoyoString[VeridianMod.Find<ModItem>("SharktoothString").Type] = true;
                 ItemSets.YoyoString[VeridianMod.Find<ModItem>("VeilString").Type] = true;
+                ItemSets.YoyoString[VeridianMod.Find<ModItem>("HellString").Type] = true;
             }
         }
     }

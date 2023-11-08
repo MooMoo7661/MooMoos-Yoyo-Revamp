@@ -17,6 +17,7 @@ Mods: {
 			YoyoAbilitySnippet: "[c/6FD4FF:-=Yoyo Ability=-]"
 			150YoyoRange: "[c/6EAE6E:+150 yoyo range]"
 			TrickSlot: Gives a slot for tricks
+			PrefixWarning: Prefixes will not be applied to this item while in this slot
 
 			Abilities: {
 				BlackHole: Creates a large vortex that does 40% of the yoyo's damage

@@ -17,6 +17,7 @@ Mods: {
 			YoyoAbilitySnippet: "[c/6FD4FF:-=Habilidad Del yoyo=-]"
 			150YoyoRange: "[c/6EAE6E:+150 alcance del yoyo]"
 			TrickSlot: Da una ranura para Trucos
+			PrefixWarning: Los prefijos no se aplicarán a este elemento mientras esté en este espacio.
 
 			Abilities: {
 				BlackHole: Crea un gran vortice que inflige el 40% de daño del yoyo

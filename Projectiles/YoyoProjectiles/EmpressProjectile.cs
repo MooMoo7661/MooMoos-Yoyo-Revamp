@@ -19,7 +19,7 @@ public class EmpressProjectile : ModProjectile
     {
         ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
         ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 400f;
-        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 20.3f;
+        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18f;
 
         ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 45;
         ProjectileID.Sets.TrailingMode[base.Projectile.type] = 2;
@@ -27,15 +27,17 @@ public class EmpressProjectile : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.extraUpdates = 0;
+        Projectile.MaxUpdates = 3;
         Projectile.width = 14;
         Projectile.height = 14;
         Projectile.aiStyle = 99;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
-        Projectile.DamageType = DamageClass.Melee;
+        Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.scale = 1f;
         Projectile.rotation = 0.01f;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 16;
     }
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

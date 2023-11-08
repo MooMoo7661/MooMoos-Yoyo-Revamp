@@ -31,7 +31,7 @@ public class OrichalcumYoyo : ModYoyo
         Item.knockBack = 5.2f;
         Item.damage = 46;
         Item.rare = ItemRarityID.LightRed;
-        Item.DamageType = DamageClass.Melee;
+        Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.channel = true;
         Item.noMelee = true;
         Item.noUseGraphic = true;

@@ -31,7 +31,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.damage = 31;
             Item.crit = 16;
             Item.rare = ModContent.RarityType<PHPink>();
-            Item.DamageType = DamageClass.Melee;
+            Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;

@@ -35,7 +35,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.damage = 81;
             Item.crit = 16; 
             Item.rare = ItemRarityID.Red;
-            Item.DamageType = DamageClass.Melee;
+            Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;

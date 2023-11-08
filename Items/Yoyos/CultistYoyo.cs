@@ -30,7 +30,7 @@ public class CultistYoyo : ModYoyo
         Item.knockBack = 2.5f;
         Item.damage = 120;
         Item.rare = ItemRarityID.Cyan;
-        Item.DamageType = DamageClass.Melee;
+        Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.channel = true;
         Item.noMelee = true;
         Item.noUseGraphic = true;

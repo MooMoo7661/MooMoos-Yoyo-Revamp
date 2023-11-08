@@ -27,7 +27,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
             Projectile.penetrate = 15;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
             
         }

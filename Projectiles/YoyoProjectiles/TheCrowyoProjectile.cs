@@ -33,7 +33,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
             Projectile.rotation = 0.32f;
         }

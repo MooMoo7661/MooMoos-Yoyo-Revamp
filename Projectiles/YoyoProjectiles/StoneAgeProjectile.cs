@@ -33,7 +33,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
             Projectile.penetrate = 20;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

@@ -30,7 +30,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
             Projectile.penetrate = 65;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
         }
         public override void OnSpawn(IEntitySource source)
@@ -52,11 +52,6 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 Main.projectile[hitbox].Resize(150, 150);
                 Main.projectile[hitbox].usesLocalNPCImmunity = true;
             }
-        }
-
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-           
         }
 
         public override bool PreDraw(ref Color lightColor)

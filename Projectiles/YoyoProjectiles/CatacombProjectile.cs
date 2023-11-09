@@ -41,11 +41,10 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 dust.scale = 0.73f;
             }
 
-            int rand = Main.rand.Next(20);
-            if (rand == 0 && Main.myPlayer == Projectile.owner)
+            if (Main.rand.NextBool(20) && Main.myPlayer == Projectile.owner && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.Next(-3, 3) * 1f,
-                Main.rand.Next(-3, 3) * 1f, ProjectileID.Bone, (int)(Projectile.damage * 1f), 0, Projectile.owner);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.Next(-5, 5),
+                Main.rand.Next(-5, 5), ProjectileID.Bone, (int)(Projectile.damage * 0.7f), 0, Projectile.owner);
                 Main.projectile[proj].scale = 0.8f;
                 Main.projectile[proj].friendly = true;
                 Main.projectile[proj].usesLocalNPCImmunity = true;

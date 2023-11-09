@@ -15,6 +15,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
     public class CultistYoyoProjectile : ModProjectile
     {
+        //Shakiryo
+
         private bool isOriginalYoyo = false;
 
         public int counter = 0;
@@ -43,6 +45,11 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<CultistRing1>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+
+               
+                int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
+                        0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+                Main.projectile[proj2].Resize(150, 150);
 
                 isOriginalYoyo = true;
             }

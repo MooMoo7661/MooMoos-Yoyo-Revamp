@@ -12,12 +12,22 @@ Mods: {
 			MasterYoyoSkills: Le da al usuario habilidades maestras con el yoyo
 			IncreasedYoyoKnockback: Aumenta el retroceso del yoyo
 			HoldDown: "[c/6FD4FF:Presiona Abajo para ver la informacion de las habilidades del yoyo]"
-			NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
+			NoRing: "[c/6FD4FF:No se detectó ningún anillo de habilidad. Equipa uno para ver la habilidad especial de este yoyo]"
 			NoAbility: "[c/6FD4FF:Este yoyo  no tiene ninguna habilidad o efecto especial  que se active.]"
 			YoyoAbilitySnippet: "[c/6FD4FF:-=Habilidad Del yoyo=-]"
 			150YoyoRange: "[c/6EAE6E:+150 alcance del yoyo]"
 			TrickSlot: Da una ranura para Trucos
-			PrefixWarning: Los prefijos no se aplicarán a este elemento mientras esté en este espacio.
+			PrefixWarning: Los prefijos no se aplicarán a este articulo mientras este en esta ranura
+			VanityStrings: Hilos De Yoyo Social
+			YoyoStrings: Hilos del Yoyo
+			RightHand: Mano Derecha
+			YoyoGloves: Guantes Yoyo
+			LeftHand: Mano Izquierda
+			SupportGloves: Guantes De Soporte
+			DrillCasings: Carcasas De Perforación
+			YoyoCounterweights: Contrapesos Yoyo
+			Rings: Anillos
+			Tricks: Trucos
 
 			Abilities: {
 				BlackHole: Crea un gran vortice que inflige el 40% de daño del yoyo
@@ -32,6 +42,7 @@ Mods: {
 				Rally: Crea 3 tornados que infligen 50% de daño del yoyo
 				Code1: Crea 6 tornados que infligen 50% de daño del yoyo
 				Crowyo: Dispara plumas negras teledirigidas que infligen 40% de daño del yoyo
+				Catacomb: Dispara huesos al azar con forma de x
 				ChristmasBulb:
 					'''
 					Dispara 8 adornos explosivos despues de 30 golpes
@@ -677,7 +688,7 @@ Mods: {
 					Los Yoyos mostraran el requisito para usar sus habilidades
 					Aumenta el retroceso del yoyo
 					Aumenta ligeramente la velocidad del yoyo
-					   Aumenta el daño total del yoyo un 5%
+					Aumenta el daño total del yoyo un 5%
 					'''
 			}
 

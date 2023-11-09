@@ -18,6 +18,16 @@ Mods: {
 			150YoyoRange: "[c/6EAE6E:+150 yoyo range]"
 			TrickSlot: Gives a slot for tricks
 			PrefixWarning: Prefixes will not be applied to this item while in this slot
+			VanityStrings: Vanity Yoyo Strings
+			YoyoStrings: Yoyo Strings
+			RightHand: Right Hand
+			YoyoGloves: Yoyo Gloves
+			LeftHand: Left hand
+			SupportGloves: Support Gloves
+			DrillCasings: Drill Casings
+			YoyoCounterweights: Yoyo Counterweights
+			Rings: Rings
+			Tricks: Tricks
 
 			Abilities: {
 				BlackHole: Creates a large vortex that does 40% of the yoyo's damage
@@ -32,6 +42,7 @@ Mods: {
 				Rally: Creates 3 swirling copies that deal 50% of the yoyo's damage
 				Code1: Creates 6 swirling copies that deal 50% of the yoyo's damage
 				Crowyo: Shoots black homing feathers that deal 40% of the yoyo's damage
+				Catacomb: Randomly shoots bones in an X shape
 				ChristmasBulb:
 					'''
 					Shoots out 8 explosive ornaments after 30 hits

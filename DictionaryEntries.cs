@@ -66,6 +66,7 @@ namespace CombinationsMod
         public LocalizedAbilityString LocalizedCode2 = new LocalizedAbilityString();
         public LocalizedAbilityString LocalizedYelets = new LocalizedAbilityString();
         public LocalizedAbilityString LocalizedCrowyo = new LocalizedAbilityString();
+        public LocalizedAbilityString LocalizedCatacomb = new LocalizedAbilityString();
         #endregion
 
         #region Colors
@@ -81,23 +82,8 @@ namespace CombinationsMod
         public StringColor NebulaString = new StringColor();
         #endregion
 
-        public void AddDictionaryEntries()
+        public void AddLocalizedDictionaryEntries()
         {
-            #region StringDictionaryInputs
-            upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
-            yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry); yoyoStringDictionary.TryAdd(ItemType<TrueSmudge>(), upgradedStringEntry);
-
-            boneStringEntry.setStringTexture(TextureAssets.Chain24); yoyoStringDictionary.TryAdd(ItemType<Catacomb>(), boneStringEntry);
-            jungleStringEntry.setStringTexture(TextureAssets.Chain27); yoyoStringDictionary.TryAdd(ItemID.JungleYoyo, jungleStringEntry);
-            tempestStringEntry.setStringTexture(TextureAssets.Chain23); yoyoStringDictionary.TryAdd(ItemType<TheTempest>(), tempestStringEntry);
-            phantomStringEntry.setStringTexture(phantomStringPath); yoyoStringDictionary.TryAdd(ItemType<Smudge>(), phantomStringEntry);
-            christmasStringEntry.setStringTexture(christmasStringPath); yoyoStringDictionary.TryAdd(ItemType<ChristmasBulb>(), christmasStringEntry);
-            pumpkinStringEntry.setStringTexture(pumpkinStringPath); yoyoStringDictionary.TryAdd(ItemType<Mambele>(), pumpkinStringEntry);
-            terrarianStringEntry.setStringTexture(TextureAssets.Chains[13]); yoyoStringDictionary.TryAdd(ItemID.Terrarian, terrarianStringEntry);
-            cultistStringEntry.setStringTexture(TextureAssets.Chain9); yoyoStringDictionary.TryAdd(ItemType<CultistYoyo>(), cultistStringEntry);
-            blackHoleStringEntry.setStringTexture(TextureAssets.Chains[16]); yoyoStringDictionary.TryAdd(ItemType<BlackHole>(), blackHoleStringEntry);
-            #endregion
-
             #region AbilityDictionaryInputs
             LocalizedBlackHole.SetStringValue(Language.GetTextValue(abilityFilePath + "BlackHole")); yoyoAbilityDictionary.TryAdd(ItemType<BlackHole>(), LocalizedBlackHole);
 
@@ -126,6 +112,25 @@ namespace CombinationsMod
             LocalizedCode2.SetStringValue(Language.GetTextValue(abilityFilePath + "Code2")); yoyoAbilityDictionary.TryAdd(ItemID.Code2, LocalizedCode2);
             LocalizedYelets.SetStringValue(Language.GetTextValue(abilityFilePath + "Yelets")); yoyoAbilityDictionary.TryAdd(ItemID.Yelets, LocalizedYelets);
             LocalizedCrowyo.SetStringValue(Language.GetTextValue(abilityFilePath + "Crowyo")); yoyoAbilityDictionary.TryAdd(ItemType<TheCrowyo>(), LocalizedCrowyo);
+            LocalizedCatacomb.SetStringValue(Language.GetTextValue(abilityFilePath + "Catacomb")); yoyoAbilityDictionary.TryAdd(ItemType<Catacomb>(), LocalizedCatacomb);
+            #endregion
+        }
+
+        public void AddDictionaryEntries()
+        {
+            #region StringDictionaryInputs
+            upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
+            yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry); yoyoStringDictionary.TryAdd(ItemType<TrueSmudge>(), upgradedStringEntry);
+
+            boneStringEntry.setStringTexture(TextureAssets.Chain24); yoyoStringDictionary.TryAdd(ItemType<Catacomb>(), boneStringEntry);
+            jungleStringEntry.setStringTexture(TextureAssets.Chain27); yoyoStringDictionary.TryAdd(ItemID.JungleYoyo, jungleStringEntry);
+            tempestStringEntry.setStringTexture(TextureAssets.Chain23); yoyoStringDictionary.TryAdd(ItemType<TheTempest>(), tempestStringEntry);
+            phantomStringEntry.setStringTexture(phantomStringPath); yoyoStringDictionary.TryAdd(ItemType<Smudge>(), phantomStringEntry);
+            christmasStringEntry.setStringTexture(christmasStringPath); yoyoStringDictionary.TryAdd(ItemType<ChristmasBulb>(), christmasStringEntry);
+            pumpkinStringEntry.setStringTexture(pumpkinStringPath); yoyoStringDictionary.TryAdd(ItemType<Mambele>(), pumpkinStringEntry);
+            terrarianStringEntry.setStringTexture(TextureAssets.Chains[13]); yoyoStringDictionary.TryAdd(ItemID.Terrarian, terrarianStringEntry);
+            cultistStringEntry.setStringTexture(TextureAssets.Chain9); yoyoStringDictionary.TryAdd(ItemType<CultistYoyo>(), cultistStringEntry);
+            blackHoleStringEntry.setStringTexture(TextureAssets.Chains[16]); yoyoStringDictionary.TryAdd(ItemType<BlackHole>(), blackHoleStringEntry);
             #endregion
 
             #region Color Entries

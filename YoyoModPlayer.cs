@@ -39,6 +39,7 @@ namespace CombinationsMod
         public bool beetleBag = false;
         public bool alienBag = false;
         public bool moonlordBag = false;
+        public bool playerHasYoyoBagEquipped = false;
 
         public bool eclipseString = false;
         public bool golemString = false;
@@ -115,6 +116,7 @@ namespace CombinationsMod
             beetleBag = false;
             alienBag = false;
             moonlordBag = false;
+            playerHasYoyoBagEquipped = false;
 
             supportGlove = false;
 
@@ -179,6 +181,16 @@ namespace CombinationsMod
             moonTrick = false;
         }
 
+        public override void PostUpdateEquips()
+        {
+            YoyoModPlayer modPlayer = Player.GetModPlayer<YoyoModPlayer>();
+
+            if (modPlayer.alienBag || modPlayer.beetleBag || modPlayer.moonlordBag || modPlayer.shimmerBag || modPlayer.tier2Bag || modPlayer.yoyoBag)
+            {
+                modPlayer.playerHasYoyoBagEquipped = true;
+            }
+        }
+
         /// <summary>
         /// Inputs regular yoyo string length, then returns the modified length depending on player bools.
         /// </summary>
@@ -232,17 +244,7 @@ namespace CombinationsMod
         /// <summary>
         /// Checks for yoyo bag
         /// </summary>
-        public static bool TestForYoyoBag(Player player)
-        {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.yoyoBag || modPlayer.shimmerBag || modPlayer.tier2Bag || modPlayer.beetleBag)
-            {
-                return true;
-            }
-
-            return false;
-        }
+        public static bool TestForYoyoBag(Player player) => player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
 
         /// <summary>
         /// Returns the number of yoyos the player should have

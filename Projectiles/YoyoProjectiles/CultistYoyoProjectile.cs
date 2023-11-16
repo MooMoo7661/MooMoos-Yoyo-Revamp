@@ -18,17 +18,21 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
         //Shakiryo
 
         private bool isOriginalYoyo = false;
-
         public int counter = 0;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 380f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 17.7f;
+
+            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12.5f;
         }
 
         public override void SetDefaults()
         {
+            Projectile.MaxUpdates = 1;
+            if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 3;
             Projectile.extraUpdates = 0;
             Projectile.width = 16;  
             Projectile.height = 16;
@@ -63,7 +67,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
                 counter++;
 
                 if (counter == 20 && Main.myPlayer == Projectile.owner)
-                {
+                { 
                     int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<CultistRing2>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
 

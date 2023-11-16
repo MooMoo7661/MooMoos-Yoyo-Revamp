@@ -26,6 +26,8 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
             ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 3;
             ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
+
+            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 17.4f;
         }
 
         public override void SetDefaults()

@@ -9,7 +9,7 @@ using CombinationsMod.Projectiles.YoyoEffects.Solid;
 using Terraria.DataStructures;
 using CombinationsMod.GlobalClasses.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
-using static CombinationsMod.ModDetector;
+using static CombinationsMod.ModSystems.ModDetector;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -21,13 +21,13 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 364f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18.5f;
 
-            if (CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
+            //if (CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
         }
 
         public override void SetDefaults()
         {
             Projectile.MaxUpdates = 1;
-            if (CalamityLoaded) Projectile.MaxUpdates = 2;
+            //if (CalamityLoaded) Projectile.MaxUpdates = 2;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;

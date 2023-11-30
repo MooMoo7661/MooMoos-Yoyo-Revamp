@@ -5,6 +5,7 @@ using System;
 using Terraria.Audio;
 using CombinationsMod.Dusts;
 using Microsoft.CodeAnalysis;
+using CombinationsMod.ModSystems;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -16,7 +17,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 242f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 11.87f;
 
-            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.2f;
+            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.2f;
         }
 
         public override void SetDefaults()

@@ -1,4 +1,5 @@
 using CombinationsMod.GlobalClasses.Projectiles;
+using CombinationsMod.ModSystems;
 using CombinationsMod.Projectiles.YoyoEffects;
 using CombinationsMod.Projectiles.YoyoEffects.Solid;
 using Microsoft.Xna.Framework;
@@ -24,14 +25,14 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 
-            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12f;
+            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12f;
         }
 
         public override void SetDefaults()
         {
             Projectile.MaxUpdates = 1;
-            if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
-            Projectile.extraUpdates = 0;
+            //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
+            Projectile.extraUpdates = 2;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;

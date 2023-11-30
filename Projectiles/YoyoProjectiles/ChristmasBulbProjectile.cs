@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using CombinationsMod.Items;
 using CombinationsMod.Dusts;
 using CombinationsMod.Projectiles.YoyoEffects;
+using CombinationsMod.ModSystems;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -27,13 +28,13 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 347f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16.8f;
 
-            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.1f;
+            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.1f;
         }
 
         public override void SetDefaults()
         {
             Projectile.MaxUpdates = 1;
-            if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
+            //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
             Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;

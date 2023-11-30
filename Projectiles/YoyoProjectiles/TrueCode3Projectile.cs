@@ -8,6 +8,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CombinationsMod.GlobalClasses.Projectiles;
+using CombinationsMod.ModSystems;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -21,13 +22,13 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
 
-            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 10.4f;
+            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 10.4f;
         }
 
         public override void SetDefaults()
         {
             Projectile.MaxUpdates = 1;
-            if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
+            //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
             Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;

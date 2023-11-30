@@ -7,6 +7,7 @@ using Terraria.Graphics.Shaders;
 using System;
 using Terraria.GameContent;
 using System.Diagnostics;
+using CombinationsMod.ModSystems;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -18,7 +19,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 153f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.7f;
 
-            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12.2f;
+            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12.2f;
         }
 
         public override void SetDefaults()

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent.Drawing;
 using Terraria.GameContent;
+using CombinationsMod.ModSystems;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles;
 
@@ -24,13 +25,13 @@ public class EmpressProjectile : ModProjectile
         ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 45;
         ProjectileID.Sets.TrailingMode[base.Projectile.type] = 2;
 
-        if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
+        //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
     }
 
     public override void SetDefaults()
     {
         Projectile.MaxUpdates = 2;
-        if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 4;
+        //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 4;
         Projectile.width = 14;
         Projectile.height = 14;
         Projectile.aiStyle = 99;
@@ -41,7 +42,7 @@ public class EmpressProjectile : ModProjectile
         Projectile.rotation = 0.01f;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 16;
-        Projectile.light = 2;
+        Projectile.light = 2f;
     }
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

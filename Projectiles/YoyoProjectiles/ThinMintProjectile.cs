@@ -1,4 +1,5 @@
 using System;
+using CombinationsMod.ModSystems;
 using CombinationsMod.Projectiles;
 using CombinationsMod.Projectiles.Misc;
 using CombinationsMod.Projectiles.YoyoEffects;
@@ -20,7 +21,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 220f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 10.78f;
 
-            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13f;
+            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13f;
         }
 
         public override void SetDefaults()

@@ -14,6 +14,7 @@ using CombinationsMod.Dusts;
 using CombinationsMod.Projectiles.YoyoEffects;
 using Terraria.Audio;
 using CombinationsMod.GlobalClasses.Projectiles;
+using CombinationsMod.ModSystems;
 
 namespace CombinationsMod.Projectiles.YoyoProjectiles
 {
@@ -26,13 +27,13 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 420f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12f;
 
-            if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14f;
+            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14f;
         }
 
         public override void SetDefaults()
         {
             Projectile.MaxUpdates = 2;
-            Projectile.extraUpdates = 0;
+            Projectile.extraUpdates = 2;
             Projectile.width = 28;
             Projectile.height = 28;
             Projectile.aiStyle = 99;

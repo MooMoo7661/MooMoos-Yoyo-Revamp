@@ -244,10 +244,8 @@ namespace CombinationsMod.NPCS
             npcLoot.Add(ItemDropRule.Common(ItemID.Rally));
         }
 
-        // Make this Town NPC teleport to the King and/or Queen statue when triggered.
         public override bool CanGoToStatue(bool toKingStatue) => true;
 
-        // Create a square of pixels around the NPC on teleport. 
         public void StatueTeleport()
         {
             for (int i = 0; i < 30; i++)

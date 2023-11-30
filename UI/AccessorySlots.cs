@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using static CombinationsMod.CombinationsModUtils;
 using Terraria.Localization;
+using CombinationsMod.Items.Accessories.Drills;
+using CombinationsMod.Global_Classes;
 
 namespace CombinationsMod.UI
 {
@@ -43,7 +45,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoStrings");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoStrings") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     break;
                 case AccessorySlotType.VanitySlot:
                     Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.VanityStrings");
@@ -88,7 +91,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.RightHand");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.RightHand") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     if (GetInstance<YoyoModConfig>().AccessorySlotIndicators)
                     Main.hoverItemName += " (" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoGloves") + ")";
                     break;
@@ -132,7 +136,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.LeftHand");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.LeftHand") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     if (GetInstance<YoyoModConfig>().AccessorySlotIndicators)
                         Main.hoverItemName += " (" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SupportGloves") + ")";
                     break;
@@ -177,7 +182,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.DrillCasings");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.DrillCasings") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     break;
             }
         }
@@ -226,7 +232,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoCounterweights");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoCounterweights") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     break;
             }
         }
@@ -268,7 +275,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Rings");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Rings") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     break;
             }
         }
@@ -312,7 +320,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Rings");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Rings") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     break;
             }
         }
@@ -354,7 +363,8 @@ namespace CombinationsMod.UI
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Tricks");
+                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Tricks") +
+                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SlotPrefix");
                     break;
             }
         }

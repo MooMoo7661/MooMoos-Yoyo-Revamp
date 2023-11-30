@@ -18,6 +18,7 @@ Mods: {
 			150YoyoRange: "[c/6EAE6E:+150 alcance del yoyo]"
 			TrickSlot: Da una ranura para Trucos
 			PrefixWarning: Los prefijos no se aplicarán a este articulo mientras este en esta ranura
+			SlotPrefix: Los prefijos de articulos no se aplicaran
 			VanityStrings: Hilos De Yoyo Social
 			YoyoStrings: Hilos del Yoyo
 			RightHand: Mano Derecha

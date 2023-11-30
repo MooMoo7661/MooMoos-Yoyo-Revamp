@@ -18,6 +18,7 @@ Mods: {
 			150YoyoRange: "[c/6EAE6E:+150 yoyo range]"
 			TrickSlot: Gives a slot for tricks
 			PrefixWarning: Prefixes will not be applied to this item while in this slot
+			SlotPrefix: Item prefixes will not apply
 			VanityStrings: Vanity Yoyo Strings
 			YoyoStrings: Yoyo Strings
 			RightHand: Right Hand

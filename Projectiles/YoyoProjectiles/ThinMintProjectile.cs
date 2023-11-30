@@ -26,6 +26,7 @@ namespace CombinationsMod.Projectiles.YoyoProjectiles
 
         public override void SetDefaults()
         {
+            Projectile.MaxUpdates = 1;
             Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;

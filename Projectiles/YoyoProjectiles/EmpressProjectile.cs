@@ -20,7 +20,7 @@ public class EmpressProjectile : ModProjectile
     {
         ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
         ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 400f;
-        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13f;
+        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15f;
 
         ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 45;
         ProjectileID.Sets.TrailingMode[base.Projectile.type] = 2;

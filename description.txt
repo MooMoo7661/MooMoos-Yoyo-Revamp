@@ -1,43 +1,30 @@
+If you are viewing this on the mod browser, please navigate to the steam page.
+[h1][b][u]MooMoo's Ultimate Yoyo Revamp[/u][/b][/h1]
 This mod changes most of the yoyo subclass, bringing new and exciting features to help spice up your gameplay!
 From an overhauled yoyo bag system, to unique effects for previously mundane and boring vanilla yoyos, there is a lot more content to explore.
 
-** A quick summary of what the mod adds **
-- New Yoyo Bag System -
-  Yoyo bags are no longer just a combination of a yoyo glove, string, and a counterweight.
-  Instead, they allow the user to have access to new slots, allowing for greater
-  customization while maintaining the idea of a yoyo bag.
-- New Skeleton Peddler NPC -
-  There is a new Skeleton Merchant in town, and this one is a yoyo expert. He sells a very
-  wide variety of yoyo products, from actual yoyos to accessories that have some sort of
-  special function. He moves in once you obtain a yoyo, and will slowly increase the size
-  of his shop depending on your overall progress. However, since he is the yoyo expert,
-  the Skeleton Merchant and Travelling Merchant will no longer sell yoyo-related wares.
-- Unique Effects for Every Yoyo -
-  Each yoyo (except for wooden and chik, RIP), have some sort of ability that can be
-  activated by equipping the Ability Ring, which is sold from the Skeleton Peddler.
-- Lots of New Yoyos! -
-  This mod adds quite the catalog of new yoyos, aiming to allow you to have a good range
-  of choices for the yoyos you want to use. From boss-themed yoyos, to "true" yoyos,
-  you will never run out of choices for your playthrough.
+[h1][u][b]A quick summary of what the mod adds:[/b][/u][/h1]
+[b]- New Yoyo Bag System -[/b]
+Yoyo bags are no longer just a combination of a yoyo glove, string, and a counterweight. Instead, they allow the user to have access to new slots, allowing for greater customization while maintaining the idea of a yoyo bag.
+[b]- New Skeleton Peddler NPC -[/b]
+There is a new NPC called the "Skeleton Peddler" that will now sell all yoyo-related items. You can no longer obtain stuff such as the Code1, counterweights, etc. from other NPCs. His shop is very simple: after each boss (with some exceptions), he will sell more items. He has 2 different shops, one being a yoyo-only shop, and the other being an accessory shop. He will move in once you obtain a yoyo of any type, however it's possible some yoyos from other mods might not work, so try getting a wooden yoyo and holding onto it.
+[b]- Unique Effects for Every Yoyo -[/b]
+Every yoyo now has a unique effect that is either passively triggered, or requires a certain condition to be met. (Such as having a specific accessory equipped).
+[b]- Lots of New Yoyos! -[/b]
+This mod adds quite the catalog of new yoyos, aiming to allow you to have a good range of choices for the yoyos you want to use. From boss-themed yoyos, to "true" yoyos, you will never run out of choices for your playthrough.
+[u][b]NOTES:[/b][/u]
+[u]This mod is not entirely aimed to be 100% balanced.[/u] There are some things that either are too powerful, or not powerful enough. [b]This doesn't mean the game will become super easy, just that some parts could do with a little re balancing.[/b] It is still fairly early in development, meaning that there are more features to add, and bugs to fix.  A wiki is currently in development, however, due to me being the only wiki editor, it will not be a quick process.
 
-NOTES:
-This mod is not entirely aimed to be 100% balanced. There are some things that either
-are too powerful, or not powerful enough. This doesn't mean the game will become super
-easy, just that some parts could do with a little re-balancing.
-It is still fairly early in development, meaning that there are more features to add,
-and bugs to fix. 
-A wiki is currently in development, however, due to me being the only wiki editor,
-it will not be a quick process.
+[b]If you're looking for the github, here it is! => https://github.com/MooMoo7661/MooMoos-Yoyo-Revamp[/b]
+Just a warning though, a lot of stuff stuff was written a long time ago, back when I was still very new to programming. I do plan on re-doing a lot of my code to make it better.
+If you wish to join the Discord, click this link! > https://discord.gg/G5cbT7tj9K
 
-If you wish to join the Discord, click the button that brings you to the Steam Page, it
-is in the description.
-  
-Huge thanks to the following!
+[h1][b]Huge thanks to the following![/b][/h1]
 
+otterly - [b[Lead spriter[/b]
+Dominick - Various other sprites
 David F. Dev - Wrote the script for the Yoyo Drills
 Turbanik - Supplied pretty much all of the special effect sprites
 stormytuna - Writing various code such as npc loot modifications & reflections
 Dagger - Helping with custom yoyo string colors, drawing, and textures
-Photonic0 - Helping with enhancing yoyo special effects during daytime,
-as well as creating the Empress of Light Yoyo
-otterly - Created several sprites, such as the yoyo bags and achievement sprites.
+Photonic0 - Helping with enhancing yoyo special effects during daytime, as well as creating the Empress of Light Yoyo

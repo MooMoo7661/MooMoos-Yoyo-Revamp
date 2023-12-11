@@ -32,7 +32,7 @@ namespace CombinationsMod.Items.Yoyos
             Item.shootSpeed = 16f;
             Item.knockBack = 2.5f;
             Item.damage = 71;
-            Item.rare = ItemRarityID.Yellow;
+            Item.rare = ItemRarityID.Gray;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;
             Item.noMelee = true;
@@ -40,18 +40,6 @@ namespace CombinationsMod.Items.Yoyos
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.value = Item.sellPrice(0, 1, 50, 2);
             Item.shoot = ModContent.ProjectileType<TrueSmudgeProjectile>();
-        }
-
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-                .AddIngredient(ModContent.ItemType<Smudge>())
-                .AddIngredient(ModContent.ItemType<NeutralineScrap>(), 10)
-                .AddIngredient(ItemID.ChlorophyteBar, 10)
-                .AddIngredient(ItemID.Ectoplasm, 15)
-                .AddTile(TileID.MythrilAnvil)
-                .AddCondition(Condition.InGraveyard)
-                .Register();
         }
 
         public override bool IsLoadingEnabled(Mod mod)

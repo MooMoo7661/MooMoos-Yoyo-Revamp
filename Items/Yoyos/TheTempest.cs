@@ -48,7 +48,6 @@ namespace CombinationsMod.Items.Yoyos
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<TrueAbbhor>())
                 .AddIngredient(ModContent.ItemType<TrueCode3>())
-                .AddIngredient(ModContent.ItemType<TrueSmudge>())
                 .AddIngredient(ModContent.ItemType<BrokenHeroYoyo>())
                 .AddTile(TileID.MythrilAnvil)
                 .Register();

@@ -1177,6 +1177,7 @@ Mods: {
 				DisplayName: True Smudge
 				Tooltip:
 					'''
+					No longer obtainable. (Will be removed in the future!)
 					Does increased damage to spectral targets.
 					When in a graveyard biome, the swirls receive a slight damage boost.
 					"Has a 12 second grace period."

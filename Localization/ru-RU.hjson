@@ -1,0 +1,1493 @@
+Mods: {
+	CombinationsMod: {
+		LocalizedText: {
+			CounterweightPerYoyo: Каждое йо-йо, поражающее цель, создает противовес
+			YoyoShimmer: Йо-йо может проходить сквозь блоки
+			MoreAccessorySlots: Даёт владельцу больше слотов для аксессуаров для йо-йо
+			DrillsAndCounterweights: Даёт слоты для йо-йо-буров и противовесов
+			SupportGlove: Даёт слоты для перчаток поддержки
+			YoyoRings: Даёт слоты для йо-йо-колец
+			AdditionalYoyo: Добавляет еще одно йо-йо
+			FastRecall: Йо-йо возвращаются быстрее
+			MasterYoyoSkills: Дает владельцу умения мастера йо-йо
+			IncreasedYoyoKnockback: Увеличивает отбрасывание от йо-йо
+			HoldDown: "[c/6FD4FF:Удерживайте ВНИЗ, чтобы посмотреть информацию о способностях йо-йо.]"
+			NoRing: "[c/6FD4FF:Кольцо способностей не обнаружено. Наденьте его, чтобы увидеть особые способности этого йо-йо.]"
+			NoAbility: "[c/6FD4FF:У этого йо-йо нет способностей или особых эффектов, которые можно было бы включить]"
+			YoyoAbilitySnippet: "[c/6FD4FF:-=Способность йо-йо=-]"
+			150YoyoRange: "[c/6EAE6E:+150 дальности полета йо-йо]"
+			TrickSlot: Даёт слот для трюков
+			PrefixWarning: Вы не получите бонусы от перековки предмета в этом слоте
+			SlotPrefix: Без бонусов от перековки
+			VanityStrings: Декоративные нити для йо-йо
+			YoyoStrings: Нити для йо-йо
+			RightHand: Правая рука
+			YoyoGloves: Перчатки для йо-йо
+			LeftHand: Левая рука
+			SupportGloves: Перчатки поддержки
+			DrillCasings: Киркорпуса
+			YoyoCounterweights: Противовесы
+			Rings: Кольца
+			Tricks: Трюки
+
+			Abilities: {
+				BlackHole: Создаёт большую воронку, наносящую 40% урона йо-йо
+				HardmodeYoyos: Создаёт среднюю по размеру ауру, наносящую 50% урона йо-йо
+				Tempest: Создаёт очень большую сокрушительную ауру, наносящую 75% урона йо-йо
+				Code2: Каждые 5 ударов создает взрыв, наносящий 50% урона йо-йо
+				Yelets: Выстреливает 8 листьев, наносящие 50% урона йо-йо
+				TrueYoyos: Создаёт большую разрушительную ауру, наносящую 60% урона йо-йо
+				Cascade: Каждые 5 ударов создает взрыв, наносящий 150% урона йо-йо
+				Valor: Создаёт самонаводящиеся водяные снаряды, которые взрываются при контакте, нанося урон по площади
+				EvilYoyos: При ударе исцеляет владельца
+				Rally: Создаёт 3 вращающиеся копии, наносящие 50% урона йо-йо
+				Code1: Создаёт 6 вращающихся копий, наносящие 50% урона йо-йо
+				Crowyo: Стреляет чёрными самонаводящимися перьями, наносящие 40% урона йо-йо
+				Catacomb: Случайно выстреливает костями в форме буквы Х
+				ChristmasBulb:
+					'''
+					После 30 попаданий выстреливает 8 взрывных ёлочных игрушек
+					После 30 попаданий срабатывает каждый второй удар
+					Игрушки наносят половину урона йо-йо
+					'''
+				Code3:
+					'''
+					Создаёт среднюю по размеру сокрушительную ауру, наносящую 65% урона йо-йо
+					После 20 ударов появится более крупная аура, наносящая 75% урона йо-йо
+					'''
+				Convergence: Выпускает каждое йо-йо, использованное при его создании
+				CultistYoyo:
+					'''
+					Создаёт руническую ауру, наносящую 75% урона йо-йо
+					После 20 ударов появится вторая аура вдвое больше, наносящая 85% урона
+					'''
+				Mambele:
+					'''
+					После 30 попаданий выстреливает 8 рикошетящих от врагов огненных шаров
+					После 30 попаданий срабатывает каждый второй удар
+					Огненные шары наносят половину урона йо-йо
+					'''
+				Abbhor:
+					'''
+					Создаёт умеренно сокрушительную ауру, наносящую 40% урона йо-йо
+					После 20 ударов появится более крупная аура, наносящая 60% урона йо-йо
+					'''
+				FormatC:
+					'''
+					Создаёт 4 вращающиеся копии, наносящие 60% урона йо-йо
+					Эти копии разлетятся, когда йо-йо полетит к владельцу
+					'''
+				HelFire: Накладывает на врагов Адский огонь, наносящий огромное количество урона
+				Amarok: Каждую секунду выстреливает 8 ледяных шипов, которые наносят 60% урона йо-йо
+				Gradient:
+					'''
+					Создаёт 8 вращающихся копий, наносящих 60% урона йо-йо
+					Эти копии разлетятся, когда йо-йо полетит к владельцу
+					Копии будут самонаводиться на ближайших врагов
+					'''
+				EOCYoyo:
+					'''
+					Имеет 2 фазы
+					Первая фаза: стреляет лазерами, наносящими 45% урона йо-йо
+					Вторая фаза: стреляет проклятым пламенем, которое наносит 50% урона йо-йо и накладывает на врагов Проклятое пекло
+					'''
+			}
+		}
+
+		TownNPCMood: {
+			ExamplePerson: {
+				LoveBiome: Я люблю лес. Тут прекрасный вид и животный мир.
+				LikeBiome: Я не против пустыни. Наверное, потому что я не чувствую жары.
+				DislikeBiome: Мне здесь не очень нравится. У меня по спине бегут мурашки.
+				LoveSpace: Мне нравится иметь столько свободного пространства. Хотя я бы не отказался поговорить с парочкой людей. Здесь немного одиноко.
+				NoHome: В своих путешествиях я не задерживаюсь на одном месте больше пары дней. Мне бы очень хотелось наконец-то найти себе постоянный дом.
+				DislikeCrowded: Здесь немного больше людей, чем мне хотелось бы.
+				HateCrowded: Здесь черезчур многолюдно.
+				LoveNPC: Мы с Торговцем прекрасно ладим, он умеет говорить о бизнесе.
+				DislikeNPC: Мне бы хотелось, чтобы здесь не было Подрывника, мне не нравится его грубое отношение.
+				LikeNPC_Princess: Здесь... спокойнее, чем обычно. Хотя я ума не приложу почему.
+			}
+		}
+
+		Dialogue: {
+			ExamplePerson: {
+				StandardDialogue1: Зацени мою коллекцию йо-йо!
+				StandardDialogue2: Многие считают, что поскольку я скелет, мне нравятся пещеры. Забавный факт: они мне не нравятся.
+				StandardDialogue3: Мои дни как мастера йо-йо давно прошли, но это не мешает мне собирать йо-йо и продавать их.
+				StandardDialogue4: Некоторые говорят мне, что я очень похож на своего брата. Я не согласен.
+				StandardDialogue5: Быть скелетом не так уж и плохо. Иногда мне нравится играть на своей грудной клетке, как на ксилофоне!
+				StandardDialoge6: Когда-то у меня была труба. Я великолепно играл на ней. Но потом я потерял её и влюбился в йо-йо.
+				CommonDialoge1: Знаешь, я очень удивлен, что все здесь так открыты ко мне. Обычно люди просто кричат ​​и кидают в меня всякое.
+			}
+		}
+
+		Achievements: {
+			AbbhorAchievement: {
+				Name: Как нажито, так и брошено
+				Description: Скуйте Аббхор, мощное оружие, содержащее тёмную энергию.
+			}
+
+			Code1Achievement: {
+				Name: Я хочу быть йо-йо-человеком!
+				Description: Получите Код 1.
+			}
+
+			Code2Achievement: {
+				Name: Просто продолжай йо-йошить
+				Description: Создайте Код 2.
+			}
+
+			ConverganceAchievement: {
+				Name: Безвоздмездно
+				Description: Объедините все йо-йо в одно окончательное - Сближение.
+			}
+		}
+
+		Buffs: {
+			Clotted: {
+				DisplayName: Свёрток
+				Description: Потеря здоровья
+			}
+
+			Combustion: {
+				DisplayName: Адский огонь
+				Description: Медленная потеря здоровья
+			}
+
+			Corrupt: {
+				DisplayName: Искажение
+				Description: Потеря здоровья
+			}
+
+			Frostbite: {
+				DisplayName: Обморожение
+				Description: Заморозка на месте
+			}
+
+			Hallowed: {
+				DisplayName: Освящение
+				Description: Испарение души
+			}
+
+			Omnipotence: {
+				DisplayName: Всемогущество
+				Description: Сияние
+			}
+
+			Osteopenia: {
+				DisplayName: Остеопения
+				Description: Защита и сила снижены
+			}
+
+			Pestilence: {
+				DisplayName: Чума
+				Description: Быстрая потеря здоровья
+			}
+		}
+
+		Projectiles: {
+			AdamantiteDrill.DisplayName: Yoyo Drill
+			CelestialDrill.DisplayName: Yoyo Drill
+			CelestialDrill2.DisplayName: Yoyo Drill
+			CobaltDrill.DisplayName: Yoyo Drill
+			Hakapik.DisplayName: Yoyo Drill
+			HorsemansDrill.DisplayName: Yoyo Drill
+			IronDrill.DisplayName: Yoyo Drill
+			Mattock.DisplayName: Yoyo Drill
+			MooMooDrill.DisplayName: Yoyo Drill
+			MythrilDrill.DisplayName: Yoyo Drill
+			NebulaDrill.DisplayName: Yoyo Drill
+			NinjaStar.DisplayName: Yoyo Drill
+			OrichalcumDrill.DisplayName: Yoyo Drill
+			PalladiumDrill.DisplayName: Yoyo Drill
+			ShadowflameDrill.DisplayName: Yoyo Drill
+			ShroomiteShredder.DisplayName: Yoyo Drill
+			SolarDrill.DisplayName: Yoyo Drill
+			SpectralShredder.DisplayName: Yoyo Drill
+			StardustDrill.DisplayName: Yoyo Drill
+			TheScooper.DisplayName: Yoyo Drill
+			TitaniumDrill.DisplayName: Yoyo Drill
+			TreeClippers.DisplayName: Yoyo Drill
+			Tsurugi.DisplayName: Yoyo Drill
+			VortexDrill.DisplayName: Yoyo Drill
+			BlueExplosion.DisplayName: Blue Explosion
+			DeprecatedExplosion.DisplayName: Deprecated Explosion
+			EclipseExplosion.DisplayName: Eclipse Explosion
+			FireExplosion.DisplayName: Fire Explosion
+			RedExplosion.DisplayName: Red Explosion
+			SolarExplosion.DisplayName: Solar Explosion
+			BlueShieldSwirl.DisplayName: Shield Swirl Blue
+			BlueShieldSwirlDuo.DisplayName: Shield Swirl Blue Duo
+			BlueShieldSwirlReverse.DisplayName: Shield Swirl Red Reverse
+			BlueSwirl2.DisplayName: Blue Swirl 2
+			Code1Swirl.DisplayName: Code 1 Swirl
+			CurveCat.DisplayName: Curve Cat
+			CurveDuo.DisplayName: Curve Duo
+			CurveEffect.DisplayName: Orange Swirl
+			CurveNebula.DisplayName: Curve Nebula
+			CurveOrange.DisplayName: Curve Orange
+			CurveStardust.DisplayName: Curve Stardust
+			CurveTuna.DisplayName: Curve Tuna
+			CurveVortex.DisplayName: Curve Vortex
+			FormatClaySwirl.DisplayName: Format Clay Swirl
+			GloveBlue.DisplayName: Glove Blue
+			GloveGreen.DisplayName: Glove Green
+			GloveRed.DisplayName: Glove Red
+			GloveWhite.DisplayName: Glove White
+			GloveYellow.DisplayName: Glove Yellow
+			GradientClaySwirl.DisplayName: Gradient Clay Swirl
+			GreenShieldSwirlDuo.DisplayName: Shield Swirl Green Duo
+			IcePartSwirl.DisplayName: Ice Part Swirl
+			IceSwirl.DisplayName: Ice Swirl
+			IceSwirlInner.DisplayName: Ice Swirl Inner
+			InnerSwirl2Red.DisplayName: Inner Swirl Red 2
+			InnerSwirl2Yellow.DisplayName: Inner Swirl Yellow 2
+			JaggedShieldSwirlDarkBlue.DisplayName: Jagged Shield Swirl Dark Blue
+			JaggedShieldSwirlGreen.DisplayName: Jagged Shield Swirl Green
+			JaggedShieldSwirlPurple.DisplayName: Jagged Shield Swirl Purple
+			JaggedShieldSwirlRed.DisplayName: Jagged Shield Swirl Purple
+			JaggedShieldSwirlSkyBlue.DisplayName: Jagged Shield Swirl Sky Blue
+			JaggedShieldSwirlTempest.DisplayName: Jagged Shield Swirl Tempest
+			JaggedShieldSwirlYellow.DisplayName: Jagged Shield Swirl Yellow
+			JaggedSwirlPurple.DisplayName: Jagged Swirl Purple
+			JaggedSwirlRed.DisplayName: Jagged Swirl Red
+			JaggedSwirlSmudge.DisplayName: Jagged Swirl Smudge
+			JaggedSwirlTempest.DisplayName: Jagged Swirl Tempest
+			JaggedSwirlWhite.DisplayName: Jagged Swirl White
+			JaggedSwirlYellow.DisplayName: Jagged Swirl Yellow
+			MotaiCurveDuo.DisplayName: Motai Curve Duo
+			MotaiSwirl.DisplayName: Motai Swirl
+			MotaiSwirl2.DisplayName: Ice Swirl Inner
+			MythrilPartSwirl.DisplayName: Mythril Part Swirl
+			MythrilSwirl.DisplayName: Mythril Swirl
+			OuterSwirlRed.DisplayName: Outer Swirl Red
+			PinkPartSwirl.DisplayName: Pink Part Swirl
+			PinkSwirl.DisplayName: Pink Swirl
+			PurpleShieldSwirl.DisplayName: Shield Swirl Purple
+			PurpleShieldSwirl2.DisplayName: Shield Swirl Purple 2
+			PurpleShieldSwirlReverse.DisplayName: Shield Swirl Purple Reverse
+			RedShieldSwirl.DisplayName: Shield Swirl Red
+			RedShieldSwirl2.DisplayName: Shield Swirl Red 2
+			RedShieldSwirlDuo.DisplayName: Shield Swirl Red Duo
+			RedSwirl2.DisplayName: Red Swirl 2
+			Background.DisplayName: Red Background
+			CultistRing1.DisplayName: Cultist Ring 1
+			CultistRing2.DisplayName: Cultist Ring 2
+			CultistRingDamage.DisplayName: Cultist Ring 3
+			EclipseSwirl.DisplayName: Eclipse Swirl More-Orange-Than-The-Other-One
+			EclipseSwirlOrange.DisplayName: Eclipse Swirl Orange
+			SmudgeHitbox.DisplayName: Smudge Hitbox
+			SolidHitbox.DisplayName: Solid Hitbox
+			Sparkle1.DisplayName: Sparkle 1
+			Sparkle2.DisplayName: Sparkle 2
+			Sparkle3.DisplayName: Sparkle 1
+			Swirl.DisplayName: Cascade Inner Swirl
+			SwirlBlue.DisplayName: Swirl Sovereign
+			SwirlGreen.DisplayName: Swirl Green
+			SwirlPurple.DisplayName: Swirl Purple
+			SwirlRed.DisplayName: Swirl Red
+			SwirlStar.DisplayName: Star Yoyo Swirl
+			SwirlTeal.DisplayName: Swirl Teal
+			TempestSpike.DisplayName: Tempest Spike
+			TunaOuterSwirl.DisplayName: Tuna Outer Swirl
+			TunaSwirlInner.DisplayName: Tuna Swirl Inner
+			CatacombProjectile.DisplayName: Catacomb Projectile
+			CatProjectile.DisplayName: Cat Projectile
+			ChristmasBulbProjectile.DisplayName: Christmas Bulb Projectile
+			CobaltYoyoProjectile.DisplayName: Cobalt Yoyo Projectile
+			Code3Projectile.DisplayName: Code3 Projectile
+			CragProjectile.DisplayName: Crag Projectile
+			CultistYoyoProjectile.DisplayName: Cultist Yoyo Projectile
+			IronYoyoProjectile.DisplayName: Iron Yoyo Projectile
+			LeadYoyoProjectile.DisplayName: Lead Yoyo Projectile
+			MambeleProjectile.DisplayName: Mambele Projectile
+			MotaiProjectile.DisplayName: Motai Projectile
+			MythrilYoyoProjectile.DisplayName: Mythril Yoyo Projectile
+			OrichalcumYoyoProjectile.DisplayName: Orichalcum Yoyo Projectile
+			PalladiumYoyoProjectile.DisplayName: Palladium Yoyo Projectile
+			SmudgeProjectile.DisplayName: Smudge Projectile
+			SovereignProjectile.DisplayName: Sovereign Projectile
+			SpheruliteProjectile.DisplayName: Spherulite Projectile
+			TempestProjectile.DisplayName: Tempest Projectile
+			TestingYoyoProjectile.DisplayName: Testing Yoyo Projectile
+			TheAbbhorProjectile.DisplayName: The Abbhor Projectile
+			TheEnervationProjectile.DisplayName: The Enervation Projectile
+			TheMuscleYoyoProjectile.DisplayName: The Muscle Yoyo Projectile
+			TheQueensGambitProjectile.DisplayName: The Queens Gambit Projectile
+			ThinMintProjectile.DisplayName: Thin Mint Projectile
+			TocantinProjectile.DisplayName: Tocantin Projectile
+			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile
+			TrueCode3Projectile.DisplayName: True Code3 Projectile
+			TrueSmudgeProjectile.DisplayName: True Smudge Projectile
+			TunaProjectile.DisplayName: Tuna Projectile
+			HelFireExplosion.DisplayName: Hel-Fire Explosion
+			WaterExplosion.DisplayName: Water Explosion
+			BlackHoleSparkle.DisplayName: Sparkle
+			Code1Effect.DisplayName: Code1 Effect
+			FormatCEffect.DisplayName: Format C Effect
+			GradientEffect.DisplayName: Gradient Effect
+			RallyEffect.DisplayName: Rally Effect
+			World1.DisplayName: World1
+			World2.DisplayName: World2
+			BlackHole.DisplayName: Black Hole
+			BlackHole2.DisplayName: Black Hole 2
+			BlackHole4.DisplayName: Black Hole 4
+			BlackHoleCenter1.DisplayName: Black Hole Center 1
+			BlackHoleCenter2.DisplayName: Black Hole Center 2
+			BlackHoleProjectile.DisplayName: Black Hole Projectile
+			ConverganceProjectile.DisplayName: Convergance Projectile
+			CragHomingExplosive.DisplayName: Crag Homing Explosive
+			HomingWaterBolt.DisplayName: Homing Water Bolt
+			EmpressProjectile.DisplayName: Empress Projectile
+			Excavator.DisplayName: Excavator
+			StoneAgeProjectile.DisplayName: Stone Age Projectile
+			TheCrowyoProjectile.DisplayName: The Crowyo Projectile
+			CrowyoFeather.DisplayName: Crowyo Feather
+		}
+
+		Items: {
+			AdamantiteDrillCasing: {
+				DisplayName: Адамантитовый киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:180% мощности кирки]
+					'''
+			}
+
+			CelestialDrillCasing: {
+				DisplayName: Небесный киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:250% мощности кирки]
+					+1 к радиусу
+					'''
+			}
+
+			CelestialDrillCasingExtended: {
+				DisplayName: Небесный киркорпус +
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:250% мощности кирки]
+					+2 к радиусу
+					'''
+			}
+
+			CobaltDrillCasing: {
+				DisplayName: Кобальтовый киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:110% мощности кирки]
+					'''
+			}
+
+			HakapikDrillCasing: {
+				DisplayName: Хакапик
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:200% мощности кирки]
+					Инструмент норвежского происхождения
+					'''
+			}
+
+			HorsemansDrillCasing: {
+				DisplayName: Киркорпус всадника
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:200% мощности кирки]
+					'''
+			}
+
+			MattockDrillCasing: {
+				DisplayName: Мотыгокиркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:200% мощности кирки]
+					'''
+			}
+
+			MooMooDrillCasing: {
+				DisplayName: Инструмент MooMoo
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:250% мощности кирки]
+					+2 к радиусу
+					'''
+			}
+
+			MythrilDrillCasing: {
+				DisplayName: Митриловый киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:150% мощности кирки]
+					'''
+			}
+
+			NebulaDrillCasing: {
+				DisplayName: Киркорпус Туманности
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:250% мощности кирки]
+					+1 к радиусу
+					'''
+			}
+
+			NinjaStarCasing: {
+				DisplayName: Корпус-сюрикэн
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:210% мощности кирки]
+					'''
+			}
+
+			OrichalcumDrillCasing: {
+				DisplayName: Орихалковый киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/F3BDFF:165% мощности кирки]
+					'''
+			}
+
+			PalladiumCasing: {
+				DisplayName: Палладиевый киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:130% мощности кирки]
+					'''
+			}
+
+			ShadowflameDrillCasing: {
+				DisplayName: Киркорпус теневого пламени
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:210% мощности кирки]
+					'''
+			}
+
+			ShroomiteShredderCasing: {
+				DisplayName: Грибнитовый громитель
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:200% мощности кирки]
+					'''
+			}
+
+			SolarDrillCasing: {
+				DisplayName: Солнечный киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:250% мощности кирки]
+					+1 к радиусу
+					'''
+			}
+
+			SpectralShredderCasing: {
+				DisplayName: Спектральный сокрушитель
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					От него доносится сладко пахнущий туман
+					Бурит в форме бриллианта
+					[c/BCFFF0:200% мощности кирки]
+					'''
+			}
+
+			StardustDrillCasing: {
+				DisplayName: Киркорпус Звёздной Пыли
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:250% мощности кирки]
+					+1 к радиусу
+					'''
+			}
+
+			TheScooperDrillCasing: {
+				DisplayName: Корпус-совок
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:200% мощности кирки]
+					'''
+			}
+
+			TitaniumDrillCasing: {
+				DisplayName: Титановый киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:190% мощности кирки]
+					'''
+			}
+
+			TreeClippersDrillCasing: {
+				DisplayName: Корпус-секатор
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:200% мощности кирки]
+					'''
+			}
+
+			TsurugiDrillCasing: {
+				DisplayName: Корпус-цуруги
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:210% мощности кирки]
+					+1 к радиусу
+					Позволяет собирать ящщеровые кирпичи
+					'''
+			}
+
+			VortexDrillCasing: {
+				DisplayName: Киркорпус Вихря
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:250% мощности кирки]
+					+1 к радиусу
+					'''
+			}
+
+			YoyoDrillCasing: {
+				DisplayName: Киркорпус
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					[c/BCFFF0:100% мощности кирки]
+					'''
+			}
+
+			HitDisplay: {
+				DisplayName: Механический кликер
+				Tooltip: Отображает текущее количество ударов йо-йо подряд
+			}
+
+			SpeedDisplay: {
+				DisplayName: Радар для Йо-йо
+				Tooltip: Отображает, насколько быстро может двигаться йо-йо
+			}
+
+			AbilityRing: {
+				DisplayName: Кольцо способностей
+				Tooltip:
+					'''
+					[c/FF00AB:Позволяет Йо-йо использовать свои особые способности]
+					Йо-йо будет показывать требования для активации способности.
+					'''
+			}
+
+			AmberRing: {
+				DisplayName: Янтарное кольцо
+				Tooltip: Йо-йо будет излучать яркий янтарный свет
+			}
+
+			AmethystRing: {
+				DisplayName: Аметистовое кольцо
+				Tooltip: Йо-йо будет излучать яркий фиолетовый свет
+			}
+
+			DiamondRing: {
+				DisplayName: Алмазное кольцо
+				Tooltip: Йо-йо будет излучать яркий белый свет
+			}
+
+			EmeraldRing: {
+				DisplayName: Изумрудное кольцо
+				Tooltip: Йо-йо будет излучать яркий зелёный свет
+			}
+
+			FortitudeRing: {
+				DisplayName: Кольцо стойкости
+				Tooltip: Увеличивает отбрасывание от йо-йо
+			}
+
+			GemstoneRing: {
+				DisplayName: Кольцо с драгоценными камнями
+				Tooltip: Йо-йо будет излучать разноцветный свет
+			}
+
+			HoneyRing: {
+				DisplayName: Медовое кольцо
+				Tooltip:
+					'''
+					Увеличивает силу дружественных пчёл
+					Может быть экипировано в обычные слоты
+					'''
+			}
+
+			OmnipotenceRing: {
+				DisplayName: Кольцо Восприятия
+				Tooltip: Немного увеличивает скорость йо-йо
+			}
+
+			RingOfCoalescence: {
+				DisplayName: Кольцо Слияния
+				Tooltip:
+					'''
+					Увеличивает отбрасывание от йо-йо
+					Немного увеличивает скорость йо-йо
+					Увеличивает весь урон йо-йо на 5%
+					'''
+			}
+
+			RubyRing: {
+				DisplayName: Рубиновое кольцо
+				Tooltip: Йо-йо будет излучать яркий красный свет
+			}
+
+			SapphireRing: {
+				DisplayName: Сапфировое кольцо
+				Tooltip: Йо-йо будет излучать яркий голубой свет
+			}
+
+			TerreneRing: {
+				DisplayName: Терра-кольцо
+				Tooltip:
+					'''
+					[c/FF00AB:Позволяет йо-йо использовать свои особые способности]
+					Йо-йо будет показывать требования для активации способности.
+					Увеличивает отбрасывание от йо-йо
+					Немного увеличивает скорость йо-йо
+					Увеличивает весь урон йо-йо на 5%
+					'''
+			}
+
+			TopazRing: {
+				DisplayName: Топазовое кольцо
+				Tooltip: Йо-йо будет излучать яркий желтый свет
+			}
+
+			TrepidationRing: {
+				DisplayName: Кольцо Испуганности
+				Tooltip: Увеличивает весь урон йо-йо на 5%
+			}
+
+			DarkBlueString: {
+				DisplayName: Тёмно-синяя нить
+				Tooltip:
+					'''
+					Увеличивает дальность йо-йо
+					[c/6EAE6E:+150 к дальности йо-йо]
+					[c/6EAE6E:+1 к скорости йо-йо]
+					'''
+			}
+
+			DarkGreenString: {
+				DisplayName: Тёмно-зеленая нить
+				Tooltip:
+					'''
+					Увеличивает дальность йо-йо
+					[c/6EAE6E:+150 к дальности Йо-йо]
+					[c/6EAE6E:+1 к скорости Йо-йо]
+					'''
+			}
+
+			EclipseString: {
+				DisplayName: Нить затмения
+				Tooltip:
+					'''
+					Увеличивает дальность йо-йо
+					Похоже, она весьма тяжёлая
+					Попадания йо-йо создают наносящие урон волны
+					[c/6EAE6E:+150 к дальности йо-йо]
+					[c/6EAE6E:+2 к скорости йо-йо]
+					'''
+			}
+
+			FrostbiteString: {
+				DisplayName: Нить обморожения
+				Tooltip:
+					'''
+					Увеличивает дальность йо-йо
+					Противовесы накладывают Обморожение
+					[c/6EAE6E:+150 к дальности Йо-йо]
+					[c/6EAE6E:+2 к скорости Йо-йо]
+					'''
+			}
+
+			GolemsteelString: {
+				DisplayName: Нить из стали Голема
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					Противовесы наносят мощное отбрасывание и наносят увеличенный урон
+					[c/6EAE6E:+150 к дальности Йо-йо]
+					[c/6EAE6E:+2 к скорости Йо-йо]
+					'''
+			}
+
+			LightPinkString: {
+				DisplayName: Светло-розовая нить
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					[c/6EAE6E:+150 к дальности Йо-йо]
+					[c/6EAE6E:+1 к скорости Йо-йо]
+					'''
+			}
+
+			NaniteString: {
+				DisplayName: Нанитовая нить
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					Нити Йо-йо становятся невидимыми
+					[c/6EAE6E:+150 к дальности Йо-йо]
+					[c/6EAE6E:+2 к скорости Йо-йо]
+					'''
+			}
+
+			NebulaString: {
+				DisplayName: Нить Туманности
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					[c/6EAE6E:+250 к дальности Йо-йо]
+					[c/6EAE6E:+3 к скорости Йо-йо]
+					[c/6EAE6E:+5% к базовому урону Йо-йо]
+					'''
+			}
+
+			SlimyString: {
+				DisplayName: Скользская нить
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					Yoyos create slime covered spikes
+					[c/6EAE6E:+150 к дальности Йо-йо]
+					[c/6EAE6E:+1 к скорости Йо-йо]
+					'''
+			}
+
+			SolarString: {
+				DisplayName: Нить Солнца
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					[c/6EAE6E:+250 к дальности Йо-йо]
+					[c/6EAE6E:+3 к скорости Йо-йо]
+					[c/6EAE6E:+5% к базовому урону Йо-йо]
+					'''
+			}
+
+			CrimtaneBearing: {
+				DisplayName: Кримтановый подшипник
+				Tooltip: Удары йо-йо высасывают жизнь
+			}
+
+			DemoniteBearing: {
+				DisplayName: Демонитовый подшипник
+				Tooltip: Удары йо-йо высасывают жизнь
+			}
+
+			HallowedBearing: {
+				DisplayName: Святой подшипник
+				Tooltip: Удары йо-йо накладывают Освящение
+			}
+
+			JungleBearing: {
+				DisplayName: Джунглевый подшипник
+				Tooltip: Удары йо-йо имеют шанс наложить Чуму
+			}
+
+			ObsidianBearing: {
+				DisplayName: Обсидиановый подшипник
+				Tooltip: Удары йо-йо накладывают Адский огонь
+			}
+
+			WaspBearing: {
+				DisplayName: Осиный подшипник
+				Tooltip:
+					'''
+					Йо-йо будут создавать пчел
+					«Согласно всем известным законам авиации пчела не может летать.»
+					'''
+			}
+
+			YoyoBearing: {
+				DisplayName: Подшипник для йо-йо
+				Tooltip: Позволяет создание подшипников, которые добавляют специальные эффекты
+			}
+
+			ShimmerSupportGloveEarth: {
+				DisplayName: Мерцающая зелёная перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка для йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается зеленым свечением
+					Йо-йо наносит 1/2 урона
+					Выпускает дополнительный противовес
+					'''
+			}
+
+			ShimmerSupportGloveElectricity: {
+				DisplayName: Мерцающая жёлтая перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка для йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается жёлтым свечением
+					Йо-йо наносит 1/2 урона
+					Выпускает дополнительный противовес
+					'''
+			}
+
+			ShimmerSupportGloveFire: {
+				DisplayName: Мерцающая красная перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка для йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается красным свечением
+					Йо-йо наносит 1/2 урона
+					Выпускает дополнительный противовес
+					'''
+			}
+
+			ShimmerSupportGloveWater: {
+				DisplayName: Мерцающая голубая перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка для йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается голубым свечением
+					Йо-йо наносит 1/2 урона
+					Выпускает дополнительный противовес
+					'''
+			}
+
+			SolarGlove: {
+				DisplayName: Солнечная перчатка
+				Tooltip:
+					'''
+					Автоматически отпускает второе Йо-йо
+					Йо-йо отмечается белым свечением
+					Атаки йо-йо сопровождаются мощными взрывами
+					'''
+			}
+
+			SupportGloveEarth: {
+				DisplayName: Зелёная перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается зелёным свечением
+					Йо-йо наносит 1/2 урона
+					'''
+			}
+
+			SupportGloveElectricity: {
+				DisplayName: Желтая перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается жёлтым свечением
+					Йо-йо наносит 1/2 урона
+					'''
+			}
+
+			SupportGloveFire: {
+				DisplayName: Красная перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается красным свечением
+					Йо-йо наносит 1/2 урона
+					'''
+			}
+
+			SupportGloveWater: {
+				DisplayName: Голубая перчатка поддержки
+				Tooltip:
+					'''
+					[c/FFC3C3:Для работы требуется перчатка йо-йо]
+					Выпускает дополнительное йо-йо
+					Йо-йо отмечается голубым свечением
+					Йо-йо наносит 1/2 урона
+					'''
+			}
+
+			UpgradedYoyoGlove: {
+				DisplayName: Улучшенная перчатка для Йо-йо
+				Tooltip:
+					'''
+					Автоматически выпускает второе йо-йо
+					Йо-йо отмечается белым свечением
+					'''
+			}
+
+			EclipseBar: {
+				DisplayName: Слиток затмения
+				Tooltip: Излучает потустороннюю энергию
+			}
+
+			FrightBar: {
+				DisplayName: Слиток страха
+				Tooltip: "'Выкован из сущности ужасающих существ'"
+			}
+
+			MightBar: {
+				DisplayName: Слиток могущества
+				Tooltip: "'Создан из сущности могущественных существ.'"
+			}
+
+			NeutralineScrap: {
+				DisplayName: Нейтралиновый металлолом
+				Tooltip: Расплавленный шлак опасного оружия
+			}
+
+			SightBar: {
+				DisplayName: Слиток прозрения
+				Tooltip: "'Выкован из сущности всевидящих существ'"
+			}
+
+			DevAccessoryBag: {
+				DisplayName: Сумка для аксессуаров для йо-йо
+				Tooltip:
+					'''
+					{$CommonItemTooltip.RightClickToOpen}
+					Имеет шанс содержать редкую добычу.
+					'''
+			}
+
+			BrokenHeroRing: {
+				DisplayName: Сломанное кольцо героя
+				Tooltip: ""
+			}
+
+			BrokenHeroYoyo: {
+				DisplayName: Сломанное йо-йо героя
+				Tooltip: ""
+			}
+
+			SoulOfEclipse: {
+				DisplayName: Душа затмения
+				Tooltip: "'Сущность потусторонних существ'"
+			}
+
+			Cat: {
+				DisplayName: Катамити
+				Tooltip: '''"быстрее дай мне задротский мод"'''
+			}
+
+			Catacomb: {
+				DisplayName: Катакомба
+				Tooltip: ""
+			}
+
+			ChristmasBulb: {
+				DisplayName: Елочный шарик
+				Tooltip:
+					'''
+					  Плотно обёрнут гирляндой
+					  Пахнет свежей сосной
+					'''
+			}
+
+			CobaltYoyo: {
+				DisplayName: Кобальтовое йо-йо
+				Tooltip: ""
+			}
+
+			Code3: {
+				DisplayName: Код 3
+				Tooltip: '''"Долгожданное продолжение"'''
+			}
+
+			Convergance: {
+				DisplayName: Сближение
+				Tooltip:
+					'''
+					Вершина разрушения
+					Свет прорывается через центр
+					'''
+			}
+
+			Crag: {
+				DisplayName: Скала
+				Tooltip: "'Оно сделано из огня!'"
+			}
+
+			CultistYoyo: {
+				DisplayName: Синкирь-йо
+				Tooltip: ""
+			}
+
+			IronYoyo: {
+				DisplayName: Железное Йо-йо
+				Tooltip: ""
+			}
+
+			LeadYoyo: {
+				DisplayName: Свинцовое Йо-йо
+				Tooltip: ""
+			}
+
+			Mambele: {
+				DisplayName: Мамбеле
+				Tooltip:
+					'''
+					Поверхность грубая и зернистая
+					Пахнет горелым деревом
+					'''
+			}
+
+			Melanoid: {
+				DisplayName: Меланоид
+				Tooltip: Наносит незначительные ожоги
+			}
+
+			Motai: {
+				DisplayName: Motai
+				Tooltip: Особая благодарность Motai за то, что он самый тупорылый разработчик
+			}
+
+			MythrilYoyo: {
+				DisplayName: Митриловое йо-йо
+				Tooltip: ""
+			}
+
+			OrichalcumYoyo: {
+				DisplayName: Орихалковое йо-йо
+				Tooltip: ""
+			}
+
+			PalladiumYoyo: {
+				DisplayName: Палладиевое йо-йо
+				Tooltip: ""
+			}
+
+			Smudge: {
+				DisplayName: Благовони-йо
+				Tooltip:
+					'''
+					Наносит увеличенный урон призрачным целям.
+					В кладбищенском биоме наносит в 2 раза больше урона и испускает синее пламя.
+					«Безопасный период — 6 секунд».
+					'''
+			}
+
+			Sovereign.DisplayName: Суверен
+
+			TheAbbhor: {
+				DisplayName: Аббхор
+				Tooltip: Объединение чистой мощи
+			}
+
+			TheEnervation: {
+				DisplayName: Слабость
+				Tooltip:
+					'''
+					Более сильная и мощная версия Недомогания.
+					Высасивает жизнь при ударе.
+					'''
+			}
+
+			TheMuscle: {
+				DisplayName: Мышца
+				Tooltip:
+					'''
+					Более сильная и мощная версия Артерии.
+					Высасивает жизнь при ударе.
+					'''
+			}
+
+			TheQueensGambit: {
+				DisplayName: Королевский гамбит
+				Tooltip:
+					'''
+					Выпускает пчел при попадании и имеет шанс отравить цель
+					Пчелы компенсируют недостаток первоначального урона
+					Имеет шанс оставить пчел на своем пути
+					«Теперь включает в себя поддержку рюкзака-улья!»
+					'''
+			}
+
+			TheTempest: {
+				DisplayName: Буря
+				Tooltip: ""
+			}
+
+			ThinMint: {
+				DisplayName: Мятная печенька
+				Tooltip: '''"Пожалуйста, не ешьте мяту"'''
+			}
+
+			Tocantin: {
+				DisplayName: Токантинс
+				Tooltip: Имеет шанс отравить врагов
+			}
+
+			TrueAbbhor: {
+				DisplayName: Истинный Аббхор
+				Tooltip: ""
+			}
+
+			TrueCode3: {
+				DisplayName: Истинный Код 3
+				Tooltip: Светит с огромной силой
+			}
+
+			TrueSmudge: {
+				DisplayName: Истинное Благовони-йо
+				Tooltip:
+					'''
+					Предмет более недоступен для получения
+					Наносит увеличенный урон призрачным целям.
+					В кладбищенском биоме завихрения наносят немного больше урона.
+					«Безопасный период — 12 секунд».
+					'''
+			}
+
+			Tuna.DisplayName: Тунец
+
+			DarkTealString: {
+				DisplayName: Тёмно-бирюзовая нить
+				Tooltip:
+					'''
+					Увеличивает дальность йо-йо
+					[c/6EAE6E:+150 к дальности йо-йо]
+					[c/6EAE6E:+1 к скорости йо-йо]
+					'''
+			}
+
+			GrapeString: {
+				DisplayName: Пурпурная нить
+				Tooltip:
+					'''
+					Увеличивает дальность йо-йо
+					Пахнет виноградом
+					[c/6EAE6E:+150 к дальности йо-йо]
+					[c/6EAE6E:+1 к скорости йо-йо]
+					'''
+			}
+
+			StardustString: {
+				DisplayName: Нить звёздной пыли
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					[c/6EAE6E:+250 к дальности Йо-йо]
+					[c/6EAE6E:+3 к скорости Йо-йо]
+					[c/6EAE6E:+5% к базовому урону Йо-йо]
+					'''
+			}
+
+			VortexString: {
+				DisplayName: Нить Вихря
+				Tooltip:
+					'''
+					Увеличивает дальность Йо-йо
+					[c/6EAE6E:+250 к дальности Йо-йо]
+					[c/6EAE6E:+3 к скорости Йо-йо]
+					[c/6EAE6E:+5% к базовому урону Йо-йо]
+					'''
+			}
+
+			AroundTheWorld: {
+				DisplayName: Вокруг света
+				Tooltip:
+					'''
+					Лёгкий трюк
+					Создаёт отдельное йо-йо, которое вращается вокруг игрока и наносит 0,3 урона.
+					[c/FFFF4A:Дальность суммируется с процентом от текущей дальности вашего йо-йо]
+					Создаёт по одному йо-йо за каждое активное йо-йо
+					'''
+			}
+
+			AroundTheWorldTier2: {
+				DisplayName: Вокруг всего мира, уровень 2
+				Tooltip:
+					'''
+					Обычный трюк
+					Создаёт 2 отдельных йо-йо, которые вращаются вокруг игрока и наносят 0,5 урона.
+					[c/FFFF4A:Дальность суммируется с процентом от текущего диапазона вашего йо-йо]
+					Создаёт по два йо-йо за каждое активное йо-йо
+					'''
+			}
+
+			SupportGlove: {
+				DisplayName: Перчатка поддержки
+				Tooltip: Позволяет использовать третье йо-йо
+			}
+
+			BlackHole: {
+				DisplayName: Чёрная дыра
+				Tooltip:
+					'''
+					Вращается достаточно быстро, чтобы создать вихрь энергии, образующий разрушительную черную дыру.
+					Создано Турбаником
+					'''
+			}
+
+			ShimmerBag: {
+				DisplayName: Мерцающая сумка для йо-йо
+				Tooltip: ""
+			}
+
+			Tier2Bag: {
+				DisplayName: Портфель для йо-йо
+				Tooltip: ""
+			}
+
+			BeetleBag: {
+				DisplayName: Сумка жука
+				Tooltip: ""
+			}
+
+			EmpressYoyo: {
+				DisplayName: Спектр
+				Tooltip: Обладает огромной силой Императрицы Света
+			}
+
+			AdvancedYoyoBag: {
+				DisplayName: Набор внеземного командования
+				Tooltip:
+					'''
+					Позволяет игроку игнорировать максимальную длину нити
+					[c/FF3CEC:+Бесконечная дальность йо-йо]
+					'''
+			}
+
+			ExcavatorCasing: {
+				DisplayName: Экскаватор
+				Tooltip:
+					'''
+					Позволяет йо-йо бурить блоки
+					Для бурения удерживайте ПКМ
+					Будьте осторожны, не разрушьте свой дом!
+					[c/FF255F: 250% мощности кирки]
+					+10 к радиусу
+					'''
+			}
+
+			ShimmeringBeetleBag: {
+				DisplayName: Мерцающая сумка жука
+				Tooltip: ""
+			}
+
+			StoneAge: {
+				DisplayName: Каменный век
+				Tooltip:
+					'''
+					Имеет шанс сбить с толку цели
+					"Уга-буга трюки круто"
+					'''
+			}
+
+			DualYoyo: {
+				DisplayName: Двойное Йо-йо
+				Tooltip:
+					'''
+					Обычный трюк
+					Позволяет пользователю [c/E232D6:владеть двумя разными йо-йо]
+					Любое йо-йо, созданное с помощью перчатки для йо-йо, будет типа второго йо-йо.
+					[c/FFFF4A: Второе йо-йо должно быть помещено в инвентаре справа от вашего йо-йо]
+					'''
+			}
+
+			MoonlordBag: {
+				DisplayName: Сумка Лунного лорда
+				Tooltip: ""
+			}
+
+			ShootToTheMoon: {
+				DisplayName: Достигнуть высот
+				Tooltip:
+					'''
+					Обычный трюк
+					[c/E475FF: Увеличивает дальность дополнительных йо-йо, создаваемых с помощью перчатки для йо-йо]
+					'''
+			}
+
+			TheCrowyo: {
+				DisplayName: Ворон-йо
+				Tooltip:
+					'''
+					«Я так голоден, что готов съесть лошадь!»
+					Создано после нескольких месяцев непрекращающегося нытья со стороны участников Discord.
+					'''
+			}
+		}
+
+		InfoDisplays: {
+			HitInfo.DisplayName: Счетчик ударов йо-йо
+			IDInfo.DisplayName: Внутренний ID снаряда
+			SpeedInfo.DisplayName: Показатель скорости йо-йо
+			StringInfo.DisplayName: Внутренний цвет нити
+		}
+
+		NPCs: {
+			ExamplePerson: {
+				DisplayName: Лавочник-скелет
+
+				TownNPCMood: {
+					Content: Я доволен.
+					NoHome: Я ненавижу отсутствие дома.
+					FarFromHome: Я слишком далеко от дома.
+					LoveSpace: Мне нравится, что у меня так много места.
+					DislikeCrowded: Мне не нравится, насколько здесь многолюдно.
+					HateCrowded: Я ненавижу, насколько здесь многолюдно.
+					LoveBiome: Я люблю {BiomeName}.
+					LikeBiome: Мне нравится {BiomeName}.
+					DislikeBiome: Мне не нравится {BiomeName}.
+					HateBiome: Я ненавижу {BiomeName}.
+					LoveNPC: Я люблю {NPCName}.
+					LikeNPC: Мне нравится {NPCName}.
+					DislikeNPC: Мне не нравится {NPCName}.
+					HateNPC: Я ненавижу {NPCName}.
+					LikeNPC_Princess: Мне нравится {NPCName}.
+					Princess_LovesNPC: Мне нравится {NPCName}.
+				}
+			}
+		}
+
+		Conditions: {
+			MasterOrExpertMode: Mods.CombinationsMod.Conditions.MasterOrExpertMode
+			EaterOfWorldsOrBrain: Mods.CombinationsMod.Conditions.EaterOfWorldsOrBrain
+		}
+
+		Common: {
+			SmallChanges: Небольшие изменения
+			LargeChanges:
+				'''
+				Green: Слабое влияние
+				Yellow: Среднее влияние
+				Red: Сильное влияние
+				Обратите внимание, что отключение большинства из этого сделает ресурсы, выпадающие из врагов или создаваемые, ненужными.
+				'''
+		}
+
+		Configs: {
+			YoyoModConfig: {
+				UpscaleYoyoGlove: {
+					Tooltip: ""
+					Label: Увеличить размер спрайта перчатки для йо-йо
+				}
+
+				MainYoyoDust: {
+					Tooltip: Для тестирования. Создаёт пыль вокруг основного йо-йо. (Отключено по умолчанию)
+					Label: Основное йо-йо выделяет пыль
+				}
+
+				YoyoProjectileID: {
+					Tooltip: Показывает внутренний идентификатор снаряда, созданного удерживаемым Йо-йо.
+					Label: Показать ID снаряда йо-йо
+				}
+
+				YoyoStringStats: {
+					Tooltip:
+						'''
+						Показывает внутренний ID цвета нити йо-йо игрока.
+						(Может не отображаться правильное значение с модами, которые используют шейдеры в Yoyo Strings или используют обход.)
+						'''
+					Label: Показать цвет нити игрока
+				}
+
+				DisplayName: Конфигурация мода
+
+				VanillaYoyoEffects: {
+					Label: Эффекты ванильных йо-йо
+					Tooltip: Включает/отключает получение ванильными йо-йо эффектов из мода. (Включено по умолчанию)
+				}
+
+				LoadModdedYoyos: {
+					Label: Йо-йо из мода
+					Tooltip: Включает/выключает йо-йо из мода. (Включено по умолчанию)
+				}
+
+				LoadModdedAccessories: {
+					Label: Аксессуары из мода
+					Tooltip: Включает/выключает аксессуары из мода. (Включено по умолчанию)
+				}
+
+				EnableModifiedYoyoBag: {
+					Label: Изменения системы сумок для йо-йо
+					Tooltip: Включает/выключает новую систему сумок для йо-йо. (Включено по умолчанию)
+				}
+
+				LoadModdedItems: {
+					Label: Вещи из мода
+					Tooltip: Включает/отключает вещи из мода, включая йо-йо и аксессуары. (Включено по умолчанию)
+				}
+
+				Headers: {
+					SmallChanges: Заголовок небольших изменений
+					LargeChanges:
+						'''
+						Большие изменения
+						Зеленый: слабое влияние
+						Желтый: среднее влияние
+						Красный: сильное влияние
+						Обратите внимание, что отключение большинства из них сделает материалы, оставленные врагами или созданные, ненужными.
+						'''
+				}
+
+				AccessorySlotPosition: {
+					Tooltip: ""
+					Label: Расположение слотов для аксессуаров
+				}
+
+				VanillaYoyoDamageChanges: {
+					Label: Изменения урона ванильных йо-йо
+					Tooltip: Включает/отключает изменения, которые этот мод вносит в характеристики ванильных йо-йо. (Включено по умолчанию)
+				}
+
+				AccessorySlotIndicators: {
+					Label: Индикаторы слотов для аксессуаров
+					Tooltip: Включает/выключает указание того, какой тип предмета должен находиться в каком слоте. (Включено по умолчанию)
+				}
+
+				EOCYoyoProgressionMovement: {
+					Label: '''"Глаз Ктулху" выпадает из Близнецов'''
+					Tooltip: Включает/отключает выпадение йо-йо "Глаз Ктулху" из Близнецов вместо Мотрона. (Включено по умолчанию)
+				}
+			}
+		}
+	}
+}

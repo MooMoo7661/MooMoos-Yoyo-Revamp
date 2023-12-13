@@ -616,7 +616,7 @@ Mods: {
 				DisplayName: Anneau d'abilité
 				Tooltip:
 					'''
-					[c/FF00AB:Permet aux Yoyos d'utiliser leurs capacités spéciales.]
+					"[c/FF00AB:Permet aux Yoyos d'utiliser leurs capacités spéciales.]"
 					Les yoyos indiquent les conditions de déclenchement de la capacité.
 					'''
 			}
@@ -627,84 +627,84 @@ Mods: {
 			}
 
 			AmethystRing: {
-				// DisplayName: Amethyst Ring
-				// Tooltip: Yoyos will emit bright purple light
+				DisplayName: Anneau d'Améthyste
+				Tooltip: Les yoyos émettent une lumière violette brillante
 			}
 
 			DiamondRing: {
-				// DisplayName: Diamond Ring
-				// Tooltip: Yoyos will emit bright white light
+				DisplayName: Anneau de Diamant
+				Tooltip: Les yoyos émettent une lumière blanche brillante
 			}
 
 			EmeraldRing: {
-				// DisplayName: Emerald Ring
-				// Tooltip: Yoyos will emit bright green light
+				DisplayName: Anneau d'Émeraude
+				Tooltip: Les yoyos émettent une lumière verte brillante
 			}
 
 			FortitudeRing: {
-				// DisplayName: Ring of Fortitude
-				// Tooltip: Increases the knockback of all yoyos
+				DisplayName: Anneau de Courage
+				Tooltip: Augmente le recul de tous les yoyos
 			}
 
 			GemstoneRing: {
-				// DisplayName: Gemstone Ring
-				// Tooltip: Yoyos will emit a variety of colors
+				DisplayName: Anneau de pierre précieuse
+				Tooltip: Les yoyos émettent une variété de couleurs
 			}
 
 			HoneyRing: {
-				// DisplayName: Honey Ring
-				/* Tooltip:
+				DisplayName: Anneau de miel
+				Tooltip:
 					'''
-					Increases the strength of friendly bees
-					Can be equipped in regular slots
-					''' */
+					Augmente la force des abeilles alliées
+					Peut être équipé dans les emplacements normaux
+					'''
 			}
 
 			OmnipotenceRing: {
-				// DisplayName: Ring of Perception
-				// Tooltip: Slighly increases yoyo speed
+				DisplayName: Anneau de perception
+				Tooltip: Augmente légèrement la vitesse du yoyo
 			}
 
 			RingOfCoalescence: {
-				// DisplayName: Ring of Coalescence
-				/* Tooltip:
+				DisplayName: Anneau de Coalescence
+				Tooltip:
 					'''
-					Increases yoyo knockback
-					Slightly increases yoyo speed
-					Increases all yoyo damage by 5%
-					''' */
+					Augmente le knockback du yoyo
+					Augmente légèrement la vitesse du yoyo
+					Augmente tous les dégâts du yoyo de 5%
+					'''
 			}
 
 			RubyRing: {
-				// DisplayName: Ruby Ring
-				// Tooltip: Yoyos will emit bright red light
+				DisplayName: Anneau de Rubis
+				Tooltip: Les yoyos émettent une lumière rouge brillante
 			}
 
 			SapphireRing: {
-				// DisplayName: Sapphire Ring
-				// Tooltip: Yoyos will emit bright blue light
+				DisplayName: Anneau de Saphir
+				Tooltip: Les yoyos émettent une lumière bleue brillante
 			}
 
 			TerreneRing: {
-				// DisplayName: Terrene Ring
-				/* Tooltip:
+				DisplayName: Anneau Terrene
+				Tooltip:
 					'''
-					[c/FF00AB:Enables Yoyos to use their special abilities.]
-					Yoyos will show the requirements for triggering the ability.
-					Increases yoyo knockback
-					Slightly increases yoyo speed
-					Increases all yoyo damage by 5%
-					''' */
+					[c/FF00AB:Permet aux Yoyos d'utiliser leurs capacités spéciales.]
+					Les yoyos indiquent les conditions requises pour déclencher la capacité.
+					Augmente le recul du yoyo
+					Augmente légèrement la vitesse du yoyo
+					Augmente tous les dégâts du yoyo de 5%
+					'''
 			}
 
 			TopazRing: {
-				// DisplayName: Topaz Ring
-				// Tooltip: Yoyos will emit bright yellow light
+				DisplayName: Anneau de Topaze
+				Tooltip: Les yoyos émettent une lumière jaune brillante
 			}
 
 			TrepidationRing: {
-				// DisplayName: Ring of Trepidation
-				// Tooltip: Increases all yoyo damage by 5%
+				DisplayName: Anneau de Trépidation
+				Tooltip: Augmente tous les dégâts du yoyo de 5 %.
 			}
 
 			DarkBlueString: {

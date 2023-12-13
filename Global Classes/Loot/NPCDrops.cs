@@ -75,7 +75,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 					npcLoot.Add(notExpertRule);
 					break;
 
-				case NPCID.Skeleton:
+				case NPCID.SkeletronHead:
                     LeadingConditionRule notExpertRule2 = new LeadingConditionRule(new Conditions.NotExpert());
                     notExpertRule2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Catacomb>()));
                     npcLoot.Add(notExpertRule2);

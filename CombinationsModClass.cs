@@ -1,15 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
-using System.Reflection;
-using System;
-using Terraria.GameContent;
-using Terraria.ModLoader;
+﻿using CombinationsMod.Content.Configs;
+using CombinationsMod.Content.Items.Yoyos;
+using CombinationsMod.Content.ModPlayers;
 using Terraria;
-using Microsoft.Xna.Framework;
 using Terraria.Achievements;
-using CombinationsMod.Items.Yoyos;
 using Terraria.ID;
-using CombinationsMod.Projectiles.TrickYoyos;
+using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod

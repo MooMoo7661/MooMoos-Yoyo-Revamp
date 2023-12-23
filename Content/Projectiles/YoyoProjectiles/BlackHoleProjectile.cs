@@ -98,7 +98,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public static void DrawGlowBallAdditive(Vector2 pos, float scaleMultiplier, Color outerColor, Color innerColor, bool shiny = true)
         {
-            Texture2D GlowBall = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Projectiles/YoyoProjectiles/GlowBallPremultiplied");
+            Texture2D GlowBall = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Content/Projectiles/YoyoProjectiles/GlowBallPremultiplied");
 
             Vector2 origin = GlowBall.Size() / 2;
             Main.EntitySpriteDraw(GlowBall, pos - Main.screenPosition, null, outerColor with { A = 0 }, Main.rand.NextFloat() * MathF.Tau, origin, scaleMultiplier, SpriteEffects.None);

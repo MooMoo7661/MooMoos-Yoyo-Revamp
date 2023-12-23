@@ -78,7 +78,7 @@ public class EmpressProjectile : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Projectiles/YoyoProjectiles/GlowBallPremultiplied");
+        Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Content/Projectiles/YoyoProjectiles/GlowBallPremultiplied");
         float iterations = 6;
 
         float time = (float)Main.timeForVisualEffects;
@@ -137,7 +137,7 @@ public class EmpressProjectile : ModProjectile
         DrawGlowBallAdditive(Projectile.Center, 0.4f, Color.White, Color.White, true);
 
         int numberOfCloneImages = 6;
-        Texture2D tex = ModContent.Request<Texture2D>("CombinationsMod/Projectiles/YoyoProjectiles/GrayscaleEOLYoyoWings").Value;
+        Texture2D tex = ModContent.Request<Texture2D>("CombinationsMod/Content/Projectiles/YoyoProjectiles/GrayscaleEOLYoyoWings").Value;
         Vector2 wingsOffset = new Vector2(7, 0);
         float wingRotation = MathF.Sin(Main.GlobalTimeWrappedHourly * 50) * 0.2f + 0.1f;
         //LAYERING AGONYYY
@@ -181,7 +181,7 @@ public class EmpressProjectile : ModProjectile
     }
     public static void DrawGlowBallAdditive(Vector2 pos, float scaleMultiplier, Color outerColor, Color innerColor, bool shiny = true)
     {
-        Texture2D GlowBall = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Projectiles/YoyoProjectiles/GlowBallPremultiplied");
+        Texture2D GlowBall = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Content/Projectiles/YoyoProjectiles/GlowBallPremultiplied");
 
         Vector2 origin = GlowBall.Size() / 2;
         Main.EntitySpriteDraw(GlowBall, pos - Main.screenPosition, null, outerColor with { A = 0 }, Main.rand.NextFloat() * MathF.Tau, origin, scaleMultiplier, SpriteEffects.None);

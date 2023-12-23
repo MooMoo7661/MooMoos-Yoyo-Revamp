@@ -294,14 +294,14 @@ namespace CombinationsMod.Content.NPCS
         public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
         {
             if (npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn)
-                return Request<Texture2D>("CombinationsMod/NPCS/ExamplePerson");
+                return Request<Texture2D>("CombinationsMod/Content/NPCS/ExamplePerson");
 
             if (npc.altTexture == 1)
-                return Request<Texture2D>("CombinationsMod/NPCS/ExamplePerson_Alt");
+                return Request<Texture2D>("CombinationsMod/Content/NPCS/ExamplePerson_Alt");
 
-            return Request<Texture2D>("CombinationsMod/NPCS/ExamplePerson");
+            return Request<Texture2D>("CombinationsMod/Content/NPCS/ExamplePerson");
         }
 
-        public int GetHeadTextureIndex(NPC npc) => GetModHeadSlot("CombinationsMod/NPCS/ExamplePerson_Head");
+        public int GetHeadTextureIndex(NPC npc) => GetModHeadSlot("CombinationsMod/Content/NPCS/ExamplePerson_Head");
     }
 }

@@ -29,6 +29,8 @@ Mods: {
 			YoyoCounterweights: Contrepoids pour yoyo
 			Rings: Anneau
 			Tricks: Abilitée
+			RightClickInfo: Pressez {0} pour miner
+			Mouse2: Clic Droit
 
 			Abilities: {
 				BlackHole: Crée un large vortex qui inflige 40% des dégats du yoyo
@@ -95,21 +97,6 @@ Mods: {
 					Premier mode : Tire des lasers qui infligent 45% des dégâts du yoyo
 					Deuxième mode : Lance des flammes maudites qui infligent 50 % des dégâts et infligent l'effet enfer maudit
 					'''
-			}
-		}
-
-		TownNPCMood: {
-			ExamplePerson: {
-				LoveBiome: J'adore la forêt. Beaucoup de paysage et de bestioles.
-				LikeBiome: Le désert ne me dérange pas. Peut être parceque je ne ressent pas la chaleur.
-				DislikeBiome: Je ne me sens pas vraiment bien ici. ça me fais frissonner.
-				LoveSpace: C'est super d'avoir autant d'espace pour moi. J'aurais aimé avoir des personnes a qui parler. Je me sens bien seul.
-				NoHome: Lors de mes voyages, Je m'installe toujours dans un endroit temporaire pour quelques jours. J'aurais aimer poser mes bagages et m'installer quelque part.
-				DislikeCrowded: Il y a un peu trop de monde ici.
-				HateCrowded: On est vraiment sérrés comme des sardines.
-				LoveNPC: Le Marchant et moi nous entendont très bien, il sait parler affaire.
-				DislikeNPC: J'aurais aimé que le Démolisseur ne soit pas la, je n'aime pas son impolitesse.
-				LikeNPC_Princess: C'est... beaucoup plus calme ici. Je n'arrive pas a savoir pourquoi par contre.
 			}
 		}
 
@@ -355,7 +342,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:180% puissance de pioche]
 					'''
 			}
@@ -365,7 +351,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:250% puissance de pioche]
 					+1 portée
 					'''
@@ -376,7 +361,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:250% puissance de pioche]
 					+2 portée
 					'''
@@ -387,7 +371,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:110% puissance de pioche]
 					'''
 			}
@@ -397,7 +380,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:200% puissance de pioche]
 					Un outil d'origine norvégienne
 					'''
@@ -408,7 +390,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:200% puissance de pioche]
 					'''
 			}
@@ -418,7 +399,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:200% puissance de pioche]
 					'''
 			}
@@ -428,7 +408,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:250% puissance de pioche]
 					+2 portée
 					'''
@@ -439,7 +418,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:150% puissance de pioche]
 					'''
 			}
@@ -449,7 +427,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:250% puissance de pioche]
 					+1 portée
 					'''
@@ -460,7 +437,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:210% puissance de pioche]
 					'''
 			}
@@ -470,7 +446,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/F3BDFF:165% puissance de pioche]
 					'''
 			}
@@ -480,7 +455,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:130% puissance de pioche]
 					'''
 			}
@@ -490,7 +464,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:210% puissance de pioche]
 					'''
 			}
@@ -500,7 +473,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:200% puissance de pioche]
 					'''
 			}
@@ -510,7 +482,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:250% puissance de pioche]
 					+1 portée
 					'''
@@ -521,7 +492,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					Un brouillard odorant s'en échappe
 					Mine des blocs en forme de diamant
 					[c/BCFFF0:200% puissance de pioche]
@@ -533,7 +503,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:250% puissance de pioche]
 					+1 portée
 					'''
@@ -544,7 +513,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:200% puissance de pioche]
 					'''
 			}
@@ -554,7 +522,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:190% puissance de pioche]
 					'''
 			}
@@ -564,7 +531,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:200% puissance de pioche]
 					'''
 			}
@@ -574,7 +540,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:210% puissance de pioche]
 					+1 portée
 					Peut extraire des briques de Lihzhard
@@ -586,7 +551,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:250% puissance de pioche]
 					+1 portée
 					'''
@@ -597,7 +561,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					Pressez droite pour miner
 					[c/BCFFF0:100% puissance de pioche]
 					'''
 			}
@@ -1372,21 +1335,18 @@ Mods: {
 				DisplayName: Colporteur squelettes
 
 				TownNPCMood: {
-					Content: Je suis satisfait.
-					NoHome: Je déteste ne pas avoir de maison.
-					FarFromHome: Je suis trop loin de chez moi.
-					LoveSpace: J'aime avoir autant d'espace.
-					DislikeCrowded: Je n'aime pas être à l'étroit.
-					HateCrowded: Je déteste être à l'étroit.
 					LoveBiome: J'adore {BiomeName}.
 					LikeBiome: J'aime bien {BiomeName}.
 					DislikeBiome: Je n'aime pas {BiomeName}.
-					HateBiome: Je déteste {BiomeName}.
+					LoveSpace: J'aime avoir autant d'espace.
+					NoHome: Je déteste ne pas avoir de maison.
+					DislikeCrowded: Je n'aime pas être à l'étroit.
+					HateCrowded: Je déteste être à l'étroit.
 					LoveNPC: J'adore {NPCName}.
-					LikeNPC: J'aime bien {NPCName}.
 					DislikeNPC: Je n'aime pas {NPCName}.
-					HateNPC: Je déteste {NPCName}.
 					LikeNPC_Princess: J'adore {NPCName}.
+					Content: Je suis satisfait.
+					FarFromHome: Je suis trop loin de chez moi.
 					Princess_LovesNPC: J'aime bien {NPCName}.
 				}
 			}
@@ -1493,6 +1453,12 @@ Mods: {
 					Tooltip: Active/désactive le déplacement du Yoyo ODC pour qu'il tombe des jumeaux au lieu des Mothrons (activé par défaut).
 				}
 			}
+		}
+
+		Keybinds: {
+			// DrillKeybind.DisplayName: Drill Keybind
+			// AbilityKeybind.DisplayName: Ability Keybind
+			// TestKeybind.DisplayName: Test Keybind
 		}
 	}
 }

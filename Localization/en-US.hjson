@@ -11,7 +11,7 @@ Mods: {
 			FastRecall: Yoyos are recalled faster
 			MasterYoyoSkills: Gives the user master yoyo skills
 			IncreasedYoyoKnockback: Increased yoyo knockback
-			HoldDown: "[c/6FD4FF:Hold DOWN to view yoyo ability info]"
+			HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
 			NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
 			NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
 			YoyoAbilitySnippet: "[c/6FD4FF:-=Yoyo Ability=-]"
@@ -29,6 +29,8 @@ Mods: {
 			YoyoCounterweights: Yoyo Counterweights
 			Rings: Rings
 			Tricks: Tricks
+			RightClickInfo: Hold {0} to drill
+			Mouse2: Right Click
 
 			Abilities: {
 				BlackHole: Creates a large vortex that does 40% of the yoyo's damage
@@ -91,21 +93,6 @@ Mods: {
 					First stage: Shoots lasers that deal 45% of the yoyo's damage
 					Second stage: Shoots cursed flames that deal 50% and inflict cursed inferno
 					'''
-			}
-		}
-
-		TownNPCMood: {
-			ExamplePerson: {
-				LoveBiome: I love the forest. Plenty of nice scenery and critters.
-				LikeBiome: I don't mind the desert. Probably because I can't feel the heat.
-				DislikeBiome: I don't really like it here. It sends shivers down my spine.
-				LoveSpace: It's great having all this room to myself. I wouldn't mind a few people to talk to though. It's quite lonely.
-				NoHome: In my travels, I always set up a temporary spot for a few days. I'd really like to finally just set my bags down and stay somewhere for a while.
-				DislikeCrowded: There's a little more people than I'd like here.
-				HateCrowded: It's really crowded here.
-				LoveNPC: The Merchant and I get along really well, he knows how to talk business.
-				DislikeNPC: I wish the Demolitionist wasn't here, I don't like his rude attitude.
-				LikeNPC_Princess: It feels...calmer here. I can't quite place my hand on it though.
 			}
 		}
 
@@ -351,7 +338,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:180% pickaxe power]
 					'''
 			}
@@ -361,7 +347,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:250% pickaxe power]
 					+1 range
 					'''
@@ -372,7 +357,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:250% pickaxe power]
 					+2 range
 					'''
@@ -383,7 +367,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:110% pickaxe power]
 					'''
 			}
@@ -393,7 +376,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:200% pickaxe power]
 					A Norwegian tool in origin
 					'''
@@ -404,7 +386,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:200% pickaxe power]
 					'''
 			}
@@ -414,7 +395,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:200% pickaxe power]
 					'''
 			}
@@ -424,7 +404,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:250% pickaxe power]
 					+2 range
 					'''
@@ -435,7 +414,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:150% pickaxe power]
 					'''
 			}
@@ -444,8 +422,7 @@ Mods: {
 				DisplayName: Nebula Drill Casing
 				Tooltip:
 					'''
-					Allows Yoyos to drill through blocks
-					Hold right click to drill
+					Allows Yoyos to drill through block
 					[c/BCFFF0:250% pickaxe power]
 					+1 range
 					'''
@@ -456,7 +433,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:210% pickaxe power]
 					'''
 			}
@@ -466,7 +442,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/F3BDFF:165% pickaxe power]
 					'''
 			}
@@ -476,7 +451,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:130% pickaxe power]
 					'''
 			}
@@ -486,7 +460,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:210% pickaxe power]
 					'''
 			}
@@ -496,7 +469,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:200% pickaxe power]
 					'''
 			}
@@ -506,7 +478,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:250% pickaxe power]
 					+1 range
 					'''
@@ -517,7 +488,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					Sweet smelling fog eminates from it
 					Mines blocks in a diamond shape
 					[c/BCFFF0:200% pickaxe power]
@@ -529,7 +499,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:250% pickaxe power]
 					+1 range
 					'''
@@ -540,7 +509,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:200% pickaxe power]
 					'''
 			}
@@ -550,7 +518,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:190% pickaxe power]
 					'''
 			}
@@ -560,7 +527,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:200% pickaxe power]
 					'''
 			}
@@ -570,7 +536,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:210% pickaxe power]
 					+1 range
 					Capable of mining Lihzahrd Bricks
@@ -582,7 +547,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:250% pickaxe power]
 					+1 range
 					'''
@@ -593,7 +557,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					[c/BCFFF0:100% pickaxe power]
 					'''
 			}
@@ -1040,7 +1003,7 @@ Mods: {
 			}
 
 			Convergance: {
-				DisplayName: The Convergance
+				DisplayName: The Convergence
 				Tooltip:
 					'''
 					The pinnacle of destruction
@@ -1299,7 +1262,6 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					Hold right click to drill
 					Be careful not to destroy your house!
 					[c/FF255F:250% pickaxe power]
 					+10 range
@@ -1367,29 +1329,26 @@ Mods: {
 				DisplayName: Skeleton Peddler
 
 				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LoveBiome: I love {BiomeName}.
-					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					HateBiome: I hate {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
+					LoveBiome: I love the forest. Plenty of nice scenery and critters.
+					LikeBiome: I don't mind the desert. Probably because I can't feel the heat.
+					DislikeBiome: I don't really like it here. It sends shivers down my spine.
+					LoveSpace: It's great having all this room to myself. I wouldn't mind a few people to talk to though. It's quite lonely.
+					NoHome: In my travels, I always set up a temporary spot for a few days. I'd really like to finally just set my bags down and stay somewhere for a while.
+					DislikeCrowded: There's a little more people than I'd like here.
+					HateCrowded: It's really crowded here.
+					LoveNPC: The Merchant and I get along really well, he knows how to talk business.
+					DislikeNPC: I wish the Demolitionist wasn't here, I don't like his rude attitude.
+					LikeNPC_Princess: It feels...calmer here. I can't quite place my hand on it though.
+					Content: I am perfectly okay.
+					FarFromHome: I feel unhappy, I'm way too far away from my home.
 					Princess_LovesNPC: I like {NPCName}.
 				}
 			}
 		}
 
 		Conditions: {
-			MasterOrExpertMode: Mods.CombinationsMod.Conditions.MasterOrExpertMode
-			EaterOfWorldsOrBrain: Mods.CombinationsMod.Conditions.EaterOfWorldsOrBrain
+			MasterOrExpertMode: Master or Expert
+			EaterOfWorldsOrBrain: Eater of Worlds or Brain of Cthulu
 		}
 
 		Common: {
@@ -1488,6 +1447,12 @@ Mods: {
 					Tooltip: Enables/Disables moving the EOC Yoyo to drop from the twins instead of Mothrons.(Enabled by default)
 				}
 			}
+		}
+
+		Keybinds: {
+			DrillKeybind.DisplayName: Drill Keybind
+			AbilityKeybind.DisplayName: Ability Keybind
+			TestKeybind.DisplayName: Test Keybind
 		}
 	}
 }

@@ -29,6 +29,8 @@ Mods: {
 			YoyoCounterweights: Contrapesos Yoyo
 			Rings: Anillos
 			Tricks: Trucos
+			RightClickInfo: Manten presionado {0} para empezar a minar
+			Mouse2: Click Derecho
 
 			Abilities: {
 				BlackHole: Crea un gran vortice que inflige el 40% de daño del yoyo
@@ -91,21 +93,6 @@ Mods: {
 					Primer modo: Dispara lasers que infligen el 45% de daño del yoyo
 					Segundo modo: Dispara llamas malditas que infligen el 50% de daño del yoyo y causan El Averno
 					'''
-			}
-		}
-
-		TownNPCMood: {
-			ExamplePerson: {
-				LoveBiome: Amo el bosque.Su paisaje y sus criaturas son hermosos.
-				LikeBiome: No me molesta el desierto. Probablemente es porque no siento el calor.
-				DislikeBiome: Realmente No me gusta este lugar. Me da escalofrios en la columna.
-				LoveSpace: Es genial tener toda una habitacion para mi.Aunque no me molestaria estar con unas pocas personas con las que pueda hablar.Esta bastante solitario.
-				NoHome: En mis viajes , Siempre establezco un lugar temporal por unos dias. Realmente me gustaria dejar mis maletas y quedarme en un lugar por un tiempo.
-				DislikeCrowded: Hay más gente de la que me gustaría aquí.
-				HateCrowded: Esta muy lleno de gente.
-				LoveNPC: El Mercader y yo nos llevamos muy bien, el sabe hablar de negocios.
-				DislikeNPC: Desearia que el Demoledor no estuviera aqui,No me gusta su actitud grosera.
-				LikeNPC_Princess: Se siente... muy tranquilo aqui. Aunque no pueda poner mi mano .
 			}
 		}
 
@@ -351,7 +338,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:180% Potencia de Pico]
 					'''
 			}
@@ -361,7 +347,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:250% Potencia de Pico]
 					+1 de rango
 					'''
@@ -372,7 +357,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:250% Potencia de Pico]
 					+2 de rango
 					'''
@@ -383,7 +367,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:110% Potencia de Pico]
 					'''
 			}
@@ -393,7 +376,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:200% Potencia de Pico]
 					Una herramienta de origen Noruego
 					'''
@@ -404,7 +386,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:200% Potencia de Pico]
 					'''
 			}
@@ -414,7 +395,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:200% Potencia de Pico]
 					'''
 			}
@@ -424,7 +404,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:250% Potencia de Pico]
 					+2 de rango
 					'''
@@ -435,7 +414,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:150% Potencia de Pico]
 					'''
 			}
@@ -445,7 +423,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:250% Potencia de Pico]
 					+1 de rango
 					'''
@@ -456,7 +433,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:210% Potencia de Pico]
 					'''
 			}
@@ -466,7 +442,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/F3BDFF:165% Potencia de Pico]
 					'''
 			}
@@ -476,7 +451,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:130% Potencia de Pico]
 					'''
 			}
@@ -486,7 +460,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:210% Potencia de Pico]
 					'''
 			}
@@ -496,7 +469,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:200% Potencia de Pico]
 					'''
 			}
@@ -506,7 +478,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:250% Potencia de Pico]
 					+1 de rango
 					'''
@@ -517,7 +488,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					De el emana una niebla de olor dulce.
 					Deja los bloques minados en forma de diamante
 					[c/BCFFF0:200% Potencia de Pico]
@@ -529,7 +499,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:250% Potencia de Pico]
 					+1 de rango
 					'''
@@ -540,7 +509,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:200% Potencia de Pico]
 					'''
 			}
@@ -550,7 +518,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:190% Potencia de Pico]
 					'''
 			}
@@ -560,7 +527,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:200% Potencia de Pico]
 					'''
 			}
@@ -570,7 +536,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:210% Potencia de Pico]
 					+1 de rango
 					Capaz de minar Ladrillo de lihzahrd
@@ -582,7 +547,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:250% Potencia de Pico]
 					+1 range
 					'''
@@ -593,7 +557,6 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					Manten presionado el click derecho para empezar a minar
 					[c/BCFFF0:100% Potencia de Pico]
 					'''
 			}
@@ -1367,21 +1330,18 @@ Mods: {
 				DisplayName: Skeleton Peddler
 
 				TownNPCMood: {
-					Content: Estoy feliz.
-					NoHome: Odio no tener un hogar.
-					FarFromHome: Estoy lejos de casa.
-					LoveSpace: Me encanta tener tanto espacio.
-					DislikeCrowded: No me gusta lo lleno que está.
-					HateCrowded: Odio lo lleno que está.
 					LoveBiome: Me encanta  {BiomeName}.
 					LikeBiome: Me gusta  {BiomeName}.
 					DislikeBiome: No me gusta el {BiomeName}.
-					HateBiome: Odio el {BiomeName}.
+					LoveSpace: Me encanta tener tanto espacio.
+					NoHome: Odio no tener un hogar.
+					DislikeCrowded: No me gusta lo lleno que está.
+					HateCrowded: Odio lo lleno que está.
 					LoveNPC: Adoro a {NPCName}.
-					LikeNPC: Me agrada  {NPCName}.
 					DislikeNPC: No me agrada  {NPCName}.
-					HateNPC: Odio a {NPCName}.
 					LikeNPC_Princess: Me agrada {NPCName}.
+					Content: Estoy feliz.
+					FarFromHome: Estoy lejos de casa.
 					Princess_LovesNPC: Me agrada {NPCName}.
 				}
 			}
@@ -1488,6 +1448,12 @@ Mods: {
 					Tooltip: Activa/Desactiva el cambio del Yoyo EODC(El Ojo de Cthulhu) para que lo boten los gemelos en vez del Polillón.(Activado por defecto)
 				}
 			}
+		}
+
+		Keybinds: {
+			// DrillKeybind.DisplayName: Drill Keybind
+			// AbilityKeybind.DisplayName: Ability Keybind
+			// TestKeybind.DisplayName: Test Keybind
 		}
 	}
 }

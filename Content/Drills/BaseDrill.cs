@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Keybindings;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -67,7 +68,7 @@ namespace CombinationsMod.Content.Drills
             // Handle enabling/disabling the drill function
             if (Projectile.owner == Main.myPlayer)
             {
-                bool shouldBeActive = Main.mouseRight;
+                bool shouldBeActive = KeybindSystem.DrillKeybind.Current;
                 if (IsDrillEnabled && !shouldBeActive)
                 {
 

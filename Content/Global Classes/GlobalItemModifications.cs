@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
-using CombinationsMod.Content.Configs;
+﻿using CombinationsMod.Content.Configs;
+using CombinationsMod.Content.Keybindings;
 using CombinationsMod.Content.ModPlayers;
+using CombinationsMod.Content.Utility;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -15,10 +18,10 @@ namespace CombinationsMod.GlobalClasses
 
         public override void SetDefaults(Item item)
         {
-            bool damageChanges = ModContent.GetInstance<YoyoModConfig>().VanillaYoyoDamageChanges;
+            bool damageChanges = GetInstance<YoyoModConfig>().VanillaYoyoDamageChanges;
 
 
-            if (item.type == ItemID.TheEyeOfCthulhu && ModContent.GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
+            if (item.type == ItemID.TheEyeOfCthulhu && GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
             {
                 item.damage = 49;
                 item.knockBack = 3.9f;
@@ -46,8 +49,6 @@ namespace CombinationsMod.GlobalClasses
                 player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
         }
 
-
-
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
@@ -57,8 +58,7 @@ namespace CombinationsMod.GlobalClasses
                 damage *= 1.05f;
             }
 
-            if (modPlayer.solarString || modPlayer.stardustString || modPlayer.vortexString || modPlayer.nebulaString
-                && (ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99 || ItemID.Sets.Yoyo[item.type]))
+            if (modPlayer.solarString || modPlayer.stardustString || modPlayer.vortexString || modPlayer.nebulaString && (ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99 || ItemID.Sets.Yoyo[item.type]))
             {
                 damage *= 1.05f;
             }
@@ -75,24 +75,35 @@ namespace CombinationsMod.GlobalClasses
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type >= ItemID.BlackCounterweight && item.type <= ItemID.YellowCounterweight) // Is a counterweight
+            if (ItemSets.DrillCasing[item.type])
+            {
+                var obj = KeybindInputs.GetKeybindDisplayName(KeybindSystem.DrillKeybind.GetAssignedKeys().FirstOrDefault()) ?? "[c/565558:<unbound>]";
+                LocalizedText rightClick = Language.GetText($"Mods.CombinationsMod.LocalizedText.RightClickInfo").WithFormatArgs(obj);
+
+                if (rightClick.Value == "Hold Mouse2 to drill") { rightClick = Language.GetText("Mods.CombinationsMod.LocalizedText.Mouse2"); }
+                tooltips.Add(new TooltipLine(Mod, "RightClickInfo", rightClick.Value));
+            }
+
+            if (ItemSets.Counterweight[item.type]) // Is a counterweight -> display "creates one counterweight per yoyo"
             {
                 tooltips.Add(new TooltipLine(Mod, "CounterweightStackInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.CounterweightPerYoyo")));
             }
 
             if ((ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99))
             {
-                if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing)
+                if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing) // if player does not have a yoyo ring, only show "no ability ring detected" prompt.
                 {
                     tooltips.Add(new TooltipLine(Mod, "NoRing", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.NoRing")));
                 }
                 else
                 {
-                    if (!Main.LocalPlayer.controlDown)
+                    if (!KeybindSystem.AbilityKeybind.Current) // if not currently holding ability keybind, display that it needs to be held to show ability
                     {
-                        tooltips.Add(new TooltipLine(Mod, "HoldDown", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.HoldDown")));
+                        LocalizedText holdDown = Language.GetText($"Mods.CombinationsMod.LocalizedText.HoldDown").WithFormatArgs(KeybindInputs.GetKeybindDisplayName(KeybindSystem.AbilityKeybind.GetAssignedKeys().FirstOrDefault()) ?? "][c/565558:<unbound>][c/6FD4FF:");
+
+                        tooltips.Add(new TooltipLine(Mod, "HoldDown", holdDown.Value));
                     }
-                    else
+                    else // currently holding down keybind
                     {
                         CombinationsModSystem combinationsModSystem = new CombinationsModSystem();
                         string localizedText = combinationsModSystem.GetLocalizedStringFromDictionary(Main.HoverItem.type);
@@ -109,14 +120,14 @@ namespace CombinationsMod.GlobalClasses
                 }
             }
 
-            if (item.type >= ItemID.RedString && item.type <= ItemID.BlackString)
+            if (item.type >= ItemID.RedString && item.type <= ItemID.BlackString) // basic vanilla strings all give 150 yoyo range
             {
-
                 tooltips.Add(new TooltipLine(Mod, "YoyoStringInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.150YoyoRange")));
             }
+
             switch (item.type)
             {
-                case ItemID.YoyoBag:
+                case ItemID.YoyoBag: // rewriting vanilla yoyo bag tooltip
                     if (GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
                     {
                         int index = tooltips.FindIndex(tip => tip.Name.StartsWith("Tooltip"));

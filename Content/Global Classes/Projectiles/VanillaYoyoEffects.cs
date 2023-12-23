@@ -621,7 +621,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         {
             if (projectile.type == ProjectileID.TheEyeOfCthulhu && projectile.localAI[1] == 2)
             {
-                Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Projectiles/Misc/EOCYoyoSpazmatism");
+                Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/Content/Projectiles/Misc/EOCYoyoSpazmatism");
                 Vector2 drawOrigin = new(texture.Width * 0.5f, projectile.height * 0.5f);
                 Vector2 drawPos = projectile.Center - Main.screenPosition;
                 var rectangle = new Rectangle(0, 0, texture.Width, texture.Height);

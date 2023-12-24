@@ -12,7 +12,7 @@ namespace CombinationsMod.Content.Global_Classes
 {
     public class GlowingTooltips : GlobalItem
     {
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ItemID.Terrarian;
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ItemID.Terrarian || entity.type == ItemID.Kraken;
         public override bool InstancePerEntity => true;
 
         public override void SetDefaults(Item entity)
@@ -71,6 +71,11 @@ namespace CombinationsMod.Content.Global_Classes
                 }
 
                 Color color = Color.Lerp(primary, new Color(79, 166, 118), (MathF.Sin(Main.GlobalTimeWrappedHourly * mult) + 1) / mult);
+
+                if (item.type == ItemID.Kraken)
+                {
+                    color = Color.Lerp(new Color(0, 157, 167), new Color(12, 33, 108), (MathF.Sin(Main.GlobalTimeWrappedHourly * mult) + 1) / mult);
+                }
 
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.Additive);
 

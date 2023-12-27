@@ -305,7 +305,6 @@ Mods: {
 			TocantinProjectile.DisplayName: Tocantin Projectile
 			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile
 			TrueCode3Projectile.DisplayName: True Code3 Projectile
-			TrueSmudgeProjectile.DisplayName: True Smudge Projectile
 			TunaProjectile.DisplayName: Tuna Projectile
 			HelFireExplosion.DisplayName: Hel-Fire Explosion
 			WaterExplosion.DisplayName: Water Explosion
@@ -1134,17 +1133,6 @@ Mods: {
 			TrueCode3: {
 				DisplayName: Código Verdadero 3
 				Tooltip: Brilla con un inmenso poder
-			}
-
-			TrueSmudge: {
-				DisplayName: Mancha Verdadera
-				Tooltip:
-					'''
-					El artículo ya no está disponible.
-					Aumenta el daño infligido a los objetivos espectrales.
-					Cuando está en un bioma de cementerio, los tornados reciben un aumento de daño leve.
-					""Tiene un período de gracia de 12 segundos"."
-					'''
 			}
 
 			Tuna.DisplayName: El Atun

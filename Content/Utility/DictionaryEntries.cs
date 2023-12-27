@@ -98,7 +98,7 @@ namespace CombinationsMod
             LocalizedHardmodeYoyo.SetStringValue(Language.GetTextValue(abilityFilePath + "HardmodeYoyos")); yoyoAbilityDictionary.TryAdd(ItemType<MythrilYoyo>(), LocalizedHardmodeYoyo); yoyoAbilityDictionary.TryAdd(ItemType<OrichalcumYoyo>(), LocalizedHardmodeYoyo);
             LocalizedTempest.SetStringValue(Language.GetTextValue(abilityFilePath + "Tempest")); yoyoAbilityDictionary.TryAdd(ItemType<TheTempest>(), LocalizedTempest);
             LocalizedAbbhor.SetStringValue(Language.GetTextValue(abilityFilePath + "Abbhor")); yoyoAbilityDictionary.TryAdd(ItemType<TheAbbhor>(), LocalizedAbbhor);
-            LocalizedTrueYoyos.SetStringValue(Language.GetTextValue(abilityFilePath + "TrueYoyos")); yoyoAbilityDictionary.TryAdd(ItemType<TrueAbbhor>(), LocalizedTrueYoyos); yoyoAbilityDictionary.TryAdd(ItemType<TrueCode3>(), LocalizedTrueYoyos); yoyoAbilityDictionary.TryAdd(ItemType<TrueSmudge>(), LocalizedTrueYoyos);
+            LocalizedTrueYoyos.SetStringValue(Language.GetTextValue(abilityFilePath + "TrueYoyos")); yoyoAbilityDictionary.TryAdd(ItemType<TrueAbbhor>(), LocalizedTrueYoyos); yoyoAbilityDictionary.TryAdd(ItemType<TrueCode3>(), LocalizedTrueYoyos);
             LocalizedCascade.SetStringValue(Language.GetTextValue(abilityFilePath + "Cascade")); yoyoAbilityDictionary.TryAdd(ItemID.Cascade, LocalizedCascade);
             LocalizedValor.SetStringValue(Language.GetTextValue(abilityFilePath + "Valor")); yoyoAbilityDictionary.TryAdd(ItemID.Valor, LocalizedValor);
             LocalizedEvilYoyos.SetStringValue(Language.GetTextValue(abilityFilePath + "EvilYoyos")); yoyoAbilityDictionary.TryAdd(ItemID.CrimsonYoyo, LocalizedEvilYoyos); yoyoAbilityDictionary.TryAdd(ItemID.CorruptYoyo, LocalizedEvilYoyos);
@@ -120,7 +120,7 @@ namespace CombinationsMod
         {
             #region StringDictionaryInputs
             upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
-            yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry); yoyoStringDictionary.TryAdd(ItemType<TrueSmudge>(), upgradedStringEntry);
+            yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry);
 
             boneStringEntry.setStringTexture(TextureAssets.Chain24); yoyoStringDictionary.TryAdd(ItemType<Catacomb>(), boneStringEntry);
             jungleStringEntry.setStringTexture(TextureAssets.Chain27); yoyoStringDictionary.TryAdd(ItemID.JungleYoyo, jungleStringEntry);

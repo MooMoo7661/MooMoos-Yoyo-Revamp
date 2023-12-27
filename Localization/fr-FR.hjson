@@ -309,7 +309,6 @@ Mods: {
 			TocantinProjectile.DisplayName: Tocantin Projectile
 			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile
 			TrueCode3Projectile.DisplayName: True Code3 Projectile
-			TrueSmudgeProjectile.DisplayName: True Smudge Projectile
 			TunaProjectile.DisplayName: Tuna Projectile
 			HelFireExplosion.DisplayName: Hel-Fire Explosion
 			WaterExplosion.DisplayName: Water Explosion
@@ -1140,16 +1139,6 @@ Mods: {
 			TrueCode3: {
 				DisplayName: Véritable Code 3
 				Tooltip: Brille d'une immense puissance
-			}
-
-			TrueSmudge: {
-				DisplayName: Véritable Boue
-				Tooltip:
-					'''
-					Inflige plus de dégâts sur les cibles spectrales.
-					Dans un biome de cimetière, les tourbillons bénéficient d'une légère augmentation des dégâts.
-					"Possède un délai de grâce de 12 secondes."
-					'''
 			}
 
 			Tuna.DisplayName: Le Thon

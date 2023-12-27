@@ -305,7 +305,6 @@ Mods: {
 			TocantinProjectile.DisplayName: Tocantin Projectile
 			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile
 			TrueCode3Projectile.DisplayName: True Code3 Projectile
-			TrueSmudgeProjectile.DisplayName: True Smudge Projectile
 			TunaProjectile.DisplayName: Tuna Projectile
 			HelFireExplosion.DisplayName: Hel-Fire Explosion
 			WaterExplosion.DisplayName: Water Explosion
@@ -1158,17 +1157,6 @@ Mods: {
 			TrueCode3: {
 				DisplayName: Истинный Код 3
 				Tooltip: Светит с огромной силой
-			}
-
-			TrueSmudge: {
-				DisplayName: Истинное Благовони-йо
-				Tooltip:
-					'''
-					Предмет более недоступен для получения
-					Наносит увеличенный урон призрачным целям.
-					В кладбищенском биоме завихрения наносят немного больше урона.
-					«Безопасный период — 12 секунд».
-					'''
 			}
 
 			Tuna.DisplayName: Тунец

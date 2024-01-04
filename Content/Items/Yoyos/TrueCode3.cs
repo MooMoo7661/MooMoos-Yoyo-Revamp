@@ -25,8 +25,8 @@ namespace CombinationsMod.Content.Items.Yoyos
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.width = 38;
-            Item.height = 34;
+            Item.width = 32;
+            Item.height = 26;
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 16f;

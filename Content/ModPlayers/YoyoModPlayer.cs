@@ -440,8 +440,8 @@ namespace CombinationsMod.Content.ModPlayers
             ILCursor c = new(context);
             if (!c.TryGotoNext(MoveType.After, i => i.MatchLdarg0(),
                     i => i.MatchLdfld<Player>(nameof(Player.yoyoGlove))))
-                throw new ILPatchFailureException(this.Mod, context, new Exception("Failed to patch dual yoyo"));
-	        c.Emit(OpCodes.Pop);
+                throw new ILPatchFailureException(this.Mod, context, new Exception("Failed to patch dual yoyo")); 
+            c.Emit(OpCodes.Pop);
             c.EmitLdloc3();
             c.EmitLdloc1();
             c.EmitLdloc2();
@@ -449,8 +449,8 @@ namespace CombinationsMod.Content.ModPlayers
             c.EmitLdarg2();
             c.EmitLdarg3();
             c.EmitDelegate(ilEdit);
-            c.EmitRet();
-	        c.Emit(OpCodes.Ldc_I4_0);
+            c.EmitRet(); 
+            c.Emit(OpCodes.Ldc_I4_0);
         }
 
         private void ilEdit(int index1, int num1, int num2, Player player, int dmg, float kb)

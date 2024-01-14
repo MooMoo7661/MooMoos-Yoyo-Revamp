@@ -1,6 +1,7 @@
 ﻿using System;
 using CombinationsMod.Content.Configs;
 using Microsoft.Xna.Framework;
+using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Terraria;
 using Terraria.DataStructures;
@@ -437,17 +438,19 @@ namespace CombinationsMod.Content.ModPlayers
         private void ILDualYoyo(ILContext context)
         {
             ILCursor c = new(context);
-            if (!c.TryGotoNext(i => i.MatchLdarg0(),
-                    i => i.MatchLdfld<bool>(nameof(Player.yoyoGlove))))
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdarg0(),
+                    i => i.MatchLdfld<Player>(nameof(Player.yoyoGlove))))
                 throw new ILPatchFailureException(this.Mod, context, new Exception("Failed to patch dual yoyo"));
+	        c.Emit(OpCodes.Pop);
             c.EmitLdloc3();
             c.EmitLdloc1();
             c.EmitLdloc2();
             c.EmitLdarg0();
             c.EmitLdarg2();
             c.EmitLdarg3();
-            c.EmitDelegate((int index1, int num1, int num2, Player player, int dmg, float kb) => ilEdit);
+            c.EmitDelegate(ilEdit);
             c.EmitRet();
+	        c.Emit(OpCodes.Ldc_I4_0);
         }
 
         private void ilEdit(int index1, int num1, int num2, Player player, int dmg, float kb)

@@ -1,6 +1,5 @@
 ﻿using System;
 using CombinationsMod.Content.Configs;
-using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -430,10 +429,12 @@ namespace CombinationsMod.Content.ModPlayers
         {
             ILCursor c = new(context);
             if (!c.TryGotoNext(MoveType.After, i => i.MatchLdarg0(),
-                    i => i.MatchLdfld<Player>(nameof(Player.yoyoGlove))))
+                    i => i.MatchLdfld<Player>(nameof(Player.yoyoGlove)),
+                    i => i.MatchBrfalse(out ILLabel _)))
                 throw new ILPatchFailureException(this.Mod, context, new Exception("Failed to patch dual yoyo"));
-            c.Emit(OpCodes.Pop);
-            c.EmitLdloc3();
+            c.Index--;
+            c.EmitPop();
+            c.EmitLdloc0();
             c.EmitLdloc1();
             c.EmitLdloc2();
             c.EmitLdarg0();

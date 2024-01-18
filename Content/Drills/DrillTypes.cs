@@ -1,5 +1,8 @@
-﻿using Terraria.Audio;
+﻿using CombinationsMod.Content.Items.Accessories.Drills;
+using Terraria.Audio;
 using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 
 namespace CombinationsMod.Content.Drills
 {
@@ -15,6 +18,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 32;
         protected override int Height => 32;
+
+        public override int DrillItem => ModContent.ItemType<YoyoDrillCasing>();
     }
 
     public class PalladiumDrill : BaseDrill
@@ -26,6 +31,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 36;
         protected override int Height => 36;
+
+        public override int DrillItem => ModContent.ItemType<PalladiumCasing>();
     }
     public class CobaltDrill : BaseDrill
     {
@@ -36,6 +43,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 36;
         protected override int Height => 36;
+
+        public override int DrillItem => ModContent.ItemType<CobaltDrillCasing>();
     }
 
     public class OrichalcumDrill : BaseDrill
@@ -47,6 +56,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 40;
         protected override int Height => 40;
+
+        public override int DrillItem => ModContent.ItemType<OrichalcumDrillCasing>();
     }
     public class MythrilDrill : BaseDrill
     {
@@ -57,6 +68,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 40;
         protected override int Height => 40;
+
+        public override int DrillItem => ModContent.ItemType<MythrilDrillCasing>();
     }
     public class AdamantiteDrill : BaseDrill
     {
@@ -67,6 +80,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 44;
         protected override int Height => 44;
+
+        public override int DrillItem => ModContent.ItemType<AdamantiteDrillCasing>();
     }
     public class TitaniumDrill : BaseDrill
     {
@@ -77,6 +92,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 44;
         protected override int Height => 44;
+
+        public override int DrillItem => ModContent.ItemType<TitaniumDrillCasing>();
     }
     public class Hakapik : BaseDrill
     {
@@ -87,6 +104,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 48;
         protected override int Height => 48;
+
+        public override int DrillItem => ModContent.ItemType<HakapikDrillCasing>();
     }
     public class Mattock : BaseDrill
     {
@@ -97,6 +116,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 48;
         protected override int Height => 48;
+
+        public override int DrillItem => ModContent.ItemType<MattockDrillCasing>();
     }
     public class SpectralShredder : BaseDrill
     {
@@ -107,6 +128,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 48;
         protected override int Height => 48;
+
+        public override int DrillItem => ModContent.ItemType<SpectralShredderCasing>();
     }
     public class ShroomiteShredder : BaseDrill
     {
@@ -117,6 +140,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 48;
         protected override int Height => 48;
+
+        public override int DrillItem => ModContent.ItemType<ShroomiteShredderCasing>();
     }
     public class Tsurugi : BaseDrill
     {
@@ -127,6 +152,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 52;
         protected override int Height => 52;
+
+        public override int DrillItem => ModContent.ItemType<TsurugiDrillCasing>();
     }
     public class HorsemansDrill : BaseDrill
     {
@@ -137,6 +164,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 48;
         protected override int Height => 48;
+
+        public override int DrillItem => ModContent.ItemType<HorsemansDrillCasing>();
     }
     public class TreeClippers : BaseDrill
     {
@@ -147,6 +176,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 48;
         protected override int Height => 48;
+
+        public override int DrillItem => ModContent.ItemType<TreeClippersDrillCasing>();
     }
     public class SolarDrill : BaseDrill
     {
@@ -157,6 +188,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 52;
         protected override int Height => 52;
+
+        public override int DrillItem => ModContent.ItemType<SolarDrillCasing>();
     }
 
     public class VortexDrill : BaseDrill
@@ -168,6 +201,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 52;
         protected override int Height => 52;
+
+        public override int DrillItem => ModContent.ItemType<VortexDrillCasing>();
     }
 
     public class NebulaDrill : BaseDrill
@@ -179,6 +214,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 52;
         protected override int Height => 52;
+
+        public override int DrillItem => ModContent.ItemType<NebulaDrillCasing>();
     }
 
     public class StardustDrill : BaseDrill
@@ -190,6 +227,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 52;
         protected override int Height => 52;
+
+        public override int DrillItem => ModContent.ItemType<StardustDrillCasing>();
     }
 
     public class CelestialDrill : BaseDrill
@@ -201,6 +240,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 60;
         protected override int Height => 60;
+
+        public override int DrillItem => ModContent.ItemType<CelestialDrillCasing>();
     }
 
     public class MooMooDrill : BaseDrill
@@ -212,6 +253,8 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 64;
         protected override int Height => 64;
+
+        public override int DrillItem => ModContent.ItemType<MooMooDrillCasing>();
     }
 
     public class Excavator : BaseDrill
@@ -223,6 +266,7 @@ namespace CombinationsMod.Content.Drills
 
         protected override int Width => 68;
         protected override int Height => 68;
-    }
 
+        public override int DrillItem => ModContent.ItemType<ExcavatorCasing>();
+    }
 }

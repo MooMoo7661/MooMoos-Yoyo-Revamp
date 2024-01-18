@@ -3,6 +3,7 @@ using CombinationsMod.Content.Projectiles.Explosions;
 using CombinationsMod.Content.Projectiles.TrickYoyos;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -86,9 +87,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                     ModContent.ProjectileType<EclipseSwirlOrange>(), 0, 0, projectile.owner, 0, 1f);
                         }
 
-                        int projHitbox = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, velocity,
+                        Projectile projHitbox = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, velocity,
                                 ModContent.ProjectileType<SolidHitbox>(), 75, 4f, projectile.owner, 0, 1f);
-                        Main.projectile[projHitbox].Resize(100, 100);
+                        projHitbox.Resize(100, 100);
                     }
                 }
 
@@ -132,7 +133,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>(); //  Getting an instance of the player and the ModPlayer |
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>(); //  Getting an instance of the player and the ModPlayer
 
             if (projectile.aiStyle == 99 && !projectile.counterweight)
             {
@@ -145,10 +146,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 3f;
                         if (Main.myPlayer == projectile.owner)
                         {
-                            int projSlimeSpike = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, velocity,
+                            Projectile projSlimeSpike = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, velocity,
                                         ProjectileID.SpikedSlimeSpike, projectile.damage / 2, 3f, projectile.owner, 0, 1f);
-                            Main.projectile[projSlimeSpike].friendly = true;
-                            Main.projectile[projSlimeSpike].hostile = false;
+                            projSlimeSpike.friendly = true;
+                            projSlimeSpike.hostile = false;
                         }
 
                         slimeThornCounter = 0;
@@ -168,8 +169,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     beeCounter = 0;
                 }*/
             }
-
-
         }
 
         public override void PostAI(Projectile projectile) // Using this mostly to make vanilla yoyos have certain dust effects.
@@ -292,7 +291,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             }
         }
 
-        public override void SetDefaults(Projectile projectile) // Making vanilla yoyos have different max hit counts.
+        public override void SetDefaults(Projectile projectile)
         {
             //if (projectile.aiStyle == 99)
             //{
@@ -304,11 +303,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void OnKill(Projectile projectile, int timeLeft) // Resetting counters when the yoyo is killed.
         {
-            Player player = Main.player[projectile.owner];
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
             if (projectile.aiStyle == 99 && !projectile.counterweight && ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(projectile))
             {
+                Player player = Main.player[projectile.owner];
+                YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
                 modPlayer.HitCounter = 0;
             }
         }

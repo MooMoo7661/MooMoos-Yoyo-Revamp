@@ -33,7 +33,10 @@ namespace CombinationsMod.Global_Classes
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            player.GetModPlayer<YoyoModPlayer>().CurrentDrillType = item.type;
+            if (item.ModItem is ModDrill drill)
+            {
+                player.GetModPlayer<YoyoModPlayer>().CurrentDrillType = drill.DrillProjectile;
+            }
         }
     }
 }

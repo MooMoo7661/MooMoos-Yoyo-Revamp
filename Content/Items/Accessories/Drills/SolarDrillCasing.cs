@@ -1,12 +1,15 @@
+using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Drills
 {
     public class SolarDrillCasing : ModDrill
     {
         public override bool CanBeUnloaded => true;
+        public override int DrillProjectile => ModContent.ProjectileType<SolarDrill>();
 
         public override void SetDefaults()
         {

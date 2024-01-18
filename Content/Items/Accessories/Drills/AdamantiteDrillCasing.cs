@@ -1,6 +1,9 @@
+using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 
 namespace CombinationsMod.Content.Items.Accessories.Drills
 {
@@ -8,6 +11,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
     public class AdamantiteDrillCasing : ModDrill
     {
         public override bool CanBeUnloaded => true;
+        public override int DrillProjectile => ModContent.ProjectileType<AdamantiteDrill>();
 
         public override void SetDefaults()
         {

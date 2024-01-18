@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,6 +15,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
     public class ExcavatorCasing : ModDrill
     {
         public override bool CanBeUnloaded => true;
+        public override int DrillProjectile => ModContent.ProjectileType<Excavator>();
 
         public override void SetDefaults()
         {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
 using Terraria.ID;
@@ -9,6 +10,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
     public class MooMooDrillCasing : ModDrill
     {
         public override bool CanBeUnloaded => true;
+        public override int DrillProjectile => ModContent.ProjectileType<MooMooDrill>();
 
         public override void SetDefaults()
         {

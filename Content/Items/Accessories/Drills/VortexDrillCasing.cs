@@ -1,12 +1,15 @@
+using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Drills
 {
     public class VortexDrillCasing : ModDrill
     {
         public override bool CanBeUnloaded => true;
+        public override int DrillProjectile => ModContent.ProjectileType<VortexDrill>();
 
         public override void SetDefaults()
         {

@@ -274,17 +274,7 @@ namespace CombinationsMod.Content.ModPlayers
         /// <summary>
         /// Checks for support glove
         /// </summary>
-        public static bool TestForSupportGlove(Player player)
-        {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.supportGlove)
-            {
-                return true;
-            }
-
-            return false;
-        }
+        public static bool TestForSupportGlove(Player player) => player.GetModPlayer<YoyoModPlayer>().supportGlove;
 
         public static int GetYoyoToCast(Player player)
         {
@@ -442,20 +432,20 @@ namespace CombinationsMod.Content.ModPlayers
                     i => i.MatchLdfld<Player>(nameof(Player.yoyoGlove))))
                 throw new ILPatchFailureException(this.Mod, context, new Exception("Failed to patch dual yoyo")); 
             c.Emit(OpCodes.Pop);
-            c.EmitLdloc3();
-            c.EmitLdloc1();
-            c.EmitLdloc2();
-            c.EmitLdarg0();
-            c.EmitLdarg2();
             c.EmitLdarg3();
-            c.EmitDelegate(ilEdit);
+            c.EmitLdarg2();
+            c.EmitLdarg0();
+            c.EmitLdloc2();
+            c.EmitLdloc1();
+            c.EmitLdloc0();
+            c.EmitDelegate(ILEdit);
             c.EmitRet(); 
             c.Emit(OpCodes.Ldc_I4_0);
         }
 
-        private void ilEdit(int index1, int num1, int num2, Player player, int dmg, float kb)
+        private void ILEdit(int index1, int num1, int num2, Player player, int dmg, float kb)
         {
-            if (player.yoyoGlove && num2 < GetNumPlayerYoyos(player) + 1)
+            if (player.yoyoGlove && num1 < GetNumPlayerYoyos(player) + 1)
             {
                 if (index1 >= 0)
                 {

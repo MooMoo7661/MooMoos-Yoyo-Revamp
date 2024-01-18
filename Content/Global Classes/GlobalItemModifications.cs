@@ -1,4 +1,5 @@
 ﻿using CombinationsMod.Content.Configs;
+using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.Keybindings;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Utility;
@@ -19,7 +20,6 @@ namespace CombinationsMod.GlobalClasses
         public override void SetDefaults(Item item)
         {
             bool damageChanges = GetInstance<YoyoModConfig>().VanillaYoyoDamageChanges;
-
 
             if (item.type == ItemID.TheEyeOfCthulhu && GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
             {
@@ -88,8 +88,17 @@ namespace CombinationsMod.GlobalClasses
 
             if ((ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99))
             {
-                if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing) // if player does not have a yoyo ring, only show "no ability ring detected" prompt.
+                
+                if(Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType != 0)
+                {
+                    if (ContentSamples.ProjectilesByType[Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType].ModProjectile is BaseDrill drill)
                     {
+                        tooltips.Add(new TooltipLine(Mod, "CounterweightStackInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.CurrentDrill") + ContentSamples.ItemsByType[drill.DrillItem].Name));
+                    }
+                }
+
+                if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing) // if player does not have a yoyo ring, only show "no ability ring detected" prompt.
+                {
                     tooltips.Add(new TooltipLine(Mod, "NoRing", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.NoRing")));
                 }
                 else

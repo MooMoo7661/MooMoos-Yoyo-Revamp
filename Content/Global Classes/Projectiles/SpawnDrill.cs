@@ -11,6 +11,7 @@ namespace CombinationsMod.GlobalClasses
 {
     public class SpawnDrill : GlobalProjectile
     {
+        public override bool InstancePerEntity => true;
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             Player player = Main.player[projectile.owner];

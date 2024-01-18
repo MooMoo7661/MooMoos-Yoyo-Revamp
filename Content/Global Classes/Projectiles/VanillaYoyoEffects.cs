@@ -44,7 +44,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private int eocHits = 0;
         private bool roar = false;
 
-        public bool flag = false; // false = main yoyo, true = second yoyo
+        public bool mainYoyo = false; // false = main yoyo, true = second yoyo
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
@@ -647,13 +647,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         {
             Player player = Main.player[projectile.owner];
 
-            flag = false;
-
+            mainYoyo = false;
+                
             for (int i = 0; i < projectile.whoAmI; i++)
             {
                 if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].aiStyle == 99 && !Main.projectile[i].counterweight)
                 {
-                    flag = true;
+                    mainYoyo = true;
                 }
             }
 
@@ -661,7 +661,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 projectile.localAI[0] += 1f; // Timer in ticks
 
-                if (flag)
+                if (mainYoyo)
                 {
                     projectile.localAI[0] += (float)Main.rand.Next(10, 31) * 0.1f;
                 }
@@ -718,11 +718,11 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 }
             }
 
-            bool flag2 = false; // Flag2 is counterweights
+            bool isCounterweight = false; // Flag2 is counterweights
 
             if (projectile.type >= 556 && projectile.type <= 561) // Counterweights
             {
-                flag2 = true;
+                isCounterweight = true;
             }
 
             if (Main.player[projectile.owner].dead) // kill projectile when owner is dead
@@ -731,7 +731,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 return;
             }
 
-            if (!flag2 && !flag) // if not counterweight and current yoyo
+            if (!isCounterweight && !mainYoyo) // if not counterweight and current yoyo
             {
                 Main.player[projectile.owner].heldProj = projectile.whoAmI;
                 Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().currentYoyo = projectile.whoAmI;
@@ -808,7 +808,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 num7 = 1f;
             }
             num9 = 5f + yoyoSpeed / 2f;
-            if (flag)
+            if (mainYoyo)
             {
                 //ABILITY - EXTENDED REACH : Yoyo range is greatly increased with second ai. Change 20f to 100f+
                 if (player.GetModPlayer<YoyoModPlayer>().moonTrick) { num9 += 150f; }
@@ -916,7 +916,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         vector8 *= num14;
                         projectile.velocity = (projectile.velocity * (num7 - 1f) + vector8) / num7;
                     }
-                    else if (flag)
+                    else if (mainYoyo)
                     {
                         if ((double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
                         {
@@ -930,7 +930,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     {
                         projectile.velocity *= 0.8f;
                     }
-                    if (flag && !flag3 && (double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
+                    if (mainYoyo && !flag3 && (double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
                     {
                         projectile.velocity.Normalize();
                         projectile.velocity *= yoyoSpeed * 0.6f;
@@ -969,6 +969,11 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             projectile.rotation += 0.45f;
         }
 
+        /// <summary>
+        /// Checks if the passed in yoyo projectile is the main yoyo
+        /// </summary>
+        /// <param name="projectile"></param>
+        /// <returns></returns>
         public bool ReturnProjectileFlag(Projectile projectile)
         {
             for (int i = 0; i < projectile.whoAmI; i++)

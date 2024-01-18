@@ -44,7 +44,6 @@ namespace CombinationsMod.GlobalClasses
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-
             if (item.type == ItemID.YoyoBag)
                 player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
         }
@@ -77,10 +76,8 @@ namespace CombinationsMod.GlobalClasses
         {
             if (ItemSets.DrillCasing[item.type])
             {
-                var obj = KeybindInputs.GetKeybindDisplayName(KeybindSystem.DrillKeybind.GetAssignedKeys().FirstOrDefault()) ?? "[c/565558:<unbound>]";
-                LocalizedText rightClick = Language.GetText($"Mods.CombinationsMod.LocalizedText.RightClickInfo").WithFormatArgs(obj);
-
-                if (rightClick.Value == "Hold Mouse2 to drill") { rightClick = Language.GetText("Mods.CombinationsMod.LocalizedText.Mouse2"); }
+                var obj = KeybindInputs.GetKeybindDisplayName(KeybindSystem.DrillKeybind.GetAssignedKeys().FirstOrDefault()) ?? "[c/565558:<unbound>]"; // Attempts to find a custom set display name for keybinds. If none is found, the input is returned again. Example : Inputting "Mouse2" will return "Right Click"
+                LocalizedText rightClick = Language.GetText($"Mods.CombinationsMod.LocalizedText.RightClickInfo").WithFormatArgs(obj); // formatting the string to display the current keybind name
                 tooltips.Add(new TooltipLine(Mod, "RightClickInfo", rightClick.Value));
             }
 
@@ -92,7 +89,7 @@ namespace CombinationsMod.GlobalClasses
             if ((ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99))
             {
                 if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing) // if player does not have a yoyo ring, only show "no ability ring detected" prompt.
-                {
+                    {
                     tooltips.Add(new TooltipLine(Mod, "NoRing", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.NoRing")));
                 }
                 else

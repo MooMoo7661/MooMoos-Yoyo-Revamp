@@ -38,7 +38,7 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
         public override Vector2? CustomLocation => StringPos();
-        public override string FunctionalTexture => "CombinationsMod/UI/accessorySlot";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/accessorySlot";
         public override bool DrawDyeSlot => false;
         public override void OnMouseHover(AccessorySlotType context)
         {
@@ -83,7 +83,7 @@ namespace CombinationsMod.Content.UI
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.YoyoGlove[item.type];
 
         public override Vector2? CustomLocation => RightGlovePos();
-        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/YoyoGloveSlotLarge" : "CombinationsMod/UI/YoyoGloveSlot";
+        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/Content/UI/YoyoGloveSlotLarge" : "CombinationsMod/Content/UI/YoyoGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -128,7 +128,7 @@ namespace CombinationsMod.Content.UI
 
         public override Vector2? CustomLocation => LeftGlovePos();
 
-        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/UI/SupportGloveSlotLarge" : "CombinationsMod/UI/SupportGloveSlot";
+        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/Content/UI/SupportGloveSlotLarge" : "CombinationsMod/Content/UI/SupportGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -173,8 +173,8 @@ namespace CombinationsMod.Content.UI
 
         public override Vector2? CustomLocation => DrillPos();
 
-        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
-        public override string FunctionalTexture => "CombinationsMod/UI/drillSlot";
+        public override string FunctionalBackgroundTexture => "CombinationsMod/Content/UI/PanelColors/tealPanel";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/drillSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -222,9 +222,9 @@ namespace CombinationsMod.Content.UI
             return GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
         }
 
-        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
+        public override string FunctionalBackgroundTexture => "CombinationsMod/Content/UI/PanelColors/tealPanel";
         public override Vector2? CustomLocation => CounterweightPos();
-        public override string FunctionalTexture => "CombinationsMod/UI/counterweightSlot";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/counterweightSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -265,9 +265,9 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
 
-        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
+        public override string FunctionalBackgroundTexture => "CombinationsMod/Content/UI/PanelColors/tealPanel";
         public override Vector2? CustomLocation => RingPos1();
-        public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/ringSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -310,9 +310,9 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
 
-        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/tealPanel";
+        public override string FunctionalBackgroundTexture => "CombinationsMod/Content/UI/PanelColors/tealPanel";
         public override Vector2? CustomLocation => RingPos2();
-        public override string FunctionalTexture => "CombinationsMod/UI/ringSlot";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/ringSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -353,9 +353,9 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
 
-        public override string FunctionalBackgroundTexture => "CombinationsMod/UI/PanelColors/pinkPanel";
+        public override string FunctionalBackgroundTexture => "CombinationsMod/Content/UI/PanelColors/pinkPanel";
         public override Vector2? CustomLocation => TrickPos();
-        public override string FunctionalTexture => "CombinationsMod/UI/TrickSlot";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/TrickSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)

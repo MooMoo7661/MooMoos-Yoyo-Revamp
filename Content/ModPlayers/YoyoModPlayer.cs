@@ -15,8 +15,8 @@ namespace CombinationsMod.Content.ModPlayers
     {
         public int currentYoyo = 0;
         public int yoyoNumber = 1;
-
         public int chainTextureID = 0;
+        public int CurrentDrillType = 0;
 
         /// <summary>
         /// For use with the `yoyoSpacers` bool, allows the mod to subtract the added stats to prevent exponential growth.<br>Unused</br>
@@ -107,6 +107,7 @@ namespace CombinationsMod.Content.ModPlayers
         public override void ResetEffects() // Lets accessories be temporary.
         {
             currentYoyo = 0;
+            CurrentDrillType = 0;
 
             yoyoClip = false;
             yoyoSpacers = false;

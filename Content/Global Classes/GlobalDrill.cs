@@ -1,4 +1,5 @@
 ﻿using CombinationsMod.Content;
+using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -28,6 +29,11 @@ namespace CombinationsMod.Global_Classes
             rot += 0.15f;
             Main.EntitySpriteDraw(tex, item.Center - Main.screenPosition, null, Color.White, rot, tex.Size() / 2, scale, SpriteEffects.None);
             return false;
+        }
+
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            player.GetModPlayer<YoyoModPlayer>().CurrentDrillType = item.type;
         }
     }
 }

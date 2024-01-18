@@ -31,6 +31,7 @@ Mods: {
 			Tricks: Трюки
 			RightClickInfo: Для бурения удерживайте {0}
 			Mouse2: ПКМ
+			// CurrentDrill: "Current Drill: "
 
 			Abilities: {
 				BlackHole: Создаёт большую воронку, наносящую 40% урона йо-йо

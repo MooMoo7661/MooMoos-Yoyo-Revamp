@@ -31,6 +31,7 @@ Mods: {
 			Tricks: Abilitée
 			RightClickInfo: Pressez {0} pour miner
 			Mouse2: Clic Droit
+			// CurrentDrill: "Current Drill: "
 
 			Abilities: {
 				BlackHole: Crée un large vortex qui inflige 40% des dégats du yoyo

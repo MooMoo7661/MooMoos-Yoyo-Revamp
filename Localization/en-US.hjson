@@ -31,6 +31,7 @@ Mods: {
 			Tricks: Tricks
 			RightClickInfo: Hold {0} to drill
 			Mouse2: Right Click
+			CurrentDrill: "Current Drill: "
 
 			Abilities: {
 				BlackHole: Creates a large vortex that does 40% of the yoyo's damage

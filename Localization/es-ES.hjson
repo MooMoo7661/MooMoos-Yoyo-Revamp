@@ -31,6 +31,7 @@ Mods: {
 			Tricks: Trucos
 			RightClickInfo: Manten presionado {0} para empezar a minar
 			Mouse2: Click Derecho
+			// CurrentDrill: "Current Drill: "
 
 			Abilities: {
 				BlackHole: Crea un gran vortice que inflige el 40% de daño del yoyo

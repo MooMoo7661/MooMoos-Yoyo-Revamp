@@ -17,6 +17,7 @@ namespace CombinationsMod.Content
     public abstract class ModDrill : ItemLoader
     {
         public abstract bool CanBeUnloaded { get; }
+        public abstract int DrillProjectile { get; }
 
         public override bool IsLoadingEnabled(Mod mod)
         {

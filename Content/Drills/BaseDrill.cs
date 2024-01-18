@@ -33,6 +33,8 @@ namespace CombinationsMod.Content.Drills
         protected abstract int Width { get; }
         protected abstract int Height { get; }
 
+        public abstract int DrillItem { get; }
+
         // Drill is enabled and should be visible
         protected bool IsDrillEnabled
         {

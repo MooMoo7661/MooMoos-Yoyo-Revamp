@@ -1,6 +1,7 @@
 ﻿using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Utility;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -22,8 +23,8 @@ namespace CombinationsMod.GlobalClasses
             {
                 if (modPlayer.CurrentDrillType != 0 && ProjectileSets.IsYoyoDrillProjectile[modPlayer.CurrentDrillType])
                 {
-                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0,
-                        0, modPlayer.CurrentDrillType, projectile.damage, 0, projectile.owner, 0, projectile.whoAmI);
+                    Projectile drill = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, modPlayer.CurrentDrillType, projectile.damage, 0, projectile.owner, 0, projectile.whoAmI);
+                    drill.scale = 1.3f;
                 }
             }
         }

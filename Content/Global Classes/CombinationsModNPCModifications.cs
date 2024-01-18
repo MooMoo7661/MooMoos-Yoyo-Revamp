@@ -2,10 +2,10 @@
 using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.NPCS;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ID.ItemID;
 
 namespace CombinationsMod.GlobalClasses
 {
@@ -15,14 +15,16 @@ namespace CombinationsMod.GlobalClasses
         {
             if (shop.NpcType == NPCID.SkeletonMerchant)
             {
-                int[] arr = new int[3];
-                arr[0] = ItemID.Gradient;
-                arr[1] = ItemID.FormatC;
-                arr[2] = ItemID.YoYoGlove;
-
-                for (int i = 0; i < arr.Length; i++)
+                List<int> shopToRemove = new List<int>
                 {
-                    if (shop.TryGetEntry(arr[i], out var entry))
+                    ItemID.YoYoGlove,
+                    ItemID.Gradient,
+                    ItemID.FormatC,
+                };
+
+                for (int i = 0; i < shopToRemove.Count; i++)
+                {
+                    if (shop.TryGetEntry(shopToRemove[i], out var entry))
                     {
                         entry.Disable();
                     }
@@ -73,18 +75,17 @@ namespace CombinationsMod.GlobalClasses
             {
                 bool hasAYoyo = false;
 
-                for (int k = 0; k < 255; k++)
+                foreach(Player player in Main.player)
                 {
-                    Player player = Main.player[k];
                     if (!player.active)
                     {
                         continue;
                     }
 
-                    for (int i = 0; i < 50; i++)
+                    for (int i = 0; i < player.inventory.Length; i++)
                     {
                         Item item = player.inventory[i];
-                        if (Sets.Yoyo[item.type])
+                        if (ItemID.Sets.Yoyo[item.type])
                         {
                             hasAYoyo = true;
                         }
@@ -99,12 +100,12 @@ namespace CombinationsMod.GlobalClasses
         }
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
-            if (npc.HasBuff<Clotted>()) // Npcs draw as a red color when Clotted debuff is applied. For reference, this is applied by the Muscle Yoyo
+            if (npc.HasBuff<Clotted>())
             {
                 Color lightColor = new Color(208, 6, 6);
                 drawColor = lightColor;
             }
-            else if (npc.HasBuff<Corrupt>()) // Npcs draw as a purple color when Corrupt debuff is applied. For reference, this is applied by the Enervation Yoyo
+            else if (npc.HasBuff<Corrupt>())
             {
                 Color lightColor = new Color(98, 75, 107);
                 drawColor = lightColor;
@@ -118,7 +119,6 @@ namespace CombinationsMod.GlobalClasses
 
             if (npc.HasBuff<Hallowed>())
             {
-                //Color lightColor = new Color(254, 255, 199);
                 Color lightColor = new Color(244, 78, 255, 500);
                 drawColor = lightColor;
             }

@@ -7,7 +7,7 @@ namespace CombinationsMod.Content.Keybindings
         /// <summary>
         /// Takes in a keybind, and returns it as it would be proper. Example: "Mouse2" returns "Right Click"
         /// </summary>
-        /// <param name="key">Internal name of the keybind. Example: "LeftShift"</param>
+        /// <param name="key">Internal name of the keybind. Example: "LeftShift", or "Mouse3"</param>
         /// <returns></returns>
         public static string GetKeybindDisplayName(string key)
         {

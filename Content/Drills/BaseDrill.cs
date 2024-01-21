@@ -42,6 +42,16 @@ namespace CombinationsMod.Content.Drills
             set => Projectile.ai[0] = value ? 1f : 0f;
         }
 
+        public virtual bool PrePickBlock()
+        {
+            return true;
+        }
+
+        public virtual void PostPickBlock()
+        {
+
+        }
+
         public override void SetDefaults()
         {
             Projectile.width = Width;
@@ -57,6 +67,8 @@ namespace CombinationsMod.Content.Drills
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
+        public override bool PreDraw(ref Color lightColor) => IsDrillEnabled;
+
         public override void OnSpawn(IEntitySource source)
         {
             _drillTimer = DrillCooldown;
@@ -64,7 +76,6 @@ namespace CombinationsMod.Content.Drills
         }
         public override void AI()
         {
-
             Projectile.timeLeft = 2;
 
             // Handle enabling/disabling the drill function
@@ -126,13 +137,13 @@ namespace CombinationsMod.Content.Drills
             }
             else
             {
-
                 // Attempt to 'pick' any nearby solid tiles
                 Player player = Main.player[Projectile.owner];
                 bool success = false;
 
                 void TryPick(int cX, int cY)
                 {
+                    if (!PrePickBlock()) { return; }
                     int x = (int)((proj.Center.X + (cX * proj.width * 0.5f + 8 * cX)) / 16);
                     int y = (int)((proj.Center.Y + (cY * proj.height * 0.5f + 8 * cY)) / 16);
 
@@ -141,18 +152,28 @@ namespace CombinationsMod.Content.Drills
                         return;
                     }
 
-
-
                     player.PickTile(x, y, DrillTier);
                     if (!Main.tile[x, y].HasTile)
                     {
                         success = true;
                     }
+                    PostPickBlock();
                 }
-                if (BlockRangeStyle == 2) // 2 x 2 grid. For more visual understanding, put the coords on a grid to see the blocks it mines
+                switch(BlockRangeStyle)
                 {
-                    for (int i = 0; i < 2; i++)
-                    {
+                    default:
+                        TryPick(0, 0);
+                        TryPick(-1, 0);
+                        TryPick(0, 1);
+                        TryPick(1, 0);
+                        TryPick(0, -1);
+                        TryPick(-1, -1);
+                        TryPick(1, -1);
+                        TryPick(-1, 1);
+                        TryPick(1, 1);
+                        break;
+
+                    case 2:
                         TryPick(0, 0);
                         TryPick(-1, 0);
                         TryPick(0, 1);
@@ -178,12 +199,9 @@ namespace CombinationsMod.Content.Drills
                         TryPick(-2, -1);
                         TryPick(-1, -2);
                         TryPick(1, -2);
-                    }
-                }
-                else if (BlockRangeStyle == 3)
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
+                        break;
+
+                    case 3:
                         TryPick(0, 0);
                         TryPick(-1, 0);
                         TryPick(0, 1);
@@ -197,12 +215,9 @@ namespace CombinationsMod.Content.Drills
                         TryPick(2, 0);
                         TryPick(0, 2);
                         TryPick(0, -2);
-                    }
-                }
-                else if (BlockRangeStyle == 4) // 3 x 3 grid. For more visual understanding, put the coords on a grid to see the blocks it mines
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
+                        break;
+
+                    case 4:
                         TryPick(0, 0); // 1 x 1 (technically 3 x 3)
                         TryPick(-1, 0);
                         TryPick(0, 1);
@@ -254,56 +269,41 @@ namespace CombinationsMod.Content.Drills
                         TryPick(3, 1);
                         TryPick(3, 2);
                         TryPick(3, 3);
-                    }
-                }
-                else if (BlockRangeStyle == 5)
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        for (int j = 0; j < 10; j++)
-                        {
-                            TryPick(i, j);
-                        }
-                    }
+                        break;
 
-                    for (int k = -10; k <= 0; k++)
-                    {
-                        for (int l = -10; l <= 0; l++)
+                    case 5:
+                        for (int i = 0; i < 10; i++)
                         {
-                            TryPick(k, l);
+                            for (int j = 0; j < 10; j++)
+                            {
+                                TryPick(i, j);
+                            }
                         }
-                    }
 
-                    for (int k = -10; k <= 0; k++)
-                    {
-                        for (int l = 0; l < 10; l++)
+                        for (int k = -10; k <= 0; k++)
                         {
-                            TryPick(k, l);
+                            for (int l = -10; l <= 0; l++)
+                            {
+                                TryPick(k, l);
+                            }
                         }
-                    }
 
-                    for (int k = 0; k < 10; k++)
-                    {
-                        for (int l = -10; l <= 0; l++)
+                        for (int k = -10; k <= 0; k++)
                         {
-                            TryPick(k, l);
+                            for (int l = 0; l < 10; l++)
+                            {
+                                TryPick(k, l);
+                            }
                         }
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        TryPick(0, 0);
-                        TryPick(-1, 0);
-                        TryPick(0, 1);
-                        TryPick(1, 0);
-                        TryPick(0, -1);
-                        TryPick(-1, -1);
-                        TryPick(1, -1);
-                        TryPick(-1, 1);
-                        TryPick(1, 1);
-                    }
+
+                        for (int k = 0; k < 10; k++)
+                        {
+                            for (int l = -10; l <= 0; l++)
+                            {
+                                TryPick(k, l);
+                            }
+                        }
+                        break;
                 }
 
                 // Reset the cooldown if successful
@@ -312,13 +312,6 @@ namespace CombinationsMod.Content.Drills
                     _drillTimer = DrillCooldown;
                 }
             }
-        }
-
-
-        public override bool PreDraw(ref Color lightColor)
-        {
-
-            return IsDrillEnabled;
         }
     }
 }

@@ -83,7 +83,7 @@ namespace CombinationsMod.Content.Items.Yoyos
         {
             if (line.Name == "ItemName" && line.Mod == "Terraria")
             {
-                Color color = Color.Lerp(new Color(189, 139, 0), new Color(128, 128, 0), (MathF.Sin(Main.GlobalTimeWrappedHourly * 0.7f) + 1) / 2f);
+                Color color = Color.Lerp(Color.Teal, Color.DarkCyan, (MathF.Sin(Main.GlobalTimeWrappedHourly * 0.7f) + 1) / 2f);
 
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.Additive);
                 Vector2 bounds = FontAssets.MouseText.Value.MeasureString(line.Text);
@@ -99,7 +99,7 @@ namespace CombinationsMod.Content.Items.Yoyos
                 manager.Update();
 
                 ChatManager.DrawColorCodedStringShadow(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
-                    new Vector2(line.X, line.Y), Color.LightGray, 0f, Vector2.Zero, line.BaseScale);
+                    new Vector2(line.X, line.Y), Color.White, 0f, Vector2.Zero, line.BaseScale);
 
                 ChatManager.DrawColorCodedString(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
                     new Vector2(line.X, line.Y), color, 0f, Vector2.Zero, Vector2.One);

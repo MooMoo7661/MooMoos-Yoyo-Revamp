@@ -12,19 +12,39 @@ using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using CombinationsMod.Content.Utility;
+using Terraria.GameContent;
+using Terraria.UI.Chat;
+using Microsoft.Xna.Framework;
 
 namespace CombinationsMod.Content.Global_Classes
 {
    public class TooltipModifiers : GlobalItem
    {
         public override bool InstancePerEntity => true;
+
+        /*public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
+        {
+            if (line.Name == "CurrentDrill" && line.Mod == "CombinationsMod")
+            {
+                Color color = Color.Lerp(Color.Purple, Color.DarkBlue, (MathF.Sin(Main.GlobalTimeWrappedHourly * 0.7f) + 1) / 2f);
+                ChatManager.DrawColorCodedStringShadow(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
+                       new Vector2(line.X, line.Y), Color.WhiteSmoke, 0f, Vector2.Zero, line.BaseScale);
+
+                ChatManager.DrawColorCodedString(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
+                    new Vector2(line.X, line.Y), color, 0f, Vector2.Zero, Vector2.One);
+                return false;
+            }
+
+            return true;
+        }*/
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (ItemSets.DrillCasing[item.type])
             {
+                Color color = Color.Lerp(Color.HotPink, Color.MediumPurple, (MathF.Sin(Main.GlobalTimeWrappedHourly * 2.9f) + 1) / 2f);
                 var obj = KeybindInputs.GetKeybindDisplayName(KeybindSystem.DrillKeybind.GetAssignedKeys().FirstOrDefault()) ?? "[c/565558:<unbound>]"; // Attempts to find a custom set display name for keybinds. If none is found, the input is returned again. Example : Inputting "Mouse2" will return "Right Click"
                 LocalizedText rightClick = Language.GetText($"Mods.CombinationsMod.LocalizedText.RightClickInfo").WithFormatArgs(obj); // formatting the string to display the current keybind name
-                tooltips.Add(new TooltipLine(Mod, "RightClickInfo", rightClick.Value));
+                tooltips.Add(new TooltipLine(Mod, "RightClickInfo", rightClick.Value.ToRGBColoredString(color)));
             }
 
             if (ItemSets.Counterweight[item.type]) // Is a counterweight -> display "creates one counterweight per yoyo"
@@ -39,7 +59,7 @@ namespace CombinationsMod.Content.Global_Classes
                 {
                     if (ContentSamples.ProjectilesByType[Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType].ModProjectile is BaseDrill drill)
                     {
-                        tooltips.Add(new TooltipLine(Mod, "CounterweightStackInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.CurrentDrill") + ContentSamples.ItemsByType[drill.DrillItem].Name));
+                        tooltips.Add(new TooltipLine(Mod, "CurrentDrill", (Language.GetTextValue("Mods.CombinationsMod.LocalizedText.CurrentDrill") + ContentSamples.ItemsByType[drill.DrillItem].Name).ToHexColoredString("5F65FF")));
                     }
                 }
 

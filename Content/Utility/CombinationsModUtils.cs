@@ -15,26 +15,6 @@ namespace CombinationsMod.Content.Utility
             return Color.Lerp(value, value2, increment * colors.Length % 1f);
         }
 
-        public enum YoyoStrings
-        {
-            whiteString = ItemID.WhiteString,
-            blackString = ItemID.BlackString,
-            redString = ItemID.RedString,
-            orangeString = ItemID.OrangeString,
-            yellowString = ItemID.YellowString,
-            limeString = ItemID.LimeString,
-            greenString = ItemID.GreenString,
-            tealString = ItemID.TealString,
-            cyanString = ItemID.CyanString,
-            skyBlueString = ItemID.SkyBlueString,
-            blueString = ItemID.BlueString,
-            purpleString = ItemID.PurpleString,
-            violetString = ItemID.VioletString,
-            pinkString = ItemID.PinkString,
-            brownString = ItemID.BrownString,
-            rainbowString = ItemID.RainbowString
-        }
-
         public static Vector2 StringPos()
         {
             return new Vector2(Main.screenWidth - 350, Main.screenHeight / 11);

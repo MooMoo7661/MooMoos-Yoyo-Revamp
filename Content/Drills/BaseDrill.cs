@@ -42,12 +42,18 @@ namespace CombinationsMod.Content.Drills
             set => Projectile.ai[0] = value ? 1f : 0f;
         }
 
-        public virtual bool PrePickBlock()
+        /// <summary>
+        /// Return false to stop the tile from being destroyed.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public virtual bool PrePickBlock(int x, int y)
         {
             return true;
         }
 
-        public virtual void PostPickBlock()
+        public virtual void PostPickBlock(int x, int y)
         {
 
         }
@@ -143,9 +149,10 @@ namespace CombinationsMod.Content.Drills
 
                 void TryPick(int cX, int cY)
                 {
-                    if (!PrePickBlock()) { return; }
                     int x = (int)((proj.Center.X + (cX * proj.width * 0.5f + 8 * cX)) / 16);
                     int y = (int)((proj.Center.Y + (cY * proj.height * 0.5f + 8 * cY)) / 16);
+
+                    if (!PrePickBlock(x, y)) { return; }
 
                     if (!Main.tile[x, y].HasTile || !Main.tileSolid[Main.tile[x, y].TileType] || Main.tileSolidTop[Main.tile[x, y].TileType])
                     {
@@ -157,7 +164,7 @@ namespace CombinationsMod.Content.Drills
                     {
                         success = true;
                     }
-                    PostPickBlock();
+                    PostPickBlock(x, y);
                 }
                 switch(BlockRangeStyle)
                 {

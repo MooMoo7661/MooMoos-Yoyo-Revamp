@@ -31,17 +31,13 @@ namespace CombinationsMod.Content.Items.Bars
             Item.rare = ModContent.RarityType<EclipseRarity>();
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            return base.Shoot(player, source, position, velocity, type, damage, knockback);
-        }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<SoulOfEclipse>(), 2);
-            recipe.AddIngredient(ModContent.ItemType<NeutralineScrap>());
-            recipe.AddTile(TileID.AdamantiteForge);
-            recipe.Register();
+            CreateRecipe()
+            .AddIngredient(ModContent.ItemType<SoulOfEclipse>(), 2)
+            .AddIngredient(ModContent.ItemType<NeutralineScrap>())
+            .AddTile(TileID.AdamantiteForge)
+            .Register();
         }
 
         //public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

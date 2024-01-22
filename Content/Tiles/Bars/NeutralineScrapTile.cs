@@ -4,9 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace CombinationsMod.Content.Tiles;
+namespace CombinationsMod.Content.Tiles.Bars;
 
-public class FrightBarTile : ModTile
+public class NeutralineScrapTile : ModTile
 {
     public override void SetStaticDefaults()
     {
@@ -15,12 +15,12 @@ public class FrightBarTile : ModTile
         Main.tileSolidTop[Type] = true;
         Main.tileFrameImportant[Type] = true;
 
-        DustType = DustID.LavaMoss;
+        DustType = DustID.CrystalPulse2;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
 
-        RegisterItemDrop(ModContent.ItemType<FrightBar>());
+        RegisterItemDrop(ModContent.ItemType<NeutralineScrap>());
     }
 }

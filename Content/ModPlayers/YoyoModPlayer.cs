@@ -185,7 +185,7 @@ namespace CombinationsMod.Content.ModPlayers
         {
             YoyoModPlayer modPlayer = Player.GetModPlayer<YoyoModPlayer>();
 
-            if (modPlayer.alienBag || modPlayer.beetleBag || modPlayer.moonlordBag || modPlayer.shimmerBag || modPlayer.tier2Bag || modPlayer.yoyoBag)
+            if (modPlayer.beetleBag || modPlayer.moonlordBag || modPlayer.shimmerBag || modPlayer.tier2Bag || modPlayer.yoyoBag)
             {
                 modPlayer.playerHasYoyoBagEquipped = true;
             }

@@ -33,7 +33,7 @@ namespace CombinationsMod.Content.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
         }
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
@@ -68,7 +68,7 @@ namespace CombinationsMod.Content.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
         }
 
         public override void ApplyEquipEffects()
@@ -201,11 +201,7 @@ namespace CombinationsMod.Content.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag ||
-                Player.GetModPlayer<YoyoModPlayer>().shimmerBag ||
-                Player.GetModPlayer<YoyoModPlayer>().tier2Bag ||
-                Player.GetModPlayer<YoyoModPlayer>().beetleBag ||
-                Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
         }
 
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.Counterweight[item.type];

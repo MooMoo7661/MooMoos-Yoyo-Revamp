@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Tiles.Bars;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,7 +19,7 @@ namespace CombinationsMod.Content.Items.Bars
             Item.useTime = 10;
             Item.autoReuse = true;
             Item.consumable = true;
-            Item.createTile = ModContent.TileType<Tiles.MightBarTile>();
+            Item.createTile = ModContent.TileType<MightBarTile>();
             Item.placeStyle = 0;
             Item.rare = ItemRarityID.LightPurple;
         }

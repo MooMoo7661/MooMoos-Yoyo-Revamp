@@ -1,6 +1,6 @@
 using CombinationsMod.Content.Items.Souls;
 using CombinationsMod.Content.Rarities;
-using CombinationsMod.Content.Tiles;
+using CombinationsMod.Content.Tiles.Bars;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

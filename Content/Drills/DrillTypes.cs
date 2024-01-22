@@ -233,7 +233,7 @@ namespace CombinationsMod.Content.Drills
 
     public class CelestialDrill : BaseDrill
     {
-        protected override int DrillTier => 250;
+        protected override int DrillTier => 225;
         protected override int DrillCooldown => 10;
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
@@ -246,7 +246,7 @@ namespace CombinationsMod.Content.Drills
 
     public class MooMooDrill : BaseDrill
     {
-        protected override int DrillTier => 250;
+        protected override int DrillTier => 225;
         protected override int DrillCooldown => 1;
         protected override int BlockRangeStyle => 4; // Larger Square
         protected override SoundStyle DrillSound => SoundID.Item22;
@@ -259,7 +259,7 @@ namespace CombinationsMod.Content.Drills
 
     public class Excavator : BaseDrill
     {
-        protected override int DrillTier => 250;
+        protected override int DrillTier => 225;
         protected override int DrillCooldown => 1;
         protected override int BlockRangeStyle => 5;
         protected override SoundStyle DrillSound => SoundID.Item22;

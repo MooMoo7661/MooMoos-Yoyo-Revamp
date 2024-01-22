@@ -347,7 +347,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					[c/BCFFF0:250% Potencia de Pico]
+					[c/BCFFF0:225% Potencia de Pico]
 					+1 de rango
 					'''
 			}
@@ -357,7 +357,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					[c/BCFFF0:250% Potencia de Pico]
+					[c/BCFFF0:225% Potencia de Pico]
 					+2 de rango
 					'''
 			}
@@ -404,7 +404,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					[c/BCFFF0:250% Potencia de Pico]
+					[c/BCFFF0:225% Potencia de Pico]
 					+2 de rango
 					'''
 			}
@@ -423,7 +423,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					[c/BCFFF0:250% Potencia de Pico]
+					[c/BCFFF0:225% Potencia de Pico]
 					+1 de rango
 					'''
 			}
@@ -478,7 +478,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					[c/BCFFF0:250% Potencia de Pico]
+					[c/BCFFF0:225% Potencia de Pico]
 					+1 de rango
 					'''
 			}
@@ -499,7 +499,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					[c/BCFFF0:250% Potencia de Pico]
+					[c/BCFFF0:225% Potencia de Pico]
 					+1 de rango
 					'''
 			}
@@ -547,7 +547,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permite a los Yoyos Minar bloques
-					[c/BCFFF0:250% Potencia de Pico]
+					[c/BCFFF0:225% Potencia de Pico]
 					+1 range
 					'''
 			}
@@ -1253,7 +1253,7 @@ Mods: {
 					Permite a los Yoyos Minar bloques
 					Manten presionado el click derecho para empezar a minar
 					Ten cuidado de no destruir tu casa!
-					[c/FF255F:250% Potencia de Pico]
+					[c/FF255F:225% Potencia de Pico]
 					+10 de rango
 					'''
 			}
@@ -1304,6 +1304,21 @@ Mods: {
 					"Estoy tan hambriento que me podria comer un caballo!"
 					 Creado después de meses de incesantes molestias por parte de los miembros de Discord
 					'''
+			}
+
+			FrightBrick: {
+				// DisplayName: Fright Brick
+				// Tooltip: ""
+			}
+
+			MightBrick: {
+				// DisplayName: Might Brick
+				// Tooltip: ""
+			}
+
+			SightBrick: {
+				// DisplayName: Sight Brick
+				// Tooltip: ""
 			}
 		}
 

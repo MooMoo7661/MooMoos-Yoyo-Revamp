@@ -347,7 +347,7 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					[c/BCFFF0:250% pickaxe power]
+					[c/BCFFF0:225% pickaxe power]
 					+1 range
 					'''
 			}
@@ -357,7 +357,7 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					[c/BCFFF0:250% pickaxe power]
+					[c/BCFFF0:225% pickaxe power]
 					+2 range
 					'''
 			}
@@ -404,7 +404,7 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					[c/BCFFF0:250% pickaxe power]
+					[c/BCFFF0:225% pickaxe power]
 					+2 range
 					'''
 			}
@@ -423,7 +423,7 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through block
-					[c/BCFFF0:250% pickaxe power]
+					[c/BCFFF0:225% pickaxe power]
 					+1 range
 					'''
 			}
@@ -478,7 +478,7 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					[c/BCFFF0:250% pickaxe power]
+					[c/BCFFF0:225% pickaxe power]
 					+1 range
 					'''
 			}
@@ -499,7 +499,7 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					[c/BCFFF0:250% pickaxe power]
+					[c/BCFFF0:225% pickaxe power]
 					+1 range
 					'''
 			}
@@ -547,7 +547,7 @@ Mods: {
 				Tooltip:
 					'''
 					Allows Yoyos to drill through blocks
-					[c/BCFFF0:250% pickaxe power]
+					[c/BCFFF0:225% pickaxe power]
 					+1 range
 					'''
 			}
@@ -1252,7 +1252,7 @@ Mods: {
 					'''
 					Allows Yoyos to drill through blocks
 					Be careful not to destroy your house!
-					[c/FF255F:250% pickaxe power]
+					[c/FF255F:225% pickaxe power]
 					+10 range
 					'''
 			}
@@ -1303,6 +1303,21 @@ Mods: {
 					"I'm so hungry I could eat a horse!"
 					Created after months of incessant pestering from the Discord members
 					'''
+			}
+
+			FrightBrick: {
+				DisplayName: Fright Brick
+				Tooltip: ""
+			}
+
+			MightBrick: {
+				DisplayName: Might Brick
+				Tooltip: ""
+			}
+
+			SightBrick: {
+				DisplayName: Sight Brick
+				Tooltip: ""
 			}
 		}
 

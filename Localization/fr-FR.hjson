@@ -351,7 +351,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					[c/BCFFF0:250% puissance de pioche]
+					[c/BCFFF0:225% puissance de pioche]
 					+1 portée
 					'''
 			}
@@ -361,7 +361,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					[c/BCFFF0:250% puissance de pioche]
+					[c/BCFFF0:225% puissance de pioche]
 					+2 portée
 					'''
 			}
@@ -408,7 +408,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					[c/BCFFF0:250% puissance de pioche]
+					[c/BCFFF0:225% puissance de pioche]
 					+2 portée
 					'''
 			}
@@ -427,7 +427,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					[c/BCFFF0:250% puissance de pioche]
+					[c/BCFFF0:225% puissance de pioche]
 					+1 portée
 					'''
 			}
@@ -482,7 +482,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					[c/BCFFF0:250% puissance de pioche]
+					[c/BCFFF0:225% puissance de pioche]
 					+1 portée
 					'''
 			}
@@ -503,7 +503,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					[c/BCFFF0:250% puissance de pioche]
+					[c/BCFFF0:225% puissance de pioche]
 					+1 portée
 					'''
 			}
@@ -551,7 +551,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permet aux yoyo de miner les blocs
-					[c/BCFFF0:250% puissance de pioche]
+					[c/BCFFF0:225% puissance de pioche]
 					+1 portée
 					'''
 			}
@@ -1259,7 +1259,7 @@ Mods: {
 					Permet aux yoyo de miner les blocs
 					Pressez droite pour miner
 					Attention à ne pas détruire votre maison !
-					[c/FF255F:250% puissance de pioche]
+					[c/FF255F:225% puissance de pioche]
 					+10 de portée
 					'''
 			}
@@ -1310,6 +1310,21 @@ Mods: {
 					"J'ai tellement faim que je pourrais manger un cheval !"
 					Créé après des mois de pesteAnneau incessant de la part des membres du Discord
 					'''
+			}
+
+			FrightBrick: {
+				// DisplayName: Fright Brick
+				// Tooltip: ""
+			}
+
+			MightBrick: {
+				// DisplayName: Might Brick
+				// Tooltip: ""
+			}
+
+			SightBrick: {
+				// DisplayName: Sight Brick
+				// Tooltip: ""
 			}
 		}
 

@@ -14,7 +14,7 @@ namespace CombinationsMod.Content.Utility
             AddModdedSets();
         }
 
-        private void AddModdedSets()
+        private static void AddModdedSets()
         {
             IsYoyoDrillProjectile[ProjectileType<IronDrill>()] = true;
             IsYoyoDrillProjectile[ProjectileType<PalladiumDrill>()] = true;

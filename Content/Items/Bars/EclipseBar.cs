@@ -16,8 +16,8 @@ namespace CombinationsMod.Content.Items.Bars
     {
         public override void SetDefaults()
         {
-            Item.width = 30;
-            Item.height = 24;
+            Item.width = 26;
+            Item.height = 34;
             Item.maxStack = 99;
             Item.value = Item.sellPrice(gold: 1, silver: 22);
             Item.useStyle = ItemUseStyleID.Swing;
@@ -67,7 +67,7 @@ namespace CombinationsMod.Content.Items.Bars
         {
             Lighting.AddLight(Item.Center, Color.OrangeRed.ToVector3() * 1.7f);
 
-            Texture2D tex = TextureAssets.Item[Type].Value;
+            Texture2D tex = TextureAssets.Item[Type].Value;//ModContent.Request<Texture2D>("CombinationsMod/Content/Items/Bars/EclipseBarGlow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
             Main.EntitySpriteDraw(tex, Item.Center - Main.screenPosition, null, Color.White, rotation, tex.Size() / 2, scale, SpriteEffects.None);
             int numberOfCloneImages = 3;

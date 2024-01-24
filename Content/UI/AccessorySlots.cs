@@ -4,6 +4,7 @@ using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static CombinationsMod.Content.Utility.CombinationsModUtils;
@@ -33,7 +34,7 @@ namespace CombinationsMod.Content.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
@@ -57,7 +58,7 @@ namespace CombinationsMod.Content.UI
 
     public class YoyoGloveSlot : ModAccessorySlot
     {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => ItemSets.YoyoGlove[checkItem.type];
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => ItemSets.YoyoGlove[checkItem.type] || checkItem.type == ModContent.ItemType<SupportGlove>();
 
         public override bool IsVisibleWhenNotEnabled() => false;
 
@@ -68,7 +69,7 @@ namespace CombinationsMod.Content.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override void ApplyEquipEffects()
@@ -201,7 +202,7 @@ namespace CombinationsMod.Content.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
+            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
         }
 
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.Counterweight[item.type];

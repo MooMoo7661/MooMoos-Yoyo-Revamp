@@ -44,7 +44,7 @@ namespace CombinationsMod.Content.Global_Classes
                 Color color = Color.Lerp(Color.HotPink, Color.MediumPurple, (MathF.Sin(Main.GlobalTimeWrappedHourly * 2.9f) + 1) / 2f);
                 var obj = KeybindInputs.GetKeybindDisplayName(KeybindSystem.DrillKeybind.GetAssignedKeys().FirstOrDefault()) ?? "[c/565558:<unbound>]"; // Attempts to find a custom set display name for keybinds. If none is found, the input is returned again. Example : Inputting "Mouse2" will return "Right Click"
                 LocalizedText rightClick = Language.GetText($"Mods.CombinationsMod.LocalizedText.RightClickInfo").WithFormatArgs(obj); // formatting the string to display the current keybind name
-                tooltips.Add(new TooltipLine(Mod, "RightClickInfo", rightClick.Value.ToRGBColoredString(color)));
+                tooltips.Add(new TooltipLine(Mod, "RightClickInfo", rightClick.Value.ToHexString(color)));
             }
 
             if (ItemSets.Counterweight[item.type]) // Is a counterweight -> display "creates one counterweight per yoyo"
@@ -59,7 +59,7 @@ namespace CombinationsMod.Content.Global_Classes
                 {
                     if (ContentSamples.ProjectilesByType[Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType].ModProjectile is BaseDrill drill)
                     {
-                        tooltips.Add(new TooltipLine(Mod, "CurrentDrill", (Language.GetTextValue("Mods.CombinationsMod.LocalizedText.CurrentDrill") + ContentSamples.ItemsByType[drill.DrillItem].Name).ToHexColoredString("5F65FF")));
+                        tooltips.Add(new TooltipLine(Mod, "CurrentDrill", (Language.GetTextValue("Mods.CombinationsMod.LocalizedText.CurrentDrill") + ContentSamples.ItemsByType[drill.DrillItem].Name).ToHexString("5F65FF")));
                     }
                 }
 

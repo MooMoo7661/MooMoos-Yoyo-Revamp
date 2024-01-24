@@ -9,6 +9,7 @@ namespace CombinationsMod.Content.Keybindings
 
         public override void Load()
         {
+            Mod.Logger.Info("Registered Keybinds for yoyo drills and abilities");
             DrillKeybind = KeybindLoader.RegisterKeybind(Mod, "DrillKeybind", "Mouse2");
             AbilityKeybind = KeybindLoader.RegisterKeybind(Mod, "AbilityKeybind", "S");
         }

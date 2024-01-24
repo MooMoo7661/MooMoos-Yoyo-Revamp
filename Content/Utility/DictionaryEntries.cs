@@ -84,6 +84,7 @@ namespace CombinationsMod
 
         public void AddLocalizedDictionaryEntries()
         {
+            Mod.Logger.Info("Adding Localized Dictionary Entries for yoyo abilities");
             #region AbilityDictionaryInputs
             LocalizedBlackHole.SetStringValue(Language.GetTextValue(abilityFilePath + "BlackHole")); yoyoAbilityDictionary.TryAdd(ItemType<BlackHole>(), LocalizedBlackHole);
 
@@ -118,6 +119,7 @@ namespace CombinationsMod
 
         public void AddDictionaryEntries()
         {
+            Mod.Logger.Info("Adding Dictionary Entries for yoyo strings");
             #region StringDictionaryInputs
             upgradedStringEntry.setStringTexture(upgradedStringFilePath); yoyoStringDictionary.TryAdd(ItemType<TrueAbbhor>(), upgradedStringEntry);
             yoyoStringDictionary.TryAdd(ItemType<TrueCode3>(), upgradedStringEntry);
@@ -133,6 +135,7 @@ namespace CombinationsMod
             blackHoleStringEntry.setStringTexture(TextureAssets.Chains[16]); yoyoStringDictionary.TryAdd(ItemType<BlackHole>(), blackHoleStringEntry);
             #endregion
 
+            Mod.Logger.Info("Adding Dictionary Entries for yoyo string colors");
             #region Color Entries
             GolemString.setStringColor(new(162, 108, 60)); yoyoStringColorDictionary.TryAdd(28, GolemString);
             GreenString.setStringColor(new(41, 96, 0)); yoyoStringColorDictionary.TryAdd(29, GreenString);
@@ -153,7 +156,6 @@ namespace CombinationsMod
             {
                 return localizedString.GetStringValue();
             }
-
             return null;
         }
 

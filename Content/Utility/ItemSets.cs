@@ -15,6 +15,7 @@ namespace CombinationsMod.Content.Utility
         public override void PostSetupContent()
         {
             CreateModdedSets();
+            Mod.Logger.Info("Created modded sets");
         }
 
         private static void CreateModdedSets()
@@ -40,6 +41,7 @@ namespace CombinationsMod.Content.Utility
                 YoyoString[veridianMod.Find<ModItem>("HellString").Type] = true;
             }
 
+            #region YoyoString
             YoyoString[ItemType<DarkBlueString>()] = true;
             YoyoString[ItemType<DarkGreenString>()] = true;
             YoyoString[ItemType<DarkTealString>()] = true;
@@ -54,16 +56,20 @@ namespace CombinationsMod.Content.Utility
             YoyoString[ItemType<SolarString>()] = true;
             YoyoString[ItemType<StardustString>()] = true;
             YoyoString[ItemType<VortexString>()] = true;
+            #endregion
 
+            #region YoyoBag
             YoyoBag[ItemType<AdvancedYoyoBag>()] = true;
             YoyoBag[ItemType<BeetleBag>()] = true;
             YoyoBag[ItemType<MoonlordBag>()] = true;
             YoyoBag[ItemType<ShimmerBag>()] = true;
             YoyoBag[ItemType<ShimmeringBeetleBag>()] = true;
             YoyoBag[ItemType<Tier2Bag>()] = true;
+            #endregion
 
             SupportGlove[ItemType<SupportGlove>()] = true;
 
+            #region Drills
             DrillCasing[ItemType<AdamantiteDrillCasing>()] = true;
             DrillCasing[ItemType<CelestialDrillCasing>()] = true;
             DrillCasing[ItemType<CobaltDrillCasing>()] = true;
@@ -85,7 +91,9 @@ namespace CombinationsMod.Content.Utility
             DrillCasing[ItemType<TreeClippersDrillCasing>()] = true;
             DrillCasing[ItemType<TsurugiDrillCasing>()] = true;
             DrillCasing[ItemType<VortexDrillCasing>()] = true;
+            #endregion
 
+            #region Rings
             YoyoRing[ItemType<AbilityRing>()] = true;
             YoyoRing[ItemType<AmberRing>()] = true;
             YoyoRing[ItemType<AmethystRing>()] = true;
@@ -100,11 +108,14 @@ namespace CombinationsMod.Content.Utility
             YoyoRing[ItemType<TerreneRing>()] = true;
             YoyoRing[ItemType<TopazRing>()] = true;
             YoyoRing[ItemType<TrepidationRing>()] = true;
+            #endregion
 
+            #region Tricks
             Trick[ItemType<AroundTheWorld>()] = true;
             Trick[ItemType<AroundTheWorldTier2>()] = true;
             Trick[ItemType<ShootToTheMoon>()] = true;
             Trick[ItemType<DualYoyo>()] = true;
+            #endregion
         }
 
         public static bool[] YoyoString = ItemID.Sets.Factory.CreateBoolSet(

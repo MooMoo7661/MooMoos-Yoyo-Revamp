@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using CombinationsMod.Content.Configs;
+using log4net.Repository.Hierarchy;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -190,7 +192,7 @@ namespace CombinationsMod.Content.ModPlayers
                 modPlayer.playerHasYoyoBagEquipped = true;
             }
         }
-
+        
         /// <summary>
         /// Inputs regular yoyo string length, then returns the modified length depending on player bools.
         /// </summary>
@@ -244,7 +246,7 @@ namespace CombinationsMod.Content.ModPlayers
         /// <summary>
         /// Checks for yoyo bag
         /// </summary>
-        public static bool TestForYoyoBag(Player player) => player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
+        public bool TestForYoyoBag(Player player) => player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
 
         /// <summary>
         /// Returns the number of yoyos the player should have
@@ -303,14 +305,17 @@ namespace CombinationsMod.Content.ModPlayers
         {
             // On_Player.Counterweight += DualYoyoDetour;
             IL_Player.Counterweight += ILDualYoyo;
+            Mod.Logger.Info("Loaded IL detour of Player.Counterweight");
         }
 
         public override void Unload()
         {
             // On_Player.Counterweight -= DualYoyoDetour;
             IL_Player.Counterweight -= ILDualYoyo;
+            Mod.Logger.Info("Unloaded IL detour of Player.Counterweight");
         }
 
+        #region OldDetour
         // private void DualYoyoDetour(On_Player.orig_Counterweight orig, Player player, Vector2 hitPos, int dmg, float kb)
         // {
         //     DualYoyo(player, dmg, kb);
@@ -425,6 +430,7 @@ namespace CombinationsMod.Content.ModPlayers
         //         }
         //     }
         // }
+        #endregion
 
         private void ILDualYoyo(ILContext context)
         {

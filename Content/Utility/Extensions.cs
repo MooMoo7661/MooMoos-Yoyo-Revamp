@@ -16,7 +16,7 @@ namespace CombinationsMod.Content.Utility
         /// <param name="text"></param>
         /// <param name="hex">The hex you want to color the string as.</param>
         /// <returns></returns>
-        public static string ToHexColoredString(this string text, string hex)
+        public static string ToHexString(this string text, string hex)
         {
             return "[c/" + hex + ":" + text + "]";
         }
@@ -27,7 +27,7 @@ namespace CombinationsMod.Content.Utility
         /// <param name="text"></param>
         /// <param name="color">The color you want the text to be.</param>
         /// <returns></returns>
-        public static string ToRGBColoredString(this string text, Color color)
+        public static string ToHexString(this string text, Color color)
         {
             return "[c/" + color.Hex3() + ":" + text + "]";
         }

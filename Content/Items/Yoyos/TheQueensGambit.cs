@@ -25,25 +25,20 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 16f;
-            Item.knockBack = 1f;
-            Item.damage = 22;
-            Item.rare = ItemRarityID.Green;
+            Item.knockBack = 4f;
+            Item.damage = 50;
+            Item.rare = ItemRarityID.Lime;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.UseSound = new SoundStyle?(SoundID.Item1);
-            Item.value = Item.sellPrice(0, 6, 0, 0);
+            Item.value = Item.sellPrice(0, 8, 0, 0);
             Item.shoot = ModContent.ProjectileType<TheQueensGambitProjectile>();
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             tooltips.Insert(1, new TooltipLine(Mod, "YoyoType", "[c/6FD4FF:Boss Drop]"));
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

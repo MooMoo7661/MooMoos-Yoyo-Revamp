@@ -11,8 +11,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 240f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13.3f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 480;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16.7f;
 
             //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.5f;
         }
@@ -41,18 +41,24 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                 proj.friendly = true;
             }
         }
+
         public override void PostAI()
         {
             timer++;
 
             Player player = Main.player[Projectile.owner];
 
-            if (timer == 60 && Main.myPlayer == Projectile.owner)
+            if (timer >= 30 && Main.myPlayer == Projectile.owner)
             {
-                Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
 
-                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, player.beeType(), player.beeDamage(Projectile.damage), player.beeKB(Projectile.knockBack), Projectile.owner);
-                proj.friendly = true;
+                    int type = Main.rand.NextBool() ? player.beeType() : ProjectileID.Wasp;
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, type, (int)(player.beeDamage(Projectile.damage) * 0.7f), player.beeKB(Projectile.knockBack), Projectile.owner);
+                    proj.friendly = true;
+                }
+                timer = 0;
             }
 
             if (Main.rand.NextBool(4))
@@ -60,12 +66,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                 Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, DustID.Bee);
                 dust.noGravity = true;
                 dust.noLight = true;
-                float random = Main.rand.NextFloat(1f, 2f);
-                dust.scale = random;
+                dust.scale = Main.rand.NextFloat(1f, 2f);
             }
-
-            if (timer == 60)
-                timer = 0;
         }
     }
 }

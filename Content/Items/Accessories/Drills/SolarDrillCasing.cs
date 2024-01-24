@@ -31,6 +31,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.FragmentSolar, 13);
+            recipe.AddIngredient(ItemID.LunarBar, 5);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }

@@ -16,7 +16,9 @@ namespace CombinationsMod.Content
 
     public abstract class ModDrill : ItemLoader
     {
+        [CloneByReference]
         public abstract bool CanBeUnloaded { get; }
+        [CloneByReference]
         public abstract int DrillProjectile { get; }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -33,6 +35,7 @@ namespace CombinationsMod.Content
 
     public abstract class ModRing : ItemLoader
     {
+        [CloneByReference]
         public abstract bool CanBeUnloaded { get; }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -50,6 +53,7 @@ namespace CombinationsMod.Content
 
     public abstract class ModString : ItemLoader
     {
+        [CloneByReference]
         public abstract bool CanBeUnloaded { get; }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -66,6 +70,7 @@ namespace CombinationsMod.Content
 
     public abstract class ModYoyo : ItemLoader
     {
+        [CloneByReference]
         public abstract bool CanBeUnloaded { get; }
 
         public override bool IsLoadingEnabled(Mod mod)

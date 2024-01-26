@@ -39,18 +39,6 @@ namespace CombinationsMod.Content.Items.Yoyos
 
 
         }
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-
-            Player player = Main.LocalPlayer;
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.yoyoRing)
-            {
-                tooltips.Insert(2, new TooltipLine(Mod, "Yoyo Ability", "[c/B3FDFF:Triggers on use]"));
-                tooltips.Insert(3, new TooltipLine(Mod, "Yoyo Ability Description", "[c/B3FDFF:Special Ability : Creates a damaging aura]")); // TODO: Implement Ability
-            }
-        }
 
         public override void AddRecipes()
         {

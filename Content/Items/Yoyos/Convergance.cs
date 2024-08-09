@@ -89,11 +89,6 @@ namespace CombinationsMod.Content.Items.Yoyos
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.Additive);
 
                 Vector2 bounds = FontAssets.MouseText.Value.MeasureString(line.Text);
-                Texture2D glow = ModContent.Request<Texture2D>("CombinationsMod/Content/Assets/Glow").Value;
-                Vector2 texSize = glow.Size();
-                Main.spriteBatch.Draw(glow, (line.X + bounds.X / 2) * Vector2.UnitX + (line.Y + bounds.Y / 2) * Vector2.UnitY - Vector2.UnitY * 3, null, color
-                    , 0f, texSize / 2, new Vector2(4f, 0.7f), SpriteEffects.None, 0f);
-
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.AlphaBlend);
 
 

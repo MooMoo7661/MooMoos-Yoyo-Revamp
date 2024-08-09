@@ -21,7 +21,6 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             return entity.aiStyle == 99;
         }
 
-        private bool isOriginalYoyo = false;
         public bool mainYoyo = false; // false = main yoyo, true = second yoyo
 
         public override void Load()
@@ -69,7 +68,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                 }
             }
 
-            if (projectile.type == 603 && projectile.owner == Main.myPlayer) // All of this is for terrarian beam[?]
+            if (projectile.type == 603 && projectile.owner == Main.myPlayer) // All of this is for terrarian's homing orbs
             {
                 projectile.localAI[1] += 1f;
                 if (projectile.localAI[1] >= 6f)
@@ -109,14 +108,15 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                 }
             }
 
-            bool isCounterweight = false; // Flag2 is counterweights
+            bool isCounterweight = false;
 
-            if (projectile.type >= 556 && projectile.type <= 561) // Counterweights
+            if (projectile.counterweight) // Setting the counterweight flag depending on the projectile
             {
                 isCounterweight = true;
+                Main.NewText("Counterweight was true on " + projectile.Name);
             }
 
-            if (Main.player[projectile.owner].dead) // kill projectile when owner is dead
+            if (Main.player[projectile.owner].dead) // Kill projectile when projectile.owner is dead
             {
                 projectile.Kill();
                 return;
@@ -154,24 +154,19 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                 }
             }
 
+            // If somehow the yoyo's velocity gets super high or fucked up, kill it
             if (projectile.velocity.HasNaNs())
             {
                 projectile.Kill();
             }
 
             projectile.timeLeft = 6;
-            float num7 = 10f;
-            float yoyoSpeed = 10f;
-            float num9 = 3f;
-
             float stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
 
-            yoyoSpeed = player.GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoSpeed(ProjectileID.Sets.YoyosTopSpeed[projectile.type], player);
+            float yoyoSpeed = player.GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoSpeed(ProjectileID.Sets.YoyosTopSpeed[projectile.type], player);
+            float modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength, player);
 
-            float modifiedStringLength = stringLength;
-            modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength, player);
-
-            if (projectile.type == 545) // 545 is cascade
+            if (projectile.type == 545) // Cascade dusts
             {
                 if (Main.rand.NextBool(6))
                 {
@@ -179,7 +174,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     Main.dust[num11].noGravity = true;
                 }
             }
-            else if (projectile.type == 553 && Main.rand.NextBool(2)) // 553 is hel-fire
+            else if (projectile.type == 553 && Main.rand.NextBool(2)) // Hel-Fire dusts
             {
                 int num12 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
                 Main.dust[num12].noGravity = true;
@@ -188,17 +183,18 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             if (Main.player[projectile.owner].yoyoString) // Extends range
             {
                 // modifiedStringLength is ProjectileID.Sets.YoyosMaximumRange + modifictions from modplayer to increase range
-                modifiedStringLength = modifiedStringLength + 150f;
+                modifiedStringLength += 150f;
             }
+
             modifiedStringLength *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
             //modifiedStringLength = 120f + modifiedStringLength / 5;
             yoyoSpeed *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
-            num7 = 14f - yoyoSpeed / 2f;
+            float num7 = 14f - yoyoSpeed / 2f;
             if (num7 < 1f)
             {
                 num7 = 1f;
             }
-            num9 = 5f + yoyoSpeed / 2f;
+            float num9 = 5f + yoyoSpeed / 2f;
             if (mainYoyo)
             {
                 //ABILITY - EXTENDED REACH : Yoyo range is greatly increased with second ai. Change 20f to 100f+
@@ -232,6 +228,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     }
                     else
                     {
+                        // Makes it so the controls aren't fucked up when the player is upside down
                         Vector2 vector4 = Main.ReverseGravitySupport(Main.MouseScreen) + Main.screenPosition;
                         float x = vector4.X;
                         float y = vector4.Y;
@@ -244,8 +241,9 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                             x = vector5.X;
                             y = vector5.Y;
                         }
-                        if (projectile.ai[0] != x || projectile.ai[1] != y) // If the yoyo's ai is not equal to the position
+                        if (projectile.ai[0] != x || projectile.ai[1] != y)
                         {
+                            // Limit the range for the yoyo
                             Vector2 vector6 = new Vector2(x, y) - Main.player[projectile.owner].Center;
                             if (vector6.Length() > modifiedStringLength - 1f)
                             {
@@ -255,6 +253,8 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                                 x = vector7.X;
                                 y = vector7.Y;
                             }
+
+                            // Sets the ai values equal to the X and Y pos
                             projectile.ai[0] = x;
                             projectile.ai[1] = y;
                             projectile.netUpdate = true;
@@ -330,17 +330,9 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             }
             else
             {
-                // ABILITY - LOOSE YOYO : Change 0.8f to a higher float
-                num7 = (int)((double)num7 * 0.8f);
-
-                //if ((player.GetModPlayer<YoyoModPlayer>().yoyoBag || player.GetModPlayer<YoyoModPlayer>().shimmerBag || player.GetModPlayer<YoyoModPlayer>().tier2Bag) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-                //{
-                //    yoyoSpeed *= 3f;
-                //}
-                //else
-                //{
-                //    yoyoSpeed *= 1.8f;
-                //}
+                // Changing this causes the yoyo to be more elastic, or "floppy" when using.
+                // Vanilla sets this to 0.8, but I chose to do 3.25.
+                num7 = (int)((double)num7 * 3.25);
 
                 projectile.tileCollide = false;
                 Vector2 vector9 = Main.player[projectile.owner].Center - projectile.Center;
@@ -359,6 +351,5 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             }
             projectile.rotation += 0.45f;
         }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -23,7 +24,18 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects.Solid
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 150;
+            Projectile.hide = true;
+
+            Projectile.usesIDStaticNPCImmunity = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 25 * Projectile.MaxUpdates;
         }
+
+        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+        {
+            behindNPCs.Add(index);
+        }
+
         public override string Texture => "CombinationsMod/Content/Projectiles/YoyoEffects/Solid/EclipseSwirl";
         public override Color? GetAlpha(Color lightColor) => new(255, 92, 0, 0); // More Orange
 

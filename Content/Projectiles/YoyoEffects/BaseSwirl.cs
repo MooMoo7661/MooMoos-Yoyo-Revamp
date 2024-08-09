@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -41,6 +42,11 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
             Projectile.penetrate = Penetrate;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 150;
+            Projectile.hide = true;
+
+            Projectile.usesIDStaticNPCImmunity = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 25 * Projectile.MaxUpdates;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -59,6 +65,11 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
         {
             if (DoesFrostburnDamage) // For use with swirls like ones used in the Amarok. Deals Frostburn damage.
                 target.AddBuff(BuffID.Frostburn, 180);
+        }
+
+        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+        {
+            behindNPCs.Add(index);
         }
 
         public override void AI()

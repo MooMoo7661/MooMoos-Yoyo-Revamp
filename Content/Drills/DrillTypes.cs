@@ -54,8 +54,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 40;
-        protected override int Height => 40;
+        protected override int Width => 44;
+        protected override int Height => 44;
 
         public override int DrillItem => ModContent.ItemType<OrichalcumDrillCasing>();
     }
@@ -66,8 +66,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 40;
-        protected override int Height => 40;
+        protected override int Width => 44;
+        protected override int Height => 44;
 
         public override int DrillItem => ModContent.ItemType<MythrilDrillCasing>();
     }
@@ -78,8 +78,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 44;
-        protected override int Height => 44;
+        protected override int Width => 48;
+        protected override int Height => 48;
 
         public override int DrillItem => ModContent.ItemType<AdamantiteDrillCasing>();
     }
@@ -90,8 +90,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 44;
-        protected override int Height => 44;
+        protected override int Width => 48;
+        protected override int Height => 48;
 
         public override int DrillItem => ModContent.ItemType<TitaniumDrillCasing>();
     }
@@ -102,8 +102,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 48;
-        protected override int Height => 48;
+        protected override int Width => 52;
+        protected override int Height => 52;
 
         public override int DrillItem => ModContent.ItemType<HakapikDrillCasing>();
     }
@@ -114,8 +114,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 48;
-        protected override int Height => 48;
+        protected override int Width => 52;
+        protected override int Height => 52;
 
         public override int DrillItem => ModContent.ItemType<MattockDrillCasing>();
     }
@@ -126,8 +126,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 3; // Diamond Shape
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 48;
-        protected override int Height => 48;
+        protected override int Width => 52;
+        protected override int Height => 52;
 
         public override int DrillItem => ModContent.ItemType<SpectralShredderCasing>();
     }
@@ -138,8 +138,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 1;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 48;
-        protected override int Height => 48;
+        protected override int Width => 52;
+        protected override int Height => 52;
 
         public override int DrillItem => ModContent.ItemType<ShroomiteShredderCasing>();
     }
@@ -150,8 +150,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 52;
-        protected override int Height => 52;
+        protected override int Width => 56;
+        protected override int Height => 56;
 
         public override int DrillItem => ModContent.ItemType<TsurugiDrillCasing>();
     }
@@ -162,8 +162,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 48;
-        protected override int Height => 48;
+        protected override int Width => 56;
+        protected override int Height => 56;
 
         public override int DrillItem => ModContent.ItemType<HorsemansDrillCasing>();
     }
@@ -174,8 +174,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 48;
-        protected override int Height => 48;
+        protected override int Width => 56;
+        protected override int Height => 56;
 
         public override int DrillItem => ModContent.ItemType<TreeClippersDrillCasing>();
     }
@@ -186,8 +186,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 52;
-        protected override int Height => 52;
+        protected override int Width => 60;
+        protected override int Height => 60;
 
         public override int DrillItem => ModContent.ItemType<SolarDrillCasing>();
     }
@@ -199,8 +199,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 52;
-        protected override int Height => 52;
+        protected override int Width => 60;
+        protected override int Height => 60;
 
         public override int DrillItem => ModContent.ItemType<VortexDrillCasing>();
     }
@@ -212,8 +212,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 52;
-        protected override int Height => 52;
+        protected override int Width => 60;
+        protected override int Height => 60;
 
         public override int DrillItem => ModContent.ItemType<NebulaDrillCasing>();
     }
@@ -225,8 +225,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 52;
-        protected override int Height => 52;
+        protected override int Width => 60;
+        protected override int Height => 60;
 
         public override int DrillItem => ModContent.ItemType<StardustDrillCasing>();
     }
@@ -238,8 +238,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 2;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 60;
-        protected override int Height => 60;
+        protected override int Width => 64;
+        protected override int Height => 64;
 
         public override int DrillItem => ModContent.ItemType<CelestialDrillCasing>();
     }
@@ -251,8 +251,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 4; // Larger Square
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 64;
-        protected override int Height => 64;
+        protected override int Width => 68;
+        protected override int Height => 68;
 
         public override int DrillItem => ModContent.ItemType<MooMooDrillCasing>();
     }
@@ -264,8 +264,8 @@ namespace CombinationsMod.Content.Drills
         protected override int BlockRangeStyle => 5;
         protected override SoundStyle DrillSound => SoundID.Item22;
 
-        protected override int Width => 68;
-        protected override int Height => 68;
+        protected override int Width => 82;
+        protected override int Height => 80;
 
         public override int DrillItem => ModContent.ItemType<ExcavatorCasing>();
     }

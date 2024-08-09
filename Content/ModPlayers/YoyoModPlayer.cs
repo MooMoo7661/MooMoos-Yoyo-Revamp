@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using CombinationsMod.Content.Configs;
+using CombinationsMod.GlobalClasses.Projectiles;
 using log4net.Repository.Hierarchy;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
@@ -8,6 +9,7 @@ using MonoMod.Cil;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.ModPlayers
@@ -19,21 +21,11 @@ namespace CombinationsMod.Content.ModPlayers
         public int chainTextureID = 0;
         public int CurrentDrillType = 0;
 
-        /// <summary>
-        /// For use with the `yoyoSpacers` bool, allows the mod to subtract the added stats to prevent exponential growth.<br>Unused</br>
-        /// </summary>
-        public bool wasEquipped = false;
-
         public bool wasEquippedDarkGreen = false;
         public bool wasEquippedDarkBlue = false;
         public bool wasEquippedLightPink = false;
         public bool wasEquippedNaniteString = false;
 
-        /// <summary>
-        ///  Used by the Upgraded Yoyo Glove / Solar Glove. Determines if the player can create a second yoyo
-        /// </summary>
-        public bool yoyoClip = false;
-        public bool yoyoSpacers = false;
         public bool yoyoBag = false;
         public bool shimmerBag = false;
         public bool tier2Bag = false;
@@ -46,7 +38,7 @@ namespace CombinationsMod.Content.ModPlayers
         public bool golemString = false;
         public bool frostbiteString = false;
         public bool slimeString = false;
-
+        
         public bool solarString = false;
         public bool stardustString = false;
         public bool vortexString = false;
@@ -74,7 +66,7 @@ namespace CombinationsMod.Content.ModPlayers
         public bool shroomiteDrill = false;
         public bool golemDrill = false; // Tsurugi
         public bool horseDrill = false; // Horseman drill
-        public bool christmasDrill = false;
+        public bool christmasDrill = false; // Snowstorm Drill
         public bool solarDrill = false;
         public bool vortexDrill = false;
         public bool nebulaDrill = false;
@@ -83,15 +75,15 @@ namespace CombinationsMod.Content.ModPlayers
         public bool moomooDrill = false;
         public bool excavatorDrill = false;
 
+        public bool amberRing = false;    // 
+        public bool topazRing = false;    //
+        public bool amethystRing = false; //
+        public bool rubyRing = false;     //   Highlighted rings are color based
+        public bool sapphireRing = false; //
+        public bool emeraldRing = false;  // 
+        public bool diamondRing = false;  //
+        public bool gemRing = false;      //
         public bool yoyoRing = false; // Power Ring
-        public bool amberRing = false;                                  // 
-        public bool topazRing = false;                                  //
-        public bool amethystRing = false;                               //
-        public bool rubyRing = false;                                   //   Highlighted rings are color based
-        public bool sapphireRing = false;                               //
-        public bool emeraldRing = false;                                // 
-        public bool diamondRing = false;                                //
-        public bool gemRing = false;                                    //
         public bool fortitudeRing = false; // Destroyer ring
         public bool omnipotenceRing = false; // Twins ring
         public bool trepidationRing = false; // Skeletron Prime ring
@@ -104,14 +96,13 @@ namespace CombinationsMod.Content.ModPlayers
         public bool trick2 = false; // Around the World Tier 2
         public bool dualYoyo = false; // Dual Yoyo trick
         public bool moonTrick = false; // Shoot to the Moon
+        public bool lifestealTrick = false; // Lifesteal Trick
 
-        public override void ResetEffects() // Lets accessories be temporary.
+        public override void ResetEffects()
         {
             currentYoyo = 0;
             CurrentDrillType = 0;
 
-            yoyoClip = false;
-            yoyoSpacers = false;
             yoyoBag = false;
             shimmerBag = false;
             tier2Bag = false;
@@ -181,18 +172,27 @@ namespace CombinationsMod.Content.ModPlayers
             trick2 = false;
             dualYoyo = false;
             moonTrick = false;
+            lifestealTrick = false;
         }
 
-        public override void PostUpdateEquips()
+        public override void Load()
         {
-            YoyoModPlayer modPlayer = Player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.beetleBag || modPlayer.moonlordBag || modPlayer.shimmerBag || modPlayer.tier2Bag || modPlayer.yoyoBag)
-            {
-                modPlayer.playerHasYoyoBagEquipped = true;
-            }
+            //On_Player.Counterweight += DualYoyoDetour;
+            IL_Player.Counterweight += ILDualYoyo;
+            Mod.Logger.Info("Loaded IL detour of Player.Counterweight");
         }
-        
+
+        public override void Unload()
+        {
+            //On_Player.Counterweight -= DualYoyoDetour;
+            IL_Player.Counterweight -= ILDualYoyo;
+            Mod.Logger.Info("Unloaded IL detour of Player.Counterweight");
+        }
+
+        public bool TestForYoyoBag(Player player) => player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
+
+        public static bool TestForSupportGlove(Player player) => player.GetModPlayer<YoyoModPlayer>().supportGlove;
+
         /// <summary>
         /// Inputs regular yoyo string length, then returns the modified length depending on player bools.
         /// </summary>
@@ -243,14 +243,6 @@ namespace CombinationsMod.Content.ModPlayers
             return speed;
         }
 
-        /// <summary>
-        /// Checks for yoyo bag
-        /// </summary>
-        public bool TestForYoyoBag(Player player) => player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
-
-        /// <summary>
-        /// Returns the number of yoyos the player should have
-        /// </summary>
         public static int GetNumPlayerYoyos(Player player)
         {
             int numYoyos = 1;
@@ -268,16 +260,6 @@ namespace CombinationsMod.Content.ModPlayers
 
             return numYoyos;
         }
-
-        public override void PlayerDisconnect() // Subtracts the added Yoyo stats when the player disconnects.
-        {
-            HitCounter = 0;
-        }
-
-        /// <summary>
-        /// Checks for support glove
-        /// </summary>
-        public static bool TestForSupportGlove(Player player) => player.GetModPlayer<YoyoModPlayer>().supportGlove;
 
         public static int GetYoyoToCast(Player player)
         {
@@ -301,137 +283,6 @@ namespace CombinationsMod.Content.ModPlayers
             return yoyoToCast;
         }
 
-        public override void Load()
-        {
-            // On_Player.Counterweight += DualYoyoDetour;
-            IL_Player.Counterweight += ILDualYoyo;
-            Mod.Logger.Info("Loaded IL detour of Player.Counterweight");
-        }
-
-        public override void Unload()
-        {
-            // On_Player.Counterweight -= DualYoyoDetour;
-            IL_Player.Counterweight -= ILDualYoyo;
-            Mod.Logger.Info("Unloaded IL detour of Player.Counterweight");
-        }
-
-        #region OldDetour
-        // private void DualYoyoDetour(On_Player.orig_Counterweight orig, Player player, Vector2 hitPos, int dmg, float kb)
-        // {
-        //     DualYoyo(player, dmg, kb);
-        // }
-
-        /// <summary>
-        /// Detoured hook of Player.Counterweight. <br>
-        /// Handles all behavior related to the yoyo glove.</br>
-        /// </summary>
-
-        // private void DualYoyo(Player player, int dmg, float kb)
-        // {
-        //     if (!player.yoyoGlove && player.counterWeight <= 0)
-        //     {
-        //         return;
-        //     }
-        //
-        //     int num = -1;
-        //     int num2 = 0;
-        //     int num3 = 0;
-        //
-        //     for (int i = 0; i < 1000; i++)
-        //     {
-        //         if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI)
-        //         {
-        //             if (Main.projectile[i].counterweight)
-        //             {
-        //                 num3++;
-        //             }
-        //             else if (Main.projectile[i].aiStyle == 99)
-        //             {
-        //                 num2++;
-        //                 num = i;
-        //             }
-        //         }
-        //     }
-        //
-        //     if (player.yoyoGlove && num2 < GetNumPlayerYoyos(player) + 1)
-        //     {
-        //         if (num >= 0)
-        //         {
-        //             int damage;
-        //             float knockback;
-        //
-        //             if (player.selectedItem == 58)
-        //             {
-        //                 damage = player.inventory[58].damage;
-        //                 knockback = player.inventory[58].knockBack;
-        //             }
-        //             else
-        //             {
-        //                 damage = player.inventory[player.selectedItem].damage;
-        //                 knockback = player.inventory[player.selectedItem].knockBack;
-        //             }
-        //
-        //             if (player.selectedItem != 58 && ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
-        //             {
-        //                 damage = player.inventory[player.selectedItem + 1].damage;
-        //                 knockback = player.inventory[player.selectedItem + 1].knockBack;
-        //             }
-        //
-        //             if (TestForYoyoBag(player) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-        //             {
-        //                 int numYoyos = GetNumPlayerYoyos(player);
-        //
-        //                 for (int i = 0; i < numYoyos - 1; i++)
-        //                 {
-        //                     Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-        //                     Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
-        //                 }
-        //             }
-        //
-        //
-        //             if (TestForSupportGlove(player))
-        //             {
-        //                 Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-        //                 Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
-        //
-        //                 Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
-        //                 Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector2.X, vector2.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
-        //                 return;
-        //             }
-        //             else
-        //             {
-        //                 Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-        //                 Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
-        //                 return;
-        //             }
-        //
-        //
-        //         }
-        //     }
-        //     else if (num3 < num2)
-        //     {
-        //         for (int i = 0; i < yoyoNumber; i++)
-        //         {
-        //             Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
-        //             vector2.Normalize();
-        //             vector2 *= 16f;
-        //             float knockBack = (kb + 6f) / 2f;
-        //
-        //             IEntitySource spawnSource = Terraria.Entity.InheritSource(Main.projectile[num]);
-        //             if (num3 > 0)
-        //             {
-        //                 Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, 1f, 0f);
-        //                 return;
-        //             }
-        //             else
-        //             {
-        //                 Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, 0f, 0f);
-        //             }
-        //         }
-        //     }
-        // }
-        #endregion
-
         private void ILDualYoyo(ILContext context)
         {
             ILCursor c = new(context);
@@ -452,9 +303,9 @@ namespace CombinationsMod.Content.ModPlayers
             c.Emit(OpCodes.Ldc_I4_0);
         }
 
-        private void ILEdit(int index1, int num1, int num2, Player player, int dmg, float kb)
+        private void ILEdit(int index1, int yoyoCount, int counterweightCount, Player player, int dmg, float kb)
         {
-            if (player.yoyoGlove && num1 < GetNumPlayerYoyos(player) + 1)
+            if (player.yoyoGlove && yoyoCount < GetNumPlayerYoyos(player) + 1)
             {
                 if (index1 >= 0)
                 {
@@ -485,31 +336,42 @@ namespace CombinationsMod.Content.ModPlayers
                         for (int i = 0; i < numYoyos - 1; i++)
                         {
                             Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                            Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                            Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                            proj1.usesIDStaticNPCImmunity = false;
+                            proj1.usesLocalNPCImmunity = true;
+                            proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
                         }
                     }
-
 
                     if (TestForSupportGlove(player))
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        proj1.usesIDStaticNPCImmunity = false;
+                        proj1.usesLocalNPCImmunity = true;
+                        proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
 
                         Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
-                        Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center.X, player.Center.Y, vector2.X, vector2.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        Projectile proj2 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector2, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        proj2.usesIDStaticNPCImmunity = false;
+                        proj2.usesLocalNPCImmunity = true;
+                        proj2.localNPCHitCooldown = 25 * proj2.MaxUpdates;
+
                         return;
                     }
                     else
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        proj1.usesIDStaticNPCImmunity = false;
+                        proj1.usesLocalNPCImmunity = true;
+                        proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
+                        Main.NewText("Created secondary yoyo with whoami of " + proj1.whoAmI);
                         return;
                     }
-
-
                 }
             }
-            else if (num2 < num1)
+            else if (counterweightCount < yoyoCount)
             {
                 for (int i = 0; i < yoyoNumber; i++)
                 {
@@ -519,7 +381,7 @@ namespace CombinationsMod.Content.ModPlayers
                     float knockBack = (kb + 6f) / 2f;
 
                     IEntitySource spawnSource = Terraria.Entity.InheritSource(Main.projectile[index1]);
-                    if (num2 > 0)
+                    if (counterweightCount > 0)
                     {
                         Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, 1f, 0f);
                         return;
@@ -531,5 +393,122 @@ namespace CombinationsMod.Content.ModPlayers
                 }
             }
         }
+
+        #region Old Detour
+        //private void DualYoyoDetour(On_Player.orig_Counterweight orig, Player player, Vector2 hitPos, int dmg, float kb)
+        //{
+        //    DualYoyo(player, dmg, kb);
+        //}
+
+        // /// <summary>
+        // /// Detoured hook of Player.Counterweight. <br>
+        // /// Handles all behavior related to the yoyo glove.</br>
+        // /// </summary>
+
+        // private void DualYoyo(Player player, int dmg, float kb)
+        // {
+        //    if (!player.yoyoGlove && player.counterWeight <= 0)
+        //    {
+        //        return;
+        //    }
+
+        //    int num = -1;
+        //    int num2 = 0;
+        //    int num3 = 0;
+
+        //    for (int i = 0; i < 1000; i++)
+        //    {
+        //        if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI)
+        //        {
+        //            if (Main.projectile[i].counterweight)
+        //            {
+        //                num3++;
+        //            }
+        //            else if (Main.projectile[i].aiStyle == 99)
+        //            {
+        //                num2++;
+        //                num = i;
+        //            }
+        //        }
+        //    }
+
+        //    if (player.yoyoGlove && num2 < GetNumPlayerYoyos(player) + 1)
+        //    {
+        //        if (num >= 0)
+        //        {
+        //            int damage;
+        //            float knockback;
+
+        //            if (player.selectedItem == 58)
+        //            {
+        //                damage = player.inventory[58].damage;
+        //                knockback = player.inventory[58].knockBack;
+        //            }
+        //            else
+        //            {
+        //                damage = player.inventory[player.selectedItem].damage;
+        //                knockback = player.inventory[player.selectedItem].knockBack;
+        //            }
+
+        //            if (player.selectedItem != 58 && ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
+        //            {
+        //                damage = player.inventory[player.selectedItem + 1].damage;
+        //                knockback = player.inventory[player.selectedItem + 1].knockBack;
+        //            }
+
+        //            if (TestForYoyoBag(player) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+        //            {
+        //                int numYoyos = GetNumPlayerYoyos(player);
+
+        //                for (int i = 0; i < numYoyos - 1; i++)
+        //                {
+        //                    Vector2 vector = Main.rand.NextVector2Unit() * 16f;
+        //                    Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+        //                }
+        //            }
+
+
+        //            if (TestForSupportGlove(player))
+        //            {
+        //                Vector2 vector = Main.rand.NextVector2Unit() * 16f;
+        //                Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+
+        //                Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
+        //                Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector2.X, vector2.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                Vector2 vector = Main.rand.NextVector2Unit() * 16f;
+        //                Projectile.NewProjectile(Terraria.Entity.InheritSource(Main.projectile[num]), player.Center.X, player.Center.Y, vector.X, vector.Y, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+        //                return;
+        //            }
+
+
+        //        }
+        //    }
+        //    else if (num3 < num2)
+        //    {
+        //        for (int i = 0; i < yoyoNumber; i++)
+        //        {
+        //            Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
+        //            vector2.Normalize();
+        //            vector2 *= 16f;
+        //            float knockBack = (kb + 6f) / 2f;
+
+        //            IEntitySource spawnSource = Terraria.Entity.InheritSource(Main.projectile[num]);
+        //            if (num3 > 0)
+        //            {
+        //                Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, 1f, 0f);
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, 0f, 0f);
+        //            }
+        //        }
+        //    }
+        //}
+        #endregion
     }
 }

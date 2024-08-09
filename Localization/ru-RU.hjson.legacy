@@ -98,7 +98,7 @@ Mods: {
 		}
 
 		Dialogue: {
-			ExamplePerson: {
+			YoyoMerchant: {
 				StandardDialogue1: Зацени мою коллекцию йо-йо!
 				StandardDialogue2: Многие считают, что поскольку я скелет, мне нравятся пещеры. Забавный факт: они мне не нравятся.
 				StandardDialogue3: Мои дни как мастера йо-йо давно прошли, но это не мешает мне собирать йо-йо и продавать их.
@@ -1354,7 +1354,7 @@ Mods: {
 		}
 
 		NPCs: {
-			ExamplePerson: {
+			YoyoMerchant: {
 				DisplayName: Лавочник-скелет
 
 				TownNPCMood: {

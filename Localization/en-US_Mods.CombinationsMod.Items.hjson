@@ -1,0 +1,720 @@
+AdamantiteDrillCasing: {
+	DisplayName: Adamantite Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:180% pickaxe power]
+		'''
+}
+
+CelestialDrillCasing: {
+	DisplayName: Celestial Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:225% pickaxe power]
+		+1 range
+		'''
+}
+
+CelestialDrillCasingExtended: {
+	DisplayName: Celestial Drill Casing +
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:225% pickaxe power]
+		+2 range
+		'''
+}
+
+CobaltDrillCasing: {
+	DisplayName: Cobalt Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:110% pickaxe power]
+		'''
+}
+
+HakapikDrillCasing: {
+	DisplayName: The Hakapik
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:200% pickaxe power]
+		'''
+}
+
+HorsemansDrillCasing: {
+	DisplayName: Horseman's Pick
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:200% pickaxe power]
+		'''
+}
+
+MattockDrillCasing: {
+	DisplayName: Mattock
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:200% pickaxe power]
+		'''
+}
+
+MooMooDrillCasing: {
+	DisplayName: MooMoo's Drill
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:225% pickaxe power]
+		+2 range
+		'''
+}
+
+MythrilDrillCasing: {
+	DisplayName: Mythril Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:150% pickaxe power]
+		'''
+}
+
+NebulaDrillCasing: {
+	DisplayName: Nebula Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through block
+		[c/BCFFF0:225% pickaxe power]
+		+1 range
+		'''
+}
+
+OrichalcumDrillCasing: {
+	DisplayName: Orichalcum Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/F3BDFF:165% pickaxe power]
+		'''
+}
+
+PalladiumCasing: {
+	DisplayName: Palladium Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:130% pickaxe power]
+		'''
+}
+
+ShroomiteShredderCasing: {
+	DisplayName: Shroomite Shredder
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:200% pickaxe power]
+		'''
+}
+
+SolarDrillCasing: {
+	DisplayName: Solar Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:225% pickaxe power]
+		+1 range
+		'''
+}
+
+SpectralShredderCasing: {
+	DisplayName: Spectral Shredder
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		Sweet smelling fog eminates from it
+		Mines blocks in a diamond shape
+		[c/BCFFF0:200% pickaxe power]
+		'''
+}
+
+StardustDrillCasing: {
+	DisplayName: Stardust Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:225% pickaxe power]
+		+1 range
+		'''
+}
+
+TitaniumDrillCasing: {
+	DisplayName: Titanium Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:190% pickaxe power]
+		'''
+}
+
+TreeClippersDrillCasing: {
+	DisplayName: Snowstorm Drill
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:200% pickaxe power]
+		'''
+}
+
+TsurugiDrillCasing: {
+	DisplayName: Tsurugi
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:210% pickaxe power]
+		+1 range
+		Capable of mining Lihzahrd Bricks
+		'''
+}
+
+VortexDrillCasing: {
+	DisplayName: Vortex Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:225% pickaxe power]
+		+1 range
+		'''
+}
+
+YoyoDrillCasing: {
+	DisplayName: Drill Casing
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		[c/BCFFF0:100% pickaxe power]
+		'''
+}
+
+HitDisplay: {
+	DisplayName: Strike Counter
+	Tooltip: Displays the current consecutive hits by a Yoyo
+}
+
+SpeedDisplay: {
+	DisplayName: Velocity Gauge
+	Tooltip: Displays how fast a Yoyo can move
+}
+
+AbilityRing: {
+	DisplayName: Ability Ring
+	Tooltip:
+		'''
+		[c/FF00AB:Enables Yoyos to use their special abilities.]
+		Yoyos will show the requirements for triggering the ability.
+		'''
+}
+
+AmberRing: {
+	DisplayName: Amber Ring
+	Tooltip: Yoyos will emit bright amber light
+}
+
+AmethystRing: {
+	DisplayName: Amethyst Ring
+	Tooltip: Yoyos will emit bright purple light
+}
+
+DiamondRing: {
+	DisplayName: Diamond Ring
+	Tooltip: Yoyos will emit bright white light
+}
+
+EmeraldRing: {
+	DisplayName: Emerald Ring
+	Tooltip: Yoyos will emit bright green light
+}
+
+FortitudeRing: {
+	DisplayName: Ring of Fortitude
+	Tooltip: Increases the knockback of all yoyos
+}
+
+GemstoneRing: {
+	DisplayName: Gemstone Ring
+	Tooltip: Yoyos will emit a variety of colors
+}
+
+OmnipotenceRing: {
+	DisplayName: Ring of Perception
+	Tooltip: Slighly increases yoyo speed
+}
+
+RingOfCoalescence: {
+	DisplayName: Ring of Coalescence
+	Tooltip:
+		'''
+		Increases yoyo knockback
+		Slightly increases yoyo speed
+		Increases all yoyo damage by 5%
+		'''
+}
+
+RubyRing: {
+	DisplayName: Ruby Ring
+	Tooltip: Yoyos will emit bright red light
+}
+
+SapphireRing: {
+	DisplayName: Sapphire Ring
+	Tooltip: Yoyos will emit bright blue light
+}
+
+TerreneRing: {
+	DisplayName: Terrene Ring
+	Tooltip:
+		'''
+		[c/FF00AB:Enables Yoyos to use their special abilities.]
+		Yoyos will show the requirements for triggering the ability.
+		Increases yoyo knockback
+		Slightly increases yoyo speed
+		Increases all yoyo damage by 5%
+		'''
+}
+
+TopazRing: {
+	DisplayName: Topaz Ring
+	Tooltip: Yoyos will emit bright yellow light
+}
+
+TrepidationRing: {
+	DisplayName: Ring of Trepidation
+	Tooltip: Increases all yoyo damage by 5%
+}
+
+DarkBlueString: {
+	DisplayName: Dark Blue String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+1 yoyo speed]
+		'''
+}
+
+DarkGreenString: {
+	DisplayName: Dark Green String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+1 yoyo speed]
+		'''
+}
+
+EclipseString: {
+	DisplayName: Eclipse String
+	Tooltip:
+		'''
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+2 yoyo speed]
+		Increases yoyo range
+		Yoyos create damaging swipes on hit
+		'''
+}
+
+FrostbiteString: {
+	DisplayName: Frostbite String
+	Tooltip:
+		'''
+		Increases yoyo range
+		Counterweights inflict Frostbite
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+2 yoyo speed]
+		'''
+}
+
+GolemsteelString: {
+	DisplayName: Golemsteel String
+	Tooltip:
+		'''
+		Increases yoyo range
+		Counterweights deal massive knockback and have increased damage.
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+2 yoyo speed]
+		'''
+}
+
+LightPinkString: {
+	DisplayName: Light Pink String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+1 yoyo speed]
+		'''
+}
+
+NaniteString: {
+	DisplayName: Nanite String
+	Tooltip:
+		'''
+		Increases yoyo range
+		Yoyo strings become invisible
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+2 yoyo speed]
+		'''
+}
+
+NebulaString: {
+	DisplayName: Nebula String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+3 yoyo speed]
+		[c/6EAE6E:+5% base yoyo damage]
+		'''
+}
+
+SlimyString: {
+	DisplayName: Slimy String
+	Tooltip:
+		'''
+		Increases yoyo range
+		Yoyos create slime covered spikes
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+1 yoyo speed]
+		'''
+}
+
+SolarString: {
+	DisplayName: Solar String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+3 yoyo speed]
+		[c/6EAE6E:+5% base yoyo damage]
+		'''
+}
+
+EclipseBar: {
+	DisplayName: Eclipse Bar
+	Tooltip: Radiates otherworldly energy
+}
+
+BrokenHeroRing: {
+	DisplayName: Broken Hero Ring
+	Tooltip: ""
+}
+
+BrokenHeroYoyo: {
+	DisplayName: Broken Hero Yoyo
+	Tooltip: ""
+}
+
+SoulOfEclipse: {
+	DisplayName: Soul of Eclipse
+	Tooltip: "'The essence of otherworldly creatures'"
+}
+
+Catacomb: {
+	DisplayName: Catacomb
+	Tooltip: ""
+}
+
+ChristmasBulb: {
+	DisplayName: Christmas Bulb
+	Tooltip:
+		'''
+		Wrapped tightly with Christmas Tree lights
+		Smells like fresh pine
+		'''
+}
+
+CobaltYoyo: {
+	DisplayName: Cobalt Yoyo
+	Tooltip: ""
+}
+
+Code3: {
+	DisplayName: Code 3
+	Tooltip: '''"The long awaited sequel"'''
+}
+
+Convergance: {
+	DisplayName: The Convergence
+	Tooltip:
+		'''
+		The pinnacle of destruction
+		Light shines through the center
+		'''
+}
+
+CultistYoyo: {
+	DisplayName: Shakiryo
+	Tooltip: ""
+}
+
+IronYoyo: {
+	DisplayName: Iron Yoyo
+	Tooltip: ""
+}
+
+LeadYoyo: {
+	DisplayName: Lead Yoyo
+	Tooltip: ""
+}
+
+Mambele: {
+	DisplayName: Mambele
+	Tooltip:
+		'''
+		Coated in a rough grit
+		Smells like burnt wood
+		'''
+}
+
+MythrilYoyo: {
+	DisplayName: Mythril Yoyo
+	Tooltip: ""
+}
+
+OrichalcumYoyo: {
+	DisplayName: Orichalcum Yoyo
+	Tooltip: ""
+}
+
+PalladiumYoyo: {
+	DisplayName: Palladium Yoyo
+	Tooltip: ""
+}
+
+Smudge: {
+	DisplayName: Smudge
+	Tooltip:
+		'''
+		Does increased damage to spectral targets.
+		When in a graveyard biome, it receives a 2x damage boost marked by the emission of blue flames.
+		"Has a 6 second grace period."
+		'''
+}
+
+TheAbbhor: {
+	DisplayName: The Abbhor
+	Tooltip: An amalgamation of pure power
+}
+
+TheQueensGambit: {
+	DisplayName: The Queen's Gambit
+	Tooltip:
+		'''
+		Releases bees on hit and has a chance to poison the target
+		Bees make up for lack of initial damage
+		Has a chance to leave bees in it's wake
+		"Now includes added Hive Pack support!"
+		'''
+}
+
+TheTempest: {
+	DisplayName: The Tempest
+	Tooltip: ""
+}
+
+ThinMint: {
+	DisplayName: The Thin Mint
+	Tooltip: '''"Found in every Grandma's candy bowl"'''
+}
+
+TrueAbbhor: {
+	DisplayName: True Abbhor
+	Tooltip: ""
+}
+
+TrueCode3: {
+	DisplayName: True Code 3
+	Tooltip: Shines with immense power
+}
+
+DarkTealString: {
+	DisplayName: Dark Teal String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+1 yoyo speed]
+		'''
+}
+
+GrapeString: {
+	DisplayName: Grape String
+	Tooltip:
+		'''
+		Increases yoyo range
+		Smells like grapes
+		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+1 yoyo speed]
+		'''
+}
+
+StardustString: {
+	DisplayName: Stardust String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+3 yoyo speed]
+		[c/6EAE6E:+5% base yoyo damage]
+		'''
+}
+
+VortexString: {
+	DisplayName: Vortex String
+	Tooltip:
+		'''
+		Increases yoyo range
+		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+3 yoyo speed]
+		[c/6EAE6E:+5% base yoyo damage]
+		'''
+}
+
+AroundTheWorld: {
+	DisplayName: Around The World
+	Tooltip:
+		'''
+		Low value trick
+		Creates a seperate yoyo that swirls around the player in a circle that does 0.3x damage.
+		[c/FFFF4A:Range stacks with a percentage of your current yoyo's range]
+		Creates one per yoyo that you have active
+		'''
+}
+
+AroundTheWorldTier2: {
+	DisplayName: Around The World Tier 2
+	Tooltip:
+		'''
+		Medium value trick
+		Creates 2 seperate yoyos that swirl around the player in a circle that do 0.5x damage.
+		[c/FFFF4A:Range stacks with a percentage of your current yoyo's range]
+		Creates two per yoyo that you have active
+		'''
+}
+
+SupportGlove: {
+	DisplayName: Support Glove
+	Tooltip: Allows the use of a third yoyo when paired with a yoyo glove
+}
+
+BlackHole: {
+	DisplayName: Black Hole
+	Tooltip:
+		'''
+		Spins fast enough to generate a vortex of energy, forming a devastating black hole
+		Created by Turbanik
+		'''
+}
+
+ShimmerBag: {
+	DisplayName: Shimmering Satchel
+	Tooltip: ""
+}
+
+Tier2Bag: {
+	DisplayName: Yoyo Suitcase
+	Tooltip: ""
+}
+
+BeetleBag: {
+	DisplayName: Beetle Bag
+	Tooltip: ""
+}
+
+EmpressYoyo: {
+	DisplayName: The Spectrum
+	Tooltip: Harnesses the immense power of the Empress of Light
+}
+
+AdvancedYoyoBag: {
+	# Alien Bag, translators - just delete the line below "Infinite yoyo range", I doubt other languages would get the joke
+	DisplayName: Extraterrestrial Command Pack
+	Tooltip:
+		'''
+		Allows the player to ignore maximum string length
+		[c/FF3CEC:+ Infinite yoyo range]
+		"Hey, just wondering if you got your photos printed?"
+		'''
+}
+
+ExcavatorCasing: {
+	DisplayName: The Excavator
+	Tooltip:
+		'''
+		Allows Yoyos to drill through blocks
+		Be careful not to destroy your house!
+		[c/FF255F:225% pickaxe power]
+		+10 range
+		'''
+}
+
+ShimmeringBeetleBag: {
+	DisplayName: Shimmering Beetle Bag
+	Tooltip: ""
+}
+
+StoneAge: {
+	DisplayName: Stone Age
+	Tooltip:
+		'''
+		Has a chance to confuse targets
+		"Grug hit sick trick"
+		'''
+}
+
+DualYoyo: {
+	DisplayName: Yoyo Duo Mastery
+	Tooltip:
+		'''
+		High value trick
+		Allows the user to [c/E232D6:wield 2 different yoyos]
+		Extra yoyos created after the held one will inherit the type of the second yoyo
+		[c/FFFF4A:The second yoyo must be placed to the right of your held yoyo in the inventory]
+		Useful for debuff or lifesteal yoyos
+		'''
+}
+
+MoonlordBag: {
+	DisplayName: Moonlord Bag
+	Tooltip: ""
+}
+
+ShootToTheMoon: {
+	DisplayName: Shoot To The Moon
+	Tooltip:
+		'''
+		Medium value trick
+		[c/E475FF:Increases the range of extra yoyos created with the yoyo glove]
+		'''
+}
+
+TheCrowyo: {
+	DisplayName: The Crowyo
+	Tooltip:
+		'''
+		"I'm so hungry I could eat a horse!"
+		Created after months of incessant pestering from the Discord members
+		'''
+}
+
+LifestealTrick: {
+	DisplayName: Bloodbound Grimoire
+	Tooltip:
+		'''
+		High value trick
+		[c/FF4080:All yoyos will drain life on impact]
+		The higher the yoyo damage, the more life drained
+		'''
+}

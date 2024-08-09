@@ -98,7 +98,7 @@ Mods: {
 		}
 
 		Dialogue: {
-			ExamplePerson: {
+			YoyoMerchant: {
 				StandardDialogue1: Mira mi coleccion de Yoyos!
 				StandardDialogue2: La gente suele asumir que porque soy un esqueleto, me encanta el Subsuelo.. Dato Curioso: No me gusta.
 				StandardDialogue3: Mis dias con los Yoyos ya terminaron, pero eso no me detiene de coleccionarlos y venderlos.
@@ -1330,7 +1330,7 @@ Mods: {
 		}
 
 		NPCs: {
-			ExamplePerson: {
+			YoyoMerchant: {
 				DisplayName: Skeleton Peddler
 
 				TownNPCMood: {

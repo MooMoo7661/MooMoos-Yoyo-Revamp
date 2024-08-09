@@ -1,0 +1,100 @@
+CounterweightPerYoyo: Each yoyo that hits a target will produce a counterweight
+YoyoShimmer: Yoyos can phase through blocks
+MoreAccessorySlots: Gives the user more accessory slots for yoyos
+DrillsAndCounterweights: Gives slots for Yoyo Drills and Counterweights
+SupportGlove: Gives slots for Support Gloves
+YoyoRings: Gives slots for Yoyo Rings
+AdditionalYoyo: Creates one extra yoyo when paired with the yoyo glove
+FastRecall: Yoyos are recalled faster
+MasterYoyoSkills: Gives the user master yoyo skills
+IncreasedYoyoKnockback: Increased yoyo knockback
+HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
+NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
+NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
+YoyoAbilitySnippet: "[c/6FD4FF:-=Yoyo Ability=-]"
+150YoyoRange: "[c/6EAE6E:+150 yoyo range]"
+TrickSlot: Gives a slot for tricks
+PrefixWarning: Prefixes will not be applied to this item while in this slot
+SlotPrefix: Item prefixes will not apply
+VanityStrings: Vanity Yoyo Strings
+YoyoStrings: Yoyo Strings
+RightHand: Right Hand
+YoyoGloves: Yoyo Gloves
+LeftHand: Left hand
+SupportGloves: Support Gloves
+DrillCasings: Drill Casings
+YoyoCounterweights: Yoyo Counterweights
+Rings: Rings
+Tricks: Tricks
+RightClickInfo: Hold {0} to drill
+Mouse2: Right Click
+CurrentDrill: "Current Drill: "
+YoyoHits: yoyo hits
+AchievementsNotification:
+	'''
+	[MooMoo's Ultimate Yoyo Revamp]
+	This mod adds some custom acheiveements. To enable them, download "Achievements Mod".
+	'''
+
+Abilities: {
+	BlackHole: Creates a large vortex that does 40% of the yoyo's damage
+	HardmodeYoyos: Creates a medium damaging aura that does 50% of the yoyo's damage
+	Tempest: Creates a very large damaging aura that does 75% of the yoyo's damage
+	Code2: Creates an explosion every 5 hits that deals 50% of the yoyo's damage
+	Yelets: Shoots 8 leaves that deal 50% of the yoyo's damage
+	TrueYoyos: Creates a large damaging aura that does 60% of the yoyo's damage
+	Cascade: Creates an explosion every 5 hits, which does 150% of the yoyo's damage
+	Valor: Creates homing water bolts that explode on contact, dealing area damage
+	EvilYoyos: Heals the user on hit
+	Rally: Creates 3 swirling copies that deal 50% of the yoyo's damage
+	Code1: Creates 6 swirling copies that deal 50% of the yoyo's damage
+	Crowyo: Shoots black homing feathers that deal 40% of the yoyo's damage
+	Catacomb: Randomly shoots bones in an X shape
+	HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
+	Amarok: Shoots out 8 ice spikes every second that deal 60% of the yoyo's damage
+	Convergence: Shoots out every yoyo used in its creation
+	ChristmasBulb:
+		'''
+		Shoots out 8 explosive ornaments after 30 hits
+		Only triggers every other hit
+		Ornaments deal half damage
+		'''
+	Code3:
+		'''
+		Creates a medium sized damaging aura that does 65% of the yoyo's damage
+		After 20 hits, a larger aura that does 75% of the yoyo's damage will appear
+		'''
+	CultistYoyo:
+		'''
+		Creates a runic aura that deals 75% of the yoyo's damage
+		After 20 hits, a second aura that does 85% of the yoyo's damage will grow twice the size of the original aura
+		'''
+	Mambele:
+		'''
+		Shoots out 8 lingering fire balls after 30 hits
+		Only triggers every other hit
+		Fire balls deal half damage
+		'''
+	Abbhor:
+		'''
+		Creates a medium damaging aura that does 40% of the yoyo's damage
+		After 20 hits, a larger aura will be created that does 60% of the yoyo's damage
+		'''
+	FormatC:
+		'''
+		Creates 4 swirling copies that deal 80% of the yoyo's damage
+		These copies will split apart and fly away after the yoyo has been recalled
+		'''
+	Gradient:
+		'''
+		Creates 8 swirling copies that deal 100% of the yoyo damage
+		These copies will split apart and fly away after the yoyo has been recalled
+		When near an enemy, they will home in on them
+		'''
+	EOCYoyo:
+		'''
+		Has 2 stages
+		First stage: Shoots lasers that deal 45% of the yoyo's damage
+		Second stage: Shoots cursed flames that deal 50% and inflict cursed inferno
+		'''
+}

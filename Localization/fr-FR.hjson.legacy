@@ -102,7 +102,7 @@ Mods: {
 		}
 
 		Dialogue: {
-			ExamplePerson: {
+			YoyoMerchant: {
 				StandardDialogue1: Regarde ma collection de yoyos !
 				StandardDialogue2: Les gens pensent généralement que puisque je suis un squelette, j'aime le souterrain. Fun fact: Je ne l'aime pas.
 				StandardDialogue3: Mes jours a faire du yoyo sont terminé depuis longtemps, mais ça ne m'empeche pas de les collectionner et les vendre.
@@ -1336,7 +1336,7 @@ Mods: {
 		}
 
 		NPCs: {
-			ExamplePerson: {
+			YoyoMerchant: {
 				DisplayName: Colporteur squelettes
 
 				TownNPCMood: {

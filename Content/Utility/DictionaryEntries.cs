@@ -150,7 +150,7 @@ namespace CombinationsMod
             #endregion
         }
 
-        public string GetLocalizedStringFromDictionary(int itemId)
+        public static string GetLocalizedStringFromDictionary(int itemId)
         {
             if (yoyoAbilityDictionary.TryGetValue(itemId, out LocalizedAbilityString localizedString))
             {

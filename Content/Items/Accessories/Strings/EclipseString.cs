@@ -21,23 +21,22 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 5);
             Item.stringColor = 2;
+            Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            modPlayer.eclipseString = true;
+            player.GetModPlayer<YoyoModPlayer>().eclipseString = true;
             player.yoyoString = true;
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<EclipseBar>(), 8);
-            recipe.AddIngredient(ModContent.ItemType<SoulOfEclipse>(), 10);
-            recipe.AddRecipeGroup(CombinationsModSystem.yoyoStringGroup);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<EclipseBar>(), 8)
+                .AddRecipeGroup(CombinationsModSystem.yoyoStringGroup)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

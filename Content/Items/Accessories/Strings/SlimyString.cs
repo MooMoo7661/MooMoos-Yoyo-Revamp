@@ -18,12 +18,12 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.value = Item.sellPrice(gold: 2);
             Item.stringColor = 8;
             Item.expert = true;
+            Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            modPlayer.slimeString = true;
+            player.GetModPlayer<YoyoModPlayer>().slimeString = true;
             player.yoyoString = true;
         }
     }

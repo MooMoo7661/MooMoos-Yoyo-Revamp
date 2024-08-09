@@ -23,12 +23,12 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 5);
             Item.stringColor = 36;
+            Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            modPlayer.solarString = true;
+            player.GetModPlayer<YoyoModPlayer>().solarString = true;
             player.yoyoString = true;
         }
 

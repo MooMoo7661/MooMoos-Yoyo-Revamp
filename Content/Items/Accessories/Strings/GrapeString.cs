@@ -10,7 +10,6 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
 
         public override void SetDefaults()
         {
-
             Item.width = 28;
             Item.height = 28;
             Item.rare = ItemRarityID.Blue;
@@ -18,20 +17,14 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 1);
             Item.hasVanityEffects = true;
-
+            Item.stringColor = 34;
+            Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            modPlayer.grapeString = true;
-            player.stringColor = 34;
+            player.GetModPlayer<YoyoModPlayer>().grapeString = true;
             player.yoyoString = true;
-        }
-
-        public override void UpdateVanity(Player player)
-        {
-            player.stringColor = 34; // Custom string color ID. Vanilla stops at 28, and to keep our String Info accessory working right, we create our own.
         }
     }
 }

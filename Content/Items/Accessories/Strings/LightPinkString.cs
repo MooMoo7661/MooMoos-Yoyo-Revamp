@@ -17,18 +17,14 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 1);
             Item.hasVanityEffects = true;
+            Item.stringColor = 31;
+            Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            modPlayer.lightPinkString = true;
-            player.stringColor = 31;
+            player.GetModPlayer<YoyoModPlayer>().lightPinkString = true;
             player.yoyoString = true;
-        }
-        public override void UpdateVanity(Player player)
-        {
-            player.stringColor = 31; // Custom string color ID. Vanilla stops at 28, and to keep our String Info accessory working right, we create our own.
         }
     }
 }

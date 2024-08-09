@@ -48,14 +48,12 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
             Player player = Main.player[Projectile.owner];
 
-            if (timer >= 30 && Main.myPlayer == Projectile.owner)
+            if (timer >= 60 && Main.myPlayer == Projectile.owner)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < Main.rand.Next(1, 3); i++)
                 {
                     Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
-
-                    int type = Main.rand.NextBool() ? player.beeType() : ProjectileID.Wasp;
-                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, type, (int)(player.beeDamage(Projectile.damage) * 0.7f), player.beeKB(Projectile.knockBack), Projectile.owner);
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileID.Wasp, (int)(player.beeDamage(Projectile.damage) * 0.7f), player.beeKB(Projectile.knockBack), Projectile.owner);
                     proj.friendly = true;
                 }
                 timer = 0;

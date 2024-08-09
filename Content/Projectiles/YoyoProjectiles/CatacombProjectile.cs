@@ -21,8 +21,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             Projectile.MaxUpdates = 1;
             Projectile.extraUpdates = 0;
-            Projectile.width = 16;
-            Projectile.height = 16;
+            Projectile.width = 20;
+            Projectile.height = 20;
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
             Projectile.penetrate = 20;

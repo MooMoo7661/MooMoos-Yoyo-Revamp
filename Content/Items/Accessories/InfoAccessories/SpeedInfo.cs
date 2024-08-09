@@ -13,7 +13,7 @@ namespace CombinationsMod.Content.Items.Accessories.InfoAccessories
             return Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().speedTracker;
         }
 
-        public override string DisplayValue(ref Color displayColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
         {
             Player player = Main.LocalPlayer;
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();

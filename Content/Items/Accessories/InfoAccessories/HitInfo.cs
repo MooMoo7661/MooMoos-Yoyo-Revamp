@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.InfoAccessories
@@ -12,15 +13,14 @@ namespace CombinationsMod.Content.Items.Accessories.InfoAccessories
         {
             return Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().hitTracker;
         }
-        public override string DisplayValue(ref Color displayColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
+        public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
         {
             Player player = Main.LocalPlayer;
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            Item held = Main.LocalPlayer.HeldItem;
 
             if (ContentSamples.ProjectilesByType[player.HeldItem.shoot].aiStyle == 99)
             {
-                return modPlayer.HitCounter.ToString();
+                return (modPlayer.HitCounter.ToString() + " " + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoHits"));
             }
             else
             {

@@ -13,12 +13,13 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
 
         public override void SetDefaults()
         {
-            Item.width = 38;
-            Item.height = 38;
+            Item.width = 56;
+            Item.height = 56;
             Item.rare = ItemRarityID.Yellow;
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);
+            Utility.ItemSets.DrillCasing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -13,8 +13,8 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
 
         public override void SetDefaults()
         {
-            Item.width = 38;
-            Item.height = 38;
+            Item.width = 48;
+            Item.height = 48;
             Item.rare = ItemRarityID.LightRed;
             Item.accessory = true;
             Item.maxStack = 1;

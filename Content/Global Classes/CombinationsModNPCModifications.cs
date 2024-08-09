@@ -1,5 +1,4 @@
-﻿using CombinationsMod.Content.Buffs;
-using CombinationsMod.Content.Items.Accessories.Strings;
+﻿using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.NPCS;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -53,7 +52,7 @@ namespace CombinationsMod.GlobalClasses
                 {
                     NPC npcCheck = Main.npc[i];
 
-                    if (npcCheck.type == ModContent.NPCType<ExamplePerson>())
+                    if (npcCheck.type == ModContent.NPCType<YoyoMerchant>())
                     {
                         if (Main.rand.NextBool(3))
                         {
@@ -63,7 +62,7 @@ namespace CombinationsMod.GlobalClasses
                 }
             }
 
-            if (npc.type == ModContent.NPCType<ExamplePerson>() && npc.GivenName == "James Boned")
+            if (npc.type == ModContent.NPCType<YoyoMerchant>() && npc.GivenName == "James Boned")
             {
                 if (Main.rand.NextBool(5))
                 {
@@ -96,37 +95,6 @@ namespace CombinationsMod.GlobalClasses
                 {
                     chat = "Have you seen my brother? I bet if you collect a yoyo, he might decide to move in.";
                 }
-            }
-        }
-        public override void DrawEffects(NPC npc, ref Color drawColor)
-        {
-            if (npc.HasBuff<Clotted>())
-            {
-                Color lightColor = new Color(208, 6, 6);
-                drawColor = lightColor;
-            }
-            else if (npc.HasBuff<Corrupt>())
-            {
-                Color lightColor = new Color(98, 75, 107);
-                drawColor = lightColor;
-            }
-
-            if (npc.HasBuff<Omnipotence>())
-            {
-                Color lightColor = new Color(247, 255, 0);
-                drawColor = lightColor;
-            }
-
-            if (npc.HasBuff<Hallowed>())
-            {
-                Color lightColor = new Color(244, 78, 255, 500);
-                drawColor = lightColor;
-            }
-
-            if (npc.HasBuff<Frostbite>())
-            {
-                Color lightcolor = new Color(118, 255, 251, 255);
-                drawColor = lightcolor;
             }
         }
     }

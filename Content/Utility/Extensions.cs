@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Utility
 {
@@ -30,6 +31,15 @@ namespace CombinationsMod.Content.Utility
         public static string ToHexString(this string text, Color color)
         {
             return "[c/" + color.Hex3() + ":" + text + "]";
+        }
+
+        public static NPCShop AddWithValue(this NPCShop shop, int itemType, int customValue, params Condition[] conditions)
+        {
+            var item = new Item(itemType)
+            {
+                shopCustomPrice = customValue
+            };
+            return shop.Add(item, conditions);
         }
     }
 }

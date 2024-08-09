@@ -1,4 +1,6 @@
-﻿using CombinationsMod.Content.Configs;
+﻿using System.Linq;
+using CombinationsMod.Content;
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.Keybindings;
 using CombinationsMod.Content.ModPlayers;
@@ -17,14 +19,7 @@ namespace CombinationsMod.GlobalClasses
         {
             bool damageChanges = GetInstance<YoyoModConfig>().VanillaYoyoDamageChanges;
 
-            if (item.type == ItemID.TheEyeOfCthulhu && GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
-            {
-                item.damage = 49;
-                item.knockBack = 3.9f;
-                item.rare = ItemRarityID.Pink;
-                item.value = Item.sellPrice(0, 4, 2, 0);
-            }
-            else if (item.type == ItemID.Gradient && damageChanges)
+            if (item.type == ItemID.Gradient && damageChanges)
             {
                 item.damage = 57;
             }
@@ -35,6 +30,14 @@ namespace CombinationsMod.GlobalClasses
             else if ((item.type == ItemID.ValkyrieYoyo || item.type == ItemID.RedsYoyo) && damageChanges)
             {
                 item.damage = 64;
+            }
+        }
+
+        public override void UpdateInventory(Item item, Player player)
+        {
+            if (ItemID.Sets.Yoyo[item.type] && player.HeldItem == item)
+            {
+                player.GetModPlayer<YoyoModPlayer>().hitTracker = true;
             }
         }
 
@@ -57,6 +60,16 @@ namespace CombinationsMod.GlobalClasses
             {
                 damage *= 1.05f;
             }
+        }
+
+        public override bool CanUseItem(Item item, Player player)
+        {
+            if (ItemID.Sets.Yoyo[item.type])
+            {
+                return !player.ownedProjectileCounts.Contains(item.shoot);
+            }
+
+            return true;
         }
 
         public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback)

@@ -84,7 +84,7 @@ namespace CombinationsMod.Content.UI
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.YoyoGlove[item.type];
 
         public override Vector2? CustomLocation => RightGlovePos();
-        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/Content/UI/YoyoGloveSlotLarge" : "CombinationsMod/Content/UI/YoyoGloveSlot";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/YoyoGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)
@@ -129,7 +129,7 @@ namespace CombinationsMod.Content.UI
 
         public override Vector2? CustomLocation => LeftGlovePos();
 
-        public override string FunctionalTexture => GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/Content/UI/SupportGloveSlotLarge" : "CombinationsMod/Content/UI/SupportGloveSlot";
+        public override string FunctionalTexture => "CombinationsMod/Content/UI/SupportGloveSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
         public override void OnMouseHover(AccessorySlotType context)

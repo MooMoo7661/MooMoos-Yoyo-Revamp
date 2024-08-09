@@ -18,6 +18,7 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 7);
+            CombinationsMod.Content.Utility.ItemSets.Trick[Type] = true;
         }
 
         public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
@@ -39,10 +40,9 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
         {
             CreateRecipe()
                 .AddIngredient(ItemType<AroundTheWorld>())
-                .AddIngredient(ItemType<MightBar>(), 2)
-                .AddIngredient(ItemType<SightBar>(), 2)
-                .AddIngredient(ItemType<FrightBar>(), 2)
-                .AddIngredient(ItemID.SoulofNight, 5)
+                .AddIngredient(ItemID.SoulofFright, 4)
+                .AddIngredient(ItemID.SoulofSight, 4)
+                .AddIngredient(ItemID.SoulofMight, 4)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

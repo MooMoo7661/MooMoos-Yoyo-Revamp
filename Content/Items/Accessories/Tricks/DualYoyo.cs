@@ -16,6 +16,7 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 5);
+            CombinationsMod.Content.Utility.ItemSets.Trick[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

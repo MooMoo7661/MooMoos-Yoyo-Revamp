@@ -1,27 +1,28 @@
 ﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
+using CombinationsMod.Content.Utility;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class AroundTheWorld : ItemLoader
+    public class LifestealTrick : ItemLoader
     {
         public override void SetDefaults()
         {
             Item.width = 28;
             Item.height = 30;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Red;
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 3);
-            CombinationsMod.Content.Utility.ItemSets.Trick[Type] = true;
+            ItemSets.Trick[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<YoyoModPlayer>().trick1 = true;
+            player.GetModPlayer<YoyoModPlayer>().lifestealTrick = true;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -36,9 +37,10 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
         {
             CreateRecipe()
                 .AddIngredient(ItemID.Book)
-                .AddIngredient(ItemID.WhiteString)
-                .AddIngredient(ItemID.Bone, 15)
-                .AddTile(TileID.Anvils)
+                .AddIngredient(ItemID.SoulofNight, 25)
+                .AddIngredient(ItemID.DarkShard, 5)
+                .AddIngredient(ItemID.CrystalShard, 10)
+                .AddTile(TileID.MythrilAnvil)
                 .Register();
         }
     }

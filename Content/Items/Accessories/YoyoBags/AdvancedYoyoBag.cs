@@ -18,6 +18,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 8, silver: 39);
+            Utility.ItemSets.YoyoBag[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

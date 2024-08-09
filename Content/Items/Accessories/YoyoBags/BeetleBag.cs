@@ -26,6 +26,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.value = Item.sellPrice(gold: 12);
             Item.defense = 6;
             ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<ShimmeringBeetleBag>();
+            Utility.ItemSets.YoyoBag[Type] = true;
 
             manager = new CompactParticleManager(
             particle =>

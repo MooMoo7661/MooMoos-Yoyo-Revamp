@@ -21,6 +21,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);
             ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<ShimmerBag>();
+            Utility.ItemSets.YoyoBag[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

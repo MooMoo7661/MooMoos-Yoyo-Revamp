@@ -18,12 +18,13 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
     {
         public override void SetDefaults()
         {
-            Item.width = 46;
-            Item.height = 72;
+            Item.width = 40;
+            Item.height = 52;
             Item.rare = ItemRarityID.Red;
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 13);
+            Utility.ItemSets.YoyoBag[Type] = true;
 
             manager = new CompactParticleManager(
             particle =>

@@ -25,7 +25,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 18);
             Item.defense = 6;
-
+            Utility.ItemSets.YoyoBag[Type] = true;
             ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<Tier2Bag>();
 
             manager = new CompactParticleManager(

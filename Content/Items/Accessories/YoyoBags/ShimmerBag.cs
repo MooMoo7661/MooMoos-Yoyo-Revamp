@@ -20,7 +20,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);
-
+            Utility.ItemSets.YoyoBag[Type] = true;
             ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<Tier2Bag>();
         }
 

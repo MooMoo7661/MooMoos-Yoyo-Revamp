@@ -16,30 +16,25 @@ namespace CombinationsMod.GlobalClasses.Loot
         {
             switch (item.type)
             {
-                case ItemID.QueenBeeBossBag:
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheQueensGambit>()));
-                    break;
-
                 case ItemID.SkeletronBossBag:
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Catacomb>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Catacomb>(), 2));
                     break;
 
                 case ItemID.GolemBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TsurugiDrillCasing>()));
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>(), 2));
                     break;
 
-                case ItemID.TwinsBossBag:
-                    if (ModContent.GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
-                        itemLoot.Add(ItemDropRule.Common(ItemID.TheEyeOfCthulhu));
+                case ItemID.PlanteraBossBag:
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheQueensGambit>(), 3));
                     break;
 
                 case ItemID.KingSlimeBossBag:
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SlimyString>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SlimyString>(), 2));
                     break;
 
                 case ItemID.FairyQueenBossBag:
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>()));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>(), 2));
                     break;
 
                 case ItemID.WallOfFleshBossBag:

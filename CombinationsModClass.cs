@@ -16,11 +16,6 @@ namespace CombinationsMod
             On_Player.ApplyEquipFunctional += On_Player_ApplyEquipFunctional;
         }
 
-        public override void Unload()
-        {
-            On_Player.ApplyEquipFunctional -= On_Player_ApplyEquipFunctional;
-        }
-
         private void On_Player_ApplyEquipFunctional(On_Player.orig_ApplyEquipFunctional orig, Player self, Item item, bool hideVisual)
         {
             if (item.type != ItemID.YoyoBag)

@@ -117,9 +117,9 @@ namespace CombinationsMod.Content.Items.Yoyos
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<TheAbbhor>())
-                .AddIngredient(ModContent.ItemType<MightBar>(), 10)
-                .AddIngredient(ModContent.ItemType<SightBar>(), 10)
-                .AddIngredient(ModContent.ItemType<FrightBar>(), 10)
+                .AddIngredient(ItemID.SoulofMight, 12)
+                .AddIngredient(ItemID.SoulofFright, 12)
+                .AddIngredient(ItemID.SoulofSight, 12)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

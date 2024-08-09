@@ -35,7 +35,6 @@ namespace CombinationsMod.Content.Items.Bars
         {
             CreateRecipe()
             .AddIngredient(ModContent.ItemType<SoulOfEclipse>(), 2)
-            .AddIngredient(ModContent.ItemType<NeutralineScrap>())
             .AddTile(TileID.AdamantiteForge)
             .Register();
         }

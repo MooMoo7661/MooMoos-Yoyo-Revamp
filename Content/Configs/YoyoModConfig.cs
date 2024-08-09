@@ -19,21 +19,6 @@ internal class YoyoModConfig : ModConfig
 
     [DefaultValue(true)]
     public bool AccessorySlotIndicators { get; set; }
-
-    [DefaultValue(true)]
-    public bool EOCYoyoProgressionMovement { get; set; }
-
-    [DefaultValue(true)]
-    [ReloadRequired]
-    public bool UpscaleYoyoGlove { get; set; }
-
-    //[Label("Position of Accessory Slots")]
-    //[Increment(1)]
-    //[Range(1, 4)]
-    //[DefaultValue(1)]
-    //[Slider]
-    //public int AccessorySlotPosition { get; set; }
-
     [Header("LargeChanges")]
     [BackgroundColor(0, 255, 0)]
     [DefaultValue(true)]

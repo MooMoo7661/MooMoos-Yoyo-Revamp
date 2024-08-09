@@ -1,5 +1,4 @@
-﻿using CombinationsMod.Content.Buffs;
-using CombinationsMod.Content.Configs;
+﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.Explosions;
 using CombinationsMod.Content.Projectiles.Misc;
@@ -322,7 +321,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         break;
 
                     case ProjectileID.HelFire:
-                        target.AddBuff(BuffType<Combustion>(), 600);
                         if (Main.myPlayer == projectile.owner)
                         {
                             int explosion2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, new Vector2(0, 0),
@@ -333,10 +331,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     case ProjectileID.CrimsonYoyo or ProjectileID.CorruptYoyo:
                         if (!target.CountsAsACritter && !(target.type == NPCID.TargetDummy) && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
                         {
-                            Vector2 vector = new(0, 0);
                             if (Main.myPlayer == projectile.owner)
                             {
-                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vector,
+                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero,
                                 ProjectileID.VampireHeal, 0, 0, projectile.owner, projectile.owner, 1);
                             }
                         }

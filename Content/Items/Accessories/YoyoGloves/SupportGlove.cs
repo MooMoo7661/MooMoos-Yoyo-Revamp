@@ -18,7 +18,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoGloves
             Item.value = Item.sellPrice(gold: 5);
         }
 
-        public override string Texture => ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove ? "CombinationsMod/Content/Items/Accessories/YoyoGloves/SupportGlove" : "CombinationsMod/Content/Items/Accessories/YoyoGloves/SupportGloveSmall";
+        public override string Texture => "CombinationsMod/Content/Items/Accessories/YoyoGloves/SupportGlove";
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

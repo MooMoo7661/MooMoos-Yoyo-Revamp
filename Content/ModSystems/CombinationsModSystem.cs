@@ -38,10 +38,7 @@ namespace CombinationsMod
             code1 = TextureAssets.Item[ItemID.Code1];
             glove = TextureAssets.Item[ItemID.YoYoGlove];
 
-            if (ModContent.GetInstance<YoyoModConfig>().UpscaleYoyoGlove)
-            {
-                TextureAssets.Item[ItemID.YoYoGlove] = Request<Texture2D>("CombinationsMod/Content/VanillaTexturesOverride/YoYoGlove");
-            }
+            TextureAssets.Item[ItemID.YoYoGlove] = Request<Texture2D>("CombinationsMod/Content/VanillaTexturesOverride/YoYoGlove");
 
             TextureAssets.Item[ItemID.Code2] = Request<Texture2D>("CombinationsMod/Content/VanillaTexturesOverride/Code2");
             TextureAssets.Item[ItemID.Code1] = Request<Texture2D>("CombinationsMod/Content/VanillaTexturesOverride/Code1");

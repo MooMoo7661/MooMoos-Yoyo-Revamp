@@ -17,60 +17,56 @@ namespace CombinationsMod.GlobalClasses.Loot
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (!(Main.masterMode || Main.expertMode) && (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism))
-            {
-                if (ModContent.GetInstance<YoyoModConfig>().EOCYoyoProgressionMovement)
-                {
-                    var missingTwinRule = new LeadingConditionRule(new Conditions.MissingTwin());
-                    missingTwinRule.OnSuccess(ItemDropRule.Common(ItemID.TheEyeOfCthulhu, 2));
-                    npcLoot.Add(missingTwinRule);
-                }
-            }
-
             switch (npc.type)
             {
                 case NPCID.Drippler:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThinMint>(), 8));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThinMint>(), 15));
                     break;
 
                 case NPCID.Ghost:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 9));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 25));
                     break;
 
                 case NPCID.Poltergeist or NPCID.Wraith:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 11));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 35));
                     break;
 
-                case NPCID.HeadlessHorseman or NPCID.MourningWood or NPCID.Pumpking:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Mambele>(), 13));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HorsemansDrillCasing>(), 13));
+                case NPCID.MourningWood:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Mambele>(), 3));
+                    break;
+
+                case NPCID.Pumpking:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HorsemansDrillCasing>(), 2));
                     break;
 
                 case NPCID.Reaper or NPCID.Eyezor or NPCID.Frankenstein or NPCID.SwampThing or NPCID.Vampire or
                      NPCID.CreatureFromTheDeep or NPCID.Fritz or NPCID.ThePossessed or NPCID.Mothron or NPCID.MothronSpawn or
                      NPCID.Butcher or NPCID.DeadlySphere or NPCID.DrManFly or NPCID.Nailhead or NPCID.Psycho:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulOfEclipse>(), 5));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroRing>(), 120));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroYoyo>(), 120));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroRing>(), 35));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroYoyo>(), 35));
                     break;
 
-                case NPCID.Everscream or NPCID.SantaNK1 or NPCID.IceQueen:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TreeClippersDrillCasing>(), 20));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChristmasBulb>(), 20));
+                case NPCID.IceQueen:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TreeClippersDrillCasing>(), 2));
+                    break;
+
+                case NPCID.Everscream:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChristmasBulb>(), 3));
                     break;
 
                 case NPCID.IceGolem:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>(), 2));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>(), 3));
+                    break;
+
+                case NPCID.Plantera:
+                    LeadingConditionRule notExpertRulePlantera = new LeadingConditionRule(new Conditions.NotExpert());
+                    notExpertRulePlantera.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TheQueensGambit>(), 3));
+                    npcLoot.Add(notExpertRulePlantera);
                     break;
 
                 case NPCID.IceMimic:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>()));
-                    break;
-
-                case NPCID.QueenBee:
-                    LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
-                    notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TheQueensGambit>()));
-                    npcLoot.Add(notExpertRule);
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostbiteString>(), 3));
                     break;
 
                 case NPCID.SkeletronHead:
@@ -81,7 +77,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case NPCID.Golem:
                     LeadingConditionRule notExpertRule3 = new LeadingConditionRule(new Conditions.NotExpert());
-                    notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>()));
+                    notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>(), 2));
                     notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TsurugiDrillCasing>()));
                     npcLoot.Add(notExpertRule3);
                     break;
@@ -92,13 +88,13 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case NPCID.KingSlime:
                     LeadingConditionRule notExpertRule5 = new LeadingConditionRule(new Conditions.NotExpert());
-                    notExpertRule5.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SlimyString>()));
+                    notExpertRule5.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SlimyString>(), 2));
                     npcLoot.Add(notExpertRule5);
                     break;
 
                 case NPCID.HallowBoss:
                     LeadingConditionRule notExpertRule6 = new LeadingConditionRule(new Conditions.NotExpert());
-                    notExpertRule6.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>()));
+                    notExpertRule6.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EmpressYoyo>(), 2));
                     npcLoot.Add(notExpertRule6);
                     break;
 

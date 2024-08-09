@@ -16,6 +16,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 1, 12, 0);
+            Utility.ItemSets.YoyoRing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

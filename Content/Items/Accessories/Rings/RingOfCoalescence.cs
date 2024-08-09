@@ -18,6 +18,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 25, 69, 0);
+            Utility.ItemSets.YoyoRing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -32,7 +33,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<NeutralineScrap>(), 10);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 5);
             recipe.AddIngredient(ModContent.ItemType<OmnipotenceRing>());
             recipe.AddIngredient(ModContent.ItemType<TrepidationRing>());
             recipe.AddIngredient(ModContent.ItemType<FortitudeRing>());

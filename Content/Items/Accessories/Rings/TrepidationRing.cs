@@ -19,6 +19,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 12, 55, 0);
+            Utility.ItemSets.YoyoRing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -26,17 +27,15 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
             modPlayer.trepidationRing = true;
-
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<BrokenHeroRing>());
-            recipe.AddIngredient(ModContent.ItemType<EclipseBar>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<FrightBar>(), 10);
-            recipe.AddTile(TileID.AdamantiteForge);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<BrokenHeroRing>())
+                .AddIngredient(ItemID.SoulofFright, 5)
+                .AddTile(TileID.AdamantiteForge)
+                .Register();
         }
     }
 }

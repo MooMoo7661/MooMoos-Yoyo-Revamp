@@ -25,6 +25,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 30, 5, 0);
+            Utility.ItemSets.YoyoRing[Type] = true;
 
             manager = new CompactParticleManager(
             particle =>
@@ -111,9 +112,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<RingOfCoalescence>());
             recipe.AddIngredient(ModContent.ItemType<AbilityRing>());
-            recipe.AddIngredient(ModContent.ItemType<BrokenHeroRing>());
             recipe.AddIngredient(ItemID.LunarBar, 5);
-            recipe.AddIngredient(ModContent.ItemType<NeutralineScrap>(), 5);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }

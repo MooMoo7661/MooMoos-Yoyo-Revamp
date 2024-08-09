@@ -1,9 +1,10 @@
-﻿using CombinationsMod.Content.ModPlayers;
+﻿using System;
+using System.Reflection;
+using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.Explosions;
 using CombinationsMod.Content.Projectiles.TrickYoyos;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
 using Microsoft.Xna.Framework;
-using System.IO;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -18,13 +19,14 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private readonly bool isOriginalYoyo;
         private int cursedFlamesCounter = 0;
         private int slimeThornCounter = 0;
+        private int lifestealCooldown = 0;
 
         // This class mostly does things with yoyos. The reason it's not part of VanillaYoyoEffects class is because this applies to all
         // yoyos, and not just vanilla ones. I felt that the things in here fit better where they are.
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-
+            lifestealCooldown += Main.rand.Next(10);
             Player player = Main.player[projectile.owner];
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
@@ -129,6 +131,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 if (rand == 0)
                     target.AddBuff(BuffID.Poisoned, 240);
             }
+                
+            if (lifestealCooldown < 15 + (projectile.MaxUpdates * 10) + (projectile.usesLocalNPCImmunity ? projectile.localNPCHitCooldown * 0.7f : 0    ) && modPlayer.lifestealTrick)
+            {
+                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero,
+                ProjectileID.VampireHeal, 0, 0, projectile.owner, projectile.owner, Math.Clamp(projectile.damage / 20f, 1f, 3f) + Main.rand.Next(3));
+                lifestealCooldown = 0;
+            }
         }
         public override void AI(Projectile projectile)
         {
@@ -156,18 +165,8 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     }
                 }
 
-                /*if (beeCounter == 60)
-                {
-                    if (modPlayer.waspBearing && Main.myPlayer == projectile.owner)
-                    {
-                        Vector2 velocity = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 1f;
-
-                        Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, velocity, player.beeType(), player.beeDamage(projectile.damage / 3), player.beeKB(projectile.knockBack), projectile.owner);
-                        proj.friendly = true;
-                    }
-
-                    beeCounter = 0;
-                }*/
+                if (lifestealCooldown < 15 + (projectile.MaxUpdates * 10) + (projectile.usesLocalNPCImmunity ? projectile.localNPCHitCooldown * 0.7f : 0))
+                    lifestealCooldown++;
             }
         }
 
@@ -289,16 +288,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     }
                 }
             }
-        }
-
-        public override void SetDefaults(Projectile projectile)
-        {
-            //if (projectile.aiStyle == 99)
-            //{
-            //    projectile.usesIDStaticNPCImmunity = false;
-            //    projectile.usesLocalNPCImmunity = true;
-            //    projectile.localNPCHitCooldown = 10 * projectile.MaxUpdates;
-            //}
         }
 
         public override void OnKill(Projectile projectile, int timeLeft) // Resetting counters when the yoyo is killed.

@@ -38,7 +38,7 @@ namespace CombinationsMod.Content.Projectiles.Explosions
 
             }
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             if (Projectile.soundDelay == 0)
             {

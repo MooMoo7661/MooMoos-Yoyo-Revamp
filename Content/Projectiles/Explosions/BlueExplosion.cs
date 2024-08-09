@@ -36,7 +36,7 @@ namespace CombinationsMod.Content.Projectiles.Explosions
                 Main.dust[dustIndex2].noGravity = true;
             }
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             if (Projectile.soundDelay == 0)
             {

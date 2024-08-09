@@ -16,6 +16,7 @@ namespace CombinationsMod.Global_Classes
     {
         public float rot = 0;
         public override bool InstancePerEntity => true;
+
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
             return entity.ModItem is ModDrill || ItemSets.DrillCasing[entity.type] == true;
@@ -24,10 +25,8 @@ namespace CombinationsMod.Global_Classes
         public override bool PreDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Lighting.AddLight(item.Center, Color.LawnGreen.ToVector3() * 0.8f);
-
-            Texture2D tex = TextureAssets.Item[item.type].Value;
             rot += 0.15f;
-            Main.EntitySpriteDraw(tex, item.Center - Main.screenPosition, null, Color.White, rot, tex.Size() / 2, scale, SpriteEffects.None);
+            Main.EntitySpriteDraw(TextureAssets.Item[item.type].Value, item.Center - Main.screenPosition, null, Color.White, rot, TextureAssets.Item[item.type].Value.Size() / 2, scale, SpriteEffects.None);
             return false;
         }
 

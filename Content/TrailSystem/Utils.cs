@@ -89,7 +89,6 @@ public static partial class Utils
                 float t3 = t2 * t;
 
                 // Catmull-Rom formula
-                float tension = 0.5f; // You can adjust this parameter
                 Vector2 point = 0.5f * (
                     (2.0f * p1) +
                     (-p0 + p2) * t +

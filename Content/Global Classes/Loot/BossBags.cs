@@ -12,7 +12,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 {
     public class BossBags : GlobalItem
     {
-        public override void ModifyItemLoot(Item item, ItemLoot itemLoot) // Using ModifyItemLoot to change the loot from certain boss bags
+        public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
             switch (item.type)
             {

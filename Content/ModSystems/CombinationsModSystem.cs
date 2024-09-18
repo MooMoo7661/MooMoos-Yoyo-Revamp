@@ -1,4 +1,6 @@
-﻿using CombinationsMod.Content.Configs;
+﻿using System.Collections.Generic;
+using System.Numerics;
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.Items.Yoyos;
 using CombinationsMod.Content.ModPlayers;
@@ -20,7 +22,6 @@ namespace CombinationsMod
         public static RecipeGroup cobaltBarRecipeGroup;
         public static RecipeGroup adamantiteBarRecipeGroup;
         public static RecipeGroup mythrilBarRecipeGroup;
-        public static RecipeGroup eclipseWeaponGroup;
         public static RecipeGroup yoyoStringGroup;
 
         public static RecipeGroup ironYoyoGroup;
@@ -32,6 +33,7 @@ namespace CombinationsMod
         public Asset<Texture2D> code1;
         public Asset<Texture2D> glove;
 
+        // Deals with loading / unloading custom yoyo / glove textures
         public override void PostSetupContent()
         {
             code2 = TextureAssets.Item[ItemID.Code2];
@@ -61,10 +63,8 @@ namespace CombinationsMod
 
         public override void PostAddRecipes()
         {
-            for (int i = 0; i < Main.recipe.Length; i++)
+            foreach (Recipe recipe in Main.recipe)
             {
-                var recipe = Main.recipe[i];
-
                 if (recipe.createItem.type == ItemID.YoyoBag)
                 {
                     recipe.DisableRecipe();
@@ -105,22 +105,28 @@ namespace CombinationsMod
             mythrilBarRecipeGroup = new RecipeGroup(() => "Mythril or Orichalcum", ItemID.MythrilBar, ItemID.OrichalcumBar);
             RecipeGroup.RegisterGroup("CombinationsMod:MythrilOrOrichalcum", mythrilBarRecipeGroup);
 
-            eclipseWeaponGroup = new RecipeGroup(() => "Any Solar Eclipse Weapon", ItemID.DeathSickle, ItemID.BrokenHeroSword,
-                ItemID.ButchersChainsaw, ItemID.DeadlySphereStaff, ItemID.ToxicFlask, ItemID.NailGun, ItemID.PsychoKnife);
-            RecipeGroup.RegisterGroup("CombinationsMod:SolarEclipseWeapons", eclipseWeaponGroup);
-
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
             {
                 yoyoStringGroup = new RecipeGroup(() => "Any Yoyo String", ItemID.WhiteString, ItemID.BlueString, ItemID.BrownString,
-                ItemID.CyanString, ItemID.GreenString, ItemID.LimeString, ItemID.OrangeString, ItemID.PinkString, ItemID.PurpleString, ItemType<GolemsteelString>(),
+                ItemID.CyanString, ItemID.GreenString, ItemID.LimeString, ItemID.OrangeString, ItemID.PinkString, ItemID.PurpleString,
                 ItemID.RainbowString, ItemID.RedString, ItemID.SkyBlueString, ItemID.TealString, ItemID.VioletString, ItemID.BlackString, ItemID.YellowString,
 
-                veridianMod.Find<ModItem>("CrimsonString").Type, veridianMod.Find<ModItem>("CrossString").Type,
-                veridianMod.Find<ModItem>("CursedString").Type, veridianMod.Find<ModItem>("FrogString").Type, veridianMod.Find<ModItem>("FrostString").Type,
-                veridianMod.Find<ModItem>("HoneyString").Type, veridianMod.Find<ModItem>("HorseshoeString").Type, veridianMod.Find<ModItem>("IchorString").Type,
-                veridianMod.Find<ModItem>("LavaString").Type, veridianMod.Find<ModItem>("MythString").Type, veridianMod.Find<ModItem>("PumpkinString").Type,
-                veridianMod.Find<ModItem>("RegenString").Type, veridianMod.Find<ModItem>("ShadowString").Type, veridianMod.Find<ModItem>("SharktoothString").Type,
-                veridianMod.Find<ModItem>("VeilString").Type, veridianMod.Find<ModItem>("HellString").Type);
+                veridianMod.Find<ModItem>("CrimsonString").Type,
+                veridianMod.Find<ModItem>("CrossString").Type,
+                veridianMod.Find<ModItem>("CursedString").Type,
+                veridianMod.Find<ModItem>("FrogString").Type,
+                veridianMod.Find<ModItem>("FrostString").Type,
+                veridianMod.Find<ModItem>("HoneyString").Type,
+                veridianMod.Find<ModItem>("HorseshoeString").Type,
+                veridianMod.Find<ModItem>("IchorString").Type,
+                veridianMod.Find<ModItem>("LavaString").Type,
+                veridianMod.Find<ModItem>("MythString").Type,
+                veridianMod.Find<ModItem>("PumpkinString").Type,
+                veridianMod.Find<ModItem>("RegenString").Type,
+                veridianMod.Find<ModItem>("ShadowString").Type,
+                veridianMod.Find<ModItem>("SharktoothString").Type,
+                veridianMod.Find<ModItem>("VeilString").Type,
+                veridianMod.Find<ModItem>("HellString").Type);
             }
             else
             {

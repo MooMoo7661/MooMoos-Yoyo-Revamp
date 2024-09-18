@@ -13,13 +13,15 @@ namespace CombinationsMod.GlobalClasses
     public class SpawnDrill : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
+
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.IsYoyo();
+
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            Player player = Main.player[projectile.owner];
+            Player player = projectile.GetOwner();
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>(); // Getting modplayer and player
 
-            if (projectile.type == ContentSamples.ProjectilesByType[player.HeldItem.shoot].type && projectile.aiStyle == 99 &&
-                projectile.ai[0] != 1f && Main.myPlayer == projectile.owner) // If projectile is a Yoyo & it is the same one as the .shoot of the held yoyo.
+            if (projectile.type == ContentSamples.ProjectilesByType[player.HeldItem.shoot].type && projectile.ai[0] != 1f && Main.myPlayer == projectile.owner) // If projectile is a Yoyo & it is the same one as the .shoot of the held yoyo.
             {
                 if (modPlayer.CurrentDrillType != 0 && ProjectileSets.IsYoyoDrillProjectile[modPlayer.CurrentDrillType])
                 {

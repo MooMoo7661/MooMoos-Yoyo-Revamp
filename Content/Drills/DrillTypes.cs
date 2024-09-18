@@ -1,8 +1,5 @@
 ﻿using CombinationsMod.Content.Items.Accessories.Drills;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
 
 namespace CombinationsMod.Content.Drills
 {
@@ -255,6 +252,11 @@ namespace CombinationsMod.Content.Drills
         protected override int Height => 68;
 
         public override int DrillItem => ModContent.ItemType<MooMooDrillCasing>();
+
+        public override void PostPickBlock(int x, int y)
+        {
+            Dust.NewDust(new Vector2(x, y) * 16, 1, 1, DustID.TreasureSparkle);
+        }
     }
 
     public class Excavator : BaseDrill

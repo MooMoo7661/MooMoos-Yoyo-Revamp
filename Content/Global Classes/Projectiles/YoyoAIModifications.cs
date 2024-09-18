@@ -1,5 +1,6 @@
 ﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
+using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             return entity.aiStyle == 99;
         }
 
-        public bool mainYoyo = false; // false = main yoyo, true = second yoyo
+        public bool secondaryYoyo = false; // false = main yoyo, true = second yoyo
 
         public override void Load()
         {
@@ -35,15 +36,15 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
 
         private void YoyoAIDetour(Terraria.On_Projectile.orig_AI_099_2 orig, Projectile projectile)
         {
-            Player player = Main.player[projectile.owner];
+            Player player = projectile.GetOwner();
 
-            mainYoyo = false;
+            secondaryYoyo = false;
 
             for (int i = 0; i < projectile.whoAmI; i++)
             {
                 if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].aiStyle == 99 && !Main.projectile[i].counterweight)
                 {
-                    mainYoyo = true;
+                    secondaryYoyo = true;
                 }
             }
 
@@ -51,14 +52,14 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             {
                 projectile.localAI[0] += 1f; // Timer in ticks
 
-                if (mainYoyo)
+                if (secondaryYoyo)
                 {
                     projectile.localAI[0] += (float)Main.rand.Next(10, 31) * 0.1f;
                 }
 
                 float num = projectile.localAI[0] / 60f; // Timer in seconds
 
-                num /= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee)) / 2f;
+                num /= (1f + player.GetAttackSpeed(DamageClass.Melee)) / 2f;
 
                 float num2 = ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type];
 
@@ -113,20 +114,18 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             if (projectile.counterweight) // Setting the counterweight flag depending on the projectile
             {
                 isCounterweight = true;
-                Main.NewText("Counterweight was true on " + projectile.Name);
             }
 
-            if (Main.player[projectile.owner].dead) // Kill projectile when projectile.owner is dead
+            if (projectile.GetOwner().dead) // Kill projectile when projectile.owner is dead
             {
                 projectile.Kill();
                 return;
             }
 
-            if (!isCounterweight && !mainYoyo) // if not counterweight and current yoyo
+            if (!isCounterweight && !secondaryYoyo) // if not counterweight and current yoyo
             {
-                Main.player[projectile.owner].heldProj = projectile.whoAmI;
-                Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().currentYoyo = projectile.whoAmI;
-                //projectile.localAI[0] = -1;
+                player.heldProj = projectile.whoAmI;
+                player.GetModPlayer<YoyoModPlayer>().currentYoyo = projectile.whoAmI;
 
                 if (ModContent.GetInstance<YoyoModConfig>().MainYoyoDust)
                 {
@@ -139,17 +138,17 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     }
                 }
 
-                Main.player[projectile.owner].SetDummyItemTime(2);
+                player.SetDummyItemTime(2);
 
                 // Below 2 set the player's direction depending on where the yoyo is (left, right)
-                if (projectile.position.X + (float)(projectile.width / 2) > Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2))
+                if (projectile.position.X + (float)(projectile.width / 2) > player.position.X + (float)(player.width / 2))
                 {
-                    Main.player[projectile.owner].ChangeDir(1);
+                    player.ChangeDir(1);
                     projectile.direction = 1;
                 }
                 else
                 {
-                    Main.player[projectile.owner].ChangeDir(-1);
+                    player.ChangeDir(-1);
                     projectile.direction = -1;
                 }
             }
@@ -164,9 +163,9 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             float stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
 
             float yoyoSpeed = player.GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoSpeed(ProjectileID.Sets.YoyosTopSpeed[projectile.type], player);
-            float modifiedStringLength = Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength, player);
+            float modifiedStringLength = projectile.GetOwner().GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength, player);
 
-            if (projectile.type == 545) // Cascade dusts
+            if (projectile.type == ProjectileID.Cascade) // Cascade dusts
             {
                 if (Main.rand.NextBool(6))
                 {
@@ -174,32 +173,36 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     Main.dust[num11].noGravity = true;
                 }
             }
-            else if (projectile.type == 553 && Main.rand.NextBool(2)) // Hel-Fire dusts
+            else if (projectile.type == ProjectileID.HelFire && Main.rand.NextBool(2)) // Hel-Fire dusts
             {
                 int num12 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
                 Main.dust[num12].noGravity = true;
                 Main.dust[num12].scale = 1.6f;
             }
-            if (Main.player[projectile.owner].yoyoString) // Extends range
+            if (player.yoyoString) // Extends range
             {
                 // modifiedStringLength is ProjectileID.Sets.YoyosMaximumRange + modifictions from modplayer to increase range
-                modifiedStringLength += 150f;
+                modifiedStringLength += 400f;
             }
 
-            modifiedStringLength *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            modifiedStringLength *= (1f + player.GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
             //modifiedStringLength = 120f + modifiedStringLength / 5;
-            yoyoSpeed *= (1f + Main.player[projectile.owner].GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            yoyoSpeed *= (1f + player.GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+
+            if (projectile.ai[2] == 1f && projectile.MaxUpdates > 1)
+                yoyoSpeed *= 0.75f;
+
             float num7 = 14f - yoyoSpeed / 2f;
             if (num7 < 1f)
             {
                 num7 = 1f;
             }
             float num9 = 5f + yoyoSpeed / 2f;
-            if (mainYoyo)
+            if (secondaryYoyo)
             {
-                //ABILITY - EXTENDED REACH : Yoyo range is greatly increased with second ai. Change 20f to 100f+
+                // Yoyo range is greatly increased with second ai. Change 20f to 100f+
                 if (player.GetModPlayer<YoyoModPlayer>().moonTrick) { num9 += 150f; }
-                else { num9 += 20f; }
+                else { num9 += 40f; }
             }
             if (projectile.ai[0] >= 0f)
             {
@@ -209,7 +212,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                 }
                 bool flag3 = false;
                 bool flag4 = false;
-                Vector2 vector3 = Main.player[projectile.owner].Center - projectile.Center;
+                Vector2 vector3 = player.Center - projectile.Center;
                 if (vector3.Length() > modifiedStringLength)
                 {
                     flag3 = true;
@@ -220,9 +223,9 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                 }
                 if (projectile.owner == Main.myPlayer)
                 {
-                    if (!Main.player[projectile.owner].channel || Main.player[projectile.owner].stoned || Main.player[projectile.owner].frozen)
+                    if (!player.channel || player.stoned || player.frozen)
                     {
-                        projectile.ai[0] = -1f; // ai[0] = -1 kills projectile. I assume this is to recall yoyos when the player is dead / should not be active
+                        projectile.ai[0] = -1f; // ai[0] = -1 kills projectile.
                         projectile.ai[1] = 0f;
                         projectile.netUpdate = true;
                     }
@@ -232,24 +235,24 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                         Vector2 vector4 = Main.ReverseGravitySupport(Main.MouseScreen) + Main.screenPosition;
                         float x = vector4.X;
                         float y = vector4.Y;
-                        Vector2 vector5 = new Vector2(x, y) - Main.player[projectile.owner].Center;
+                        Vector2 vector5 = new Vector2(x, y) - player.Center;
                         if (vector5.Length() > modifiedStringLength)
                         {
                             vector5.Normalize();
                             vector5 *= modifiedStringLength;
-                            vector5 = Main.player[projectile.owner].Center + vector5;
+                            vector5 = player.Center + vector5;
                             x = vector5.X;
                             y = vector5.Y;
                         }
                         if (projectile.ai[0] != x || projectile.ai[1] != y)
                         {
                             // Limit the range for the yoyo
-                            Vector2 vector6 = new Vector2(x, y) - Main.player[projectile.owner].Center;
+                            Vector2 vector6 = new Vector2(x, y) - player.Center;
                             if (vector6.Length() > modifiedStringLength - 1f)
                             {
                                 vector6.Normalize();
                                 vector6 *= modifiedStringLength - 1f;
-                                Vector2 vector7 = Main.player[projectile.owner].Center + vector6;
+                                Vector2 vector7 = player.Center + vector6;
                                 x = vector7.X;
                                 y = vector7.Y;
                             }
@@ -272,19 +275,19 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     {
                         num7 /= 2f;
                         yoyoSpeed *= 2f;
-                        if (projectile.Center.X > Main.player[projectile.owner].Center.X && projectile.velocity.X > 0f)
+                        if (projectile.Center.X > player.Center.X && projectile.velocity.X > 0f)
                         {
                             projectile.velocity.X *= 0.5f;
                         }
-                        if (projectile.Center.Y > Main.player[projectile.owner].Center.Y && projectile.velocity.Y > 0f)
+                        if (projectile.Center.Y > player.Center.Y && projectile.velocity.Y > 0f)
                         {
                             projectile.velocity.Y *= 0.5f;
                         }
-                        if (projectile.Center.X < Main.player[projectile.owner].Center.X && projectile.velocity.X < 0f)
+                        if (projectile.Center.X < player.Center.X && projectile.velocity.X < 0f)
                         {
                             projectile.velocity.X *= 0.5f;
                         }
-                        if (projectile.Center.Y < Main.player[projectile.owner].Center.Y && projectile.velocity.Y < 0f)
+                        if (projectile.Center.Y < player.Center.Y && projectile.velocity.Y < 0f)
                         {
                             projectile.velocity.Y *= 0.5f;
                         }
@@ -307,7 +310,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                         vector8 *= num14;
                         projectile.velocity = (projectile.velocity * (num7 - 1f) + vector8) / num7;
                     }
-                    else if (mainYoyo)
+                    else if (secondaryYoyo)
                     {
                         if ((double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
                         {
@@ -321,7 +324,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     {
                         projectile.velocity *= 0.8f;
                     }
-                    if (mainYoyo && !flag3 && (double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
+                    if (secondaryYoyo && !flag3 && (double)projectile.velocity.Length() < (double)yoyoSpeed * 0.6)
                     {
                         projectile.velocity.Normalize();
                         projectile.velocity *= yoyoSpeed * 0.6f;
@@ -335,7 +338,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                 num7 = (int)((double)num7 * 3.25);
 
                 projectile.tileCollide = false;
-                Vector2 vector9 = Main.player[projectile.owner].Center - projectile.Center;
+                Vector2 vector9 = player.Center - projectile.Center;
                 float num15 = vector9.Length();
 
                 if (num15 < yoyoSpeed + 10f || num15 == 0f || num15 > 2000f)
@@ -349,7 +352,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     projectile.velocity = (projectile.velocity * (num7 - 1f) + vector9) / num7;
                 }
             }
-            projectile.rotation += 0.45f;
+            projectile.rotation += (float)(0.45d / (double)projectile.MaxUpdates);
         }
     }
 }

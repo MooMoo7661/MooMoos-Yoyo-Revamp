@@ -1,16 +1,8 @@
 ﻿using System;
-using System.IO;
 using CombinationsMod.Content.Configs;
-using CombinationsMod.GlobalClasses.Projectiles;
-using log4net.Repository.Hierarchy;
-using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.ModPlayers
 {
@@ -20,6 +12,16 @@ namespace CombinationsMod.Content.ModPlayers
         public int yoyoNumber = 1;
         public int chainTextureID = 0;
         public int CurrentDrillType = 0;
+        public bool phasingYoyos = false;
+
+        public bool stringSlot = false;
+        public bool gloveSlot = false;
+        public bool supportGloveSlot = false;
+        public bool counterweightSlot = false;
+        public bool drillSlot = false;
+        public bool ringSlot1 = false;
+        public bool ringSlot2 = false;
+        public bool trickSlot = false;
 
         public bool wasEquippedDarkGreen = false;
         public bool wasEquippedDarkBlue = false;
@@ -102,6 +104,16 @@ namespace CombinationsMod.Content.ModPlayers
         {
             currentYoyo = 0;
             CurrentDrillType = 0;
+            phasingYoyos = false;
+
+            stringSlot = false;
+            gloveSlot = false;
+            supportGloveSlot = false;
+            counterweightSlot = false;
+            drillSlot = false;
+            ringSlot1 = false;
+            ringSlot2 = false;
+            trickSlot = false;
 
             yoyoBag = false;
             shimmerBag = false;
@@ -203,7 +215,7 @@ namespace CombinationsMod.Content.ModPlayers
 
             if (modPlayer.solarString || modPlayer.nebulaString || modPlayer.vortexString || modPlayer.stardustString)
             {
-                length += 100f;
+                length += 150f;
             }
 
             if (modPlayer.alienBag)
@@ -336,37 +348,40 @@ namespace CombinationsMod.Content.ModPlayers
                         for (int i = 0; i < numYoyos - 1; i++)
                         {
                             Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                            Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                            Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
                             proj1.usesIDStaticNPCImmunity = false;
                             proj1.usesLocalNPCImmunity = true;
                             proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
+                            proj1.ai[2] = 1;
                         }
                     }
 
                     if (TestForSupportGlove(player))
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
                         proj1.usesIDStaticNPCImmunity = false;
                         proj1.usesLocalNPCImmunity = true;
                         proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
+                        proj1.ai[2] = 1;
 
                         Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
-                        Projectile proj2 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector2, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        Projectile proj2 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector2, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
                         proj2.usesIDStaticNPCImmunity = false;
                         proj2.usesLocalNPCImmunity = true;
                         proj2.localNPCHitCooldown = 25 * proj2.MaxUpdates;
+                        proj2.ai[2] = 1;
 
                         return;
                     }
                     else
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f);
+                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
                         proj1.usesIDStaticNPCImmunity = false;
                         proj1.usesLocalNPCImmunity = true;
                         proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
-                        Main.NewText("Created secondary yoyo with whoami of " + proj1.whoAmI);
+                        proj1.ai[2] = 1;
                         return;
                     }
                 }

@@ -63,13 +63,9 @@ namespace CombinationsMod.Content.Utility
             ItemID.RainbowString
             );
 
-        public static bool[] YoyoBag = ItemID.Sets.Factory.CreateBoolSet(
-            ItemID.YoyoBag
-            );
+        public static bool[] YoyoBag = ItemID.Sets.Factory.CreateBoolSet(ItemID.YoyoBag);
 
-        public static bool[] YoyoGlove = ItemID.Sets.Factory.CreateBoolSet(
-            ItemID.YoYoGlove
-            );
+        public static bool[] YoyoGlove = ItemID.Sets.Factory.CreateBoolSet(ItemID.YoYoGlove);
 
         public static bool[] SupportGlove = ItemID.Sets.Factory.CreateBoolSet();
 

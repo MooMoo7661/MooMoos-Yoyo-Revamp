@@ -21,12 +21,10 @@ namespace CombinationsMod.GlobalClasses
                     ItemID.FormatC,
                 };
 
-                for (int i = 0; i < shopToRemove.Count; i++)
+                foreach(int item in shopToRemove)
                 {
-                    if (shop.TryGetEntry(shopToRemove[i], out var entry))
-                    {
+                    if (shop.TryGetEntry(item, out var entry))
                         entry.Disable();
-                    }
                 }
 
                 for (int i = ItemID.BlackCounterweight; i <= ItemID.YellowCounterweight; i++)
@@ -39,15 +37,24 @@ namespace CombinationsMod.GlobalClasses
             }
 
             if (shop.NpcType == NPCID.Cyborg)
-            {
                 shop.Add(ModContent.ItemType<NaniteString>(), Condition.DownedGolem);
-            }
         }
 
         public override void GetChat(NPC npc, ref string chat)
         {
             if (npc.type == NPCID.Merchant || npc.type == NPCID.Cyborg || npc.type == NPCID.TravellingMerchant || npc.type == NPCID.GoblinTinkerer)
             {
+                foreach(NPC npcCheck in Main.ActiveNPCs)
+                {
+                    if (npc.type == ModContent.NPCType<YoyoMerchant>())
+                    {
+                        if (Main.rand.NextBool(3))
+                        {
+
+                        }
+                    }
+                }
+
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
                     NPC npcCheck = Main.npc[i];

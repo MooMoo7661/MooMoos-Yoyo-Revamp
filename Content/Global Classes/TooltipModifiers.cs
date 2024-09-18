@@ -15,28 +15,14 @@ using CombinationsMod.Content.Utility;
 using Terraria.GameContent;
 using Terraria.UI.Chat;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.ModLoader.UI;
 
 namespace CombinationsMod.Content.Global_Classes
 {
    public class TooltipModifiers : GlobalItem
    {
         public override bool InstancePerEntity => true;
-
-        /*public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
-        {
-            if (line.Name == "CurrentDrill" && line.Mod == "CombinationsMod")
-            {
-                Color color = Color.Lerp(Color.Purple, Color.DarkBlue, (MathF.Sin(Main.GlobalTimeWrappedHourly * 0.7f) + 1) / 2f);
-                ChatManager.DrawColorCodedStringShadow(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
-                       new Vector2(line.X, line.Y), Color.WhiteSmoke, 0f, Vector2.Zero, line.BaseScale);
-
-                ChatManager.DrawColorCodedString(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
-                    new Vector2(line.X, line.Y), color, 0f, Vector2.Zero, Vector2.One);
-                return false;
-            }
-
-            return true;
-        }*/
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -55,7 +41,7 @@ namespace CombinationsMod.Content.Global_Classes
 
             if (ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99)
             {
-
+                
                 if (Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType != 0)
                 {
                     if (ContentSamples.ProjectilesByType[Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType].ModProjectile is BaseDrill drill)

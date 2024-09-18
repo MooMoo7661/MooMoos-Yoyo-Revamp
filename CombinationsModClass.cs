@@ -28,7 +28,11 @@ namespace CombinationsMod
 
             if (item.type == ItemID.YoyoBag)
             {
-                self.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
+                YoyoModPlayer modPlayer = self.GetModPlayer<YoyoModPlayer>();
+                modPlayer.yoyoBag = true;
+                modPlayer.stringSlot = true;
+                modPlayer.gloveSlot = true;
+                modPlayer.counterweightSlot = true;
             }
         }
 
@@ -36,7 +40,7 @@ namespace CombinationsMod
         {
             if (ModLoader.TryGetMod("TMLAchievements", out Mod mod))
             {
-                Logger.Info("TML Achivements Mod detected - Adding custom achievements");
+                Logger.Info("TML Achievements Mod detected - Adding custom achievements");
                 mod.Call("AddAchievement", this, "Code1Achievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementCode1", null, false, true, 1f, new string[] { "Collect_" + ItemID.Code1 });
                 mod.Call("AddAchievement", this, "AbbhorAchievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementAbbhor", null, false, false, 2f, new string[] { "Collect_" + ItemType<TheAbbhor>() });
                 mod.Call("AddAchievement", this, "Code2Achievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementCode2", "CombinationsMod/Content/Crossmod/Achievements/RareBorder", false, true, 3f, new string[] { "Collect_" + ItemID.Code2 });
@@ -44,7 +48,7 @@ namespace CombinationsMod
             }
             else
             {
-                Logger.Info("TML Achivements Mod not detected - Custom achievements will not be added.");
+                Logger.Info("TML Achievements Mod not detected - Custom achievements will not be added.");
             }
         }
     }

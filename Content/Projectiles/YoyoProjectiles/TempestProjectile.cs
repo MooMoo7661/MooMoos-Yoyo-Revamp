@@ -44,7 +44,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 isOriginalYoyo = true;
 

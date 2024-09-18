@@ -40,7 +40,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         }
         public override void PostAI()
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 timer++;
                 if (timer == 90)
@@ -62,11 +62,6 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                     timer = 0;
                 }
             }
-        }
-
-        public override void OnSpawn(IEntitySource source)
-        {
-
         }
 
         public static void DrawGlowBallAdditive(Vector2 pos, float scaleMultiplier, Color outerColor, Color innerColor, bool shiny = true)

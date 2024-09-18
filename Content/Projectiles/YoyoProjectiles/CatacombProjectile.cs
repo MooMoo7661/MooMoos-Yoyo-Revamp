@@ -1,18 +1,23 @@
+using Microsoft.Xna.Framework;
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Collections.Generic;
+using Terraria.Audio;
+using CombinationsMod.Content.Items.Accessories.InfoAccessories;
+using System;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
     public class CatacombProjectile : ModProjectile
     {
+        public int hitCounter = 0;
         public override void SetStaticDefaults()
         {
-
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 12f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 238.2f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12.3f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.2f;
 
             //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15f;
         }
@@ -25,29 +30,47 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.height = 20;
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
-            Projectile.penetrate = 20;
+            Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
 
             Projectile.velocity *= 0.8f;
         }
-        public override void PostAI()
-        {
-            if (Main.rand.NextBool())
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, DustID.Bone);
-                dust.noGravity = true;
-                dust.noLight = true;
-                dust.scale = 0.73f;
-            }
 
-            if (Main.rand.NextBool(20) && Main.myPlayer == Projectile.owner && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            hitCounter++;
+            if (hitCounter >= 20)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 1f, Main.rand.Next(-5, 5),
-                Main.rand.Next(-5, 5), ProjectileID.Bone, (int)(Projectile.damage * 0.7f), 0, Projectile.owner);
-                Main.projectile[proj].scale = 0.8f;
-                Main.projectile[proj].friendly = true;
-                Main.projectile[proj].usesLocalNPCImmunity = true;
+                foreach(NPC npc in Main.ActiveNPCs)
+                {
+                    if (npc.Distance(Projectile.Center) < 250f && !npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f)
+                    {
+                        npc.velocity -= npc.DirectionTo(Projectile.Center) * 8;
+                        npc.velocity.Y -= 6f;
+                    }
+                }
+
+                SoundStyle HitSound = new SoundStyle
+                {
+                    SoundPath = "CombinationsMod/Content/Sounds/rock",
+                    Volume = 0.4f,
+                    PitchVariance = 0.3f,
+                    SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+                };
+
+                for (int i = 0; i < 16; i++)
+                {
+                    Vector2 speed = -Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Main.rand.NextFloat();
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y - 16f), speed * 10f, ProjectileID.Bone, Projectile.damage, 4f);
+                    proj.hostile = false;
+                    proj.friendly = true;
+                    proj.scale = 0.8f;
+                }
+
+                SoundEngine.PlaySound(HitSound);
+
+                hitCounter = 0;
             }
         }
     }

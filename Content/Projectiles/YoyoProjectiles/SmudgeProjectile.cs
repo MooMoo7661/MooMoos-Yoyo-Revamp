@@ -1,7 +1,10 @@
+using System;
+using Microsoft.Xna.Framework;
 using CombinationsMod.Content.Dusts;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Audio;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
@@ -9,17 +12,15 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 10f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 242f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13.87f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.5f;
 
             //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.2f;
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
@@ -29,69 +30,56 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.scale = 1f;
         }
 
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        public override void ModifyHitNPC(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if (Main.player[Projectile.owner].ZoneGraveyard)
-            {
-                modifiers.FinalDamage *= 2;
-            }
+            if (npc.type == NPCID.Ghost || npc.type == NPCID.Wraith || npc.type == NPCID.Poltergeist)
+            modifiers.FinalDamage *= 3f;
+        }
 
-            if (target.type == NPCID.Ghost || target.type == NPCID.Wraith || target.type == NPCID.PirateGhost)
+        public override void AI()
+        {
+            foreach(NPC npc in Main.ActiveNPCs)
             {
-                modifiers.FinalDamage *= 8f;
+                if (npc.type == NPCID.Ghost || npc.type == NPCID.Poltergeist || npc.type == NPCID.Wraith)
+                {
+                    if (npc.Distance(Projectile.Center) < 250)
+                    npc.velocity -= npc.DirectionTo(Projectile.Center) * 0.15f;
+                    npc.velocity.X = Math.Clamp(npc.velocity.X, -3f, 3f);
+                    npc.velocity.Y = Math.Clamp(npc.velocity.Y, -3f, 3f);
+                }
             }
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void OnHitNPC(NPC npc, NPC.HitInfo hit, int damageDone)
         {
-            if (target.type == NPCID.Ghost || target.type == NPCID.Wraith || target.type == NPCID.PirateGhost || target.type == NPCID.DungeonSpirit || target.type == NPCID.Poltergeist)
+            if (npc.type == NPCID.Ghost || npc.type == NPCID.Wraith || npc.type == NPCID.Poltergeist)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 50; i++)
                 {
-                    Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, ModContent.DustType<SmudgeImpact>());
-                    dust.noGravity = true;
-                    dust.noLight = false;
-
-                    int rand = Main.rand.Next(1);
-                    if (rand < 1)
-                        dust.scale = 3.3f;
-                    else
-                        dust.scale = 5f;
+                    Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
+                    Dust d = Dust.NewDustPerfect(npc.Center + speed * 32, DustID.BlueCrystalShard, speed * 2, Scale: 1.5f);
+                    d.noGravity = true;
                 }
-            }
 
-            if (Main.player[Projectile.owner].ZoneGraveyard)
-            {
-                target.AddBuff(BuffID.OnFire, 200);
+                if (npc.life <= 0)
+                {
+                    SoundStyle GhostSound = new SoundStyle
+                    {
+                        SoundPath = "CombinationsMod/Content/Sounds/phasmo-ghost",
+                        Volume = 0.8f,
+                        PitchVariance = 0.2f,
+                        SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+                    };
+
+                    SoundEngine.PlaySound(GhostSound);
+                }
             }
         }
 
         public override void PostAI()
         {
-            if (Main.rand.NextBool())
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, ModContent.DustType<Smudge>());
-                dust.noGravity = true;
-                dust.noLight = true;
-                dust.scale = 1.6f;
-            }
-
-            if (Main.player[Projectile.owner].ZoneGraveyard)
-            {
-                if (Main.rand.NextBool())
-                {
-                    Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, ModContent.DustType<SpiritFlameBlue>());
-                    dust.noGravity = false;
-                    dust.noLight = false;
-                    dust.scale = 1.6f;
-
-                    Dust dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, 5, ModContent.DustType<SpiritFlameBlue2>());
-                    dust2.noGravity = false;
-                    dust2.noLight = false;
-                    dust2.scale = 1.6f;
-                }
-            }
-
+            Dust d = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity + Main.rand.NextVector2CircularEdge(1f, 1f) * 2, DustID.BlueCrystalShard, Projectile.velocity * 0.5f + Main.rand.NextVector2CircularEdge(1f, 1f), Scale: 1.5f);
+            d.noGravity = true;
         }
     }
 }

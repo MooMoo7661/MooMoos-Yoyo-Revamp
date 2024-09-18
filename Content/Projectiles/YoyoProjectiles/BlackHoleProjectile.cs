@@ -6,6 +6,7 @@ using CombinationsMod.GlobalClasses.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -19,14 +20,14 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 364f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18.8f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12f;
 
             //if (CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
+            Projectile.MaxUpdates = 2;
             //if (CalamityLoaded) Projectile.MaxUpdates = 2;
             Projectile.width = 16;
             Projectile.height = 16;
@@ -39,7 +40,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         }
         public override void PostAI()
         {
-            if (ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 Dust dust2 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.PinkTorch, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
                 dust2.velocity = VectorHelper.VelocityToPoint(dust2.position, Projectile.Center, Vector2.Distance(dust2.position, Projectile.Center) * 0.05f);
@@ -63,9 +64,50 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             }
         }
 
+        public override void AI()
+        {
+            if (Projectile.ai[2] != 0)
+                return;
+
+            float pullRadius = 400f;
+            float pullStrength = 0.15f;
+
+            foreach(NPC npc in Main.ActiveNPCs)
+            {
+                if (npc.active && !npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f)
+                {
+                    // Calculate direction from NPC to projectile
+                    Vector2 direction = Projectile.Center - npc.Center;
+                    float distance = direction.Length();
+                    float npcSize = Math.Max(npc.width, npc.height);
+                    if (npcSize > 85)
+                    {
+                        // Scale pull strength inversely with NPC size
+                        pullStrength *= Math.Max(0.1f, 1f - ((npcSize - 55) / 55f));
+                    }
+
+                    // Determine strength multiplier based on distance from the center of the projectile
+                    float strengthMultiplier = 1f;
+                    if (distance < pullRadius)
+                    {
+                        strengthMultiplier = 1f - (distance / pullRadius); // Linear decrease
+                    }
+
+                    if (distance < pullRadius && distance > 0)
+                    {
+                        npc.velocity.X += npc.DirectionTo(Projectile.Center).X * pullStrength * strengthMultiplier;
+                        npc.velocity.Y += npc.DirectionTo(Projectile.Center).Y * pullStrength * 4f * strengthMultiplier;
+
+                        if (distance < 70)
+                            npc.velocity = npc.DirectionTo(Projectile.Center) * pullStrength * 20f;
+                    }
+                }
+            }
+        }
+
         public override void OnSpawn(IEntitySource source)
         {
-            if (Main.myPlayer == Projectile.owner && ModContent.GetInstance<VanillaYoyoEffects>().ReturnProjectileFlag(Projectile) && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Main.myPlayer == Projectile.owner && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                    0, 0, ModContent.ProjectileType<BlackHole4>(), (int)(Projectile.damage * 0.75f) + 1, 0,

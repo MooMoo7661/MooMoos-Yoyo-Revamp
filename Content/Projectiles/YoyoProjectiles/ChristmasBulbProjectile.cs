@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,24 +8,21 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
     public class ChristmasBulbProjectile : ModProjectile
     {
-        public int counter = 0;
-        public int storeData = -1;
-        public int altCounter = 0;
+        public int timer = 30;
 
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 347f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16.8f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 450;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.4f;
 
             //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.1f;
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
+            Projectile.MaxUpdates = 2;
             //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
@@ -35,59 +33,14 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            counter++;
-            altCounter++;
-
-
-            if (counter >= 30 && altCounter == 2)
+        public override void AI()
+        { 
+            timer--;
+            if (timer <= 0)
             {
-                SpecialEffect();
-            }
-
-            if (altCounter == 2)
-            {
-                altCounter = 0;
-            }
-        }
-
-        public void SpecialEffect()
-        {
-            for (int i = 0; i < 8; i++)
-            {
-                if (Main.myPlayer == Projectile.owner)
-                {
-                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-
-                    int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel,
-                        ProjectileID.OrnamentFriendly, Projectile.damage / 2, 1, Projectile.owner, 1, 1);
-                    Main.projectile[proj].scale = 0.9f;
-                    Main.projectile[proj].tileCollide = true;
-                    Main.projectile[proj].timeLeft = 60;
-                    Main.projectile[proj].friendly = true;
-                    Main.projectile[proj].hostile = false;
-                    Main.projectile[proj].usesLocalNPCImmunity = true;
-                }
-            }
-        }
-
-        public override void PostAI()
-        {
-            if (Main.rand.NextBool())
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, 10, DustID.Everscream);
-                dust.noGravity = true;
-                dust.noLight = false;
-                dust.scale = 2f;
-
-                if (Main.rand.NextBool())
-                {
-                    Dust dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, 10, DustID.t_LivingWood);
-                    dust2.noGravity = true;
-                    dust2.noLight = false;
-                    dust2.scale = 1.5f;
-                }
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + Projectile.velocity * 0.6f, Projectile.velocity + Vector2.One.RotatedByRandom(MathHelper.TwoPi),
+                ProjectileID.NorthPoleSnowflake, (int)(Projectile.damage * 2.8f), 4f, Projectile.owner, 0, 1f);
+                timer = 30;
             }
         }
     }

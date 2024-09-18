@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CombinationsMod.Content.Global_Classes.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -12,7 +13,7 @@ namespace CombinationsMod.Content.Utility
     public static class Extensions
     {
         /// <summary>
-        /// Returns a string converted to a specific color dependent on hex.
+        /// Returns a string converted to a specific color depending on hex.
         /// </summary>
         /// <param name="text"></param>
         /// <param name="hex">The hex you want to color the string as.</param>
@@ -39,7 +40,34 @@ namespace CombinationsMod.Content.Utility
             {
                 shopCustomPrice = customValue
             };
+
             return shop.Add(item, conditions);
+        }
+
+        public static bool IsYoyo(this Projectile projectile)
+        {
+            return projectile.aiStyle == 99 && !projectile.counterweight;
+        }
+
+        public static bool IsCounterweight(this Projectile projectile)
+        {
+            return projectile.aiStyle == 99 && projectile.counterweight;
+        }
+
+        public static YoyoDataHouse YoyoData(this Projectile projectile)
+        {
+            if (projectile.aiStyle != 99)
+                throw new Exception("Attempted to get data from a non-yoyo projectile. Projectile type: " + projectile.Name);
+
+            if (!projectile.TryGetGlobalProjectile<YoyoDataHouse>(out _))
+                throw new Exception("Could not find data house for yoyo projectile!");
+
+            return projectile.GetGlobalProjectile<YoyoDataHouse>();
+        }
+
+        public static Player GetOwner(this Projectile projectile)
+        {
+            return Main.player[projectile.owner];
         }
     }
 }

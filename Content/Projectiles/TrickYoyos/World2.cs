@@ -50,8 +50,6 @@ namespace CombinationsMod.Content.Projectiles.TrickYoyos
 
             double rad = randPi + Projectile.ai[0] * (randSpeed + 3) * (Math.PI / 180.0);
 
-
-
             if (distance <= 70 + ProjectileID.Sets.YoyosMaximumRange[proj.type] / 4)
             {
                 distance += 10;
@@ -70,17 +68,5 @@ namespace CombinationsMod.Content.Projectiles.TrickYoyos
                 _initialized = true;
             }
         }
-
-        /*public override bool PreDraw(ref Color lightColor)
-        {
-            Color defaultColor = Projectile.GetAlpha(lightColor);
-            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("CombinationsMod/TrickYoyos/World1");
-
-            int frameHeight = texture.Height / Main.projFrames[Projectile.type];
-            int startY = frameHeight * Projectile.frame;
-            Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, sourceRectangle, defaultColor, Projectile.rotation, sourceRectangle.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-            return false;
-        }*/
     }
 }

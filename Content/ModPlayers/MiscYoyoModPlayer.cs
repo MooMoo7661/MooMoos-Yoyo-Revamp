@@ -12,7 +12,7 @@ namespace CombinationsMod.Content.ModPlayers
 {
     public class MiscYoyoModPlayer : ModPlayer
     {
-        public override void PlayerDisconnect() // Subtracts the added Yoyo stats when the player disconnects.
+        public override void PlayerDisconnect()
         {
             Player.GetModPlayer<YoyoModPlayer>().HitCounter = 0;
         }

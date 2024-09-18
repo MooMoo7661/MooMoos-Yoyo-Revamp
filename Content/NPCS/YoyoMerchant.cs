@@ -1,26 +1,15 @@
 ﻿using CombinationsMod.Content.Conditions;
-using CombinationsMod.Content.Items.Accessories.Drills;
-using CombinationsMod.Content.Items.Accessories.InfoAccessories;
 using CombinationsMod.Content.Items.Accessories.Rings;
 using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.Items.Accessories.YoyoGloves;
 using CombinationsMod.Content.Items.Yoyos;
-using CombinationsMod.Content.Utility;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Terraria;
-using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Personalities;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Terraria.Utilities;
 using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.Content.NPCS
@@ -43,7 +32,7 @@ namespace CombinationsMod.Content.NPCS
             NPCID.Sets.AttackType[Type] = NPCID.Sets.AttackType[NPCID.SkeletonMerchant];
             NPCID.Sets.AttackTime[Type] = NPCID.Sets.AttackTime[NPCID.SkeletonMerchant];
             NPCID.Sets.AttackAverageChance[Type] = 30;
-
+            NPCID.Sets.SpawnsWithCustomName[Type] = true;
             NPCID.Sets.HatOffsetY[Type] = 0;
 
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new()
@@ -78,7 +67,6 @@ namespace CombinationsMod.Content.NPCS
 
             NPC.lavaImmune = true;
 
-
             AnimationType = NPCID.Guide;
         }
 
@@ -88,7 +76,7 @@ namespace CombinationsMod.Content.NPCS
             {
                 "Jim Reaper",
                 "Vincent Van Bone",
-                "McRibbs",
+                "Mc Ribbs",
                 "Jerry Spinefeld",
                 "Jack Marrow",
                 "James Boned",
@@ -114,10 +102,8 @@ namespace CombinationsMod.Content.NPCS
             }
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
+        public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            // Requirements for the town NPC to spawn.
-
             for (int k = 0; k < 255; k++)
             {
                 Player player = Main.player[k];
@@ -126,7 +112,6 @@ namespace CombinationsMod.Content.NPCS
                     continue;
                 }
 
-                // Player has to have either an ExampleItem or an ExampleBlock in order for the NPC to spawn
                 if (player.inventory.Any(item => ItemID.Sets.Yoyo[item.type]))
                 {
                     return true;
@@ -182,7 +167,7 @@ namespace CombinationsMod.Content.NPCS
                 .AddWithValue(ItemType<ThinMint>(), Item.buyPrice(0, 3, 18, 0), Condition.BloodMoon)
                 .AddWithValue(ItemID.CrimsonYoyo, Item.buyPrice(0, 7, 19, 58), Condition.DownedBrainOfCthulhu)
                 .AddWithValue(ItemID.CorruptYoyo, Item.buyPrice(0, 7, 19, 58), Condition.DownedEaterOfWorlds)
-                .AddWithValue(ItemType<Catacomb>(), Item.buyPrice(0, 6, 32, 4), YoyoModConditions.MasterOrExpertMode, Condition.DownedSkeletron)
+                .AddWithValue(ItemType<Catacomb>(), Item.buyPrice(0, 6, 32, 4), Condition.InExpertMode, Condition.DownedSkeletron)
                 .AddWithValue(ItemID.Valor, Item.buyPrice(0, 11, 31, 0), Condition.DownedSkeletron)
                 .Add(ItemID.Code1, Condition.DownedEyeOfCthulhu, YoyoModConditions.EaterOfWorldsOrBrain, Condition.DownedSkeletron)
                 .AddWithValue(ItemID.FormatC, Item.buyPrice(0, 16, 45, 32), Condition.Hardmode)
@@ -205,7 +190,7 @@ namespace CombinationsMod.Content.NPCS
             .AddWithValue(ItemType<LightPinkString>(), Item.buyPrice(0, 3, 20, 85), Condition.DownedEyeOfCthulhu)
             .AddWithValue(ItemType<GrapeString>(), Item.buyPrice(0, 3, 20, 85), Condition.DownedQueenBee)
             .AddWithValue(ItemType<DarkTealString>(), Item.buyPrice(0, 3, 20, 85), YoyoModConditions.EaterOfWorldsOrBrain)
-            .AddWithValue(ItemType<SlimyString>(), Item.buyPrice(0, 5, 37, 52), Condition.DownedKingSlime, YoyoModConditions.MasterOrExpertMode)
+            .AddWithValue(ItemType<SlimyString>(), Item.buyPrice(0, 5, 37, 52), Condition.DownedKingSlime, Condition.InExpertMode)
 
             .AddWithValue(ItemType<AbilityRing>(), Item.buyPrice(0, 10, 50), Condition.DownedSkeletron)
             .AddWithValue(ItemType<AmberRing>(), Item.buyPrice(0, 1, 38, 12), Condition.DownedEyeOfCthulhu)
@@ -232,26 +217,6 @@ namespace CombinationsMod.Content.NPCS
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.Rally));
-        }
-
-        public override bool CanGoToStatue(bool toKingStatue) => true;
-
-        public void StatueTeleport()
-        {
-            for (int i = 0; i < 30; i++)
-            {
-                Vector2 position = Main.rand.NextVector2Square(-20, 21);
-                if (Math.Abs(position.X) > Math.Abs(position.Y))
-                {
-                    position.X = Math.Sign(position.X) * 20;
-                }
-                else
-                {
-                    position.Y = Math.Sign(position.Y) * 20;
-                }
-
-                Dust.NewDustPerfect(NPC.Center + position, DustID.Bone, Vector2.Zero).noGravity = true;
-            }
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

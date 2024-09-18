@@ -28,6 +28,12 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.shimmerBag = true;
+            modPlayer.phasingYoyos = true;
+            modPlayer.stringSlot = true;
+            modPlayer.gloveSlot = true;
+            modPlayer.supportGloveSlot = true;
+            modPlayer.counterweightSlot = true;
+            modPlayer.drillSlot = true;
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 player.yoyoGlove = true;

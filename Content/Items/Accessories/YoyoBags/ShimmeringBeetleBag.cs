@@ -103,6 +103,14 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.beetleBag = true;
             modPlayer.shimmerBag = true;
+            modPlayer.phasingYoyos = true;
+            modPlayer.stringSlot = true;
+            modPlayer.gloveSlot = true;
+            modPlayer.supportGloveSlot = true;
+            modPlayer.counterweightSlot = true;
+            modPlayer.drillSlot = true;
+            modPlayer.ringSlot1 = true;
+            modPlayer.ringSlot2 = true;
 
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {

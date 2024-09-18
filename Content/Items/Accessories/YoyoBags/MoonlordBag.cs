@@ -100,6 +100,15 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.moonlordBag = true;
+            modPlayer.stringSlot = true;
+            modPlayer.gloveSlot = true;
+            modPlayer.supportGloveSlot = true;
+            modPlayer.counterweightSlot = true;
+            modPlayer.drillSlot = true;
+            modPlayer.ringSlot1 = true;
+            modPlayer.ringSlot2 = true;
+            modPlayer.trickSlot = true;
+
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 player.yoyoGlove = true;

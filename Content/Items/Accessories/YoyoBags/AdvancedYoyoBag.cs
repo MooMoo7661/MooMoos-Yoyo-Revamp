@@ -23,8 +23,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            modPlayer.alienBag = true;
+            player.GetModPlayer<YoyoModPlayer>().alienBag = true;
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 player.yoyoGlove = true;

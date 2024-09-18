@@ -29,12 +29,12 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsEnabled()
         {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().stringSlot;
         }
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
@@ -64,12 +64,12 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsEnabled()
         {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().gloveSlot;
         }
 
         public override void ApplyEquipEffects()
@@ -120,7 +120,7 @@ namespace CombinationsMod.Content.UI
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().supportGloveSlot;
         }
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
@@ -162,12 +162,12 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsEnabled()
         {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().drillSlot;
         }
 
         public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
@@ -197,12 +197,12 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsEnabled()
         {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().yoyoBag || Player.GetModPlayer<YoyoModPlayer>().tier2Bag || Player.GetModPlayer<YoyoModPlayer>().shimmerBag || Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().counterweightSlot;
         }
 
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.Counterweight[item.type];
@@ -250,12 +250,12 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsEnabled()
         {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().ringSlot1;
         }
 
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.YoyoRing[item.type];
@@ -288,12 +288,12 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsEnabled()
         {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().beetleBag || Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().ringSlot1;
         }
 
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.YoyoRing[item.type];
@@ -312,6 +312,7 @@ namespace CombinationsMod.Content.UI
         public override string FunctionalTexture => "CombinationsMod/Content/UI/ringSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
+
         public override void OnMouseHover(AccessorySlotType context)
         {
             switch (context)
@@ -338,12 +339,12 @@ namespace CombinationsMod.Content.UI
 
         public override bool IsEnabled()
         {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
             {
                 return false;
             }
 
-            return Player.GetModPlayer<YoyoModPlayer>().moonlordBag;
+            return Player.GetModPlayer<YoyoModPlayer>().trickSlot;
         }
 
         public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.Trick[item.type];
@@ -355,6 +356,7 @@ namespace CombinationsMod.Content.UI
         public override string FunctionalTexture => "CombinationsMod/Content/UI/TrickSlot";
         public override bool DrawDyeSlot => false;
         public override bool DrawVanitySlot => false;
+
         public override void OnMouseHover(AccessorySlotType context)
         {
             switch (context)

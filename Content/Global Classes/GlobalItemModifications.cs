@@ -64,9 +64,9 @@ namespace CombinationsMod.GlobalClasses
 
         public override bool CanUseItem(Item item, Player player)
         {
-            if (ItemID.Sets.Yoyo[item.type])
+            if (ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99)
             {
-                return !player.ownedProjectileCounts.Contains(item.shoot);
+                return player.ownedProjectileCounts[item.shoot] == 0;   
             }
 
             return true;

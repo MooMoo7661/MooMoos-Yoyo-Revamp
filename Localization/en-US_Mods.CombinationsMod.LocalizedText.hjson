@@ -12,7 +12,7 @@ HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
 NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
 NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
 YoyoAbilitySnippet: "[c/6FD4FF:-=Yoyo Ability=-]"
-150YoyoRange: "[c/6EAE6E:+150 yoyo range]"
+150YoyoRange: "[c/6EAE6E:+400 yoyo range]"
 TrickSlot: Gives a slot for tricks
 PrefixWarning: Prefixes will not be applied to this item while in this slot
 SlotPrefix: Item prefixes will not apply
@@ -33,7 +33,7 @@ YoyoHits: yoyo hits
 AchievementsNotification:
 	'''
 	[MooMoo's Ultimate Yoyo Revamp]
-	This mod adds some custom acheiveements. To enable them, download "Achievements Mod".
+	This mod adds some custom achievements. To enable them, download "Achievements Mod".
 	'''
 
 Abilities: {
@@ -49,7 +49,6 @@ Abilities: {
 	Rally: Creates 3 swirling copies that deal 50% of the yoyo's damage
 	Code1: Creates 6 swirling copies that deal 50% of the yoyo's damage
 	Crowyo: Shoots black homing feathers that deal 40% of the yoyo's damage
-	Catacomb: Randomly shoots bones in an X shape
 	HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
 	Amarok: Shoots out 8 ice spikes every second that deal 60% of the yoyo's damage
 	Convergence: Shoots out every yoyo used in its creation
@@ -96,5 +95,10 @@ Abilities: {
 		Has 2 stages
 		First stage: Shoots lasers that deal 45% of the yoyo's damage
 		Second stage: Shoots cursed flames that deal 50% and inflict cursed inferno
+		'''
+	Catacomb:
+		'''
+		Produces a large shockwave that knocks back enemies every 20 hits
+		Shoots out bones upwards when the shockwave is triggered
 		'''
 }

@@ -51,10 +51,7 @@ Mods: {
 			DrillKeybind.DisplayName: Drill Keybind
 		}
 
-		Conditions: {
-			EaterOfWorldsOrBrain: Mods.CombinationsMod.Conditions.EaterOfWorldsOrBrain
-			MasterOrExpertMode: Mods.CombinationsMod.Conditions.MasterOrExpertMode
-		}
+		Conditions.EaterOfWorldsOrBrain: Mods.CombinationsMod.Conditions.EaterOfWorldsOrBrain
 
 		Configs: {
 			YoyoModConfig: {
@@ -127,6 +124,7 @@ Mods: {
 			}
 		}
 
+		# Don't translate this, the player will never see it. It will be a waste of time.
 		Projectiles: {
 			TrueCode3Projectile.DisplayName: True Code3 Projectile
 			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile

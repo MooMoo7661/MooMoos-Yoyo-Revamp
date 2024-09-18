@@ -213,7 +213,7 @@ AbilityRing: {
 	Tooltip:
 		'''
 		[c/FF00AB:Enables Yoyos to use their special abilities.]
-		Yoyos will show the requirements for triggering the ability.
+		Yoyos will show the requirements for triggering the ability
 		'''
 }
 
@@ -276,8 +276,8 @@ TerreneRing: {
 	DisplayName: Terrene Ring
 	Tooltip:
 		'''
-		[c/FF00AB:Enables Yoyos to use their special abilities.]
-		Yoyos will show the requirements for triggering the ability.
+		[c/FF00AB:Enables Yoyos to use their special abilities]
+		Yoyos will show the requirements for triggering the ability
 		Increases yoyo knockback
 		Slightly increases yoyo speed
 		Increases all yoyo damage by 5%
@@ -299,7 +299,7 @@ DarkBlueString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+1 yoyo speed]
 		'''
 }
@@ -309,7 +309,7 @@ DarkGreenString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+1 yoyo speed]
 		'''
 }
@@ -318,7 +318,7 @@ EclipseString: {
 	DisplayName: Eclipse String
 	Tooltip:
 		'''
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+2 yoyo speed]
 		Increases yoyo range
 		Yoyos create damaging swipes on hit
@@ -331,7 +331,7 @@ FrostbiteString: {
 		'''
 		Increases yoyo range
 		Counterweights inflict Frostbite
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+2 yoyo speed]
 		'''
 }
@@ -341,8 +341,8 @@ GolemsteelString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		Counterweights deal massive knockback and have increased damage.
-		[c/6EAE6E:+150 yoyo range]
+		Counterweights deal massive knockback and have increased damage
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+2 yoyo speed]
 		'''
 }
@@ -352,7 +352,7 @@ LightPinkString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+1 yoyo speed]
 		'''
 }
@@ -363,7 +363,7 @@ NaniteString: {
 		'''
 		Increases yoyo range
 		Yoyo strings become invisible
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+2 yoyo speed]
 		'''
 }
@@ -373,7 +373,7 @@ NebulaString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+550 yoyo range]
 		[c/6EAE6E:+3 yoyo speed]
 		[c/6EAE6E:+5% base yoyo damage]
 		'''
@@ -385,7 +385,7 @@ SlimyString: {
 		'''
 		Increases yoyo range
 		Yoyos create slime covered spikes
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+1 yoyo speed]
 		'''
 }
@@ -395,7 +395,7 @@ SolarString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+550 yoyo range]
 		[c/6EAE6E:+3 yoyo speed]
 		[c/6EAE6E:+5% base yoyo damage]
 		'''
@@ -422,17 +422,13 @@ SoulOfEclipse: {
 }
 
 Catacomb: {
-	DisplayName: Catacomb
+	DisplayName: The Catacomb
 	Tooltip: ""
 }
 
 ChristmasBulb: {
-	DisplayName: Christmas Bulb
-	Tooltip:
-		'''
-		Wrapped tightly with Christmas Tree lights
-		Smells like fresh pine
-		'''
+	DisplayName: Holiday Delight
+	Tooltip: Smells like pudding
 }
 
 CobaltYoyo: {
@@ -470,7 +466,7 @@ LeadYoyo: {
 }
 
 Mambele: {
-	DisplayName: Mambele
+	DisplayName: The Pumpkin Patcher
 	Tooltip:
 		'''
 		Coated in a rough grit
@@ -497,8 +493,7 @@ Smudge: {
 	DisplayName: Smudge
 	Tooltip:
 		'''
-		Does increased damage to spectral targets.
-		When in a graveyard biome, it receives a 2x damage boost marked by the emission of blue flames.
+		Wards off ghosts, poltergeists, and wraiths.
 		"Has a 6 second grace period."
 		'''
 }
@@ -544,7 +539,7 @@ DarkTealString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+1 yoyo speed]
 		'''
 }
@@ -555,7 +550,7 @@ GrapeString: {
 		'''
 		Increases yoyo range
 		Smells like grapes
-		[c/6EAE6E:+150 yoyo range]
+		[c/6EAE6E:+400 yoyo range]
 		[c/6EAE6E:+1 yoyo speed]
 		'''
 }
@@ -565,7 +560,7 @@ StardustString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+550 yoyo range]
 		[c/6EAE6E:+3 yoyo speed]
 		[c/6EAE6E:+5% base yoyo damage]
 		'''
@@ -576,7 +571,7 @@ VortexString: {
 	Tooltip:
 		'''
 		Increases yoyo range
-		[c/6EAE6E:+250 yoyo range]
+		[c/6EAE6E:+550 yoyo range]
 		[c/6EAE6E:+3 yoyo speed]
 		[c/6EAE6E:+5% base yoyo damage]
 		'''
@@ -675,13 +670,13 @@ StoneAge: {
 }
 
 DualYoyo: {
-	DisplayName: Yoyo Duo Mastery
+	DisplayName: Yoyo Mastery
 	Tooltip:
 		'''
 		High value trick
 		Allows the user to [c/E232D6:wield 2 different yoyos]
-		Extra yoyos created after the held one will inherit the type of the second yoyo
-		[c/FFFF4A:The second yoyo must be placed to the right of your held yoyo in the inventory]
+		Extra yoyos created after hitting an enemy will be the type of the second yoyo
+		[c/FFFF4A:The second yoyo must be placed one slot to the right of your held yoyo in the inventory]
 		Useful for debuff or lifesteal yoyos
 		'''
 }
@@ -714,7 +709,7 @@ LifestealTrick: {
 	Tooltip:
 		'''
 		High value trick
-		[c/FF4080:All yoyos will drain life on impact]
-		The higher the yoyo damage, the more life drained
+		[c/FF4080:All yoyos and counterweights will drain life on impact]
+		The higher the damage, the more life drained
 		'''
 }

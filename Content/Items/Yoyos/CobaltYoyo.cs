@@ -34,8 +34,6 @@ public class CobaltYoyo : ModYoyo
         Item.UseSound = new SoundStyle?(SoundID.Item1);
         Item.value = Item.sellPrice(0, 1, 68, 0);
         Item.shoot = ModContent.ProjectileType<CobaltYoyoProjectile>();
-
-
     }
 
     public override void AddRecipes()

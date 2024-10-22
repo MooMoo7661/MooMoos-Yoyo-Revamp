@@ -1,6 +1,7 @@
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
 using Terraria.ID;
+using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Accessories.Rings
 {

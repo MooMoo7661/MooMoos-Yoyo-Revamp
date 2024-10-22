@@ -2,9 +2,7 @@
 using CombinationsMod.Content.Items.Souls;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Rarities;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Accessories.Strings
 {

@@ -334,8 +334,8 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             else
             {
                 // Changing this causes the yoyo to be more elastic, or "floppy" when using.
-                // Vanilla sets this to 0.8, but I chose to do 3.25.
-                num7 = (int)((double)num7 * 3.25);
+                // Vanilla sets this to 0.8, but I chose to do 1.6.
+                num7 = (int)((double)num7 * 1.6f);
 
                 projectile.tileCollide = false;
                 Vector2 vector9 = player.Center - projectile.Center;

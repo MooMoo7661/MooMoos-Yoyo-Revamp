@@ -1,4 +1,5 @@
 ﻿using CombinationsMod.Content.Configs;
+using CombinationsMod.Content.Debuffs;
 using CombinationsMod.Content.Global_Classes.Projectiles;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.Explosions;
@@ -32,7 +33,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override bool InstancePerEntity => true;
         private bool isOriginalYoyo = false;
-        private int thornCounter = 0;
         private int explosionCounter = 0;
         private int homingCounter = 0;
         private int code2ExplosionCounter = 0;
@@ -44,6 +44,8 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private bool eocStage2 = false;
         private int eocHits = 0;
         private bool roar = false;
+
+        bool recall = false;
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
@@ -65,9 +67,15 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                                 for (int i = 0; i < 6; i++)
                                 {
-                                    Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<Code1Effect>(),
-                                    (int)(projectile.damage * 0.50f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).localAI[1] = i * 45;
+                                    Projectile code1 = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<Code1Effect>(),
+                                    (int)(projectile.damage * 0.50f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                    code1.localAI[1] = i * 45;
+                                    code1.usesIDStaticNPCImmunity = false;
+                                    code1.usesLocalNPCImmunity = true;
+                                    code1.localNPCHitCooldown = 30 * code1.MaxUpdates;
                                 }
+
+                                //140
                             }
                             break;
 
@@ -84,8 +92,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             {
                                 if (Main.myPlayer == projectile.owner)
                                 {
-                                    Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<RallyEffect>(),
-                                    (int)(projectile.damage / 2f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).localAI[1] = i * 90;
+                                    Projectile rally = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<RallyEffect>(),
+                                    (int)(projectile.damage / 2f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                    rally.localAI[1] = i * 90;
+                                    rally.usesIDStaticNPCImmunity = false;
+                                    rally.usesLocalNPCImmunity = true;
+                                    rally.localNPCHitCooldown = 30 * rally.MaxUpdates;
                                 }
                             }
                             break;
@@ -294,9 +306,11 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     case ProjectileID.TheEyeOfCthulhu:
                         eocHits++;
                         if (eocHits == 50)
-                        {
                             eocStage2 = true;
-                        }
+                        break;
+
+                    case ProjectileID.JungleYoyo:
+                        target.AddBuff(ModContent.BuffType<RootedDebuff>(), 180);
                         break;
                 }
             }
@@ -453,25 +467,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 switch (projectile.type) // Making vanilla yoyos do special things
                 {
-                    case ProjectileID.JungleYoyo:
-                        thornCounter++;
-                        if (thornCounter >= 35)
-                        {
-                            if (Main.myPlayer == projectile.owner)
-                            {
-                                Vector2 circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 6f;
-                                int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(),
-                                projectile.Center.X, projectile.Center.Y - 1f, circular.X,
-                                circular.Y, ProjectileID.Stinger, (int)(projectile.damage * 0.65f), 0,
-                                projectile.owner);
-                                Main.projectile[proj].friendly = true;
-                                Main.projectile[proj].hostile = false;
-                            }
-
-                            thornCounter = 0;
-                        }
-                        break;
-
                     case ProjectileID.Cascade:
                         if (Main.rand.NextBool(5))
                         {

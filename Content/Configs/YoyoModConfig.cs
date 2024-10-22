@@ -20,27 +20,32 @@ internal class YoyoModConfig : ModConfig
     [DefaultValue(true)]
     public bool AccessorySlotIndicators { get; set; }
     [Header("LargeChanges")]
-    [BackgroundColor(0, 255, 0)]
     [DefaultValue(true)]
     public bool VanillaYoyoEffects { get; set; }
 
-    [BackgroundColor(255, 255, 0)]
     [DefaultValue(true)]
     [ReloadRequired]
     public bool LoadModdedYoyos { get; set; }
 
-    [BackgroundColor(255, 255, 0)]
     [DefaultValue(true)]
     [ReloadRequired]
     public bool LoadModdedAccessories { get; set; }
 
-    [BackgroundColor(255, 255, 0)]
     [DefaultValue(true)]
     [ReloadRequired]
     public bool EnableModifiedYoyoBag { get; set; }
 
-    [BackgroundColor(255, 0, 0)]
     [DefaultValue(true)]
     [ReloadRequired]
     public bool LoadModdedItems { get; set; }
+
+    [Header("YoyoStats")]
+    [DefaultValue(true)]
+    public bool YoyoSpeed { get; set; }
+    [DefaultValue(true)]
+    public bool YoyoRange { get; set; }
+    [DefaultValue(true)]
+    public bool YoyoLifetime { get; set; }
+    [DefaultValue(true)]
+    public bool MaxHits { get; set; }
 }

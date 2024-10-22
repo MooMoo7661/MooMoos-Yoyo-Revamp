@@ -5,18 +5,7 @@ using CombinationsMod.Content.ModPlayers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria;
-using Terraria.ModLoader;
-using CombinationsMod.Content.Utility;
-using Terraria.GameContent;
-using Terraria.UI.Chat;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader.UI;
+using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Global_Classes
 {
@@ -41,7 +30,8 @@ namespace CombinationsMod.Content.Global_Classes
 
             if (ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99)
             {
-                
+                AddStatTooltips(item, ref tooltips);
+
                 if (Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType != 0)
                 {
                     if (ContentSamples.ProjectilesByType[Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType].ModProjectile is BaseDrill drill)
@@ -87,5 +77,40 @@ namespace CombinationsMod.Content.Global_Classes
                 tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MoreAccessorySlots")));
             }
         }
-    }
+
+        private void AddStatTooltips(Item item, ref List<TooltipLine> tooltips)
+        {
+            if (ModLoader.TryGetMod("YoyoStats", out _))
+                return;
+
+            Projectile proj = ContentSamples.ProjectilesByType[item.shoot];
+            var instance = ModContent.GetInstance<YoyoModConfig>();
+            string localPath = "Mods.CombinationsMod.LocalizedText.StatTooltips.";
+
+            int updates = proj.MaxUpdates;
+            if (proj.extraUpdates == 0) { updates = 1; }
+
+            float yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[item.shoot] * updates;
+            float yoyoRange = (float)Math.Round(ProjectileID.Sets.YoyosMaximumRange[item.shoot] / 16f, 1);
+            float yoyoLifetime = ProjectileID.Sets.YoyosLifeTimeMultiplier[item.shoot];
+            int maxHits = ContentSamples.ProjectilesByType[item.shoot].penetrate;
+
+            int index = tooltips.FindIndex(tip => tip.Name.StartsWith("Speed"));
+            if (index < 0)
+                index = tooltips.Count - 1;
+
+
+            if (instance.MaxHits)
+                tooltips.Insert(index, new TooltipLine(Mod, "Hits", maxHits > 0 ? Language.GetText(localPath + "Hits").WithFormatArgs(maxHits).Value : Language.GetText(localPath + "NoMaxHits").Value));
+
+            if (instance.YoyoLifetime)
+                tooltips.Insert(index, new TooltipLine(Mod, "Lifetime", yoyoLifetime > 0 ? Language.GetText(localPath + "Lifetime").WithFormatArgs(yoyoLifetime, yoyoLifetime > 1 ? "" : "s").Value : Language.GetText(localPath + "InfiniteLifetime").Value));
+
+            if (instance.YoyoRange)
+                tooltips.Insert(index, new TooltipLine(Mod, "Range", Language.GetText(localPath + "Range").WithFormatArgs(yoyoRange).Value));
+
+            if (instance.YoyoSpeed)
+                tooltips.Insert(index, new TooltipLine(Mod, "Speed", Language.GetText(localPath + "Speed").WithFormatArgs(yoyoSpeed).Value));
+        }
+   }
 }

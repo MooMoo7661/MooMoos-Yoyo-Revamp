@@ -15,7 +15,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         public int hitCounter = 0;
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 12f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 16f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 238.2f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.2f;
 
@@ -44,7 +44,10 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             {
                 foreach(NPC npc in Main.ActiveNPCs)
                 {
-                    if (npc.Distance(Projectile.Center) < 250f && !npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f)
+                    if (npc.Distance(Projectile.Center) > 250f)
+                        continue;
+
+                    if (!npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f)
                     {
                         npc.velocity -= npc.DirectionTo(Projectile.Center) * 8;
                         npc.velocity.Y -= 6f;

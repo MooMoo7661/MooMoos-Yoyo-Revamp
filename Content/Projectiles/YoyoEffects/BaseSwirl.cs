@@ -54,8 +54,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
             if (InheritsColor)
             {
                 return new(255, 255, 255, 255);
-            }
-
+            } 
+           
             return Color;
         }
 
@@ -81,6 +81,9 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
             if (Projectile.ai[1] != -1)
             {
                 Projectile proj = Main.projectile[(int)Projectile.ai[1]];
+
+                if (!proj.YoyoData().mainYoyo)
+                    Projectile.Kill();
 
                 if (proj.active && proj.owner == Projectile.owner && proj.aiStyle == 99 && !proj.counterweight)
                 {
@@ -109,11 +112,6 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
 
             Color color = Main.hslToRgb((4 * gradientSize + hueScrollRate * time) % 1, 1, 0.5f);
 
-            /* What is happening here is this:
-             1. Getting the crap to draw the textures in the right spot. I'm manually drawing because Projectile.scale is not synced between players.
-             2.
-
-            */
             if (TexturePathTransparent != null)
             {
                 Texture2D texture2 = (Texture2D)ModContent.Request<Texture2D>(TexturePathTransparent);
@@ -123,7 +121,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
                 Main.EntitySpriteDraw(texture2,
                     pos,
                     rectangle,
-                    new Color(0, 0, 0, 192), // 192 alpha
+                    new Color(0, 0, 0, 192),
                     Projectile.rotation,
                     drawOrigin,
                     Scale,

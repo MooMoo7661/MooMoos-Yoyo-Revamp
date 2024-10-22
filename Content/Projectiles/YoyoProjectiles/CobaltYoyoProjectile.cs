@@ -30,13 +30,12 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.scale = 1f;
         }
 
-        public override void PostAI()
+        public override void AI()
         {
-
-            if (Main.rand.NextBool(5))
+            if (!Projectile.YoyoData().mainYoyo)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.WaterCandle, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 0, default, 1f);
-            }
+
+            }    
         }
     }
 }

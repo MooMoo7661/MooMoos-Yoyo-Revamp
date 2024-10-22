@@ -3,6 +3,7 @@ using System.Reflection;
 using CombinationsMod.Content.Global_Classes.Projectiles;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.Explosions;
+using CombinationsMod.Content.Projectiles.Misc;
 using CombinationsMod.Content.Projectiles.TrickYoyos;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
 using CombinationsMod.Content.Utility;
@@ -282,7 +283,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override bool TileCollideStyle(Projectile projectile, ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
         {
-            return projectile.GetOwner().GetModPlayer<YoyoModPlayer>().phasingYoyos && projectile.IsYoyo();
+            if (projectile.GetOwner().GetModPlayer<YoyoModPlayer>().phasingYoyos && projectile.IsYoyo())
+                return false;
+
+            return true;
         }
     }
 }

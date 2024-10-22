@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CombinationsMod.Content.Global_Classes.Projectiles;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using static CombinationsMod.Content.ModSystems.CombinationsModSystem;
+using static MooMooLib.MooMooLibModsystem;
 
 namespace CombinationsMod.Content.Utility
 {
@@ -68,6 +65,24 @@ namespace CombinationsMod.Content.Utility
         public static Player GetOwner(this Projectile projectile)
         {
             return Main.player[projectile.owner];
+        }
+
+        public static void Register(this StringColor stringColor, Color color, int idx)
+        {
+            stringColor.setStringColor(color);
+            yoyoStringColorDictionary.TryAdd(idx, stringColor);
+        }
+
+        public static void Register(this StringTexture stringTexture, Asset<Texture2D> tex, int idx)
+        {
+            stringTexture.setStringTexture(tex);
+            yoyoStringDictionary.TryAdd(idx, stringTexture);
+        }
+
+        public static void Register(this LocalizedAbilityString abilityString, string value, int item)
+        {
+            abilityString.SetStringValue(value);
+            yoyoAbilityDictionary.TryAdd(item, abilityString);
         }
     }
 }

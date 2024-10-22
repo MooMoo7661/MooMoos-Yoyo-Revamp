@@ -1,15 +1,11 @@
 using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Projectiles.YoyoProjectiles;
 using CombinationsMod.Content.TrailSystem;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.UI.Chat;
+using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {

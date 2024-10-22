@@ -55,7 +55,8 @@ namespace CombinationsMod.Content.Drills
 
         public virtual void PostPickBlock(int x, int y)
         {
-
+            if (Main.rand.NextBool(2))
+                Dust.NewDust(new Vector2(x, y) * 16, 1, 1, DustID.TreasureSparkle);
         }
 
         public override void SetDefaults()

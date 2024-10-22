@@ -1,21 +1,14 @@
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.YoyoEffects;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
-using CombinationsMod.GlobalClasses.Projectiles;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
-
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
     public class Code3Projectile : ModProjectile
     {
         private int counter = 0;
-        private bool isOriginalYoyo;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
@@ -24,8 +17,6 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.2f;
         }
 
         public override void SetDefaults()
@@ -50,7 +41,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
             if (player.GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
-                if (counter == 20 && isOriginalYoyo && Main.myPlayer == Projectile.owner)
+                if (counter == 20 && Projectile.YoyoData().mainYoyo && Main.myPlayer == Projectile.owner)
                 {
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<RedShieldSwirl2>(), (int)(Projectile.damage * 0.75f), 0, Main.myPlayer, 0, Projectile.whoAmI);
@@ -65,9 +56,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
+            if (Projectile.YoyoData().mainYoyo && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
-                isOriginalYoyo = true;
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                         ModContent.ProjectileType<RedShieldSwirl>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
                 Main.projectile[proj].rotation = 3;

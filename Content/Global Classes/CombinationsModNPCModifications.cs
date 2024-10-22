@@ -1,15 +1,14 @@
-﻿using CombinationsMod.Content.Items.Accessories.Strings;
-using CombinationsMod.Content.NPCS;
-using Microsoft.Xna.Framework;
+﻿using CombinationsMod.Content.Debuffs;
+using CombinationsMod.Content.Items.Accessories.Strings;
 using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CombinationsMod.GlobalClasses
 {
     public class CombinationsModNPCModifications : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
+
+        int timer = 60;
         public override void ModifyShop(NPCShop shop)
         {
             if (shop.NpcType == NPCID.SkeletonMerchant)
@@ -40,69 +39,24 @@ namespace CombinationsMod.GlobalClasses
                 shop.Add(ModContent.ItemType<NaniteString>(), Condition.DownedGolem);
         }
 
-        public override void GetChat(NPC npc, ref string chat)
+        public override void PostAI(NPC npc)
         {
-            if (npc.type == NPCID.Merchant || npc.type == NPCID.Cyborg || npc.type == NPCID.TravellingMerchant || npc.type == NPCID.GoblinTinkerer)
+            if (npc.HasBuff(ModContent.BuffType<RootedDebuff>()) && Main.netMode != NetmodeID.MultiplayerClient)
             {
-                foreach(NPC npcCheck in Main.ActiveNPCs)
+                timer--;
+                if (timer <= 0)
                 {
-                    if (npc.type == ModContent.NPCType<YoyoMerchant>())
-                    {
-                        if (Main.rand.NextBool(3))
-                        {
-
-                        }
-                    }
-                }
-
-                for (int i = 0; i < Main.maxNPCs; i++)
-                {
-                    NPC npcCheck = Main.npc[i];
-
-                    if (npcCheck.type == ModContent.NPCType<YoyoMerchant>())
-                    {
-                        if (Main.rand.NextBool(3))
-                        {
-                            chat = "The thing I hate most about " + npcCheck.FullName + " is that I can never tell if he's smiling or not!";
-                        }
-                    }
+                    var dir = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 8f;
+                    var proj = Projectile.NewProjectileDirect(Projectile.GetSource_NaturalSpawn(), npc.Center, Vector2.Zero, ProjectileID.Seed, 12, 0f);
+                    proj.usesLocalNPCImmunity = false;
+                    proj.localNPCHitCooldown = 10;
+                    proj.timeLeft = 12;
+                    proj.scale = 0.01f;
+                    timer = 30;
                 }
             }
-
-            if (npc.type == ModContent.NPCType<YoyoMerchant>() && npc.GivenName == "James Boned")
-            {
-                if (Main.rand.NextBool(5))
-                {
-                    chat = "The name's Boned. James Boned.";
-                }
-            }
-
-            if (npc.type == NPCID.SkeletonMerchant)
-            {
-                bool hasAYoyo = false;
-
-                foreach(Player player in Main.player)
-                {
-                    if (!player.active)
-                    {
-                        continue;
-                    }
-
-                    for (int i = 0; i < player.inventory.Length; i++)
-                    {
-                        Item item = player.inventory[i];
-                        if (ItemID.Sets.Yoyo[item.type])
-                        {
-                            hasAYoyo = true;
-                        }
-                    }
-                }
-
-                if (!hasAYoyo && Main.rand.NextBool(2))
-                {
-                    chat = "Have you seen my brother? I bet if you collect a yoyo, he might decide to move in.";
-                }
-            }
+            else
+                timer = 60;
         }
     }
 }

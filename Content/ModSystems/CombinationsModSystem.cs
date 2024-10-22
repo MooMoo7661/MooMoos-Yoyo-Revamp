@@ -12,7 +12,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace CombinationsMod
+namespace CombinationsMod.Content.ModSystems
 {
     public partial class CombinationsModSystem : ModSystem
     {

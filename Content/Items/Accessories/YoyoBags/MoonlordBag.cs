@@ -99,6 +99,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            modPlayer.phasingYoyos = true;
             modPlayer.moonlordBag = true;
             modPlayer.stringSlot = true;
             modPlayer.gloveSlot = true;
@@ -150,6 +151,8 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 
             tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoShimmer")));
             tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TrickSlot")));
+
+            tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MoonlordBag")));
         }
     }
 }

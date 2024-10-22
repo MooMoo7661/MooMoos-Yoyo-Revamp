@@ -81,8 +81,9 @@ Mods: {
 				}
 
 				Headers: {
-					LargeChanges: Large Changes Header
-					SmallChanges: Small Changes Header
+					LargeChanges: Large Changes
+					SmallChanges: Small Changes
+					YoyoStats: Yoyo Stats Tooltips
 				}
 
 				UpscaleYoyoGlove: {
@@ -112,7 +113,7 @@ Mods: {
 
 				YoyoProjectileID: {
 					Tooltip: ""
-					Label: Yoyo Projectile I D
+					Label: Yoyo Projectile ID
 				}
 
 				YoyoStringStats: {
@@ -121,6 +122,26 @@ Mods: {
 				}
 
 				DisplayName: Yoyo Mod Config
+
+				YoyoSpeed: {
+					Tooltip: ""
+					Label: Yoyo Speed
+				}
+
+				YoyoRange: {
+					Label: Yoyo Range
+					Tooltip: ""
+				}
+
+				YoyoLifetime: {
+					Label: Yoyo Lifetime
+					Tooltip: ""
+				}
+
+				MaxHits: {
+					Label: Max Hits
+					Tooltip: ""
+				}
 			}
 		}
 
@@ -267,7 +288,6 @@ Mods: {
 			CobaltDrill.DisplayName: Cobalt Drill
 			CelestialDrill.DisplayName: Celestial Drill
 			AdamantiteDrill.DisplayName: Adamantite Drill
-			CustomCounterweightTest.DisplayName: Custom Counterweight Test
 		}
 
 		NPCs: {
@@ -297,6 +317,13 @@ Mods: {
 			SpeedInfo.DisplayName: Speed Info
 			IDInfo.DisplayName: I D Info
 			HitInfo.DisplayName: Hit Info
+		}
+
+		Buffs: {
+			RootedDebuff: {
+				DisplayName: Rooted Debuff
+				Description: Mods.CombinationsMod.Buffs.RootedDebuff.Description
+			}
 		}
 	}
 }

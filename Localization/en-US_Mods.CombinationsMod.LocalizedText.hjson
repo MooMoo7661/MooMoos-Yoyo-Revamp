@@ -1,31 +1,35 @@
-CounterweightPerYoyo: Each yoyo that hits a target will produce a counterweight
-YoyoShimmer: Yoyos can phase through blocks
-MoreAccessorySlots: Gives the user more accessory slots for yoyos
-DrillsAndCounterweights: Gives slots for Yoyo Drills and Counterweights
-SupportGlove: Gives slots for Support Gloves
-YoyoRings: Gives slots for Yoyo Rings
-AdditionalYoyo: Creates one extra yoyo when paired with the yoyo glove
-FastRecall: Yoyos are recalled faster
-MasterYoyoSkills: Gives the user master yoyo skills
-IncreasedYoyoKnockback: Increased yoyo knockback
-HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
-NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
-NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
-YoyoAbilitySnippet: "[c/6FD4FF:-=Yoyo Ability=-]"
-150YoyoRange: "[c/6EAE6E:+400 yoyo range]"
-TrickSlot: Gives a slot for tricks
-PrefixWarning: Prefixes will not be applied to this item while in this slot
+# Accessory Slots
 SlotPrefix: Item prefixes will not apply
+PrefixWarning: Prefixes will not be applied to this item while in this slot
+TrickSlot: Gives a slot for tricks
 VanityStrings: Vanity Yoyo Strings
 YoyoStrings: Yoyo Strings
 RightHand: Right Hand
 YoyoGloves: Yoyo Gloves
-LeftHand: Left hand
 SupportGloves: Support Gloves
-DrillCasings: Drill Casings
-YoyoCounterweights: Yoyo Counterweights
+LeftHand: Left hand
 Rings: Rings
 Tricks: Tricks
+DrillCasings: Drill Casings
+YoyoCounterweights: Yoyo Counterweights
+# Yoyo Bags
+MoreAccessorySlots: Gives the user more accessory slots for yoyos
+DrillsAndCounterweights: Gives slots for Yoyo Drills and Counterweights
+SupportGlove: Gives slots for Support Gloves
+YoyoRings: Gives slots for Yoyo Rings
+# Yoyo Ability Info
+YoyoAbilitySnippet: "[c/6FD4FF:-Yoyo Ability-]"
+HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
+NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
+NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
+# Misc
+CounterweightPerYoyo: Each yoyo that hits a target will produce a counterweight
+YoyoShimmer: Yoyos can phase through blocks
+AdditionalYoyo: Creates one extra yoyo when paired with the yoyo glove
+FastRecall: Yoyos are recalled faster
+MasterYoyoSkills: Gives the user master yoyo skills
+IncreasedYoyoKnockback: Increased yoyo knockback
+150YoyoRange: "[c/6EAE6E:+400 yoyo range]"
 RightClickInfo: Hold {0} to drill
 Mouse2: Right Click
 CurrentDrill: "Current Drill: "
@@ -46,12 +50,17 @@ Abilities: {
 	Cascade: Creates an explosion every 5 hits, which does 150% of the yoyo's damage
 	Valor: Creates homing water bolts that explode on contact, dealing area damage
 	EvilYoyos: Heals the user on hit
-	Rally: Creates 3 swirling copies that deal 50% of the yoyo's damage
-	Code1: Creates 6 swirling copies that deal 50% of the yoyo's damage
+	Rally: When thrown out, creates 3 swirling copies of the yoyo that deal 50% of the yoyo's damage
 	Crowyo: Shoots black homing feathers that deal 40% of the yoyo's damage
 	HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
 	Amarok: Shoots out 8 ice spikes every second that deal 60% of the yoyo's damage
 	Convergence: Shoots out every yoyo used in its creation
+	Amazon: Causes seeds to explode inside targets, dealing repeated damage
+	Code1:
+		'''
+		Creates 6 swirling copies that deal 50% of the yoyo's damage
+		When recalled, the copies will drop and act as stationary sticky bombs
+		'''
 	ChristmasBulb:
 		'''
 		Shoots out 8 explosive ornaments after 30 hits
@@ -101,4 +110,13 @@ Abilities: {
 		Produces a large shockwave that knocks back enemies every 20 hits
 		Shoots out bones upwards when the shockwave is triggered
 		'''
+}
+
+StatTooltips: {
+	Range: "{0} tiles base range"
+	Speed: "{0} base speed"
+	Hits: "{0} maximum hits"
+	NoMaxHits: No maximum hits
+	Lifetime: "{0} second{1} lifetime"
+	InfiniteLifetime: Infinite lifetime
 }

@@ -66,7 +66,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void AI()
         {
-            if (Projectile.ai[2] != 0)
+            if (!Projectile.YoyoData().mainYoyo)
                 return;
 
             float pullRadius = 400f;

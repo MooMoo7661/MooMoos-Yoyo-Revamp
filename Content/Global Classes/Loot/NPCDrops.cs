@@ -3,7 +3,6 @@ using CombinationsMod.Content.Items.Accessories.Drills;
 using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.Items.Accessories.YoyoBags;
 using CombinationsMod.Content.Items.Misc;
-using CombinationsMod.Content.Items.Souls;
 using CombinationsMod.Content.Items.Yoyos;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -40,11 +39,14 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
                 case NPCID.Reaper or NPCID.Eyezor or NPCID.Frankenstein or NPCID.SwampThing or NPCID.Vampire or
-                     NPCID.CreatureFromTheDeep or NPCID.Fritz or NPCID.ThePossessed or NPCID.Mothron or NPCID.MothronSpawn or
+                     NPCID.CreatureFromTheDeep or NPCID.Fritz or NPCID.ThePossessed or NPCID.MothronSpawn or
                      NPCID.Butcher or NPCID.DeadlySphere or NPCID.DrManFly or NPCID.Nailhead or NPCID.Psycho:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulOfEclipse>(), 5));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroRing>(), 35));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroYoyo>(), 35));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EclipseShard>(), 5));
+                    break;
+
+                case NPCID.Mothron:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroRing>(), 2));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenHeroYoyo>(), 2));
                     break;
 
                 case NPCID.IceQueen:

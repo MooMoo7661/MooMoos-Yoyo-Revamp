@@ -5,7 +5,7 @@
 [![Discord Icon]][Discord]&emsp;[![Steam Icon]][Steam Workshop Link]&emsp;
 
 ## Included Features
-Rewrite of the yoyo bag system, allowing users to customize their strings, gloves, and more, stat changes to vanilla yoyos, buff to yoyo strings in general, and many accessorie
+Rewrite of the yoyo bag system, allowing users to customize their strings, gloves, and more, stat changes to vanilla yoyos, buff to yoyo strings in general, and many accessories
 
 ### Crossmod
 Please see the wiki for crossmod possibilities

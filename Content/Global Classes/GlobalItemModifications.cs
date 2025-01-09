@@ -33,6 +33,20 @@ namespace CombinationsMod.GlobalClasses
             }
         }
 
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            if (ItemSets.YoyoBag[equippedItem.type] && ItemSets.YoyoBag[incomingItem.type])
+                return false;
+
+            if (ItemSets.YoyoString[equippedItem.type] && ItemSets.YoyoString[incomingItem.type])
+                return false;
+
+            if (ItemSets.DrillCasing[equippedItem.type] && ItemSets.DrillCasing[incomingItem.type])
+                return false;
+
+            return true;
+        }
+
         public override void UpdateInventory(Item item, Player player)
         {
             if (ItemID.Sets.Yoyo[item.type] && player.HeldItem == item)
@@ -59,6 +73,11 @@ namespace CombinationsMod.GlobalClasses
             if (modPlayer.solarString || modPlayer.stardustString || modPlayer.vortexString || modPlayer.nebulaString && (ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99 || ItemID.Sets.Yoyo[item.type]))
             {
                 damage *= 1.05f;
+            }
+
+            if (modPlayer.shimmerBag)
+            {
+                damage *= 1.025f;
             }
         }
 

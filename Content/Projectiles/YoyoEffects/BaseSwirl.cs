@@ -11,7 +11,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
     public abstract class BaseSwirl : ModProjectile
     {
         protected virtual bool DoesFrostburnDamage { get; }
-
+        
+        protected virtual BlendState BlendState { get; set; }
         protected abstract float Scale { get; }
         protected abstract float Rotation { get; }
         protected abstract int Width { get; }
@@ -72,8 +73,15 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
             behindNPCs.Add(index);
         }
 
+        public virtual void AI2()
+        {
+
+        }
+
         public override void AI()
         {
+            AI2();
+
             Projectile.rotation -= Rotation;
             Projectile.scale = Scale;
             Projectile.netUpdate = true;
@@ -82,7 +90,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
             {
                 Projectile proj = Main.projectile[(int)Projectile.ai[1]];
 
-                if (!proj.YoyoData().mainYoyo)
+                if (!proj.IsYoyo() || !proj.YoyoData().MainYoyo)
                     Projectile.Kill();
 
                 if (proj.active && proj.owner == Projectile.owner && proj.aiStyle == 99 && !proj.counterweight)
@@ -97,6 +105,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
                     Projectile.Kill();
                 }
             }
+            else
+                Projectile.Kill();
         }
 
         private void DrawDisc()
@@ -129,7 +139,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
             }
 
             Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState ?? BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
             Main.EntitySpriteDraw(texture,
                 pos,
                 rectangle,

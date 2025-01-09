@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,6 +15,7 @@ using Terraria.UI.Chat;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
+    [LegacyName("TrueCode3")]
     public class TrueAbbhor : ModYoyo
     {
         public override bool CanBeUnloaded => true;

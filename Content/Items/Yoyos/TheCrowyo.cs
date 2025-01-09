@@ -40,7 +40,7 @@ namespace CombinationsMod.Content.Items.Yoyos
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<EclipseBar>(), 10)
+                .AddIngredient(ModContent.ItemType<EclipseBar>(), 5)
                 .AddIngredient(ItemID.SoulofNight, 10)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();

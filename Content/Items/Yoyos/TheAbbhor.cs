@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
+    [LegacyName("Code3")]
     public class TheAbbhor : ModYoyo
     {
         public override bool CanBeUnloaded => true;
@@ -47,7 +48,7 @@ namespace CombinationsMod.Content.Items.Yoyos
             recipe.AddIngredient(ItemID.Valor);
             recipe.AddIngredient(ItemID.CrimsonYoyo);
             recipe.AddIngredient(ItemID.JungleYoyo);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
 
             Recipe recipe2 = CreateRecipe();
@@ -55,7 +56,7 @@ namespace CombinationsMod.Content.Items.Yoyos
             recipe2.AddIngredient(ItemID.Valor);
             recipe2.AddIngredient(ItemID.CorruptYoyo);
             recipe2.AddIngredient(ItemID.JungleYoyo);
-            recipe2.AddTile(TileID.Anvils);
+            recipe2.AddTile(TileID.DemonAltar);
             recipe2.Register();
         }
 

@@ -1,46 +1,44 @@
 using CombinationsMod.Content.Configs;
-using CombinationsMod.Content.Items.Bars;
 using CombinationsMod.Content.Projectiles.YoyoProjectiles;
 using CombinationsMod.Content.TrailSystem;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.UI.Chat;
+using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class BlackHole : ModYoyo
+    // Yeah I know I misspelled "Convergence".
+    [LegacyName("Convergance")]
+    public class Convergence : ModYoyo
     {
         public override bool CanBeUnloaded => true;
 
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.Yoyo[Type] = true;
+            ItemID.Sets.Yoyo[Item.type] = true;
         }
 
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.width = 36;
-            Item.height = 32;
+            Item.width = 40;
+            Item.height = 34;
             Item.useAnimation = 25;
             Item.useTime = 25;
-            Item.shootSpeed = 3f;
-            Item.knockBack = 15f;
-            Item.damage = 105;
-            Item.rare = ItemRarityID.Lime;
+            Item.shootSpeed = 32f;
+            Item.knockBack = 8f;
+            Item.damage = 210;
+            Item.crit = 19;
+            Item.rare = ItemRarityID.Red;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.UseSound = new SoundStyle?(SoundID.Item1);
-            Item.value = Item.sellPrice(0, 17, 0, 0);
-            Item.shoot = ModContent.ProjectileType<BlackHoleProjectile>();
+            Item.value = Item.sellPrice(0, 50, 90, 83);
+            Item.shoot = ModContent.ProjectileType<ConvergenceProjectile>();
 
             manager = new CompactParticleManager(
             particle =>
@@ -84,24 +82,24 @@ namespace CombinationsMod.Content.Items.Yoyos
         {
             if (line.Name == "ItemName" && line.Mod == "Terraria")
             {
-                Color color = Color.Lerp(Color.Purple, Color.DarkBlue, (MathF.Sin(Main.GlobalTimeWrappedHourly * 0.7f) + 1) / 2f);
+                Color color = Color.Lerp(new Color(236, 37, 92), Color.HotPink, (MathF.Sin(Main.GlobalTimeWrappedHourly * 1.3f) + 1) / 2f);
 
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.Additive);
+
                 Vector2 bounds = FontAssets.MouseText.Value.MeasureString(line.Text);
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.AlphaBlend);
 
 
-                if (Main.GameUpdateCount % 9 == 0)
+                if (Main.GameUpdateCount % 2 == 0)
                 {
                     bounds.Y -= 10;
                     Vector2 pos = new Vector2(0, 5) + new Vector2(Main.rand.NextFloat(bounds.X), Main.rand.NextFloat(bounds.Y));
-                    Color color2 = Color.MediumPurple;
-                    manager.AddParticle(pos, (pos - bounds / 2).SafeNormalize(Vector2.UnitY) * 1, 0f, 5f, 1f, color2);
+                    manager.AddParticle(pos, (pos - bounds / 2).SafeNormalize(Vector2.UnitY) * 1, 0f, 5f, 1f, color);
                 }
                 manager.Update();
 
                 ChatManager.DrawColorCodedStringShadow(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
-                    new Vector2(line.X, line.Y), Color.WhiteSmoke, 0f, Vector2.Zero, line.BaseScale);
+                    new Vector2(line.X, line.Y), Color.White, 0f, Vector2.Zero, line.BaseScale);
 
                 ChatManager.DrawColorCodedString(Main.spriteBatch, FontAssets.MouseText.Value, line.Text,
                     new Vector2(line.X, line.Y), color, 0f, Vector2.Zero, Vector2.One);
@@ -109,6 +107,9 @@ namespace CombinationsMod.Content.Items.Yoyos
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.Additive);
                 manager.Draw(Main.spriteBatch, new Vector2(line.X, line.Y));
                 TrailSystem.Utils.Reload(Main.spriteBatch, BlendState.AlphaBlend);
+
+
+
                 return false;
             }
             return base.PreDrawTooltipLine(line, ref yOffset);
@@ -116,12 +117,33 @@ namespace CombinationsMod.Content.Items.Yoyos
 
         public override void AddRecipes()
         {
+
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<TheTempest>())
-                .AddIngredient(ItemID.BeetleHusk, 5)
-                .AddIngredient(ModContent.ItemType<EclipseBar>(), 5)
-                .AddIngredient(ItemID.SoulofNight, 20)
-                .AddTile(TileID.MythrilAnvil)
+                .AddIngredient(ItemID.WoodYoyo)
+                .AddRecipeGroup(CombinationsModSystem.ironYoyoGroup)
+                .AddIngredient(ItemID.Rally)
+                .AddIngredient(ModContent.ItemType<ThinMint>())
+                .AddIngredient(ModContent.ItemType<Catacomb>())
+                .AddIngredient(ModContent.ItemType<SwarmSpinner>())
+                .AddIngredient(ItemID.Code1)
+                .AddRecipeGroup(CombinationsModSystem.cobaltYoyoGroup)
+                .AddRecipeGroup(CombinationsModSystem.mythrilYoyoGroup)
+                .AddIngredient(ItemID.Chik)
+                .AddIngredient(ItemID.FormatC)
+                .AddIngredient(ItemID.HelFire)
+                .AddIngredient(ItemID.Amarok)
+                .AddIngredient(ItemID.Gradient)
+                .AddIngredient(ItemID.Yelets)
+                .AddIngredient(ItemID.RedsYoyo)
+                .AddIngredient(ItemID.ValkyrieYoyo)
+                .AddIngredient(ModContent.ItemType<HolidayDelight>())
+                .AddIngredient(ModContent.ItemType<PumpkinPatcher>())
+                .AddIngredient(ItemID.Kraken)
+                .AddIngredient(ItemID.TheEyeOfCthulhu)
+                .AddIngredient(ModContent.ItemType<BlackHole>())
+                .AddIngredient(ModContent.ItemType<CultistYoyo>())
+                .AddIngredient(ItemID.Terrarian)
+                .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }
 
@@ -132,7 +154,7 @@ namespace CombinationsMod.Content.Items.Yoyos
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Lighting.AddLight(Item.Center, Color.Purple.ToVector3() * 2.3f);
+            Lighting.AddLight(Item.Center, Color.MediumPurple.ToVector3() * 2.3f);
 
             Texture2D tex = TextureAssets.Item[Type].Value;
 
@@ -142,14 +164,13 @@ namespace CombinationsMod.Content.Items.Yoyos
             {
                 float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly / 2.4f * MathF.Tau / 2f) + 0.5f;
                 cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
-                Color color = Color.Purple;
+                Color color = Color.White * 0.2f;
                 color *= 1f - cloneImageDistance * 0.2f;
                 color.A = 0;
                 cloneImageDistance *= 4;
                 Vector2 drawPos = Item.Center + (i * MathF.Tau).ToRotationVector2() * (cloneImageDistance + 2f) - Main.screenPosition;
                 Main.EntitySpriteDraw(tex, drawPos, null, color, rotation, tex.Size() / 2, scale, SpriteEffects.None);
             }
-            Item.Size = new(60, 46);
             return false;// base.PreDrawInWorld(spriteBatch, lightColor, alphaColor, ref rotation, ref scale, whoAmI);
         }
 
@@ -162,7 +183,7 @@ namespace CombinationsMod.Content.Items.Yoyos
         //    {
         //        float cloneImageDistance = MathF.Cos(Main.GlobalTimeWrappedHourly / 2.4f * MathF.Tau / 2f) + 0.5f;
         //        cloneImageDistance = MathHelper.Max(cloneImageDistance, 0.3f);
-        //        Color color = Color.Purple * 0.4f;
+        //        Color color = Color.MediumPurple * 0.4f;
         //        color *= 1f - cloneImageDistance * 0.2f;
         //        color.A = 0;
         //        cloneImageDistance *= 3;

@@ -78,8 +78,7 @@ namespace CombinationsMod.Content.Items.Yoyos
         );
         }
 
-
-
+        [CloneByReference]
         CompactParticleManager manager;
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {

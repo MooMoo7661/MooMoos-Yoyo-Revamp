@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Reflection;
 using CombinationsMod.Content.Global_Classes.Projectiles;
+using CombinationsMod.Content.Items.Yoyos;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.Explosions;
 using CombinationsMod.Content.Projectiles.Misc;
 using CombinationsMod.Content.Projectiles.TrickYoyos;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
+using CombinationsMod.Content.Projectiles.YoyoProjectiles;
 using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using YoyoStringLib;
 
 namespace CombinationsMod.GlobalClasses.Projectiles
 {
-
     public class GlobalProjectileModifications : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
@@ -23,9 +25,15 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private int slimeThornCounter = 0;
         private int lifestealCooldown = 0;
 
+        bool cascadeGreekFire = false;
+        bool yoyoOrnament = false;
+
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             lifestealCooldown += Main.rand.Next(10);
+
+            if (!projectile.TryGetOwner(out _))
+                return;
 
             Player player = projectile.GetOwner();
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
@@ -46,6 +54,19 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     Vector2.Zero, ModContent.ProjectileType<World1>(), (int)(projectile.damage * 0.3f), 0, Main.myPlayer, 0, projectile.whoAmI);
                 }
             }
+
+            if (projectile.type == ProjectileID.SantaBombs && source.Context == "ChristmasBulb")
+            {
+                yoyoOrnament = true;
+            }
+
+            if (projectile.type == ProjectileID.GreekFire1 || projectile.type == ProjectileID.GreekFire2 || projectile.type == ProjectileID.GreekFire3)
+            {
+                if(source is not null && source.Context == "Cascade")
+                {
+                    cascadeGreekFire = true;
+                }
+            }
         }
 
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
@@ -62,14 +83,17 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Player player = projectile.GetOwner();
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            if (!projectile.TryGetOwner(out _))
+                return;
 
             if (projectile.IsYoyo())
             {
-                projectile.GetGlobalProjectile<YoyoDataHouse>().hits++;
+                Player player = projectile.GetOwner();
+                YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+                projectile.GetGlobalProjectile<YoyoDataHouse>().Hits++;
    
-                if (projectile.YoyoData().mainYoyo)
+                if (projectile.YoyoData().MainYoyo)
                 {
                     modPlayer.HitCounter++;
 
@@ -97,6 +121,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             }
             else if (projectile.IsCounterweight())
             {
+                Player player = projectile.GetOwner();
+                YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+
                 if (modPlayer.golemString && Main.myPlayer == projectile.owner)
                 {
                     Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<EclipseExplosion>(), 84, 0, projectile.owner);
@@ -111,14 +139,21 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 if (Main.rand.NextBool(2))
                     target.AddBuff(BuffID.Poisoned, 240);
             }
+            else if ((projectile.type == ProjectileID.GreekFire1 || projectile.type == ProjectileID.GreekFire2 || projectile.type == ProjectileID.GreekFire3) && cascadeGreekFire)
+            {
+                target.AddBuff(BuffID.OnFire, 180);
+            }
         }
         public override void AI(Projectile projectile)
         {
-            Player player = projectile.GetOwner();
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            if (!projectile.TryGetOwner(out _))
+                return;
 
             if (projectile.IsYoyo())
             {
+                Player player = projectile.GetOwner();
+                YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
                 if (lifestealCooldown < 15 + (projectile.MaxUpdates * 10) + (projectile.usesLocalNPCImmunity ? projectile.localNPCHitCooldown * 0.7f : 0))
                     lifestealCooldown++;
 
@@ -144,6 +179,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void PostAI(Projectile projectile)
         {
+            if (!projectile.TryGetOwner(out _))
+                return;
+
             Player player = projectile.GetOwner();
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
@@ -266,8 +304,24 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         // Resetting counters when the yoyo is killed.
         public override void OnKill(Projectile projectile, int timeLeft)
         {
-            if (projectile.IsYoyo() && projectile.YoyoData().mainYoyo)
+            if (!projectile.TryGetOwner(out _))
+                return;
+            
+            if (projectile.IsYoyo() && projectile.YoyoData().MainYoyo)
                 projectile.GetOwner().GetModPlayer<YoyoModPlayer>().HitCounter = 0;
+
+            if (yoyoOrnament)
+            {
+                for (int i = Main.rand.Next(0, 3); i < 4; i++)
+                {
+                    var proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(),
+                    projectile.Center, Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(3f, 4.5f), ProjectileID.OrnamentHostileShrapnel, (int)(projectile.damage * 0.5f), 1f, projectile.owner);
+                    proj.friendly = true;
+                    proj.hostile = false;
+                    proj.usesIDStaticNPCImmunity = true;
+                    proj.idStaticNPCHitCooldown = 20;
+                }
+            }
         }
 
         // Preventing recalling yoyos from dealing damage
@@ -275,10 +329,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         {
             if (projectile.aiStyle == 99)
             {
-                return projectile.ai[0] != -1;
+                return projectile.ai[0] != -1 ? null : false;
             }
 
-            return true;
+            return null;
         }
 
         public override bool TileCollideStyle(Projectile projectile, ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)

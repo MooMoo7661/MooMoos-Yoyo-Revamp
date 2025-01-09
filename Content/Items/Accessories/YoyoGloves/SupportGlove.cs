@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.YoyoGloves
 {
-    public class SupportGlove : ItemLoader
+    public class SupportGlove : YoyoModItemLoader
     {
         public override void SetDefaults()
         {
@@ -24,6 +24,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoGloves
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.supportGlove = true;
+            modPlayer.YoyoAmountModifier += 1;
         }
 
         public override bool IsLoadingEnabled(Mod mod)

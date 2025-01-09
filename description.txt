@@ -21,7 +21,7 @@ If you wish to join the Discord, click this link! > https://discord.gg/G5cbT7tj9
 
 [h1][b]Huge thanks to the following![/b][/h1]
 
-otterly - [b[Lead spriter[/b]
+otterly - [b]Lead spriter[/b]
 Dominick - Various other sprites
 David F. Dev - Wrote the script for the Yoyo Drills
 Turbanik - Supplied pretty much all of the special effect sprites

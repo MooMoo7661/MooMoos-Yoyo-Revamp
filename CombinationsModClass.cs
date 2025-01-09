@@ -44,7 +44,7 @@ namespace CombinationsMod
                 mod.Call("AddAchievement", this, "Code1Achievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementCode1", null, false, true, 1f, new string[] { "Collect_" + ItemID.Code1 });
                 mod.Call("AddAchievement", this, "AbbhorAchievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementAbbhor", null, false, false, 2f, new string[] { "Collect_" + ItemType<TheAbbhor>() });
                 mod.Call("AddAchievement", this, "Code2Achievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementCode2", "CombinationsMod/Content/Crossmod/Achievements/RareBorder", false, true, 3f, new string[] { "Collect_" + ItemID.Code2 });
-                mod.Call("AddAchievement", this, "ConverganceAchievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementConvergance", "CombinationsMod/Content/Crossmod/Achievements/SpecialBorder", false, true, 4f, new string[] { "Collect_" + ItemType<Convergance>() });
+                mod.Call("AddAchievement", this, "ConvergenceAchievement", AchievementCategory.Collector, "CombinationsMod/Content/Crossmod/Achievements/AchievementConvergence", "CombinationsMod/Content/Crossmod/Achievements/SpecialBorder", false, true, 4f, new string[] { "Collect_" + ItemType<Convergence>() });
             }
             else
             {

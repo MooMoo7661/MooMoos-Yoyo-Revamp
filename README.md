@@ -1,4 +1,4 @@
-﻿﻿Github is available here (for those who decompiled the mod) => https://github.com/MooMoo7661/MooMoos-Yoyo-Revamp
+﻿Github is available here (for those who decompiled the mod) => https://github.com/MooMoo7661/MooMoos-Yoyo-Revamp
 
 # MooMoo's Ultimate Yoyo Revamp
 

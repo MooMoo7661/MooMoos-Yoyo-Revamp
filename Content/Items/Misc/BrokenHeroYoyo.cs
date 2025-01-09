@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace CombinationsMod.Content.Items.Misc;
 
-public class BrokenHeroYoyo : ItemLoader
+public class BrokenHeroYoyo : YoyoModItemLoader
 {
     public override void SetDefaults()
     {

@@ -3,7 +3,6 @@ using CombinationsMod.Content.Global_Classes.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using static CombinationsMod.Content.ModSystems.CombinationsModSystem;
-using static MooMooLib.MooMooLibModsystem;
 
 namespace CombinationsMod.Content.Utility
 {
@@ -12,9 +11,6 @@ namespace CombinationsMod.Content.Utility
         /// <summary>
         /// Returns a string converted to a specific color depending on hex.
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="hex">The hex you want to color the string as.</param>
-        /// <returns></returns>
         public static string ToHexString(this string text, string hex)
         {
             return "[c/" + hex + ":" + text + "]";
@@ -23,9 +19,6 @@ namespace CombinationsMod.Content.Utility
         /// <summary>
         /// Takes in a Color, and returns a formatted string with the proper Hex value to color the string as.
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="color">The color you want the text to be.</param>
-        /// <returns></returns>
         public static string ToHexString(this string text, Color color)
         {
             return "[c/" + color.Hex3() + ":" + text + "]";
@@ -67,17 +60,6 @@ namespace CombinationsMod.Content.Utility
             return Main.player[projectile.owner];
         }
 
-        public static void Register(this StringColor stringColor, Color color, int idx)
-        {
-            stringColor.setStringColor(color);
-            yoyoStringColorDictionary.TryAdd(idx, stringColor);
-        }
-
-        public static void Register(this StringTexture stringTexture, Asset<Texture2D> tex, int idx)
-        {
-            stringTexture.setStringTexture(tex);
-            yoyoStringDictionary.TryAdd(idx, stringTexture);
-        }
 
         public static void Register(this LocalizedAbilityString abilityString, string value, int item)
         {

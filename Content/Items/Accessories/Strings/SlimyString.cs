@@ -24,6 +24,7 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<YoyoModPlayer>().slimeString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 1f;
             player.yoyoString = true;
         }
     }

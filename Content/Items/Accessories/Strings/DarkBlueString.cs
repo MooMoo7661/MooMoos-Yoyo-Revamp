@@ -18,14 +18,20 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 1);
             Item.hasVanityEffects = true;
-            Item.stringColor = 30;
             Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<YoyoModPlayer>().darkBlueString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 1f;
             player.yoyoString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(0, 37, 106);
+        }
+
+        public override void UpdateVanity(Player player)
+        {
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(0, 37, 106);
         }
     }
 }

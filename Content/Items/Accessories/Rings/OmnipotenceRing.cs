@@ -26,6 +26,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>(); 
             modPlayer.omnipotenceRing = true;
+            modPlayer.YoyoSpeedModifier += 2f;
         }
 
         public override void AddRecipes()

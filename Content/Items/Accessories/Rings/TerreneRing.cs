@@ -63,6 +63,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
         );
         }
 
+        [CloneByReference]
         CompactParticleManager manager;
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {

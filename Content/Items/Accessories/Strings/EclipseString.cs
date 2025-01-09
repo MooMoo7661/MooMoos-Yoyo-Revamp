@@ -1,5 +1,4 @@
 ﻿using CombinationsMod.Content.Items.Bars;
-using CombinationsMod.Content.Items.Souls;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Rarities;
 using CombinationsMod.Content.ModSystems;
@@ -25,13 +24,14 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<YoyoModPlayer>().eclipseString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 2f;
             player.yoyoString = true;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<EclipseBar>(), 8)
+                .AddIngredient(ModContent.ItemType<EclipseBar>(), 3)
                 .AddRecipeGroup(CombinationsModSystem.yoyoStringGroup)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();

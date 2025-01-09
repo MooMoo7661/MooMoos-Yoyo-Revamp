@@ -22,14 +22,21 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 5);
-            Item.stringColor = 36;
             Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<YoyoModPlayer>().solarString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 3f;
+            player.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier += 150f;
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(255, 180, 56);
             player.yoyoString = true;
+        }
+
+        public override void UpdateVanity(Player player)
+        {
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(255, 180, 56);
         }
 
         public override void AddRecipes()

@@ -24,7 +24,14 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<YoyoModPlayer>().darkTealString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 1f;
             player.yoyoString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(60, 151, 146);
+        }
+
+        public override void UpdateVanity(Player player)
+        {
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(60, 151, 146);
         }
     }
 }

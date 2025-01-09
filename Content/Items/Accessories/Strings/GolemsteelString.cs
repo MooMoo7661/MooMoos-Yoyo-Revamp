@@ -16,14 +16,20 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 3, silver: 29);
-            Item.stringColor = 28;
             Utility.ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<YoyoModPlayer>().golemString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 2f;
             player.yoyoString = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(162, 108, 60);
+        }
+
+        public override void UpdateVanity(Player player)
+        {
+            player.GetModPlayer<YoyoModPlayer>().YoyoStringColor = new(162, 108, 60);
         }
     }
 }

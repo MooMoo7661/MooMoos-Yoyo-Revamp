@@ -19,6 +19,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 1, silver: 25);
+            Utility.ItemSets.DrillCasing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

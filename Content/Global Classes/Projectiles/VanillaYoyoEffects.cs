@@ -11,12 +11,15 @@ using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Core;
+using YoyoStringLib;
 using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.GlobalClasses.Projectiles
@@ -32,24 +35,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         }
 
         public override bool InstancePerEntity => true;
-        private bool isOriginalYoyo = false;
-        private int explosionCounter = 0;
-        private int homingCounter = 0;
-        private int code2ExplosionCounter = 0;
-        private int iceSpikeCounter = 0;
-        private int leafCounter = 0;
-        private int eocBreathTimer = 0;
-        private int eocLazerTimer = 0;
 
         private bool eocStage2 = false;
-        private int eocHits = 0;
         private bool roar = false;
-
-        bool recall = false;
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            isOriginalYoyo = projectile.GetGlobalProjectile<YoyoDataHouse>().mainYoyo;
+            bool isOriginalYoyo = projectile.YoyoData().MainYoyo;
 
             if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
@@ -57,25 +49,24 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 float knockback = projectile.knockBack;
 
                 if (isOriginalYoyo)
-                    switch (projectile.type) // Adding swirl effects to vanilla yoyos
+                    switch (projectile.type)
                     {
+                        case ProjectileID.Yelets:
+                            projectile.YoyoData().AbilityTimer[0] = 60;
+                            break;
+
                         case ProjectileID.Code1:
                             if (Main.myPlayer == projectile.owner)
                             {
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<Code1Swirl>(),
-                                (int)(projectile.damage * 0.50f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-
                                 for (int i = 0; i < 6; i++)
                                 {
                                     Projectile code1 = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<Code1Effect>(),
                                     (int)(projectile.damage * 0.50f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
                                     code1.localAI[1] = i * 45;
-                                    code1.usesIDStaticNPCImmunity = false;
-                                    code1.usesLocalNPCImmunity = true;
-                                    code1.localNPCHitCooldown = 30 * code1.MaxUpdates;
+                                    code1.usesIDStaticNPCImmunity = true;
+                                    code1.usesLocalNPCImmunity = false;
+                                    code1.idStaticNPCHitCooldown = 17;
                                 }
-
-                                //140
                             }
                             break;
 
@@ -95,27 +86,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                     Projectile rally = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<RallyEffect>(),
                                     (int)(projectile.damage / 2f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
                                     rally.localAI[1] = i * 90;
-                                    rally.usesIDStaticNPCImmunity = false;
-                                    rally.usesLocalNPCImmunity = true;
-                                    rally.localNPCHitCooldown = 30 * rally.MaxUpdates;
+                                    rally.usesIDStaticNPCImmunity = true;
+                                    rally.idStaticNPCHitCooldown = 17;
                                 }
                             }
                             break;
-
-                        case ProjectileID.HelFire:
-                            if (Main.myPlayer == projectile.owner)
-                            {
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<Swirl>(),
-                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 0.9f;
-
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<MotaiSwirl>(),
-                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 1.4f;
-
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<Background>(),
-                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
-                            }
-                            break;
-
+                            
                         case ProjectileID.Amarok:
                             if (Main.myPlayer == projectile.owner)
                             {
@@ -138,8 +114,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                                 for (int i = 0; i < 6; i++)
                                 {
-                                    Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<GradientEffect>(),
-                                    (int)(projectile.damage * 0.8f), 3f, Main.myPlayer, 0, projectile.whoAmI).localAI[1] = i * 45f;
+                                    Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<GradientEffect>(),
+                                    (int)(projectile.damage * 0.8f), 3f, Main.myPlayer, 0, projectile.whoAmI);
+                                    proj.localAI[1] = i * 45f;
+                                    proj.usesIDStaticNPCImmunity = true;
+                                    proj.usesLocalNPCImmunity = false;
+                                    proj.idStaticNPCHitCooldown = 10;
                                 }
                             }
                             break;
@@ -152,17 +132,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                                 for (int i = 0; i < 4; i++)
                                 {
-                                    Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<FormatCEffect>(),
-                                    (int)(projectile.damage * 0.80f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).localAI[1] = i * 67.5f;
+                                    Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<FormatCEffect>(),
+                                    (int)(projectile.damage * 0.80f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                    proj.localAI[1] = i * 67.5f;
+                                    proj.usesIDStaticNPCImmunity = true;
+                                    proj.usesLocalNPCImmunity = false;
+                                    proj.idStaticNPCHitCooldown = 10;
                                 }
-                            }
-                            break;
-
-                        case ProjectileID.Yelets:
-                            if (Main.myPlayer == projectile.owner)
-                            {
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<JaggedSwirlYellow>(),
-                                (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 0.8f;
                             }
                             break;
 
@@ -175,8 +151,11 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<PurpleShieldSwirlReverse>(),
                                 0, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 0.9f;
 
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<CultistRingDamage>(),
-                                (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI).Resize(100, 100);
+                                Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<CultistRingDamage>(),
+                                (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI);
+                                proj.Resize(100, 100);
+                                proj.usesLocalNPCImmunity = true;
+                                proj.localNPCHitCooldown = 17;
                             }
                             break;
 
@@ -189,8 +168,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<BlueShieldSwirlReverse>(),
                                 0, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 0.9f;
 
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<CultistRingDamage>(),
-                                (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI).Resize(100, 100);
+                                Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<CultistRingDamage>(),
+                                (int)(damage * 0.85f), knockback * 0.75f, Main.myPlayer, 0, projectile.whoAmI);
+                                proj.Resize(100, 100);
+                                proj.usesLocalNPCImmunity = true;
+                                proj.localNPCHitCooldown = 17;
+
                             }
                             break;
 
@@ -199,6 +182,11 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             {
                                 Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<BlueSwirl2>(),
                                 0, 0, Main.myPlayer, 0, projectile.whoAmI);
+                                Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<CultistRingDamage>(),
+                                (int)(projectile.damage * 0.75f), 1, Main.myPlayer, 0, projectile.whoAmI);
+                                proj.Resize(60, 60);
+                                proj.usesLocalNPCImmunity = true;
+                                proj.localNPCHitCooldown = 25;
                             }
                             break;
 
@@ -226,7 +214,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 vortex.rotation = 5;
                                 vortex.scale = 1.9f;
 
-                                Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, Main.myPlayer, 0, projectile.whoAmI).Resize(120, 120);
+                                Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<CultistRingDamage>(), (int)(projectile.damage * 0.75f), 1, projectile.whoAmI);
+                                proj.Resize(120, 120);
+                                proj.usesLocalNPCImmunity = true;
+                                proj.localNPCHitCooldown = 20;
                             }
                             break;
                     }
@@ -237,32 +228,68 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         {
             Player player = projectile.GetOwner();
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            ref int timer0 = ref projectile.YoyoData().AbilityTimer[0];
+            ref int timer1 = ref projectile.YoyoData().AbilityTimer[1];
+            ref int timer2 = ref projectile.YoyoData().AbilityTimer[2];
 
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects)
+
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && modPlayer.yoyoRing && projectile.YoyoData().MainYoyo)
             {
                 switch (projectile.type)
                 {
-                    case ProjectileID.Cascade:
-                        if (modPlayer.yoyoRing)
+                    case ProjectileID.Yelets:
+                        if (projectile.YoyoData().AbilityTimer[0] <= 0 && projectile.YoyoData().AbilityTimer[1] == 0)
                         {
-                            explosionCounter++;
-                            if (explosionCounter == 5)
+                            projectile.YoyoData().AbilityTimer[0] = 180;
+                            projectile.YoyoData().AbilityTimer[1] = 1;
+
+                            SoundStyle HitSound = new()
                             {
-                                if (Main.myPlayer == projectile.owner)
+                                SoundPath = "CombinationsMod/Content/Sounds/rock2",
+                                Volume = 0.3f,
+                                PitchVariance = 0.3f,
+                                SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+                            };
+
+                            SoundEngine.PlaySound(HitSound);
+
+                            foreach (NPC npc in Main.ActiveNPCs)
+                            {
+                                if (npc.Distance(projectile.Center) > 250 || npc.boss /*|| npc.Size.X > 60 || npc.Size.Y > 60*/)
+                                    continue;
+
+                                if (!npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f && npc != null)
                                 {
-                                    Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, new Vector2(0, 0),
-                                    ProjectileType<FireExplosion>(), (int)(projectile.damage * 1.5f), 8f, projectile.owner, projectile.owner).Resize(70, 70);
+                                    npc.velocity -= npc.DirectionTo(projectile.Center) * 4;
+                                    npc.velocity.Y -= 6f;
+                                    NPC.HitInfo info = npc.CalculateHitInfo((int)(projectile.damage * 0.8f), -npc.direction, false, 0f);
+
+                                    npc.StrikeNPC(info, true);
+                                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                                    {
+                                        NetMessage.SendStrikeNPC(npc, info);
+                                    }
+
                                 }
-                                explosionCounter = 0;
                             }
                         }
                         break;
-
                     case ProjectileID.HelFire:
-                        if (Main.myPlayer == projectile.owner)
+                        if (Main.myPlayer == projectile.owner && projectile.YoyoData().Hits % 3 == 0)
                         {
                             Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, new Vector2(0, 0),
-                            ProjectileType<HelFireExplosion>(), (int)(projectile.damage * 1.5f), 8f, projectile.owner, projectile.owner);
+                            ProjectileType<HelFireExplosion>(), (int)(projectile.damage * 1.5f), 8f, Main.myPlayer);
+                        }
+
+                        if (Main.rand.NextBool(2))
+                        {
+                            foreach(NPC npc in Main.ActiveNPCs)
+                            {
+                                if (projectile.Distance(npc.Center) > 65 /*|| npc == target*/)
+                                    continue;
+
+                                npc.AddBuff(BuffID.OnFire, 180);
+                            }
                         }
                         break;
 
@@ -272,12 +299,81 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             if (Main.myPlayer == projectile.owner)
                             {
                                 Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero,
-                                ProjectileID.VampireHeal, 0, 0, projectile.owner, projectile.owner, 1);
+                                ProjectileID.VampireHeal, 0, 0, Main.myPlayer, projectile.owner, 1);
                             }
                         }
                         break;
 
                     case ProjectileID.Chik:
+                        if (projectile.YoyoData().Hits >= 3)
+                        {
+                            SoundEngine.PlaySound(SoundID.Item110, projectile.position);
+                            for (int num308 = 0; num308 < 20; num308++)
+                            {
+                                int num309 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.CrystalPulse, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 0, default(Color), 0.5f);
+                                Dust dust;
+                                if (Main.rand.NextBool(3))
+                                {
+                                    Main.dust[num309].fadeIn = 1.1f + (float)Main.rand.Next(-10, 11) * 0.01f;
+                                    Main.dust[num309].scale = 0.35f + (float)Main.rand.Next(-10, 11) * 0.01f;
+                                    dust = Main.dust[num309];
+                                    dust.type++;
+                                }
+                                else
+                                {
+                                    Main.dust[num309].scale = 1.2f + (float)Main.rand.Next(-10, 11) * 0.01f;
+                                }
+                                Main.dust[num309].noGravity = true;
+                                dust = Main.dust[num309];
+                                dust.velocity *= 2.5f;
+                                dust = Main.dust[num309];
+                                dust.velocity -= projectile.oldVelocity / 10f;
+                            }
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                int num310 = Main.rand.Next(3, 6);
+                                for (int num311 = 0; num311 < num310; num311++)
+                                {
+                                    Vector2 vector36 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                                    while (vector36.X == 0f && vector36.Y == 0f)
+                                    {
+                                        vector36 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                                    }
+                                    vector36.Normalize();
+                                    vector36 *= (float)Main.rand.Next(70, 101) * 0.1f;
+                                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.oldPosition.X + (float)(projectile.width / 2), projectile.oldPosition.Y + (float)(projectile.height / 2), vector36.X, vector36.Y, 522, (int)((double)projectile.damage * 0.8), projectile.knockBack * 0.8f, projectile.owner);
+                                }
+                            }
+
+                            projectile.YoyoData().Hits = 0;
+                        }
+
+                        for (int num239 = 0; num239 < 3; num239++)
+                        {
+                            int num240 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.CrystalPulse, projectile.velocity.X, projectile.velocity.Y, 50, default(Color), 1.2f);
+                            Main.dust[num240].position = (Main.dust[num240].position + projectile.Center) / 2f;
+                            Main.dust[num240].noGravity = true;
+                            Dust dust2 = Main.dust[num240];
+                            dust2.velocity *= 0.5f;
+                        }
+                        for (int num241 = 0; num241 < 2; num241++)
+                        {
+                            int num240 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.CrystalPulse2, projectile.velocity.X, projectile.velocity.Y, 50, default(Color), 0.4f);
+                            switch (num241)
+                            {
+                                case 0:
+                                    Main.dust[num240].position = (Main.dust[num240].position + projectile.Center * 5f) / 6f;
+                                    break;
+                                case 1:
+                                    Main.dust[num240].position = (Main.dust[num240].position + (projectile.Center + projectile.velocity / 2f) * 5f) / 6f;
+                                    break;
+                            }
+                            Dust dust2 = Main.dust[num240];
+                            dust2.velocity *= 0.1f;
+                            Main.dust[num240].noGravity = true;
+                            Main.dust[num240].fadeIn = 1f;
+                        }
+
                         for (int i = 0; i < 10; i++)
                         {
                             if (Main.rand.NextBool(5))
@@ -287,30 +383,37 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         }
                         break;
 
-
-                    case ProjectileID.Code2:
-                        if (modPlayer.yoyoRing && Main.myPlayer == projectile.owner)
-                        {
-                            code2ExplosionCounter++;
-                            if (code2ExplosionCounter == 5)
-                            {
-                                int proj2 = Projectile.NewProjectile(projectile.GetSource_FromThis(),
-                                projectile.Center.X, projectile.Center.Y - 1f, 0,
-                                0, ProjectileType<FireExplosion>(), (int)(projectile.damage * 0.50f), 8f,
-                                projectile.owner);
-                                code2ExplosionCounter = 0;
-                            }
-                        }
-                        break;
-
                     case ProjectileID.TheEyeOfCthulhu:
-                        eocHits++;
-                        if (eocHits == 50)
+                        projectile.YoyoData().Hits++;
+                        if (projectile.YoyoData().Hits == 50)
                             eocStage2 = true;
                         break;
 
                     case ProjectileID.JungleYoyo:
                         target.AddBuff(ModContent.BuffType<RootedDebuff>(), 180);
+                        break;
+
+                    case ProjectileID.Cascade:
+                        if (Main.rand.NextBool(14))
+                        {
+                            for (int i = 0; i < 4; i++)
+                            {
+                                if (Main.myPlayer == projectile.owner)
+                                {
+                                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 90)) * (1 + i / 15f) * Main.rand.NextFloat(3f, 6.5f);
+
+                                    int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
+                                        326 + Main.rand.Next(0, 3), projectile.damage, 1, projectile.owner, 0, 1f);
+                                    Main.projectile[proj].tileCollide = true;
+                                    Main.projectile[proj].timeLeft = 120;
+                                    Main.projectile[proj].friendly = true;
+                                    Main.projectile[proj].hostile = false;
+                                    Main.projectile[proj].usesLocalNPCImmunity = true;
+                                    Main.projectile[proj].localNPCHitCooldown = 25;
+
+                                }
+                            }
+                        }
                         break;
                 }
             }
@@ -318,14 +421,21 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void AI(Projectile projectile)
         {
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && isOriginalYoyo)
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
+                ref int timer0 = ref projectile.YoyoData().AbilityTimer[0];
+                ref int timer1 = ref projectile.YoyoData().AbilityTimer[1];
+                ref int timer2 = ref projectile.YoyoData().AbilityTimer[2];
+
                 switch (projectile.type)
                 {
                     case ProjectileID.Kraken:
-                        if (Main.rand.NextBool(20) && Main.myPlayer == projectile.owner)
+                        if (timer0 > 0)
+                            timer0--;
+
+                        if (Main.rand.NextBool(15) && Main.myPlayer == projectile.owner)
                         {
-                            Vector2 circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi);
+                            Vector2 circular = Vector2.One.RotatedByRandom(MathHelper.TwoPi) * 5f;
 
                             Projectile.NewProjectile(projectile.GetSource_FromThis(),
                             projectile.Center.X, projectile.Center.Y - 1f, circular.X,
@@ -334,11 +444,121 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         }
                         break;
 
-                    case ProjectileID.Valor:
-                        homingCounter++;
-                        if (homingCounter == 40)
+                    case ProjectileID.Yelets:
+                        if (timer0 > 0)
+                            timer0--;
+
+                        if (timer0 == 0)
                         {
-                            homingCounter = 0;
+
+                            SoundStyle HitSound = new()
+                            {
+                                SoundPath = "CombinationsMod/Content/Sounds/ability-ready",
+                                Volume = 0.6f,
+                                Pitch = 1,
+                                SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+                            };
+
+                            SoundEngine.PlaySound(HitSound);
+
+                            for (int i = 0; i < 50; i++)
+                            {
+                                Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f) * 5f;
+                                Dust d = Dust.NewDustPerfect(projectile.Center, DustID.BlueFairy, speed, Scale: 1.5f);
+                                d.noGravity = true;
+
+                            }
+
+                            timer0 = -1;
+                        }
+
+                        if (timer1 == 1 && (!Main.tile[(int)(projectile.Center.X / 16), (int)(projectile.Center.Y / 16) + 1].HasTile))
+                        {
+                            timer1 = 0;
+                        }
+
+                       // Main.NewText(timer0);
+
+
+                        break;        
+
+                    case ProjectileID.Cascade:
+                        timer0++;
+                        if (timer0 >= 120)
+                        {
+                            if (Main.myPlayer == projectile.owner)
+                            {
+                                var proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis("Cascade"),
+                                projectile.Center, Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(3f, 4.5f), 326 + Main.rand.Next(0, 3), (int)(projectile.damage * 0.85f), 1f,projectile.owner);
+                                proj.friendly = true;
+                                proj.hostile = false;
+                                proj.usesIDStaticNPCImmunity = true;
+                                proj.idStaticNPCHitCooldown = 20;
+
+                                for (int i = 0; i < 12; i++)
+                                {
+                                    var vel = Main.rand.NextVector2CircularEdge(1f, 1f) * 5f;
+                                    var dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, DustID.Torch, vel.X, vel.Y);
+                                    dust.scale = 1.4f;
+                                    dust.noGravity = true;
+                                }
+                            }
+
+                            timer0 = 0;
+                        }
+
+                        Projectile trail = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<CascadeFireTrail>(), 18, 1f);
+                        trail.timeLeft = 1;
+                        trail.usesIDStaticNPCImmunity = true;
+                        trail.idStaticNPCHitCooldown = 20;
+                        break;
+
+                    case ProjectileID.Code2:
+                        timer0++;
+                        if (timer0 >= 120)
+                        {
+                            for (int i = 0; i < 50; i++)
+                            {
+                                Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f) * 5f;
+                                Dust d = Dust.NewDustPerfect(projectile.Center, DustID.VenomStaff, speed, Scale: 1.5f);
+                                d.noGravity = true;
+
+                            }
+
+                            for (int i = 0; i < 8; i++)
+                            {
+                                if (Main.myPlayer == projectile.owner)
+                                {
+                                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 8f;
+
+                                    int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
+                                        ProjectileID.VenomFang, (int)(projectile.damage * 1.2f), 1, projectile.owner, 1, 1);
+                                    Main.projectile[proj].scale = 0.9f;
+                                    Main.projectile[proj].tileCollide = true;
+                                    Main.projectile[proj].timeLeft = 180;
+                                    Main.projectile[proj].friendly = true;
+                                    Main.projectile[proj].hostile = false;
+                                    Main.projectile[proj].penetrate = -1;
+                                }
+                            }
+
+                            foreach (NPC npc in Main.ActiveNPCs)
+                            {
+                                if (projectile.Distance(npc.Center) > 65 /*|| npc == target*/)
+                                    continue;
+
+                                npc.AddBuff(BuffID.Venom, 180);
+                            }
+
+                            timer0 = 0;
+                        }
+                        break;
+
+                    case ProjectileID.Valor:
+                        timer0++;
+                        if (timer0 == 40)
+                        {
+                            timer0 = 0;
                             if (Main.myPlayer == projectile.owner)
                             {
                                 Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y - 1f, Main.rand.NextBool() ? 1 : -1,
@@ -348,65 +568,19 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         break;
 
                     case ProjectileID.Amarok:
-                        iceSpikeCounter++;
-                        if (iceSpikeCounter == 60 && projectile.ai[0] != -1 && isOriginalYoyo)
+                        timer0++;
+                        if (timer0 == 5 && projectile.ai[0] != -1 && projectile.YoyoData().MainYoyo)
                         {
-                            SoundEngine.PlaySound(SoundID.Item27, projectile.position);
-
-                            for (int i = 0; i < 8; i++)
-                            {
-                                if (Main.myPlayer == projectile.owner)
-                                {
-                                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-
-                                    int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                        ProjectileID.IceSpike, (int)(projectile.damage * 0.6f), 1, projectile.owner, 1, 1);
-                                    Main.projectile[proj].scale = 0.9f;
-                                    Main.projectile[proj].penetrate = 5;
-                                    Main.projectile[proj].tileCollide = true;
-                                    Main.projectile[proj].timeLeft = 180;
-                                    Main.projectile[proj].friendly = true;
-                                    Main.projectile[proj].hostile = false;
-                                    Main.projectile[proj].penetrate = 1;
-                                    Main.projectile[proj].usesLocalNPCImmunity = true;
-                                }
-                            }
-
-                            iceSpikeCounter = 0;
+                            Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, new(0, 5), ProjectileID.NorthPoleSnowflake, (int)(projectile.damage * 0.75f), 1f);
+                            timer0 = 0;
                         }
-                        break;
-
-                    case ProjectileID.Yelets:
-                        leafCounter++;
-                        if (leafCounter == 60 && isOriginalYoyo)
-                        {
-                            for (int i = 0; i < 8; i++)
-                            {
-                                if (Main.myPlayer == projectile.owner)
-                                {
-                                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-
-                                    int projLeaf = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                        ProjectileID.Leaf, projectile.damage / 2, 1, projectile.owner, 1, 1);
-                                    Main.projectile[projLeaf].scale = 0.9f;
-                                    Main.projectile[projLeaf].tileCollide = true;
-                                    Main.projectile[projLeaf].timeLeft = 60;
-                                    Main.projectile[projLeaf].friendly = true;
-                                    Main.projectile[projLeaf].hostile = false;
-                                    Main.projectile[projLeaf].usesLocalNPCImmunity = true;
-                                }
-                            }
-
-                            leafCounter = 0;
-                        }
-
                         break;
 
                     case ProjectileID.TheEyeOfCthulhu:
                         if (!eocStage2)
                         {
-                            eocLazerTimer++;
-                            if (eocLazerTimer == 60)
+                            timer0++;
+                            if (timer0 == 60)
                             {
                                 SoundEngine.PlaySound(SoundID.Item33, projectile.position);
 
@@ -425,7 +599,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                     }
                                 }
 
-                                eocLazerTimer = 0;
+                                timer0 = 0;
                             }
                         }
                         else if (eocStage2)
@@ -436,8 +610,8 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 roar = true;
                             }
 
-                            eocBreathTimer++;
-                            if (eocBreathTimer == 60)
+                            timer1++;
+                            if (timer1 == 60)
                             {
                                 SoundEngine.PlaySound(SoundID.Item20, projectile.position);
                                 projectile.localAI[1] = 2;
@@ -453,7 +627,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                         Main.projectile[projLeaf].timeLeft = 60;
                                     }
                                 }
-                                eocBreathTimer = 0;
+                                timer1 = 0;
                             }
                         }
                         break;
@@ -465,18 +639,15 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         {
             if (GetInstance<YoyoModConfig>().VanillaYoyoEffects)
             {
-                switch (projectile.type) // Making vanilla yoyos do special things
+                switch (projectile.type)
                 {
                     case ProjectileID.Cascade:
                         if (Main.rand.NextBool(5))
                         {
-                            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustID.CopperCoin, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 0, default, 1f);
+                            Dust.NewDust(projectile.position + projectile.velocity * 0.75f, projectile.width, projectile.height, DustID.CopperCoin, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 0, default, 1f);
                         }
                         break;
-                }
 
-                switch (projectile.type) // Making vanilla yoyos emit dust
-                {
                     case ProjectileID.CorruptYoyo:
                         if (Main.rand.NextBool())
                         {
@@ -532,6 +703,79 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         break;
                 }
             }
+        }
+
+        public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+        {
+            int x = (int)(projectile.Center.X / 16);
+            int y = (int)(projectile.Center.Y / 16);
+            Tile tile = Framing.GetTileSafely(x, y + 1);
+
+            if (!tile.HasTile || !WorldGen.InWorld(x, y))
+                return true;
+
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            {
+                switch (projectile.type)
+                {
+                    case ProjectileID.Yelets:
+                        if (projectile.YoyoData().AbilityTimer[0] <= 0 && projectile.YoyoData().AbilityTimer[1] == 0)
+                        {
+                            projectile.YoyoData().AbilityTimer[0] = 120;
+                            projectile.YoyoData().AbilityTimer[1] = 1;
+
+                            SoundStyle HitSound = new()
+                            {
+                                SoundPath = "CombinationsMod/Content/Sounds/rock2",
+                                Volume = 0.3f,
+                                PitchVariance = 0.3f,
+                                SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+                            };
+
+                            SoundEngine.PlaySound(HitSound);
+
+                            int dustType = Main.dust[WorldGen.KillTile_MakeTileDust(x, y, tile)].type;
+
+                            //Main.NewText(oldVelocity.Y / 8);
+
+                            for (int i = 0; i < 35; i++)
+                            {
+                                Vector2 speed = -Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Math.Clamp(oldVelocity.Y / 2, 0.01f, 7f);
+                                Dust.NewDust(new(projectile.Center.X, projectile.Center.Y + 16), 20, 5, dustType, speed.X, speed.Y);
+                            }
+
+                            foreach (NPC npc in Main.ActiveNPCs)
+                            {
+                                float distance = 250 * Math.Clamp(oldVelocity.Y / 8, 0.3f, 1.8f);
+                                if (npc.Distance(projectile.Center) > distance || npc.boss /*|| npc.Size.X > 60 || npc.Size.Y > 60*/)
+                                    continue;
+
+                                if (!npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f && npc != null)
+                                {
+                                    npc.velocity -= npc.DirectionTo(projectile.Center) * (5 + oldVelocity.Y / 5);
+                                    npc.velocity.Y -= 6f;
+                                    int damage = (int)(projectile.damage * 0.8f); // Setting initial damage
+                                    damage = (int)(damage * Math.Clamp(oldVelocity.Y / 8, 0.7f, 2f)); // Multiplying by impact force
+                                    damage += Main.rand.Next(-12, 12); // adding some randomness
+                                    damage = (int)Math.Clamp(damage, 0, projectile.damage * 2.2f);
+
+                                    NPC.HitInfo hitInfo = npc.CalculateHitInfo(damage, -npc.direction, false, 0f);
+
+                                    npc.StrikeNPC(hitInfo, true);
+                                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                                    {
+                                        NetMessage.SendStrikeNPC(npc, hitInfo);
+                                    }
+
+                                }
+                            }
+                        }
+
+                        break;
+                }
+            }
+
+            return true;
         }
 
         public override bool PreDraw(Projectile projectile, ref Color lightColor)

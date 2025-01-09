@@ -3,11 +3,18 @@ using CombinationsMod.Content.Configs;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Terraria.DataStructures;
+using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.ModPlayers
 {
     public class YoyoModPlayer : ModPlayer
     {
+        public float YoyoSpeedModifier { get; set; } = 0f;
+        public float YoyoRangeModifier { get; set; } = 0f;
+        public float YoyoLifetimeModifier { get; set; }
+        public float YoyoAmountModifier { get; set; } = 1f;
+        public Color YoyoStringColor { get; set; } = Color.White;
+
         public int currentYoyo = 0;
         public int yoyoNumber = 1;
         public int chainTextureID = 0;
@@ -102,6 +109,11 @@ namespace CombinationsMod.Content.ModPlayers
 
         public override void ResetEffects()
         {
+            YoyoAmountModifier = 1;
+            YoyoSpeedModifier = 0;
+            YoyoRangeModifier = 0;
+            YoyoStringColor = Color.White;
+
             currentYoyo = 0;
             CurrentDrillType = 0;
             phasingYoyos = false;
@@ -201,98 +213,38 @@ namespace CombinationsMod.Content.ModPlayers
             Mod.Logger.Info("Unloaded IL detour of Player.Counterweight");
         }
 
-        public bool TestForYoyoBag(Player player) => player.GetModPlayer<YoyoModPlayer>().playerHasYoyoBagEquipped;
-
-        public static bool TestForSupportGlove(Player player) => player.GetModPlayer<YoyoModPlayer>().supportGlove;
-
-        /// <summary>
-        /// Inputs regular yoyo string length, then returns the modified length depending on player bools.
-        /// </summary>
-        /// <returns>(float) New modified length of yoyo string</returns>
-        public float GetModifiedPlayerYoyoStringLength(float length, Player player)
+        public override void PreUpdate()
         {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.solarString || modPlayer.nebulaString || modPlayer.vortexString || modPlayer.stardustString)
-            {
-                length += 150f;
-            }
-
-            if (modPlayer.alienBag)
-            {
-                length += 9999;
-            }
-
-            return length;
+            if (Player.yoyoGlove)
+                Player.GetModPlayer<YoyoModPlayer>().YoyoAmountModifier += 1;
         }
 
-        /// <summary>
-        /// Inputs regular yoyo speed, then returns the modified speed depending on player bools.
-        /// </summary>
-        /// <returns>(float) New modified speed of yoyo</returns>
-        public float GetModifiedPlayerYoyoSpeed(float speed, Player player)
-        {
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.omnipotenceRing)
-            {
-                speed += 2f;
-            }
-
-            if (modPlayer.solarString || modPlayer.nebulaString || modPlayer.vortexString || modPlayer.stardustString)
-            {
-                speed += 3f;
-            }
-            else if (modPlayer.eclipseString || modPlayer.frostbiteString || modPlayer.golemString || modPlayer.naniteString)
-            {
-                speed += 2f;
-            }
-            else if (modPlayer.darkTealString || modPlayer.darkGreenString || modPlayer.darkBlueString || modPlayer.lightPinkString || modPlayer.grapeString || modPlayer.slimeString)
-            {
-                speed += 1f;
-            }
-
-            return speed;
-        }
-
-        public static int GetNumPlayerYoyos(Player player)
-        {
-            int numYoyos = 1;
-            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-
-            if (modPlayer.tier2Bag || modPlayer.shimmerBag)
-            {
-                numYoyos = 2;
-            }
-
-            if (modPlayer.beetleBag || modPlayer.moonlordBag)
-            {
-                numYoyos = 3;
-            }
-
-            return numYoyos;
-        }
-
-        public static int GetYoyoToCast(Player player)
+        /// <summary>Gets the yoyo projectile ID to cast, and the index in the inventory of the item it belongs to.</summary>
+        /// <returns>[0]: Yoyo projectile ID<br>[1]: Index in the inventory, based on position of selected item. (-1, 0, 1)</br></returns>
+        public static int[] GetYoyoToCast(Player player, int yoyoNumber)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
             if (player.selectedItem == 58)
             {
-                return ContentSamples.ProjectilesByType[player.inventory[58].shoot].type;
+                return [ContentSamples.ProjectilesByType[player.inventory[58].shoot].type, 0];
             }
 
             int yoyoToCast = ContentSamples.ProjectilesByType[player.inventory[player.selectedItem].shoot].type;
 
-            if (modPlayer.dualYoyo)
+            if (modPlayer.dualYoyo && yoyoNumber % 2 == 1)
             {
-                if (ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
+                int idx = 1;
+                if (!ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type] && player.selectedItem > 0)
+                    idx = -1;
+
+                if (ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + idx].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + idx].type])
                 {
-                    return ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].type;
+                    return [ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + idx].shoot].type, idx];
                 }
             }
 
-            return yoyoToCast;
+            return [yoyoToCast, 0];
         }
 
         private void ILDualYoyo(ILContext context)
@@ -317,67 +269,27 @@ namespace CombinationsMod.Content.ModPlayers
 
         private void ILEdit(int index1, int yoyoCount, int counterweightCount, Player player, int dmg, float kb)
         {
-            if (player.yoyoGlove && yoyoCount < GetNumPlayerYoyos(player) + 1)
+            YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            if (player.yoyoGlove && yoyoCount < modPlayer.YoyoAmountModifier + 1)
             {
                 if (index1 >= 0)
                 {
-                    int damage;
-                    float knockback;
+                    int damage = player.inventory[player.selectedItem].damage;
+                    float knockback = player.inventory[player.selectedItem].knockBack;
+                    int[] yoyoInfo = GetYoyoToCast(player, yoyoCount); // Using [0] for the type & [1] for the index, for assigning correct damage & KB
 
-                    if (player.selectedItem == 58)
+                    if (player.selectedItem != 58 && ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + yoyoInfo[1]].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + yoyoInfo[1]].type])
                     {
-                        damage = player.inventory[58].damage;
-                        knockback = player.inventory[58].knockBack;
-                    }
-                    else
-                    {
-                        damage = player.inventory[player.selectedItem].damage;
-                        knockback = player.inventory[player.selectedItem].knockBack;
+                        damage = player.inventory[player.selectedItem + yoyoInfo[1]].damage;
+                        knockback = player.inventory[player.selectedItem + yoyoInfo[1]].knockBack;
                     }
 
-                    if (player.selectedItem != 58 && ContentSamples.ProjectilesByType[player.inventory[player.selectedItem + 1].shoot].aiStyle == 99 && ItemID.Sets.Yoyo[player.inventory[player.selectedItem + 1].type])
-                    {
-                        damage = player.inventory[player.selectedItem + 1].damage;
-                        knockback = player.inventory[player.selectedItem + 1].knockBack;
-                    }
-
-                    if (TestForYoyoBag(player) && !ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-                    {
-                        int numYoyos = GetNumPlayerYoyos(player);
-
-                        for (int i = 0; i < numYoyos - 1; i++)
-                        {
-                            Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                            Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
-                            proj1.usesIDStaticNPCImmunity = false;
-                            proj1.usesLocalNPCImmunity = true;
-                            proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
-                            proj1.ai[2] = 1;
-                        }
-                    }
-
-                    if (TestForSupportGlove(player))
+                    // +1 due to always having 1 yoyo active
+                    for (int i = 0; i < modPlayer.YoyoAmountModifier + 1; i++)
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
-                        proj1.usesIDStaticNPCImmunity = false;
-                        proj1.usesLocalNPCImmunity = true;
-                        proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
-                        proj1.ai[2] = 1;
-
-                        Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
-                        Projectile proj2 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector2, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
-                        proj2.usesIDStaticNPCImmunity = false;
-                        proj2.usesLocalNPCImmunity = true;
-                        proj2.localNPCHitCooldown = 25 * proj2.MaxUpdates;
-                        proj2.ai[2] = 1;
-
-                        return;
-                    }
-                    else
-                    {
-                        Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, GetYoyoToCast(player), damage, knockback, player.whoAmI, 1f, 0f, 1f);
+                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, yoyoInfo[0], damage, knockback, player.whoAmI, 1f, 0f, 1f);
                         proj1.usesIDStaticNPCImmunity = false;
                         proj1.usesLocalNPCImmunity = true;
                         proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
@@ -391,20 +303,11 @@ namespace CombinationsMod.Content.ModPlayers
                 for (int i = 0; i < yoyoNumber; i++)
                 {
                     Vector2 vector2 = Main.rand.NextVector2Unit() * 16f;
-                    vector2.Normalize();
-                    vector2 *= 16f;
                     float knockBack = (kb + 6f) / 2f;
 
                     IEntitySource spawnSource = Terraria.Entity.InheritSource(Main.projectile[index1]);
-                    if (counterweightCount > 0)
-                    {
-                        Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, 1f, 0f);
-                        return;
-                    }
-                    else
-                    {
-                        Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, 0f, 0f);
-                    }
+                    Projectile.NewProjectile(spawnSource, player.Center.X, player.Center.Y, vector2.X, vector2.Y, player.counterWeight, (int)(dmg * 0.8), knockBack, player.whoAmI, counterweightCount > 0 ? 1f : 0f, 0f);
+
                 }
             }
         }

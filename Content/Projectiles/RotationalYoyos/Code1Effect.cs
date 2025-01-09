@@ -25,7 +25,6 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
             Projectile.width = 16;
             Projectile.height = 16;
 
-            Projectile.ArmorPenetration = 500;
             Projectile.damage = 12;
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
@@ -41,7 +40,9 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
         bool growing = true;
         bool shrinking = false;
 
-        public override bool? CanHitNPC(NPC target) => (setSecondStats && !target.immortal) || !setSecondStats;
+        public bool IsValidTarget(NPC target) => !target.friendly && target.CanBeChasedBy() && Collision.CanHit(Projectile.Center, 1, 1, target.position, target.width, target.height);
+
+        public override bool? CanHitNPC(NPC target) => ((setSecondStats && !target.immortal) || !setSecondStats) && !target.friendly;
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -116,7 +117,11 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
                 Projectile.timeLeft = 240;
                 Projectile.penetrate = 1;
                 Projectile.tileCollide = true;
+                Projectile.hostile = false;
+                Projectile.friendly = true;
                 setSecondStats = true;
+
+                Projectile.velocity = Projectile.DirectionFrom(Main.projectile[(int)Projectile.ai[1]].Center) * Main.rand.NextFloat(2f, 6f);
             }
 
             Projectile.velocity.Y += 0.2f;
@@ -160,16 +165,13 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
         public override void OnKill(int timeLeft)
         {
             if (Projectile.owner == Main.myPlayer && setSecondStats)
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FireExplosion>(), (int)(Projectile.damage * 1.4f), 2f, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FireExplosion>(), (int)(Projectile.damage * 2.3f), 2f, Projectile.owner);
         }
-
-        public bool IsValidTarget(NPC target) => target.CanBeChasedBy() && Collision.CanHit(Projectile.Center, 1, 1, target.position, target.width, target.height);
 
         public override bool PreDraw(ref Color lightColor)
         {
-
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
+            Vector2 drawOrigin = new(texture.Width * 0.5f, Projectile.height * 0.5f);
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
@@ -177,7 +179,6 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
 
                 Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length) * 0.4f;
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
-
             }
             return true;
         }

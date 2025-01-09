@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CombinationsMod.Content.Projectiles.Explosions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -10,6 +11,9 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
 {
     public class FormatCEffect : ModProjectile
     {
+        bool floating = false;
+        bool setSecondStats = false;
+        bool colliding = false;
 
         public override void SetStaticDefaults()
         {
@@ -21,7 +25,6 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
             Projectile.width = 16;
             Projectile.height = 16;
 
-            Projectile.ArmorPenetration = 500;
             Projectile.damage = 12;
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
@@ -33,35 +36,33 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
         }
 
         private bool _initialized;
-        double distance = 70;
+        double distance = 30;
         bool growing = true;
         bool shrinking = false;
-        Vector2 endPos = new(0, 0);
-        private bool secondAI = false;
+
+        public bool IsValidTarget(NPC target) => !target.friendly && target.CanBeChasedBy() && Collision.CanHit(Projectile.Center, 1, 1, target.position, target.width, target.height);
+
+        public override bool? CanHitNPC(NPC target) => ((setSecondStats && !target.immortal) || !setSecondStats) && !target.friendly;
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Projectile.velocity = Vector2.Zero;
+            return false;
+        }
 
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-
-            Projectile.rotation += 0.2f;
-
             Projectile proj = Main.projectile[(int)Projectile.ai[1]];
 
-            if (proj.ai[0] == -1 && proj.localAI[0] >= 100)
+            if (((proj.ai[0] == -1 || floating) && proj.localAI[0] > 120) || setSecondStats)
             {
-                secondAI = true;
-            }
-
-            if (secondAI)
-            {
-                if (endPos == Vector2.Zero)
-                {
-                    endPos = proj.position;
-                }
-
-                AI2();
+                SecondAI();
+                floating = true;
                 return;
             }
+
+            Projectile.rotation += 0.2f;
 
             if (!proj.active || proj.owner != Projectile.owner || proj.aiStyle != 99)
             {
@@ -69,7 +70,27 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
                 return;
             }
 
-            double rad = Projectile.localAI[1] + Projectile.ai[0] * 12f * (Math.PI / 180.0);
+            double rad = Projectile.localAI[1] + Projectile.ai[0] * 9f * (Math.PI / 180.0);
+
+            if (growing)
+            {
+                distance++;
+            }
+            else if (shrinking)
+            {
+                distance--;
+            }
+
+            if (distance >= 90)
+            {
+                growing = false;
+                shrinking = true;
+            }
+            else if (distance <= 45)
+            {
+                growing = true;
+                shrinking = false;
+            }
 
             Projectile.ai[0] += 1f;
 
@@ -78,9 +99,8 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
 
             Projectile.position = new Vector2(posX, posY);
 
-
             int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height,
-            DustID.RedTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 0, default, 1f);
+            DustID.BlueTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 0, default, 1f);
             Main.dust[dust].noGravity = true;
 
             if (!_initialized)
@@ -90,29 +110,79 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
             }
         }
 
-        public void AI2() // Controls the state of the projectile when the yoyo has been recalled.
+        public void SecondAI()
         {
-            Player player = Main.player[Projectile.owner];
-
-            Vector2 away = Projectile.DirectionFrom(endPos);
-
-            Projectile.velocity *= 0;
-            Projectile.velocity = away * 9f;
-            Projectile.tileCollide = true;
-            Projectile.timeLeft = 180;
-
-            if (!_initialized)
+            if (!setSecondStats)
             {
-                Projectile.frame = player.ownedProjectileCounts[Type];
-                _initialized = true;
+                Projectile.timeLeft = 240;
+                Projectile.penetrate = 1;
+                Projectile.tileCollide = true;
+                Projectile.hostile = false;
+                Projectile.friendly = true;
+                setSecondStats = true;
+
+                Projectile.velocity = Projectile.DirectionFrom(Main.projectile[(int)Projectile.ai[1]].Center) * Main.rand.NextFloat(2f, 6f);
+            }
+
+            Projectile.velocity.Y += 0.2f;
+
+            //NPC HomingTarget = FindClosestNPC(500f);
+
+            //if (HomingTarget == null/* || !IsValidTarget(HomingTarget)*/)
+            //{
+            //    return;
+            //}
+
+            //float length = Projectile.DirectionTo(HomingTarget.Center).Length() * 3f;
+            //float targetAngle = Projectile.AngleTo(HomingTarget.Center);
+            //Projectile.velocity = Projectile.velocity.ToRotation().AngleTowards(targetAngle, MathHelper.ToRadians(3)).ToRotationVector2() * length;
+            //Projectile.rotation = Projectile.velocity.ToRotation();
+        }
+
+        public NPC FindClosestNPC(float maxDetectDistance)
+        {
+            NPC closestNPC = null;
+
+            float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;
+
+            foreach (var target in Main.ActiveNPCs)
+            {
+                if (IsValidTarget(target))
+                {
+                    float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
+
+                    if (sqrDistanceToTarget < sqrMaxDetectDistance)
+                    {
+                        sqrMaxDetectDistance = sqrDistanceToTarget;
+                        closestNPC = target;
+                    }
+                }
+            }
+
+            return closestNPC;
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            if (Projectile.owner == Main.myPlayer && setSecondStats)
+            {
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FireExplosion>(), (int)(Projectile.damage * 2.3f), 2f, Projectile.owner);
+
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector2 vel = -Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Main.rand.NextFloat() * 6f;
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, vel, 326 + Main.rand.Next(1, 3), (int)(Projectile.damage * 0.8f), 1f, Projectile.owner);
+                    proj.hostile = false;
+                    proj.friendly = true;
+                    proj.timeLeft = 180;
+                }
             }
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
+            Vector2 drawOrigin = new(texture.Width * 0.5f, Projectile.height * 0.5f);
 
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
@@ -120,7 +190,6 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
 
                 Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length) * 0.4f;
                 Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
-
             }
             return true;
         }

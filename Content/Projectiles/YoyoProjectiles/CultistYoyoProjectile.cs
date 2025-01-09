@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using YoyoStringLib;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
@@ -38,8 +39,11 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.scale = 1f;
         }
 
+
         public override void OnSpawn(IEntitySource source)
         {
+            Projectile.StringData().StringTexture = TextureAssets.Chain9;
+
             if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,

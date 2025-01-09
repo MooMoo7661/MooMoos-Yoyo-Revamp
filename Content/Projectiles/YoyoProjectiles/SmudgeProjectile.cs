@@ -27,7 +27,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.scale = 1f;
+            Projectile.scale = 0.85f;
         }
 
         public override void ModifyHitNPC(NPC npc, ref NPC.HitModifiers modifiers)

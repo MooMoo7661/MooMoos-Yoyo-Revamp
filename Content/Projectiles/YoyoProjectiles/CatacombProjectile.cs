@@ -1,18 +1,15 @@
-using Microsoft.Xna.Framework;
-using CombinationsMod.Content.ModPlayers;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria.Audio;
-using CombinationsMod.Content.Items.Accessories.InfoAccessories;
-using System;
+using Terraria.DataStructures;
+using YoyoStringLib;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
     public class CatacombProjectile : ModProjectile
     {
         public int hitCounter = 0;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 16f;
@@ -37,6 +34,11 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.velocity *= 0.8f;
         }
 
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.StringData().StringTexture = TextureAssets.Chain24;
+        }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             hitCounter++;
@@ -56,7 +58,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
                 SoundStyle HitSound = new SoundStyle
                 {
-                    SoundPath = "CombinationsMod/Content/Sounds/rock",
+                    SoundPath = "CombinationsMod/Content/Sounds/rock1",
                     Volume = 0.4f,
                     PitchVariance = 0.3f,
                     SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest

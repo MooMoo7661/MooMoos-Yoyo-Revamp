@@ -4,11 +4,13 @@ using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
 using CombinationsMod.GlobalClasses.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using YoyoStringLib;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
@@ -25,22 +27,6 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
             //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 10f;
         }
-        public override void PostAI()
-        {
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
-            {
-                Dust dust2 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 75, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
-                dust2.velocity = VectorHelper.VelocityToPoint(dust2.position, Projectile.Center, Vector2.Distance(dust2.position, Projectile.Center) * 0.05f);
-                dust2.color = Color.Black;
-                dust2.noGravity = true;
-
-                Dust dust3 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 98, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
-                dust3.velocity = VectorHelper.VelocityToPoint(dust3.position, Projectile.Center, Vector2.Distance(dust3.position, Projectile.Center) * 0.05f);
-                dust3.color = Color.Black;
-                dust3.noGravity = true;
-
-            }
-        }
 
         public override void SetDefaults()
         {
@@ -55,8 +41,28 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
         }
+
+        public override void PostAI()
+        {
+            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            {
+                Dust dust2 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.CursedTorch, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
+                dust2.velocity = VectorHelper.VelocityToPoint(dust2.position, Projectile.Center, Vector2.Distance(dust2.position, Projectile.Center) * 0.05f);
+                dust2.color = Color.Black;
+                dust2.noGravity = true;
+
+                Dust dust3 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.Water_Corruption, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
+                dust3.velocity = VectorHelper.VelocityToPoint(dust3.position, Projectile.Center, Vector2.Distance(dust3.position, Projectile.Center) * 0.05f);
+                dust3.color = Color.Black;
+                dust3.noGravity = true;
+
+            }
+        }
+
         public override void OnSpawn(IEntitySource source)
         {
+            Projectile.StringData().StringTexture = ModContent.Request<Texture2D>("CombinationsMod/Content/YoyoStringTextures/UpgradedString", ReLogic.Content.AssetRequestMode.ImmediateLoad);
+
             if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 int baseProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
@@ -84,13 +90,13 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
                 if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
                 {
-                    Dust dust4 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 75, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
+                    Dust dust4 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.CursedTorch, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
                     dust4.velocity = VectorHelper.VelocityToPoint(dust4.position, Projectile.Center, Vector2.Distance(dust4.position, Projectile.Center) * -0.09f);
                     dust4.color = Color.Black;
                     dust4.scale = 2f;
                     dust4.noGravity = true;
 
-                    Dust dust5 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, 98, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
+                    Dust dust5 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.Water_Corruption, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
                     dust5.velocity = VectorHelper.VelocityToPoint(dust5.position, Projectile.Center, Vector2.Distance(dust5.position, Projectile.Center) * -0.09f);
                     dust5.color = Color.Black;
                     dust5.scale = 2f;

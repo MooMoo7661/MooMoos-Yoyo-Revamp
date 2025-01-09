@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using YoyoStringLib;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
@@ -42,8 +43,11 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             Projectile.scale = 1f;
         }
 
+
         public override void OnSpawn(IEntitySource source)
         {
+            Projectile.StringData().StringTexture = TextureAssets.Chain23;
+
             if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 isOriginalYoyo = true;

@@ -214,6 +214,7 @@ AbilityRing: {
 		'''
 		[c/FF00AB:Enables Yoyos to use their special abilities.]
 		Yoyos will show the requirements for triggering the ability
+		Only the first yoyo you cast will have its ability
 		'''
 }
 
@@ -416,11 +417,6 @@ BrokenHeroYoyo: {
 	Tooltip: ""
 }
 
-SoulOfEclipse: {
-	DisplayName: Soul of Eclipse
-	Tooltip: "'The essence of otherworldly creatures'"
-}
-
 Catacomb: {
 	DisplayName: The Catacomb
 	Tooltip: ""
@@ -467,11 +463,7 @@ LeadYoyo: {
 
 Mambele: {
 	DisplayName: The Pumpkin Patcher
-	Tooltip:
-		'''
-		Coated in a rough grit
-		Smells like burnt wood
-		'''
+	Tooltip: Smells like burnt wood
 }
 
 MythrilYoyo: {
@@ -503,14 +495,13 @@ TheAbbhor: {
 	Tooltip: An amalgamation of pure power
 }
 
-TheQueensGambit: {
-	DisplayName: The Queen's Gambit
+SwarmSpinner: {
+	DisplayName: Swarm Spinner
 	Tooltip:
 		'''
-		Releases bees on hit and has a chance to poison the target
-		Bees make up for lack of initial damage
-		Has a chance to leave bees in it's wake
-		"Now includes added Hive Pack support!"
+		Summons killer wasps after striking your foe
+		Has a chance to poison your foe, and a smaller chance to cause confusion
+		"Now includes Hive Pack support!"
 		'''
 }
 
@@ -601,7 +592,7 @@ AroundTheWorldTier2: {
 
 SupportGlove: {
 	DisplayName: Support Glove
-	Tooltip: Allows the use of a third yoyo when paired with a yoyo glove
+	Tooltip: Allows the use of 3 yoyos at once
 }
 
 BlackHole: {
@@ -615,7 +606,7 @@ BlackHole: {
 
 ShimmerBag: {
 	DisplayName: Shimmering Satchel
-	Tooltip: ""
+	Tooltip: Gives minor improvements to yoyo speed, string length, lifetime, and damage
 }
 
 Tier2Bag: {
@@ -633,7 +624,7 @@ EmpressYoyo: {
 	Tooltip: Harnesses the immense power of the Empress of Light
 }
 
-AdvancedYoyoBag: {
+AlienBag: {
 	# Alien Bag, translators - just delete the line below "Infinite yoyo range", I doubt other languages would get the joke
 	DisplayName: Extraterrestrial Command Pack
 	Tooltip:
@@ -657,7 +648,7 @@ ExcavatorCasing: {
 
 ShimmeringBeetleBag: {
 	DisplayName: Shimmering Beetle Bag
-	Tooltip: ""
+	Tooltip: "[c/FF00C4:- UNOBTAINABLE -]"
 }
 
 StoneAge: {
@@ -675,8 +666,9 @@ DualYoyo: {
 		'''
 		High value trick
 		Allows the user to [c/E232D6:wield 2 different yoyos]
-		Extra yoyos created after hitting an enemy will be the type of the second yoyo
-		[c/FFFF4A:The second yoyo must be placed one slot to the right of your held yoyo in the inventory]
+		When hitting a target, half of the extra yoyos created by the yoyo glove will inherit the type of your second yoyo
+		To select the second yoyo, place it to the left or to the right of your held item in your inventory
+		[c/F00048:Must have the yoyo glove equipped to use this]
 		Useful for debuff or lifesteal yoyos
 		'''
 }
@@ -709,7 +701,36 @@ LifestealTrick: {
 	Tooltip:
 		'''
 		High value trick
-		[c/FF4080:All yoyos and counterweights will drain life on impact]
+		[c/FF4080:All yoyos will drain life on impact]
 		The higher the damage, the more life drained
 		'''
+}
+
+EclipseShard: {
+	DisplayName: Eclipse Shard
+	Tooltip:
+		'''
+		A chunk of otherworldly energy
+		Can be melted down into bars
+		'''
+}
+
+ShimmeringRing: {
+	DisplayName: Shimmering Ring
+	Tooltip: Yoyos can phase through blocks
+}
+
+Convergence: {
+	DisplayName: Convergence
+	Tooltip: ""
+}
+
+HolidayDelight: {
+	DisplayName: Holiday Delight
+	Tooltip: ""
+}
+
+PumpkinPatcher: {
+	DisplayName: Pumpkin Patcher
+	Tooltip: ""
 }

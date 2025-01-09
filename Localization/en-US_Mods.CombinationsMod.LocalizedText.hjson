@@ -1,38 +1,4 @@
-# Accessory Slots
-SlotPrefix: Item prefixes will not apply
-PrefixWarning: Prefixes will not be applied to this item while in this slot
-TrickSlot: Gives a slot for tricks
-VanityStrings: Vanity Yoyo Strings
-YoyoStrings: Yoyo Strings
-RightHand: Right Hand
-YoyoGloves: Yoyo Gloves
-SupportGloves: Support Gloves
-LeftHand: Left hand
-Rings: Rings
-Tricks: Tricks
-DrillCasings: Drill Casings
-YoyoCounterweights: Yoyo Counterweights
-# Yoyo Bags
-MoreAccessorySlots: Gives the user more accessory slots for yoyos
-DrillsAndCounterweights: Gives slots for Yoyo Drills and Counterweights
-SupportGlove: Gives slots for Support Gloves
-YoyoRings: Gives slots for Yoyo Rings
-# Yoyo Ability Info
-YoyoAbilitySnippet: "[c/6FD4FF:-Yoyo Ability-]"
-HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
-NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
-NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
-# Misc
-CounterweightPerYoyo: Each yoyo that hits a target will produce a counterweight
-YoyoShimmer: Yoyos can phase through blocks
-AdditionalYoyo: Creates one extra yoyo when paired with the yoyo glove
-FastRecall: Yoyos are recalled faster
-MasterYoyoSkills: Gives the user master yoyo skills
-IncreasedYoyoKnockback: Increased yoyo knockback
-150YoyoRange: "[c/6EAE6E:+400 yoyo range]"
-RightClickInfo: Hold {0} to drill
-Mouse2: Right Click
-CurrentDrill: "Current Drill: "
+# Note - This line below needs to be lowercase, as it's inserted at the end of a sentence.
 YoyoHits: yoyo hits
 AchievementsNotification:
 	'''
@@ -40,32 +6,83 @@ AchievementsNotification:
 	This mod adds some custom achievements. To enable them, download "Achievements Mod".
 	'''
 
+Misc: {
+	CounterweightPerYoyo: Each yoyo that hits a target will produce a counterweight
+	YoyoShimmer: Yoyos can phase through blocks
+	AdditionalYoyo: Creates one extra yoyo when paired with the yoyo glove
+	MasterYoyoSkills: Gives the user master yoyo skills
+	IncreasedYoyoKnockback: Increased yoyo knockback
+	150YoyoRange: "[c/6EAE6E:+400 yoyo range]"
+	RightClickInfo: Hold {0} to drill
+	CurrentDrill: "Current Drill: "
+}
+
+AccessorySlots: {
+	SlotPrefix: Item prefixes will not apply
+	TrickSlot: Gives a slot for tricks
+	VanityStrings: Vanity Yoyo Strings
+	YoyoStrings: Yoyo Strings
+	RightHand: Right Hand
+	YoyoGloves: Yoyo Gloves
+	SupportGloves: Support Gloves
+	LeftHand: Left hand
+	Rings: Rings
+	Tricks: Tricks
+	DrillCasings: Drill Casings
+	YoyoCounterweights: Yoyo Counterweights
+	MoreAccessorySlots: Gives the user slots for basic yoyo accessories
+	DrillsAndCounterweights: Provides slots for Yoyo Drills and Counterweights
+	SupportGlove: Adds an additional slot for a support glove
+	YoyoRings: Allows the user to equip 2 extra rings
+}
+
+TooltipMechanics: {
+	YoyoAbilitySnippet: "[c/6FD4FF:-Yoyo Ability-]"
+	HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
+	NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
+	NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
+}
+
 Abilities: {
-	BlackHole: Creates a large vortex that does 40% of the yoyo's damage
 	HardmodeYoyos: Creates a medium damaging aura that does 50% of the yoyo's damage
 	Tempest: Creates a very large damaging aura that does 75% of the yoyo's damage
-	Code2: Creates an explosion every 5 hits that deals 50% of the yoyo's damage
-	Yelets: Shoots 8 leaves that deal 50% of the yoyo's damage
+	Code2: Creates a burst of venom imbued projectiles every 2 seconds
 	TrueYoyos: Creates a large damaging aura that does 60% of the yoyo's damage
-	Cascade: Creates an explosion every 5 hits, which does 150% of the yoyo's damage
+	Cascade: Periodically shoots out lingering fire
 	Valor: Creates homing water bolts that explode on contact, dealing area damage
 	EvilYoyos: Heals the user on hit
 	Rally: When thrown out, creates 3 swirling copies of the yoyo that deal 50% of the yoyo's damage
 	Crowyo: Shoots black homing feathers that deal 40% of the yoyo's damage
-	HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
-	Amarok: Shoots out 8 ice spikes every second that deal 60% of the yoyo's damage
+	Amarok: Shoots out 8 ice spikes every second that deal 1.2x the yoyo's damage
 	Convergence: Shoots out every yoyo used in its creation
 	Amazon: Causes seeds to explode inside targets, dealing repeated damage
+	Chik: Shoots explosive crystal charges every 3 hits
+	HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
+	RedsYoyo: Creates a rapidly damaging aura that deals 75% of the yoyo's damage
+	CobaltYoyo: Creates a large blast that knocks enenmies back every 20 hits
+	BlackHole:
+		'''
+		Creates a large damaging vortex that deals 70% of the yoyo's damage
+		Pulls enemies in towards the center
+		'''
+	Yelets:
+		'''
+		When hitting the yoyo against the ground, a large shockwave is generated
+		This shockwave scales damage, range, and knockback by how hard you hit the ground
+		When hitting an enemy, a small, non-proportional shockwave is generated
+		Shockwaves recharge after 3 seconds
+		'''
 	Code1:
 		'''
 		Creates 6 swirling copies that deal 50% of the yoyo's damage
-		When recalled, the copies will drop and act as stationary sticky bombs
+		When recalled, the copies will burst outwards and act as stationary sticky bombs
 		'''
 	ChristmasBulb:
 		'''
-		Shoots out 8 explosive ornaments after 30 hits
-		Only triggers every other hit
-		Ornaments deal half damage
+		Inflicts frostburn on hit
+		After 15 hits, chilling icicles are continuously shot out in a circular motion
+		Upon killing an enemy, it will explode into ornaments that fall and explode into shrapnel
+		The shrapnel does 25% of the yoyo's damage
 		'''
 	Code3:
 		'''
@@ -79,9 +96,10 @@ Abilities: {
 		'''
 	Mambele:
 		'''
-		Shoots out 8 lingering fire balls after 30 hits
-		Only triggers every other hit
-		Fire balls deal half damage
+		Inflicts inferno on hit
+		After 15 hits, explosive fireballs are continuously shot out in a circular motion
+		Upon killing an enemy, it will explode into lingering fire clusters
+		The fire does 50% of the yoyo's damage
 		'''
 	Abbhor:
 		'''
@@ -90,14 +108,15 @@ Abilities: {
 		'''
 	FormatC:
 		'''
-		Creates 4 swirling copies that deal 80% of the yoyo's damage
-		These copies will split apart and fly away after the yoyo has been recalled
+		Creates 4 swirling copies that deal 50% of the yoyo's damage
+		When recalled, the copies will burst outwards and act as stationary sticky bombs
+		Upon exploding, they will create lingering fire
 		'''
 	Gradient:
 		'''
 		Creates 8 swirling copies that deal 100% of the yoyo damage
-		These copies will split apart and fly away after the yoyo has been recalled
-		When near an enemy, they will home in on them
+		When recalled, the copies will burst outwards and act as stationary sticky bombs
+		Upon exploding, they will create stronger lingering fire
 		'''
 	EOCYoyo:
 		'''
@@ -113,8 +132,9 @@ Abilities: {
 }
 
 StatTooltips: {
-	Range: "{0} tiles base range"
-	Speed: "{0} base speed"
+	Range: "{0} tiles range"
+	InfiniteRange: Infinite range
+	Speed: "{0} speed"
 	Hits: "{0} maximum hits"
 	NoMaxHits: No maximum hits
 	Lifetime: "{0} second{1} lifetime"

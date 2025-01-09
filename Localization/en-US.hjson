@@ -35,23 +35,39 @@ Mods: {
 
 		Dialogue: {
 			YoyoMerchant: {
-				StandardDialogue1: Why just spin in circles? Let your yoyo dance and dazzle!
-				StandardDialogue2: Sure, I'm a skeleton, but I'm not a fan of those gloomy caves. Give me the sunshine any day!
-				StandardDialogue3: My yoyo days are long over, but that doesn't stop me from collecting and selling them.
-				StandardDialogue4: The surface is where the action is. The underground life just isn't for me!
+				StandardDialogue1: No, I will not "walk the dog" for you.
+				StandardDialogue2: Hey, watch where you're stepping! Some of us are already falling apart here.
+				StandardDialogue3: My inventory is always changing, so check back often.
+				StandardDialogue4: The surface is where the action is. The underground life just isn't for me.
 				StandardDialogue5: No need for a discount-my prices are already to die for!
 				StandardDialogue6: It's so nice to be out of the shadows and into the light. The surface suits me perfectly.
-				StandardDialogue7: They say skeletons have no heart, but I've got plenty of spirit in these yoyos!
+				StandardDialogue7: Looking for something specific? Let me know.
+				StandardDialogue1_Shimmer: No, I will not "walk the dog" for you.
+				StandardDialogue2_Shimmer: Yeah, yeah, I've got what you need. Just don't expect me to smile about it.
+				StandardDialogue3_Shimmer: Feel free to ask if you have any questions.
+				StandardDialogue4_Shimmer: My inventory is always changing, so check back often.
+				StandardDialogue5_Shimmer: No more rattling bones, just spinning yoyos. Take a look around!
+				StandardDialogue6_Shimmer: Seems I'm back to my old self again. How can I help you?
+				StandardDialogue7_Shimmer: Shimmer worked its magic. I'm human once more. Welcome!
+				StandardDialogue1_BloodMoon: Pick something or move along. You're beginning to test my patience.
+				StandardDialogue2_BloodMoon: You want something or just here to gawk? Make it quick.
+				StandardDialogue3_BloodMoon: Great, another window shopper. Make up your mind!
+				StandardDialogue4_BloodMoon: I'm here to sell, not to chit-chat. Let's keep it brief.
+				StandardDialogue5_BloodMoon: I'm still here selling. What do you need?
+				StandardDialogue6_BloodMoon: Why am I still doing this? Just take a look and buy something.
+				StandardDialogue7_BloodMoon: What's it gonna be? I don't have all night, you know.
 			}
 		}
 
 		Keybinds: {
-			TestKeybind.DisplayName: Test Keybind
 			AbilityKeybind.DisplayName: Ability Keybind
 			DrillKeybind.DisplayName: Drill Keybind
 		}
 
-		Conditions.EaterOfWorldsOrBrain: Mods.CombinationsMod.Conditions.EaterOfWorldsOrBrain
+		Conditions: {
+			EaterOfWorldsOrBrain: Eater of Worlds / Brain of Cthulhu
+			NPCNotShimmered: Mods.CombinationsMod.Conditions.NPCNotShimmered
+		}
 
 		Configs: {
 			YoyoModConfig: {
@@ -61,7 +77,7 @@ Mods: {
 				}
 
 				EnableModifiedYoyoBag: {
-					Tooltip: ""
+					Tooltip: Enable/disable changes to the yoyo bag system
 					Label: Enable Modified Yoyo Bag
 				}
 
@@ -76,7 +92,7 @@ Mods: {
 				}
 
 				VanillaYoyoEffects: {
-					Tooltip: ""
+					Tooltip: Enable/disable custom abilities for vanilla yoyos
 					Label: Vanilla Yoyo Effects
 				}
 
@@ -86,18 +102,8 @@ Mods: {
 					YoyoStats: Yoyo Stats Tooltips
 				}
 
-				UpscaleYoyoGlove: {
-					Tooltip: ""
-					Label: Upscale Yoyo Glove
-				}
-
-				EOCYoyoProgressionMovement: {
-					Tooltip: ""
-					Label: E O C Yoyo Progression Movement
-				}
-
 				AccessorySlotIndicators: {
-					Tooltip: ""
+					Tooltip: Explains what goes in each slot for the yoyo bags
 					Label: Accessory Slot Indicators
 				}
 
@@ -145,7 +151,7 @@ Mods: {
 			}
 		}
 
-		# Don't translate this, the player will never see it. It will be a waste of time.
+		# Don't translate any this, the player will never see it. It will be a waste of time.
 		Projectiles: {
 			TrueCode3Projectile.DisplayName: True Code3 Projectile
 			TrueAbbhorProjectile.DisplayName: True Abbhor Projectile
@@ -288,41 +294,44 @@ Mods: {
 			CobaltDrill.DisplayName: Cobalt Drill
 			CelestialDrill.DisplayName: Celestial Drill
 			AdamantiteDrill.DisplayName: Adamantite Drill
+			CascadeFireTrail.DisplayName: Cascade Fire Trail
+			ConvergenceProjectile.DisplayName: Convergence Projectile
+			SwarmSpinnerProjectile.DisplayName: Swarm Spinner Projectile
+			HolidayDelightProjectile.DisplayName: Holiday Delight Projectile
+			PumpkinPatcherProjectile.DisplayName: Pumpkin Patcher Projectile
+			Snowflake.DisplayName: Snowflake
+			SnowflakeHoming.DisplayName: Snowflake Homing
+			CobaltFist.DisplayName: Cobalt Fist
+			PalladiumFist.DisplayName: Palladium Fist
 		}
 
 		NPCs: {
 			YoyoMerchant: {
 				TownNPCMood: {
-					Princess_LovesNPC: I like {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					LoveNPC: I love {NPCName}.
-					DislikeBiome: I dislike {BiomeName}.
-					LikeBiome: I like {BiomeName}.
-					LoveBiome: I love {BiomeName}.
-					HateCrowded: I hate how crowded I am.
-					DislikeCrowded: I dislike how crowded I am.
-					LoveSpace: I love having so much space.
-					FarFromHome: I am too far from home.
-					NoHome: I hate not having a home.
-					Content: I am content.
+					Princess_LovesNPC: The princess is very kind, I quite enjoy her presence.
+					LikeNPC_Princess: "{NPCName} is nice."
+					DislikeNPC: Ugh, why is {NPCName} here.
+					LoveNPC: Seeing {NPCName} always makes me happy.
+					DislikeBiome: I can't stand this place. It gives me the creeps.
+					LikeBiome: I feel at ease in {BiomeName}.
+					LoveBiome: "{BiomeName} is great. I could not be happier anywhere else."
+					HateCrowded: It's far too crowded here.
+					DislikeCrowded: This place is getting a little too crowded.
+					LoveSpace: All this space to myself is quite nice.
+					FarFromHome: I wish I were closer to home.
+					NoHome: I'm not exactly happy with having no home.
+					Content: I am perfectly okay.
 				}
 
 				DisplayName: Yoyo Merchant
+				Census.SpawnCondition: Conditions unknown
 			}
-		}
-
-		InfoDisplays: {
-			StringInfo.DisplayName: String Info
-			SpeedInfo.DisplayName: Speed Info
-			IDInfo.DisplayName: I D Info
-			HitInfo.DisplayName: Hit Info
 		}
 
 		Buffs: {
 			RootedDebuff: {
 				DisplayName: Rooted Debuff
-				Description: Mods.CombinationsMod.Buffs.RootedDebuff.Description
+				Description: Taking damage
 			}
 		}
 	}

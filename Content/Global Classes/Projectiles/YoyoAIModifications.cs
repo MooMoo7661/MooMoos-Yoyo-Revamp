@@ -17,10 +17,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
     {
         public override bool InstancePerEntity => true;
 
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
-        {
-            return entity.aiStyle == 99;
-        }
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.aiStyle == 99;
 
         public bool secondaryYoyo = false; // false = main yoyo, true = second yoyo
 
@@ -61,7 +58,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
 
                 num /= (1f + player.GetAttackSpeed(DamageClass.Melee)) / 2f;
 
-                float num2 = ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type];
+                float num2 = ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] + (ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] >= 1 ? (player.GetModPlayer<YoyoModPlayer>().shimmerBag ? 3f : 0) : 0);
 
                 if (num2 != -1f && num > num2)
                 {
@@ -104,7 +101,9 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                         }
                     }
                     vector *= 0.8f; // Terrarian Beam
-                    Projectile.NewProjectile(Projectile.InheritSource(projectile), projectile.Center.X - vector.X, projectile.Center.Y - vector.Y, vector.X, vector.Y, 604, projectile.damage, projectile.knockBack, projectile.owner);
+                    float dilation = Main.rand.NextFloat(0.9f, 1.6f);
+                    var proj = Projectile.NewProjectileDirect(Projectile.InheritSource(projectile), new(projectile.Center.X - vector.X, projectile.Center.Y - vector.Y), new Vector2(vector.X, vector.Y) * dilation, 604, (int)(projectile.damage * dilation), projectile.knockBack, projectile.owner);
+                    proj.scale = dilation;
                     projectile.localAI[1] = 0f;
                 }
             }
@@ -162,20 +161,20 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             projectile.timeLeft = 6;
             float stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
 
-            float yoyoSpeed = player.GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoSpeed(ProjectileID.Sets.YoyosTopSpeed[projectile.type], player);
-            float modifiedStringLength = projectile.GetOwner().GetModPlayer<YoyoModPlayer>().GetModifiedPlayerYoyoStringLength(stringLength, player);
+            float yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[projectile.type] + player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier;
+            float modifiedStringLength = stringLength + player.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier;
 
             if (projectile.type == ProjectileID.Cascade) // Cascade dusts
             {
                 if (Main.rand.NextBool(6))
                 {
-                    int num11 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
+                    int num11 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Torch);
                     Main.dust[num11].noGravity = true;
                 }
             }
             else if (projectile.type == ProjectileID.HelFire && Main.rand.NextBool(2)) // Hel-Fire dusts
             {
-                int num12 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
+                int num12 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Torch);
                 Main.dust[num12].noGravity = true;
                 Main.dust[num12].scale = 1.6f;
             }

@@ -53,6 +53,7 @@ namespace CombinationsMod.Content.Global_Classes
         );
         }
 
+        [CloneByReference]
         CompactParticleManager manager;
         public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
         {

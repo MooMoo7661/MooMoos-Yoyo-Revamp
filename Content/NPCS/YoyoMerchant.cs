@@ -15,22 +15,31 @@ using static Terraria.ModLoader.ModContent;
 namespace CombinationsMod.Content.NPCS
 {
     [AutoloadHead]
+    [LegacyName("ExamplePerson")]
     public class YoyoMerchant : ModNPC
     {
         public int NumberOfTimesTalkedTo = 0;
+        private static int ShimmerHeadIndex;
 
-        public const string AccessoriesShop = "Accessories";
-        public const string YoyoShop = "Yoyos";
+        private const string AccessoriesShop = "Accessories";
+        private const string YoyoShop = "Yoyos";
+
+        private static Profiles.StackedNPCProfile YoyoMerchantProfile;
+
+        public override void Load()
+        {
+            ShimmerHeadIndex = Mod.AddNPCHeadTexture(Type, Texture + "_Shimmer_Head");
+        }
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.SkeletonMerchant];
+            Main.npcFrameCount[Type] = 25;
+            NPCID.Sets.ExtraFramesCount[Type] = 9;
+            NPCID.Sets.ShimmerTownTransform[Type] = true;
 
-            NPCID.Sets.ExtraFramesCount[Type] = NPCID.Sets.ExtraFramesCount[NPCID.SkeletonMerchant];
-            NPCID.Sets.AttackFrameCount[Type] = NPCID.Sets.AttackFrameCount[NPCID.SkeletonMerchant];
+            NPCID.Sets.AllowDoorInteraction[Type] = true;
+            NPCID.Sets.ActsLikeTownNPC[Type] = true;
             NPCID.Sets.DangerDetectRange[Type] = 900;
-            NPCID.Sets.AttackType[Type] = NPCID.Sets.AttackType[NPCID.SkeletonMerchant];
-            NPCID.Sets.AttackTime[Type] = NPCID.Sets.AttackTime[NPCID.SkeletonMerchant];
             NPCID.Sets.AttackAverageChance[Type] = 30;
             NPCID.Sets.SpawnsWithCustomName[Type] = true;
             NPCID.Sets.HatOffsetY[Type] = 0;
@@ -49,6 +58,11 @@ namespace CombinationsMod.Content.NPCS
                 .SetBiomeAffection<SnowBiome>(AffectionLevel.Dislike)
                 .SetNPCAffection(NPCID.Merchant, AffectionLevel.Love)
                 .SetNPCAffection(NPCID.Demolitionist, AffectionLevel.Dislike);
+
+            YoyoMerchantProfile = new Profiles.StackedNPCProfile(
+                new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Party"),
+                new Profiles.DefaultNPCProfile(Texture + "_Shimmer", ShimmerHeadIndex, Texture + "_Shimmer_Party")
+            );
         }
 
         public override void SetDefaults()
@@ -64,15 +78,18 @@ namespace CombinationsMod.Content.NPCS
             NPC.HitSound = SoundID.NPCHit2;
             NPC.DeathSound = SoundID.NPCDeath2;
             NPC.knockBackResist = 0.5f;
-
             NPC.lavaImmune = true;
-
             AnimationType = NPCID.Guide;
+        }
+
+        public override bool CanChat()
+        {
+            return true;
         }
 
         public override List<string> SetNPCNameList()
         {
-            return new List<string>()
+            return new()
             {
                 "Jim Reaper",
                 "Vincent Van Bone",
@@ -80,6 +97,12 @@ namespace CombinationsMod.Content.NPCS
                 "Jerry Spinefeld",
                 "Jack Marrow",
                 "James Boned",
+                "Cal Cium",
+                "Bony Stark",
+                "Marrow Lynd",
+                "Jack Skellington",
+                "Bones Malone",
+                "Reaper Ron"
             };
         }
 
@@ -123,20 +146,35 @@ namespace CombinationsMod.Content.NPCS
 
         public override ITownNPCProfile TownNPCProfile()
         {
-            return new YoyoMerchantProfile();
+            return YoyoMerchantProfile;
         }
 
         public override string GetChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-            chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue1"));
-            chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue2"));
-            chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue3"));
-            chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue4"));
-            chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue5"));
-            chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue6"));
-            chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue7"));
+            if (Main.bloodMoon)
+            {
+                for (int i = 1; i < 8; i++)
+                {
+                    chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue" + i + "_BloodMoon"));
+                }
+            }
+            else if (NPC.IsShimmerVariant)
+            {
+                for (int i = 1; i < 8; i++)
+                {
+                    chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue" + i + "_Shimmer"));
+                }
+            }
+            else
+            {
+                for (int i = 1; i < 8; i++)
+                {
+                    chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue" + i));
+                }
+            }
+            
 
             NumberOfTimesTalkedTo++;
             return chat;
@@ -180,7 +218,7 @@ namespace CombinationsMod.Content.NPCS
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
                 yoyosShop.Add(veridianMod.Find<ModItem>("Stickler").Type, Condition.DownedKingSlime);
             if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
-                yoyosShop.Add(tysYoyoRedux.Find<ItemLoader>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
+                yoyosShop.Add(tysYoyoRedux.Find<YoyoModItemLoader>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
             yoyosShop.Register();
 
             var accessoriesShop = new NPCShop(Type, AccessoriesShop)
@@ -192,7 +230,8 @@ namespace CombinationsMod.Content.NPCS
             .AddWithValue(ItemType<DarkTealString>(), Item.buyPrice(0, 3, 20, 85), YoyoModConditions.EaterOfWorldsOrBrain)
             .AddWithValue(ItemType<SlimyString>(), Item.buyPrice(0, 5, 37, 52), Condition.DownedKingSlime, Condition.InExpertMode)
 
-            .AddWithValue(ItemType<AbilityRing>(), Item.buyPrice(0, 10, 50), Condition.DownedSkeletron)
+            .AddWithValue(ItemType<AbilityRing>(), Item.buyPrice(0, 4, 10, 50), YoyoModConditions.NPCNotShimmered)
+            .AddWithValue(ItemType<ShimmeringRing>(), Item.buyPrice(0, 4, 10, 50), Condition.DownedSkeletron, Condition.IsNpcShimmered)
             .AddWithValue(ItemType<AmberRing>(), Item.buyPrice(0, 1, 38, 12), Condition.DownedEyeOfCthulhu)
             .AddWithValue(ItemType<TopazRing>(), Item.buyPrice(0, 1, 38, 12), Condition.DownedEyeOfCthulhu)
             .AddWithValue(ItemType<AmethystRing>(), Item.buyPrice(0, 1, 38, 12), Condition.DownedEyeOfCthulhu)
@@ -241,24 +280,5 @@ namespace CombinationsMod.Content.NPCS
             multiplier = 18f;
             randomOffset = 0.2f;
         }
-    }
-
-    public class YoyoMerchantProfile : ITownNPCProfile
-    {
-        public int RollVariation() => 0;
-        public string GetNameForVariant(NPC npc) => npc.getNewNPCName();
-
-        public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
-        {
-            if (npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn)
-                return Request<Texture2D>("CombinationsMod/Content/NPCS/YoyoMerchant");
-
-            if (npc.altTexture == 1)
-                return Request<Texture2D>("CombinationsMod/Content/NPCS/YoyoMerchant_Alt");
-
-            return Request<Texture2D>("CombinationsMod/Content/NPCS/YoyoMerchant");
-        }
-
-        public int GetHeadTextureIndex(NPC npc) => GetModHeadSlot("CombinationsMod/Content/NPCS/YoyoMerchant_Head");
     }
 }

@@ -1,4 +1,4 @@
-using CombinationsMod.Content.ModPlayers;
+        using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.GlobalClasses.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -8,7 +8,8 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
-    public class ConverganceProjectile : ModProjectile
+    [LegacyName("ConverganceProjectile")]
+    public class ConvergenceProjectile : ModProjectile
     {
         public int timer = 10;
         public override void SetStaticDefaults()
@@ -16,8 +17,6 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 420f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12f;
-
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14f;
         }
 
         public override void SetDefaults()
@@ -54,11 +53,10 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Cascade, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Code2, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<SmudgeProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<Code3Projectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TheAbbhorProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<ThinMintProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CatacombProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<TheQueensGambitProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<SwarmSpinnerProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Code1, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CobaltYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<PalladiumYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);
@@ -72,8 +70,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Yelets, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.RedsYoyo, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.ValkyrieYoyo, damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<ChristmasBulbProjectile>(), damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<MambeleProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<HolidayDelightProjectile>(), damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<PumpkinPatcherProjectile>(), damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.Kraken, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ProjectileID.TheEyeOfCthulhu, damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.position, new Vector2(0, 0), ModContent.ProjectileType<CultistYoyoProjectile>(), damage, Projectile.knockBack, Projectile.owner);

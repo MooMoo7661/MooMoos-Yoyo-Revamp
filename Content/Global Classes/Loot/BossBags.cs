@@ -26,7 +26,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
                 case ItemID.PlanteraBossBag:
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheQueensGambit>(), 3));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SwarmSpinner>(), 3));
                     break;
 
                 case ItemID.KingSlimeBossBag:

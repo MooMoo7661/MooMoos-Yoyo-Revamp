@@ -23,7 +23,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
                 case NPCID.Ghost:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Smudge>(), 25));
+                    npcLoot.Add(ItemDropRule    .Common(ModContent.ItemType<Smudge>(), 25));
                     break;
 
                 case NPCID.Poltergeist or NPCID.Wraith:
@@ -31,7 +31,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
                 case NPCID.MourningWood:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Mambele>(), 3));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PumpkinPatcher>(), 3));
                     break;
 
                 case NPCID.Pumpking:
@@ -54,7 +54,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
                 case NPCID.Everscream:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChristmasBulb>(), 3));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HolidayDelight>(), 3));
                     break;
 
                 case NPCID.IceGolem:
@@ -63,7 +63,7 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case NPCID.Plantera:
                     LeadingConditionRule notExpertRulePlantera = new LeadingConditionRule(new Conditions.NotExpert());
-                    notExpertRulePlantera.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TheQueensGambit>(), 3));
+                    notExpertRulePlantera.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SwarmSpinner>(), 3));
                     npcLoot.Add(notExpertRulePlantera);
                     break;
 
@@ -101,7 +101,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                     break;
 
                 case NPCID.MartianSaucerCore:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AdvancedYoyoBag>(), 2));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AlienBag>(), 2));
                     break;
 
                 case NPCID.WallofFlesh:

@@ -8,7 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class AroundTheWorldTier2 : ItemLoader
+    public class AroundTheWorldTier2 : YoyoModItemLoader
     {
         public override void SetDefaults()
         {

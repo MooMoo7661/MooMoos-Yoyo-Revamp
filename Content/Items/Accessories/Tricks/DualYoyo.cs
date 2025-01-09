@@ -4,7 +4,7 @@ using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class DualYoyo : ItemLoader
+    public class DualYoyo : YoyoModItemLoader
     {
         public override void SetDefaults()
         {

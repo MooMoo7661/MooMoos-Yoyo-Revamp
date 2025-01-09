@@ -14,7 +14,7 @@ using Terraria.UI.Chat;
 
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
-    public class MoonlordBag : ItemLoader
+    public class MoonlordBag : YoyoModItemLoader
     {
         public override void SetDefaults()
         {
@@ -62,6 +62,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         );
         }
 
+        [CloneByReference]
         CompactParticleManager manager;
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
@@ -99,7 +100,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
-            modPlayer.phasingYoyos = true;
             modPlayer.moonlordBag = true;
             modPlayer.stringSlot = true;
             modPlayer.gloveSlot = true;
@@ -109,6 +109,8 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             modPlayer.ringSlot1 = true;
             modPlayer.ringSlot2 = true;
             modPlayer.trickSlot = true;
+            modPlayer.yoyoBag = true;
+            modPlayer.YoyoAmountModifier += 1;
 
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
@@ -137,22 +139,22 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         {
             if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MoreAccessorySlots")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.DrillsAndCounterweights")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoRings")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AdditionalYoyo")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo/MoreSlots", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.MoreAccessorySlots")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo/DrillsAndCounterweights", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.DrillsAndCounterweights")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo/YoyoRings", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.YoyoRings")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo/SupportGlove", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.SupportGlove")));
             }
             else
             {
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AdditionalYoyo")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MasterYoyoSkills")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.IncreasedYoyoKnockback")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.MasterYoyoSkills")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.IncreasedYoyoKnockback")));
             }
 
-            tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.YoyoShimmer")));
-            tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TrickSlot")));
+            tooltips.Add(new TooltipLine(Mod, "BagInfo/AdditionalYoyo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.AdditionalYoyo")));
+            tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.YoyoShimmer")));
+            tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.TrickSlot")));
 
-            tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MoonlordBag")));
+            //tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MoonlordBag")));
         }
     }
 }

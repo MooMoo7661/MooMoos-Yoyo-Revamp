@@ -8,7 +8,8 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
-    public class AdvancedYoyoBag : ItemLoader
+    [LegacyName("AdvancedYoyoBag")]
+    public class AlienBag : YoyoModItemLoader
     {
         public override void SetDefaults()
         {
@@ -18,17 +19,13 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 8, silver: 39);
-            Utility.ItemSets.YoyoBag[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<YoyoModPlayer>().alienBag = true;
-            if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
-            {
-                player.yoyoGlove = true;
-                player.yoyoString = true;
-            }
+            var modPlayer = player.GetModPlayer<YoyoModPlayer>();
+            modPlayer.alienBag = true;
+            player.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier += 1000f;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -41,7 +38,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D tex = ModContent.Request<Texture2D>("CombinationsMod/Content/Items/Accessories/YoyoBags/AdvancedYoyoBag").Value;
+            Texture2D tex = ModContent.Request<Texture2D>("CombinationsMod/Content/Items/Accessories/YoyoBags/AlienBag").Value;
 
             Main.spriteBatch.Draw(tex, position, null, drawColor, 0, origin, scale * 1.18f, SpriteEffects.None, 0f);
             return false;

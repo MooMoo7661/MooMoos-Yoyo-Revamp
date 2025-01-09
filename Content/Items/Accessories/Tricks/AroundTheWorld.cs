@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class AroundTheWorld : ItemLoader
+    public class AroundTheWorld : YoyoModItemLoader
     {
         public override void SetDefaults()
         {

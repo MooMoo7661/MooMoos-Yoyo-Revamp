@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
-    public class Tier2Bag : ItemLoader
+    public class Tier2Bag : YoyoModItemLoader
     {
         public override void SetDefaults()
         {
@@ -36,13 +36,14 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             modPlayer.drillSlot = true;
             modPlayer.ringSlot1 = true;
             modPlayer.ringSlot2 = true;
+            modPlayer.yoyoBag = true;
+            modPlayer.YoyoAmountModifier += 1;
 
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 player.yoyoGlove = true;
                 player.yoyoString = true;
             }
-
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -65,15 +66,15 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         {
             if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AdditionalYoyo")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MoreAccessorySlots")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.SupportGlove")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.DrillsAndCounterweights")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.AdditionalYoyo")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.MoreAccessorySlots")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.SupportGlove")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.DrillsAndCounterweights")));
             }
             else
             {
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.MasterYoyoSkills")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AdditionalYoyo")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.MasterYoyoSkills")));
+                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.AdditionalYoyo")));
             }
 
         }

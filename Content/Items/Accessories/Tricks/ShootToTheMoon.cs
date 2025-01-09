@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class ShootToTheMoon : ItemLoader
+    public class ShootToTheMoon : YoyoModItemLoader
     {
         public override void SetDefaults()
         {

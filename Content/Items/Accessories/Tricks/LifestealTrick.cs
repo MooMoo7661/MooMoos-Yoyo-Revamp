@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class LifestealTrick : ItemLoader
+    public class LifestealTrick : YoyoModItemLoader
     {
         public override void SetDefaults()
         {

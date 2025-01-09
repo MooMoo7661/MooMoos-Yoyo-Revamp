@@ -6,7 +6,8 @@ namespace CombinationsMod.Content
     /// <summary>
     /// This is to make it so the user can choose whether or not to include every item, using the Mod Config. Returns `LoadModdedItems` bool from YoyoModConfig.
     /// </summary>
-    public abstract class ItemLoader : ModItem
+    /// Renamed to YoyoModItemLoader to avoid confusion with terraria's ItemLoader
+    public abstract class YoyoModItemLoader : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -14,7 +15,7 @@ namespace CombinationsMod.Content
         }
     }
 
-    public abstract class ModDrill : ItemLoader
+    public abstract class ModDrill : YoyoModItemLoader
     {
         [CloneByReference]
         public abstract bool CanBeUnloaded { get; }
@@ -33,7 +34,7 @@ namespace CombinationsMod.Content
         }
     }
 
-    public abstract class ModRing : ItemLoader
+    public abstract class ModRing : YoyoModItemLoader
     {
         [CloneByReference]
         public abstract bool CanBeUnloaded { get; }
@@ -51,7 +52,7 @@ namespace CombinationsMod.Content
     }
 
 
-    public abstract class ModString : ItemLoader
+    public abstract class ModString : YoyoModItemLoader
     {
         [CloneByReference]
         public abstract bool CanBeUnloaded { get; }
@@ -68,7 +69,7 @@ namespace CombinationsMod.Content
         }
     }
 
-    public abstract class ModYoyo : ItemLoader
+    public abstract class ModYoyo : YoyoModItemLoader
     {
         [CloneByReference]
         public abstract bool CanBeUnloaded { get; }

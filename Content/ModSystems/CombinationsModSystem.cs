@@ -45,7 +45,6 @@ namespace CombinationsMod.Content.ModSystems
             TextureAssets.Item[ItemID.Code2] = Request<Texture2D>("CombinationsMod/Content/VanillaTexturesOverride/Code2");
             TextureAssets.Item[ItemID.Code1] = Request<Texture2D>("CombinationsMod/Content/VanillaTexturesOverride/Code1");
 
-            AddDictionaryEntries();
             AddLocalizedDictionaryEntries();
         }
 

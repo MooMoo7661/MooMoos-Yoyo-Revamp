@@ -8,34 +8,46 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
 {
     public class VanillaStatBuffs : GlobalProjectile
     {
-        public override void SetDefaults(Projectile proj)
+        public override void SetStaticDefaults()
         {
-            int type = proj.type;
-            switch (proj.type)
-            {
-                case ProjectileID.Rally:
-                    ProjectileID.Sets.YoyosLifeTimeMultiplier[type] = 8f;
-                    break;
-                case ProjectileID.CorruptYoyo:
-                    ProjectileID.Sets.YoyosLifeTimeMultiplier[type] = 12f;
-                    ProjectileID.Sets.YoyosMaximumRange[type] = 220f;
-                    ProjectileID.Sets.YoyosTopSpeed[type] = 13;
-                    break;
-                case ProjectileID.CrimsonYoyo:
-                    ProjectileID.Sets.YoyosLifeTimeMultiplier[type] = 10f;
-                    ProjectileID.Sets.YoyosMaximumRange[type] = 230f;
-                    ProjectileID.Sets.YoyosTopSpeed[type] = 13.3f;
-                    break;
-                case ProjectileID.JungleYoyo:
-                    ProjectileID.Sets.YoyosLifeTimeMultiplier[type] = 9f;
-                    ProjectileID.Sets.YoyosTopSpeed[type] = 11;
-                    ProjectileID.Sets.YoyosMaximumRange[type] = 170;
-                    break;
-                case ProjectileID.Code1:
-                    ProjectileID.Sets.YoyosLifeTimeMultiplier[type] = 13f;
-                    break;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.Rally] = 8f;
 
-            }
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.CorruptYoyo] = 12f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.CorruptYoyo] = 220f;
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.CorruptYoyo] = 13;
+
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.CrimsonYoyo] = 10f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.CrimsonYoyo] = 230f;
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.CrimsonYoyo] = 13.3f;
+
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.JungleYoyo] = 9f;
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.JungleYoyo] = 11;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.JungleYoyo] = 170;
+
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.FormatC] = 16f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.FormatC] = 250;
+
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.RedsYoyo] = 18f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.RedsYoyo] = 360;
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.ValkyrieYoyo] = 18f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.ValkyrieYoyo] = 360;
+
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.Kraken] = 17.5f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.Kraken] = 380;
+
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.Kraken] = 17.5f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.Kraken] = 380;
+
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.TheEyeOfCthulhu] = 18.5f;
+            ProjectileID.Sets.YoyosMaximumRange[ProjectileID.TheEyeOfCthulhu] = 400;
+
+            ProjectileID.Sets.YoyosTopSpeed[ProjectileID.Terrarian] = 19.4f;
+
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.Yelets] = -1f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.Code1] = 13f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.Gradient] = 18f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.Amarok] = 17f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[ProjectileID.HelFire] = 17f;
         }
     }
 }

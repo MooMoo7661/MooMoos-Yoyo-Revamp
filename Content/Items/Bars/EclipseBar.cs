@@ -1,4 +1,4 @@
-using CombinationsMod.Content.Items.Souls;
+using CombinationsMod.Content.Items.Misc;
 using CombinationsMod.Content.Rarities;
 using CombinationsMod.Content.Tiles.Bars;
 using Microsoft.Xna.Framework;
@@ -12,7 +12,8 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Bars
 {
-    public class EclipseBar : ItemLoader
+    [LegacyName("SightBar", "FrightBar", "MightBar", "NeutralineScrap")]
+    public class EclipseBar : YoyoModItemLoader
     {
         public override void SetDefaults()
         {
@@ -34,7 +35,7 @@ namespace CombinationsMod.Content.Items.Bars
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<SoulOfEclipse>(), 2)
+            .AddIngredient(ModContent.ItemType<EclipseShard>(), 3)
             .AddTile(TileID.AdamantiteForge)
             .Register();
         }

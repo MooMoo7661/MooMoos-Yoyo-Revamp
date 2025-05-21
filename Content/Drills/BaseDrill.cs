@@ -33,6 +33,7 @@ namespace CombinationsMod.Content.Drills
         protected abstract int Width { get; }
         protected abstract int Height { get; }
 
+        // Associated item with the drill
         public abstract int DrillItem { get; }
 
         // Drill is enabled and should be visible
@@ -43,16 +44,16 @@ namespace CombinationsMod.Content.Drills
         }
 
         /// <summary>
-        /// Return false to stop the tile from being destroyed.
+        /// Return false to stop the tile from being destroyed
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
         public virtual bool PrePickBlock(int x, int y)
         {
             return true;
         }
 
+        /// <summary>
+        /// Can be used to handle dusts, noises, etc
+        /// </summary>
         public virtual void PostPickBlock(int x, int y)
         {
             if (Main.rand.NextBool(2))
@@ -145,7 +146,7 @@ namespace CombinationsMod.Content.Drills
             else
             {
                 // Attempt to 'pick' any nearby solid tiles
-                Player player = Main.player[Projectile.owner];
+                Player player = Projectile.GetOwner();
                 bool success = false;
 
                 void TryPick(int cX, int cY)
@@ -167,6 +168,8 @@ namespace CombinationsMod.Content.Drills
                     }
                     PostPickBlock(x, y);
                 }
+
+                // this code sucks but I'm too lazy to fix it
                 switch(BlockRangeStyle)
                 {
                     default:

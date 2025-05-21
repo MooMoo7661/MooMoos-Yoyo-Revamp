@@ -18,6 +18,9 @@ internal class YoyoModConfig : ModConfig
     public bool VanillaYoyoDamageChanges { get; set; }
 
     [DefaultValue(true)]
+    public bool YoyoNaNTeleport { get; set; }
+
+    [DefaultValue(true)]
     public bool AccessorySlotIndicators { get; set; }
     [Header("LargeChanges")]
     [DefaultValue(true)]
@@ -48,4 +51,6 @@ internal class YoyoModConfig : ModConfig
     public bool YoyoLifetime { get; set; }
     [DefaultValue(true)]
     public bool MaxHits { get; set; }
+    [DefaultValue(true)]
+    public bool NoAbilityTooltip { get; set; }
 }

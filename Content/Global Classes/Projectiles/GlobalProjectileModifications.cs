@@ -27,6 +27,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         bool cascadeGreekFire = false;
         bool yoyoOrnament = false;
+        private int heat = 0;
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
@@ -40,6 +41,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo() && projectile.owner == Main.myPlayer)
             {
+                if (!projectile.YoyoData().MainYoyo && projectile.scale == 1f)
+                    projectile.scale = 0.9f;
+
                 if (modPlayer.trick2)
                 {
                     for (int i = 0; i < 2; i++)
@@ -66,7 +70,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 {
                     cascadeGreekFire = true;
                 }
-            }
+            } 
         }
 
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
@@ -79,6 +83,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 modifiers.FinalDamage *= 2f;
                 modifiers.Knockback *= 2f;
             }
+
+            if (projectile.IsYoyo())
+                modifiers.FinalDamage *= Math.Clamp(1 + MathHelper.Lerp(0f, 0.5f, (float)heat / 300), 1, 2);
         }
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
@@ -88,6 +95,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo())
             {
+                if (heat > 100 && Main.rand.NextBool(3))
+                    target.AddBuff(BuffID.OnFire, heat);
+
                 Player player = projectile.GetOwner();
                 YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
@@ -126,9 +136,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
 
                 if (modPlayer.golemString && Main.myPlayer == projectile.owner)
-                {
                     Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<EclipseExplosion>(), 84, 0, projectile.owner);
-                }
 
                 if (modPlayer.frostbiteString)
                     target.AddBuff(BuffID.Frostburn2, 300);
@@ -187,6 +195,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo())
             {
+                if (heat > 0)
+                heat--;
+
+                if (heat > 100 && Main.rand.NextBool(150 - Math.Clamp(heat / 2, 0, 145))) 
+                    Dust.NewDust(projectile.position, 5, 5, DustID.Torch, 0, 0);
+
                 if (modPlayer.amberRing)
                 {
                     Lighting.AddLight(projectile.Center, 1, (float)0.62, 1);
@@ -299,6 +313,62 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                     }
                 }
             }
+        }
+
+        public override Color? GetAlpha(Projectile projectile, Color lightColor)
+        {
+            if (projectile.aiStyle == 99 && projectile.TryGetOwner(out var player) && player.GetModPlayer<YoyoModPlayer>().sparkTrick)
+            {
+                return new Microsoft.Xna.Framework.Color(255, 255 - Math.Clamp(heat, 0, 255), 255 - Math.Clamp(heat, 0, 255), 255 - projectile.alpha);
+            }
+
+            return null;
+        }
+
+        public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+        {
+            if (!projectile.IsYoyo())
+                return true;
+
+            Vector2 dir = Vector2.Zero;
+            Vector2 offset = Vector2.Zero;
+            int x = (int)(projectile.Center.X / 16);
+            int y = (int)(projectile.Center.Y / 16);
+
+            if (WorldGen.InWorld(x, y + 1) && Framing.GetTileSafely(x, y + 1).HasTile)
+            {
+                dir.X = -13 * (projectile.GetOwner().direction == -1 ? -1 : 1);
+                offset.Y = 3;
+                if (heat < 300)
+                    heat += Math.Abs((int)projectile.velocity.X / 2);
+            }
+            else if (WorldGen.InWorld(x, y - 1) && Framing.GetTileSafely(x, y - 1).HasTile)
+            {
+                dir.X = 13 * (projectile.GetOwner().direction == -1 ? -1 : 1);
+                offset.Y = -10;
+            }
+            else if (WorldGen.InWorld(x + 1, y) && Framing.GetTileSafely(x + 1, y).HasTile)
+            {
+                dir.Y = -13 * (projectile.GetOwner().direction == -1 ? -1 : 1);
+                offset.X = 5;
+            }
+            else if (WorldGen.InWorld(x - 1, y) && Framing.GetTileSafely(x - 1, y).HasTile)
+            {
+                dir.Y = 13 * (projectile.GetOwner().direction == -1 ? -1 : 1);
+                offset.X = -10;
+            }
+
+            if (projectile.GetOwner().GetModPlayer<YoyoModPlayer>().sparkTrick && !Main.rand.NextBool(4) && dir != Vector2.Zero)
+            {
+                Dust spark2 = Dust.NewDustDirect(projectile.Center + offset, 5, 5, DustID.Torch, dir.X, dir.Y);
+                spark2.alpha = 0;
+                spark2.scale = 0.55f;
+
+                if (heat < 300)
+                    heat += 3;
+            }
+
+            return true;
         }
 
         // Resetting counters when the yoyo is killed.

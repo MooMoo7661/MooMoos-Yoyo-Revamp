@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using CombinationsMod.Content.Global_Classes.Projectiles;
 using CombinationsMod.Content.Items.Yoyos;
@@ -8,7 +9,6 @@ using CombinationsMod.Content.Projectiles.Misc;
 using CombinationsMod.Content.Projectiles.TrickYoyos;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
 using CombinationsMod.Content.Projectiles.YoyoProjectiles;
-using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -24,6 +24,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         private int slimeThornCounter = 0;
         private int lifestealCooldown = 0;
+        private int lifestealGloveCooldown = 300;
 
         bool cascadeGreekFire = false;
         bool yoyoOrnament = false;
@@ -41,6 +42,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo() && projectile.owner == Main.myPlayer)
             {
+                //if (!projectile.YoyoData().MainYoyo)
+                //    Main.NewText(projectile.localNPCHitCooldown);
+
                 if (!projectile.YoyoData().MainYoyo && projectile.scale == 1f)
                     projectile.scale = 0.9f;
 
@@ -95,13 +99,60 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo())
             {
-                if (heat > 100 && Main.rand.NextBool(3))
-                    target.AddBuff(BuffID.OnFire, heat);
+                projectile.GetGlobalProjectile<YoyoDataHouse>().Hits++;
 
                 Player player = projectile.GetOwner();
                 YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-                projectile.GetGlobalProjectile<YoyoDataHouse>().Hits++;
+                if (heat > 100 && Main.rand.NextBool(3))
+                    target.AddBuff(BuffID.OnFire, heat);
+
+                // lifesteal
+                if (modPlayer.fleshGlove && !target.immortal && !target.dontTakeDamage && target.lifeMax > 10 && lifestealGloveCooldown <= 0)
+                {
+                    if (projectile.YoyoData().Hits % 20 == 0)
+                    {
+                        List<NPC> nearby = new List<NPC>();
+
+                        foreach (NPC npc in Main.ActiveNPCs)
+                        {
+                            if (npc.Distance(projectile.Center) > 750f)
+                                continue;
+
+                            if (!npc.friendly && !npc.dontTakeDamage && !npc.immortal)
+                            {
+                                nearby.Add(npc);
+                            }
+                        }
+
+                        if (nearby.Count < 4)
+                        {
+                            player.AddBuff(BuffID.Rage, 240);
+                        }
+
+                        for (int i = 0; i < 5 + (projectile.YoyoData().MainYoyo ? 0 : -2); i++)
+                        {
+                            if (nearby.Count > 0)
+                            {
+                                int idx = Main.rand.Next(nearby.Count);
+                                NPC pick = nearby[idx];
+                                Projectile.NewProjectile(pick.GetSource_FromThis(), pick.Center, Vector2.Zero,
+                                ProjectileID.VampireHeal, (int)(projectile.damage * 0.3f), 0, projectile.owner, projectile.owner, 1 + (pick.boss ? 2 : 0));
+                                NPC.HitInfo info = pick.CalculateHitInfo((int)(projectile.damage * 0.3f), -pick.direction, false, 0f);
+                                pick.StrikeNPC(info, true);
+                                if (Main.netMode == NetmodeID.MultiplayerClient)
+                                {
+                                    NetMessage.SendStrikeNPC(pick, info);
+                                }
+
+                                nearby.RemoveAt(idx);
+                            }
+                        }
+
+                        nearby.Clear();
+                        lifestealGloveCooldown = 180 + (projectile.YoyoData().MainYoyo ? 0 : 120);
+                    }
+                }
    
                 if (projectile.YoyoData().MainYoyo)
                 {
@@ -165,6 +216,9 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 if (lifestealCooldown < 15 + (projectile.MaxUpdates * 10) + (projectile.usesLocalNPCImmunity ? projectile.localNPCHitCooldown * 0.7f : 0))
                     lifestealCooldown++;
 
+                if (lifestealGloveCooldown > 0)
+                    lifestealGloveCooldown--;
+
                 if (modPlayer.slimeString)
                 {
                     slimeThornCounter++;
@@ -195,8 +249,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo())
             {
+                if (modPlayer.spelunkerGlove)
+                {
+                    Lighting.AddLight(projectile.Center, new Color(255, 255, 255).ToVector3() * 1.2f);
+                }
+
                 if (heat > 0)
-                heat--;
+                heat = Math.Clamp(heat - 2, 0, 500);
 
                 if (heat > 100 && Main.rand.NextBool(150 - Math.Clamp(heat / 2, 0, 145))) 
                     Dust.NewDust(projectile.position, 5, 5, DustID.Torch, 0, 0);
@@ -317,9 +376,10 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override Color? GetAlpha(Projectile projectile, Color lightColor)
         {
-            if (projectile.aiStyle == 99 && projectile.TryGetOwner(out var player) && player.GetModPlayer<YoyoModPlayer>().sparkTrick)
+            if (projectile.aiStyle == ProjAIStyleID.Yoyo && projectile.TryGetOwner(out var player) && player.GetModPlayer<YoyoModPlayer>().sparkTrick)
             {
-                return new Microsoft.Xna.Framework.Color(255, 255 - Math.Clamp(heat, 0, 255), 255 - Math.Clamp(heat, 0, 255), 255 - projectile.alpha);
+                Color posColor = Lighting.GetColor(projectile.Center.ToTileCoordinates());
+                return new Microsoft.Xna.Framework.Color(posColor.R, posColor.G - Math.Clamp(heat, 0, 255), posColor.B - Math.Clamp(heat, 0, 255), 255 - projectile.alpha);
             }
 
             return null;
@@ -327,7 +387,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
         {
-            if (!projectile.IsYoyo())
+            if (!projectile.IsYoyo() || !Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().sparkTrick)
                 return true;
 
             Vector2 dir = Vector2.Zero;
@@ -376,9 +436,22 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         {
             if (!projectile.TryGetOwner(out _))
                 return;
-            
-            if (projectile.IsYoyo() && projectile.YoyoData().MainYoyo)
-                projectile.GetOwner().GetModPlayer<YoyoModPlayer>().HitCounter = 0;
+
+            if (projectile.IsYoyo())
+            {
+                if (projectile.YoyoData().MainYoyo)
+                    projectile.GetOwner().GetModPlayer<YoyoModPlayer>().HitCounter = 0;
+
+                var modPlayer = projectile.GetOwner().GetModPlayer<YoyoModPlayer>();
+                if (modPlayer.corruptGlove)
+                {
+                    for (int i = 0; i < 16; i++)
+                    {
+                        Vector2 speed = -Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Main.rand.NextFloat();
+                        Dust.NewDust(projectile.Center, 5, 5, DustID.Poisoned, speed.X, speed.Y);
+                    }
+                }
+            }
 
             if (yoyoOrnament)
             {

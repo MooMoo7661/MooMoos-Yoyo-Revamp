@@ -30,6 +30,7 @@ namespace CombinationsMod.Content.ModSystems
         public LocalizedAbilityString LocalizedAbbhor = new();
         public LocalizedAbilityString LocalizedTrueYoyos = new();
         public LocalizedAbilityString LocalizedCobaltYoyo = new();
+        public LocalizedAbilityString LocalizedPalladiumYoyo = new();
 
         public LocalizedAbilityString LocalizedCascade = new();
         public LocalizedAbilityString LocalizedValor = new();
@@ -86,7 +87,8 @@ namespace CombinationsMod.Content.ModSystems
             LocalizedChik.Register(Language.GetTextValue(abilityFilePath + "Chik"), ItemID.Chik);
             LocalizedRedsYoyo.Register(Language.GetTextValue(abilityFilePath + "RedsYoyo"), ItemID.RedsYoyo);
             LocalizedValkyrie.Register(Language.GetTextValue(abilityFilePath + "RedsYoyo"), ItemID.ValkyrieYoyo);
-            LocalizedCobaltYoyo.Register(Language.GetTextValue(abilityFilePath + "CobaltYoyo"), ItemType<CobaltYoyo>());
+            LocalizedCobaltYoyo.Register(Language.GetTextValue(abilityFilePath + "HardmodeYoyo1"), ItemType<CobaltYoyo>());
+            LocalizedPalladiumYoyo.Register(Language.GetTextValue(abilityFilePath + "HardmodeYoyo1"), ItemType<PalladiumYoyo>());
             #endregion
         }
 

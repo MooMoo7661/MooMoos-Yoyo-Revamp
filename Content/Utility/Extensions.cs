@@ -2,6 +2,7 @@
 using CombinationsMod.Content.Global_Classes.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Terraria.DataStructures;
 using static CombinationsMod.Content.ModSystems.CombinationsModSystem;
 
 namespace CombinationsMod.Content.Utility

@@ -11,7 +11,7 @@ namespace CombinationsMod.Content.ModPlayers
     {
         public float YoyoSpeedModifier { get; set; } = 0f;
         public float YoyoRangeModifier { get; set; } = 0f;
-        public float YoyoLifetimeModifier { get; set; }
+        public float YoyoLifetimeModifier { get; set; } = 1f;
         public float YoyoAmountModifier { get; set; } = 1f;
         public Color YoyoStringColor { get; set; } = Color.White;
 
@@ -23,7 +23,6 @@ namespace CombinationsMod.Content.ModPlayers
 
         public bool stringSlot = false;
         public bool gloveSlot = false;
-        public bool supportGloveSlot = false;
         public bool counterweightSlot = false;
         public bool drillSlot = false;
         public bool ringSlot1 = false;
@@ -60,7 +59,15 @@ namespace CombinationsMod.Content.ModPlayers
         public bool darkTealString = false;
         public bool grapeString = false;
 
-        public bool supportGlove = false;
+        public bool leatherWraps = false;
+        public bool spelunkerGlove = false;
+        public bool crystalGlove = false;
+        public bool corruptGlove = false;
+        public bool fleshGlove = false;
+        public bool jollyGlove = false;
+        public bool hallowGlove = false;
+        public bool skeletonGlove = false;
+        public bool infinityGauntlet = false;
 
         public bool ironDrill = false;
         public bool palladiumDrill = false;
@@ -84,14 +91,14 @@ namespace CombinationsMod.Content.ModPlayers
         public bool moomooDrill = false;
         public bool excavatorDrill = false;
 
-        public bool amberRing = false;    // 
-        public bool topazRing = false;    //
-        public bool amethystRing = false; //
-        public bool rubyRing = false;     //   Highlighted rings are color based
-        public bool sapphireRing = false; //
-        public bool emeraldRing = false;  // 
-        public bool diamondRing = false;  //
-        public bool gemRing = false;      //
+        public bool amberRing = false;   
+        public bool topazRing = false;   
+        public bool amethystRing = false;
+        public bool rubyRing = false;    
+        public bool sapphireRing = false;
+        public bool emeraldRing = false; 
+        public bool diamondRing = false; 
+        public bool gemRing = false;     
         public bool yoyoRing = false; // Power Ring
         public bool fortitudeRing = false; // Destroyer ring
         public bool omnipotenceRing = false; // Twins ring
@@ -106,12 +113,14 @@ namespace CombinationsMod.Content.ModPlayers
         public bool dualYoyo = false; // Dual Yoyo trick
         public bool moonTrick = false; // Shoot to the Moon
         public bool lifestealTrick = false; // Lifesteal Trick
+        public bool sparkTrick = false; // Sparkspin Trick
 
         public override void ResetEffects()
         {
             YoyoAmountModifier = 1;
             YoyoSpeedModifier = 0;
             YoyoRangeModifier = 0;
+            YoyoLifetimeModifier = 1;
             YoyoStringColor = Color.White;
 
             currentYoyo = 0;
@@ -120,7 +129,6 @@ namespace CombinationsMod.Content.ModPlayers
 
             stringSlot = false;
             gloveSlot = false;
-            supportGloveSlot = false;
             counterweightSlot = false;
             drillSlot = false;
             ringSlot1 = false;
@@ -135,7 +143,15 @@ namespace CombinationsMod.Content.ModPlayers
             moonlordBag = false;
             playerHasYoyoBagEquipped = false;
 
-            supportGlove = false;
+            leatherWraps = false;
+            spelunkerGlove = false;
+            crystalGlove = false;
+            corruptGlove = false;
+            fleshGlove = false;
+            jollyGlove = false;
+            hallowGlove = false;
+            skeletonGlove = false;
+            infinityGauntlet = false;
 
             eclipseString = false;
             golemString = false;
@@ -197,6 +213,7 @@ namespace CombinationsMod.Content.ModPlayers
             dualYoyo = false;
             moonTrick = false;
             lifestealTrick = false;
+            sparkTrick = false;
         }
 
         public override void Load()
@@ -216,7 +233,9 @@ namespace CombinationsMod.Content.ModPlayers
         public override void PreUpdate()
         {
             if (Player.yoyoGlove)
+            {
                 Player.GetModPlayer<YoyoModPlayer>().YoyoAmountModifier += 1;
+            }
         }
 
         /// <summary>Gets the yoyo projectile ID to cast, and the index in the inventory of the item it belongs to.</summary>
@@ -265,7 +284,7 @@ namespace CombinationsMod.Content.ModPlayers
             c.EmitDelegate(ILEdit);
             c.EmitRet();
             c.Emit(OpCodes.Ldc_I4_0);
-        }
+        }   
 
         private void ILEdit(int index1, int yoyoCount, int counterweightCount, Player player, int dmg, float kb)
         {
@@ -283,17 +302,18 @@ namespace CombinationsMod.Content.ModPlayers
                     {
                         damage = player.inventory[player.selectedItem + yoyoInfo[1]].damage;
                         knockback = player.inventory[player.selectedItem + yoyoInfo[1]].knockBack;
+
+                        if (!ModLoader.HasMod("CalamityMod"))
+                            damage = (int)Math.Clamp(damage * 0.5f, 1, int.MaxValue);
                     }
 
                     // +1 due to always having 1 yoyo active
                     for (int i = 0; i < modPlayer.YoyoAmountModifier + 1; i++)
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
-                        Projectile proj1 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Main.projectile[index1]), player.Center, vector, yoyoInfo[0], damage, knockback, player.whoAmI, 1f, 0f, 1f);
-                        proj1.usesIDStaticNPCImmunity = false;
-                        proj1.usesLocalNPCImmunity = true;
-                        proj1.localNPCHitCooldown = 25 * proj1.MaxUpdates;
-                        proj1.ai[2] = 1;
+                        EntitySource_ItemUse source = new(player, player.inventory[player.selectedItem]);
+                        Projectile proj1 = Projectile.NewProjectileDirect(source, player.Center, vector, yoyoInfo[0], damage, knockback, player.whoAmI, 0f);
+                        
                         return;
                     }
                 }

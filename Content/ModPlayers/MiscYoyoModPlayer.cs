@@ -7,6 +7,10 @@ using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using CombinationsMod.Content.Tiles;
+using CombinationsMod.Content.UI.UpgradeStationUI;
+using CombinationsMod.Content.Global_Classes;
+using Terraria.GameInput;
 
 namespace CombinationsMod.Content.ModPlayers
 {
@@ -31,6 +35,12 @@ namespace CombinationsMod.Content.ModPlayers
             {
                 modPlayer.playerHasYoyoBagEquipped = true;
             }
+        }
+
+        public override void PostUpdate()
+        {
+           if (!Player.adjTile[ModContent.TileType<YoyoUpgradeStation>()])
+                ModContent.GetInstance<UpgradeStationUISystem>().HideMyUI();
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
-using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -24,11 +23,6 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
         public override void Load()
         {
             Terraria.On_Projectile.AI_099_2 += YoyoAIDetour;
-        }
-
-        public override void Unload()
-        {
-            Terraria.On_Projectile.AI_099_2 -= YoyoAIDetour;
         }
 
         private void YoyoAIDetour(Terraria.On_Projectile.orig_AI_099_2 orig, Projectile projectile)
@@ -60,6 +54,17 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
 
                 float num2 = ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] + (ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] >= 1 ? (player.GetModPlayer<YoyoModPlayer>().shimmerBag ? 3f : 0) : 0);
 
+                float life1 = projectile.GetGlobalProjectile<YoyoDataHouse>().LifetimeMult;
+                float life2 = player.GetModPlayer<YoyoModPlayer>().YoyoLifetimeModifier;
+        
+                if (life1 < 0 || life2 < 0)
+                    num2 = -1;
+                else if (num2 != -1)
+                    num2 *= (life1 + life2);
+
+                if (num2 > 0)
+                    num2 *= projectile.GetGlobalProjectile<YoyoDataHouse>().LifetimeMult;
+
                 if (num2 != -1f && num > num2)
                 {
                     projectile.ai[0] = -1f; // Sets when the yoyo is killed
@@ -69,7 +74,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             if (projectile.type == 603 && projectile.owner == Main.myPlayer) // All of this is for terrarian's homing orbs
             {
                 projectile.localAI[1] += 1f;
-                if (projectile.localAI[1] >= 6f)
+                if (projectile.localAI[1] >= 6f * (projectile.YoyoData().MainYoyo ? 5 : 1.5f))
                 {
                     float num3 = 400f;
                     Vector2 vector = projectile.velocity;
@@ -153,15 +158,23 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             }
 
             // If somehow the yoyo's velocity gets super high or fucked up, kill it
+            // - Changed to just teleport to the player. Otherwise, when secondary yoyos are killed, they recall the main one
             if (projectile.velocity.HasNaNs())
             {
-                projectile.Kill();
+                //Main.NewText("NaNs!");
+                if (ModContent.GetInstance<YoyoModConfig>().YoyoNaNTeleport)
+                {
+                    projectile.velocity = Vector2.Zero;
+                    projectile.position = player.position;
+                }
+                else
+                    projectile.Kill();
             }
 
             projectile.timeLeft = 6;
             float stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
 
-            float yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[projectile.type] + player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier;
+            float yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[projectile.type] + (player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier + projectile.YoyoData().SpeedBonus) * projectile.YoyoData().SpeedMult;
             float modifiedStringLength = stringLength + player.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier;
 
             if (projectile.type == ProjectileID.Cascade) // Cascade dusts
@@ -188,8 +201,8 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             //modifiedStringLength = 120f + modifiedStringLength / 5;
             yoyoSpeed *= (1f + player.GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
 
-            if (projectile.ai[2] == 1f && projectile.MaxUpdates > 1)
-                yoyoSpeed *= 0.75f;
+            if (!projectile.YoyoData().MainYoyo && projectile.MaxUpdates > 1)
+                yoyoSpeed *= 0.45f;
 
             float num7 = 14f - yoyoSpeed / 2f;
             if (num7 < 1f)
@@ -201,7 +214,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             {
                 // Yoyo range is greatly increased with second ai. Change 20f to 100f+
                 if (player.GetModPlayer<YoyoModPlayer>().moonTrick) { num9 += 150f; }
-                else { num9 += 40f; }
+                else { num9 += 35f; }
             }
             if (projectile.ai[0] >= 0f)
             {
@@ -256,7 +269,6 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                                 y = vector7.Y;
                             }
 
-                            // Sets the ai values equal to the X and Y pos
                             projectile.ai[0] = x;
                             projectile.ai[1] = y;
                             projectile.netUpdate = true;
@@ -351,7 +363,8 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     projectile.velocity = (projectile.velocity * (num7 - 1f) + vector9) / num7;
                 }
             }
-            projectile.rotation += (float)(0.45d / (double)projectile.MaxUpdates);
+
+            projectile.rotation += (float)(0.45d * (projectile.GetOwner().direction == -1 ? -1 : 1) / (double)projectile.MaxUpdates);
         }
     }
 }

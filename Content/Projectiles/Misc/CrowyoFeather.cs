@@ -38,7 +38,7 @@ namespace CombinationsMod.Content.Projectiles.Misc
 
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
+            Player player = Projectile.GetOwner();
 
             Projectile.rotation = Projectile.velocity.ToRotation();
 

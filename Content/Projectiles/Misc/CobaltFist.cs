@@ -21,6 +21,13 @@ namespace CombinationsMod.Content.Projectiles.Misc
             Projectile.idStaticNPCHitCooldown = 20;
             Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
+            Projectile.ArmorPenetration = 8;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (Main.rand.NextBool())
+                target.AddBuff(BuffID.Confused, 180);
         }
 
         public override void PostAI()

@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
 using CombinationsMod.Content.Configs;
+using CombinationsMod.Content.Global_Classes;
 using CombinationsMod.Content.Items.Accessories.Strings;
+using CombinationsMod.Content.Items.Accessories.YoyoGloves;
 using CombinationsMod.Content.Items.Yoyos;
 using CombinationsMod.Content.ModPlayers;
+using CombinationsMod.Content.UI.UpgradeStationUI;
+using Humanizer;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json.Linq;
 using ReLogic.Content;
-using Terraria;
-using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.Content.ModSystems
@@ -48,6 +49,51 @@ namespace CombinationsMod.Content.ModSystems
             AddLocalizedDictionaryEntries();
         }
 
+        public override void PostWorldGen()
+        {
+            for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest == null)
+                {
+                    continue;
+                }
+
+                if (WorldGen.genRand.NextBool(4))
+                    continue;
+
+                Tile chestTile = Main.tile[chest.x, chest.y];
+
+                if (chestTile.TileType == TileID.Containers && chestTile.TileFrameX == 0 && Main.rand.NextBool(3))
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < Chest.maxItems; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == ItemID.None)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(ModContent.ItemType<LeatherWraps>());
+                            break;
+                        }
+                    }
+                }
+                else if (chestTile.TileType == TileID.Containers && chestTile.TileFrameX == 1 * 36 && Main.rand.NextBool(2))
+                {
+                    for (int inventoryIndex = 0; inventoryIndex < Chest.maxItems; inventoryIndex++)
+                    {
+                        if (chest.item[inventoryIndex].type == ItemID.None)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(ModContent.ItemType<SpelunkerGlove>());
+                            break;  
+                        }
+                    }
+                }
+            }
+        }
+
+        public override void Load()
+        {
+            On_Item.GetShimmered += On_Item_GetShimmered;
+        }
+
         public override void OnLocalizationsLoaded()
         {
             AddLocalizedDictionaryEntries();
@@ -68,7 +114,54 @@ namespace CombinationsMod.Content.ModSystems
                 {
                     recipe.DisableRecipe();
                 }
+
+                // scan items in recipe, if any item is a yoyo then add a craft callback
+                // craft callback handles returning upgrades to the player, so they are not permanently deleted
+
+                foreach(var item in recipe.requiredItem)
+                {
+                    if (ItemID.Sets.Yoyo[item.type])
+                        AddCallback(recipe);
+
+                    break;
+                }
             }
+        }
+
+        internal void AddCallback(Recipe recipe)
+        {
+            recipe.AddOnCraftCallback(delegate (Recipe recipe, Item item, List<Item> ConsumedItems, Item destinationStack)
+            {
+                foreach (var recipeItem in ConsumedItems)
+                {
+                    if (!ItemID.Sets.Yoyo[recipeItem.type])
+                        continue;
+
+                    foreach (var upgrade in recipeItem.GetGlobalItem<GlobalYoyoUpgrade>().yoyoUpgrades)
+                    {
+                        Main.NewText(upgrade);
+                        if (!upgrade.IsAir)
+                            Main.LocalPlayer.QuickSpawnItem(null, upgrade);
+                    }
+                }
+                return;
+            });
+        }
+
+        private void On_Item_GetShimmered(On_Item.orig_GetShimmered orig, Item self)
+        {
+            if (ItemID.Sets.Yoyo[self.type])
+            {
+                var Upgrade = self.GetGlobalItem<GlobalYoyoUpgrade>();
+                foreach (var value in Upgrade.yoyoUpgrades)
+                {
+                    Item item = Main.item[Item.NewItem(Item.GetSource_NaturalSpawn(), self.position, value)];
+                    item.shimmerWet = true;
+                    item.shimmered = true;
+                }
+            }
+
+            orig(self);
         }
 
         public override void AddRecipes()
@@ -150,6 +243,8 @@ namespace CombinationsMod.Content.ModSystems
         {
             YoyoModPlayer modPlayer = Main.LocalPlayer.GetModPlayer<YoyoModPlayer>();
             modPlayer.HitCounter = 0;
+
+            ModContent.GetInstance<UpgradeStationUISystem>().HideMyUI();
         }
     }
 }

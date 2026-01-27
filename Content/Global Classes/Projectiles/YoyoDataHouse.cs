@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria.DataStructures;
@@ -8,8 +9,18 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
 {
     public class YoyoDataHouse : GlobalProjectile
     {
+        private Item _parent = null;
+
+        public List<IYoyoUpgrade> Upgrades = new();
+
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Projectile proj, bool lateInstantiation) => proj.aiStyle == 99;
+
+        public float DamageMult = 1f;
+        public float KnockbackMult = 1f;
+        public float LifetimeMult = 1f;
+        public float SpeedBonus = 0f;
+        public float SpeedMult = 1f;
 
         private int _hits;
         public int Hits
@@ -41,9 +52,67 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             _mainYoyo = false;
         }
 
+        // yikes
         public override void OnSpawn(Projectile proj, IEntitySource source)
         {
-            MainYoyo = proj.ai[2] == 0;
+            MainYoyo = proj.ai[0] != 1f;
+
+            if (source is EntitySource_ItemUse parentSource)
+            {
+                var parent = parentSource.Item;
+                _parent = parent;
+                
+                if (ItemID.Sets.Yoyo[parent.type])
+                {
+                    var upgrades = parent.GetGlobalItem<GlobalYoyoUpgrade>().yoyoUpgrades;
+                   
+                    foreach (var item in upgrades)
+                    {
+                        if (item.ModItem is IYoyoUpgrade upgrade)
+                        {
+                            upgrade.ApplyEffects(proj);
+                        }
+                    }
+                }
+            }
+        }
+
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (_parent == null)
+                return;
+
+            if (ItemID.Sets.Yoyo[_parent.type])
+            {
+                var upgrades = _parent.GetGlobalItem<GlobalYoyoUpgrade>().yoyoUpgrades;
+                   
+                    foreach (var item in upgrades)
+                    {
+                        if (item.ModItem is IYoyoUpgrade upgrade)
+                        {
+                            upgrade.ApplyOnHitEffect(projectile, target, hit, damageDone);
+                        }
+                    }
+            }
+        }
+
+        public override void AI(Projectile projectile)
+        {
+            if (_parent == null)
+                return;
+
+            if (ItemID.Sets.Yoyo[_parent.type])
+            {
+                var upgrades = _parent.GetGlobalItem<GlobalYoyoUpgrade>().yoyoUpgrades;
+
+                foreach (var item in upgrades)
+                {
+                    if (item.ModItem is IYoyoUpgrade upgrade)
+                    {
+                        upgrade.AI(projectile);
+                    }
+                }
+            }
         }
 
         public override void SendExtraAI(Projectile projectile, BitWriter bitWriter, BinaryWriter binaryWriter)

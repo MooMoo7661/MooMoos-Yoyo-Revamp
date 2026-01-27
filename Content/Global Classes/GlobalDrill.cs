@@ -1,6 +1,5 @@
 ﻿using CombinationsMod.Content;
 using CombinationsMod.Content.ModPlayers;
-using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

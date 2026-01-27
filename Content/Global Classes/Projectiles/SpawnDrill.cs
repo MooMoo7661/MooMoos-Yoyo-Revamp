@@ -1,6 +1,5 @@
 ﻿using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
-using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;

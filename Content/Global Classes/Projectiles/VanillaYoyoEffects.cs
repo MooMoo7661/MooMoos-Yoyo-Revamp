@@ -7,7 +7,6 @@ using CombinationsMod.Content.Projectiles.Misc;
 using CombinationsMod.Content.Projectiles.RotationalYoyos;
 using CombinationsMod.Content.Projectiles.YoyoEffects;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
-using CombinationsMod.Content.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -215,7 +214,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 vortex.scale = 1.9f;
 
                                 Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<CultistRingDamage>(), (int)(projectile.damage * 0.75f), 1, projectile.whoAmI);
-                                proj.Resize(120, 120);
+                                proj.Resize(150, 150);
                                 proj.usesLocalNPCImmunity = true;
                                 proj.localNPCHitCooldown = 20;
                             }
@@ -421,7 +420,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void AI(Projectile projectile)
         {
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 ref int timer0 = ref projectile.YoyoData().AbilityTimer[0];
                 ref int timer1 = ref projectile.YoyoData().AbilityTimer[1];
@@ -714,7 +713,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             if (!tile.HasTile || !WorldGen.InWorld(x, y))
                 return true;
 
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && Main.player[projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 switch (projectile.type)
                 {
@@ -733,7 +732,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             };
 
                             SoundEngine.PlaySound(HitSound);
-
+    
                             int dustType = Main.dust[WorldGen.KillTile_MakeTileDust(x, y, tile)].type;
 
                             //Main.NewText(oldVelocity.Y / 8);
@@ -787,7 +786,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 Vector2 drawPos = projectile.Center - Main.screenPosition;
                 var rectangle = new Rectangle(0, 0, texture.Width, texture.Height);
 
-                Main.EntitySpriteDraw(texture, drawPos, rectangle, lightColor, projectile.rotation, drawOrigin, 1f, 0, 0);
+                Main.EntitySpriteDraw(texture, drawPos, rectangle, Color.White, projectile.rotation, drawOrigin, 1f, 0, 0);
                 return false;
             }
 

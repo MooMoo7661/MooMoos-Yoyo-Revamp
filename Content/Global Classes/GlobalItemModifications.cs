@@ -2,6 +2,7 @@
 using CombinationsMod.Content;
 using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Drills;
+using CombinationsMod.Content.Items.Misc;
 using CombinationsMod.Content.Keybindings;
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
@@ -11,9 +12,14 @@ using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.GlobalClasses
 {
-    public class GlobalString : GlobalItem
+    public class GlobalItemModifications : GlobalItem
     {
         public override bool InstancePerEntity => true;
+
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[ItemID.BrokenHeroSword] = ModContent.ItemType<BrokenHeroRing>();
+        }
 
         public override void SetDefaults(Item item)
         {
@@ -58,7 +64,20 @@ namespace CombinationsMod.GlobalClasses
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             if (item.type == ItemID.YoyoBag)
+            {
                 player.GetModPlayer<YoyoModPlayer>().yoyoBag = true;
+                if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
+                {
+                    player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 5;
+                    player.GetModPlayer<YoyoModPlayer>().YoyoLifetimeModifier += 9;
+                }
+            }
+
+            if (item.type == ItemID.YoYoGlove)
+            {
+                player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 5;
+                player.GetModPlayer<YoyoModPlayer>().YoyoLifetimeModifier += 9;
+            }
         }
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)

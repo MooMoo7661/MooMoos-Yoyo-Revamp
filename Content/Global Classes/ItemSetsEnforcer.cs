@@ -1,5 +1,4 @@
-﻿using CombinationsMod.Content.Utility;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace CombinationsMod.Global_Classes

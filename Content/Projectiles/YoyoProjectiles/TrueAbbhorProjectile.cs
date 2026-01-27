@@ -44,7 +44,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void PostAI()
         {
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 Dust dust2 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.CursedTorch, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
                 dust2.velocity = VectorHelper.VelocityToPoint(dust2.position, Projectile.Center, Vector2.Distance(dust2.position, Projectile.Center) * 0.05f);
@@ -63,7 +63,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             Projectile.StringData().StringTexture = ModContent.Request<Texture2D>("CombinationsMod/Content/YoyoStringTextures/UpgradedString", ReLogic.Content.AssetRequestMode.ImmediateLoad);
 
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
+            if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 int baseProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0,
                         ModContent.ProjectileType<JaggedSwirlPurple>(), 0, 0, Main.myPlayer, 0, Projectile.whoAmI);
@@ -88,7 +88,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             for (int j = 0; j < 5; j++)
 
-                if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+                if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
                 {
                     Dust dust4 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.CursedTorch, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
                     dust4.velocity = VectorHelper.VelocityToPoint(dust4.position, Projectile.Center, Vector2.Distance(dust4.position, Projectile.Center) * -0.09f);

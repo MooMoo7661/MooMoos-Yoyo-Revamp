@@ -40,7 +40,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         }
         public override void PostAI()
         {
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 timer++;
                 if (timer == 90)

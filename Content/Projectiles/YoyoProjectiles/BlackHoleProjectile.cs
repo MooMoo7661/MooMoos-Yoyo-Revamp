@@ -28,8 +28,6 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 2;
-            //if (CalamityLoaded) Projectile.MaxUpdates = 2;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
@@ -41,7 +39,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         }
         public override void PostAI()
         {
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 Dust dust2 = Dust.NewDustDirect(Projectile.Center - new Vector2(75f, 75f), 150, 150, DustID.PinkTorch, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 2.4f));
                 dust2.velocity = VectorHelper.VelocityToPoint(dust2.position, Projectile.Center, Vector2.Distance(dust2.position, Projectile.Center) * 0.05f);
@@ -110,7 +108,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             Projectile.StringData().StringTexture = TextureAssets.Chains[16];
 
-            if (Projectile.ai[2] == 0 && Main.myPlayer == Projectile.owner && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Main.myPlayer == Projectile.owner && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                    0, 0, ModContent.ProjectileType<BlackHole4>(), (int)(Projectile.damage * 0.75f) + 1, 0,
@@ -133,11 +131,13 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                     Main.myPlayer, 0, Projectile.whoAmI);
 
 
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                    0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.7f) + 1, 0,
+                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center,
+                    Vector2.Zero, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.7f) + 1, 0,
                     Main.myPlayer, 0, Projectile.whoAmI);
 
-                Main.projectile[proj].Resize(270, 270);
+                proj.Resize(270, 270);
+                proj.usesLocalNPCImmunity = true;
+                proj.localNPCHitCooldown = 18;
             }
         }
 

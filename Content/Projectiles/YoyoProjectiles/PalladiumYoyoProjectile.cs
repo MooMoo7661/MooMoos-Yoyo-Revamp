@@ -41,7 +41,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Projectile.YoyoData().MainYoyo && Projectile.YoyoData().Hits % 20 == 0 && Projectile.YoyoData().Hits > 0)
+            if (Projectile.YoyoData().Hits % 20 == 0 && Projectile.YoyoData().Hits > 0)
             {
                 SoundStyle HitSound = new()
                 {
@@ -52,27 +52,25 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                 };
                 SoundEngine.PlaySound(HitSound);
 
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new(8, 0), ModContent.ProjectileType<PalladiumFist>(), (int)(Projectile.damage * 1.4f), 12f, Projectile.owner);
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new(-8, 0), ModContent.ProjectileType<PalladiumFist>(), (int)(Projectile.damage * 1.4f), 12f, Projectile.owner);
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new(8, 0), ModContent.ProjectileType<PalladiumFist>(), (int)(Projectile.damage * (Projectile.YoyoData().MainYoyo ? 1.4f : 0.85f)), 0f, Projectile.owner).scale = Projectile.YoyoData().MainYoyo ? 1f : 0.8f;
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new(-8, 0), ModContent.ProjectileType<PalladiumFist>(), (int)(Projectile.damage * (Projectile.YoyoData().MainYoyo ? 1.4f : 0.85f)), 0f, Projectile.owner).scale = Projectile.YoyoData().MainYoyo ? 1f : 0.8f;
 
                 foreach (NPC npc in Main.ActiveNPCs)
                 {
-                    if (npc.Distance(Projectile.Center) > 250f)
+                    if (npc.Distance(Projectile.Center) > (Projectile.YoyoData().MainYoyo ? 250f : 200f))
                         continue;
 
                     if (!npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f)
                     {
-                        npc.velocity -= npc.DirectionTo(Projectile.Center) * 8;
+                        npc.velocity -= npc.DirectionTo(Projectile.GetOwner().Center) * (Projectile.YoyoData().MainYoyo ? 10f : 6f);
                         npc.velocity.Y -= 2f;
 
-                        NPC.HitInfo info = npc.CalculateHitInfo((int)(Projectile.damage * (Main.rand.NextFloat(0, 0.5f) + 1.3f)), -npc.direction, false, 0f);
+                        NPC.HitInfo info = npc.CalculateHitInfo((int)(Projectile.damage * (Main.rand.NextFloat(0, 0.5f) + (Projectile.YoyoData().MainYoyo ? 1.3f : 1f))), -npc.direction, false, 0f);
                         npc.StrikeNPC(info, true);
                         if (Main.netMode == NetmodeID.MultiplayerClient)
                         {
                             NetMessage.SendStrikeNPC(npc, info);
                         }
-
-                        npc.AddBuff(BuffID.Confused, 120);
                     }
                 }
 

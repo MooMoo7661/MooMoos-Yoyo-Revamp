@@ -19,14 +19,10 @@ public class EmpressProjectile : ModProjectile
 
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 45;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
-
-        //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
     }
 
     public override void SetDefaults()
     {
-        Projectile.MaxUpdates = 2;
-        //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 4;
         Projectile.width = 14;
         Projectile.height = 14;
         Projectile.aiStyle = 99;

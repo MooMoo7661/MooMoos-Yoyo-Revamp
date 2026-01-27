@@ -22,14 +22,11 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 450;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.4f;
-
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.1f;
         }
 
         public override void SetDefaults()
         {
             Projectile.MaxUpdates = 2;
-            //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
@@ -75,8 +72,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                     if (rad >= 360)
                         rad = 0;
 
-                    rad += 1;
-                    Vector2 vel = new Vector2(0, -1).RotatedBy(rad) * 4f;
+                    rad += 60;
+                    Vector2 vel = new Vector2(0, -1).RotatedBy(MathHelper.ToRadians(rad)) * 4f;
                     Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("ChristmasBulb"), Projectile.Center, vel, ProjectileID.Blizzard, Projectile.damage / 2, 1f, Projectile.owner);
                     proj.scale = 0.65f;
                     proj.timeLeft = 120;

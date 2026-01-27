@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Global_Classes.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,18 +13,19 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 153f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.7f;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12.2f;
+            if (ModLoader.HasMod("CalamityMod"))
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(17f, 260f, 14.8f, 0, this.Projectile, 20);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
-            Projectile.penetrate = 15;
+            Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
 

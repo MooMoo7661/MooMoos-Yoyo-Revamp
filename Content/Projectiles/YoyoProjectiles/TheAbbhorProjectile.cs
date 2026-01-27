@@ -46,7 +46,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Player player = Main.player[Projectile.owner];
+            Player player = Projectile.GetOwner();
 
             counter++;
 
@@ -69,7 +69,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             Projectile.StringData().StringTexture = ModContent.Request<Texture2D>("CombinationsMod/Content/YoyoStringTextures/UpgradedString", ReLogic.Content.AssetRequestMode.ImmediateLoad);
             
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
+            if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 isOriginalYoyo = true;
 

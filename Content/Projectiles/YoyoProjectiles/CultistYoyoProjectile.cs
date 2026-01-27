@@ -27,9 +27,6 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
-            //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 3;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
@@ -44,15 +41,18 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             Projectile.StringData().StringTexture = TextureAssets.Chain9;
 
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
+            if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing && Main.myPlayer == Projectile.owner)
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<CultistRing1>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
 
-                int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                        0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
-                Main.projectile[proj2].Resize(150, 150);
+                Projectile proj2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center,
+                        Vector2.Zero, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
+                proj2.Resize(150, 150);
+                proj2.usesLocalNPCImmunity = true;
+                proj2.localNPCHitCooldown = 23;
+
 
                 isOriginalYoyo = true;
             }
@@ -67,12 +67,14 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
                 if (counter == 20 && Main.myPlayer == Projectile.owner)
                 {
-                    int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
                         0, 0, ModContent.ProjectileType<CultistRing2>(), (int)(Projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, Projectile.whoAmI);
 
-                    int proj3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                        0, 0, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.85f), 8f, Main.myPlayer, 0, Projectile.whoAmI);
-                    Main.projectile[proj3].Resize(263, 263);
+                    Projectile proj2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center,
+                        Vector2.Zero, ModContent.ProjectileType<CultistRingDamage>(), (int)(Projectile.damage * 0.85f), 8f, Main.myPlayer, 0, Projectile.whoAmI);
+                    proj2.Resize(263, 263);
+                    proj2.usesLocalNPCImmunity = true;
+                    proj2.localNPCHitCooldown = 18;
                 }
             }
         }

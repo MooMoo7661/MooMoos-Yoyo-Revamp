@@ -102,11 +102,13 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                 if (timer >= 40)
                 {
                     timer = 0;
+
                     if (rad >= 360)
                         rad = 0;
 
-                    rad += 1;
-                    Vector2 vel = new Vector2(0, -1).RotatedBy(rad) * 4f;
+                    rad += 60;
+
+                    Vector2 vel = new Vector2(0, -1).RotatedBy(MathHelper.ToRadians(rad)) * 6.5f;
                     Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("PumpkinPatcher"), Projectile.Center, vel, 664, Projectile.damage / 2, 1f, Projectile.owner);
                     proj.scale = 0.65f;
                     proj.timeLeft = 120;

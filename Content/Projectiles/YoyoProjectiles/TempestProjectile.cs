@@ -48,7 +48,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             Projectile.StringData().StringTexture = TextureAssets.Chain23;
 
-            if (Projectile.ai[2] == 0 && Main.player[Projectile.owner].GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (Projectile.ai[2] == 0 && Projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 isOriginalYoyo = true;
 

@@ -36,12 +36,13 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
             if (target.immortal || !target.chaseable)
                 return;
 
-            Player player = Main.player[Projectile.owner];
+            Player player = Projectile.GetOwner();
 
             if (Main.rand.NextBool(4))
                 target.AddBuff(Main.rand.NextBool(5) ? BuffID.Confused : BuffID.Poisoned, 120 + Main.rand.Next(15, 75));
 
-            int num3 = Main.rand.Next(2, 5);
+            int num3 = Main.rand.Next(1, 3 + (Projectile.YoyoData().MainYoyo ? 2 : 0));
+            
             if (player.strongBees && Main.rand.NextBool(2))
             {
                 num3++;
@@ -52,7 +53,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
                 float num5 = (float)Main.rand.Next(-35, 36) * 0.02f;
                 num4 *= 0.2f;
                 num5 *= 0.2f;
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new(num4, num5), ProjectileID.Wasp, player.beeDamage(Projectile.damage), player.beeKB(0f), Projectile.owner);
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, new(num4, num5), ProjectileID.Wasp, player.beeDamage(Projectile.damage), player.beeKB(0f), Projectile.owner).penetrate = 2;
             }
         }
     }

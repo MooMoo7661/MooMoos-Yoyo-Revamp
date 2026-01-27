@@ -62,6 +62,7 @@ Mods: {
 		Keybinds: {
 			AbilityKeybind.DisplayName: Ability Keybind
 			DrillKeybind.DisplayName: Drill Keybind
+			DrillKeybindTest.DisplayName: Drill Keybind Test
 		}
 
 		Conditions: {
@@ -147,6 +148,25 @@ Mods: {
 				MaxHits: {
 					Label: Max Hits
 					Tooltip: ""
+				}
+
+				NoAbilityTooltip: {
+					Label: No Ability Tooltip
+					Tooltip: ""
+				}
+
+				YoyoNaNTeleport: {
+					Label: Yoyo Na N Teleport
+					Tooltip: ""
+				}
+
+				CalamityStatChangeMirror: {
+					Label: Calamity Stat Change Mirror
+					Tooltip:
+						'''
+						Mimics the speed changes Calamity makes to yoyos
+						When enabled, this mod's yoyos will be quicker as well
+						'''
 				}
 			}
 		}
@@ -303,6 +323,7 @@ Mods: {
 			SnowflakeHoming.DisplayName: Snowflake Homing
 			CobaltFist.DisplayName: Cobalt Fist
 			PalladiumFist.DisplayName: Palladium Fist
+			HellwoodStoyoProjectile.DisplayName: Hellwood Stoyo Projectile
 		}
 
 		NPCs: {
@@ -324,7 +345,7 @@ Mods: {
 				}
 
 				DisplayName: Yoyo Merchant
-				Census.SpawnCondition: Conditions unknown
+				Census.SpawnCondition: Have a yoyo in your inventory
 			}
 		}
 

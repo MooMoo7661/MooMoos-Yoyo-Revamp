@@ -6,6 +6,32 @@ AchievementsNotification:
 	This mod adds some custom achievements. To enable them, download "Achievements Mod".
 	'''
 
+UpgradeUI: {
+	DescriptionTitle: Accessory Effects
+	WeightMods: Weight Mods
+	Axles: Axles
+	BallBearings: Ball Bearings
+	ResponsePad: Response Pad
+	DepositYoyo: Deposit yoyo to start modifying
+	BasicBallBearings: No extra effect
+	BasicAxle: No extra effect
+	NoAxle: No axle detected! Yoyo is unusable until an axle is put in
+	NoBearing: No bearing detected! Yoyo will have severely reduced lifetime and speed
+	PlatinumSideEffect: Slightly increased damage and knockback
+	RedResponsePad: Upon hitting an enemy, yoyo speed is slightly increased for a short duration
+	None: None equipped
+	InsertYoyo: Drop a yoyo into the center slot to begin upgrading
+	Titles:
+		'''
+		Weight Mod: {0}
+		Axle: {1}
+		Ball Bearing: {2}
+		Response Pad: {3}
+		'''
+	IronAxle: No effect
+	LeadAxle: No effect
+}
+
 Misc: {
 	CounterweightPerYoyo: Each yoyo that hits a target will produce a counterweight
 	YoyoShimmer: Yoyos can phase through blocks
@@ -15,6 +41,12 @@ Misc: {
 	150YoyoRange: "[c/6EAE6E:+400 yoyo range]"
 	RightClickInfo: Hold {0} to drill
 	CurrentDrill: "Current Drill: "
+	YoyoGloveDamage: Damage dealt by the extra yoyos decreases for each yoyo you have out
+	VanillaGlove:
+		'''
+		[c/6EAE6E:+5 yoyo speed]
+		[c/6EAE6E:+9 yoyo lifetime]
+		'''
 }
 
 AccessorySlots: {
@@ -24,7 +56,6 @@ AccessorySlots: {
 	YoyoStrings: Yoyo Strings
 	RightHand: Right Hand
 	YoyoGloves: Yoyo Gloves
-	SupportGloves: Support Gloves
 	LeftHand: Left hand
 	Rings: Rings
 	Tricks: Tricks
@@ -32,7 +63,6 @@ AccessorySlots: {
 	YoyoCounterweights: Yoyo Counterweights
 	MoreAccessorySlots: Gives the user slots for basic yoyo accessories
 	DrillsAndCounterweights: Provides slots for Yoyo Drills and Counterweights
-	SupportGlove: Adds an additional slot for a support glove
 	YoyoRings: Allows the user to equip 2 extra rings
 }
 
@@ -40,7 +70,7 @@ TooltipMechanics: {
 	YoyoAbilitySnippet: "[c/6FD4FF:-Yoyo Ability-]"
 	HoldDown: "[c/6FD4FF:Hold {0} to view yoyo ability info]"
 	NoRing: "[c/6FD4FF:No Ability Ring detected. Equip one to see the special ability of this yoyo]"
-	NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect to enable.]"
+	NoAbility: "[c/6FD4FF:This yoyo has no ability or special effect]"
 }
 
 Abilities: {
@@ -59,7 +89,12 @@ Abilities: {
 	Chik: Shoots explosive crystal charges every 3 hits
 	HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
 	RedsYoyo: Creates a rapidly damaging aura that deals 75% of the yoyo's damage
-	CobaltYoyo: Creates a large blast that knocks enenmies back every 20 hits
+	HardmodeYoyo1:
+		'''
+		Creates a blast every 20 hits that deals damage and knocks enemies away from the player
+		When the blast is triggered, fists erupt from the yoyo and move in either direction
+		These fists deal increased damage, and have a chance to cause confusion when hitting an enemy
+		'''
 	BlackHole:
 		'''
 		Creates a large damaging vortex that deals 70% of the yoyo's damage

@@ -212,9 +212,8 @@ AbilityRing: {
 	DisplayName: Ability Ring
 	Tooltip:
 		'''
-		[c/FF00AB:Enables Yoyos to use their special abilities.]
-		Yoyos will show the requirements for triggering the ability
-		Only the first yoyo you cast will have its ability
+		[c/FF00AB:Enables Yoyos to use their special abilities]
+		Extra yoyos will have less strength in their ability or none at all
 		'''
 }
 
@@ -319,10 +318,10 @@ EclipseString: {
 	DisplayName: Eclipse String
 	Tooltip:
 		'''
-		[c/6EAE6E:+400 yoyo range]
-		[c/6EAE6E:+2 yoyo speed]
 		Increases yoyo range
 		Yoyos create damaging swipes on hit
+		[c/6EAE6E:+400 yoyo range]
+		[c/6EAE6E:+2 yoyo speed]
 		'''
 }
 
@@ -438,12 +437,8 @@ Code3: {
 }
 
 Convergence: {
-	DisplayName: The Convergence
-	Tooltip:
-		'''
-		The pinnacle of destruction
-		Light shines through the center
-		'''
+	DisplayName: Convergence
+	Tooltip: ""
 }
 
 CultistYoyo: {
@@ -569,7 +564,7 @@ VortexString: {
 }
 
 AroundTheWorld: {
-	DisplayName: Around The World
+	DisplayName: Around The World Trick
 	Tooltip:
 		'''
 		Low value trick
@@ -580,7 +575,7 @@ AroundTheWorld: {
 }
 
 AroundTheWorldTier2: {
-	DisplayName: Around The World Tier 2
+	DisplayName: Around The World Tier 2 Trick
 	Tooltip:
 		'''
 		Medium value trick
@@ -590,17 +585,13 @@ AroundTheWorldTier2: {
 		'''
 }
 
-SupportGlove: {
-	DisplayName: Support Glove
-	Tooltip: Allows the use of 3 yoyos at once
-}
-
 BlackHole: {
 	DisplayName: Black Hole
 	Tooltip:
 		'''
 		Spins fast enough to generate a vortex of energy, forming a devastating black hole
 		Created by Turbanik
+		"Don't let me leave, Murph!"
 		'''
 }
 
@@ -639,7 +630,7 @@ ExcavatorCasing: {
 	DisplayName: The Excavator
 	Tooltip:
 		'''
-		Allows Yoyos to drill through blocks
+		Allows yoyos to drill through blocks
 		Be careful not to destroy your house!
 		[c/FF255F:225% pickaxe power]
 		+10 range
@@ -652,7 +643,7 @@ ShimmeringBeetleBag: {
 }
 
 StoneAge: {
-	DisplayName: Stone Age
+	DisplayName: The Rock of Life
 	Tooltip:
 		'''
 		Has a chance to confuse targets
@@ -661,7 +652,7 @@ StoneAge: {
 }
 
 DualYoyo: {
-	DisplayName: Yoyo Mastery
+	DisplayName: Yoyo Mastery Trick
 	Tooltip:
 		'''
 		High value trick
@@ -679,7 +670,7 @@ MoonlordBag: {
 }
 
 ShootToTheMoon: {
-	DisplayName: Shoot To The Moon
+	DisplayName: Shoot To The Moon Trick
 	Tooltip:
 		'''
 		Medium value trick
@@ -697,7 +688,7 @@ TheCrowyo: {
 }
 
 LifestealTrick: {
-	DisplayName: Bloodbound Grimoire
+	DisplayName: Life Drain Trick
 	Tooltip:
 		'''
 		High value trick
@@ -720,11 +711,6 @@ ShimmeringRing: {
 	Tooltip: Yoyos can phase through blocks
 }
 
-Convergence: {
-	DisplayName: Convergence
-	Tooltip: ""
-}
-
 HolidayDelight: {
 	DisplayName: Holiday Delight
 	Tooltip: ""
@@ -732,5 +718,273 @@ HolidayDelight: {
 
 PumpkinPatcher: {
 	DisplayName: Pumpkin Patcher
+	Tooltip: ""
+}
+
+SparkspinTrick: {
+	DisplayName: Spark Spin Trick
+	Tooltip:
+		'''
+		Yoyos pressed against a solid object generate heat and inflict burning
+		Dragging the yoyo across the ground at high speeds increases the heat gain rate
+		The hotter the yoyo is, the more damage it deals and the longer the burning lasts
+		'''
+}
+
+UpgradeStationItem: {
+	Tooltip: Allows upgrading yoyos by swapping out parts
+	DisplayName: Yoyo Upgrade Station
+}
+
+PlatinumSideEffect: {
+	DisplayName: Platinum Side Effect
+	Tooltip: ""
+}
+
+BasicBallBearings: {
+	DisplayName: Basic Ball Bearings
+	Tooltip: ""
+}
+
+BasicAxle: {
+	DisplayName: Basic Axle
+	Tooltip: ""
+}
+
+RGBKit: {
+	DisplayName: RGB Kit
+	Tooltip: ""
+}
+
+RedResponsePad: {
+	DisplayName: Red Response Pad
+	Tooltip: ""
+}
+
+PlatinumWeightMod: {
+	DisplayName: Platinum Weight Mod
+	Tooltip: ""
+}
+
+LeatherWraps: {
+	DisplayName: Leather Yoyo Wraps
+	Tooltip:
+		'''
+		Does not allow the use of 2 yoyos at once
+		[c/6EAE6E:+2 yoyo speed]
+		[c/6EAE6E:+2 yoyo lifetime]
+		'''
+}
+
+SpelunkerGlove: {
+	DisplayName: Spelunker Yoyo Glove
+	Tooltip:
+		'''
+		Causes all held yoyos to emit light
+		Does not allow the use of 2 yoyos at once
+		[c/6EAE6E:+3 yoyo speed]
+		[c/6EAE6E:+4 yoyo lifetime]
+		'''
+}
+
+CorruptGlove: {
+	DisplayName: Corrupt Yoyo Glove
+	Tooltip:
+		'''
+		Does not allow the use of 2 yoyos at once
+		[c/6EAE6E:+4 yoyo speed]
+		[c/6EAE6E:+7 yoyo lifetime]
+		'''
+}
+
+CrystalGlove: {
+	DisplayName: Crystal Yoyo Glove
+	Tooltip:
+		'''
+		Does not allow the use of 2 yoyos at once
+		[c/6EAE6E:+6 yoyo speed]
+		[c/6EAE6E:+10 yoyo lifetime]
+		'''
+}
+
+FleshGlove: {
+	DisplayName: Flesh Yoyo Glove
+	Tooltip:
+		'''
+		Drains life from 5 enemies nearby every 20 hits
+		On the 20th hit, if less than 4 enemies are nearby, you become enraged
+		Small cooldown in between heals
+		Secondary yoyos drain life from 3 enemies, and have a longer cooldown
+		Does not allow the use of 2 yoyos at once
+		[c/6EAE6E:+4.5 yoyo speed]
+		[c/6EAE6E:+6 yoyo lifetime]
+		'''
+}
+
+HallowGlove: {
+	Tooltip:
+		'''
+		Allows the use of 2 yoyos at once
+		[c/6EAE6E:+8 yoyo speed]
+		[c/6EAE6E:+Infinite yoyo lifetime]
+		'''
+	DisplayName: Atlas Glove
+}
+
+JollyMitten: {
+	Tooltip:
+		'''
+		Allows the use of 3 yoyos at once
+		[c/6EAE6E:+10 yoyo speed]
+		[c/6EAE6E:+Infinite yoyo lifetime]
+		Once owned by a jolly fellow
+		'''
+	DisplayName: Jolly Mitten
+}
+
+SkeletonGlove: {
+	DisplayName: Skeleton Glove
+	Tooltip:
+		'''
+		Allows the use of 3 yoyos at once
+		[c/6EAE6E:+10 yoyo speed]
+		[c/6EAE6E:+Infinite yoyo lifetime]
+		"J. Skellington"
+		'''
+}
+
+InfinityGauntlet: {
+	DisplayName: Infinity Gauntlet
+	Tooltip:
+		'''
+		Allows the use of 4 yoyos at once
+		[c/6EAE6E:+15 yoyo speed]
+		[c/6EAE6E:+Infinite yoyo lifetime]
+		"I am... inevitable"
+		'''
+}
+
+EctoAxle: {
+	DisplayName: Ecto Axle
+	Tooltip: ""
+}
+
+HallowedAxle: {
+	DisplayName: Hallowed Axle
+	Tooltip: ""
+}
+
+IronAxle: {
+	DisplayName: Iron Axle
+	Tooltip: No additional effect
+}
+
+LeadAxle: {
+	DisplayName: Lead Axle
+	Tooltip: No additional effect
+}
+
+MeteorAxle: {
+	DisplayName: Meteor Axle
+	Tooltip: ""
+}
+
+SolarAxle: {
+	DisplayName: Solar Axle
+	Tooltip: ""
+}
+
+FleshBearing: {
+	DisplayName: Flesh Bearing
+	Tooltip: ""
+}
+
+IronBearing: {
+	DisplayName: Iron Bearing
+	Tooltip: No additional effect
+}
+
+LeadBearing: {
+	DisplayName: Lead Bearing
+	Tooltip: No additional effect
+}
+
+LesionBearing: {
+	DisplayName: Lesion Bearing
+	Tooltip: ""
+}
+
+PrimeBearing: {
+	DisplayName: Prime Bearing
+	Tooltip: ""
+}
+
+SolarBearing: {
+	DisplayName: Solar Bearing
+	Tooltip: ""
+}
+
+TitanBearing: {
+	DisplayName: Titan Bearing
+	Tooltip: ""
+}
+
+BlackResponsePad: {
+	DisplayName: Black Response Pad
+	Tooltip: ""
+}
+
+BlueResponsePad: {
+	DisplayName: Blue Response Pad
+	Tooltip: ""
+}
+
+GreenResponsePad: {
+	DisplayName: Green Response Pad
+	Tooltip: ""
+}
+
+PurpleResponsePad: {
+	DisplayName: Purple Response Pad
+	Tooltip: ""
+}
+
+WhiteResponsePad: {
+	DisplayName: White Response Pad
+	Tooltip: ""
+}
+
+YellowResponsePad: {
+	DisplayName: Yellow Response Pad
+	Tooltip: ""
+}
+
+ChlorophyteEffect: {
+	DisplayName: Chlorophyte Effect
+	Tooltip: ""
+}
+
+GoldEffect: {
+	DisplayName: Gold Effect
+	Tooltip: ""
+}
+
+HallowedEffect: {
+	DisplayName: Hallowed Effect
+	Tooltip: ""
+}
+
+HellstoneEffect: {
+	DisplayName: Hellstone Effect
+	Tooltip: ""
+}
+
+PlatinumEffect: {
+	DisplayName: Platinum Effect
+	Tooltip: ""
+}
+
+SolarEffect: {
+	DisplayName: Solar Effect
 	Tooltip: ""
 }

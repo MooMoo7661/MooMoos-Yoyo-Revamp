@@ -1,12 +1,5 @@
 ﻿using CombinationsMod.Content.Configs;
-using CombinationsMod.Content.Items.Accessories.YoyoGloves;
 using CombinationsMod.Content.ModPlayers;
-using CombinationsMod.Content.Utility;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
 using static CombinationsMod.Content.Utility.CombinationsModUtils;
 using static Terraria.ModLoader.ModContent;
 
@@ -14,7 +7,7 @@ namespace CombinationsMod.Content.UI
 {
     public class StringSlot : ModAccessorySlot
     {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => ItemSets.YoyoString[checkItem.type] || checkItem.ModItem is ModString;
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => ItemSets.YoyoString[checkItem.type];
 
         public override bool IsVisibleWhenNotEnabled() => false;
 
@@ -58,7 +51,7 @@ namespace CombinationsMod.Content.UI
 
     public class YoyoGloveSlot : ModAccessorySlot
     {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => ItemSets.YoyoGlove[checkItem.type] || checkItem.type == ModContent.ItemType<SupportGlove>();
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => ItemSets.YoyoGlove[checkItem.type];
 
         public override bool IsVisibleWhenNotEnabled() => false;
 
@@ -100,51 +93,7 @@ namespace CombinationsMod.Content.UI
             }
         }
     }
-    public class YoyoSupportGloveSlot : ModAccessorySlot
-    {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => checkItem.type == ItemType<SupportGlove>();
-
-        public override bool IsVisibleWhenNotEnabled() => false;
-
-        public override void ApplyEquipEffects()
-        {
-            Player.GrantArmorBenefits(FunctionalItem);
-            Player.ApplyEquipFunctional(FunctionalItem, HideVisuals);
-            Player.ApplyEquipVanity(VanityItem);
-        }
-
-        public override bool IsEnabled()
-        {
-            if (!GetInstance<YoyoModConfig>().EnableModifiedYoyoBag || !Player.TryGetModPlayer<YoyoModPlayer>(out YoyoModPlayer _))
-            {
-                return false;
-            }
-
-            return Player.GetModPlayer<YoyoModPlayer>().supportGloveSlot;
-        }
-
-        public override bool IsLoadingEnabled(Mod mod) => GetInstance<YoyoModConfig>().EnableModifiedYoyoBag;
-
-        public override bool ModifyDefaultSwapSlot(Item item, int accSlotToSwapTo) => ItemSets.SupportGlove[item.type];
-
-        public override Vector2? CustomLocation => LeftGlovePos();
-
-        public override string FunctionalTexture => "CombinationsMod/Content/UI/SupportGloveSlot";
-        public override bool DrawDyeSlot => false;
-        public override bool DrawVanitySlot => false;
-        public override void OnMouseHover(AccessorySlotType context)
-        {
-            switch (context)
-            {
-                case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.LeftHand") +
-                        "\n" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.SlotPrefix");
-                    if (GetInstance<YoyoModConfig>().AccessorySlotIndicators)
-                        Main.hoverItemName += " (" + Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.SupportGloves") + ")";
-                    break;
-            }
-        }
-    }
+   
     public class DrillSlot : ModAccessorySlot
     {
         public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => checkItem.ModItem is ModDrill || ItemSets.DrillCasing[checkItem.type];
@@ -238,7 +187,7 @@ namespace CombinationsMod.Content.UI
 
     public class RingSlot : ModAccessorySlot
     {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => checkItem.ModItem is ModRing || ItemSets.YoyoRing[checkItem.type];
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => checkItem.ModItem is ModItem || ItemSets.YoyoRing[checkItem.type];
         public override bool IsVisibleWhenNotEnabled() => false;
 
         public override void ApplyEquipEffects()
@@ -283,7 +232,7 @@ namespace CombinationsMod.Content.UI
 
     public class RingSlot2 : ModAccessorySlot
     {
-        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => checkItem.ModItem is ModRing || ItemSets.YoyoRing[checkItem.type];
+        public override bool CanAcceptItem(Item checkItem, AccessorySlotType context) => checkItem.ModItem is ModItem || ItemSets.YoyoRing[checkItem.type];
         public override bool IsVisibleWhenNotEnabled() => false;
 
         public override bool IsEnabled()

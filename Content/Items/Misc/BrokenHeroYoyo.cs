@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace CombinationsMod.Content.Items.Misc;
 
-public class BrokenHeroYoyo : YoyoModItemLoader
+public class BrokenHeroYoyo : ModItem
 {
     public override void SetDefaults()
     {
@@ -12,5 +12,6 @@ public class BrokenHeroYoyo : YoyoModItemLoader
         Item.maxStack = 99;
         Item.value = Item.sellPrice(gold: 6, silver: 20);
         Item.rare = ItemRarityID.Yellow;
+        ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.BrokenHeroSword;
     }
 }

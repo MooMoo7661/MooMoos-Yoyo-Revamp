@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
-    public class Tier2Bag : YoyoModItemLoader
+    public class Tier2Bag : ModItem
     {
         public override void SetDefaults()
         {
@@ -21,7 +21,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);
             ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<ShimmerBag>();
-            Utility.ItemSets.YoyoBag[Type] = true;
+            ItemSets.YoyoBag[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -31,7 +31,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             modPlayer.tier2Bag = true;
             modPlayer.stringSlot = true;
             modPlayer.gloveSlot = true;
-            modPlayer.supportGloveSlot = true;
             modPlayer.counterweightSlot = true;
             modPlayer.drillSlot = true;
             modPlayer.ringSlot1 = true;
@@ -68,7 +67,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             {
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.AdditionalYoyo")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.MoreAccessorySlots")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.SupportGlove")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.DrillsAndCounterweights")));
             }
             else

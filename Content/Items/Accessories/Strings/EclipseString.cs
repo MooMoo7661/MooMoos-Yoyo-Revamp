@@ -5,9 +5,9 @@ using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Accessories.Strings
 {
-    public class EclipseString : ModString
+    public class EclipseString : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetDefaults()
         {
@@ -18,7 +18,7 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 5);
             Item.stringColor = 2;
-            Utility.ItemSets.YoyoString[Type] = true;
+            ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

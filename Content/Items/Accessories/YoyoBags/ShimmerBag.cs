@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
-    public class ShimmerBag : YoyoModItemLoader
+    public class ShimmerBag : ModItem
     {
         public override void SetDefaults()
         {

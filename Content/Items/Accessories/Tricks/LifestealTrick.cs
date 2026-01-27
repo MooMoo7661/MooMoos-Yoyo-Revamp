@@ -1,13 +1,12 @@
 ﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
-using CombinationsMod.Content.Utility;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class LifestealTrick : YoyoModItemLoader
+    public class LifestealTrick : ModItem
     {
         public override void SetDefaults()
         {

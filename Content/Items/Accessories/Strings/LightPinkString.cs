@@ -4,9 +4,9 @@ using Terraria.ID;
 
 namespace CombinationsMod.Content.Items.Accessories.Strings
 {
-    public class LightPinkString : ModString
+    public class LightPinkString : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetDefaults()
         {
@@ -17,7 +17,7 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 1);
             Item.hasVanityEffects = true;
-            Utility.ItemSets.YoyoString[Type] = true;
+            ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

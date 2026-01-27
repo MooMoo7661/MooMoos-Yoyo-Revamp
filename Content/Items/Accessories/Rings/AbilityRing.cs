@@ -4,9 +4,9 @@ using Terraria.ID;
 
 namespace CombinationsMod.Content.Items.Accessories.Rings
 {
-    public class AbilityRing : ModRing
+    public class AbilityRing : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetDefaults()
         {
@@ -16,7 +16,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 5, 55, 0);
-            Utility.ItemSets.YoyoRing[Type] = true;
+            ItemSets.YoyoRing[Type] = true;
             ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<ShimmeringRing>();
         }
 

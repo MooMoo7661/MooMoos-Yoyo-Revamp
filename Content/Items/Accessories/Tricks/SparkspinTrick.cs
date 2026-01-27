@@ -1,13 +1,14 @@
 ﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Items.Bars;
 using CombinationsMod.Content.ModPlayers;
+using CombinationsMod.Content.ModSystems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class ShootToTheMoon : ModItem
+    public class SparkspinTrick : ModItem
     {
         public override void SetDefaults()
         {
@@ -22,7 +23,7 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<YoyoModPlayer>().moonTrick = true;
+            player.GetModPlayer<YoyoModPlayer>().sparkTrick = true;
         }
 
         public override bool IsLoadingEnabled(Mod mod)
@@ -39,7 +40,7 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
                 .AddIngredient(ItemID.Book)
                 .AddIngredient(ItemID.Cloud, 15)
                 .AddIngredient(ItemID.FallenStar, 1)
-                .AddIngredient(ItemID.MeteoriteBar, 8)
+                .AddRecipeGroup(CombinationsModSystem.adamantiteBarRecipeGroup, 5)
                 .AddTile(TileID.Anvils)
                 .Register();
         }

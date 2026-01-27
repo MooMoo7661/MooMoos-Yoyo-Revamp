@@ -15,7 +15,7 @@ using Terraria.UI.Chat;
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
     [LegacyName("ShimmeringBeetleBag")]
-    public class BeetleBag : YoyoModItemLoader
+    public class BeetleBag : ModItem
     {
         public override void SetDefaults()
         {
@@ -26,7 +26,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);
             Item.defense = 6;
-            Utility.ItemSets.YoyoBag[Type] = true;
+            ItemSets.YoyoBag[Type] = true;
 
             manager = new CompactParticleManager(
             particle =>
@@ -105,7 +105,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             modPlayer.beetleBag = true;
             modPlayer.stringSlot = true;
             modPlayer.gloveSlot = true;
-            modPlayer.supportGloveSlot = true;
             modPlayer.counterweightSlot = true;
             modPlayer.drillSlot = true;
             modPlayer.ringSlot1 = true;

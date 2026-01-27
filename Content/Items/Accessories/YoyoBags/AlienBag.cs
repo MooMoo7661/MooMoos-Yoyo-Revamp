@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
     [LegacyName("AdvancedYoyoBag")]
-    public class AlienBag : YoyoModItemLoader
+    public class AlienBag : ModItem
     {
         public override void SetDefaults()
         {

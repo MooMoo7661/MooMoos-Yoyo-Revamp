@@ -3,9 +3,9 @@ using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Accessories.Rings
 {
-    public class RubyRing : ModRing
+    public class RubyRing : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetDefaults()
         {
@@ -15,7 +15,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 1, 12, 0);
-            Utility.ItemSets.YoyoRing[Type] = true;
+            ItemSets.YoyoRing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -8,7 +8,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
 {
     public class MattockDrillCasing : ModDrill
     {
-        public override bool CanBeUnloaded => true;
+         
         public override int DrillProjectile => ModContent.ProjectileType<Mattock>();
 
         public override void SetDefaults()
@@ -19,7 +19,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 4, silver: 32);
-            Utility.ItemSets.DrillCasing[Type] = true;
+            ItemSets.DrillCasing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

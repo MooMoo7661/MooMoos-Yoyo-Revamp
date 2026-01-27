@@ -1,4 +1,5 @@
 using CombinationsMod.Content.Drills;
+using CombinationsMod.Content.Items.Accessories.YoyoUpgrades.WeightMods;
 using CombinationsMod.Content.ModPlayers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,7 +15,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
 
     public class ExcavatorCasing : ModDrill
     {
-        public override bool CanBeUnloaded => true;
+         
         public override int DrillProjectile => ModContent.ProjectileType<Excavator>();
 
         public override void SetDefaults()
@@ -25,7 +26,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);
-            Utility.ItemSets.DrillCasing[Type] = true;
+            ItemSets.DrillCasing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -38,7 +39,7 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemType<AdamantiteDrillCasing>())
+                .AddIngredient(ItemType<PlatinumEffect>())
                 .AddIngredient(ItemType<CelestialDrillCasing>())
                 .AddIngredient(ItemType<CobaltDrillCasing>())
                 .AddIngredient(ItemType<HakapikDrillCasing>())

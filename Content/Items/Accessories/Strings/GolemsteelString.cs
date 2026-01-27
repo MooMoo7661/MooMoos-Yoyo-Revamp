@@ -4,9 +4,9 @@ using Terraria.ID;
 
 namespace CombinationsMod.Content.Items.Accessories.Strings
 {
-    public class GolemsteelString : ModString
+    public class GolemsteelString : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetDefaults()
         {
@@ -16,7 +16,7 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 3, silver: 29);
-            Utility.ItemSets.YoyoString[Type] = true;
+            ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

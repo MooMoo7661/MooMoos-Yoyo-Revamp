@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class AroundTheWorld : YoyoModItemLoader
+    public class AroundTheWorld : ModItem
     {
         public override void SetDefaults()
         {
@@ -16,7 +16,7 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 3);
-            CombinationsMod.Content.Utility.ItemSets.Trick[Type] = true;
+            ItemSets.Trick[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -1,17 +1,15 @@
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Drills;
 using CombinationsMod.Content.ModPlayers;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
 
 namespace CombinationsMod.Content.Items.Accessories.Drills
 {
-
     public class AdamantiteDrillCasing : ModDrill
     {
-        public override bool CanBeUnloaded => true;
+         
         public override int DrillProjectile => ModContent.ProjectileType<AdamantiteDrill>();
+
+        public bool LoadModdedItems => ModContent.GetInstance<YoyoModConfig>().LoadModdedItems;
 
         public override void SetDefaults()
         {
@@ -21,12 +19,11 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 12);
-            Utility.ItemSets.DrillCasing[Type] = true;
+            ItemSets.DrillCasing[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
             modPlayer.adamantiteDrill = true;
         }

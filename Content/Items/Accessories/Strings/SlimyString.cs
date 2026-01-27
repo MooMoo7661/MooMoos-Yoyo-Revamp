@@ -4,9 +4,9 @@ using Terraria.ID;
 
 namespace CombinationsMod.Content.Items.Accessories.Strings
 {
-    public class SlimyString : ModString
+    public class SlimyString : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetDefaults()
         {
@@ -18,7 +18,7 @@ namespace CombinationsMod.Content.Items.Accessories.Strings
             Item.value = Item.sellPrice(gold: 2);
             Item.stringColor = 8;
             Item.expert = true;
-            Utility.ItemSets.YoyoString[Type] = true;
+            ItemSets.YoyoString[Type] = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

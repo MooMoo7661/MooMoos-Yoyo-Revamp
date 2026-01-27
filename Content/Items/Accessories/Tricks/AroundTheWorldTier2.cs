@@ -1,6 +1,7 @@
 ﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Items.Bars;
 using CombinationsMod.Content.ModPlayers;
+using CombinationsMod.Content.ModSystems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +9,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace CombinationsMod.Content.Items.Accessories.Tricks
 {
-    public class AroundTheWorldTier2 : YoyoModItemLoader
+    public class AroundTheWorldTier2 : ModItem
     {
         public override void SetDefaults()
         {
@@ -18,7 +19,7 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 7);
-            CombinationsMod.Content.Utility.ItemSets.Trick[Type] = true;
+            ItemSets.Trick[Type] = true;
         }
 
         public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
@@ -43,6 +44,7 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
                 .AddIngredient(ItemID.SoulofFright, 4)
                 .AddIngredient(ItemID.SoulofSight, 4)
                 .AddIngredient(ItemID.SoulofMight, 4)
+                .AddRecipeGroup(CombinationsModSystem.adamantiteBarRecipeGroup)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

@@ -3,9 +3,9 @@ using CombinationsMod.Content.ModSystems;
 
 namespace CombinationsMod.Content.Items.Accessories.Rings
 {
-    public class GemstoneRing : ModRing
+    public class GemstoneRing : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetDefaults()
         {

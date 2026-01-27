@@ -14,7 +14,7 @@ using Terraria.UI.Chat;
 
 namespace CombinationsMod.Content.Items.Accessories.YoyoBags
 {
-    public class MoonlordBag : YoyoModItemLoader
+    public class MoonlordBag : ModItem
     {
         public override void SetDefaults()
         {
@@ -24,7 +24,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             Item.accessory = true;
             Item.maxStack = 1;
             Item.value = Item.sellPrice(gold: 13);
-            Utility.ItemSets.YoyoBag[Type] = true;
+            ItemSets.YoyoBag[Type] = true;
 
             manager = new CompactParticleManager(
             particle =>
@@ -103,7 +103,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             modPlayer.moonlordBag = true;
             modPlayer.stringSlot = true;
             modPlayer.gloveSlot = true;
-            modPlayer.supportGloveSlot = true;
             modPlayer.counterweightSlot = true;
             modPlayer.drillSlot = true;
             modPlayer.ringSlot1 = true;
@@ -142,7 +141,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
                 tooltips.Add(new TooltipLine(Mod, "BagInfo/MoreSlots", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.MoreAccessorySlots")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo/DrillsAndCounterweights", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.DrillsAndCounterweights")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo/YoyoRings", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.YoyoRings")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo/SupportGlove", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.SupportGlove")));
             }
             else
             {

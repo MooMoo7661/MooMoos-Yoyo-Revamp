@@ -40,8 +40,6 @@ namespace CombinationsMod.Content.Utility
                 YoyoString[veridianMod.Find<ModItem>("VeilString").Type] = true;
                 YoyoString[veridianMod.Find<ModItem>("HellString").Type] = true;
             }
-
-            SupportGlove[ItemType<SupportGlove>()] = true;
         }
 
         public static bool[] YoyoString = ItemID.Sets.Factory.CreateBoolSet(
@@ -67,8 +65,6 @@ namespace CombinationsMod.Content.Utility
 
         public static bool[] YoyoGlove = ItemID.Sets.Factory.CreateBoolSet(ItemID.YoYoGlove);
 
-        public static bool[] SupportGlove = ItemID.Sets.Factory.CreateBoolSet();
-
         public static bool[] DrillCasing = ItemID.Sets.Factory.CreateBoolSet();
 
         public static bool[] Counterweight = ItemID.Sets.Factory.CreateBoolSet(
@@ -83,5 +79,15 @@ namespace CombinationsMod.Content.Utility
         public static bool[] YoyoRing = ItemID.Sets.Factory.CreateBoolSet();
 
         public static bool[] Trick = ItemID.Sets.Factory.CreateBoolSet();
+
+        public static bool[] YoyoUpgrade = ItemID.Sets.Factory.CreateBoolSet();
+
+        public static bool[] YoyoBearing = ItemID.Sets.Factory.CreateBoolSet();
+
+        public static bool[] YoyoAxle = ItemID.Sets.Factory.CreateBoolSet();
+
+        public static bool[] YoyoWeightMod = ItemID.Sets.Factory.CreateBoolSet();
+
+        public static bool[] YoyoResponsePad = ItemID.Sets.Factory.CreateBoolSet();
     }
 }

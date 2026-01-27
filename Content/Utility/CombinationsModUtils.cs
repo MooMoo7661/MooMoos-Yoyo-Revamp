@@ -25,11 +25,6 @@ namespace CombinationsMod.Content.Utility
             return new Vector2(Main.screenWidth - 350, Main.screenHeight / 11 + 50);
         }
 
-        public static Vector2 LeftGlovePos()
-        {
-            return new Vector2(Main.screenWidth - 397, Main.screenHeight / 11 + 50);
-        }
-
         public static Vector2 CounterweightPos()
         {
             return new Vector2(Main.screenWidth - 350, Main.screenHeight / 11 + 100);
@@ -52,7 +47,7 @@ namespace CombinationsMod.Content.Utility
 
         public static Vector2 TrickPos()
         {
-            return new Vector2(Main.screenWidth - 450, Main.screenHeight / 11 + 77);
+            return new Vector2(Main.screenWidth - 397, Main.screenHeight / 11 + 50);
         }
     }
 }

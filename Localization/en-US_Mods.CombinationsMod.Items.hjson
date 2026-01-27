@@ -781,7 +781,7 @@ SpelunkerGlove: {
 	Tooltip:
 		'''
 		Causes all held yoyos to emit light
-		Does not allow the use of 2 yoyos at once
+		Does not allow the use of multiple yoyos at once
 		[c/6EAE6E:+3 yoyo speed]
 		[c/6EAE6E:+4 yoyo lifetime]
 		'''
@@ -791,7 +791,7 @@ CorruptGlove: {
 	DisplayName: Corrupt Yoyo Glove
 	Tooltip:
 		'''
-		Does not allow the use of 2 yoyos at once
+		Does not allow the use of multiple yoyos at once
 		[c/6EAE6E:+4 yoyo speed]
 		[c/6EAE6E:+7 yoyo lifetime]
 		'''
@@ -801,7 +801,7 @@ CrystalGlove: {
 	DisplayName: Crystal Yoyo Glove
 	Tooltip:
 		'''
-		Does not allow the use of 2 yoyos at once
+		Allows the use of 2 yoyos at once
 		[c/6EAE6E:+6 yoyo speed]
 		[c/6EAE6E:+10 yoyo lifetime]
 		'''
@@ -815,7 +815,7 @@ FleshGlove: {
 		On the 20th hit, if less than 4 enemies are nearby, you become enraged
 		Small cooldown in between heals
 		Secondary yoyos drain life from 3 enemies, and have a longer cooldown
-		Does not allow the use of 2 yoyos at once
+		Does not allow the use of multiple yoyos at once
 		[c/6EAE6E:+4.5 yoyo speed]
 		[c/6EAE6E:+6 yoyo lifetime]
 		'''

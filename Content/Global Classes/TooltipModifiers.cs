@@ -10,7 +10,7 @@ using Terraria;
 
 namespace CombinationsMod.Content.Global_Classes
 {
-   public class TooltipModifiers : GlobalItem
+    public class TooltipModifiers : GlobalItem
    {
         public override bool InstancePerEntity => true;
 
@@ -19,7 +19,7 @@ namespace CombinationsMod.Content.Global_Classes
             if (ItemSets.DrillCasing[item.type])
             {
                 Color color = Color.Lerp(Color.HotPink, Color.MediumPurple, (MathF.Sin(Main.GlobalTimeWrappedHourly * 2.9f) + 1) / 2f);
-                string obj = KeybindInputs.GetKeybindDisplayName(KeybindSystem.DrillKeybind.GetAssignedKeys().FirstOrDefault()) ?? "[c/565558:<unbound>]"; // Attempts to find a custom set display name for keybinds. If none is found, the input is returned again. Example : Inputting "Mouse2" will return "Right Click"
+                string obj = KeybindInputs.GetKeybindDisplayName(KeybindSystem.DrillKeybind.GetAssignedKeys().FirstOrDefault()) ?? "<unbound>"; // Attempts to find a custom set display name for keybinds. If none is found, the input is returned again. Example : Inputting "Mouse2" will return "Right Click"
                 LocalizedText rightClick = Language.GetText($"Mods.CombinationsMod.LocalizedText.Misc.RightClickInfo").WithFormatArgs(obj); // formatting the string to display the current keybind name
                 tooltips.Add(new TooltipLine(Mod, "RightClickInfo", rightClick.Value.ToHexString(color)));
             }
@@ -32,38 +32,8 @@ namespace CombinationsMod.Content.Global_Classes
             if (ItemID.Sets.Yoyo[item.type] || ContentSamples.ProjectilesByType[item.shoot].aiStyle == 99)
             {
                 AddStatTooltips(item, ref tooltips);
-                    
-                if (Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType != 0)
-                {
-                    if (ContentSamples.ProjectilesByType[Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().CurrentDrillType].ModProjectile is BaseDrill drill)
-                    {
-                        tooltips.Add(new TooltipLine(Mod, "CurrentDrill", (Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.CurrentDrill") + ContentSamples.ItemsByType[drill.DrillItem].Name).ToHexString("5F65FF")));
-                    }
-                }
-
-                if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing) // if player does not have a yoyo ring, only show "no ability ring detected" prompt.
-                    tooltips.Add(new TooltipLine(Mod, "NoRing", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TooltipMechanics.NoRing")));
-                else
-                {
-                    if (!KeybindSystem.AbilityKeybind.Current) // if not currently holding ability keybind, display that it needs to be held to show ability
-                    {
-                        LocalizedText holdDown = Language.GetText($"Mods.CombinationsMod.LocalizedText.TooltipMechanics.HoldDown").WithFormatArgs(KeybindInputs.GetKeybindDisplayName(KeybindSystem.AbilityKeybind.GetAssignedKeys().FirstOrDefault()) ?? "][c/565558:<unbound>][c/6FD4FF:");
-                        tooltips.Add(new TooltipLine(Mod, "HoldDown", holdDown.Value));
-                    }
-                    else // currently holding down keybind
-                    {
-                        string localizedText = CombinationsModSystem.GetLocalizedStringFromDictionary(Main.HoverItem.type);
-                        if (localizedText == null)
-                        {
-                            tooltips.Add(new TooltipLine(Mod, "NoAbility", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TooltipMechanics.NoAbility")));
-                        }
-                        else
-                        {
-                            tooltips.Add(new TooltipLine(Mod, "YoyoAbilitySnippet", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TooltipMechanics.YoyoAbilitySnippet")));
-                            tooltips.Add(new TooltipLine(Mod, "AbilityInfo", localizedText));
-                        }
-                    }
-                }
+                AddCurrentDrillTooltip(ref tooltips);
+                AddAbilityTooltips(item, ref tooltips);
             }
 
             if (item.type >= ItemID.RedString && item.type <= ItemID.BlackString) // basic vanilla strings all give 150 yoyo range
@@ -77,6 +47,49 @@ namespace CombinationsMod.Content.Global_Classes
                 tooltips.RemoveAll(tip => tip.Name.StartsWith("Tooltip"));
                 tooltips.Add(new TooltipLine(Mod, "YoyoBagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.MoreAccessorySlots")));
             }
+
+            if (item.type == ItemID.YoYoGlove)
+            {
+                tooltips.Add(new TooltipLine(Mod, "YoyoGloveInfoVanilla", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.VanillaGlove")));
+            }
+        }
+
+        private void AddCurrentDrillTooltip(ref List<TooltipLine> tooltips)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<YoyoModPlayer>();
+            if (player.CurrentDrillType != 0 && ContentSamples.ProjectilesByType[player.CurrentDrillType].ModProjectile is BaseDrill drill)
+            {
+                tooltips.Add(new TooltipLine(Mod, "CurrentDrill", (Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.CurrentDrill") + ContentSamples.ItemsByType[drill.DrillItem].Name).ToHexString("5F65FF")));
+            }
+        }
+
+        private void AddAbilityTooltips(Item item, ref List<TooltipLine> tooltips)
+        {
+            string localizedText = CombinationsModSystem.GetLocalizedStringFromDictionary(Main.HoverItem.type);
+            if (localizedText == null)
+            {
+                if (ModContent.GetInstance<YoyoModConfig>().NoAbilityTooltip)
+                tooltips.Add(new TooltipLine(Mod, "NoAbility", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TooltipMechanics.NoAbility")));
+                return;
+            }
+
+            if (!Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().yoyoRing)
+            {
+                tooltips.Add(new TooltipLine(Mod, "NoRing", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TooltipMechanics.NoRing")));
+                return;
+            }
+
+            if (!KeybindSystem.AbilityKeybind.Current)
+            {
+                LocalizedText holdDown = Language.GetText($"Mods.CombinationsMod.LocalizedText.TooltipMechanics.HoldDown").WithFormatArgs(KeybindInputs.GetKeybindDisplayName(KeybindSystem.AbilityKeybind.GetAssignedKeys().FirstOrDefault()) ?? "][c/565558:<unbound>][c/6FD4FF:");
+                tooltips.Add(new TooltipLine(Mod, "HoldDown", holdDown.Value));
+                return;
+            }
+
+            tooltips.Clear();
+
+            tooltips.Add(new TooltipLine(Mod, "YoyoAbilitySnippet", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.TooltipMechanics.YoyoAbilitySnippet")));
+            tooltips.Add(new TooltipLine(Mod, "AbilityInfo", localizedText));
         }
 
         private void AddStatTooltips(Item item, ref List<TooltipLine> tooltips)
@@ -91,10 +104,13 @@ namespace CombinationsMod.Content.Global_Classes
             int updates = proj.MaxUpdates;
             if (proj.extraUpdates == 0) { updates = 1; }
 
-            float yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[item.shoot] * updates;
-            float yoyoRange = (float)Math.Round(ProjectileID.Sets.YoyosMaximumRange[item.shoot] / 16f, 1);
+            float yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[item.shoot] * updates + +Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier;
+            float yoyoRange = (float)Math.Round(ProjectileID.Sets.YoyosMaximumRange[item.shoot] / 16f + Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier, 1);
             float yoyoLifetime = ProjectileID.Sets.YoyosLifeTimeMultiplier[item.shoot];
             int maxHits = ContentSamples.ProjectilesByType[item.shoot].penetrate;
+
+            if (yoyoLifetime > 0)
+                yoyoLifetime += Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().YoyoLifetimeModifier;
 
             int index = tooltips.FindIndex(tip => tip.Name.StartsWith("Speed"));
             if (index < 0)
@@ -107,10 +123,10 @@ namespace CombinationsMod.Content.Global_Classes
                 tooltips.Insert(index, new TooltipLine(Mod, "Lifetime", yoyoLifetime > 0 ? Language.GetText(localPath + "Lifetime").WithFormatArgs(yoyoLifetime, yoyoLifetime > 1 ? "" : "s").Value : Language.GetText(localPath + "InfiniteLifetime").Value));
 
             if (instance.YoyoRange)
-                tooltips.Insert(index, new TooltipLine(Mod, "Range", Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier > 999 ? Language.GetText(localPath + "InfiniteRange").Value : Language.GetText(localPath + "Range").WithFormatArgs(yoyoRange + Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier / 16).Value));
+                tooltips.Insert(index, new TooltipLine(Mod, "Range", Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier > 999 ? Language.GetText(localPath + "InfiniteRange").Value : Language.GetText(localPath + "Range").WithFormatArgs(yoyoRange).Value));
 
             if (instance.YoyoSpeed)
-                tooltips.Insert(index, new TooltipLine(Mod, "Speed", Language.GetText(localPath + "Speed").WithFormatArgs(yoyoSpeed + Main.LocalPlayer.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier).Value));
+                tooltips.Insert(index, new TooltipLine(Mod, "Speed", Language.GetText(localPath + "Speed").WithFormatArgs(yoyoSpeed).Value));
         }
    }
 }

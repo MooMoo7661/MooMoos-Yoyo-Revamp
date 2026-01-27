@@ -467,7 +467,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (!Main.player[Projectile.owner].ZoneCrimson)
+            if (!Projectile.GetOwner().ZoneCrimson)
             {
                 return false;
             }
@@ -643,7 +643,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (!Main.player[Projectile.owner].ZoneGraveyard)
+            if (!Projectile.GetOwner().ZoneGraveyard)
             {
                 return false;
             }

@@ -37,7 +37,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoEffects.Solid
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            Player player = Main.player[Projectile.owner];
+            Player player = Projectile.GetOwner();
 
             if (player.ZoneGraveyard)
             {

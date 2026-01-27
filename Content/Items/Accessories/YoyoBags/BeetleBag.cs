@@ -111,8 +111,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             modPlayer.ringSlot2 = true;
             modPlayer.yoyoBag = true;
 
-            modPlayer.YoyoAmountModifier += 1;
-
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
                 player.yoyoGlove = true;
@@ -143,7 +141,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.MoreAccessorySlots")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.DrillsAndCounterweights")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.YoyoRings")));
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.AdditionalYoyo")));
             }
             else
             {

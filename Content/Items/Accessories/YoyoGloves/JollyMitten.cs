@@ -26,6 +26,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoGloves
             modPlayer.YoyoSpeedModifier += 10f;
             modPlayer.YoyoLifetimeModifier += -1000;
             player.yoyoGlove = true;
+            modPlayer.YoyoAmountModifier += 2f;
         }
 
         public override bool IsLoadingEnabled(Mod mod)

@@ -25,7 +25,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoGloves
             modPlayer.infinityGauntlet = true;
             modPlayer.YoyoSpeedModifier += 15f;
             modPlayer.YoyoLifetimeModifier += -1000;
-            modPlayer.YoyoAmountModifier += 2;
+            modPlayer.YoyoAmountModifier += 3;
             player.yoyoGlove = true;
         }
 

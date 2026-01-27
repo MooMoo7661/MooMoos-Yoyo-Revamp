@@ -109,7 +109,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
             modPlayer.ringSlot2 = true;
             modPlayer.trickSlot = true;
             modPlayer.yoyoBag = true;
-            modPlayer.YoyoAmountModifier += 1;
 
             if (!ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
@@ -148,7 +147,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.IncreasedYoyoKnockback")));
             }
 
-            tooltips.Add(new TooltipLine(Mod, "BagInfo/AdditionalYoyo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.AdditionalYoyo")));
             tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.YoyoShimmer")));
             tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.TrickSlot")));
 

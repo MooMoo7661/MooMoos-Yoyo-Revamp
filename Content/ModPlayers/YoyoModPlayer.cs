@@ -12,7 +12,7 @@ namespace CombinationsMod.Content.ModPlayers
         public float YoyoSpeedModifier { get; set; } = 0f;
         public float YoyoRangeModifier { get; set; } = 0f;
         public float YoyoLifetimeModifier { get; set; } = 1f;
-        public float YoyoAmountModifier { get; set; } = 1f;
+        public float YoyoAmountModifier { get; set; } = 0f;
         public Color YoyoStringColor { get; set; } = Color.White;
 
         public int currentYoyo = 0;
@@ -117,7 +117,7 @@ namespace CombinationsMod.Content.ModPlayers
 
         public override void ResetEffects()
         {
-            YoyoAmountModifier = 1;
+            YoyoAmountModifier = 0;
             YoyoSpeedModifier = 0;
             YoyoRangeModifier = 0;
             YoyoLifetimeModifier = 1;
@@ -289,6 +289,8 @@ namespace CombinationsMod.Content.ModPlayers
         private void ILEdit(int index1, int yoyoCount, int counterweightCount, Player player, int dmg, float kb)
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+            Main.NewText(modPlayer.YoyoAmountModifier);
 
             if (player.yoyoGlove && yoyoCount < modPlayer.YoyoAmountModifier + 1)
             {

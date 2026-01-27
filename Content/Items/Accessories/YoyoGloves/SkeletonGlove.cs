@@ -25,6 +25,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoGloves
             modPlayer.skeletonGlove = true;
             modPlayer.YoyoSpeedModifier += 10f;
             modPlayer.YoyoLifetimeModifier += -1000;
+            modPlayer.YoyoAmountModifier += 2f;
             player.yoyoGlove = true;
         }
 

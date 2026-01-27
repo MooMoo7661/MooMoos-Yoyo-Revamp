@@ -26,6 +26,7 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoGloves
             modPlayer.crystalGlove = true;
             modPlayer.YoyoSpeedModifier += 6f;
             modPlayer.YoyoLifetimeModifier += 10f;
+            modPlayer.YoyoAmountModifier += 1;
         }
 
         public override void AddRecipes()

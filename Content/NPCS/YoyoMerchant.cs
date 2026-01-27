@@ -37,9 +37,10 @@ namespace CombinationsMod.Content.NPCS
             NPCID.Sets.ExtraFramesCount[Type] = 9;
             NPCID.Sets.ShimmerTownTransform[Type] = true;
 
+            NPCID.Sets.PrettySafe[Type] = 300;
             NPCID.Sets.AllowDoorInteraction[Type] = true;
-            NPCID.Sets.ActsLikeTownNPC[Type] = true;
             NPCID.Sets.DangerDetectRange[Type] = 900;
+            NPCID.Sets.AttackType[Type] = 0;
             NPCID.Sets.AttackAverageChance[Type] = 30;
             NPCID.Sets.SpawnsWithCustomName[Type] = true;
             NPCID.Sets.HatOffsetY[Type] = 0;
@@ -69,8 +70,8 @@ namespace CombinationsMod.Content.NPCS
         {
             NPC.townNPC = true;
             NPC.friendly = true;
-            NPC.width = 18;
-            NPC.height = 40;
+            NPC.width = 58;
+            NPC.height = 62;
             NPC.aiStyle = 7;
             NPC.damage = 10;
             NPC.defense = 29;
@@ -101,7 +102,7 @@ namespace CombinationsMod.Content.NPCS
                 "Bony Stark",
                 "Marrow Lynd",
                 "Jack Skellington",
-                "Bones Malone",
+                "Bone Malone",
                 "Reaper Ron"
             };
         }
@@ -174,7 +175,6 @@ namespace CombinationsMod.Content.NPCS
                     chat.Add(Language.GetTextValue("Mods.CombinationsMod.Dialogue.YoyoMerchant.StandardDialogue" + i));
                 }
             }
-            
 
             NumberOfTimesTalkedTo++;
             return chat;
@@ -218,7 +218,7 @@ namespace CombinationsMod.Content.NPCS
             if (ModLoader.TryGetMod("VeridianMod", out Mod veridianMod))
                 yoyosShop.Add(veridianMod.Find<ModItem>("Stickler").Type, Condition.DownedKingSlime);
             if (ModLoader.TryGetMod("TysYoyoRedux", out Mod tysYoyoRedux))
-                yoyosShop.Add(tysYoyoRedux.Find<YoyoModItemLoader>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
+                yoyosShop.Add(tysYoyoRedux.Find<ModItem>("Spectrum").Type, Condition.DownedEmpressOfLight, Condition.Hardmode);
             yoyosShop.Register();
 
             var accessoriesShop = new NPCShop(Type, AccessoriesShop)
@@ -247,7 +247,6 @@ namespace CombinationsMod.Content.NPCS
             .AddWithValue(ItemID.RedCounterweight, Item.buyPrice(0, 5, 28, 41), Condition.DownedMechBossAny, Condition.Hardmode)
 
             .AddWithValue(ItemID.YoYoGlove, Item.buyPrice(0, 8, 49, 0), Condition.Hardmode)
-            .AddWithValue(ItemType<SupportGlove>(), Item.buyPrice(0, 12, 0, 42), Condition.DownedPlantera)
             .AddWithValue(ItemID.YoyoBag, Item.buyPrice(0, 12, 53, 0), Condition.DownedSkeletron);
 
             accessoriesShop.Register();

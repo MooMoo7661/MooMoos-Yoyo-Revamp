@@ -39,6 +39,8 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
 
             if (projectile.GetOwner().GetModPlayer<YoyoModPlayer>().naniteString)
                 projectile.StringData().StringDrawType = DrawSets.StringDrawTypes.Invisible;
+            else
+                projectile.StringData().StringDrawType = DrawSets.StringDrawTypes.Normal;
         }
     }
 }

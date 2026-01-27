@@ -1,9 +1,12 @@
+using CombinationsMod.Content.Drills;
+using CombinationsMod.Content.Items.Accessories.Drills;
 using CombinationsMod.Content.Items.Misc;
 using CombinationsMod.Content.Rarities;
 using CombinationsMod.Content.Tiles.Bars;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -13,7 +16,7 @@ using Terraria.ModLoader;
 namespace CombinationsMod.Content.Items.Bars
 {
     [LegacyName("SightBar", "FrightBar", "MightBar", "NeutralineScrap")]
-    public class EclipseBar : YoyoModItemLoader
+    public class EclipseBar : ModItem
     {
         public override void SetDefaults()
         {
@@ -30,6 +33,7 @@ namespace CombinationsMod.Content.Items.Bars
             Item.createTile = ModContent.TileType<EclipseBarTile>();
             Item.placeStyle = 0;
             Item.rare = ModContent.RarityType<EclipseRarity>();
+            ItemSets.YoyoUpgrade[Type] = true;
         }
 
         public override void AddRecipes()
@@ -37,6 +41,9 @@ namespace CombinationsMod.Content.Items.Bars
             CreateRecipe()
             .AddIngredient(ModContent.ItemType<EclipseShard>(), 3)
             .AddTile(TileID.AdamantiteForge)
+            //. ((_, _, _, _) => {
+            //    Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<MooMooDrillCasing>());
+            //})
             .Register();
         }
 

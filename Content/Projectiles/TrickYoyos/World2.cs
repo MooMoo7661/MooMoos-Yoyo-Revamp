@@ -9,7 +9,6 @@ namespace CombinationsMod.Content.Projectiles.TrickYoyos
 {
     public class World2 : ModProjectile
     {
-
         public override void SetDefaults()
         {
             Projectile.width = 16;
@@ -22,7 +21,7 @@ namespace CombinationsMod.Content.Projectiles.TrickYoyos
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Melee;
-            //MooMooLib.DrawSets.CanHaveYoyoStringDrawnFromProjectile[Type] = true;
+            YoyoStringLib.DrawSets.CanHaveYoyoStringDrawnFromProjectile[Type] = true;
         }
 
         private bool _initialized;
@@ -38,7 +37,8 @@ namespace CombinationsMod.Content.Projectiles.TrickYoyos
         }
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
+
+            Player player = Projectile.GetOwner();
 
             Projectile proj = Main.projectile[(int)Projectile.ai[1]];
 

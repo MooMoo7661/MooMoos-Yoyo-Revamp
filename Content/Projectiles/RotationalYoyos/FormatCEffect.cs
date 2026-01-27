@@ -52,7 +52,7 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
 
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
+            Player player = Projectile.GetOwner();
             Projectile proj = Main.projectile[(int)Projectile.ai[1]];
 
             if (((proj.ai[0] == -1 || floating) && proj.localAI[0] > 120) || setSecondStats)

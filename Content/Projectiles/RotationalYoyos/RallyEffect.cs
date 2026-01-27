@@ -39,7 +39,7 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
 
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
+            Player player = Projectile.GetOwner();
 
             Projectile.rotation += 0.2f;
 

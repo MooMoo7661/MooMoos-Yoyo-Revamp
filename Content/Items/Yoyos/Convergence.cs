@@ -11,9 +11,9 @@ namespace CombinationsMod.Content.Items.Yoyos
 {
     // Yeah I know I misspelled "Convergence".
     [LegacyName("Convergance")]
-    public class Convergence : ModYoyo
+    public class Convergence : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {
@@ -145,11 +145,6 @@ namespace CombinationsMod.Content.Items.Yoyos
                 .AddIngredient(ItemID.Terrarian)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

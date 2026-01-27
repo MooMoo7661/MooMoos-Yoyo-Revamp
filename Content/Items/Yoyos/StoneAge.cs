@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class StoneAge : ModYoyo
+    public class StoneAge : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {

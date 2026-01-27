@@ -5,6 +5,7 @@ using CombinationsMod.Content.TrailSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -14,9 +15,9 @@ using Terraria.UI.Chat;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class BlackHole : ModYoyo
+    public class BlackHole : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {
@@ -26,8 +27,8 @@ namespace CombinationsMod.Content.Items.Yoyos
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.width = 36;
-            Item.height = 32;
+            Item.width = 42;
+            Item.height = 54;
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 3f;
@@ -123,11 +124,6 @@ namespace CombinationsMod.Content.Items.Yoyos
                 .AddIngredient(ItemID.SoulofNight, 20)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

@@ -7,9 +7,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos;
 
-public class OrichalcumYoyo : ModYoyo
+public class OrichalcumYoyo : ModItem
 {
-    public override bool CanBeUnloaded => true;
+     
 
     public override void SetStaticDefaults()
     {
@@ -34,8 +34,6 @@ public class OrichalcumYoyo : ModYoyo
         Item.UseSound = new SoundStyle?(SoundID.Item1);
         Item.value = Item.sellPrice(0, 2, 8, 59);
         Item.shoot = ModContent.ProjectileType<OrichalcumYoyoProjectile>();
-
-
     }
 
     public override void AddRecipes()
@@ -44,10 +42,5 @@ public class OrichalcumYoyo : ModYoyo
         recipe.AddIngredient(ItemID.OrichalcumBar, 10);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
-    }
-
-    public override bool IsLoadingEnabled(Mod mod)
-    {
-        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 }

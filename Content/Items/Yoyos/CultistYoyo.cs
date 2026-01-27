@@ -13,9 +13,9 @@ using Terraria.UI.Chat;
 
 namespace CombinationsMod.Content.Items.Yoyos;
 
-public class CultistYoyo : ModYoyo
+public class CultistYoyo : ModItem
 {
-    public override bool CanBeUnloaded => true;
+     
 
     public override void SetStaticDefaults()
     {
@@ -110,10 +110,4 @@ public class CultistYoyo : ModYoyo
         }
         return base.PreDrawTooltipLine(line, ref yOffset);
     }
-
-    public override bool IsLoadingEnabled(Mod mod)
-    {
-        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
-    }
-
 }

@@ -9,9 +9,9 @@ using Terraria.ModLoader;
 namespace CombinationsMod.Content.Items.Yoyos
 {
     [LegacyName("TheQueensGambit")]
-    public class SwarmSpinner : ModYoyo
+    public class SwarmSpinner : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {

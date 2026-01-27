@@ -1,4 +1,5 @@
 using CombinationsMod.Content.Configs;
+using CombinationsMod.Content.Global_Classes.Projectiles;
 using CombinationsMod.Content.Projectiles.YoyoProjectiles;
 using Terraria;
 using Terraria.Audio;
@@ -7,9 +8,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class IronYoyo : ModYoyo
+    public class IronYoyo : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {
@@ -34,8 +35,6 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.value = Item.sellPrice(0, 0, 80, 3);
             Item.shoot = ModContent.ProjectileType<IronYoyoProjectile>();
-
-
         }
 
         public override void AddRecipes()
@@ -44,11 +43,6 @@ namespace CombinationsMod.Content.Items.Yoyos
             recipe.AddIngredient(ItemID.IronBar, 10);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

@@ -7,9 +7,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos;
 
-public class PalladiumYoyo : ModYoyo
+public class PalladiumYoyo : ModItem
 {
-    public override bool CanBeUnloaded => true;
+     
 
     public override void SetStaticDefaults()
     {
@@ -42,10 +42,5 @@ public class PalladiumYoyo : ModYoyo
         recipe.AddIngredient(ItemID.PalladiumBar, 8);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
-    }
-
-    public override bool IsLoadingEnabled(Mod mod)
-    {
-        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 }

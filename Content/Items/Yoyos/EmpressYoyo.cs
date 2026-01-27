@@ -11,9 +11,9 @@ using Terraria.UI.Chat;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class EmpressYoyo : ModYoyo
+    public class EmpressYoyo : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {

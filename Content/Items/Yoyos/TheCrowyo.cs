@@ -8,9 +8,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class TheCrowyo : ModYoyo
+    public class TheCrowyo : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {
@@ -44,11 +44,6 @@ namespace CombinationsMod.Content.Items.Yoyos
                 .AddIngredient(ItemID.SoulofNight, 10)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

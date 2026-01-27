@@ -7,9 +7,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class ThinMint : ModYoyo
+    public class ThinMint : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {
@@ -34,11 +34,6 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.value = Item.sellPrice(0, 1, 0, 89);
             Item.shoot = ModContent.ProjectileType<ThinMintProjectile>();
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

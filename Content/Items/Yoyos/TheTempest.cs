@@ -14,9 +14,9 @@ using Terraria.UI.Chat;
 
 namespace CombinationsMod.Content.Items.Yoyos
 {
-    public class TheTempest : ModYoyo
+    public class TheTempest : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {
@@ -119,11 +119,6 @@ namespace CombinationsMod.Content.Items.Yoyos
                 .AddIngredient(ModContent.ItemType<BrokenHeroYoyo>())
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

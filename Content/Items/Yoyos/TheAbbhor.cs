@@ -9,9 +9,9 @@ using Terraria.ModLoader;
 namespace CombinationsMod.Content.Items.Yoyos
 {
     [LegacyName("Code3")]
-    public class TheAbbhor : ModYoyo
+    public class TheAbbhor : ModItem
     {
-        public override bool CanBeUnloaded => true;
+         
 
         public override void SetStaticDefaults()
         {
@@ -37,8 +37,6 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.value = Item.sellPrice(0, 9, 8, 3);
             Item.shoot = ModContent.ProjectileType<TheAbbhorProjectile>();
-
-
         }
 
         public override void AddRecipes()
@@ -58,11 +56,6 @@ namespace CombinationsMod.Content.Items.Yoyos
             recipe2.AddIngredient(ItemID.JungleYoyo);
             recipe2.AddTile(TileID.DemonAltar);
             recipe2.Register();
-        }
-
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
         }
     }
 }

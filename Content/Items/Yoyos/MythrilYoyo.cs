@@ -7,9 +7,9 @@ using Terraria.ModLoader;
 
 namespace CombinationsMod.Content.Items.Yoyos;
 
-public class MythrilYoyo : ModYoyo
+public class MythrilYoyo : ModItem
 {
-    public override bool CanBeUnloaded => true;
+     
 
     public override void SetStaticDefaults()
     {
@@ -34,8 +34,6 @@ public class MythrilYoyo : ModYoyo
         Item.UseSound = new SoundStyle?(SoundID.Item1);
         Item.value = Item.sellPrice(0, 2, 2, 0);
         Item.shoot = ModContent.ProjectileType<MythrilYoyoProjectile>();
-
-
     }
 
     public override void AddRecipes()
@@ -44,10 +42,5 @@ public class MythrilYoyo : ModYoyo
         recipe.AddIngredient(ItemID.MythrilBar, 10);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
-    }
-
-    public override bool IsLoadingEnabled(Mod mod)
-    {
-        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 }

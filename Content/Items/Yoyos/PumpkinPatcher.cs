@@ -8,9 +8,9 @@ using Terraria.ModLoader;
 namespace CombinationsMod.Content.Items.Yoyos;
 
 [LegacyName("Mambele")]
-public class PumpkinPatcher : ModYoyo
+public class PumpkinPatcher : ModItem
 {
-    public override bool CanBeUnloaded => true;
+     
 
     public override void SetStaticDefaults()
     {
@@ -36,10 +36,4 @@ public class PumpkinPatcher : ModYoyo
         Item.value = Item.sellPrice(0, 7, 8, 3);
         Item.shoot = ModContent.ProjectileType<PumpkinPatcherProjectile>();
     }
-
-    public override bool IsLoadingEnabled(Mod mod)
-    {
-        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
-    }
-
 }

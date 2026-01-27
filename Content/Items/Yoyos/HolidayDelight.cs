@@ -8,9 +8,9 @@ using Terraria.ModLoader;
 namespace CombinationsMod.Content.Items.Yoyos;
 
 [LegacyName("ChristmasBulb")]
-public class HolidayDelight : ModYoyo
+public class HolidayDelight : ModItem
 {
-    public override bool CanBeUnloaded => true;
+     
 
     public override void SetStaticDefaults()
     {
@@ -35,10 +35,5 @@ public class HolidayDelight : ModYoyo
         Item.UseSound = new SoundStyle?(SoundID.Item1);
         Item.value = Item.sellPrice(0, 7, 8, 3);
         Item.shoot = ModContent.ProjectileType<HolidayDelightProjectile>();
-    }
-
-    public override bool IsLoadingEnabled(Mod mod)
-    {
-        return ModContent.GetInstance<YoyoModConfig>().LoadModdedYoyos;
     }
 }

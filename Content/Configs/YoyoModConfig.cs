@@ -22,7 +22,13 @@ internal class YoyoModConfig : ModConfig
 
     [DefaultValue(true)]
     public bool AccessorySlotIndicators { get; set; }
+
     [Header("LargeChanges")]
+
+    [DefaultValue(true)]
+    [ReloadRequired]
+    public bool CalamityStatChangeMirror { get; set; }
+
     [DefaultValue(true)]
     public bool VanillaYoyoEffects { get; set; }
 

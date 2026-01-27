@@ -1,4 +1,5 @@
 ﻿using CombinationsMod.Content.Configs;
+using CombinationsMod.Content.Global_Classes.Projectiles;
 using CombinationsMod.Content.Items.Yoyos;
 using CombinationsMod.Content.ModPlayers;
 using Terraria;
@@ -11,10 +12,16 @@ namespace CombinationsMod
 {
     public class CombinationsModClass : Mod
     {
+        public static CombinationsModClass Instance = null;
+
         public override void Load()
         {
+            Instance = this;
             On_Player.ApplyEquipFunctional += On_Player_ApplyEquipFunctional;
+            CalamityBalancing.LoadTweaks();
         }
+
+        public override void Unload() => Instance = null;
 
         private void On_Player_ApplyEquipFunctional(On_Player.orig_ApplyEquipFunctional orig, Player self, Item item, bool hideVisual)
         {

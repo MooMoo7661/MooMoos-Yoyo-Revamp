@@ -64,7 +64,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoBags
         {
             if (ModContent.GetInstance<YoyoModConfig>().EnableModifiedYoyoBag)
             {
-                tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.Misc.AdditionalYoyo")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.MoreAccessorySlots")));
                 tooltips.Add(new TooltipLine(Mod, "BagInfo", Language.GetTextValue("Mods.CombinationsMod.LocalizedText.AccessorySlots.DrillsAndCounterweights")));
             }

@@ -38,9 +38,9 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
         {
             CreateRecipe()
                 .AddIngredient(ItemID.Book)
-                .AddIngredient(ItemID.Cloud, 15)
-                .AddIngredient(ItemID.FallenStar, 1)
-                .AddRecipeGroup(CombinationsModSystem.adamantiteBarRecipeGroup, 5)
+                .AddIngredient(ItemID.HellstoneBar, 5)
+                .AddIngredient(ItemID.Fireblossom, 1)
+                .AddRecipeGroup(CombinationsModSystem.adamantiteBarRecipeGroup, 8)
                 .AddTile(TileID.Anvils)
                 .Register();
         }

@@ -34,6 +34,8 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
         {
             CreateRecipe()
                 .AddIngredient(ItemID.Book)
+                .AddIngredient(ItemID.CrystalShard, 10)
+                .AddIngredient(ItemID.SoulofLight, 3)
                 .AddRecipeGroup(CombinationsModSystem.cobaltBarRecipeGroup, 8)
                 .AddTile(TileID.Anvils)
                 .Register();

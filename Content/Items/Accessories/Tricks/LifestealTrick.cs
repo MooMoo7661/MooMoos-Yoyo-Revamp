@@ -1,5 +1,6 @@
 ﻿using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
+using CombinationsMod.Content.ModSystems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -36,9 +37,19 @@ namespace CombinationsMod.Content.Items.Accessories.Tricks
         {
             CreateRecipe()
                 .AddIngredient(ItemID.Book)
-                .AddIngredient(ItemID.SoulofNight, 25)
-                .AddIngredient(ItemID.DarkShard, 5)
-                .AddIngredient(ItemID.CrystalShard, 10)
+                .AddIngredient(ItemID.SoulofNight, 5)
+                .AddIngredient(ItemID.DarkShard, 1)
+                .AddIngredient(ItemID.Deathweed, 2)
+                .AddRecipeGroup(CombinationsModSystem.mythrilBarRecipeGroup, 6)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
+
+            CreateRecipe()
+                .AddIngredient(ItemID.Book)
+                .AddIngredient(ItemID.SoulofNight, 5)
+                .AddIngredient(ItemID.LightShard, 1)
+                .AddIngredient(ItemID.Deathweed, 2)
+                .AddRecipeGroup(CombinationsModSystem.mythrilBarRecipeGroup, 6)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

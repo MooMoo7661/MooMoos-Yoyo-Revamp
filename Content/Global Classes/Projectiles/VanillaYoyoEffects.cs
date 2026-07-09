@@ -47,7 +47,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 int damage = projectile.damage;
                 float knockback = projectile.knockBack;
 
-                if (isOriginalYoyo)
                     switch (projectile.type)
                     {
                         case ProjectileID.Yelets:
@@ -55,7 +54,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             break;
 
                         case ProjectileID.Code1:
-                            if (Main.myPlayer == projectile.owner)
+                            if (Main.myPlayer == projectile.owner && isOriginalYoyo)
                             {
                                 for (int i = 0; i < 6; i++)
                                 {
@@ -80,7 +79,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         case ProjectileID.Rally:
                             for (int i = 0; i < 3; i++)
                             {
-                                if (Main.myPlayer == projectile.owner)
+                                if (Main.myPlayer == projectile.owner && isOriginalYoyo)
                                 {
                                     Projectile rally = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<RallyEffect>(),
                                     (int)(projectile.damage / 2f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI);
@@ -106,7 +105,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             break;
 
                         case ProjectileID.Gradient:
-                            if (Main.myPlayer == projectile.owner)
+                            if (Main.myPlayer == projectile.owner && isOriginalYoyo)
                             {
                                 Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<GradientClaySwirl>(),
                                 (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 0.8f;
@@ -124,7 +123,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             break;
 
                         case ProjectileID.FormatC:
-                            if (Main.myPlayer == projectile.owner)
+                            if (Main.myPlayer == projectile.owner && isOriginalYoyo)
                             {
                                 Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<FormatClaySwirl>(),
                                 (int)(projectile.damage * 0.75f) + 1, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 0.8f;
@@ -190,7 +189,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             break;
 
                         case ProjectileID.Terrarian:
-                            if (Main.myPlayer == projectile.owner)
+                            if (Main.myPlayer == projectile.owner && isOriginalYoyo)
                             {
                                 Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<GreenShieldSwirlDuo>(),
                                 0, 0, Main.myPlayer, 0, projectile.whoAmI).scale = 1.4f;
@@ -420,7 +419,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
         public override void AI(Projectile projectile)
         {
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (projectile.IsYoyo() && GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 ref int timer0 = ref projectile.YoyoData().AbilityTimer[0];
                 ref int timer1 = ref projectile.YoyoData().AbilityTimer[1];
@@ -449,21 +448,23 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                         if (timer0 == 0)
                         {
-
-                            SoundStyle HitSound = new()
+                            if (projectile.YoyoData().MainYoyo)
                             {
-                                SoundPath = "CombinationsMod/Content/Sounds/ability-ready",
-                                Volume = 0.6f,
-                                Pitch = 1,
-                                SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
-                            };
+                                SoundStyle HitSound = new()
+                                {
+                                    SoundPath = "CombinationsMod/Content/Sounds/ability-ready",
+                                    Volume = 0.6f,
+                                    Pitch = 1,
+                                    SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+                                };
 
-                            SoundEngine.PlaySound(HitSound);
+                                SoundEngine.PlaySound(HitSound);
+                            }
 
                             for (int i = 0; i < 50; i++)
                             {
-                                Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f) * 5f;
-                                Dust d = Dust.NewDustPerfect(projectile.Center, DustID.BlueFairy, speed, Scale: 1.5f);
+                                Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f) * (projectile.YoyoData().MainYoyo ? 5f : 3.5f);
+                                Dust d = Dust.NewDustPerfect(projectile.Center, projectile.YoyoData().MainYoyo ? DustID.BlueFairy : DustID.GreenFairy, speed, Scale: 1.5f);
                                 d.noGravity = true;
 
                             }
@@ -514,7 +515,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                     case ProjectileID.Code2:
                         timer0++;
-                        if (timer0 >= 120)
+                        if (timer0 >= 300 && projectile.YoyoData().MainYoyo)
                         {
                             for (int i = 0; i < 50; i++)
                             {
@@ -531,7 +532,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                     Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 8f;
 
                                     int proj = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, vel,
-                                        ProjectileID.VenomFang, (int)(projectile.damage * 1.2f), 1, projectile.owner, 1, 1);
+                                        ProjectileID.VenomFang, (int)(projectile.damage * 0.4f), 1, projectile.owner, 1, 1);
                                     Main.projectile[proj].scale = 0.9f;
                                     Main.projectile[proj].tileCollide = true;
                                     Main.projectile[proj].timeLeft = 180;
@@ -555,7 +556,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                     case ProjectileID.Valor:
                         timer0++;
-                        if (timer0 == 40)
+                        if (timer0 == 40 + (projectile.YoyoData().MainYoyo ? 0 : 10))
                         {
                             timer0 = 0;
                             if (Main.myPlayer == projectile.owner)
@@ -576,7 +577,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                         break;
 
                     case ProjectileID.TheEyeOfCthulhu:
-                        if (!eocStage2)
+                        if (!eocStage2 && projectile.YoyoData().MainYoyo)
                         {
                             timer0++;
                             if (timer0 == 60)
@@ -601,7 +602,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                                 timer0 = 0;
                             }
                         }
-                        else if (eocStage2)
+                        else if (eocStage2 && projectile.YoyoData().MainYoyo)
                         {
                             if (!roar)
                             {
@@ -713,7 +714,7 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             if (!tile.HasTile || !WorldGen.InWorld(x, y))
                 return true;
 
-            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.YoyoData().MainYoyo && projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
+            if (GetInstance<YoyoModConfig>().VanillaYoyoEffects && projectile.GetOwner().GetModPlayer<YoyoModPlayer>().yoyoRing)
             {
                 switch (projectile.type)
                 {
@@ -723,15 +724,19 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                             projectile.YoyoData().AbilityTimer[0] = 120;
                             projectile.YoyoData().AbilityTimer[1] = 1;
 
-                            SoundStyle HitSound = new()
+                            if (projectile.YoyoData().MainYoyo)
                             {
-                                SoundPath = "CombinationsMod/Content/Sounds/rock2",
-                                Volume = 0.3f,
-                                PitchVariance = 0.3f,
-                                SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
-                            };
+                                SoundStyle HitSound = new()
+                                {
+                                    SoundPath = "CombinationsMod/Content/Sounds/rock2",
+                                    Volume = 0.3f,
+                                    PitchVariance = 0.3f,
+                                    SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest
+                                };
 
-                            SoundEngine.PlaySound(HitSound);
+
+                                SoundEngine.PlaySound(HitSound);
+                            }
     
                             int dustType = Main.dust[WorldGen.KillTile_MakeTileDust(x, y, tile)].type;
 

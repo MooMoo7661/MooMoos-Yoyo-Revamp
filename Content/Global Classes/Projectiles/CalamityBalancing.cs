@@ -115,90 +115,87 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
         internal static void LoadTweaks()
         {
 
-            /// TODO: Fix modded yoyos not gaining the stats properly
+            //if (ModLoader.HasMod("CalamityMod") || (!ModLoader.HasMod("CalamityMod") && ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror))
+            //{
+            //    // Balances this mod's yoyos for calamity
+            //    currentTweaks = new SortedDictionary<int, IProjectileTweak[]>
+            //        {                                                     /// lifetime, range, top speed, extra updates, i frames
+            //        { ModContent.ProjectileType<IronYoyoProjectile>(), RebalanceYoyo(17f, 260f, 14.8f, 0, 20) },
+            //        { ModContent.ProjectileType<LeadYoyoProjectile>(), RebalanceYoyo(17f, 260f, 14.8f, 0, 20) },
+            //        { ModContent.ProjectileType<BlackHoleProjectile>(), RebalanceYoyo(-1f, 440f, 28f, 2) },
+            //        { ModContent.ProjectileType<CatacombProjectile>(), RebalanceYoyo(22f, 315f, 17f, 2) },
+            //        { ModContent.ProjectileType<ConvergenceProjectile>(), RebalanceYoyo(-1f, 550f, 60f, 2) },
+            //        { ModContent.ProjectileType<CultistYoyoProjectile>(), RebalanceYoyo(-1f, 500f, 40f, 0) },
+            //        { ModContent.ProjectileType<EmpressProjectile>(), RebalanceYoyo(-1f, 480f, 60f, 2) },
+            //    };
 
-            if (ModLoader.HasMod("CalamityMod") || (!ModLoader.HasMod("CalamityMod") && ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror))
-            {
-                if (ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
-                {
-                    currentTweaks = new SortedDictionary<int, IProjectileTweak[]>
-                    {                                                           /// lifetime, range, top speed, extra updates, i frames
-                    { ModContent.ProjectileType<IronYoyoProjectile>(), RebalanceYoyo(17f, 260f, 14.8f, 0, 20) },
-                    { ModContent.ProjectileType<LeadYoyoProjectile>(), RebalanceYoyo(17f, 260f, 14.8f, 0, 20) },
-                    { ModContent.ProjectileType<BlackHoleProjectile>(), RebalanceYoyo(-1f, 440f, 28f, 2) },
-                    { ModContent.ProjectileType<CatacombProjectile>(), RebalanceYoyo(22f, 315f, 17f, 2) },
-                    { ModContent.ProjectileType<ConvergenceProjectile>(), RebalanceYoyo(-1f, 550f, 60f, 2) },
-                    { ModContent.ProjectileType<CultistYoyoProjectile>(), RebalanceYoyo(-1f, 500f, 40f, 0) },
-                    { ModContent.ProjectileType<EmpressProjectile>(), RebalanceYoyo(-1f, 480f, 60f, 2) },
-                    };
-                }
-            }
 
+            //}
 
             if (!ModLoader.HasMod("CalamityMod") && ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
             vanillaTweaks = new SortedDictionary<int, IProjectileTweak[]>
             {
-                { ProjectileID.Amarok, RebalanceYoyo(-1f, 432f, 28f, 1, 12) },
+                { ProjectileID.Amarok, RebalanceYoyo(14f, 284f, 17.1f, 0, 12) },
 
                 // original: 13s lifetime | 235px range | 14px/f top speed | 0 extra updates
-                { ProjectileID.Cascade, RebalanceYoyo(30f, 384f, 28f, 1, 12) },
+                { ProjectileID.Cascade, RebalanceYoyo(12f, 272f, 16.8f, 0, 12) },
 
                 // original: 16s lifetime | 275px range | 17px/f top speed | 0 extra updates
-                { ProjectileID.Chik, RebalanceYoyo(-1f, 400f, 32f, 1, 12) },
+                { ProjectileID.Chik, RebalanceYoyo(15f, 276f, 18f, 2, 12) },
 
                 // original: 9s lifetime | 220px range | 13px/f top speed | 0 extra updates
-                { ProjectileID.Code1, RebalanceYoyo(21f, 320f, 25f, 1, 15) },
+                { ProjectileID.Code1, RebalanceYoyo(8f, 240f, 15.5f, 0, 15) },
 
                 // original: INF lifetime | 280px range | 17px/f top speed | 0 extra updates
-                { ProjectileID.Code2, RebalanceYoyo(-1f, 432f, 42f, 1, 12) },
+                { ProjectileID.Code2, RebalanceYoyo(-1f, 300f, 19.2f, 1, 12) },
 
                 // original: 7s lifetime | 195px range | 12.5px/f top speed | 0 extra updates
-                { ProjectileID.CorruptYoyo, RebalanceYoyo(18f, 288f, 22f, 0, 20) }, // Malaise
+                { ProjectileID.CorruptYoyo, RebalanceYoyo(18f, 224f, 14.5f, 0, 20) }, // Malaise
 
                 // original: 6s lifetime | 207px range | 12px/f top speed | 0 extra updates
-                { ProjectileID.CrimsonYoyo, RebalanceYoyo(18f, 288f, 22f, 0, 20) }, // Artery
+                { ProjectileID.CrimsonYoyo, RebalanceYoyo(18f, 2f, 14.5f, 0, 20) }, // Artery
 
                 // original: 8s lifetime | 235px range | 15px/f top speed | 0 extra updates
-                { ProjectileID.FormatC, RebalanceYoyo(-1f, 384f, 36f, 1, 12) },
+                { ProjectileID.FormatC, RebalanceYoyo(-1f, 280f, 18.2f, 0, 12) },
 
                 // original: 10s lifetime | 250px range | 12px/f top speed | 0 extra updates
-                { ProjectileID.Gradient, RebalanceYoyo(-1f, 384f, 36f, 1, 12) },
+                { ProjectileID.Gradient, RebalanceYoyo(-1f, 284f, 18.4f, 1, 12) },
 
                 // original: 12s lifetime | 275px range | 15px/f top speed | 0 extra updates
-                { ProjectileID.HelFire, RebalanceYoyo(-1f, 320f, 42f, 2, 12) },
+                { ProjectileID.HelFire, RebalanceYoyo(-1f, 340f, 19.5f, 2, 12) },
 
                 // original: 11s lifetime | 225px range | 14px/f top speed | 0 extra updates
-                { ProjectileID.HiveFive, RebalanceYoyo(24f, 320f, 20f, 0, 15) },
+                { ProjectileID.HiveFive, RebalanceYoyo(24f, 248f, 16f, 0, 15) },
 
                 // original: 8s lifetime | 215px range | 13px/f top speed | 0 extra updates
-                { ProjectileID.JungleYoyo, RebalanceYoyo(20f, 288f, 17f, 0, 20) }, // Amazon
+                { ProjectileID.JungleYoyo, RebalanceYoyo(20f, 248f, 15.2f, 0, 20) }, // Amazon
 
                 // original: INF lifetime | 340px range | 16px/f top speed | 0 extra updates
-                { ProjectileID.Kraken, RebalanceYoyo(-1f, 480f, 54f, 2) },
+                { ProjectileID.Kraken, RebalanceYoyo(-1f, 450f, 24f, 2) },
 
                 // original: 5s lifetime | 170px range | 11px/f top speed | 0 extra updates
-                { ProjectileID.Rally, RebalanceYoyo(16f, 272f, 20f, 0, 20) },
+                { ProjectileID.Rally, RebalanceYoyo(16f, 208f, 13.2f, 0, 20) },
 
                 // original: INF lifetime | 370px range | 16px/f top speed | 0 extra updates
-                { ProjectileID.RedsYoyo, RebalanceYoyo(-1f, 480f, 42f, 2, 12) }, // Red's Throw
+                { ProjectileID.RedsYoyo, RebalanceYoyo(-1f, 375f, 23f, 2, 12) }, // Red's Throw
 
                 // original: INF lifetime | 400px range | 17.5px/f top speed | 0 extra updates
-                { ProjectileID.Terrarian, RebalanceYoyo(-1f, 512f, 54f, 2) },
+                { ProjectileID.Terrarian, RebalanceYoyo(-1f, 500f, 35f, 2) },
 
                 // original: INF lifetime | 360px range | 16.5px/f top speed | 0 extra updates
-                { ProjectileID.TheEyeOfCthulhu, RebalanceYoyo(-1f, 480f, 36f, 1) }, // the yoyo, of course
+                { ProjectileID.TheEyeOfCthulhu, RebalanceYoyo(-1f, 380f, 26f, 1) }, // the yoyo, of course
 
                 // original: INF lifetime | 370px range | 16px/f top speed | 0 extra updates
-                { ProjectileID.ValkyrieYoyo, RebalanceYoyo(-1f, 480f, 42f, 2, 12) },
+                { ProjectileID.ValkyrieYoyo, RebalanceYoyo(-1f, 410f, 42f, 2, 12) },
 
                 // original: 11s lifetime | 225px range | 14px/f top speed | 0 extra updates
-                { ProjectileID.Valor, RebalanceYoyo(30f, 400f, 36f, 1, 12) },
+                { ProjectileID.Valor, RebalanceYoyo(30f, 400f, 16.4f, 2, 12) },
 
                 // original: 3s lifetime | 130px range | 9px/f top speed | 0 extra updates
-                { ProjectileID.WoodYoyo, RebalanceYoyo(15f, 240f, 14f, 0, 20) },
+                { ProjectileID.WoodYoyo, RebalanceYoyo(15f, 180f, 12.2f, 0, 20) },
 
                 // original: 14s lifetime | 290px range | 16px/f top speed | 0 extra updates
-                { ProjectileID.Yelets, RebalanceYoyo(-1f, 400f, 36f, 1, 12) },
+                { ProjectileID.Yelets, RebalanceYoyo(-1f, 330f, 18.8f, 1, 12) },
             };
         }
 

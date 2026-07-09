@@ -114,7 +114,7 @@ namespace CombinationsMod.Content.Projectiles.RotationalYoyos
         {
             if (!setSecondStats)
             {
-                Projectile.timeLeft = 240;
+                Projectile.timeLeft = 120;
                 Projectile.penetrate = 1;
                 Projectile.tileCollide = true;
                 Projectile.hostile = false;

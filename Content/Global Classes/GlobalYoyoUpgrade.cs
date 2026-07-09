@@ -27,14 +27,11 @@ namespace CombinationsMod.Content.Global_Classes
         /// [2] - bearing
         /// [3] - rgb
         /// </summary>
-        public List<Item> yoyoUpgrades = new List<Item>
-        {
-            new Item(ItemID.None),
-            new Item(ItemID.None),
-            new Item(ItemID.None),
-            new Item(ItemID.None),
-        };
+        public List<Item> yoyoUpgrades = Enumerable
+            .Repeat(new Item(), 4)
+            .ToList();
 
+       
         public bool HasAxle(Item item)
         {
             if (!ItemID.Sets.Yoyo[item.type])

@@ -19,8 +19,21 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
         public float DamageMult = 1f;
         public float KnockbackMult = 1f;
         public float LifetimeMult = 1f;
+        public float RangeBonus = 0f;
+        public float RangeMult = 1f;
         public float SpeedBonus = 0f;
-        public float SpeedMult = 1f;
+        public bool Bearing = true;
+        private float _speedMult = 1f;
+        
+
+        /// <summary>
+        /// Multiplied by (YoyosTopSpeed + YoyoModPlayer.YoyoSpeedBonus + YoyoData.SpeedBonus) * SpeedMult
+        /// </summary>
+        public float SpeedMult
+        {
+            get => _speedMult;
+            set => _speedMult = Math.Min(value, 3f);
+        }
 
         private int _hits;
         public int Hits
@@ -35,6 +48,13 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
         {
             get { return _abilityTimer ??= new int[3]; }
             set { _abilityTimer = value; }
+        }
+
+        private int[] _storedCounters;
+        public int[] StoredCounters
+        {
+            get { return _storedCounters ??= new int[3]; }
+            set { _storedCounters = value; }
         }
 
         /// <summary></summary>
@@ -74,6 +94,11 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                         }
                     }
                 }
+
+                if (!parent.GetGlobalItem<GlobalYoyoUpgrade>().HasBearing(parent))
+                {
+                    Bearing = false;
+                }
             }
         }
 
@@ -81,6 +106,8 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
         {
             if (_parent == null)
                 return;
+
+            projectile.GetGlobalProjectile<YoyoDataHouse>().Hits++;
 
             if (ItemID.Sets.Yoyo[_parent.type])
             {
@@ -121,6 +148,11 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             {
                  binaryWriter.Write(AbilityTimer[i]);
             }
+
+            for (int i = 0; i < StoredCounters.Length; i++)
+            {
+                binaryWriter.Write(StoredCounters[i]);
+            }
         }
 
         public override void ReceiveExtraAI(Projectile projectile, BitReader bitReader, BinaryReader binaryReader)
@@ -128,6 +160,11 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             for (int i = 0; i < AbilityTimer.Length; i++)
             {
                 AbilityTimer[i] = binaryReader.Read();
+            }
+
+            for (int i = 0; i < StoredCounters.Length; i++)
+            {
+                StoredCounters[i] = binaryReader.Read();
             }
         }
     }

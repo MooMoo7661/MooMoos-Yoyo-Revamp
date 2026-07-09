@@ -33,8 +33,8 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddRecipeGroup(CombinationsModSystem.silverBarRecipeGroup, 5);
-            recipe.AddIngredient(ItemID.Amethyst, 15);
+            recipe.AddRecipeGroup(CombinationsModSystem.copperBarRecipeGroup, 5);
+            recipe.AddIngredient(ItemID.Amethyst, 10);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }

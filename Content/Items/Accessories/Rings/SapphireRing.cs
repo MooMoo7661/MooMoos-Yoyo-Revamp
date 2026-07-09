@@ -36,7 +36,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
         {
             Recipe recipe = CreateRecipe();
             recipe.AddRecipeGroup(CombinationsModSystem.silverBarRecipeGroup, 5);
-            recipe.AddIngredient(ItemID.Sapphire, 15);
+            recipe.AddIngredient(ItemID.Sapphire, 8);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }

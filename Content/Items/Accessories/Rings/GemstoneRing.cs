@@ -40,7 +40,7 @@ namespace CombinationsMod.Content.Items.Accessories.Rings
             recipe.AddIngredient(ModContent.ItemType<SapphireRing>());
             recipe.AddIngredient(ModContent.ItemType<EmeraldRing>());
             recipe.AddIngredient(ModContent.ItemType<DiamondRing>());
-            recipe.AddRecipeGroup(CombinationsModSystem.goldBarRecipeGroup, 15);
+            recipe.AddRecipeGroup(CombinationsModSystem.goldBarRecipeGroup, 10);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

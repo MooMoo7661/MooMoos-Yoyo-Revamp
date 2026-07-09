@@ -16,6 +16,13 @@ namespace CombinationsMod.Content.Global_Classes
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            if (ItemSets.YoyoUpgrade[item.type])
+            {
+                Color color = Color.Lerp(Color.MediumVioletRed, Color.Red, (MathF.Sin(Main.GlobalTimeWrappedHourly * 2.9f) + 1) / 2f);
+                LocalizedText upgradeTooltip = Language.GetText($"Mods.CombinationsMod.LocalizedText.Misc.UpgradeItem");
+                tooltips.Add(new TooltipLine(Mod, "RightClickInfo", upgradeTooltip.Value.ToHexString(color)));
+            }
+
             if (ItemSets.DrillCasing[item.type])
             {
                 Color color = Color.Lerp(Color.HotPink, Color.MediumPurple, (MathF.Sin(Main.GlobalTimeWrappedHourly * 2.9f) + 1) / 2f);

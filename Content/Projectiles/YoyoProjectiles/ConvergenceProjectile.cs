@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.GlobalClasses.Projectiles;
 using Microsoft.Xna.Framework;
@@ -16,13 +17,16 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 420f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 39f;
+
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(-1f, 420f, 45f, 2, this.Projectile, 10);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 2;
-            Projectile.extraUpdates = 2;
             Projectile.width = 20;
             Projectile.height = 20;
             Projectile.aiStyle = 99;

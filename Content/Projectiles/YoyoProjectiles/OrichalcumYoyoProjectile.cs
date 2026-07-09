@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Projectiles.YoyoEffects;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,17 +11,18 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 276f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 11f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 220f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16.5f;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 17.6f;
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(29f, 300f, 18f, 1, this.Projectile, 12);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;

@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using CombinationsMod.Content.Configs;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
@@ -15,10 +16,15 @@ public class EmpressProjectile : ModProjectile
     {
         ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
         ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 400f;
-        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15f;
+        ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 30f;
 
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 45;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+
+        if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+        {
+            CalamityBalancing.RebalanceYoyoOnDemand(-1f, 440f, 35f, 2, this.Projectile, 12);
+        }
     }
 
     public override void SetDefaults()
@@ -31,8 +37,6 @@ public class EmpressProjectile : ModProjectile
         Projectile.DamageType = DamageClass.MeleeNoSpeed;
         Projectile.scale = 1f;
         Projectile.rotation = 0.01f;
-        Projectile.usesLocalNPCImmunity = true;
-        Projectile.localNPCHitCooldown = 16;
         Projectile.light = 2f;
     }
 
@@ -48,6 +52,9 @@ public class EmpressProjectile : ModProjectile
 
     public override void PostAI()
     {
+
+        Main.NewText(this.Projectile.localNPCHitCooldown);
+
         if (Projectile.velocity.X >= 8 || Projectile.velocity.X <= -8) { return; }
         if (Projectile.velocity.Y >= 8 || Projectile.velocity.Y <= -8) { return; }
 

@@ -23,10 +23,10 @@ public class HolidayDelight : ModItem
         Item.width = 32;
         Item.height = 32;
         Item.useAnimation = 25;
-        Item.useTime = 25;
+        Item.useTime = 21;
         Item.shootSpeed = 23f;
-        Item.knockBack = 2.5f;
-        Item.damage = 78;
+        Item.knockBack = 4.75f;
+        Item.damage = 72;
         Item.rare = ItemRarityID.Yellow;
         Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.channel = true;

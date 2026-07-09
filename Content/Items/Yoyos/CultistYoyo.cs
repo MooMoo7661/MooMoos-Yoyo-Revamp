@@ -28,10 +28,10 @@ public class CultistYoyo : ModItem
         Item.width = 32;
         Item.height = 32;
         Item.useAnimation = 25;
-        Item.useTime = 25;
+        Item.useTime = 20;
         Item.shootSpeed = 16f;
-        Item.knockBack = 2.5f;
-        Item.damage = 120;
+        Item.knockBack = 5.25f;
+        Item.damage = 100;
         Item.rare = ItemRarityID.Cyan;
         Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.channel = true;

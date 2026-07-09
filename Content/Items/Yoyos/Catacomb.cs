@@ -25,8 +25,8 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 3f;
-            Item.knockBack = 4.5f;
-            Item.damage = 19;
+            Item.knockBack = 3.5f;
+            Item.damage = 24;
             Item.rare = ItemRarityID.Orange;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;

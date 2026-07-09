@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Configs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -17,16 +18,17 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 450;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.4f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 268;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18.5f;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 9.1f;
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(-1f, 320f, 20f, 1, this.Projectile, 12);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 2;
-            //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
@@ -43,7 +45,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void OnHitNPC(NPC npc, NPC.HitInfo hit, int damageDone)
         {
-            npc.AddBuff(BuffID.Inferno, 240);
+            if (Main.rand.NextBool(3))
+                npc.AddBuff(BuffID.OnFire, 240);
 
             if (!npc.active && npc.realLife == -1)
             {

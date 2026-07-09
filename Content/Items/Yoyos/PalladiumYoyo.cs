@@ -24,7 +24,7 @@ public class PalladiumYoyo : ModItem
         Item.useAnimation = 25;
         Item.useTime = 25;
         Item.shootSpeed = 16f;
-        Item.knockBack = 5f;
+        Item.knockBack = 3.75f;
         Item.damage = 36;
         Item.rare = ItemRarityID.LightRed;
         Item.DamageType = DamageClass.MeleeNoSpeed;

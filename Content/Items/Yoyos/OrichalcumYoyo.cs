@@ -24,8 +24,8 @@ public class OrichalcumYoyo : ModItem
         Item.useAnimation = 25;
         Item.useTime = 25;
         Item.shootSpeed = 16f;
-        Item.knockBack = 5.2f;
-        Item.damage = 46;
+        Item.knockBack = 4f;
+        Item.damage = 38;
         Item.rare = ItemRarityID.LightRed;
         Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.channel = true;

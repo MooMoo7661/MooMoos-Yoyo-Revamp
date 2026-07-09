@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Configs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,29 +9,30 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 11f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 143f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 10.8f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 3f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 110f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 8.3f;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 12.9f;
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(6f, 130f, 11.2f, 0, this.Projectile, 20);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
             Projectile.scale = 1f;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
-            Projectile.penetrate = 20;
+            Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Main.rand.NextBool(7))
+            if (Main.rand.NextBool(12))
             {
                 target.AddBuff(BuffID.Confused, 180);
             }

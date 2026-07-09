@@ -9,8 +9,6 @@ namespace CombinationsMod.Content.Items.Yoyos;
 
 public class MythrilYoyo : ModItem
 {
-     
-
     public override void SetStaticDefaults()
     {
         ItemID.Sets.Yoyo[Item.type] = true;
@@ -22,10 +20,10 @@ public class MythrilYoyo : ModItem
         Item.width = 32;
         Item.height = 32;
         Item.useAnimation = 25;
-        Item.useTime = 25;
+        Item.useTime = 23;
         Item.shootSpeed = 16f;
         Item.knockBack = 5.2f;
-        Item.damage = 44;
+        Item.damage = 40;
         Item.rare = ItemRarityID.LightRed;
         Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.channel = true;

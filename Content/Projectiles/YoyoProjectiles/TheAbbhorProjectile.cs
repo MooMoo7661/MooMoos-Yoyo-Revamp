@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.YoyoEffects;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
@@ -21,20 +22,21 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 315f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.86f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 23f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 216f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15.5f;
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 17.4f;
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(26f, 360f, 17f, 2, this.Projectile, 12);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;

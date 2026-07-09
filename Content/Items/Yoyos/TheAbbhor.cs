@@ -26,8 +26,8 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 16f;
-            Item.knockBack = 2.1f;
-            Item.damage = 31;
+            Item.knockBack = 3.75f;
+            Item.damage = 28;
             Item.crit = 16;
             Item.rare = ModContent.RarityType<PHPink>();
             Item.DamageType = DamageClass.MeleeNoSpeed;

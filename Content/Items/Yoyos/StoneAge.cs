@@ -23,9 +23,9 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 3f;
-            Item.knockBack = 6.5f;
-            Item.damage = 11;
-            Item.rare = ItemRarityID.Blue;
+            Item.knockBack = 2.75f;
+            Item.damage = 6;
+            Item.rare = ItemRarityID.White;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;
             Item.noMelee = true;
@@ -38,7 +38,8 @@ namespace CombinationsMod.Content.Items.Yoyos
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.StoneBlock, 25)
+                .AddIngredient(ItemID.StoneBlock, 50)
+                .AddIngredient(ItemID.Cobweb, 3)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

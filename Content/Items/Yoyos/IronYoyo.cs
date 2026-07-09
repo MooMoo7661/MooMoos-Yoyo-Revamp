@@ -10,8 +10,6 @@ namespace CombinationsMod.Content.Items.Yoyos
 {
     public class IronYoyo : ModItem
     {
-         
-
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -25,8 +23,8 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 16f;
-            Item.knockBack = 2.3f;
-            Item.damage = 13;
+            Item.knockBack = 3f;
+            Item.damage = 10;
             Item.rare = ItemRarityID.Green;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;

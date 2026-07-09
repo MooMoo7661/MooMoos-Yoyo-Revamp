@@ -26,9 +26,9 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.width = 40;
             Item.height = 34;
             Item.useAnimation = 25;
-            Item.useTime = 25;
+            Item.useTime = 20;
             Item.shootSpeed = 32f;
-            Item.knockBack = 8f;
+            Item.knockBack = 9.5f;
             Item.damage = 210;
             Item.crit = 19;
             Item.rare = ItemRarityID.Red;

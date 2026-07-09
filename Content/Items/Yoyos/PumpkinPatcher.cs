@@ -25,8 +25,8 @@ public class PumpkinPatcher : ModItem
         Item.useAnimation = 25;
         Item.useTime = 25;
         Item.shootSpeed = 23f;
-        Item.knockBack = 2.5f;
-        Item.damage = 78;
+        Item.knockBack = 4.75f;
+        Item.damage = 76;
         Item.rare = ItemRarityID.Yellow;
         Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.channel = true;

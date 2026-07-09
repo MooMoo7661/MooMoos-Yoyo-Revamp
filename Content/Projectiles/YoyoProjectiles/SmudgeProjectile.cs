@@ -1,10 +1,11 @@
 using System;
-using Microsoft.Xna.Framework;
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Dusts;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 
 namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 {
@@ -12,11 +13,14 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
     {
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 10f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 242f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.5f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 7f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 184f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13.5f;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 14.2f;
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(14f, 240f, 15f, 0, this.Projectile, 20);
+            }
         }
 
         public override void SetDefaults()
@@ -73,6 +77,8 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
                     SoundEngine.PlaySound(GhostSound);
                 }
+
+                hit.Damage *= 8;
             }
         }
 

@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.Projectiles.Misc;
 using Terraria;
 using Terraria.Audio;
@@ -11,17 +12,18 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         public int timer = 10;
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 270f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 9f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 268f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15.5f;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16.6f;
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(24f, 270f, 17f, 1, this.Projectile, 12);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
@@ -62,7 +64,7 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
 
                     if (!npc.friendly && !npc.dontTakeDamage && !npc.boss && !npc.immortal && npc.knockBackResist != 0f)
                     {
-                        npc.velocity -= npc.DirectionTo(Projectile.GetOwner().Center) * (Projectile.YoyoData().MainYoyo ? 10f : 6f);
+                        npc.velocity -= npc.DirectionTo(Projectile.Center) * (Projectile.YoyoData().MainYoyo ? 10f : 6f);
                         npc.velocity.Y -= 2f;
 
                         NPC.HitInfo info = npc.CalculateHitInfo((int)(Projectile.damage * (Main.rand.NextFloat(0, 0.5f) + (Projectile.YoyoData().MainYoyo ? 1.3f : 1f))), -npc.direction, false, 0f);

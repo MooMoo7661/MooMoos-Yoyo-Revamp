@@ -30,10 +30,10 @@ namespace CombinationsMod.Content.Items.Yoyos
             Item.width = 42;
             Item.height = 54;
             Item.useAnimation = 25;
-            Item.useTime = 25;
+            Item.useTime = 20;
             Item.shootSpeed = 3f;
-            Item.knockBack = 15f;
-            Item.damage = 105;
+            Item.knockBack = 9f;
+            Item.damage = 96;
             Item.rare = ItemRarityID.Lime;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.channel = true;

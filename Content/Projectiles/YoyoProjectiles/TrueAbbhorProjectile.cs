@@ -1,3 +1,4 @@
+using CombinationsMod.Content.Configs;
 using CombinationsMod.Content.ModPlayers;
 using CombinationsMod.Content.Projectiles.YoyoEffects;
 using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
@@ -19,25 +20,25 @@ namespace CombinationsMod.Content.Projectiles.YoyoProjectiles
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 350f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 17.5f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 272f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18.5f;
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 
-            //if (ModDetector.CalamityLoaded) ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 10f;
+            if (ModLoader.HasMod("CalamityMod") || ModContent.GetInstance<YoyoModConfig>().CalamityStatChangeMirror)
+            {
+                CalamityBalancing.RebalanceYoyoOnDemand(-1f, 360f, 21f, 2, this.Projectile, 12);
+            }
         }
 
         public override void SetDefaults()
         {
-            Projectile.MaxUpdates = 1;
-            //if (ModDetector.CalamityLoaded) Projectile.MaxUpdates = 2;
-            Projectile.extraUpdates = 0;
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.aiStyle = 99;
             Projectile.friendly = true;
-            Projectile.penetrate = 65;
+            Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
         }

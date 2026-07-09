@@ -290,8 +290,6 @@ namespace CombinationsMod.Content.ModPlayers
         {
             YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
-            Main.NewText(modPlayer.YoyoAmountModifier);
-
             if (player.yoyoGlove && yoyoCount < modPlayer.YoyoAmountModifier + 1)
             {
                 if (index1 >= 0)
@@ -314,7 +312,7 @@ namespace CombinationsMod.Content.ModPlayers
                     {
                         Vector2 vector = Main.rand.NextVector2Unit() * 16f;
                         EntitySource_ItemUse source = new(player, player.inventory[player.selectedItem]);
-                        Projectile proj1 = Projectile.NewProjectileDirect(source, player.Center, vector, yoyoInfo[0], damage, knockback, player.whoAmI, 0f);
+                        Projectile proj1 = Projectile.NewProjectileDirect(source, player.Center, vector, yoyoInfo[0], damage, knockback, player.whoAmI, 1f);
                         
                         return;
                     }

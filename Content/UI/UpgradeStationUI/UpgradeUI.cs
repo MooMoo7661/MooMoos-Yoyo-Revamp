@@ -3,6 +3,7 @@ using CombinationsMod.Content.Global_Classes;
 using Humanizer;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameInput;
 using Terraria.UI;
@@ -16,6 +17,7 @@ namespace CombinationsMod.Content.UI.UpgradeStationUI
         public UpgradeItemSlot slot;
         public UpgradeItemSlot[] upgradeSlots;
         private string localText = "Mods.CombinationsMod.LocalizedText.UpgradeUI.";
+        private string itemText = "Mods.CombinationsMod.Items.";
         public UITextBox textBox;
         public string UpgradeInfo = "";
         public UIText DescriptionText;
@@ -31,7 +33,7 @@ namespace CombinationsMod.Content.UI.UpgradeStationUI
             UpgradePanel.HAlign = 0.5f;
             UpgradePanel.VAlign = 0.5f;
             UpgradePanel.Width.Set(800f, 0f);
-            UpgradePanel.Height.Set(400f, 0f);
+            UpgradePanel.Height.Set(475f, 0f);
             UpgradePanel.BackgroundColor = panelColor;
             Append(UpgradePanel);
 
@@ -139,7 +141,8 @@ namespace CombinationsMod.Content.UI.UpgradeStationUI
 
         public void CloseUI()
         {
-            slot?.ReturnHeldItemToPlayer();
+            if (slot?.item.type != ItemID.None)
+            slot?.ReturnHeldItemToPlayer(); // Prevents UI from spamming pickup sounds, due to trying to give the player "nothing" every frame
 
             if (upgradeSlots is not null)
             foreach(var item in upgradeSlots)
@@ -187,18 +190,27 @@ namespace CombinationsMod.Content.UI.UpgradeStationUI
 
                     if (upgradeSlots[i].item.ModItem is IYoyoUpgrade upgrade)
                     {
-                        arr[i] = upgrade.Description.Value;
+                        var lines = Lang.GetTooltip(upgradeSlots[i].item.ModItem.Type);
+                        string result = string.Empty;
+                        for (int e = 0; e < lines.Lines; e++)
+                        {
+                            result += lines.GetLine(e).ToString();
+                            if (e != lines.Lines) // stopping the last line from having a newline
+                                result += "\n";
+                        }
+                        arr[i] = result;
                     }
                     else if (upgradeSlots[i].item.IsAir)
                     {
                         arr[i] = Language.GetTextValue(localText + "None");
+                        arr[i] += "\n";
                     }
                     else if (upgradeSlots[i].item.IsAir)
                     {
                         arr[i] = Language.GetTextValue(localText + "None");
+                        arr[i] += "\n";
                     }
 
-                    arr[i] += "\n";
                 }
 
                 UpgradeInfo += text.Format(arr);
@@ -263,11 +275,23 @@ namespace CombinationsMod.Content.UI.UpgradeStationUI
         //called when UI slot is left clicked
         public void ClickHandler()
         {
-            if (_accessoriesOnly && _mainSlot.item.IsAir)
+            if ((_accessoriesOnly && _mainSlot.item.IsAir))
                 return;
 
             Item deposit = Main.mouseItem;
             Player player = Main.LocalPlayer;
+
+            // Prevents the player from duplicating the yoyo, by dropping it in the slot when using the yoyo
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile p = Main.projectile[i];
+
+                if (p.active && p.owner == player.whoAmI)
+                {
+                    if (p.aiStyle == ProjAIStyleID.Yoyo)
+                        return;
+                }
+            }
 
             if (PlayerInput.Triggers.Current.SmartSelect)
             {

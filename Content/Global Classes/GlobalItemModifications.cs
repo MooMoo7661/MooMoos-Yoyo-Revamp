@@ -77,6 +77,7 @@ namespace CombinationsMod.GlobalClasses
             {
                 player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier += 5;
                 player.GetModPlayer<YoyoModPlayer>().YoyoLifetimeModifier += 9;
+                player.GetModPlayer<YoyoModPlayer>().YoyoAmountModifier += 1;
             }
         }
 

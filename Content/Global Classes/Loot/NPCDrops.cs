@@ -2,6 +2,8 @@
 using CombinationsMod.Content.Items.Accessories.Drills;
 using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.Items.Accessories.YoyoBags;
+using CombinationsMod.Content.Items.Accessories.YoyoGloves;
+using CombinationsMod.Content.Items.Accessories.YoyoUpgrades.Bearings;
 using CombinationsMod.Content.Items.Misc;
 using CombinationsMod.Content.Items.Yoyos;
 using Terraria;
@@ -32,10 +34,12 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case NPCID.MourningWood:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PumpkinPatcher>(), 3));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SkeletonGlove>(), 4));
                     break;
 
                 case NPCID.Pumpking:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HorsemansDrillCasing>(), 2));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SkeletonGlove>(), 2));
                     break;
 
                 case NPCID.Reaper or NPCID.Eyezor or NPCID.Frankenstein or NPCID.SwampThing or NPCID.Vampire or
@@ -51,10 +55,12 @@ namespace CombinationsMod.GlobalClasses.Loot
 
                 case NPCID.IceQueen:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TreeClippersDrillCasing>(), 2));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<JollyMitten>(), 2));
                     break;
 
                 case NPCID.Everscream:
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HolidayDelight>(), 3));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<JollyMitten>(), 4));
                     break;
 
                 case NPCID.IceGolem:
@@ -81,6 +87,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                     LeadingConditionRule notExpertRule3 = new LeadingConditionRule(new Conditions.NotExpert());
                     notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GolemsteelString>(), 2));
                     notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TsurugiDrillCasing>()));
+                    notExpertRule3.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TitanBearing>(), 3));
                     npcLoot.Add(notExpertRule3);
                     break;
 
@@ -114,6 +121,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                     LeadingConditionRule notExpertRule8 = new LeadingConditionRule(new Conditions.NotExpert());
                     notExpertRule8.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MoonlordBag>(), 3));
                     notExpertRule8.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CelestialDrillCasing>(), 3));
+                    notExpertRule8.OnSuccess(ItemDropRule.Common(ModContent.ItemType<InfinityGauntlet>(), 2));
                     npcLoot.Add(notExpertRule8);
                     break;
             }

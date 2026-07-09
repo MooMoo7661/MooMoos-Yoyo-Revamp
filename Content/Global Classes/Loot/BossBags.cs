@@ -2,6 +2,7 @@
 using CombinationsMod.Content.Items.Accessories.Drills;
 using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.Items.Accessories.YoyoBags;
+using CombinationsMod.Content.Items.Accessories.YoyoGloves;
 using CombinationsMod.Content.Items.Yoyos;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -44,6 +45,7 @@ namespace CombinationsMod.GlobalClasses.Loot
                 case ItemID.MoonLordBossBag:
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MoonlordBag>(), 3));
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CelestialDrillCasing>(), 3));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfinityGauntlet>(), 2));
                     break;
             }
         }

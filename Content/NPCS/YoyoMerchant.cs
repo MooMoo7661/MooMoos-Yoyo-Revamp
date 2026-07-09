@@ -2,6 +2,7 @@
 using CombinationsMod.Content.Items.Accessories.Rings;
 using CombinationsMod.Content.Items.Accessories.Strings;
 using CombinationsMod.Content.Items.Accessories.YoyoGloves;
+using CombinationsMod.Content.Items.Accessories.YoyoUpgrades.ResponsePads;
 using CombinationsMod.Content.Items.Yoyos;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -230,6 +231,14 @@ namespace CombinationsMod.Content.NPCS
             .AddWithValue(ItemType<DarkTealString>(), Item.buyPrice(0, 3, 20, 85), YoyoModConditions.EaterOfWorldsOrBrain)
             .AddWithValue(ItemType<SlimyString>(), Item.buyPrice(0, 5, 37, 52), Condition.DownedKingSlime, Condition.InExpertMode)
 
+            .AddWithValue(ItemType<WhiteResponsePad>(), Item.buyPrice(0, 2, 50, 0), Condition.DownedEyeOfCthulhu)
+            .AddWithValue(ItemType<BlueResponsePad>(), Item.buyPrice(0, 4, 50, 0), Condition.DownedSkeletron)
+            .AddWithValue(ItemType<YellowResponsePad>(), Item.buyPrice(0, 7, 25, 0), Condition.Hardmode)
+            .AddWithValue(ItemType<GreenResponsePad>(), Item.buyPrice(0, 8, 50, 0), Condition.DownedMechBossAny)
+            .AddWithValue(ItemType<RedResponsePad>(), Item.buyPrice(0, 10, 50, 0), Condition.DownedPlantera)
+            .AddWithValue(ItemType<PurpleResponsePad>(), Item.buyPrice(0, 15, 25, 0), Condition.DownedCultist)
+            .AddWithValue(ItemType<BlackResponsePad>(), Item.buyPrice(0, 20, 0, 0), Condition.DownedMoonLord)
+
             .AddWithValue(ItemType<AbilityRing>(), Item.buyPrice(0, 4, 10, 50), YoyoModConditions.NPCNotShimmered)
             .AddWithValue(ItemType<ShimmeringRing>(), Item.buyPrice(0, 4, 10, 50), Condition.DownedSkeletron, Condition.IsNpcShimmered)
             .AddWithValue(ItemType<AmberRing>(), Item.buyPrice(0, 1, 38, 12), Condition.DownedEyeOfCthulhu)
@@ -240,11 +249,11 @@ namespace CombinationsMod.Content.NPCS
             .AddWithValue(ItemType<EmeraldRing>(), Item.buyPrice(0, 4, 21, 59), YoyoModConditions.EaterOfWorldsOrBrain)
             .AddWithValue(ItemType<DiamondRing>(), Item.buyPrice(0, 7, 20, 0), YoyoModConditions.EaterOfWorldsOrBrain)
 
-            .AddWithValue(ItemID.BlueCounterweight, Item.buyPrice(0, 5, 28, 41), Condition.DownedSkeletron)
-            .AddWithValue(ItemID.GreenCounterweight, Item.buyPrice(0, 5, 28, 41), Condition.DownedQueenBee)
-            .AddWithValue(ItemID.YellowCounterweight, Item.buyPrice(0, 5, 28, 41), YoyoModConditions.EaterOfWorldsOrBrain)
+            .AddWithValue(ItemID.BlueCounterweight, Item.buyPrice(0, 5, 28, 41), YoyoModConditions.MoonFullOrNew)
+            .AddWithValue(ItemID.YellowCounterweight, Item.buyPrice(0, 5, 28, 41), Condition.Hardmode)
+            .AddWithValue(ItemID.GreenCounterweight, Item.buyPrice(0, 5, 28, 41), YoyoModConditions.MoonWaningCrescentOrWaxingGibbous)
             .AddWithValue(ItemID.BlackCounterweight, Item.buyPrice(0, 5, 28, 41), Condition.Hardmode)
-            .AddWithValue(ItemID.RedCounterweight, Item.buyPrice(0, 5, 28, 41), Condition.DownedMechBossAny, Condition.Hardmode)
+            .AddWithValue(ItemID.RedCounterweight, Item.buyPrice(0, 5, 28, 41), YoyoModConditions.MoonThirdQuarterOrFirstQuarter)
 
             .AddWithValue(ItemID.YoYoGlove, Item.buyPrice(0, 8, 49, 0), Condition.Hardmode)
             .AddWithValue(ItemID.YoyoBag, Item.buyPrice(0, 12, 53, 0), Condition.DownedSkeletron);

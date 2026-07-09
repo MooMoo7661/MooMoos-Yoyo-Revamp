@@ -48,6 +48,8 @@ namespace CombinationsMod.Content.Tiles
             {
                 SoundEngine.PlaySound(SoundID.MenuOpen);
                 ModContent.GetInstance<UpgradeStationUISystem>().ShowMyUI();
+
+                Main.playerInventory = true;
             }
 
             return true;

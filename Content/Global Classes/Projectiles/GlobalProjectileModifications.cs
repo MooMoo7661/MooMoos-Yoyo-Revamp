@@ -11,6 +11,7 @@ using CombinationsMod.Content.Projectiles.YoyoEffects.Solid;
 using CombinationsMod.Content.Projectiles.YoyoProjectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,9 +26,12 @@ namespace CombinationsMod.GlobalClasses.Projectiles
         private int slimeThornCounter = 0;
         private int lifestealCooldown = 0;
         private int lifestealGloveCooldown = 300;
+        private int pumpkinGloveCooldown = 180;
+        private int rad = 0;
 
         bool cascadeGreekFire = false;
         bool yoyoOrnament = false;
+        bool recall = false;
         private int heat = 0;
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
@@ -42,9 +46,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo() && projectile.owner == Main.myPlayer)
             {
-                //if (!projectile.YoyoData().MainYoyo)
-                //    Main.NewText(projectile.localNPCHitCooldown);
-
                 if (!projectile.YoyoData().MainYoyo && projectile.scale == 1f)
                     projectile.scale = 0.9f;
 
@@ -89,9 +90,13 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             }
 
             if (projectile.IsYoyo())
+            {
                 modifiers.FinalDamage *= Math.Clamp(1 + MathHelper.Lerp(0f, 0.5f, (float)heat / 300), 1, 2);
+                modifiers.SourceDamage *= projectile.YoyoData().DamageMult;
+            }
         }
 
+        //----------------------------------------------------------------------------------------------------------------------
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!projectile.TryGetOwner(out _))
@@ -99,13 +104,75 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
             if (projectile.IsYoyo())
             {
-                projectile.GetGlobalProjectile<YoyoDataHouse>().Hits++;
-
                 Player player = projectile.GetOwner();
                 YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
 
                 if (heat > 100 && Main.rand.NextBool(3))
                     target.AddBuff(BuffID.OnFire, heat);
+
+                if (modPlayer.hallowGlove && projectile.YoyoData().Hits % 15 == 0)
+                {
+                    foreach (NPC npc in Main.ActiveNPCs)
+                    {
+                        if (npc.Distance(projectile.Center) > 250f || (npc.friendly || npc.dontTakeDamage || npc.immortal))
+                            continue;
+
+                        if (npc.knockBackResist != 0f)
+                        {
+                            npc.velocity -= npc.DirectionTo(projectile.Center) * 4;
+                            npc.velocity.Y -= 3f;
+                        }
+
+                        const int max = 18;
+                        for (int index1 = 0; index1 < max; ++index1)
+                        {
+                            Vector2 vector2 = (Vector2.UnitX * (float)-projectile.width / 2f + -Vector2.UnitY.RotatedBy((double)index1 * 2 * Math.PI / max, new Vector2()) * new Vector2(8f, 16f)).RotatedBy((double)projectile.rotation - 1.57079637050629, new Vector2());
+                            int index2 = Dust.NewDust(projectile.Center, 0, 0, Main.rand.NextBool() ? DustID.YellowTorch : DustID.HallowedWeapons, 0.0f, 0.0f, 160, new Color(), 1f);
+                            Main.dust[index2].scale = 1.7f;
+                            Main.dust[index2].noGravity = true;
+                            Main.dust[index2].position = npc.Center + vector2 * 2f;
+                            Main.dust[index2].velocity = Vector2.Normalize(npc.Center - npc.velocity * 3f - Main.dust[index2].position) * 1.25f;
+                        }
+
+                        SoundStyle HitSound = new()
+                        {
+                            SoundPath = SoundID.Item8.SoundPath,
+                            Volume = 0.55f,
+                            PitchVariance = 0.15f,
+                            SoundLimitBehavior = SoundLimitBehavior.IgnoreNew
+                        };
+                        SoundEngine.PlaySound(HitSound);
+
+                        NPC.HitInfo info = target.CalculateHitInfo((int)(projectile.damage * 1.15f), -target.direction, true, 0f);
+                        target.StrikeNPC(info, true);
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            NetMessage.SendStrikeNPC(target, info);
+                        }
+
+                        npc.AddBuff(BuffID.OnFire, 240);
+                    }
+                }
+
+                if (modPlayer.crystalGlove)
+                {
+                    if (Main.rand.NextBool(7))
+                    {
+                        for (int i = 0; i < 20; i++)
+                        {
+                            Vector2 speed = -Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Main.rand.NextFloat() * 4f;
+                            Dust.NewDustDirect(projectile.Center, 5, 5, Main.rand.NextBool() ? DustID.PurpleCrystalShard : DustID.PinkCrystalShard, speed.X, speed.Y).scale = 0.8f;
+                        }
+
+                        SoundEngine.PlaySound(SoundID.Item27, projectile.Center);
+                        NPC.HitInfo info = target.CalculateHitInfo((int)(projectile.damage * 1.15f), -target.direction, true, 0f);
+                        target.StrikeNPC(info, true);
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            NetMessage.SendStrikeNPC(target, info);
+                        }
+                    }
+                }
 
                 // lifesteal
                 if (modPlayer.fleshGlove && !target.immortal && !target.dontTakeDamage && target.lifeMax > 10 && lifestealGloveCooldown <= 0)
@@ -151,6 +218,16 @@ namespace CombinationsMod.GlobalClasses.Projectiles
 
                         nearby.Clear();
                         lifestealGloveCooldown = 180 + (projectile.YoyoData().MainYoyo ? 0 : 120);
+                    }
+                }
+
+                if (modPlayer.corruptGlove)
+                {
+                    if (Main.rand.NextBool(4))
+                        target.AddBuff(BuffID.Poisoned, 120);
+                    if (projectile.YoyoData().Hits % 20 == 0)
+                    {
+                        PoisionExplosion(projectile);
                     }
                 }
    
@@ -203,6 +280,39 @@ namespace CombinationsMod.GlobalClasses.Projectiles
                 target.AddBuff(BuffID.OnFire, 180);
             }
         }
+
+        void PoisionExplosion(Projectile projectile)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Vector2 speed = -Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Main.rand.NextFloat() * 4f;
+                Dust.NewDustDirect(projectile.Center, 5, 5, Main.rand.NextBool() ? DustID.Poisoned : DustID.Venom, speed.X, speed.Y).scale = 1.6f;
+            }
+
+            foreach (NPC npc in Main.ActiveNPCs)
+            {
+                if (npc.Distance(projectile.Center) > (projectile.YoyoData().MainYoyo ? 230f : 200f))
+                    continue;
+
+                if (!npc.friendly && !npc.dontTakeDamage && !npc.immortal)
+                {
+                    if (npc.knockBackResist != 0f)
+                        npc.velocity -= npc.DirectionTo(projectile.Center) * (projectile.YoyoData().MainYoyo ? 4f : 2.3f);
+
+                    NPC.HitInfo info = npc.CalculateHitInfo((int)(projectile.damage * 1.1), -npc.direction, false, 0f);
+                    npc.StrikeNPC(info, true);
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        NetMessage.SendStrikeNPC(npc, info);
+                    }
+
+                    npc.AddBuff(BuffID.Poisoned, 240);
+                    npc.AddBuff(BuffID.Weak, 180);
+                }
+            }
+        }
+
+        //----------------------------------------------------------------------------------------------------
         public override void AI(Projectile projectile)
         {
             if (!projectile.TryGetOwner(out _))
@@ -212,6 +322,46 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 Player player = projectile.GetOwner();
                 YoyoModPlayer modPlayer = player.GetModPlayer<YoyoModPlayer>();
+
+                if (modPlayer.skeletonGlove)
+                {
+                    if (pumpkinGloveCooldown <= 0)
+                    {
+                        pumpkinGloveCooldown = 180;
+
+                        if (rad >= 360)
+                            rad = 0;
+
+                        rad += 60;
+
+                        Vector2 vel = new Vector2(0, -1).RotatedBy(MathHelper.ToRadians(rad)) * 6.5f;
+                        Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_FromThis("SkeletonGlove"), projectile.Center, vel, Main.rand.NextBool() ? ProjectileID.GreekFire2 : ProjectileID.GreekFire1, projectile.damage / 2, 1f, projectile.owner);
+                        proj.scale = 0.65f;
+                        proj.timeLeft = 90;
+                        proj.hostile = false;
+                        proj.friendly = true;
+                    }
+                    else
+                    {
+                        pumpkinGloveCooldown--;
+                    }
+                }
+
+                if (modPlayer.corruptGlove)
+                {
+                    if (modPlayer.YoyoLifetimeModifier == -1 || ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] == -1)
+                    {
+                        if (projectile.localAI[0] % 1200 == 0)
+                            PoisionExplosion(projectile);
+                    }
+                    else if (!recall && projectile.ai[0] == -1)
+                    {
+                        if (modPlayer.corruptGlove)
+                            PoisionExplosion(projectile);
+
+                        recall = true;
+                    }
+                }
 
                 if (lifestealCooldown < 15 + (projectile.MaxUpdates * 10) + (projectile.usesLocalNPCImmunity ? projectile.localNPCHitCooldown * 0.7f : 0))
                     lifestealCooldown++;
@@ -441,16 +591,6 @@ namespace CombinationsMod.GlobalClasses.Projectiles
             {
                 if (projectile.YoyoData().MainYoyo)
                     projectile.GetOwner().GetModPlayer<YoyoModPlayer>().HitCounter = 0;
-
-                var modPlayer = projectile.GetOwner().GetModPlayer<YoyoModPlayer>();
-                if (modPlayer.corruptGlove)
-                {
-                    for (int i = 0; i < 16; i++)
-                    {
-                        Vector2 speed = -Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Main.rand.NextFloat();
-                        Dust.NewDust(projectile.Center, 5, 5, DustID.Poisoned, speed.X, speed.Y);
-                    }
-                }
             }
 
             if (yoyoOrnament)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CombinationsMod.Content.ModSystems;
 using CombinationsMod.Content.Tiles;
 
 namespace CombinationsMod.Content.Items.Misc
@@ -24,6 +25,15 @@ namespace CombinationsMod.Content.Items.Misc
             Item.useTime = 10;
             Item.useTurn = true;
             Item.useAnimation = 15;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                    .AddIngredient(ItemID.Wood, 15)
+                    .AddRecipeGroup(CombinationsModSystem.goldBarRecipeGroup, 5)
+                    .AddTile(TileID.WorkBenches)
+                    .Register();
         }
     }
 }

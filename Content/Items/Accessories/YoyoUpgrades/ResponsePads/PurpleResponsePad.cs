@@ -1,9 +1,9 @@
+using CombinationsMod.Content.Debuffs;
+
 namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.ResponsePads
 {
     public class PurpleResponsePad : ModItem, IYoyoUpgrade
     {
-        public LocalizedText Description => Language.GetText("Mods.CombinationsMod.LocalizedText.UpgradeUI.PurpleResponsePad");
-
         public override void SetDefaults()
         {
             Item.width = 22;
@@ -15,9 +15,27 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.ResponsePads
             ItemSets.YoyoResponsePad[Type] = true;
         }
 
+        public void ApplyEffects(Projectile projectile)
+        {
+            var data = projectile.YoyoData();
+            var player = projectile.GetOwner();
+
+            if (player == null || data == null)
+                return;
+
+            data.RangeMult += 0.25f;
+            data.DamageMult += 0.2f;
+        }
+
         public void ApplyOnHitEffect(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-           
+            var data = projectile.YoyoData();
+            var player = projectile.GetOwner();
+
+            if (player == null || data == null)
+                return;
+
+            target.AddBuff(BuffID.Venom, 60);
         }
     }
 }

@@ -8,7 +8,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.WeightMods
 
     public class ChlorophyteEffect : ModItem, IYoyoUpgrade
     {
-        public LocalizedText Description => Language.GetText("Mods.CombinationsMod.LocalizedText.UpgradeUI.ChlorophyteEffect");
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -18,14 +17,28 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.WeightMods
             Item.value = Item.sellPrice(silver: 20);
             ItemSets.YoyoUpgrade[Type] = true;
             ItemSets.YoyoWeightMod[Type] = true;
+            
         }
 
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ItemID.PlatinumBar, 5)
-            .AddTile(TileID.WorkBenches)
+            .AddIngredient(ItemID.ChlorophyteBar, 4)
+            .AddTile(TileID.MythrilAnvil)
             .Register();
         }
+
+        public void ApplyEffects(Projectile projectile)
+        {
+            var data = projectile.YoyoData();
+            var player = projectile.GetOwner();
+
+            if (player == null || data == null)
+                return;
+
+            data.DamageMult = 1.2f;
+            data.SpeedMult *= 0.9f;
+        }
+
     }
 }

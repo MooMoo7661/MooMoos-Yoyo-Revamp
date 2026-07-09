@@ -8,7 +8,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.WeightMods
 
     public class HellstoneEffect : ModItem, IYoyoUpgrade
     {
-        public LocalizedText Description => Language.GetText("Mods.CombinationsMod.LocalizedText.UpgradeUI.HellstoneEffect");
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -23,9 +22,21 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.WeightMods
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ItemID.PlatinumBar, 5)
-            .AddTile(TileID.WorkBenches)
+            .AddIngredient(ItemID.HellstoneBar, 4)
+            .AddTile(TileID.Anvils)
             .Register();
+        }
+
+        public void ApplyEffects(Projectile projectile)
+        {
+            var data = projectile.YoyoData();
+            var player = projectile.GetOwner();
+
+            if (player == null || data == null)
+                return;
+
+            data.DamageMult = 1.1f;
+            data.SpeedMult *= 0.95f;
         }
     }
 }

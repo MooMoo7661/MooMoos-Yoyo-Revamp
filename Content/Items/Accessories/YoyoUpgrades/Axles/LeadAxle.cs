@@ -9,8 +9,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.Axles
 
     public class LeadAxle : ModItem, IYoyoUpgrade
     {
-        public LocalizedText Description => Language.GetText("Mods.CombinationsMod.LocalizedText.UpgradeUI.LeadAxle");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -22,9 +20,13 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.Axles
             ItemSets.YoyoAxle[Type] = true;
         }
 
-        public void ApplyEffects(Projectile proj)
+        public override void AddRecipes()
         {
-
+            CreateRecipe()
+                .AddIngredient(ItemID.LeadBar, 7)
+                .AddTile(TileID.Anvils)
+                .DisableDecraft()
+                .Register();
         }
     }
 }

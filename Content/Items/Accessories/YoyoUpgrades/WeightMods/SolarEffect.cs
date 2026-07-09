@@ -8,7 +8,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.WeightMods
 
     public class SolarEffect : ModItem, IYoyoUpgrade
     {
-        public LocalizedText Description => Language.GetText("Mods.CombinationsMod.LocalizedText.UpgradeUI.SolarEffect");
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -23,9 +22,22 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.WeightMods
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ItemID.PlatinumBar, 5)
-            .AddTile(TileID.WorkBenches)
+            .AddIngredient(ItemID.LunarBar, 4)
+            .AddIngredient(ItemID.FragmentSolar, 2)
+            .AddTile(TileID.LunarCraftingStation)
             .Register();
+        }
+
+        public void ApplyEffects(Projectile projectile)
+        {
+            var data = projectile.YoyoData();
+            var player = projectile.GetOwner();
+
+            if (player == null || data == null)
+                return;
+
+            data.DamageMult = 1.25f;
+            data.SpeedMult *= 0.85f;
         }
     }
 }

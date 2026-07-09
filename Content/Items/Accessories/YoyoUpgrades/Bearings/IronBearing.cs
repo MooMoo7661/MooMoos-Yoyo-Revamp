@@ -9,7 +9,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.Bearings
 
     public class IronBearing : ModItem, IYoyoUpgrade
     {
-        public LocalizedText Description => Language.GetText("Mods.CombinationsMod.LocalizedText.UpgradeUI.IronBearing");
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -19,6 +18,15 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.Bearings
             Item.value = Item.sellPrice(silver: 20);
             ItemSets.YoyoUpgrade[Type] = true;
             ItemSets.YoyoBearing[Type] = true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.IronBar, 5)
+                .AddTile(TileID.Anvils)
+                .DisableDecraft()
+                .Register();
         }
     }
 }

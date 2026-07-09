@@ -9,7 +9,6 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.Bearings
 
     public class TitanBearing : ModItem, IYoyoUpgrade
     {
-        public LocalizedText Description => Language.GetText("Mods.CombinationsMod.LocalizedText.UpgradeUI.TitanBearing");
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -19,6 +18,18 @@ namespace CombinationsMod.Content.Items.Accessories.YoyoUpgrades.Bearings
             Item.value = Item.sellPrice(silver: 20);
             ItemSets.YoyoUpgrade[Type] = true;
             ItemSets.YoyoBearing[Type] = true;
+        }
+
+        public void ApplyEffects(Projectile projectile)
+        {
+            var data = projectile.YoyoData();
+            var player = projectile.GetOwner();
+
+            if (player == null || data == null)
+                return;
+    
+            data.SpeedMult -= 0.4f;
+            data.DamageMult += 0.7f;
         }
     }
 }

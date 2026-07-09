@@ -52,9 +52,6 @@ public class EmpressProjectile : ModProjectile
 
     public override void PostAI()
     {
-
-        Main.NewText(this.Projectile.localNPCHitCooldown);
-
         if (Projectile.velocity.X >= 8 || Projectile.velocity.X <= -8) { return; }
         if (Projectile.velocity.Y >= 8 || Projectile.velocity.Y <= -8) { return; }
 

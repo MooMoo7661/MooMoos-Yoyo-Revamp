@@ -30,6 +30,8 @@ namespace CombinationsMod.Content.Drills
         // Cooldown between drill 'picks' in ticks
         protected abstract int DrillCooldown { get; }
 
+        protected float InitialCooldown = 60f;
+
         protected abstract int Width { get; }
         protected abstract int Height { get; }
 
@@ -83,7 +85,7 @@ namespace CombinationsMod.Content.Drills
             _drillSoundTimer = DrillSoundCooldown;
         }
         public override void AI()
-        {
+        {            
             Projectile.timeLeft = 2;
 
             // Handle enabling/disabling the drill function
@@ -136,6 +138,12 @@ namespace CombinationsMod.Content.Drills
                     SoundEngine.PlaySound(DrillSound, Projectile.position);
                     _drillSoundTimer = DrillSoundCooldown;
                 }
+            }
+
+            if (InitialCooldown > 0)
+            {
+                InitialCooldown--;
+                return;
             }
 
             // Prevent the projectile from 'picking' a tile until this timer has depleted

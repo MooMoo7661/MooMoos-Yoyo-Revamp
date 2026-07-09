@@ -19,6 +19,7 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.aiStyle == 99;
 
         public bool secondaryYoyo = false; // false = main yoyo, true = second yoyo
+        private float speedOverTime = 0;
 
         public override void Load()
         {
@@ -49,22 +50,30 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                 }
 
                 float num = projectile.localAI[0] / 60f; // Timer in seconds
-
-                num /= (1f + player.GetAttackSpeed(DamageClass.Melee)) / 2f;
-
                 float num2 = ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] + (ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] >= 1 ? (player.GetModPlayer<YoyoModPlayer>().shimmerBag ? 3f : 0) : 0);
 
                 float life1 = projectile.GetGlobalProjectile<YoyoDataHouse>().LifetimeMult;
                 float life2 = player.GetModPlayer<YoyoModPlayer>().YoyoLifetimeModifier;
-        
+
                 if (life1 < 0 || life2 < 0)
                     num2 = -1;
                 else if (num2 != -1)
-                    num2 *= (life1 + life2);
+                    num2 *= (life1 + life2) - 1;
 
                 if (num2 > 0)
                     num2 *= projectile.GetGlobalProjectile<YoyoDataHouse>().LifetimeMult;
 
+                if (!projectile.YoyoData().Bearing)
+                {
+                    num2 = 3;
+                }
+
+                float t = Math.Clamp(num / num2, 0f, 1f);
+                t = MathF.Pow(t, 5f); // Makes yoyo speed slow down rapidly near the end of it's lifespan
+                speedOverTime = MathHelper.Lerp(1f, 0.2f, t);
+
+                num /= (1f + player.GetAttackSpeed(DamageClass.Melee)) / 2f;
+                    
                 if (num2 != -1f && num > num2)
                 {
                     projectile.ai[0] = -1f; // Sets when the yoyo is killed
@@ -174,8 +183,9 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             projectile.timeLeft = 6;
             float stringLength = ProjectileID.Sets.YoyosMaximumRange[projectile.type];
 
-            float yoyoSpeed = ProjectileID.Sets.YoyosTopSpeed[projectile.type] + (player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier + projectile.YoyoData().SpeedBonus) * projectile.YoyoData().SpeedMult;
-            float modifiedStringLength = stringLength + player.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier;
+            float yoyoSpeed = (ProjectileID.Sets.YoyosTopSpeed[projectile.type] + (player.GetModPlayer<YoyoModPlayer>().YoyoSpeedModifier + projectile.YoyoData().SpeedBonus)) * projectile.YoyoData().SpeedMult;
+            float modifiedStringLength = stringLength + player.GetModPlayer<YoyoModPlayer>().YoyoRangeModifier + projectile.YoyoData().RangeBonus;
+            modifiedStringLength *= projectile.YoyoData().RangeMult;
 
             if (projectile.type == ProjectileID.Cascade) // Cascade dusts
             {
@@ -194,12 +204,14 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             if (player.yoyoString) // Extends range
             {
                 // modifiedStringLength is ProjectileID.Sets.YoyosMaximumRange + modifictions from modplayer to increase range
-                modifiedStringLength += 400f;
+                modifiedStringLength += 400f * projectile.YoyoData().RangeMult;
             }
 
             modifiedStringLength *= (1f + player.GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
             //modifiedStringLength = 120f + modifiedStringLength / 5;
             yoyoSpeed *= (1f + player.GetAttackSpeed(DamageClass.Melee) * 3f) / 4f;
+            if (projectile.ai[0] >= 0f)
+            yoyoSpeed *= speedOverTime;
 
             if (!projectile.YoyoData().MainYoyo && projectile.MaxUpdates > 1)
                 yoyoSpeed *= 0.45f;
@@ -212,9 +224,9 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
             float num9 = 5f + yoyoSpeed / 2f;
             if (secondaryYoyo)
             {
-                // Yoyo range is greatly increased with second ai. Change 20f to 100f+
+                // Yoyo range is greatly increased with second ai.
                 if (player.GetModPlayer<YoyoModPlayer>().moonTrick) { num9 += 150f; }
-                else { num9 += 35f; }
+                else { num9 += 40f; }
             }
             if (projectile.ai[0] >= 0f)
             {
@@ -342,13 +354,13 @@ namespace CombinationsMod.Content.Global_Classes.Projectiles
                     }
                 }
             }
-            else
+            else // When recalling. Triggers when ai[0] is less than 0, which is pretty much only when recalling because it's set to -1
             {
                 // Changing this causes the yoyo to be more elastic, or "floppy" when using.
-                // Vanilla sets this to 0.8, but I chose to do 1.6.
-                num7 = (int)((double)num7 * 1.6f);
+                // Vanilla sets this to 0.8, but I chose to do 3.5.
+                num7 = (int)((double)num7 * 3.5f);
 
-                projectile.tileCollide = false;
+                projectile.tileCollide = false; // Chose to make yoyos not deal damage when recalling due to some conflicts with yoyo abilities
                 Vector2 vector9 = player.Center - projectile.Center;
                 float num15 = vector9.Length();
 

@@ -12,7 +12,7 @@ namespace CombinationsMod.Content.Items.Misc
             Item.height = 20;
             Item.rare = ItemRarityID.Yellow;
             Item.accessory = false;
-            Item.maxStack = Item.maxStack;
+            Item.maxStack = Item.CommonMaxStack;
             Item.value = Item.sellPrice(0, 1, 55, 0);
         }
     }

@@ -741,26 +741,6 @@ PlatinumSideEffect: {
 	Tooltip: ""
 }
 
-BasicBallBearings: {
-	DisplayName: Basic Ball Bearings
-	Tooltip: ""
-}
-
-BasicAxle: {
-	DisplayName: Basic Axle
-	Tooltip: ""
-}
-
-RGBKit: {
-	DisplayName: RGB Kit
-	Tooltip: ""
-}
-
-RedResponsePad: {
-	DisplayName: Red Response Pad
-	Tooltip: ""
-}
-
 PlatinumWeightMod: {
 	DisplayName: Platinum Weight Mod
 	Tooltip: ""
@@ -770,14 +750,13 @@ LeatherWraps: {
 	DisplayName: Leather Yoyo Wraps
 	Tooltip:
 		'''
-		Does not allow the use of 2 yoyos at once
 		[c/6EAE6E:+2 yoyo speed]
 		[c/6EAE6E:+2 yoyo lifetime]
 		'''
 }
 
 SpelunkerGlove: {
-	DisplayName: Spelunker Yoyo Glove
+	DisplayName: Spelunker Glove
 	Tooltip:
 		'''
 		Causes all held yoyos to emit light
@@ -791,6 +770,10 @@ CorruptGlove: {
 	DisplayName: Corrupt Yoyo Glove
 	Tooltip:
 		'''
+		Has a chance to poison on direct hits
+		Poisons and damages nearby enemies every 20 hits
+		When the yoyo recalls, a burst of poison is released that does 1.5x the yoyo's damage
+		If the yoyo has infinite lifetime, it will instead trigger every 10 seconds
 		Does not allow the use of multiple yoyos at once
 		[c/6EAE6E:+4 yoyo speed]
 		[c/6EAE6E:+7 yoyo lifetime]
@@ -801,6 +784,8 @@ CrystalGlove: {
 	DisplayName: Crystal Yoyo Glove
 	Tooltip:
 		'''
+		Yoyos have a chance to release a crystal burst when hitting an enemy
+		The burst will always deal a critical hit
 		Allows the use of 2 yoyos at once
 		[c/6EAE6E:+6 yoyo speed]
 		[c/6EAE6E:+10 yoyo lifetime]
@@ -822,13 +807,14 @@ FleshGlove: {
 }
 
 HallowGlove: {
+	DisplayName: Atlas Glove
 	Tooltip:
 		'''
+		Every 20 hits, nearby enemies are knocked away and lit on fire
 		Allows the use of 2 yoyos at once
 		[c/6EAE6E:+8 yoyo speed]
 		[c/6EAE6E:+Infinite yoyo lifetime]
 		'''
-	DisplayName: Atlas Glove
 }
 
 JollyMitten: {
@@ -866,12 +852,22 @@ InfinityGauntlet: {
 
 EctoAxle: {
 	DisplayName: Ecto Axle
-	Tooltip: ""
+	Tooltip:
+		'''
+		Allows yoyos to phase through solid blocks
+		While the yoyo is phasing, it deals 1.5x damage
+		Builds additional speed on every hit, up to a maxiumum of 18
+		'''
 }
 
 HallowedAxle: {
 	DisplayName: Hallowed Axle
-	Tooltip: ""
+	Tooltip:
+		'''
+		Yoyo speed exponentially increases the longer the yoyo is out, up to a 1.5x modifier
+		This speed modifier is multiplied by your final yoyo speed, including all other modifiers
+		Range increases at a flat rate up to 250
+		'''
 }
 
 IronAxle: {
@@ -886,17 +882,26 @@ LeadAxle: {
 
 MeteorAxle: {
 	DisplayName: Meteor Axle
-	Tooltip: ""
+	Tooltip:
+		'''
+		Every 3 hits, the yoyo will gain an additional 0.5 speed
+		The speed bonus is capped up to 8
+		'''
 }
 
 SolarAxle: {
 	DisplayName: Solar Axle
-	Tooltip: ""
+	Tooltip:
+		'''
+		Yoyo damage steadily builds the longer the yoyo is out, up to a 1.5x modifier
+		Hitting enemies also increases a separate damage multiplier, up to 1.3x
+		Combined, the yoyo can have a max damage multiplier of 1.8x
+		'''
 }
 
 FleshBearing: {
 	DisplayName: Flesh Bearing
-	Tooltip: ""
+	Tooltip: When there are 3 or more enemies nearby, the yoyo will gain a small speed boost
 }
 
 IronBearing: {
@@ -911,80 +916,133 @@ LeadBearing: {
 
 LesionBearing: {
 	DisplayName: Lesion Bearing
-	Tooltip: ""
+	Tooltip: When there are 3 or more enemies nearby, the yoyo will gain a small speed boost
 }
 
 PrimeBearing: {
 	DisplayName: Prime Bearing
-	Tooltip: ""
+	Tooltip:
+		'''
+		Severely reduces maximum yoyo range
+		Provides a 1.5x yoyo damage multiplier
+		'''
 }
 
 SolarBearing: {
 	DisplayName: Solar Bearing
-	Tooltip: ""
+	Tooltip:
+		'''
+		Reduces maximum yoyo range and speed
+		Greatly increases yoyo damage
+		'''
 }
 
 TitanBearing: {
 	DisplayName: Titan Bearing
-	Tooltip: ""
+	Tooltip:
+		'''
+		Severely reduces maximum yoyo speed
+		Provides a 1.7x yoyo damage multiplier
+		'''
+}
+
+RedResponsePad: {
+	DisplayName: Red Response Pad
+	Tooltip:
+		'''
+		Yoyos ignite targets on hit
+		Provides a small damage increase
+		'''
 }
 
 BlackResponsePad: {
 	DisplayName: Black Response Pad
-	Tooltip: ""
+	Tooltip: Provides a small increase to range, damage, and speed to yoyos
 }
 
 BlueResponsePad: {
 	DisplayName: Blue Response Pad
-	Tooltip: ""
+	Tooltip: Provides a small range increase to yoyos
 }
 
 GreenResponsePad: {
 	DisplayName: Green Response Pad
-	Tooltip: ""
+	Tooltip:
+		'''
+		Yoyos poison targets on hit
+		Provides a small speed increase to yoyos
+		'''
 }
 
 PurpleResponsePad: {
 	DisplayName: Purple Response Pad
-	Tooltip: ""
+	Tooltip:
+		'''
+		Yoyos inflict targets with venom 
+		Provides a small damage and range increase to yoyos
+		'''
 }
 
 WhiteResponsePad: {
 	DisplayName: White Response Pad
-	Tooltip: ""
+	Tooltip: Provides a small speed increase to yoyos
 }
 
 YellowResponsePad: {
 	DisplayName: Yellow Response Pad
-	Tooltip: ""
+	Tooltip: Provides a small damage increase to yoyos
 }
 
 ChlorophyteEffect: {
-	DisplayName: Chlorophyte Effect
-	Tooltip: ""
+	DisplayName: Chlorophyte Side Effect
+	Tooltip:
+		'''
+		Increases yoyo damage by 20%
+		Decreases yoyo speed by 10%
+		'''
 }
 
 GoldEffect: {
-	DisplayName: Gold Effect
-	Tooltip: ""
+	DisplayName: Gold Side Effect
+	Tooltip:
+		'''
+		Increases yoyo damage by 5%
+		Decreases yoyo speed by 5%
+		'''
 }
 
 HallowedEffect: {
-	DisplayName: Hallowed Effect
-	Tooltip: ""
+	DisplayName: Hallowed Side Effect
+	Tooltip:
+		'''
+		Increases yoyo damage by 15%
+		Decreases yoyo speed by 10%
+		'''
 }
 
 HellstoneEffect: {
-	DisplayName: Hellstone Effect
-	Tooltip: ""
+	DisplayName: Hellstone Side Effect
+	Tooltip:
+		'''
+		Increases yoyo damage by 10%
+		Decreases yoyo speed by 5%
+		'''
 }
 
 PlatinumEffect: {
-	DisplayName: Platinum Effect
-	Tooltip: ""
+	DisplayName: Platinum Side Effect
+	Tooltip:
+		'''
+		Increases yoyo damage by 5%
+		Decreases yoyo speed by 5%
+		'''
 }
 
 SolarEffect: {
-	DisplayName: Solar Effect
-	Tooltip: ""
+	DisplayName: Solar Side Effect
+	Tooltip:
+		'''
+		Increases yoyo damage by 25%
+		Decreases yoyo speed by 15%
+		'''
 }

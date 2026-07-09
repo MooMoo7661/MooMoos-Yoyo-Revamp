@@ -22,9 +22,7 @@ If you wish to join the Discord, click this link! > https://discord.gg/G5cbT7tj9
 [h1][b]Huge thanks to the following![/b][/h1]
 
 otterly - [b]Lead spriter[/b]
+Geki - Created all the yoyo upgrade sprites
 Dominick - Various other sprites
-David F. Dev - Wrote the script for the Yoyo Drills
 Turbanik - Supplied pretty much all of the special effect sprites
-stormytuna - Writing various code such as npc loot modifications & reflections
-Dagger - Helping with custom yoyo string colors, drawing, and textures
 Photonic0 - Helping with enhancing yoyo special effects during daytime, as well as creating the Empress of Light Yoyo

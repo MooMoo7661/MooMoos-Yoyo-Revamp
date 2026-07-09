@@ -3,7 +3,7 @@ YoyoHits: yoyo hits
 AchievementsNotification:
 	'''
 	[MooMoo's Ultimate Yoyo Revamp]
-	This mod adds some custom achievements. To enable them, download "Achievements Mod".
+	Welcome to the 1.0 snapshot! Nothing is quite balanced yet, so please let me know any issues.
 	'''
 
 UpgradeUI: {
@@ -28,8 +28,6 @@ UpgradeUI: {
 		Ball Bearing: {2}
 		Response Pad: {3}
 		'''
-	IronAxle: No effect
-	LeadAxle: No effect
 }
 
 Misc: {
@@ -42,6 +40,8 @@ Misc: {
 	RightClickInfo: Hold {0} to drill
 	CurrentDrill: "Current Drill: "
 	YoyoGloveDamage: Damage dealt by the extra yoyos decreases for each yoyo you have out
+	UpgradeItem: This item needs to be put onto a yoyo using a Yoyo Upgrade Station
+	TrickSlot: Gives a slot for tricks
 	VanillaGlove:
 		'''
 		[c/6EAE6E:+5 yoyo speed]
@@ -51,7 +51,6 @@ Misc: {
 
 AccessorySlots: {
 	SlotPrefix: Item prefixes will not apply
-	TrickSlot: Gives a slot for tricks
 	VanityStrings: Vanity Yoyo Strings
 	YoyoStrings: Yoyo Strings
 	RightHand: Right Hand
@@ -76,7 +75,6 @@ TooltipMechanics: {
 Abilities: {
 	HardmodeYoyos: Creates a medium damaging aura that does 50% of the yoyo's damage
 	Tempest: Creates a very large damaging aura that does 75% of the yoyo's damage
-	Code2: Creates a burst of venom imbued projectiles every 2 seconds
 	TrueYoyos: Creates a large damaging aura that does 60% of the yoyo's damage
 	Cascade: Periodically shoots out lingering fire
 	Valor: Creates homing water bolts that explode on contact, dealing area damage
@@ -89,6 +87,11 @@ Abilities: {
 	Chik: Shoots explosive crystal charges every 3 hits
 	HelFire: Inflicts the target with Combustion, dealing a large amount of fire damage
 	RedsYoyo: Creates a rapidly damaging aura that deals 75% of the yoyo's damage
+	Code2:
+		'''
+		Creates a burst of low damage venom shots every 5 seconds
+		The venom shots will inflict heavy poison for 30 seconds
+		'''
 	HardmodeYoyo1:
 		'''
 		Creates a blast every 20 hits that deals damage and knocks enemies away from the player

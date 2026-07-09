@@ -68,6 +68,10 @@ Mods: {
 		Conditions: {
 			EaterOfWorldsOrBrain: Eater of Worlds / Brain of Cthulhu
 			NPCNotShimmered: Mods.CombinationsMod.Conditions.NPCNotShimmered
+			MoonFullOrNew: Mods.CombinationsMod.Conditions.MoonFullOrNew
+			MoonWaningGibbousOrWaxingCrescent: Mods.CombinationsMod.Conditions.MoonWaningGibbousOrWaxingCrescent
+			MoonThirdQuarterOrFirstQuarter: Mods.CombinationsMod.Conditions.MoonThirdQuarterOrFirstQuarter
+			MoonWaningCrescentOrWaxingGibbous: Mods.CombinationsMod.Conditions.MoonWaningCrescentOrWaxingGibbous
 		}
 
 		Configs: {
@@ -353,6 +357,11 @@ Mods: {
 			RootedDebuff: {
 				DisplayName: Rooted Debuff
 				Description: Taking damage
+			}
+
+			RedBearingDebuff: {
+				DisplayName: Red Bearing Debuff
+				Description: Mods.CombinationsMod.Buffs.RedBearingDebuff.Description
 			}
 		}
 	}

@@ -39,7 +39,6 @@ namespace CombinationsMod.Content.Items.Accessories.Drills
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemType<PlatinumEffect>())
                 .AddIngredient(ItemType<CelestialDrillCasing>())
                 .AddIngredient(ItemType<CobaltDrillCasing>())
                 .AddIngredient(ItemType<HakapikDrillCasing>())

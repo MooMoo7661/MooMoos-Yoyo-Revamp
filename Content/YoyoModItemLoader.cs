@@ -12,12 +12,17 @@ namespace CombinationsMod.Content
 
     public interface IYoyoUpgrade
     {
-        LocalizedText Description { get; }
+        /// <summary>
+        /// Apply effects when the projectile spawns.
+        /// </summary>
+        /// <param name="projectile"></param>
+        void ApplyEffects(Projectile projectile) { }
 
-        void ApplyEffects(Projectile proj) { }
-
+        /// <summary>
+        /// OnHitNPC clone.
+        /// </summary>
         void ApplyOnHitEffect(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone) { }
 
-        void AI(Projectile proj) { }
+        void AI(Projectile projectile) { }
     }
 }
